@@ -6,16 +6,19 @@ from typing import Any, Literal, Mapping
 
 from app.pipeline import run_pipeline
 from common.models import (
+    apply_fill_event,
     BrokerOrder,
     FillEvent,
     MarketDataSnapshot,
     MarketSessionState,
     OrderIntent,
+    QuantityInstruction,
     REQUIRED_STRATEGY_FEATURE_KEYS,
     RiskInputContext,
     RiskDecision,
     SignalEvent,
     SymbolFeatureSnapshot,
+    transition_order_status,
 )
 from execution.interface import ExecutionPort
 from market.interface import MarketDataPort
@@ -77,19 +80,79 @@ class DummyStrategyPort(StrategyPort):
 class DummyRiskPort(RiskPort):
     # Risk는 주문 실행 금지.
     def evaluate(self, context: RiskInputContext) -> RiskDecision | None:
-        return None
+        return RiskDecision(
+            decision_id="risk-decision-dummy",
+            event_id=context.signal.event_id,
+            decision="ALLOW",
+            reason="dummy",
+            risk_snapshot_id="risk-snapshot-dummy",
+            risk_flags=(),
+            reduce_factor=None,
+        )
 
 
 class DummyExecutionPort(ExecutionPort):
+    def __init__(self) -> None:
+        self._orders: dict[str, BrokerOrder] = {}
+
     # Execution은 signal 생성 금지.
     def build_intent(self, decision: RiskDecision | None) -> OrderIntent | None:
         return None
 
-    def submit(self, intent: OrderIntent, env: str) -> BrokerOrder | None:
-        return None
+    def submit(self, intent: OrderIntent) -> BrokerOrder:
+        if intent.quantity is None:
+            raise ValueError("intent.quantity is required for submit")
+        order = BrokerOrder(
+            order_id=f"order-{intent.source_decision_id}",
+            intent_id=intent.source_decision_id,
+            symbol=intent.symbol,
+            side=intent.side,
+            quantity=intent.quantity,
+            filled_quantity=0.0,
+            status="NEW",
+            created_at="2026-01-01T00:00:00Z",
+            updated_at="2026-01-01T00:00:00Z",
+        )
+        submitted = transition_order_status(
+            order,
+            "SUBMITTED",
+            updated_at="2026-01-01T00:00:01Z",
+        )
+        self._orders[submitted.order_id] = submitted
+        # Dummy fill simulation: single full-fill event (no pricing/sizing logic).
+        fill = FillEvent(
+            fill_id=f"fill-{submitted.order_id}",
+            order_id=submitted.order_id,
+            symbol=submitted.symbol,
+            side=submitted.side,
+            fill_quantity=submitted.quantity,
+            fill_price=100.0,
+            timestamp="2026-01-01T00:00:02Z",
+            is_final=True,
+        )
+        updated = self.on_fill(fill)
+        return updated
 
-    def poll_fill(self, order: BrokerOrder) -> FillEvent | None:
-        return None
+    def cancel(self, order_id: str) -> BrokerOrder:
+        order = self._orders[order_id]
+        cancelled = transition_order_status(
+            order,
+            "CANCELLED",
+            updated_at="2026-01-01T00:00:02Z",
+        )
+        self._orders[order_id] = cancelled
+        return cancelled
+
+    def get_status(self, order_id: str) -> BrokerOrder:
+        return self._orders[order_id]
+
+    def on_fill(self, fill: FillEvent) -> BrokerOrder:
+        order = self._orders.get(fill.order_id)
+        if order is None:
+            raise ValueError("unknown order_id for fill")
+        updated = apply_fill_event(order, fill)
+        self._orders[updated.order_id] = updated
+        return updated
 
 
 class DummyReportingPort(ReportingPort):
@@ -99,6 +162,13 @@ class DummyReportingPort(ReportingPort):
 
 
 def main() -> None:
+    quantity_instruction = QuantityInstruction(
+        symbol="005930",
+        side="BUY",
+        final_quantity=1.0,
+        instruction_version="foundation-v1",
+        source="foundation-dummy",
+    )
     summary = run_pipeline(
         market_port=DummyMarketPort(),
         strategy_port=DummyStrategyPort(),
@@ -107,6 +177,7 @@ def main() -> None:
         reporting_port=DummyReportingPort(),
         market="KR",
         env="paper",
+        quantity_instruction=quantity_instruction,
     )
     print(f"[foundation] pipeline completed: {summary}")
 

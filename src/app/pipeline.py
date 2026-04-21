@@ -11,9 +11,13 @@ from typing import Any, Literal
 
 from common.models import (
     AccountSnapshot,
+    build_order_intent_from_handoff,
     PositionSnapshot,
+    QuantityInstruction,
     RISK_INPUT_CONTEXT_VERSION,
+    RiskDecision,
     RiskInputContext,
+    is_risk_evaluable,
 )
 from execution.interface import ExecutionPort
 from market.interface import MarketDataPort
@@ -34,6 +38,7 @@ def run_pipeline(
     reporting_port: ReportingPort,
     market: MarketCode,
     env: RuntimeEnv,
+    quantity_instruction: QuantityInstruction | None = None,
 ) -> dict[str, Any]:
     """레이어 호출 순서만 표현하는 최소 파이프라인."""
     market_snapshot = market_port.load_market_snapshot(market, env)
@@ -42,7 +47,7 @@ def run_pipeline(
     # 계좌/포지션 동기화 로직은 Phase 01 범위를 벗어나므로 placeholder만 둔다.
     account: AccountSnapshot | None = None
     position: PositionSnapshot | None = None
-    decision = None
+    decision: RiskDecision | None = None
     if signal is not None:
         risk_input = RiskInputContext(
             signal=signal,
@@ -51,16 +56,25 @@ def run_pipeline(
             position=position,
             context_version=RISK_INPUT_CONTEXT_VERSION,
         )
-        decision = risk_port.evaluate(risk_input)
+        if is_risk_evaluable(risk_input):
+            decision = risk_port.evaluate(risk_input)
 
     broker_order = None
-    fill = None
     if decision is not None:
-        intent = execution_port.build_intent(decision)
+        intent = None
+        if signal is not None:
+            intent = build_order_intent_from_handoff(signal, decision, quantity_instruction)
+
+        # BLOCK은 intent 생성 금지.
+        if decision.decision in ("ALLOW", "REDUCE"):
+            # Execution 구현체가 별도 intent 구성을 제공하면 우선 사용한다.
+            built_intent = execution_port.build_intent(decision)
+            if built_intent is not None:
+                intent = built_intent
+
         if intent is not None:
-            broker_order = execution_port.submit(intent, env)
-            if broker_order is not None:
-                fill = execution_port.poll_fill(broker_order)
+            broker_order = execution_port.submit(intent)
+            broker_order = execution_port.get_status(broker_order.order_id)
 
     summary = {
         "market": market,
@@ -71,7 +85,7 @@ def run_pipeline(
         "has_signal": signal is not None,
         "has_decision": decision is not None,
         "has_order": broker_order is not None,
-        "has_fill": fill is not None,
+        "has_fill": broker_order is not None and broker_order.status == "FILLED",
     }
     reporting_port.publish(summary)
     return summary

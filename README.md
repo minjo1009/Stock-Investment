@@ -19,3 +19,17 @@
 ## 현재 상태
 - Phase 0은 Project Operating System 부트스트랩 단계다.
 - 이후 `Phase 01: Repository Foundation` 또는 `Phase 02: Context Inventory`로 이어질 수 있다.
+
+## KIS Token Cache / Auth Manager
+- Why: avoid issuing a new KIS access token on every run and reduce auth-rate-limit failures.
+- Default behavior:
+- reuse cached token first
+- issue a new token only when cache is missing or near expiry
+- cache file: `.kis_token_cache.json` (git-ignored)
+- Rate-limit handling:
+- if token issuance is rate-limited and a still-valid cached token exists, reuse cache
+- if no valid cached token exists, fail fast with explicit error
+- Environment:
+- cache is validated against `KIS_ENVIRONMENT`
+- Run note:
+- if module import fails on local shell, run with `PYTHONPATH=src`

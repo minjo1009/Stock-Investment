@@ -21,3 +21,9 @@ Thumbs.db
 
 # Logs
 *.log
+
+# KIS token cache
+.kis_token_cache.json
+
+# Local runtime DB
+trading.db
