@@ -34,10 +34,34 @@
 ## Standard Workflow
 - Clarify: 요구사항과 제약을 확인한다.
 - Context Gather: 근거 문서와 현재 코드 상태를 수집한다.
-- Plan: phase가 필요한지 판단하고 상위 실행계획을 명시한다.
-- Taskize: 구현 단위를 task로 분해한다.
-- Implement: 승인된 범위 내에서 구현, 검증, 보고를 수행한다.
-- Report: 산출물, 검증 결과, 리스크, 다음 행동을 남긴다.
+- Plan: phase/task를 구체화하고 승인 가능한 구현 계획을 확정한다.
+- Generate: 승인된 범위 내에서 구현 산출물을 생성한다.
+- Evaluate: 검증 결과를 남기고 완료/차단을 판정한다.
+
+## Pipeline Harness (Sub-Agent)
+- 표준 파이프라인은 아래 5단계로 고정한다.
+- `clarify -> context_gather -> plan -> generate -> evaluate`
+- 각 단계는 별도 sub-agent 실행 단위로 취급한다.
+- 각 단계는 자신의 artifact를 생성하고 다음 단계는 직전 artifact를 입력으로 사용한다.
+- artifact 없이 다음 단계로 건너뛰는 실행은 금지한다.
+- 동일 Task 내에서 단계 재실행은 허용하되, 기존 artifact를 보존하고 신규 버전을 추가한다.
+
+## Stage Artifact Contract
+- Clarify artifact:
+- 목적: 요구사항/범위/미결정/제약 고정
+- 예시: `artifacts/<task-id>/clarify.md`
+- Context Gather artifact:
+- 목적: 근거 문서, 코드 관찰, 사실/해석 분리 기록
+- 예시: `artifacts/<task-id>/context-gather.md`
+- Plan artifact:
+- 목적: phase/task 구체화, Target Files, Acceptance Criteria, Tests 확정
+- 예시: `artifacts/<task-id>/plan.md`
+- Generate artifact:
+- 목적: 변경 파일 목록과 구현 결과 기록
+- 예시: `artifacts/<task-id>/generate.md`
+- Evaluate artifact:
+- 목적: 검증 로그, 판정(done/blocked), 잔여 리스크 기록
+- 예시: `artifacts/<task-id>/evaluate.md`
 
 ## Read Order Before Work
 - `skills/skill.md`

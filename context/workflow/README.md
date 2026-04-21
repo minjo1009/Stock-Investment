@@ -5,7 +5,8 @@
 - 문서 변경을 포함한 모든 변경을 거버넌스 안에서 관리한다.
 
 ## 포함할 문서 유형
-- 표준 작업 흐름(Clarify -> Context Gather -> Plan -> Taskize -> Implement -> Test -> Report)
+- 표준 작업 흐름(Clarify -> Context Gather -> Plan -> Generate -> Evaluate)
+- 단계별 sub-agent 실행 및 artifact handoff 규칙
 - phase/task 기반 운영 규칙
 - 작업 전 필독 문서 순서
 - 변경관리 규칙(고위험 문서 수정, 무규칙 수정 금지, silent refactor 금지)

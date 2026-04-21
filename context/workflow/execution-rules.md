@@ -8,6 +8,8 @@
 - 1 Codex Run = 1 Task 수행.
 - 여러 Task 동시 수행 금지.
 - Task 범위 외 수정 금지.
+- 1 Stage = 1 Sub-Agent 수행.
+- Stage는 `Clarify -> Context Gather -> Plan -> Generate -> Evaluate` 순서를 강제한다.
 - 모든 실행은 아래 표준 보고 형식으로 종료한다.
 - `changed files`
 - `summary`
@@ -18,47 +20,47 @@
 ## Step Contracts
 ### Clarify
 - Input: 사용자 요구사항.
-- Output: 명확화된 요구, 범위, 미결정 사항.
+- Output: 명확화된 요구, 범위, 미결정 사항, 제약.
+- Artifact: `artifacts/<task-id>/clarify.md`
 - 금지사항: 구현 시작 금지.
 
 ### Context Gather
 - Input: Clarify 결과.
 - Output: context 문서, 관찰 결과, 설계 근거.
+- Artifact: `artifacts/<task-id>/context-gather.md`
 - 금지사항:
 - 추론 기반 작성 금지.
 - codebase 가정 금지.
 
 ### Plan
-- Input: context.
-- Output: phase 또는 task 계획.
-- 금지사항: 계획 없이 구현 금지.
-
-### Taskize
-- Input: plan.
-- Output: task 문서.
+- Input: Context Gather 결과.
+- Output: phase 또는 task 계획, Target Files, Acceptance Criteria, Tests.
+- Artifact: `artifacts/<task-id>/plan.md`
 - 금지사항:
-- 리팩토링, 최적화, 전반 개선.
-- 필수 조건:
-- 1 task = 1 목적.
-- acceptance criteria 필수.
-- tests 필수.
+- 계획 없이 Generate 시작 금지.
 
-### Implement
-- Input: task 문서.
-- Output: 변경된 파일.
+### Generate
+- Input: Plan 결과.
+- Output: 변경된 파일, 구현 로그.
+- Artifact: `artifacts/<task-id>/generate.md`
 - 금지사항:
 - 범위 외 수정.
 - silent refactor.
 
-### Test
-- Input: 구현 결과.
-- Output: 검증 결과.
-- 금지사항: 검증 없이 완료 선언 금지.
+### Evaluate
+- Input: Generate 결과.
+- Output: 검증 결과, 완료/차단 판정, 잔여 리스크.
+- Artifact: `artifacts/<task-id>/evaluate.md`
+- 금지사항:
+- 검증 없이 완료 선언 금지.
+- Evaluate 생략 금지.
 
-### Report
-- Input: 테스트 결과.
-- Output: 표준 보고 형식.
-- 금지사항: 비표준 종료 보고 금지.
+## Sub-Agent Handoff Rules
+- 단계별 sub-agent는 직전 단계 artifact를 명시적으로 입력받아야 한다.
+- artifact가 없거나 손상되면 다음 단계로 진행하지 않고 `blocked` 처리한다.
+- 각 단계의 출력은 사실/관찰/판정 중심으로 작성한다.
+- 단계 간 구두 요약만으로 handoff 하지 않는다.
+- 재시도 시 기존 artifact를 덮어쓰지 않고 버전 suffix를 추가한다.
 
 ## STOP Handling
 - STOP 조건:
@@ -68,6 +70,7 @@
 - 상위 문서와 충돌.
 - acceptance criteria 없음.
 - codebase 상태 확인 불가.
+- 직전 단계 artifact 없음.
 - STOP 시 아래 형식을 그대로 사용한다.
 
 ```text
