@@ -33,3 +33,106 @@
 - cache is validated against `KIS_ENVIRONMENT`
 - Run note:
 - if module import fails on local shell, run with `PYTHONPATH=src`
+
+## Execution Persistence / State Store
+- Purpose: keep a local trace of each run (`trade_runs`), submitted orders (`orders`), and confirmed fills (`fills`).
+- Fill source is explicitly stored as one of:
+- `ORDER_STATUS`
+- `POSITION_DELTA_FALLBACK`
+- This layer is minimal tracking for operations; advanced position/PnL/idempotency is a follow-up scope.
+
+## Recent Run Report CLI
+- Command: `python -m app.report_recent_runs`
+- Optional limit: `python -m app.report_recent_runs --limit 20`
+- Show order intent key: `python -m app.report_recent_runs --show-intent-key`
+- Position snapshot view: `python -m app.report_recent_runs --positions`
+- DB path is read from `TRADING_DB_PATH` (default: `trading.db`).
+
+## Fill Dedupe Policy (Task 030-A)
+- Fill inserts use a deterministic dedupe key built from `order_id`, `symbol`, `side`, `filled_quantity`, `fill_price`, and `source`.
+- Duplicate inserts are ignored (`INSERT OR IGNORE`) by unique index `uq_fills_dedupe_key`.
+- Return status from `record_fill`: `inserted` or `duplicate_ignored`.
+
+## Position Tracking (Task 031)
+- `positions`: latest snapshot per symbol (`quantity`, `avg_price`, `updated_at`).
+- `position_events`: append-only event trail after each applied fill.
+- Current scope is minimal authoritative tracking for operations (not a full portfolio engine).
+
+## Fill Price Truth Source
+- Priority 1 (authoritative): broker-reported fill price from execution/order status payloads.
+- Priority 2 (temporary fallback): submitted order price when authoritative fill price is unavailable.
+- Position `avg_price` quality depends on this truth-source order.
+
+## Execution Loop Foundation (Task 032)
+- Command: `python -m app.run_trade_loop`
+- Optional: `python -m app.run_trade_loop --max-runs 10`
+- Safety guards:
+- `TRADING_KILL_SWITCH=true` stops loop before and between runs.
+- `TRADING_LOOP_INTERVAL_SEC` controls run interval (minimum enforced: 1 second).
+- Single-process lock file: `.trading.lock` (or `TRADING_LOOP_LOCK_PATH`).
+- If the process crashes, delete `.trading.lock` manually before restarting.
+
+## Order Idempotency Foundation (Task 033)
+- `order_intent_key` is deterministic from: `symbol`, `side`, `intended_price`, `quantity`, `strategy_id`.
+- Pre-submit block rule: if same `intent_key` exists with status `SUBMITTED` (or `PENDING`), submit is skipped.
+- Optional recent-window guard: set `TRADING_INTENT_RECENT_SEC` (default `0`, disabled).
+- Blocked duplicate submits are logged as `[IDEMPOTENT BLOCK] ...`.
+
+## Broker Truth Sync / Reconciliation Foundation (Task 034)
+- Submit is guarded by a pre-submit reconciliation check (broker truth vs local state).
+- If reconciliation status is `MISMATCH` or `ERROR`, new submit is blocked:
+- log: `[RECON BLOCK] local/broker mismatch detected`
+- run result: `SKIPPED_RECON_BLOCK`
+- Reconciliation persistence:
+- `reconciliation_runs` (summary)
+- `reconciliation_events` (append-only mismatch details)
+- CLI:
+- `python -m app.report_recent_runs --show-reconciliation`
+- Broker status is conservatively mapped to internal minimal statuses:
+- `SUBMITTED`, `FILLED`, `REJECTED`, `FAILED`, `UNKNOWN`
+
+## Operational Hardening (Task 034-A)
+- Reconciliation severity:
+- `INFO` / `WARN` / `CRITICAL`
+- Only `CRITICAL` mismatches block new orders.
+- `WARN` events are recorded but do not block.
+
+### Broker Status Mapping Table
+| BROKER_STATUS | INTERNAL |
+|---|---|
+| `OPEN` | `SUBMITTED` |
+| `SUBMITTED` | `SUBMITTED` |
+| `PENDING` | `SUBMITTED` |
+| `WORKING` | `SUBMITTED` |
+| `PARTIAL` | `SUBMITTED` |
+| `PARTIALLY_FILLED` | `SUBMITTED` |
+| `FILLED` | `FILLED` |
+| `DONE` | `FILLED` |
+| `CANCELLED` / `CANCELED` / `CANCEL` | `CANCELLED` |
+| `REJECTED` / `REJECT` / `DENIED` | `REJECTED` |
+| `FAILED` / `FAIL` / `ERROR` | `FAILED` |
+| (anything else) | `UNKNOWN` |
+
+Rules:
+- explicit table mapping first
+- unknown values remain `UNKNOWN` (no guess mapping)
+
+### Reconciliation Tuning
+- `STATUS_MISMATCH` is CRITICAL only for:
+- local `SUBMITTED` vs broker `CANCELLED` / `REJECTED` / `FILLED`
+- broker `UNKNOWN` becomes WARN (recorded, no block)
+- `FILL_MISMATCH` remains CRITICAL
+
+### Reconciliation Alerting
+- Enable with: `TRADING_RECON_ALERT=true`
+- On `CRITICAL` mismatch or reconciliation `ERROR`, Slack sends `[RECON ALERT] ...`
+
+### Stale Lock Handling
+- lock file now stores JSON with `pid` and `created_at`
+- if lock exists and pid is alive: block start
+- if lock exists and pid is dead: treat as stale and remove lock
+- if lock content cannot be parsed: block conservatively
+
+### Reconciliation CLI
+- `python -m app.report_recent_runs --show-reconciliation`
+- `python -m app.report_recent_runs --recon-summary`

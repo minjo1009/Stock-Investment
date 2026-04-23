@@ -10,6 +10,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Any
 from urllib import error, parse, request
 
+from app.reconciliation import map_broker_status
 from integration.kis_auth_manager import KISAuthManager
 
 
@@ -196,18 +197,28 @@ class KISClient:
         return order_id
 
     def get_order_status(self, order_id: str) -> str:
+        rows = self.fetch_broker_order_statuses()
+        for row in rows:
+            if str(row.get("order_id") or "") != order_id:
+                continue
+            if row.get("mapped_status") == "FILLED":
+                return "FILLED"
+        return "PENDING"
+
+    def fetch_broker_open_orders(self, *, symbol: str | None = None) -> list[dict[str, Any]]:
+        rows = self.fetch_broker_order_statuses(symbol=symbol)
+        return [row for row in rows if row.get("mapped_status") in {"SUBMITTED", "PENDING"}]
+
+    def fetch_broker_order_statuses(self, *, symbol: str | None = None) -> list[dict[str, Any]]:
         kst = timezone(timedelta(hours=9))
         order_date = datetime.now(kst).strftime("%Y%m%d")
         tr_id = "VTTS3035R" if self.environment == "paper" else "TTTS3035R"
-        branch_no = ""
-        if self._order_branch_by_order_id is not None:
-            branch_no = self._order_branch_by_order_id.get(order_id, "")
         params = {
             "CANO": self.account_number,
             "ACNT_PRDT_CD": self.product_code,
             "OVRS_EXCG_CD": self.exchange_code,
-            "ORD_GNO_BRNO": branch_no,
-            "ODNO": order_id,
+            "ORD_GNO_BRNO": "",
+            "ODNO": "",
             "PDNO": "" if self.environment == "paper" else os.environ.get("KIS_STATUS_PDNO", ""),
             "ORD_DT": order_date,
             "ORD_STRT_DT": order_date,
@@ -226,26 +237,52 @@ class KISClient:
                 extra_headers={"tr_id": tr_id},
             )
         except Exception:
-            return "PENDING"
+            return []
         rows = data.get("output1")
         if not isinstance(rows, list):
             rows = data.get("output2")
         if not isinstance(rows, list):
             rows = data.get("output")
         if not isinstance(rows, list):
-            return "PENDING"
+            return []
 
+        symbol_u = symbol.strip().upper() if symbol else None
+        normalized: list[dict[str, Any]] = []
         for row in rows:
             if not isinstance(row, dict):
                 continue
-            row_order_id = str(row.get("odno", "")).strip()
-            if row_order_id and row_order_id != order_id:
+            order_id = str(row.get("odno", "")).strip()
+            if not order_id:
                 continue
-            filled_qty = int(float(row.get("tot_ccld_qty", 0) or 0))
-            order_qty = int(float(row.get("ord_qty", 0) or 0))
-            if order_qty > 0 and filled_qty >= order_qty:
-                return "FILLED"
-        return "PENDING"
+            broker_symbol = str(row.get("pdno") or row.get("ovrs_pdno") or "").strip().upper()
+            if symbol_u is not None and broker_symbol != symbol_u:
+                continue
+            filled_qty = float(row.get("tot_ccld_qty", 0) or 0)
+            order_qty = float(row.get("ord_qty", 0) or 0)
+            raw_status = str(
+                row.get("ord_stts")
+                or row.get("ord_sts")
+                or row.get("ord_stat")
+                or row.get("ccld_nccs_dvsn_name")
+                or row.get("ccld_yn")
+                or ""
+            ).strip()
+            mapped_status = map_broker_status(raw_status)
+            if mapped_status == "UNKNOWN" and order_qty > 0 and filled_qty >= order_qty:
+                # Explicit fallback rule for clear completion evidence.
+                mapped_status = "FILLED"
+            normalized.append(
+                {
+                    "order_id": order_id,
+                    "symbol": broker_symbol,
+                    "mapped_status": mapped_status,
+                    "raw_status": raw_status or "UNKNOWN",
+                    "order_qty": order_qty,
+                    "filled_qty": filled_qty,
+                    "raw_row": row,
+                }
+            )
+        return normalized
 
     def get_position_quantity(self, symbol: str) -> int:
         tr_id = "VTTS3012R" if self.environment == "paper" else "TTTS3012R"
