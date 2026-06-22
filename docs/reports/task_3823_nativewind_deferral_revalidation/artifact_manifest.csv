@@ -1,0 +1,5 @@
+artifact,path,authority_status,notes
+report,docs/reports/task_3823_nativewind_deferral_revalidation/task_3823_nativewind_deferral_revalidation.md,canonical,Task3823 closeout report
+decision,docs/frontend_app_ssot/18_NATIVEWIND_DEFERRAL_REVALIDATION.md,canonical,NativeWind deferral revalidation
+gpt_prompt,docs/reports/task_3823_nativewind_deferral_revalidation/loop9_gpt_prompt.md,review_only,Captured Chrome GPT loop prompt
+gpt_response_summary,docs/reports/task_3823_nativewind_deferral_revalidation/loop9_gpt_response_summary.md,review_only,Captured Chrome GPT response summary

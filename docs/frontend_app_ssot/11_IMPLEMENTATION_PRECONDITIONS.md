@@ -294,6 +294,17 @@ Task3809 decisions:
 - P0 domain component contracts represented in Storybook: `DecisionHeader`, `EvidenceList`, `ValidationReadinessPanel`, `RiskGate`, `DisabledActionBar`, `ChartWithSourceState`, `SystemHealth`, and `OrderStateSummary`.
 - Product screen implementation remains blocked until a future task selects an authoritative backend/read-only source and screenshot QA is configured.
 
+Task3817-Task3824 preflight decisions:
+
+- Screenshot QA: `docs/frontend_app_ssot/12_SCREENSHOT_QA_PREFLIGHT_PLAN.md` defines the future target surfaces, state matrix, naming policy, and forbidden evidence claims. Screenshot tooling is not installed and no captures were produced.
+- Maestro: `docs/frontend_app_ssot/13_MAESTRO_SMOKE_FLOW_PREFLIGHT_PLAN.md` defines future flow evidence and failure criteria. Maestro is not installed and no flow files were created.
+- Fixture authority: `docs/frontend_app_ssot/14_READ_MODEL_FIXTURE_AUTHORITY_BOUNDARY_AUDIT.md` keeps current JSON fixtures scaffold-only and `NOT_AUTHORITY`.
+- Domain stories: `docs/frontend_app_ssot/15_DOMAIN_COMPONENT_STORY_COVERAGE_GAP_AUDIT.md` records story coverage expectations; it does not edit components or stories.
+- Candidate Detail: `docs/frontend_app_ssot/16_CANDIDATE_DETAIL_SCREEN_READINESS_CHECKLIST.md` defines a future readiness gate; Candidate Detail is not authorized for implementation.
+- HOME: `docs/frontend_app_ssot/17_HOME_SCREEN_READINESS_CHECKLIST.md` defines a future readiness gate; HOME real UI is not authorized for implementation.
+- NativeWind: `docs/frontend_app_ssot/18_NATIVEWIND_DEFERRAL_REVALIDATION.md` keeps NativeWind deferred as `KEEP_NATIVEWIND_DEFERRED_WITH_REASON_TASK3806_REVALIDATED_LOOP9`.
+- iOS dev build: `docs/frontend_app_ssot/19_IOS_DEV_BUILD_VALIDATION_PLAN.md` defines future validation evidence only. No build, EAS config, native folder generation, or deployment readiness claim occurred.
+
 Task3811 supersession:
 
 - `SUPERSEDED_BY_USER_CLARIFICATION`: Task3811 is not an accepted active next-work direction.

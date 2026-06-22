@@ -1,0 +1,5 @@
+artifact,path,authority_status,notes
+report,docs/reports/task_3818_maestro_smoke_flow_preflight_plan/task_3818_maestro_smoke_flow_preflight_plan.md,canonical,Task3818 closeout report
+preflight,docs/frontend_app_ssot/13_MAESTRO_SMOKE_FLOW_PREFLIGHT_PLAN.md,canonical,Future Maestro flow evidence contract
+gpt_prompt,docs/reports/task_3818_maestro_smoke_flow_preflight_plan/loop4_gpt_prompt.md,review_only,Captured Chrome GPT loop prompt
+gpt_response_summary,docs/reports/task_3818_maestro_smoke_flow_preflight_plan/loop4_gpt_response_summary.md,review_only,Captured Chrome GPT response summary

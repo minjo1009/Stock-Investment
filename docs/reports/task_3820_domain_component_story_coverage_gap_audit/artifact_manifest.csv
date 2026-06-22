@@ -1,0 +1,5 @@
+artifact,path,authority_status,notes
+report,docs/reports/task_3820_domain_component_story_coverage_gap_audit/task_3820_domain_component_story_coverage_gap_audit.md,canonical,Task3820 closeout report
+audit,docs/frontend_app_ssot/15_DOMAIN_COMPONENT_STORY_COVERAGE_GAP_AUDIT.md,canonical,Domain component story gap audit
+gpt_prompt,docs/reports/task_3820_domain_component_story_coverage_gap_audit/loop6_gpt_prompt.md,review_only,Captured Chrome GPT loop prompt
+gpt_response_summary,docs/reports/task_3820_domain_component_story_coverage_gap_audit/loop6_gpt_response_summary.md,review_only,Captured Chrome GPT response summary

@@ -1,0 +1,5 @@
+artifact,path,authority_status,notes
+report,docs/reports/task_3824_ios_dev_build_validation_plan/task_3824_ios_dev_build_validation_plan.md,canonical,Task3824 closeout report
+plan,docs/frontend_app_ssot/19_IOS_DEV_BUILD_VALIDATION_PLAN.md,canonical,iOS dev build validation plan
+gpt_prompt,docs/reports/task_3824_ios_dev_build_validation_plan/loop10_gpt_prompt.md,review_only,Captured Chrome GPT loop prompt
+gpt_response_summary,docs/reports/task_3824_ios_dev_build_validation_plan/loop10_gpt_response_summary.md,review_only,Captured Chrome GPT response summary

@@ -1,0 +1,5 @@
+artifact,path,authority_status,notes
+report,docs/reports/task_3817_screenshot_qa_preflight_plan/task_3817_screenshot_qa_preflight_plan.md,canonical,Task3817 closeout report
+preflight,docs/frontend_app_ssot/12_SCREENSHOT_QA_PREFLIGHT_PLAN.md,canonical,Future screenshot QA evidence contract
+gpt_prompt,docs/reports/task_3817_screenshot_qa_preflight_plan/loop3_gpt_prompt.md,review_only,Captured Chrome GPT loop prompt
+gpt_response_summary,docs/reports/task_3817_screenshot_qa_preflight_plan/loop3_gpt_response_summary.md,review_only,Captured Chrome GPT response summary
