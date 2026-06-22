@@ -1,0 +1,2 @@
+decision_id,decision,status,owner_team,reviewer_team,artifact,validation_command,notes
+Task3812-D1,Correct GPT relay trigger and evidence contract,CODEX_GPT_RELAY_TRIGGER_EVIDENCE_CONTRACT_CORRECTED,Research Governance,Relevant owner team,skills/codex-gpt-expert-relay-loop,python C:/Users/minjo/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/codex-gpt-expert-relay-loop,No strategy deployment broker paper live or real-capital state changed

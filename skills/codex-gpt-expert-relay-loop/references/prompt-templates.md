@@ -2,12 +2,20 @@
 
 Use these templates with the `codex-gpt-expert-relay-loop` skill.
 
-## Autonomous Relay Note
+## Relay Mode Rule
 
-When browser or Chrome tools are available and the user asks for repeated loops
-or autonomous ping-pong, Codex should send these prompts to Chrome GPT directly
-and capture the response. Do not ask the user to paste prompts manually unless
-Chrome automation is blocked.
+- "Use GPT" means one consult or review pass.
+- "Run N loops", "repeat", or "GPT-Codex ping-pong" means autonomous loop mode.
+- N loops means N captured GPT-Codex interaction cycles, not N validators, gates, files, commits, or internal reasoning passes.
+- If Chrome automation is blocked, mark the loop `BLOCKED_AUTOMATION_NO_GPT_CAPTURE` and do not claim GPT reviewed the work.
+
+## Loop Ledger
+
+For autonomous loops, write or update a ledger with:
+
+```text
+loop_id,user_goal,task_candidate,expert_role,gpt_mode,prompt_artifact,gpt_response_artifact,codex_action,validation_result,review_prompt_artifact,review_response_artifact,status,stop_reason
+```
 
 ## Initial Chrome GPT Prompt
 
@@ -57,6 +65,10 @@ Work instructions:
 5. Write clear implementation or research steps.
 6. Write the final prompt that Codex should execute.
 7. Write the validation checklist.
+
+If the user asked for "next work" or "tasks to do next", first rank next task
+candidates from current repo state. Do not jump directly to one narrow
+validator, checklist, or implementation unless it is selected by the evidence.
 
 Output format:
 1. Task Diagnosis

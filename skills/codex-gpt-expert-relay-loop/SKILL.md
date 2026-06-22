@@ -1,6 +1,6 @@
 ---
 name: codex-gpt-expert-relay-loop
-description: Standing expert relay workflow for the Stock-Investment project. Use when a non-trivial user goal should be classified before implementation, routed to the right Chrome GPT expert role and mode, and run through an autonomous Codex-Chrome GPT ping-pong loop when browser/Chrome tools are available or when the user asks for repeated loops, a 10-loop pass, autonomous iteration, or GPT-Codex back-and-forth. Fall back to a user-sendable prompt only when automation is unavailable or blocked. Covers UI/UX, frontend, backend/DB, quant/backtest, portfolio/risk/execution, company research, macro, political/geopolitical, semiconductor/AI infrastructure, power/energy, and mixed tasks.
+description: Standing expert relay workflow for the Stock-Investment project. Use when a non-trivial user goal should be classified before implementation, routed to the right Chrome GPT expert role and mode, and optionally reviewed by GPT. The phrase "use GPT skill" or "use GPT" does not start a loop. Start an autonomous Codex-Chrome GPT loop only when the user explicitly requests N loops, repeated loops, autonomous iteration, or GPT-Codex back-and-forth. A requested N-loop means N captured GPT-Codex interaction cycles, not N checklist items, validators, files, or internal reasoning passes. Fall back to a user-sendable prompt only when automation is unavailable or blocked. Covers UI/UX, frontend, backend/DB, quant/backtest, portfolio/risk/execution, company research, macro, political/geopolitical, semiconductor/AI infrastructure, power/energy, and mixed tasks.
 ---
 
 # Codex GPT Expert Relay Loop
@@ -11,9 +11,9 @@ Use this skill to make Codex the implementation node in an expert relay system:
 
 ```text
 user goal -> classify -> choose expert role and GPT mode -> generate Chrome GPT prompt
--> send prompt to Chrome GPT directly when tools are available -> implement small patch
--> validate -> send review prompt to Chrome GPT directly when tools are available
--> patch or stop on PASS/BLOCKED
+-> if explicit loop was requested, run captured Chrome GPT <-> Codex cycles
+-> otherwise use at most one GPT consult/review when useful
+-> implement small patch -> validate -> report
 ```
 
 This replaces the retired `gpt-chrome-review-subagent` skill. Do not call the
@@ -41,9 +41,21 @@ paper/live promotion, restate these boundaries before and after implementation.
 For non-trivial goals, classify and choose the expert route before coding. Then
 choose the relay mode:
 
-- `autonomous_chrome_relay`: use when Chrome/browser tools are available, or the user asks for repeated loops, a 10-loop pass, autonomous ping-pong, GPT-Codex back-and-forth, or equivalent wording.
+- `single_gpt_consult`: use when the user asks to use GPT, asks for GPT review, or the task benefits from one external expert pass but does not explicitly request loops.
+- `autonomous_chrome_relay`: use only when the user explicitly asks for N loops, repeated loops, autonomous ping-pong, GPT-Codex back-and-forth, or equivalent wording.
 - `manual_user_relay`: use only when Chrome/browser automation is unavailable, login/captcha/user-session state blocks automation, a tool times out repeatedly, or the user explicitly wants to carry prompts manually.
 - `direct_codex`: use only for trivial tasks, urgent best effort, or explicit user override to skip GPT.
+
+Do not infer loop permission from these phrases by themselves:
+
+- "use GPT skill"
+- "use GPT"
+- "get GPT review"
+- "ask GPT once"
+- "apply the GPT skill"
+
+Those phrases mean `single_gpt_consult` unless the user also says to run N
+loops, repeat, iterate, or ping-pong.
 
 In `manual_user_relay`, first return:
 
@@ -80,6 +92,16 @@ When the user requests N loops, a 10-loop pass, or says Codex and GPT should wor
 back and forth by themselves, treat that as permission to run the relay without
 asking the user to paste prompts between steps.
 
+An N-loop request means N captured GPT-Codex interaction cycles. It does not
+mean N checklist items, N validators, N gates, N files, N commits, or N internal
+reasoning passes. If fewer than N cycles run, report the exact stop reason.
+
+When the user says "next work" or "tasks to do next", loop 1 must discover and
+rank the next task candidates from repo state before implementation starts. Do
+not silently replace the user's broad next-work request with a narrow validator
+or pre-screen gate unless GPT/repo evidence selects that path and the loop ledger
+records the selection.
+
 In autonomous mode:
 
 1. Load the appropriate browser/Chrome control skill before controlling Chrome.
@@ -93,6 +115,18 @@ In autonomous mode:
 9. Patch P0/P1 review issues or stop if GPT says PASS/BLOCKED.
 10. Continue until the requested loop count, a natural completion point, or a blocker.
 
+Every autonomous loop must produce a loop ledger row with:
+
+```text
+loop_id, user_goal, task_candidate, expert_role, gpt_mode,
+prompt_artifact, gpt_response_artifact, codex_action,
+validation_result, review_prompt_artifact, review_response_artifact,
+status, stop_reason
+```
+
+Do not claim "GPT loop complete" unless the prompt and response artifacts exist
+or the loop is explicitly marked `BLOCKED_AUTOMATION_NO_GPT_CAPTURE`.
+
 Do not ask the user to manually paste anything during autonomous mode unless:
 
 - Chrome/GPT login, captcha, rate limit, upload, or response extraction blocks progress.
@@ -103,6 +137,21 @@ Do not ask the user to manually paste anything during autonomous mode unless:
 If autonomous Chrome relay is blocked, report the blocker and provide the prompt
 as a fallback. Do not pretend GPT reviewed the work if the response was not
 captured.
+
+## Single GPT Consult Mode
+
+Use one GPT consult or review pass when GPT is requested but no loop count or
+repeat instruction exists.
+
+Required behavior:
+
+1. Classify the task and choose expert roles/mode.
+2. Send one prompt to Chrome GPT when tools are available.
+3. Capture the response or mark `BLOCKED_AUTOMATION_NO_GPT_CAPTURE`.
+4. Implement only the bounded scope supported by repo evidence.
+5. Report the consult artifact and validation.
+
+Do not continue into loop 2 without an explicit user loop request.
 
 ## Task Classifier
 
@@ -174,7 +223,13 @@ After implementation, report:
 
 ```text
 relay mode
-- autonomous_chrome_relay | manual_user_relay | direct_codex
+- single_gpt_consult | autonomous_chrome_relay | manual_user_relay | direct_codex
+
+loop evidence
+- requested_loops:
+- completed_loops:
+- ledger_path:
+- gpt_capture_status:
 
 done
 1. ...

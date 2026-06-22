@@ -1,4 +1,4 @@
 interface:
   display_name: "Codex GPT Expert Relay"
-  short_description: "Run expert GPT relay loops."
-  default_prompt: "Use $codex-gpt-expert-relay-loop to classify this task and run an autonomous Chrome GPT relay loop when browser tools are available."
+  short_description: "Route GPT consults and loops."
+  default_prompt: "Use $codex-gpt-expert-relay-loop to classify this task, use one GPT consult by default, and run autonomous GPT-Codex loops only when I explicitly request loops."
