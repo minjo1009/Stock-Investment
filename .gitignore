@@ -40,6 +40,10 @@ dist/
 
 # Local runtime DB
 trading.db
+*.db-shm
+*.db-wal
+*.sqlite-shm
+*.sqlite-wal
 
 # Local and generated market data
 data/raw/
@@ -79,6 +83,10 @@ frontend_data/
 참고 Context/
 *.db
 *.sqlite
+*.db-shm
+*.db-wal
+*.sqlite-shm
+*.sqlite-wal
 *.jsonl
 
 # Tool caches

@@ -32,6 +32,7 @@ Use this index to find current truth without rereading all historical reports.
 | Task3721-3760 | source acquisition runtime loop; provider/cache acquisition, all 12 registered DB jobs have adapter evidence, gates remain closed | [report](../reports/task_3721_3760_source_acquisition_runtime_loop/task_3721_3760_source_acquisition_runtime_loop.md) |
 | Task3761-3800 | DB source scheduler config, diagnostic indicator/runtime fresh loops, broker-truth blocker evidence, and gate-condition validator | [report](../reports/task_3761_3800_db_source_scheduler_config_freshness_validator/task_3761_3800_db_source_scheduler_config_freshness_validator.md) |
 | Docs-only 2026-06-22 | frontend app SSOT DOCX pack summarized for LLM Wiki, Obsidian, and GitHub-facing README | [report](../reports/task_frontend_ssot_pack_github_update/task_frontend_ssot_pack_github_update.md) |
+| Task3801 | frontend SSOT P0 alignment: Expo Development Build iOS-first active target, five-tab IA, six-section detail frame V2, read-only action contract | [report](../reports/task_frontend_ssot_p0_alignment/task_frontend_ssot_p0_alignment.md) |
 
 ## Current Interpretation
 
@@ -46,5 +47,5 @@ Use this index to find current truth without rereading all historical reports.
 - Task3581-3600 closes the dangerous persisted-state mismatch: active `trading.db.control_state` is now `DIAGNOSTIC_ONLY` with kill switch active, and DB authority/freshness/retention tables exist. Data freshness and authority evidence are still blockers.
 - Task3721-3760 adds the first governed source acquisition runtime loop: market bars/ticks/daily/macro provider acquisition, cached SEC event attachment, blocked authority evidence generation, and read-only frontend/catalog lineage. It closes adapter gaps for all 12 registered DB jobs but does not open source gates, paper permissions, deployment readiness, or real-capital permission.
 - Task3761-3800 adds operator source scheduler config/scripts and diagnostic fresh-loop wiring. Indicator/runtime rows are current diagnostic evidence only and broker-truth rows remain `BLOCKED`; source gates, paper permissions, deployment readiness, and real-capital permission stay closed.
-- The 2026-06-22 frontend SSOT DOCX pack fixes the app IA as `HOME / BRAIN / PORTFOLIO / ORDERS / SYSTEM` and the detail frame as `Decision / Thesis / Evidence / Risk / Action`. It is planning input, not an acceptance/deployment authority.
+- Task3801 fixes the active frontend implementation direction as Expo Development Build iOS-first, keeps the app IA as `HOME / BRAIN / PORTFOLIO / ORDERS / SYSTEM`, and supersedes the detail frame to V2: `Decision Summary / Thesis-Logic / Validation-Readiness / Evidence / Risk / Next Action`. It is planning authority for frontend implementation, not an acceptance/deployment authority.
 - The frontend should show review-only shadow decisions, blockers, provenance, and source freshness, not issue real orders.

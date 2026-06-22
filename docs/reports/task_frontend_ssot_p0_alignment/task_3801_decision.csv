@@ -1,0 +1,14 @@
+field,value
+task_id,Task3801
+verdict,FRONTEND_SSOT_P0_ALIGNMENT_DOCS_ONLY
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+broker_mutation,FORBIDDEN
+active_frontend_target,Expo Development Build iOS-first read-only app
+fixed_ia,HOME / BRAIN / PORTFOLIO / ORDERS / SYSTEM
+detail_frame,Decision Summary / Thesis Logic / Validation Readiness / Evidence / Risk / Next Action
+code_changed,no
+db_changed,no
+broker_api_called,no
+live_or_paper_permission_changed,no

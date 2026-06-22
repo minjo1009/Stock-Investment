@@ -1,13 +1,15 @@
 # Frontend App SSOT Pack
 
-This page summarizes the 2026-06-22 DOCX SSOT pack received from Downloads:
+This page summarizes the current frontend SSOT direction and points to the canonical pack in `docs/frontend_app_ssot/`.
+
+Historical input came from the 2026-06-22 DOCX SSOT pack received from Downloads:
 
 - `C:/Users/minjo/Downloads/00_PROJECT_SSOT.md.docx`
 - `C:/Users/minjo/Downloads/01_DETAIL_ARCHITECTURE.md.docx`
 - `C:/Users/minjo/Downloads/02_DESIGN_SYSTEM.md.docx`
 - `C:/Users/minjo/Downloads/03_IMPLEMENTATION_ARCHITECTURE.md.docx`
 
-It is a routing memory for future frontend/app work. It does not supersede operating state, registry rows, reports, artifact manifests, or validator output.
+This page is a routing memory for future frontend/app work. It does not supersede operating state, registry rows, reports, artifact manifests, validator output, or the canonical pack in `docs/frontend_app_ssot/`.
 
 ## Fixed Product Contract
 
@@ -17,15 +19,16 @@ It is a routing memory for future frontend/app work. It does not supersede opera
 - Backtest, paper, and live are lifecycle states, not top-level navigation tabs.
 - Strategy is an execution of a candidate in a validation or deployment context, not the parent object of the candidate.
 
-## Universal Detail Frame
+## Universal Detail Frame V2
 
 Every detail workspace should use:
 
-1. `Decision / Summary`
+1. `Decision Summary`
 2. `Thesis / Logic`
-3. `Evidence`
-4. `Risk`
-5. `Action`
+3. `Validation / Readiness`
+4. `Evidence`
+5. `Risk`
+6. `Next Action`
 
 This applies to Candidate, Position, Chain, Risk, and Order workspaces.
 
@@ -50,33 +53,33 @@ This applies to Candidate, Position, Chain, Risk, and Order workspaces.
 
 ## Implementation Direction
 
-The DOCX pack describes a React plus TypeScript web app architecture:
+The active implementation direction is Expo Development Build, iOS-first mobile app:
 
-- `src/app`: providers, routing, theme, state setup.
-- `src/features`: feature-owned components, hooks, services, and tests.
-- `src/components`: shared cards, tables, charts, inputs, dialogs.
-- `src/layouts`: dashboard and detail layouts.
-- `src/services`: typed API clients and mappers.
-- `src/state`: global stores or domain slices.
-- `src/styles`: design tokens and global styles.
-- Storybook is the isolation layer for UI component states.
+- Expo Router for navigation.
+- React Native plus TypeScript for app code.
+- NativeWind for styling.
+- React Native Reusables where practical.
+- Skia for micro charts.
+- TradingView Lightweight Charts through WebView when required for main charts.
+- Storybook and screenshot QA for component/state verification.
 
-For this repository, adapt this target carefully because the current backend is Python/DB-heavy. Do not create execution authority in the frontend.
+The prior React plus TypeScript web structure is retained as design input only. For this repository, adapt frontend work carefully because the current backend is Python/DB-heavy. Do not create execution authority in the frontend.
 
 ## Current Repo Boundary
 
 - Latest backend/runtime line remains Task3761-3800.
 - Latest L7 bridge line remains Task3391-3400: read-only frontend models from runtime decisions.
-- Latest mobile/cockpit history remains useful for display patterns, not for authority.
+- Latest mobile/cockpit history remains useful for display and migration patterns, not for route or stack authority.
+- Canonical frontend pack: `docs/frontend_app_ssot/`.
 - Any frontend must display blockers, stale source state, and provenance rather than hiding them behind polished UI.
 
 ## Next Build Shape
 
-1. Define a frontend read-model contract for the fixed IA.
+1. Confirm exact app path and read-model endpoint/catalog sources.
 2. Map current DB/runtime catalog fields into the five IA tabs.
-3. Implement read-only screens first.
-4. Add write actions only as disabled/blocked affordances until governance allows otherwise.
-5. Validate with frontend continuity, source freshness, and no-live-order checks.
+3. Implement read-only screens and universal detail frame V2 first.
+4. Add trading actions only as disabled/blocked affordances until governance allows otherwise.
+5. Validate with frontend continuity, source freshness, no-live-order, no-broker-mutation, and screenshot QA checks.
 
 Standing status:
 

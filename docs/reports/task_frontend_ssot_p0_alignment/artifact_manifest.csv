@@ -1,0 +1,17 @@
+artifact_id,path,kind,status,notes
+frontend_ssot_00,docs/frontend_app_ssot/00_PROJECT_SSOT.md,doc,canonical,Frontend SSOT project authority and status boundary.
+frontend_ssot_01,docs/frontend_app_ssot/01_ACTIVE_FRONTEND_TARGET_AND_STACK_DECISION.md,doc,canonical,Expo Development Build iOS-first active stack decision.
+frontend_ssot_02,docs/frontend_app_ssot/02_INFORMATION_ARCHITECTURE.md,doc,canonical,Five-tab IA and legacy route mapping.
+frontend_ssot_03,docs/frontend_app_ssot/03_UNIVERSAL_DETAIL_FRAME_V2.md,doc,canonical,Six-section universal detail frame.
+frontend_ssot_04,docs/frontend_app_ssot/04_DETAIL_ARCHITECTURES.md,doc,canonical,Detail workspace rules.
+frontend_ssot_05,docs/frontend_app_ssot/05_ROUTE_MAP_AND_SCREEN_REGISTRY.md,doc,canonical,Route map and screen registry requirements.
+frontend_ssot_06,docs/frontend_app_ssot/06_DESIGN_SYSTEM.md,doc,canonical,Design system rules.
+frontend_ssot_07,docs/frontend_app_ssot/07_COMPONENT_CATALOG.md,doc,canonical,Component catalog and Storybook minimum.
+frontend_ssot_08,docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md,doc,canonical,Read model and mapping rules.
+frontend_ssot_09,docs/frontend_app_ssot/09_DISABLED_ACTION_AND_ORDER_CONTROL_CONTRACT.md,doc,canonical,Disabled action and order control contract.
+frontend_ssot_10,docs/frontend_app_ssot/10_IMPLEMENTATION_ARCHITECTURE.md,doc,canonical,Expo implementation architecture boundary.
+frontend_ssot_11,docs/frontend_app_ssot/11_STORYBOOK_AND_QA_PLAN.md,doc,canonical,Storybook and screenshot QA plan.
+frontend_ssot_12,docs/frontend_app_ssot/12_MIGRATION_AND_DEPLOYMENT_PLAN.md,doc,canonical,Migration and deployment boundary plan.
+task_report,docs/reports/task_frontend_ssot_p0_alignment/task_frontend_ssot_p0_alignment.md,report,canonical,Docs-only closeout report.
+task_decision,docs/reports/task_frontend_ssot_p0_alignment/task_3801_decision.csv,decision,canonical,Task decision summary.
+

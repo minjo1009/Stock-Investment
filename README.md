@@ -7,8 +7,8 @@ This repository is the working system for a United States equity quant trading p
 - Strategy acceptance: `NOT_ACCEPTED`
 - Deployment readiness: `DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY`
 - Real capital: `FORBIDDEN`
-- Latest canonical closeout: Task3761-3800 DB source scheduler config and freshness validator.
-- Current frontend direction: read-only cockpit/app surfaces must expose decisions, reasons, evidence, source freshness, blockers, and provenance. They must not create broker mutations or imply paper/live permission.
+- Latest canonical closeout: Task3801 frontend SSOT P0 alignment docs-only.
+- Current frontend direction: Expo Development Build iOS-first read-only app surfaces must expose decisions, reasons, evidence, source freshness, blockers, and provenance. They must not create broker mutations or imply paper/live permission.
 
 Validation results never grant acceptance by themselves. Promotion requires split/OOS evidence, leakage review, cost/slippage review, artifact audit, live-source readiness, and explicit status change in the project operating documents.
 
@@ -27,15 +27,15 @@ Use Obsidian and LLM Wiki as navigation layers only. Current truth belongs in op
 
 The backend/runtime layer now has DB governance, DB loop contracts, registered diagnostic loop runners, cached/provider source acquisition, operator source scheduler scripts, source receipts, reference hashes, lineage rows, and freshness/gate validators.
 
-The frontend/app layer should follow the 2026-06-22 SSOT DOCX pack:
+The frontend/app layer should follow the current frontend SSOT pack in `docs/frontend_app_ssot/`:
 
 - Fixed top-level IA: `HOME`, `BRAIN`, `PORTFOLIO`, `ORDERS`, `SYSTEM`.
-- Universal detail frame: `Decision`, `Thesis`, `Evidence`, `Risk`, `Action`.
+- Universal detail frame V2: `Decision Summary`, `Thesis / Logic`, `Validation / Readiness`, `Evidence`, `Risk`, `Next Action`.
 - Detail workspaces: Candidate, Position, Chain, Risk, and Order.
 - Core philosophy: every screen should preserve the decision-reason-evidence-source chain.
-- Implementation target in the pack: React plus TypeScript web app structure, with design tokens, reusable cards, data grids, charts, typed services, and component isolation.
+- Active implementation target: Expo Development Build iOS-first mobile app with read-only backend/read-model integration, design tokens, reusable components, Storybook coverage, screenshot QA, and disabled trading action controls.
 
-Legacy mobile cockpit planning is retired from active navigation. New frontend work should start from the fixed IA and read-only SSOT pack above.
+The prior React plus TypeScript web pack and Expo Go 3052 DOM cockpit are retained as design/migration evidence only. New frontend work should start from the fixed IA and read-only SSOT pack above.
 
 ## Repository Map
 
