@@ -1,0 +1,9 @@
+field,value,authority,notes
+task_id,Task3836,canonical,Registry task id.
+strategy_acceptance,NOT_ACCEPTED,canonical,No strategy acceptance changed.
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,canonical,No deployment readiness changed.
+real_capital,FORBIDDEN,canonical,No real-capital permission changed.
+broker_mutation,false,canonical,No broker mutation path added.
+screenshot_capture,CAPTURED,canonical,Actual Chrome-headless web-preflight screenshots were captured.
+visual_repair,bounded_p1_badge_status_row_repair,canonical,Screenshot-evidenced right-edge badge clipping repaired.
+visual_approval,NOT_GRANTED,canonical,No product visual approval or product readiness granted.

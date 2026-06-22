@@ -4,7 +4,9 @@
 
 Task3834 installs screenshot QA target validation only.
 
-No screenshot capture was performed. No screenshot artifact should be treated as product readiness, source truth, broker truth, deployment readiness, paper/live permission, or real-capital permission.
+Task3834 did not perform screenshot capture. No screenshot artifact should be treated as product readiness, source truth, broker truth, deployment readiness, paper/live permission, or real-capital permission.
+
+Task3836 later captured Chrome-headless web-preflight screenshots under `data/artifacts/task_3836_frontend_actual_screenshot_capture/`. Those screenshots remain `NOT_AUTHORITY` QA artifacts and do not grant visual approval, product readiness, deployment readiness, paper/live permission, or real-capital permission.
 
 ## Target Manifest
 

@@ -344,3 +344,11 @@ Task3834 screenshot QA baseline:
 - The target manifest is `apps/ios-trader-brain/src/qa/screenshot-targets.json`.
 - Route and screen-boundary validators are installed as `npm run validate:routes` and `npm run validate:screen-boundary`.
 - Actual screenshot capture, visual approval, Maestro traversal, iOS simulator evidence, product readiness, authoritative read-source integration, broker mutation, paper/live permission, deployment readiness, and real-capital permission remain blocked.
+
+Task3836 screenshot capture loop:
+
+- Actual Chrome-headless web-preflight screenshots were captured under `data/artifacts/task_3836_frontend_actual_screenshot_capture/`.
+- A bounded P1 scaffold visual repair fixed screenshot-evidenced right-edge clipping of governance/status badges in `Badge` and `StatusRow`.
+- Final after2 evidence is recorded under `data/artifacts/task_3836_frontend_actual_screenshot_capture/after2/`.
+- The screenshots remain `NOT_AUTHORITY` QA artifacts.
+- Product readiness, authoritative read-source integration, Maestro readiness, iOS simulator evidence, broker mutation, paper/live permission, deployment readiness, and real-capital permission remain blocked.

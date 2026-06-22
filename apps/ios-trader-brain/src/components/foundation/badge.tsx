@@ -61,13 +61,14 @@ export function Badge({ label, tone = "neutral" }: BadgeProps) {
           alignSelf: "flex-start",
           borderRadius: radii.badge,
           borderWidth: 1,
+          maxWidth: "100%",
           paddingHorizontal: spacing.sm,
           paddingVertical: spacing.xs,
         },
         toneStyles[tone],
       ]}
     >
-      <AppText style={typography.badge}>{label}</AppText>
+      <AppText style={[typography.badge, { flexShrink: 1 }]}>{label}</AppText>
     </View>
   );
 }

@@ -55,6 +55,7 @@ Use this index to find current truth without rereading all historical reports.
 | Task3828 | frontend real-implementation Loop 3: Candidate Detail v0 scaffold-only fixture-backed route with six-section detail frame and visible blocker states | [report](../reports/task_3828_candidate_detail_v0_scaffold_only_assembly/task_3828_candidate_detail_v0_scaffold_only_assembly.md) |
 | Task3831 | frontend 10-loop scaffold implementation: BRAIN, PORTFOLIO, ORDERS, SYSTEM, detail routes, read-only cross-links, and Storybook scaffold overview | [report](../reports/task_3831_frontend_10_loop_scaffold_implementation/task_3831_frontend_10_loop_scaffold_implementation.md) |
 | Task3834 | frontend screenshot QA baseline: target manifest, screenshot target validator, route validator, and scaffold screen-boundary validator | [report](../reports/task_3834_frontend_screenshot_qa_baseline/task_3834_frontend_screenshot_qa_baseline.md) |
+| Task3836 | frontend screenshot capture loop: actual Chrome-headless web-preflight screenshots, GPT visual review, bounded P1 Badge/StatusRow repair, and after2 recapture | [report](../reports/task_3836_frontend_screenshot_capture_loop/task_3836_frontend_screenshot_capture_loop.md) |
 
 ## Current Interpretation
 
@@ -83,4 +84,5 @@ Use this index to find current truth without rereading all historical reports.
 - Task3828 implements Candidate Detail v0 only as scaffold-only fixture-backed assembly. It adds a non-tab detail route and typed fixture wrapper, while preserving missing/stale/chart-source blockers and disabled action boundaries.
 - Task3831 completes a 10-loop scaffold implementation pass across the remaining tabs and detail routes. It adds read-only cross-links and Storybook scaffold overview coverage, but it still does not authorize product readiness, DB/runtime/broker integration, paper/live promotion, deployment readiness, or real-capital permission.
 - Task3834 installs the screenshot QA target baseline. `qa:screenshot` validates target readiness and explicitly does not claim screenshot capture. Route and scaffold boundary validators are now part of `npm test`.
+- Task3836 captures Chrome-headless web-preflight screenshots for 9 scaffold routes across 2 mobile widths and repairs only screenshot-evidenced P1 governance/status badge clipping. Screenshots remain `NOT_AUTHORITY`; no product readiness, broker mutation, paper/live, deployment readiness, or real-capital permission is granted.
 - The frontend should show review-only shadow decisions, blockers, provenance, and source freshness, not issue real orders.

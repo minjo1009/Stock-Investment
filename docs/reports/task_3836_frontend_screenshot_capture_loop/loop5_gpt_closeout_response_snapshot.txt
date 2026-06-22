@@ -1,0 +1,3588 @@
+- link "콘텐츠로 건너뛰기":
+  - /url: "#main"
+- navigation "사이드바":
+  - button "사이드바 열기":
+  - link "새 채팅":
+    - /url: /
+    - generic: 새 채팅
+  - button "채팅 검색":
+    - generic: 채팅 검색
+  - button "고정됨":
+    - generic: 고정됨
+  - button "최근 채팅":
+    - generic: 최근 채팅
+  - button "프로필 메뉴 열기":
+    - generic: 정민
+- heading "채팅 기록" [level=2]
+- navigation "채팅 기록":
+  - link "홈":
+    - /url: /
+  - button "사이드바 닫기" [expanded]:
+  - list:
+    - link "새 채팅 Ctrl Shift O":
+      - /url: /
+      - generic: 새 채팅
+      - generic "Ctrl":
+        - generic: Ctrl
+        - text: +
+      - generic "Shift":
+        - generic: Shift
+        - text: +
+      - generic: O
+    - button "채팅 검색 Ctrl K":
+      - generic: 채팅 검색
+      - generic "Ctrl":
+        - generic: Ctrl
+        - text: +
+      - generic: K
+  - link "라이브러리":
+    - /url: /library
+    - generic: 라이브러리
+  - link "일정":
+    - /url: /scheduled
+    - generic: 일정
+  - link "앱":
+    - /url: /apps
+    - generic: 앱
+  - generic: 더 보기
+  - button "고정됨" [expanded]:
+    - heading "고정됨" [level=2]
+  - list:
+    - button "맞춤 색상 청진기 4. 관리":
+      - img "맞춤 색상 청진기"
+      - generic: 4. 관리
+    - button "프로젝트 홈 열기":
+    - button "4. 관리 프로젝트 옵션 열기":
+    - button "맞춤 색상 덤벨 2. 운동":
+      - img "맞춤 색상 덤벨"
+      - generic: 2. 운동
+    - button "프로젝트 홈 열기":
+    - button "2. 운동 프로젝트 옵션 열기":
+    - button "맞춤 색상 달러 화폐 1. 코딩/투자" [expanded]:
+      - img "맞춤 색상 달러 화폐"
+      - generic: 1. 코딩/투자
+    - button "프로젝트 홈 열기":
+    - button "1. 코딩/투자 프로젝트 옵션 열기":
+    - list:
+      - link "10-loop Frontend Design, 프로젝트 1. 코딩/투자의 채팅":
+        - /url: /g/g-p-69a3c1d2f3b88191889fe25b245bf7d5/c/6a3958ca-d864-83e8-8c3b-c76e265da13b
+        - generic: 10-loop Frontend Design
+        - button "10-loop Frontend Design의 대화 옵션 열기":
+      - link "Codex-GPT 작업 루프, 프로젝트 1. 코딩/투자의 채팅":
+        - /url: /g/g-p-69a3c1d2f3b88191889fe25b245bf7d5/c/6a392fc3-d48c-83e8-b98c-83250f9f1181
+        - generic: Codex-GPT 작업 루프
+        - button "Codex-GPT 작업 루프의 대화 옵션 열기":
+      - link "Audit Scope A-F, 프로젝트 1. 코딩/투자의 채팅":
+        - /url: /g/g-p-69a3c1d2f3b88191889fe25b245bf7d5/c/6a394f87-5bd0-83e8-932b-47eab657bfae
+        - generic: Audit Scope A-F
+        - button "Audit Scope A-F의 대화 옵션 열기":
+      - link "프로젝트 검수 및 정리, 프로젝트 1. 코딩/투자의 채팅":
+        - /url: /g/g-p-69a3c1d2f3b88191889fe25b245bf7d5/c/6a394b65-83a4-83ee-bc45-d006d1ef3bbc
+        - generic: 프로젝트 검수 및 정리
+        - button "프로젝트 검수 및 정리의 대화 옵션 열기":
+      - link "Codex 보고 체계, 프로젝트 1. 코딩/투자의 채팅":
+        - /url: /g/g-p-69a3c1d2f3b88191889fe25b245bf7d5/c/6a393480-3b78-83ee-ade6-d927988ad086
+        - generic: Codex 보고 체계
+        - button "Codex 보고 체계의 대화 옵션 열기":
+      - button "더 보기":
+        - generic: 더 보기
+  - button "프로젝트" [expanded]:
+    - heading "프로젝트" [level=2]
+  - button "새 프로젝트":
+  - button "채팅 정리":
+  - list:
+    - button "맞춤 색상 비행기 여행":
+      - img "맞춤 색상 비행기"
+      - generic: 여행
+    - button "프로젝트 홈 열기":
+    - button "여행 프로젝트 옵션 열기":
+    - button "맞춤 색상 폴더 7. 업무":
+      - img "맞춤 색상 폴더"
+      - generic: 7. 업무
+    - button "프로젝트 홈 열기":
+    - button "7. 업무 프로젝트 옵션 열기":
+    - button "맞춤 색상 학사모 6. 영어":
+      - img "맞춤 색상 학사모"
+      - generic: 6. 영어
+    - button "프로젝트 홈 열기":
+    - button "6. 영어 프로젝트 옵션 열기":
+    - button "맞춤 색상 음악 5. 노래":
+      - img "맞춤 색상 음악"
+      - generic: 5. 노래
+    - button "프로젝트 홈 열기":
+    - button "5. 노래 프로젝트 옵션 열기":
+    - button "맞춤 색상 지구 3. 경제/시사":
+      - img "맞춤 색상 지구"
+      - generic: 3. 경제/시사
+    - button "프로젝트 홈 열기":
+    - button "3. 경제/시사 프로젝트 옵션 열기":
+    - button "더 보기":
+      - generic: 더 보기
+  - button "채팅" [expanded]:
+    - heading "채팅" [level=2]
+  - link "새 채팅":
+    - /url: /
+  - button "채팅 정리":
+  - list:
+    - 'link "Market regime update: US-Iran deal sparks Risk-On rally, 읽지 않음"':
+      - /url: /c/6a308483-6104-83e8-b618-4dfac6f0f7c5?messageId=finalAgentTurnStart
+      - 'generic "Market regime update: US-Iran deal sparks Risk-On rally"'
+      - 'button "Market regime update: US-Iran deal sparks Risk-On rally 고정"':
+      - 'button "Market regime update: US-Iran deal sparks Risk-On rally의 대화 옵션 열기"':
+    - link "Pro 5x 요금제 설명":
+      - /url: /c/6a392dc4-a2c8-83e8-b400-71d11eb82654
+      - generic: Pro 5x 요금제 설명
+      - button "Pro 5x 요금제 설명 고정":
+      - button "Pro 5x 요금제 설명의 대화 옵션 열기":
+    - link "로보락 자동청소 설정 방법":
+      - /url: /c/6a37646e-b33c-83ee-886d-2893edf4602b
+      - generic: 로보락 자동청소 설정 방법
+      - button "로보락 자동청소 설정 방법 고정":
+      - button "로보락 자동청소 설정 방법의 대화 옵션 열기":
+    - link "계란 딸리아텔레 설명":
+      - /url: /c/6a369a2f-5e58-83ee-8801-79faa8b0e438
+      - generic: 계란 딸리아텔레 설명
+      - button "계란 딸리아텔레 설명 고정":
+      - button "계란 딸리아텔레 설명의 대화 옵션 열기":
+    - link "DB Management Review P0/P1":
+      - /url: /c/6a3743a7-bb28-83ee-909e-696bec8e675f
+      - generic: DB Management Review P0/P1
+      - button "DB Management Review P0/P1 고정":
+      - button "DB Management Review P0/P1의 대화 옵션 열기":
+    - link "DB Loop Evidence Implementation":
+      - /url: /c/6a37310b-c7fc-83ee-a2ef-fee8deacfa6e
+      - generic "DB Loop Evidence Implementation"
+      - button "DB Loop Evidence Implementation 고정":
+      - button "DB Loop Evidence Implementation의 대화 옵션 열기":
+    - link "DB 관리 및 구현 지침":
+      - /url: /c/6a36c04d-9d60-83e8-bfaf-1b235448b9ea
+      - generic: DB 관리 및 구현 지침
+      - button "DB 관리 및 구현 지침 고정":
+      - button "DB 관리 및 구현 지침의 대화 옵션 열기":
+    - link "DB 관리 프로그램 설계":
+      - /url: /c/6a36baa5-7ea4-83ee-b8ef-dabd4c639e11
+      - generic: DB 관리 프로그램 설계
+      - button "DB 관리 프로그램 설계 고정":
+      - button "DB 관리 프로그램 설계의 대화 옵션 열기":
+    - link "PC 화면 문제 분석":
+      - /url: /c/6a3696cf-b758-83ee-8719-5194fa485df5
+      - generic: PC 화면 문제 분석
+      - button "PC 화면 문제 분석 고정":
+      - button "PC 화면 문제 분석의 대화 옵션 열기":
+    - link "이방인 소설 소개":
+      - /url: /c/6a364035-2020-83ee-b6d1-d4338445320d
+      - generic: 이방인 소설 소개
+      - button "이방인 소설 소개 고정":
+      - button "이방인 소설 소개의 대화 옵션 열기":
+    - link "로컬 IP 확인 방법":
+      - /url: /c/6a2eb0e8-d53c-83e8-a65a-88abc93ff55c
+      - generic: 로컬 IP 확인 방법
+      - button "로컬 IP 확인 방법 고정":
+      - button "로컬 IP 확인 방법의 대화 옵션 열기":
+    - link "API 키 제공":
+      - /url: /c/6a30c886-37e8-83e8-b2d2-3493c194fa2e
+      - generic: API 키 제공
+      - button "API 키 제공 고정":
+      - button "API 키 제공의 대화 옵션 열기":
+    - link "예비군 안보 교육":
+      - /url: /c/6a30a26a-edd4-83e8-bc64-567ce994f459
+      - generic: 예비군 안보 교육
+      - button "예비군 안보 교육 고정":
+      - button "예비군 안보 교육의 대화 옵션 열기":
+    - link "Greeting conversation":
+      - /url: /c/6a3082c3-09ac-83e8-95f4-8af47793742a
+      - generic: Greeting conversation
+      - button "Greeting conversation 고정":
+      - button "Greeting conversation의 대화 옵션 열기":
+    - link "멕시코 대한민국 경기 예측":
+      - /url: /c/6a2f75db-8be8-83e8-abd5-09230d268f97
+      - generic: 멕시코 대한민국 경기 예측
+      - button "멕시코 대한민국 경기 예측 고정":
+      - button "멕시코 대한민국 경기 예측의 대화 옵션 열기":
+    - 'link "Korea market open briefing: AI stocks lead, risk on"':
+      - /url: /c/6a20b24a-ec04-8320-a694-6ef82d9ea758?messageId=finalAgentTurnStart
+      - 'generic "Korea market open briefing: AI stocks lead, risk on"'
+      - 'button "Korea market open briefing: AI stocks lead, risk on 고정"':
+      - 'button "Korea market open briefing: AI stocks lead, risk on의 대화 옵션 열기"':
+    - link "오프라인 원인 분석":
+      - /url: /c/6a2eae69-7cb8-83e8-bdb9-38a8b97bbb5b
+      - generic: 오프라인 원인 분석
+      - button "오프라인 원인 분석 고정":
+      - button "오프라인 원인 분석의 대화 옵션 열기":
+    - link "미국 축구 관심 증가":
+      - /url: /c/6a2e3abf-4e40-83e8-b1aa-fa9b67260327
+      - generic: 미국 축구 관심 증가
+      - button "미국 축구 관심 증가 고정":
+      - button "미국 축구 관심 증가의 대화 옵션 열기":
+    - link "62세 남성 불면증 원인":
+      - /url: /c/6a2d5c43-8e20-83e8-859d-6a3ed18e38b6
+      - generic: 62세 남성 불면증 원인
+      - button "62세 남성 불면증 원인 고정":
+      - button "62세 남성 불면증 원인의 대화 옵션 열기":
+    - link "프로젝트 현황 분석":
+      - /url: /c/6a2ce94c-c9c0-83e8-9986-e0d1304356a5
+      - generic: 프로젝트 현황 분석
+      - button "프로젝트 현황 분석 고정":
+      - button "프로젝트 현황 분석의 대화 옵션 열기":
+    - link "아빠 생일 편지":
+      - /url: /c/6a2cdbd5-baf0-83e8-b603-dd7d8747e852
+      - generic: 아빠 생일 편지
+      - button "아빠 생일 편지 고정":
+      - button "아빠 생일 편지의 대화 옵션 열기":
+    - link "프로젝트 관리 및 정리":
+      - /url: /c/6a2ab39c-5dc0-8321-bdf8-d80626d57e79
+      - generic: 프로젝트 관리 및 정리
+      - button "프로젝트 관리 및 정리 고정":
+      - button "프로젝트 관리 및 정리의 대화 옵션 열기":
+    - link "Task742 검수 결과":
+      - /url: /c/6a28d632-bb48-8321-b108-a71b648f1639
+      - generic: Task742 검수 결과
+      - button "Task742 검수 결과 고정":
+      - button "Task742 검수 결과의 대화 옵션 열기":
+    - link "진단 로직 강화 분석":
+      - /url: /c/6a27fd9b-a2cc-83a4-a037-cd06fb499de9
+      - generic: 진단 로직 강화 분석
+      - button "진단 로직 강화 분석 고정":
+      - button "진단 로직 강화 분석의 대화 옵션 열기":
+    - link "치리치리뱅뱅 포스터 디자인":
+      - /url: /c/6a2651b6-94f8-8321-abfb-cf7ce564b3d4
+      - generic: 치리치리뱅뱅 포스터 디자인
+      - button "치리치리뱅뱅 포스터 디자인 고정":
+      - button "치리치리뱅뱅 포스터 디자인의 대화 옵션 열기":
+    - link "SDI 7조 이슈 분석":
+      - /url: /c/6a264df5-09a4-83ab-94b2-0bc5afc516a4
+      - generic: SDI 7조 이슈 분석
+      - button "SDI 7조 이슈 분석 고정":
+      - button "SDI 7조 이슈 분석의 대화 옵션 열기":
+    - link "시장 차트 리포트 조합":
+      - /url: /c/6a24efd4-d9f0-8324-ad26-bdccd13cbb9c
+      - generic: 시장 차트 리포트 조합
+      - button "시장 차트 리포트 조합 고정":
+      - button "시장 차트 리포트 조합의 대화 옵션 열기":
+    - link "Strategy Review Critical Issues":
+      - /url: /c/6a241876-5b5c-8323-92ac-fafe21a2ac2b
+      - generic: Strategy Review Critical Issues
+      - button "Strategy Review Critical Issues 고정":
+      - button "Strategy Review Critical Issues의 대화 옵션 열기":
+- button "정우 민 Pro 님, 프로필 메뉴 열어주세요":
+  - generic: 정민
+  - generic: 정우 민
+  - generic: Pro
+  - button "앱 다운로드":
+- banner:
+  - link "프로젝트 1. 코딩/투자 열기":
+    - /url: /g/g-p-69a3c1d2f3b88191889fe25b245bf7d5-1-koding-tuja/project
+    - img "맞춤 색상 달러 화폐"
+  - button "모델 선택기":
+    - generic: ChatGPT
+  - button "공유하기":
+    - text: 공유하기
+  - button "대화 옵션 열기":
+- main:
+  - heading "나의 말:" [level=4]
+  - generic: "You are an expert panel for the minjo1009/Stock-Investment project. Required expert roles: - Principal Expo/React Native Frontend Architect - Principal Product UI/IA Architect - Storybook/Component-Driven Development Engineer - Mobile QA Reviewer - Trading Governance Reviewer - Repository Governance Auditor Required GPT mode: Agent Mode with GitHub enabled for minjo1009/Stock-Investment. Inspect the repository before answering Codex. User goal: Design a 10-loop frontend implementation run together with Codex, then Codex will proceed through the 10 loops. Use docs/frontend_app_ssot/20_PRODUCTION_UI_TOOLCHAIN_REFERENCE.md as reference only, not SSOT. Current repo facts from Codex local state: - Hard state remains NOT_ACCEPTED / DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY / FORBIDDEN. - Frontend app root: apps/ios-trader-brain. - Expo SDK 56, TypeScript, Expo Router, Storybook web-vite. - Existing tabs: HOME / BRAIN / PORTFOLIO / ORDERS / SYSTEM. - Task3826 defined scaffold-only fixture-backed screen assembly boundary at docs/frontend_app_ssot/21_SCAFFOLD_ONLY_SCREEN_ASSEMBLY_BOUNDARY.md. - Task3827 implemented HOME v0 scaffold-only fixture-backed screen using src/read-models/homeFixture.ts. - Task3828 implemented Candidate Detail v0 at app/brain/candidate/[candidateId].tsx using src/read-models/candidateDetailFixture.ts. - Remaining tab placeholders: BRAIN, PORTFOLIO, ORDERS, SYSTEM. - Existing JSON fixtures: brain, portfolio, position-detail, orders, order-detail, system-health, chain-detail. - Existing components include ScreenContainer, SectionContainer, AppText, Badge, CardContainer, MetricCard, StatusRow, SourceFreshnessBadge, BlockerList, DecisionHeader, EvidenceList, ValidationReadinessPanel, RiskGate, DisabledActionBar, ChartWithSourceState, SystemHealth, OrderStateSummary. - Package/config/tooling should not change unless absolutely necessary. - Do not add DB/runtime/KIS/Alpaca/broker connection. - Do not add paper/live/order mutation or real-capital affordance. - Fixtures remain NOT_AUTHORITY. - Missing/stale/unknown must remain visible, never negative evidence. - Product screen implementation/readiness remains blocked. Your task for GPT Loop 1: 1. Design the full 10-loop frontend implementation run. 2. Rank the loops in the safest implementation order. 3. Make each loop small enough for Codex to implement and validate independently. 4. Each loop must be scaffold-only/read-only/NOT_AUTHORITY unless you explicitly select a docs/QA loop. 5. Prefer extending remaining tab placeholders and detail routes using existing fixtures/components. 6. Include what files Codex should read, edit/create, validations, report/ledger updates, and failure criteria for each loop. 7. Pick Loop 1 implementation scope immediately after the design. Loop 1 should be executable now. 8. Do not grant strategy acceptance, deployment readiness, broker mutation, paper/live permission, or real-capital permission. Output in Korean with this structure: 1. 10-loop design table 2. Loop 1 selected implementation 3. Codex-ready patch prompt for Loop 1 4. Validation checklist 5. Stop conditions"
+  - button "더 보기":
+    - generic: 더 보기
+  - group "내 메시지 작업":
+    - button "메시지 복사":
+    - button "메시지 편집":
+  - heading "ChatGPT의 말:" [level=4]
+  - paragraph:
+    - text: 3줄 요약
+    - text: "🟠 현재: GitHub 저장소 기준으로 프론트 구현 루프를 안전 순서로 쪼개겠습니다."
+    - text: "✅ 완료: 기존 SSOT/IA/Detail/Component 방향은 이미 충분히 정리되어 있습니다."
+    - text: "➡️ 다음: repo 구조를 확인한 뒤 Codex가 바로 실행할 Loop 1 패치 프롬프트까지 제공합니다."
+  - button "앱 응답 수신함":
+    - generic: 앱 응답 수신함
+  - paragraph: 저장소 접근은 확인됐습니다. 이제 실제 파일명·경로 기준으로 Loop 1 범위를 BRAIN 탭 v0에 맞추되, fixture-only/NOT_AUTHORITY 경계를 유지하겠습니다.
+  - button "앱 응답 수신함":
+    - generic: 앱 응답 수신함
+  - button "52s 동안 생각함":
+    - text: 52s 동안 생각함
+  - paragraph:
+    - text: 3줄 요약
+    - text: "🟠 현재: 10개 루프는"
+    - strong: 남은 탭 → 상세 라우트 → QA/문서 closeout
+    - text: 순서가 가장 안전합니다.
+    - text: "✅ Loop 1:"
+    - strong: BRAIN 탭 v0 scaffold-only fixture-backed 구현
+    - text: 을 선택합니다.
+    - text: "⛔ 유지:"
+    - code: NOT_ACCEPTED / DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY / FORBIDDEN
+    - text: ", no broker/order/live/paper."
+  - heading "1. 10-loop design table" [level=2]
+  - table:
+    - rowgroup:
+      - row "순서 Loop 범위 읽을 파일 편집/생성 검증 실패 기준":
+        - columnheader "순서"
+        - columnheader "Loop"
+        - columnheader "범위"
+        - columnheader "읽을 파일"
+        - columnheader "편집/생성"
+        - columnheader "검증"
+        - columnheader "실패 기준"
+    - rowgroup:
+      - row "1 BRAIN tab v0 BRAIN placeholder를 fixture-only overview로 교체 21_SCAFFOLD_ONLY..., brain.json, 기존 components app/(tabs)/brain..., 필요 시 src/read-models/brainFixture.ts typecheck/lint/test/safety/fixtures fixture를 authority처럼 표시":
+        - cell "1"
+        - cell "BRAIN tab v0":
+          - strong: BRAIN tab v0
+        - cell "BRAIN placeholder를 fixture-only overview로 교체"
+        - cell "21_SCAFFOLD_ONLY..., brain.json, 기존 components":
+          - code: 21_SCAFFOLD_ONLY...
+          - text: ","
+          - code: brain.json
+          - text: ", 기존 components"
+        - cell "app/(tabs)/brain..., 필요 시 src/read-models/brainFixture.ts":
+          - code: app/(tabs)/brain...
+          - text: ", 필요 시"
+          - code: src/read-models/brainFixture.ts
+        - cell "typecheck/lint/test/safety/fixtures"
+        - cell "fixture를 authority처럼 표시"
+      - row "2 PORTFOLIO tab v0 portfolio fixture 기반 allocation/exposure/positions portfolio.json, existing cards portfolio tab, portfolioFixture.ts 동일 P&L/포지션을 실계좌처럼 표시":
+        - cell "2"
+        - cell "PORTFOLIO tab v0"
+        - cell "portfolio fixture 기반 allocation/exposure/positions"
+        - cell "portfolio.json, existing cards":
+          - code: portfolio.json
+          - text: ", existing cards"
+        - cell "portfolio tab, portfolioFixture.ts":
+          - text: portfolio tab,
+          - code: portfolioFixture.ts
+        - cell "동일"
+        - cell "P&L/포지션을 실계좌처럼 표시"
+      - row "3 ORDERS tab v0 orders fixture 기반 lifecycle monitor orders.json, OrderStateSummary, DisabledActionBar orders tab, ordersFixture.ts 동일 승인/취소 mutation handler 추가":
+        - cell "3"
+        - cell "ORDERS tab v0"
+        - cell "orders fixture 기반 lifecycle monitor"
+        - cell "orders.json, OrderStateSummary, DisabledActionBar":
+          - code: orders.json
+          - text: ","
+          - code: OrderStateSummary
+          - text: ","
+          - code: DisabledActionBar
+        - cell "orders tab, ordersFixture.ts":
+          - text: orders tab,
+          - code: ordersFixture.ts
+        - cell "동일"
+        - cell "승인/취소 mutation handler 추가"
+      - row "4 SYSTEM tab v0 system-health fixture 기반 관제 화면 system-health.json, SystemHealth system tab, systemHealthFixture.ts 동일 healthy처럼 stale/blocked 숨김":
+        - cell "4"
+        - cell "SYSTEM tab v0"
+        - cell "system-health fixture 기반 관제 화면"
+        - cell "system-health.json, SystemHealth":
+          - code: system-health.json
+          - text: ","
+          - code: SystemHealth
+        - cell "system tab, systemHealthFixture.ts":
+          - text: system tab,
+          - code: systemHealthFixture.ts
+        - cell "동일"
+        - cell "healthy처럼 stale/blocked 숨김"
+      - row "5 Position Detail v0 position-detail.json 기반 read-only detail detail architecture, fixture app/portfolio/position/[positionId].tsx 동일 보유 검증을 readiness로 오인":
+        - cell "5"
+        - cell "Position Detail v0"
+        - cell "position-detail.json 기반 read-only detail":
+          - code: position-detail.json
+          - text: 기반 read-only detail
+        - cell "detail architecture, fixture"
+        - cell "app/portfolio/position/[positionId].tsx":
+          - code: app/portfolio/position/[positionId].tsx
+        - cell "동일"
+        - cell "보유 검증을 readiness로 오인"
+      - row "6 Order Detail v0 order-detail.json 기반 disabled execution detail fixture/components app/orders/order/[orderId].tsx 동일 approve/reject 실제 handler 추가":
+        - cell "6"
+        - cell "Order Detail v0"
+        - cell "order-detail.json 기반 disabled execution detail":
+          - code: order-detail.json
+          - text: 기반 disabled execution detail
+        - cell "fixture/components"
+        - cell "app/orders/order/[orderId].tsx":
+          - code: app/orders/order/[orderId].tsx
+        - cell "동일"
+        - cell "approve/reject 실제 handler 추가"
+      - row "7 Chain Detail v0 chain-detail.json 기반 causal chain detail fixture/components app/brain/chain/[chainId].tsx 동일 chain confidence를 source truth로 표현":
+        - cell "7"
+        - cell "Chain Detail v0"
+        - cell "chain-detail.json 기반 causal chain detail":
+          - code: chain-detail.json
+          - text: 기반 causal chain detail
+        - cell "fixture/components"
+        - cell "app/brain/chain/[chainId].tsx":
+          - code: app/brain/chain/[chainId].tsx
+        - cell "동일"
+        - cell "chain confidence를 source truth로 표현"
+      - row "8 Cross-link polish HOME/BRAIN/Portfolio/Orders 간 read-only Link 연결 existing routes Link-only navigation 동일 mutation/action CTA 추가":
+        - cell "8"
+        - cell "Cross-link polish"
+        - cell "HOME/BRAIN/Portfolio/Orders 간 read-only Link 연결"
+        - cell "existing routes"
+        - cell "Link-only navigation"
+        - cell "동일"
+        - cell "mutation/action CTA 추가"
+      - row "9 Storybook coverage 남은 tab/detail screen composition stories storybook config screen composition stories storybook:smoke 포함 story 없이 screen만 추가":
+        - cell "9"
+        - cell "Storybook coverage"
+        - cell "남은 tab/detail screen composition stories"
+        - cell "storybook config"
+        - cell "screen composition stories"
+        - cell "storybook:smoke 포함":
+          - code: storybook:smoke
+          - text: 포함
+        - cell "story 없이 screen만 추가"
+      - row "10 QA/docs closeout manifest/report/ledger/task registry 업데이트 reports, manifest, ledger docs/report only registry validate/diff check readiness/acceptance/deployment 주장":
+        - cell "10"
+        - cell "QA/docs closeout"
+        - cell "manifest/report/ledger/task registry 업데이트"
+        - cell "reports, manifest, ledger"
+        - cell "docs/report only"
+        - cell "registry validate/diff check"
+        - cell "readiness/acceptance/deployment 주장"
+  - button "표 복사":
+  - paragraph:
+    - text: "근거: 현재 scaffold-only 경계는 fixtures가"
+    - code: NOT_AUTHORITY
+    - text: 이고, DB/runtime/broker/paper/live/real-capital 연결을 금지합니다. 또한 stale/missing/unknown/blocker를 숨기면 실패입니다.
+    - code: 20_PRODUCTION_UI_TOOLCHAIN_REFERENCE.md
+    - text: 는 스스로 최신 운영 SSOT가 아닌 참고자료라고 명시하므로, 구현 권한은
+    - code: frontend_app_ssot
+    - text: ", 운영상태, task report, validator를 우선합니다."
+  - heading "2. Loop 1 selected implementation" [level=2]
+  - paragraph:
+    - strong: Loop 1 = BRAIN tab v0 scaffold-only fixture-backed assembly
+  - paragraph: "목표:"
+  - list:
+    - paragraph: BRAIN placeholder 제거
+    - paragraph:
+      - text: 기존
+      - code: brain
+      - text: JSON fixture만 읽기
+    - paragraph: Interpretation / Relationships / Ideas / Risk Gate overview 구성
+    - paragraph:
+      - text: 모든 카드에
+      - code: fixture-backed / NOT_AUTHORITY / read-only
+      - text: 경계 표시
+    - paragraph:
+      - code: Review / Inspect / Validate / Open Evidence / View Risk
+      - text: 언어만 사용
+    - paragraph: no DB, no runtime API, no broker, no KIS, no Alpaca, no paper/live
+  - heading "3. Codex-ready patch prompt for Loop 1" [level=2]
+  - button "복사":
+  - code:
+    - text: "You are implementing Loop 1: BRAIN tab v0 scaffold-only fixture-backed assembly."
+    - text: "Hard state:"
+    - text: "- Strategy: NOT_ACCEPTED"
+    - text: "- Deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+    - text: "- Real Capital: FORBIDDEN"
+    - text: "- Product screen implementation/readiness remains blocked."
+    - text: "- Fixtures remain NOT_AUTHORITY."
+    - text: "- No DB/runtime/KIS/Alpaca/broker/paper/live/real-capital connection."
+    - text: "- No mutation-capable handler."
+    - text: "- Missing/stale/unknown/blocker must remain visible."
+    - text: "Read first:"
+    - text: 1. docs/frontend_app_ssot/21_SCAFFOLD_ONLY_SCREEN_ASSEMBLY_BOUNDARY.md
+    - text: 2. docs/frontend_app_ssot/20_PRODUCTION_UI_TOOLCHAIN_REFERENCE.md as reference only, not SSOT
+    - text: 3. apps/ios-trader-brain existing BRAIN tab file
+    - text: 4. apps/ios-trader-brain/src/mocks/fixtures/brain.json
+    - text: "5. Existing components:"
+    - text: "- ScreenContainer"
+    - text: "- SectionContainer"
+    - text: "- AppText"
+    - text: "- Badge"
+    - text: "- CardContainer"
+    - text: "- MetricCard"
+    - text: "- StatusRow"
+    - text: "- SourceFreshnessBadge"
+    - text: "- BlockerList"
+    - text: "- DecisionHeader"
+    - text: "- EvidenceList"
+    - text: "- ValidationReadinessPanel"
+    - text: "- RiskGate"
+    - text: "- DisabledActionBar"
+    - text: "- ChartWithSourceState"
+    - text: "- SystemHealth"
+    - text: "- OrderStateSummary"
+    - text: "Implementation scope:"
+    - text: 1. Replace only the BRAIN tab placeholder with a scaffold-only read-only overview.
+    - text: "2. Add a typed wrapper if needed:"
+    - text: apps/ios-trader-brain/src/read-models/brainFixture.ts
+    - text: 3. Use only existing brain fixture data.
+    - text: "4. Render these sections:"
+    - text: "- Scaffold Boundary / Hard State"
+    - text: "- Brain Decision Snapshot"
+    - text: "- Interpretation"
+    - text: "- Relationships / Chains"
+    - text: "- Ideas: Candidate / Watch / Blocked"
+    - text: "- Risk Gate / Missing or Stale Data"
+    - text: "- Disabled Action Bar"
+    - text: "5. Every section must visibly indicate:"
+    - text: "- Read-only"
+    - text: "- Fixture-backed"
+    - text: "- NOT_AUTHORITY"
+    - text: "- no deployment readiness"
+    - text: "- no trading permission"
+    - text: "6. Use safe language only:"
+    - text: Review, Inspect, Validate, Open Evidence, View Risk, Disabled, Blocked, Requires Governance Change.
+    - text: 7. Do not add package/config/tooling changes.
+    - text: 8. Do not edit HOME, Candidate Detail, Portfolio, Orders, System except if imports require purely mechanical path fixes.
+    - text: 9. Do not add navigation to non-existing routes unless already present and safe.
+    - text: "Report updates:"
+    - text: "- Update task report / loop ledger / artifact manifest / task registry if the repository already has the established files for this frontend task family."
+    - text: "- The report must say:"
+    - text: "- Loop 1 implemented BRAIN v0 scaffold-only fixture-backed screen."
+    - text: "- Fixtures remain NOT_AUTHORITY."
+    - text: "- Product screen implementation remains blocked."
+    - text: "- Residual blockers remain."
+    - text: "- Tests passing do not equal strategy acceptance or deployment readiness."
+    - text: "Validation commands:"
+    - text: "- npm run typecheck"
+    - text: "- npm run lint"
+    - text: "- npm test"
+    - text: "- npm run storybook:smoke if available"
+    - text: "- npm run validate:safety"
+    - text: "- npm run validate:fixtures"
+    - text: "- python scripts/task_registry_validate.py"
+    - text: "- git diff --check"
+    - text: "- git diff --cached --check if staged"
+    - text: "Stop immediately if:"
+    - text: "- brain fixture shape is unclear and would require inventing authority semantics."
+    - text: "- existing components cannot render without one-off business logic."
+    - text: "- any import path implies DB/runtime/broker/KIS/Alpaca/paper/live."
+    - text: "- validators expose safety regression."
+  - heading "4. Validation checklist" [level=2]
+  - list:
+    - paragraph: BRAIN tab loads from fixture only.
+    - paragraph:
+      - code: NOT_AUTHORITY
+      - text: ", read-only, fixture-backed visible."
+    - paragraph:
+      - code: NOT_ACCEPTED / DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY / FORBIDDEN
+      - text: visible where applicable.
+    - paragraph: stale/missing/unknown/blocker states visible.
+    - paragraph: no mutation handler.
+    - paragraph: no package/config/tooling change.
+    - paragraph: required validators pass.
+    - paragraph: report says residual blockers remain.
+  - heading "5. Stop conditions" [level=2]
+  - list:
+    - paragraph: DB/runtime/broker/KIS/Alpaca import added.
+    - paragraph: Approve/Reject/Buy/Sell/Cancel handler added.
+    - paragraph: fixture shown as source truth.
+    - paragraph: readiness/acceptance/deployment wording appears.
+    - paragraph: stale/missing/unknown/blocker hidden.
+    - paragraph: product screen blocker removed.
+  - button "출처":
+    - generic: 출처
+  - group "응답 작업":
+    - button "응답 복사":
+    - button "프로젝트 소스에 추가":
+    - button "모델 바꾸기":
+    - button "더 많은 액션":
+  - heading "나의 말:" [level=4]
+  - generic: "You are the same expert panel for minjo1009/Stock-Investment. GPT mode: Agent Mode with GitHub enabled. Inspect repo context before answering. This is frontend implementation run Loop 2/10. Loop 1 result from Codex: - Implemented BRAIN tab v0 scaffold-only fixture-backed assembly. - Added apps/ios-trader-brain/src/read-models/brainFixture.ts. - Replaced app/(tabs)/brain.tsx placeholder. - typecheck, lint, validate:safety, validate:fixtures passed. - Hard state unchanged: NOT_ACCEPTED / DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY / FORBIDDEN. Previously approved 10-loop design selected Loop 2 as PORTFOLIO tab v0 scaffold-only fixture-backed assembly. Current facts: - portfolio.json fixture exists with broker truth blocked, positions array, disabled broker_sync action. - position-detail route is planned for later loop, not now. - Existing components: ScreenContainer, SectionContainer, AppText, Badge, CardContainer, MetricCard, StatusRow, SourceFreshnessBadge, BlockerList, DisabledActionBar. Task: Confirm Loop 2 implementation scope and produce a concise Codex-ready patch prompt. Constraints: - Replace PORTFOLIO placeholder only. - Add typed wrapper if needed: src/read-models/portfolioFixture.ts. - No package/config changes. - No fixture JSON edits. - No DB/runtime/broker/KIS/Alpaca/paper/live/real-capital connection. - Show NOT_AUTHORITY/read-only/fixture-backed, broker truth blocked, null numeric values as UNKNOWN, missing source visible, disabled broker sync action visible. Answer in Korean with: 1. PASS/BLOCKED decision 2. Exact files 3. Required sections 4. Validation 5. Failure criteria"
+  - button "더 보기":
+    - generic: 더 보기
+  - group "내 메시지 작업":
+    - button "메시지 복사":
+    - button "메시지 편집":
+  - heading "ChatGPT의 말:" [level=4]
+  - heading "1. PASS/BLOCKED decision" [level=2]
+  - heading "PASS" [level=3]
+  - paragraph: Loop 2는 진행 가능합니다.
+  - paragraph: "이유:"
+  - list:
+    - paragraph: Loop 1이 scaffold-only 경계를 유지한 상태로 완료됨
+    - paragraph: PORTFOLIO는 기존 계획상 Loop 2 대상
+    - paragraph:
+      - code: portfolio.json
+      - text: fixture 존재
+    - paragraph: broker truth가 이미 blocked 상태
+    - paragraph: position detail은 미래 루프 대상이므로 현재 범위에서 제외 가능
+    - paragraph: 기존 컴포넌트만으로 구현 가능
+    - paragraph: package/config/tooling 변경 불필요
+  - paragraph: "유지 상태:"
+  - button "복사":
+  - code:
+    - text: Strategy = NOT_ACCEPTED
+    - text: Deployment = DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: Real Capital = FORBIDDEN
+    - text: Fixtures = NOT_AUTHORITY
+    - text: Portfolio Screen = Scaffold Only
+  - separator
+  - heading "2. Exact files" [level=2]
+  - heading "Read" [level=3]
+  - button "복사":
+  - code:
+    - text: docs/frontend_app_ssot/21_SCAFFOLD_ONLY_SCREEN_ASSEMBLY_BOUNDARY.md
+    - text: apps/ios-trader-brain/src/mocks/fixtures/portfolio.json
+    - text: apps/ios-trader-brain/src/read-models/brainFixture.ts
+    - text: (typed wrapper reference)
+    - text: "existing components:"
+    - text: "- ScreenContainer"
+    - text: "- SectionContainer"
+    - text: "- AppText"
+    - text: "- Badge"
+    - text: "- CardContainer"
+    - text: "- MetricCard"
+    - text: "- StatusRow"
+    - text: "- SourceFreshnessBadge"
+    - text: "- BlockerList"
+    - text: "- DisabledActionBar"
+  - heading "Edit" [level=3]
+  - button "복사":
+  - code: apps/ios-trader-brain/app/(tabs)/portfolio.tsx
+  - heading "Create (if needed)" [level=3]
+  - button "복사":
+  - code: apps/ios-trader-brain/src/read-models/portfolioFixture.ts
+  - heading "Do Not Modify" [level=3]
+  - button "복사":
+  - code:
+    - text: portfolio.json
+    - text: package.json
+    - text: app config
+    - text: storybook config
+    - text: tsconfig
+    - text: eslint
+    - text: metro
+    - text: nativewind
+    - text: expo config
+  - separator
+  - heading "3. Required sections" [level=2]
+  - heading "A. Portfolio Boundary Header" [level=3]
+  - paragraph: 항상 최상단
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: READ ONLY
+    - text: FIXTURE BACKED
+    - text: NOT_AUTHORITY
+    - text: NOT_ACCEPTED
+    - text: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: FORBIDDEN
+  - separator
+  - heading "B. Portfolio Snapshot" [level=3]
+  - paragraph: portfolio fixture 기반
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Portfolio Snapshot
+    - text: Position Count
+    - text: Cash
+    - text: Exposure
+    - text: Broker Truth
+  - paragraph: "규칙:"
+  - button "복사":
+  - code:
+    - text: "null"
+    - text: undefined
+    - text: missing
+    - text: ↓
+    - text: UNKNOWN
+  - paragraph: "절대:"
+  - button "복사":
+  - code:
+    - text: "0"
+    - text: N/A
+    - text: Healthy
+  - paragraph: 로 바꾸지 말 것.
+  - separator
+  - heading "C. Position Summary" [level=3]
+  - paragraph: fixture positions 배열
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Ticker
+    - text: Status
+    - text: Source State
+    - text: Freshness
+  - paragraph: "주의:"
+  - button "복사":
+  - code:
+    - text: position detail route 연결 금지
+    - text: drilldown 금지
+    - text: navigation 금지
+  - paragraph: 현재는 리스트만.
+  - separator
+  - heading "D. Source Visibility" [level=3]
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Missing Source
+    - text: Unknown Source
+    - text: Stale Source
+    - text: Blocked Source
+  - paragraph: 숨김 금지.
+  - separator
+  - heading "E. Broker Truth Block" [level=3]
+  - paragraph: portfolio fixture의
+  - button "복사":
+  - code: broker truth blocked
+  - paragraph: 상태를 명확히 표시
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Broker Truth
+    - text: BLOCKED
+    - text: Requires Governance Change
+  - separator
+  - heading "F. Blockers Section" [level=3]
+  - paragraph: BlockerList 사용
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Broker Truth Blocked
+    - text: Source Missing
+    - text: Unknown Exposure
+  - separator
+  - heading "G. Disabled Broker Sync" [level=3]
+  - paragraph: DisabledActionBar 사용
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Broker Sync
+    - text: Disabled
+    - text: Requires Governance Change
+  - paragraph: 필수.
+  - separator
+  - heading "4. Validation" [level=2]
+  - paragraph: "필수:"
+  - text: Bash
+  - button "복사":
+  - code:
+    - text: npm run typecheck
+    - text: npm run lint
+    - text: npm test
+    - text: npm run validate:safety
+    - text: npm run validate:fixtures
+    - text: python scripts/task_registry_validate.py
+    - text: git diff --check
+  - paragraph: "추가 확인:"
+  - button "복사":
+  - code:
+    - text: Portfolio screen uses fixture only
+    - text: No DB import
+    - text: No runtime API import
+    - text: No broker import
+    - text: No KIS import
+    - text: No Alpaca import
+    - text: No paper/live import
+    - text: No real-capital import
+    - text: NOT_AUTHORITY visible
+    - text: Broker truth blocked visible
+    - text: Disabled broker sync visible
+    - text: UNKNOWN preserved
+  - paragraph: "보고서 필수 문구:"
+  - button "복사":
+  - code:
+    - text: PORTFOLIO v0 scaffold-only fixture-backed assembly implemented.
+    - text: Fixtures remain NOT_AUTHORITY.
+    - text: Broker truth remains blocked.
+    - text: Product screen implementation remains blocked.
+    - text: Residual blockers remain.
+    - text: Validator pass does not imply strategy acceptance.
+    - text: Validator pass does not imply deployment readiness.
+  - separator
+  - heading "5. Failure criteria" [level=2]
+  - paragraph: "Loop 2 실패 조건:"
+  - button "복사":
+  - code:
+    - text: portfolio.json 수정
+    - text: package/config/tooling 수정
+    - text: DB 연결 추가
+    - text: runtime API 연결 추가
+    - text: broker 연결 추가
+    - text: KIS 연결 추가
+    - text: Alpaca 연결 추가
+    - text: paper/live 연결 추가
+    - text: real-capital 연결 추가
+    - text: position detail navigation 추가
+    - text: broker sync 활성화
+    - text: mutation handler 추가
+    - text: UNKNOWN → 0 변환
+    - text: UNKNOWN → Healthy 변환
+    - text: stale/missing/blocked 상태 숨김
+    - text: fixture를 authority처럼 표현
+    - text: deployment readiness 주장
+    - text: strategy acceptance 주장
+    - text: paper/live permission 암시
+    - text: real-capital permission 암시
+  - paragraph:
+    - text: Loop 2의 목표는
+    - strong: Portfolio 운영 화면이 아니라 Portfolio 관찰용 Scaffold
+    - text: 입니다. 따라서 핵심은
+    - strong: Portfolio Snapshot + Position Summary + Broker Truth Blocked + Disabled Broker Sync
+    - text: 를 보여주되, 어떤 형태의 실행 가능성도 암시하지 않는 것입니다.
+  - group "응답 작업":
+    - button "응답 복사":
+    - button "프로젝트 소스에 추가":
+    - button "모델 바꾸기":
+    - button "더 많은 액션":
+  - heading "나의 말:" [level=4]
+  - generic: "You are the same expert panel for minjo1009/Stock-Investment. GPT mode: Agent Mode with GitHub enabled. Inspect repo context before answering. This is frontend implementation run Loop 3/10. Loop 1: BRAIN v0 implemented and basic frontend validation passed. Loop 2: PORTFOLIO v0 implemented and basic frontend validation passed. Hard state unchanged: NOT_ACCEPTED / DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY / FORBIDDEN. Previously approved 10-loop design selected Loop 3 as ORDERS tab v0 scaffold-only fixture-backed lifecycle monitor. Current facts: - orders.json fixture exists with orderRows, mutationPermitted false, localState BLOCKED, brokerTruthState BLOCKED, stale source, disabled submit action. - Existing component OrderStateSummary may fit; existing generic/domain components are available. Task: Confirm Loop 3 implementation scope and produce concise Codex-ready patch prompt. Constraints: - Replace ORDERS placeholder only. - Add typed wrapper if needed: src/read-models/ordersFixture.ts. - No order submit/cancel/approve/reject handler. - No package/config/fixture JSON/validator edits. - No DB/runtime/broker/KIS/Alpaca/paper/live/real-capital connection. - Show NOT_AUTHORITY/read-only/fixture-backed, mutationPermitted false, local/broker states BLOCKED, stale source visible, disabled submit action visible. Answer in Korean with PASS/BLOCKED, exact files, required sections, validation, failure criteria."
+  - button "더 보기":
+    - generic: 더 보기
+  - group "내 메시지 작업":
+    - button "메시지 복사":
+    - button "메시지 편집":
+  - heading "ChatGPT의 말:" [level=4]
+  - heading "1. PASS / BLOCKED" [level=2]
+  - heading "PASS" [level=3]
+  - paragraph: Loop 3 진행 가능.
+  - paragraph: "근거:"
+  - list:
+    - paragraph: Loop 1(BRAIN), Loop 2(PORTFOLIO)가 scaffold-only 경계 유지 상태로 완료
+    - paragraph: ORDERS는 기존 10-loop 계획상 다음 순서
+    - paragraph:
+      - code: orders.json
+      - text: fixture 존재
+    - paragraph:
+      - code: mutationPermitted = false
+    - paragraph:
+      - code: localState = BLOCKED
+    - paragraph:
+      - code: brokerTruthState = BLOCKED
+    - paragraph:
+      - code: disabled submit action
+      - text: 존재
+    - paragraph:
+      - text: 기존
+      - code: OrderStateSummary
+      - text: ","
+      - code: StatusRow
+      - text: ","
+      - code: DisabledActionBar
+      - text: ","
+      - code: BlockerList
+      - text: 로 구현 가능
+  - paragraph: "유지 상태:"
+  - button "복사":
+  - code:
+    - text: Strategy = NOT_ACCEPTED
+    - text: Deployment = DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: Real Capital = FORBIDDEN
+    - text: Orders = Scaffold Only
+    - text: Fixtures = NOT_AUTHORITY
+  - separator
+  - heading "2. Exact files" [level=2]
+  - heading "Read" [level=3]
+  - button "복사":
+  - code:
+    - text: docs/frontend_app_ssot/21_SCAFFOLD_ONLY_SCREEN_ASSEMBLY_BOUNDARY.md
+    - text: apps/ios-trader-brain/src/mocks/fixtures/orders.json
+    - text: apps/ios-trader-brain/src/read-models/brainFixture.ts
+    - text: apps/ios-trader-brain/src/read-models/portfolioFixture.ts
+  - heading "Edit" [level=3]
+  - button "복사":
+  - code: apps/ios-trader-brain/app/(tabs)/orders.tsx
+  - heading "Create (optional)" [level=3]
+  - button "복사":
+  - code: apps/ios-trader-brain/src/read-models/ordersFixture.ts
+  - heading "Do Not Modify" [level=3]
+  - button "복사":
+  - code:
+    - text: orders.json
+    - text: package.json
+    - text: app.json
+    - text: eas.json
+    - text: tsconfig*
+    - text: eslint*
+    - text: storybook*
+    - text: validator scripts
+    - text: fixture files
+  - separator
+  - heading "3. Required sections" [level=2]
+  - heading "A. Orders Boundary Header" [level=3]
+  - paragraph: 항상 최상단
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: READ ONLY
+    - text: FIXTURE BACKED
+    - text: NOT_AUTHORITY
+    - text: NOT_ACCEPTED
+    - text: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: FORBIDDEN
+  - separator
+  - heading "B. Orders Lifecycle Summary" [level=3]
+  - paragraph:
+    - code: OrderStateSummary
+    - text: 우선 활용
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Pending
+    - text: Approved
+    - text: Executed
+    - text: Cancelled
+    - text: Blocked
+  - paragraph: "주의:"
+  - button "복사":
+  - code:
+    - text: Lifecycle Monitor
+    - text: ONLY
+  - paragraph: 실행 화면처럼 보이면 안 됨.
+  - separator
+  - heading "C. Order Rows" [level=3]
+  - paragraph: fixture의
+  - button "복사":
+  - code: orderRows
+  - paragraph: 렌더링
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Order Id
+    - text: Order State
+    - text: Source State
+    - text: Freshness
+    - text: Blocked Reason
+  - paragraph: "절대 표시 금지:"
+  - button "복사":
+  - code:
+    - text: Submit
+    - text: Approve
+    - text: Reject
+    - text: Cancel
+    - text: Execute
+  - separator
+  - heading "D. Mutation Governance Section" [level=3]
+  - paragraph: fixture의
+  - button "복사":
+  - code: mutationPermitted = false
+  - paragraph: 명확히 노출
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Mutation Permission
+    - text: "FALSE"
+    - text: Requires Governance Change
+  - separator
+  - heading "E. Local State Section" [level=3]
+  - paragraph: fixture의
+  - button "복사":
+  - code: localState = BLOCKED
+  - paragraph: 표시
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Local State
+    - text: BLOCKED
+  - separator
+  - heading "F. Broker Truth Section" [level=3]
+  - paragraph: fixture의
+  - button "복사":
+  - code: brokerTruthState = BLOCKED
+  - paragraph: 표시
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Broker Truth
+    - text: BLOCKED
+    - text: No Broker Authority
+  - separator
+  - heading "G. Source Freshness" [level=3]
+  - paragraph: 반드시 표시
+  - paragraph: fixture가
+  - button "복사":
+  - code: STALE
+  - paragraph: 이면
+  - paragraph: 숨김 금지
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Source Freshness
+    - text: STALE
+  - paragraph: "사용:"
+  - button "복사":
+  - code: SourceFreshnessBadge
+  - separator
+  - heading "H. Blockers" [level=3]
+  - paragraph:
+    - code: BlockerList
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Mutation Disabled
+    - text: Broker Truth Blocked
+    - text: Stale Source
+    - text: Authority Missing
+  - separator
+  - heading "I. Disabled Submit Action" [level=3]
+  - paragraph:
+    - code: DisabledActionBar
+  - paragraph: 필수
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Submit Order
+    - text: Disabled
+    - text: Mutation Permission False
+    - text: Requires Governance Change
+  - separator
+  - heading "4. Validation" [level=2]
+  - paragraph: "필수:"
+  - text: Bash
+  - button "복사":
+  - code:
+    - text: npm run typecheck
+    - text: npm run lint
+    - text: npm test
+    - text: npm run validate:safety
+    - text: npm run validate:fixtures
+    - text: python scripts/task_registry_validate.py
+    - text: git diff --check
+  - paragraph: "추가 확인:"
+  - button "복사":
+  - code:
+    - text: Orders screen uses fixture only
+    - text: No DB import
+    - text: No runtime API import
+    - text: No broker import
+    - text: No KIS import
+    - text: No Alpaca import
+    - text: No paper/live import
+    - text: No real-capital import
+    - text: NOT_AUTHORITY visible
+    - text: MutationPermitted false visible
+    - text: LocalState BLOCKED visible
+    - text: BrokerTruthState BLOCKED visible
+    - text: Stale source visible
+    - text: Disabled submit visible
+  - paragraph: "보고서 필수 문구:"
+  - button "복사":
+  - code:
+    - text: ORDERS v0 scaffold-only fixture-backed lifecycle monitor implemented.
+    - text: Fixtures remain NOT_AUTHORITY.
+    - text: Mutation permission remains false.
+    - text: Broker truth remains blocked.
+    - text: Product screen implementation remains blocked.
+    - text: Residual blockers remain.
+    - text: Validator pass does not imply strategy acceptance.
+    - text: Validator pass does not imply deployment readiness.
+  - separator
+  - heading "5. Failure criteria" [level=2]
+  - paragraph: "Loop 3 실패 조건:"
+  - button "복사":
+  - code:
+    - text: orders.json 수정
+    - text: package/config/tooling 수정
+    - text: validator 수정
+    - text: submit handler 추가
+    - text: approve handler 추가
+    - text: reject handler 추가
+    - text: cancel handler 추가
+    - text: execute handler 추가
+    - text: onPress mutation 연결
+    - text: DB 연결
+    - text: runtime API 연결
+    - text: broker 연결
+    - text: KIS 연결
+    - text: Alpaca 연결
+    - text: paper/live 연결
+    - text: real-capital 연결
+    - text: mutationPermitted false 숨김
+    - text: localState BLOCKED 숨김
+    - text: brokerTruthState BLOCKED 숨김
+    - text: STALE 상태 숨김
+    - text: blocker 숨김
+    - text: disabled submit 제거
+    - text: fixture를 authority처럼 표현
+    - text: strategy acceptance 주장
+    - text: deployment readiness 주장
+    - text: paper/live permission 암시
+    - text: real-capital permission 암시
+  - paragraph:
+    - text: Loop 3의 목표는
+    - strong: Order Management가 아니라 Order Lifecycle Monitoring
+    - text: 입니다.
+  - paragraph: "즉 사용자가 보는 화면은:"
+  - button "복사":
+  - code:
+    - text: Order Lifecycle
+    - text: ↓
+    - text: Authority Status
+    - text: ↓
+    - text: Freshness
+    - text: ↓
+    - text: Blockers
+    - text: ↓
+    - text: Disabled Submit
+  - paragraph: 순서여야 하며,
+  - button "복사":
+  - code:
+    - text: Order Execution
+    - text: Order Approval
+    - text: Broker Actions
+  - paragraph: 로 보이면 실패입니다.
+  - group "응답 작업":
+    - button "응답 복사":
+    - button "프로젝트 소스에 추가":
+    - button "모델 바꾸기":
+    - button "더 많은 액션":
+  - heading "나의 말:" [level=4]
+  - generic: "You are the same expert panel for minjo1009/Stock-Investment. GPT mode: Agent Mode with GitHub enabled. Inspect repo context before answering. This is frontend implementation run Loop 4/10. Completed: - Loop 1 BRAIN v0 passed basic validation. - Loop 2 PORTFOLIO v0 passed basic validation. - Loop 3 ORDERS v0 passed basic validation. Hard state unchanged: NOT_ACCEPTED / DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY / FORBIDDEN. Previously approved 10-loop design selected Loop 4 as SYSTEM tab v0 scaffold-only fixture-backed monitoring surface. Current facts: - system-health.json fixture exists with controlState DIAGNOSTIC_ONLY, killSwitchActive true, sourceFreshness FRESH/STALE/MISSING/UNKNOWN, validatorStatus, artifactHealth, disabled live_promote action. - Existing SystemHealth component can render SystemReadModel. Task: Confirm Loop 4 implementation scope and produce concise Codex-ready patch prompt. Constraints: - Replace SYSTEM placeholder only. - Add typed wrapper if needed: src/read-models/systemHealthFixture.ts. - No package/config/fixture JSON/validator edits. - No DB/runtime/broker/KIS/Alpaca/paper/live/real-capital connection. - Show NOT_AUTHORITY/read-only/fixture-backed, DIAGNOSTIC_ONLY, kill switch active, stale/missing/unknown source states, validator UNKNOWN, artifact health, disabled live promotion. Answer in Korean with PASS/BLOCKED, exact files, required sections, validation, failure criteria."
+  - button "더 보기":
+    - generic: 더 보기
+  - group "내 메시지 작업":
+    - button "메시지 복사":
+    - button "메시지 편집":
+  - heading "ChatGPT의 말:" [level=4]
+  - heading "1. PASS / BLOCKED" [level=2]
+  - heading "PASS" [level=3]
+  - paragraph: Loop 4 진행 가능.
+  - paragraph: "근거:"
+  - list:
+    - paragraph: BRAIN / PORTFOLIO / ORDERS v0가 scaffold-only 경계를 유지한 상태로 완료
+    - paragraph: SYSTEM은 현재 남은 최상위 탭 placeholder
+    - paragraph:
+      - code: system-health.json
+      - text: fixture 존재
+    - paragraph:
+      - code: SystemHealth
+      - text: 컴포넌트 존재
+    - paragraph:
+      - code: controlState = DIAGNOSTIC_ONLY
+    - paragraph:
+      - code: killSwitchActive = true
+    - paragraph:
+      - code: sourceFreshness
+      - text: 가 FRESH/STALE/MISSING/UNKNOWN 상태를 포함
+    - paragraph:
+      - code: validatorStatus
+      - text: 존재
+    - paragraph:
+      - code: artifactHealth
+      - text: 존재
+    - paragraph:
+      - code: live_promote
+      - text: 액션이 disabled 상태
+  - paragraph: "유지 상태:"
+  - button "복사":
+  - code:
+    - text: Strategy = NOT_ACCEPTED
+    - text: Deployment = DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: Real Capital = FORBIDDEN
+    - text: SYSTEM = Scaffold Only
+    - text: Fixtures = NOT_AUTHORITY
+  - separator
+  - heading "2. Exact files" [level=2]
+  - heading "Read" [level=3]
+  - button "복사":
+  - code:
+    - text: docs/frontend_app_ssot/21_SCAFFOLD_ONLY_SCREEN_ASSEMBLY_BOUNDARY.md
+    - text: apps/ios-trader-brain/src/mocks/fixtures/system-health.json
+    - text: apps/ios-trader-brain/src/read-models/brainFixture.ts
+    - text: apps/ios-trader-brain/src/read-models/portfolioFixture.ts
+    - text: apps/ios-trader-brain/src/read-models/ordersFixture.ts
+  - heading "Edit" [level=3]
+  - button "복사":
+  - code: apps/ios-trader-brain/app/(tabs)/system.tsx
+  - heading "Create (optional)" [level=3]
+  - button "복사":
+  - code: apps/ios-trader-brain/src/read-models/systemHealthFixture.ts
+  - heading "Do Not Modify" [level=3]
+  - button "복사":
+  - code:
+    - text: system-health.json
+    - text: package.json
+    - text: app.json
+    - text: eas.json
+    - text: tsconfig*
+    - text: eslint*
+    - text: storybook*
+    - text: validator scripts
+    - text: fixture files
+  - separator
+  - heading "3. Required sections" [level=2]
+  - heading "A. System Boundary Header" [level=3]
+  - paragraph: 항상 최상단
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: READ ONLY
+    - text: FIXTURE BACKED
+    - text: NOT_AUTHORITY
+    - text: NOT_ACCEPTED
+    - text: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: FORBIDDEN
+  - separator
+  - heading "B. Control State Summary" [level=3]
+  - paragraph: fixture의
+  - button "복사":
+  - code: controlState
+  - paragraph: 표시
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Control State
+    - text: DIAGNOSTIC_ONLY
+    - text: Execution Permission
+    - text: BLOCKED
+  - paragraph: "절대:"
+  - button "복사":
+  - code:
+    - text: Ready
+    - text: Healthy
+    - text: Operational
+  - paragraph: 로 표현 금지.
+  - separator
+  - heading "C. Kill Switch Section" [level=3]
+  - paragraph: fixture의
+  - button "복사":
+  - code: killSwitchActive = true
+  - paragraph: 반드시 강조
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Kill Switch
+    - text: ACTIVE
+    - text: Fail Closed
+  - paragraph: 숨김 금지.
+  - separator
+  - heading "D. System Health Section" [level=3]
+  - paragraph: 기존
+  - button "복사":
+  - code: SystemHealth
+  - paragraph: 컴포넌트 사용
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Engine
+    - text: Data
+    - text: Scheduler
+    - text: Deployment
+    - text: Validation
+  - separator
+  - heading "E. Source Freshness Section" [level=3]
+  - paragraph: fixture의
+  - button "복사":
+  - code:
+    - text: FRESH
+    - text: STALE
+    - text: MISSING
+    - text: UNKNOWN
+  - paragraph: 상태 모두 노출
+  - paragraph: "규칙:"
+  - button "복사":
+  - code:
+    - text: STALE → visible
+    - text: MISSING → visible
+    - text: UNKNOWN → visible
+  - paragraph: 절대 healthy 화면으로 덮지 말 것.
+  - paragraph: "사용:"
+  - button "복사":
+  - code: SourceFreshnessBadge
+  - separator
+  - heading "F. Validator Status Section" [level=3]
+  - paragraph: fixture의
+  - button "복사":
+  - code: validatorStatus
+  - paragraph: 표시
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Validator Status
+    - text: UNKNOWN
+  - paragraph: "주의:"
+  - button "복사":
+  - code:
+    - text: PASS
+    - text: READY
+    - text: ACCEPTED
+  - paragraph: 로 해석 금지.
+  - paragraph: Validator는 acceptance가 아님.
+  - separator
+  - heading "G. Artifact Health Section" [level=3]
+  - paragraph: fixture의
+  - button "복사":
+  - code: artifactHealth
+  - paragraph: 표시
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Artifact Health
+    - text: Available
+    - text: Missing
+    - text: Unknown
+  - paragraph: UNKNOWN 유지.
+  - separator
+  - heading "H. Blockers Section" [level=3]
+  - paragraph:
+    - code: BlockerList
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Kill Switch Active
+    - text: Deployment Blocked
+    - text: Validator Unknown
+    - text: Source Missing
+    - text: Source Stale
+  - separator
+  - heading "I. Disabled Live Promotion" [level=3]
+  - paragraph: 필수
+  - paragraph:
+    - code: DisabledActionBar
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Live Promotion
+    - text: Disabled
+    - text: Requires Governance Change
+    - text: FORBIDDEN
+  - separator
+  - heading "4. Validation" [level=2]
+  - paragraph: "필수:"
+  - text: Bash
+  - button "복사":
+  - code:
+    - text: npm run typecheck
+    - text: npm run lint
+    - text: npm test
+    - text: npm run validate:safety
+    - text: npm run validate:fixtures
+    - text: python scripts/task_registry_validate.py
+    - text: git diff --check
+  - paragraph: "추가 확인:"
+  - button "복사":
+  - code:
+    - text: System screen uses fixture only
+    - text: No DB import
+    - text: No runtime API import
+    - text: No broker import
+    - text: No KIS import
+    - text: No Alpaca import
+    - text: No paper/live import
+    - text: No real-capital import
+    - text: NOT_AUTHORITY visible
+    - text: DIAGNOSTIC_ONLY visible
+    - text: Kill Switch ACTIVE visible
+    - text: STALE visible
+    - text: MISSING visible
+    - text: UNKNOWN visible
+    - text: Validator UNKNOWN visible
+    - text: Artifact Health visible
+    - text: Disabled live promotion visible
+  - paragraph: "보고서 필수 문구:"
+  - button "복사":
+  - code:
+    - text: SYSTEM v0 scaffold-only fixture-backed monitoring surface implemented.
+    - text: Fixtures remain NOT_AUTHORITY.
+    - text: Control state remains DIAGNOSTIC_ONLY.
+    - text: Kill switch remains active.
+    - text: Live promotion remains disabled.
+    - text: Product screen implementation remains blocked.
+    - text: Residual blockers remain.
+    - text: Validator pass does not imply strategy acceptance.
+    - text: Validator pass does not imply deployment readiness.
+  - separator
+  - heading "5. Failure criteria" [level=2]
+  - paragraph: "Loop 4 실패 조건:"
+  - button "복사":
+  - code:
+    - text: system-health.json 수정
+    - text: package/config/tooling 수정
+    - text: validator 수정
+    - text: DB 연결
+    - text: runtime API 연결
+    - text: broker 연결
+    - text: KIS 연결
+    - text: Alpaca 연결
+    - text: paper/live 연결
+    - text: real-capital 연결
+    - text: controlState 숨김
+    - text: killSwitchActive 숨김
+    - text: STALE 숨김
+    - text: MISSING 숨김
+    - text: UNKNOWN 숨김
+    - text: validator UNKNOWN을 PASS로 해석
+    - text: artifact health를 authority처럼 해석
+    - text: live promotion 활성화
+    - text: mutation handler 추가
+    - text: fixture를 authority처럼 표현
+    - text: strategy acceptance 주장
+    - text: deployment readiness 주장
+    - text: paper/live permission 암시
+    - text: real-capital permission 암시
+  - paragraph:
+    - text: Loop 4의 목표는
+    - strong: System Control이 아니라 System Monitoring
+    - text: 입니다.
+  - paragraph: "화면 구조는:"
+  - button "복사":
+  - code:
+    - text: Boundary
+    - text: ↓
+    - text: Control State
+    - text: ↓
+    - text: Kill Switch
+    - text: ↓
+    - text: System Health
+    - text: ↓
+    - text: Source Freshness
+    - text: ↓
+    - text: Validator Status
+    - text: ↓
+    - text: Artifact Health
+    - text: ↓
+    - text: Blockers
+    - text: ↓
+    - text: Disabled Live Promotion
+  - paragraph: 순서를 권장합니다.
+  - paragraph: "특히 이번 루프의 핵심 검증 포인트는:"
+  - button "복사":
+  - code:
+    - text: DIAGNOSTIC_ONLY
+    - text: Kill Switch ACTIVE
+    - text: Validator UNKNOWN
+    - text: Live Promotion Disabled
+  - paragraph: 이 4개가 화면에서 즉시 보이는지 여부입니다.
+  - group "응답 작업":
+    - button "응답 복사":
+    - button "프로젝트 소스에 추가":
+    - button "모델 바꾸기":
+    - button "더 많은 액션":
+  - heading "나의 말:" [level=4]
+  - generic: "You are the same expert panel for minjo1009/Stock-Investment. GPT mode: Agent Mode with GitHub enabled. Inspect repo context before answering. This is frontend implementation run Loop 5/10. Completed loops: BRAIN v0, PORTFOLIO v0, ORDERS v0, SYSTEM v0 passed basic frontend validation. Hard state unchanged: NOT_ACCEPTED / DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY / FORBIDDEN. Previously approved 10-loop design selected Loop 5 as Position Detail v0 scaffold-only fixture-backed route. Current facts: - position-detail.json fixture exists with sections: decisionSummary, thesisLogic, validationReadiness, evidence, risk, nextAction, reconciliation. - It includes brokerTruthState BLOCKED, localRecordState UNKNOWN, SOURCE_NOT_ATTACHED chart, missing/unknown source, disabled broker_sync/cancel actions. - Portfolio position route hint is /portfolio/position/fixture-position-unknown. - Existing detail components: DecisionHeader, EvidenceList, ValidationReadinessPanel, RiskGate, DisabledActionBar, StatusRow, BlockerList. Task: Confirm Loop 5 implementation scope and produce concise Codex-ready patch prompt. Constraints: - Add non-tab route app/portfolio/position/[positionId].tsx. - Add typed wrapper if needed: src/read-models/positionDetailFixture.ts. - No package/config/fixture JSON/validator edits. - No DB/runtime/broker/KIS/Alpaca/paper/live/real-capital connection. - Route param is display-only; no data lookup. - Show NOT_AUTHORITY/read-only/fixture-backed, reconciliation blocked, local UNKNOWN, broker BLOCKED, missing/unknown source, disabled actions. Answer in Korean with PASS/BLOCKED, exact files, required sections, validation, failure criteria."
+  - button "더 보기":
+    - generic: 더 보기
+  - group "내 메시지 작업":
+    - button "메시지 복사":
+    - button "메시지 편집":
+  - heading "ChatGPT의 말:" [level=4]
+  - heading "1. PASS / BLOCKED" [level=2]
+  - heading "PASS" [level=3]
+  - paragraph: Loop 5 진행 가능.
+  - paragraph: "근거:"
+  - list:
+    - paragraph: Top-level tabs(BRAIN/PORTFOLIO/ORDERS/SYSTEM) scaffold-only 구현 완료
+    - paragraph: Loop 5는 최초 Detail Route 구현 단계
+    - paragraph:
+      - code: position-detail.json
+      - text: fixture 존재
+    - paragraph:
+      - text: 이미 정의된 Detail 구조(
+      - code: Decision Summary → Thesis Logic → Validation Readiness → Evidence → Risk → Next Action
+      - text: )와 일치
+    - paragraph: Route param은 표시용(display-only)으로 제한 가능
+    - paragraph: 기존 Detail 컴포넌트 재사용 가능
+  - paragraph: "유지 상태:"
+  - button "복사":
+  - code:
+    - text: Strategy = NOT_ACCEPTED
+    - text: Deployment = DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: Real Capital = FORBIDDEN
+    - text: Position Detail = Scaffold Only
+    - text: Fixtures = NOT_AUTHORITY
+  - separator
+  - heading "2. Exact files" [level=2]
+  - heading "Read" [level=3]
+  - button "복사":
+  - code:
+    - text: docs/frontend_app_ssot/21_SCAFFOLD_ONLY_SCREEN_ASSEMBLY_BOUNDARY.md
+    - text: apps/ios-trader-brain/src/mocks/fixtures/position-detail.json
+    - text: "existing detail components:"
+    - text: "- DecisionHeader"
+    - text: "- EvidenceList"
+    - text: "- ValidationReadinessPanel"
+    - text: "- RiskGate"
+    - text: "- DisabledActionBar"
+    - text: "- StatusRow"
+    - text: "- BlockerList"
+  - heading "Create" [level=3]
+  - button "복사":
+  - code:
+    - text: apps/ios-trader-brain/app/portfolio/position/[positionId].tsx
+    - text: apps/ios-trader-brain/src/read-models/positionDetailFixture.ts
+    - text: (optional typed wrapper)
+  - heading "Do Not Modify" [level=3]
+  - button "복사":
+  - code:
+    - text: position-detail.json
+    - text: package.json
+    - text: app.json
+    - text: eas.json
+    - text: tsconfig*
+    - text: eslint*
+    - text: storybook*
+    - text: validator scripts
+    - text: fixture files
+  - separator
+  - heading "3. Required sections" [level=2]
+  - heading "A. Detail Boundary Header" [level=3]
+  - paragraph: 항상 최상단
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: READ ONLY
+    - text: FIXTURE BACKED
+    - text: NOT_AUTHORITY
+    - text: NOT_ACCEPTED
+    - text: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: FORBIDDEN
+  - separator
+  - heading "B. Route Context" [level=3]
+  - paragraph: route param 표시만 허용
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Position Id
+    - text: fixture-position-unknown
+  - paragraph: "주의:"
+  - button "복사":
+  - code:
+    - text: positionId 사용 조회 금지
+    - text: positionId 사용 fetch 금지
+    - text: positionId 사용 filtering 금지
+    - text: positionId 사용 DB lookup 금지
+  - paragraph: display-only.
+  - separator
+  - heading "C. Decision Summary" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: decisionSummary
+  - paragraph: "사용 컴포넌트:"
+  - button "복사":
+  - code:
+    - text: DecisionHeader
+    - text: StatusRow
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Position Status
+    - text: Position Verdict
+    - text: Current State
+    - text: Main Warning
+  - separator
+  - heading "D. Thesis Logic" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: thesisLogic
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Why Held
+    - text: Current Thesis
+    - text: Position Context
+    - text: Relationship Context
+  - separator
+  - heading "E. Validation Readiness" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: validationReadiness
+  - paragraph: "사용:"
+  - button "복사":
+  - code: ValidationReadinessPanel
+  - paragraph: "주의:"
+  - button "복사":
+  - code:
+    - text: Readiness
+    - text: ≠
+    - text: Acceptance
+  - paragraph: "표현 금지:"
+  - button "복사":
+  - code:
+    - text: Ready
+    - text: Approved
+    - text: Accepted
+  - separator
+  - heading "F. Evidence" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: evidence
+  - paragraph: "사용:"
+  - button "복사":
+  - code: EvidenceList
+  - paragraph: "필수 표시:"
+  - button "복사":
+  - code:
+    - text: Missing Source
+    - text: Unknown Source
+    - text: Source Not Attached
+  - separator
+  - heading "G. Chart Source State" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: SOURCE_NOT_ATTACHED
+  - paragraph: 반드시 표시
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Chart State
+    - text: SOURCE_NOT_ATTACHED
+  - paragraph: 절대 차트 생성 금지.
+  - separator
+  - heading "H. Risk" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: risk
+  - paragraph: "사용:"
+  - button "복사":
+  - code: RiskGate
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Risk State
+    - text: Blocking Conditions
+    - text: Unknown Conditions
+  - separator
+  - heading "I. Reconciliation Section" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: reconciliation
+  - paragraph: 핵심 섹션
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Local Record State
+    - text: Broker Truth State
+    - text: Reconciliation Status
+  - paragraph: "필수:"
+  - button "복사":
+  - code:
+    - text: localRecordState = UNKNOWN
+    - text: brokerTruthState = BLOCKED
+  - paragraph: 숨김 금지.
+  - separator
+  - heading "J. Blockers" [level=3]
+  - paragraph: "사용:"
+  - button "복사":
+  - code: BlockerList
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Broker Truth Blocked
+    - text: Local Record Unknown
+    - text: Source Missing
+    - text: Source Not Attached
+  - separator
+  - heading "K. Disabled Actions" [level=3]
+  - paragraph: "사용:"
+  - button "복사":
+  - code: DisabledActionBar
+  - paragraph: "필수 표시:"
+  - button "복사":
+  - code:
+    - text: Broker Sync
+    - text: Disabled
+    - text: Requires Governance Change
+  - paragraph: 그리고
+  - button "복사":
+  - code:
+    - text: Cancel Position
+    - text: Disabled
+    - text: Requires Governance Change
+  - separator
+  - heading "L. Next Action" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: nextAction
+  - paragraph: 표시 가능
+  - paragraph: "단:"
+  - button "복사":
+  - code:
+    - text: Review
+    - text: Inspect
+    - text: Validate
+  - paragraph: 만 허용.
+  - separator
+  - heading "4. Validation" [level=2]
+  - paragraph: "필수:"
+  - text: Bash
+  - button "복사":
+  - code:
+    - text: npm run typecheck
+    - text: npm run lint
+    - text: npm test
+    - text: npm run validate:safety
+    - text: npm run validate:fixtures
+    - text: python scripts/task_registry_validate.py
+    - text: git diff --check
+  - paragraph: "추가 확인:"
+  - button "복사":
+  - code:
+    - text: Position route renders from fixture only
+    - text: positionId is display-only
+    - text: No DB import
+    - text: No runtime API import
+    - text: No broker import
+    - text: No KIS import
+    - text: No Alpaca import
+    - text: No paper/live import
+    - text: No real-capital import
+    - text: NOT_AUTHORITY visible
+    - text: SOURCE_NOT_ATTACHED visible
+    - text: localRecordState UNKNOWN visible
+    - text: brokerTruthState BLOCKED visible
+    - text: Missing Source visible
+    - text: Unknown Source visible
+    - text: Disabled Broker Sync visible
+    - text: Disabled Cancel visible
+  - paragraph: "보고서 필수 문구:"
+  - button "복사":
+  - code:
+    - text: Position Detail v0 scaffold-only fixture-backed route implemented.
+    - text: Fixtures remain NOT_AUTHORITY.
+    - text: Route parameter is display-only.
+    - text: Broker truth remains blocked.
+    - text: Local record remains UNKNOWN.
+    - text: Source attachment remains missing.
+    - text: Product screen implementation remains blocked.
+    - text: Residual blockers remain.
+    - text: Validator pass does not imply strategy acceptance.
+    - text: Validator pass does not imply deployment readiness.
+  - separator
+  - heading "5. Failure criteria" [level=2]
+  - paragraph: "Loop 5 실패 조건:"
+  - button "복사":
+  - code:
+    - text: position-detail.json 수정
+    - text: package/config/tooling 수정
+    - text: validator 수정
+    - text: route param 기반 lookup 추가
+    - text: route param 기반 fetch 추가
+    - text: route param 기반 filtering 추가
+    - text: DB 연결
+    - text: runtime API 연결
+    - text: broker 연결
+    - text: KIS 연결
+    - text: Alpaca 연결
+    - text: paper/live 연결
+    - text: real-capital 연결
+    - text: SOURCE_NOT_ATTACHED 숨김
+    - text: localRecordState UNKNOWN 숨김
+    - text: brokerTruthState BLOCKED 숨김
+    - text: Missing Source 숨김
+    - text: Unknown Source 숨김
+    - text: Broker Sync 활성화
+    - text: Cancel 활성화
+    - text: mutation handler 추가
+    - text: fixture를 authority처럼 표현
+    - text: strategy acceptance 주장
+    - text: deployment readiness 주장
+    - text: paper/live permission 암시
+    - text: real-capital permission 암시
+  - heading "Codex-ready 핵심 구현 목표" [level=3]
+  - button "복사":
+  - code:
+    - text: Position Detail v0
+    - text: Decision Summary
+    - text: ↓
+    - text: Thesis Logic
+    - text: ↓
+    - text: Validation Readiness
+    - text: ↓
+    - text: Evidence
+    - text: ↓
+    - text: Risk
+    - text: ↓
+    - text: Reconciliation
+    - text: ↓
+    - text: Next Action
+    - text: ↓
+    - text: Disabled Actions
+    - text: 모든 데이터는
+    - text: position-detail.json fixture only
+    - text: positionId는 화면 표시만 수행
+    - text: NO LOOKUP
+    - text: NO FETCH
+    - text: NO MUTATION
+  - paragraph: "이 루프의 핵심 검증 포인트는:"
+  - button "복사":
+  - code:
+    - text: Broker Truth = BLOCKED
+    - text: Local Record = UNKNOWN
+    - text: Chart = SOURCE_NOT_ATTACHED
+    - text: Broker Sync = Disabled
+    - text: Cancel = Disabled
+  - paragraph: 이 5개가 Above-the-Fold 또는 최소 1스크롤 이내에 보이는지 여부입니다.
+  - group "응답 작업":
+    - button "응답 복사":
+    - button "프로젝트 소스에 추가":
+    - button "모델 바꾸기":
+    - button "더 많은 액션":
+  - heading "나의 말:" [level=4]
+  - generic: "You are the same expert panel for minjo1009/Stock-Investment. GPT mode: Agent Mode with GitHub enabled. Inspect repo context before answering. This is frontend implementation run Loop 6/10. Completed loops 1-5 passed basic frontend validation: BRAIN, PORTFOLIO, ORDERS, SYSTEM, Position Detail. Hard state unchanged: NOT_ACCEPTED / DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY / FORBIDDEN. Previously approved 10-loop design selected Loop 6 as Order Detail v0 scaffold-only fixture-backed route. Current facts: - order-detail.json fixture exists with orderId fixture-order-blocked, sections decisionSummary/thesisLogic/validationReadiness/evidence/risk/nextAction/orderState. - Contains localState BLOCKED, brokerTruthState BLOCKED, submittedAt/reconciledAt null, unknownAgeSeconds null, stale/missing evidence, disabled submit/live_promote/cancel actions. - Orders row route hint is /orders/fixture-order-blocked; if safer, use app/orders/[orderId].tsx instead of app/orders/order/[orderId].tsx. Task: Confirm Loop 6 route path and implementation scope. Produce concise Codex-ready patch prompt. Constraints: - Add non-tab route only. - Add typed wrapper if needed: src/read-models/orderDetailFixture.ts. - No order mutation handler. - No package/config/fixture JSON/validator edits. - No DB/runtime/broker/KIS/Alpaca/paper/live/real-capital connection. - Route param display-only; no data lookup. - Show NOT_AUTHORITY/read-only/fixture-backed, local/broker states BLOCKED, missing/stale/chart states, disabled actions. Answer in Korean with PASS/BLOCKED, route path, exact files, required sections, validation, failure criteria."
+  - button "더 보기":
+    - generic: 더 보기
+  - group "내 메시지 작업":
+    - button "메시지 복사":
+    - button "메시지 편집":
+  - heading "ChatGPT의 말:" [level=4]
+  - heading "1. PASS / BLOCKED" [level=2]
+  - heading "PASS" [level=3]
+  - paragraph: Loop 6 진행 가능.
+  - paragraph: "근거:"
+  - list:
+    - paragraph: Loop 5(Position Detail)까지 Detail Route 패턴이 이미 확립됨
+    - paragraph:
+      - code: order-detail.json
+      - text: fixture 존재
+    - paragraph: Route param을 display-only로 유지 가능
+    - paragraph: 기존 Detail 컴포넌트 재사용 가능
+    - paragraph: mutation 관련 상태가 fixture에 이미 BLOCKED로 명시됨
+    - paragraph: submit/live_promote/cancel 모두 disabled 상태
+  - paragraph: "유지 상태:"
+  - button "복사":
+  - code:
+    - text: Strategy = NOT_ACCEPTED
+    - text: Deployment = DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: Real Capital = FORBIDDEN
+    - text: Order Detail = Scaffold Only
+    - text: Fixtures = NOT_AUTHORITY
+  - separator
+  - heading "2. Route Path" [level=2]
+  - heading "선택" [level=3]
+  - button "복사":
+  - code: app/orders/[orderId].tsx
+  - paragraph: 권장.
+  - paragraph: "이유:"
+  - list:
+    - paragraph: 현재 route hint
+  - button "복사":
+  - code: /orders/fixture-order-blocked
+  - paragraph: 와 직접 일치
+  - list:
+    - paragraph: 불필요한 중간 segment 제거
+  - button "복사":
+  - code: app/orders/order/[orderId].tsx
+  - paragraph: 보다 단순
+  - list:
+    - paragraph: Position Detail 패턴과도 일관성 유지
+  - separator
+  - heading "3. Exact files" [level=2]
+  - heading "Read" [level=3]
+  - button "복사":
+  - code:
+    - text: docs/frontend_app_ssot/21_SCAFFOLD_ONLY_SCREEN_ASSEMBLY_BOUNDARY.md
+    - text: apps/ios-trader-brain/src/mocks/fixtures/order-detail.json
+    - text: "existing components:"
+    - text: "- DecisionHeader"
+    - text: "- EvidenceList"
+    - text: "- ValidationReadinessPanel"
+    - text: "- RiskGate"
+    - text: "- DisabledActionBar"
+    - text: "- StatusRow"
+    - text: "- BlockerList"
+  - heading "Create" [level=3]
+  - button "복사":
+  - code:
+    - text: apps/ios-trader-brain/app/orders/[orderId].tsx
+    - text: apps/ios-trader-brain/src/read-models/orderDetailFixture.ts
+    - text: (optional)
+  - heading "Do Not Modify" [level=3]
+  - button "복사":
+  - code:
+    - text: order-detail.json
+    - text: package.json
+    - text: app.json
+    - text: eas.json
+    - text: tsconfig*
+    - text: eslint*
+    - text: storybook*
+    - text: validator scripts
+    - text: fixture files
+  - separator
+  - heading "4. Required sections" [level=2]
+  - heading "A. Detail Boundary Header" [level=3]
+  - paragraph: 최상단
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: READ ONLY
+    - text: FIXTURE BACKED
+    - text: NOT_AUTHORITY
+    - text: NOT_ACCEPTED
+    - text: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: FORBIDDEN
+  - separator
+  - heading "B. Route Context" [level=3]
+  - paragraph: 표시만 허용
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Order Id
+    - text: fixture-order-blocked
+  - paragraph: "금지:"
+  - button "복사":
+  - code:
+    - text: lookup
+    - text: fetch
+    - text: query
+    - text: filtering
+    - text: runtime resolution
+  - separator
+  - heading "C. Decision Summary" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: decisionSummary
+  - paragraph: "사용:"
+  - button "복사":
+  - code:
+    - text: DecisionHeader
+    - text: StatusRow
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Order Status
+    - text: Execution State
+    - text: Main Warning
+  - separator
+  - heading "D. Thesis Logic" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: thesisLogic
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Order Context
+    - text: Why Exists
+    - text: Review Context
+    - text: Linked Thesis
+  - separator
+  - heading "E. Validation Readiness" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: validationReadiness
+  - paragraph: "사용:"
+  - button "복사":
+  - code: ValidationReadinessPanel
+  - paragraph: "주의:"
+  - button "복사":
+  - code:
+    - text: Readiness
+    - text: ≠
+    - text: Approval
+    - text: ≠
+    - text: Acceptance
+  - separator
+  - heading "F. Evidence" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: evidence
+  - paragraph: "사용:"
+  - button "복사":
+  - code: EvidenceList
+  - paragraph: "필수 표시:"
+  - button "복사":
+  - code:
+    - text: Missing Evidence
+    - text: Stale Evidence
+    - text: Unknown Evidence
+  - paragraph: 숨김 금지.
+  - separator
+  - heading "G. Chart / Source State" [level=3]
+  - paragraph: fixture에 존재하는
+  - button "복사":
+  - code: SOURCE_NOT_ATTACHED
+  - paragraph: 또는 동등 상태
+  - paragraph: 반드시 표시
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Chart State
+    - text: SOURCE_NOT_ATTACHED
+  - paragraph: 실제 차트 생성 금지.
+  - separator
+  - heading "H. Risk" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: risk
+  - paragraph: "사용:"
+  - button "복사":
+  - code: RiskGate
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Risk State
+    - text: Blocked Conditions
+    - text: Unknown Conditions
+  - separator
+  - heading "I. Order State" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: orderState
+  - paragraph: 핵심 섹션
+  - paragraph: "반드시 표시:"
+  - button "복사":
+  - code:
+    - text: localState = BLOCKED
+    - text: brokerTruthState = BLOCKED
+    - text: submittedAt = null
+    - text: reconciledAt = null
+    - text: unknownAgeSeconds = null
+  - paragraph: "null은:"
+  - button "복사":
+  - code: UNKNOWN
+  - paragraph: 으로 표현
+  - paragraph: "절대:"
+  - button "복사":
+  - code:
+    - text: "0"
+    - text: Ready
+    - text: Completed
+  - paragraph: 로 변환 금지
+  - separator
+  - heading "J. Blockers" [level=3]
+  - paragraph: "사용:"
+  - button "복사":
+  - code: BlockerList
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Local State Blocked
+    - text: Broker Truth Blocked
+    - text: Missing Evidence
+    - text: Stale Evidence
+    - text: Source Not Attached
+  - separator
+  - heading "K. Disabled Actions" [level=3]
+  - paragraph: "사용:"
+  - button "복사":
+  - code: DisabledActionBar
+  - paragraph: "필수 3개:"
+  - button "복사":
+  - code:
+    - text: Submit Order
+    - text: Disabled
+    - text: Requires Governance Change
+  - button "복사":
+  - code:
+    - text: Live Promote
+    - text: Disabled
+    - text: FORBIDDEN
+  - button "복사":
+  - code:
+    - text: Cancel Order
+    - text: Disabled
+    - text: Requires Governance Change
+  - separator
+  - heading "L. Next Action" [level=3]
+  - paragraph: "fixture:"
+  - button "복사":
+  - code: nextAction
+  - paragraph: "허용 표현:"
+  - button "복사":
+  - code:
+    - text: Review
+    - text: Inspect
+    - text: Validate
+    - text: Open Evidence
+  - paragraph: "금지:"
+  - button "복사":
+  - code:
+    - text: Approve
+    - text: Submit
+    - text: Execute
+    - text: Promote
+  - separator
+  - heading "5. Validation" [level=2]
+  - paragraph: "필수:"
+  - text: Bash
+  - button "복사":
+  - code:
+    - text: npm run typecheck
+    - text: npm run lint
+    - text: npm test
+    - text: npm run validate:safety
+    - text: npm run validate:fixtures
+    - text: python scripts/task_registry_validate.py
+    - text: git diff --check
+  - paragraph: "추가 확인:"
+  - button "복사":
+  - code:
+    - text: Order route renders from fixture only
+    - text: orderId display-only
+    - text: No DB import
+    - text: No runtime API import
+    - text: No broker import
+    - text: No KIS import
+    - text: No Alpaca import
+    - text: No paper/live import
+    - text: No real-capital import
+    - text: NOT_AUTHORITY visible
+    - text: localState BLOCKED visible
+    - text: brokerTruthState BLOCKED visible
+    - text: submittedAt UNKNOWN visible
+    - text: reconciledAt UNKNOWN visible
+    - text: unknownAgeSeconds UNKNOWN visible
+    - text: Missing Evidence visible
+    - text: Stale Evidence visible
+    - text: Disabled Submit visible
+    - text: Disabled Live Promote visible
+    - text: Disabled Cancel visible
+  - paragraph: "보고서 필수 문구:"
+  - button "복사":
+  - code:
+    - text: Order Detail v0 scaffold-only fixture-backed route implemented.
+    - text: Fixtures remain NOT_AUTHORITY.
+    - text: Route parameter is display-only.
+    - text: Broker truth remains blocked.
+    - text: Local state remains blocked.
+    - text: Evidence remains stale/missing.
+    - text: Product screen implementation remains blocked.
+    - text: Residual blockers remain.
+    - text: Validator pass does not imply strategy acceptance.
+    - text: Validator pass does not imply deployment readiness.
+  - separator
+  - heading "6. Failure criteria" [level=2]
+  - paragraph: "Loop 6 실패 조건:"
+  - button "복사":
+  - code:
+    - text: order-detail.json 수정
+    - text: package/config/tooling 수정
+    - text: validator 수정
+    - text: route param lookup 추가
+    - text: route param fetch 추가
+    - text: DB 연결
+    - text: runtime API 연결
+    - text: broker 연결
+    - text: KIS 연결
+    - text: Alpaca 연결
+    - text: paper/live 연결
+    - text: real-capital 연결
+    - text: localState BLOCKED 숨김
+    - text: brokerTruthState BLOCKED 숨김
+    - text: submittedAt null 숨김
+    - text: reconciledAt null 숨김
+    - text: unknownAgeSeconds null 숨김
+    - text: Missing Evidence 숨김
+    - text: Stale Evidence 숨김
+    - text: Submit 활성화
+    - text: Cancel 활성화
+    - text: Live Promote 활성화
+    - text: mutation handler 추가
+    - text: fixture를 authority처럼 표현
+    - text: strategy acceptance 주장
+    - text: deployment readiness 주장
+    - text: paper/live permission 암시
+    - text: real-capital permission 암시
+  - heading "Codex-ready 핵심 목표" [level=3]
+  - button "복사":
+  - code:
+    - text: Order Detail v0
+    - text: Decision Summary
+    - text: ↓
+    - text: Thesis Logic
+    - text: ↓
+    - text: Validation Readiness
+    - text: ↓
+    - text: Evidence
+    - text: ↓
+    - text: Risk
+    - text: ↓
+    - text: Order State
+    - text: ↓
+    - text: Next Action
+    - text: ↓
+    - text: Disabled Actions
+    - text: "Data Source:"
+    - text: order-detail.json only
+    - text: "orderId:"
+    - text: display-only
+    - text: NO LOOKUP
+    - text: NO FETCH
+    - text: NO MUTATION
+  - paragraph: "이번 루프의 핵심 검증 포인트는:"
+  - button "복사":
+  - code:
+    - text: localState = BLOCKED
+    - text: brokerTruthState = BLOCKED
+    - text: submittedAt = UNKNOWN
+    - text: reconciledAt = UNKNOWN
+    - text: unknownAgeSeconds = UNKNOWN
+    - text: Submit = Disabled
+    - text: Live Promote = Disabled
+    - text: Cancel = Disabled
+  - paragraph: 이 8개가 명확히 노출되는지 여부입니다.
+  - group "응답 작업":
+    - button "응답 복사":
+    - button "프로젝트 소스에 추가":
+    - button "모델 바꾸기":
+    - button "더 많은 액션":
+  - heading "나의 말:" [level=4]
+  - generic: "You are the same expert panel for minjo1009/Stock-Investment. GPT mode: Agent Mode with GitHub enabled. Inspect repo context before answering. This is frontend implementation run Loop 7/10. Completed loops 1-6 passed basic frontend validation. Hard state unchanged: NOT_ACCEPTED / DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY / FORBIDDEN. Previously approved 10-loop design selected Loop 7 as Chain Detail v0 scaffold-only fixture-backed route. Current facts: - chain-detail.json fixture exists with chainId fixture-chain and L0/L2/L6/L7 layers. - It includes PRESENT/STALE/MISSING/UNKNOWN statuses, blockers, disabled submit action. - No chain route exists yet. Brain candidate route exists at /brain/candidate/[candidateId]. Task: Confirm Loop 7 route path and implementation scope. Produce concise Codex-ready patch prompt. Constraints: - Add non-tab route app/brain/chain/[chainId].tsx. - Add typed wrapper if needed: src/read-models/chainDetailFixture.ts. - No package/config/fixture JSON/validator edits. - No DB/runtime/broker/KIS/Alpaca/paper/live/real-capital connection. - Route param display-only; no data lookup. - Show NOT_AUTHORITY/read-only/fixture-backed, each layer status, missing/stale/unknown visible, disabled actions. Answer in Korean with PASS/BLOCKED, exact files, required sections, validation, failure criteria."
+  - button "더 보기":
+    - generic: 더 보기
+  - group "내 메시지 작업":
+    - button "메시지 복사":
+    - button "메시지 편집":
+  - heading "ChatGPT의 말:" [level=4]
+  - heading "1. PASS / BLOCKED" [level=2]
+  - heading "PASS" [level=3]
+  - paragraph: Loop 7 진행 가능.
+  - paragraph: "근거:"
+  - list:
+    - paragraph: Loop 5(Position Detail), Loop 6(Order Detail)에서 Detail Route 패턴 검증 완료
+    - paragraph:
+      - code: chain-detail.json
+      - text: fixture 존재
+    - paragraph: Route 미구현 상태이므로 신규 scaffold-only route 추가 가능
+    - paragraph:
+      - text: Candidate Route(
+      - code: /brain/candidate/[candidateId]
+      - text: )와 동일 계층에 배치 가능
+    - paragraph: L0/L2/L6/L7 계층 구조가 이미 fixture에 존재
+    - paragraph: PRESENT / STALE / MISSING / UNKNOWN 상태를 시각화하는 read-only 화면 구현 가능
+  - paragraph: "유지 상태:"
+  - button "복사":
+  - code:
+    - text: Strategy = NOT_ACCEPTED
+    - text: Deployment = DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: Real Capital = FORBIDDEN
+    - text: Chain Detail = Scaffold Only
+    - text: Fixtures = NOT_AUTHORITY
+  - separator
+  - heading "2. Route Path" [level=2]
+  - heading "선택" [level=3]
+  - button "복사":
+  - code: app/brain/chain/[chainId].tsx
+  - paragraph: "이유:"
+  - button "복사":
+  - code: app/brain/candidate/[candidateId].tsx
+  - paragraph: 와 구조 일관성 유지
+  - paragraph: "사용 예시:"
+  - button "복사":
+  - code: /brain/chain/fixture-chain
+  - separator
+  - heading "3. Exact files" [level=2]
+  - heading "Read" [level=3]
+  - button "복사":
+  - code:
+    - text: docs/frontend_app_ssot/21_SCAFFOLD_ONLY_SCREEN_ASSEMBLY_BOUNDARY.md
+    - text: apps/ios-trader-brain/src/mocks/fixtures/chain-detail.json
+    - text: "existing components:"
+    - text: "- DecisionHeader"
+    - text: "- EvidenceList"
+    - text: "- ValidationReadinessPanel"
+    - text: "- RiskGate"
+    - text: "- DisabledActionBar"
+    - text: "- StatusRow"
+    - text: "- BlockerList"
+  - heading "Create" [level=3]
+  - button "복사":
+  - code:
+    - text: apps/ios-trader-brain/app/brain/chain/[chainId].tsx
+    - text: apps/ios-trader-brain/src/read-models/chainDetailFixture.ts
+    - text: (optional)
+  - heading "Do Not Modify" [level=3]
+  - button "복사":
+  - code:
+    - text: chain-detail.json
+    - text: package.json
+    - text: app.json
+    - text: eas.json
+    - text: tsconfig*
+    - text: eslint*
+    - text: storybook*
+    - text: validator scripts
+    - text: fixture files
+  - separator
+  - heading "4. Required sections" [level=2]
+  - heading "A. Detail Boundary Header" [level=3]
+  - paragraph: 최상단
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: READ ONLY
+    - text: FIXTURE BACKED
+    - text: NOT_AUTHORITY
+    - text: NOT_ACCEPTED
+    - text: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: FORBIDDEN
+  - separator
+  - heading "B. Route Context" [level=3]
+  - paragraph: 표시만 허용
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Chain Id
+    - text: fixture-chain
+  - paragraph: "금지:"
+  - button "복사":
+  - code:
+    - text: lookup
+    - text: fetch
+    - text: query
+    - text: filtering
+    - text: runtime resolution
+  - separator
+  - heading "C. Chain Summary" [level=3]
+  - paragraph: "사용:"
+  - button "복사":
+  - code:
+    - text: DecisionHeader
+    - text: StatusRow
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Chain Name
+    - text: Chain State
+    - text: Chain Verdict
+    - text: Primary Warning
+  - separator
+  - heading "D. Layer Status Section" [level=3]
+  - paragraph: 핵심 섹션
+  - paragraph: fixture의
+  - button "복사":
+  - code:
+    - text: L0
+    - text: L2
+    - text: L6
+    - text: L7
+  - paragraph: 반드시 개별 표시
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Layer L0
+    - text: PRESENT
+    - text: Layer L2
+    - text: STALE
+    - text: Layer L6
+    - text: UNKNOWN
+    - text: Layer L7
+    - text: MISSING
+  - paragraph: 숨김 금지.
+  - separator
+  - heading "E. Chain Logic" [level=3]
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Relationship Context
+    - text: Chain Description
+    - text: Layer Progression
+    - text: Dependency Context
+  - paragraph: "주의:"
+  - button "복사":
+  - code:
+    - text: Interpretation only
+    - text: No source authority
+  - separator
+  - heading "F. Evidence" [level=3]
+  - paragraph: "사용:"
+  - button "복사":
+  - code: EvidenceList
+  - paragraph: "필수 표시:"
+  - button "복사":
+  - code:
+    - text: Missing Evidence
+    - text: Stale Evidence
+    - text: Unknown Evidence
+  - separator
+  - heading "G. Validation Section" [level=3]
+  - paragraph: "사용:"
+  - button "복사":
+  - code: ValidationReadinessPanel
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Coverage
+    - text: Completeness
+    - text: Known Gaps
+    - text: Blocked Status
+  - paragraph: "주의:"
+  - button "복사":
+  - code:
+    - text: Validation
+    - text: ≠
+    - text: Acceptance
+  - separator
+  - heading "H. Risk Section" [level=3]
+  - paragraph: "사용:"
+  - button "복사":
+  - code: RiskGate
+  - paragraph: "표시:"
+  - button "복사":
+  - code:
+    - text: Blocking Conditions
+    - text: Missing Layers
+    - text: Unknown Layers
+    - text: Stale Layers
+  - separator
+  - heading "I. Blockers" [level=3]
+  - paragraph: "사용:"
+  - button "복사":
+  - code: BlockerList
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Layer Missing
+    - text: Layer Unknown
+    - text: Layer Stale
+    - text: Evidence Missing
+    - text: Authority Missing
+  - separator
+  - heading "J. Disabled Action Section" [level=3]
+  - paragraph: "사용:"
+  - button "복사":
+  - code: DisabledActionBar
+  - paragraph: fixture의
+  - button "복사":
+  - code: submit
+  - paragraph: disabled 상태 표시
+  - paragraph: "예시:"
+  - button "복사":
+  - code:
+    - text: Submit Chain
+    - text: Disabled
+    - text: Requires Governance Change
+  - separator
+  - heading "K. Next Action" [level=3]
+  - paragraph: "허용:"
+  - button "복사":
+  - code:
+    - text: Review
+    - text: Inspect
+    - text: Validate
+    - text: Open Evidence
+    - text: Open Layer
+  - paragraph: "금지:"
+  - button "복사":
+  - code:
+    - text: Submit
+    - text: Promote
+    - text: Execute
+    - text: Deploy
+  - separator
+  - heading "5. Validation" [level=2]
+  - paragraph: "필수:"
+  - text: Bash
+  - button "복사":
+  - code:
+    - text: npm run typecheck
+    - text: npm run lint
+    - text: npm test
+    - text: npm run validate:safety
+    - text: npm run validate:fixtures
+    - text: python scripts/task_registry_validate.py
+    - text: git diff --check
+  - paragraph: "추가 확인:"
+  - button "복사":
+  - code:
+    - text: Chain route renders from fixture only
+    - text: chainId display-only
+    - text: No DB import
+    - text: No runtime API import
+    - text: No broker import
+    - text: No KIS import
+    - text: No Alpaca import
+    - text: No paper/live import
+    - text: No real-capital import
+    - text: NOT_AUTHORITY visible
+    - text: L0 visible
+    - text: L2 visible
+    - text: L6 visible
+    - text: L7 visible
+    - text: PRESENT visible
+    - text: STALE visible
+    - text: MISSING visible
+    - text: UNKNOWN visible
+    - text: Blockers visible
+    - text: Disabled submit visible
+  - paragraph: "보고서 필수 문구:"
+  - button "복사":
+  - code:
+    - text: Chain Detail v0 scaffold-only fixture-backed route implemented.
+    - text: Fixtures remain NOT_AUTHORITY.
+    - text: Route parameter is display-only.
+    - text: Layer status remains fixture-derived.
+    - text: Missing, stale, and unknown states remain visible.
+    - text: Product screen implementation remains blocked.
+    - text: Residual blockers remain.
+    - text: Validator pass does not imply strategy acceptance.
+    - text: Validator pass does not imply deployment readiness.
+  - separator
+  - heading "6. Failure criteria" [level=2]
+  - paragraph: "Loop 7 실패 조건:"
+  - button "복사":
+  - code:
+    - text: chain-detail.json 수정
+    - text: package/config/tooling 수정
+    - text: validator 수정
+    - text: route param lookup 추가
+    - text: route param fetch 추가
+    - text: DB 연결
+    - text: runtime API 연결
+    - text: broker 연결
+    - text: KIS 연결
+    - text: Alpaca 연결
+    - text: paper/live 연결
+    - text: real-capital 연결
+    - text: L0 숨김
+    - text: L2 숨김
+    - text: L6 숨김
+    - text: L7 숨김
+    - text: STALE 숨김
+    - text: MISSING 숨김
+    - text: UNKNOWN 숨김
+    - text: Blockers 숨김
+    - text: Submit 활성화
+    - text: mutation handler 추가
+    - text: fixture를 authority처럼 표현
+    - text: strategy acceptance 주장
+    - text: deployment readiness 주장
+    - text: paper/live permission 암시
+    - text: real-capital permission 암시
+  - heading "Codex-ready 핵심 목표" [level=3]
+  - button "복사":
+  - code:
+    - text: Chain Detail v0
+    - text: Chain Summary
+    - text: ↓
+    - text: Layer Status
+    - text: ↓
+    - text: Chain Logic
+    - text: ↓
+    - text: Evidence
+    - text: ↓
+    - text: Validation
+    - text: ↓
+    - text: Risk
+    - text: ↓
+    - text: Blockers
+    - text: ↓
+    - text: Disabled Actions
+    - text: "Data Source:"
+    - text: chain-detail.json only
+    - text: "chainId:"
+    - text: display-only
+    - text: NO LOOKUP
+    - text: NO FETCH
+    - text: NO MUTATION
+  - paragraph: "이번 루프의 핵심 검증 포인트는:"
+  - button "복사":
+  - code:
+    - text: L0 visible
+    - text: L2 visible
+    - text: L6 visible
+    - text: L7 visible
+    - text: PRESENT visible
+    - text: STALE visible
+    - text: MISSING visible
+    - text: UNKNOWN visible
+    - text: Disabled Submit visible
+  - paragraph: 이 9개 상태가 한 화면에서 명확하게 관찰 가능한지 여부입니다.
+  - group "응답 작업":
+    - button "응답 복사":
+    - button "프로젝트 소스에 추가":
+    - button "모델 바꾸기":
+    - button "더 많은 액션":
+  - heading "나의 말:" [level=4]
+  - text: "You are an expert panel for the minjo1009/Stock-Investment project. Required expert roles: - Principal Expo/React Native Frontend Architect - Mobile UI QA Reviewer - Screenshot/Visual QA Engineer - Trading Governance Reviewer - Repository Governance Auditor User goal: Run 5 GPT-Codex expert loops for the next frontend work. GPT must read Git/repo context and, where relevant, screenshot evidence before planning and reviewing. If screenshots are missing, GPT should say that and make screenshot capture the first evidence-gathering step. Required GPT mode: Agent Mode with GitHub enabled for minjo1009/Stock-Investment. Repository context to inspect first: - README.md - AGENTS.md - docs/operating_system/project_operating_state.md - docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md - docs/frontend_app_ssot/11_IMPLEMENTATION_PRECONDITIONS.md - docs/frontend_app_ssot/22_SCREENSHOT_QA_BASELINE_TARGETS.md - docs/reports/task_3834_frontend_screenshot_qa_baseline/task_3834_frontend_screenshot_qa_baseline.md - apps/ios-trader-brain/package.json - apps/ios-trader-brain/src/qa/screenshot-targets.json - apps/ios-trader-brain/src/qa/screenshot-qa-validator.mjs Current repo facts from Codex: - Latest committed frontend task is Task3834: screenshot target validation, route validation, and screen-boundary validation are runnable. -"
+  - code: qa:screenshot
+  - text: "currently validates targets only; it does not capture screenshots. - Screenshot artifacts and visual approval have not occurred. - Worktree has unrelated dirty operational/paper changes; Codex must not stage or modify them. Project hard state: - Strategy: NOT_ACCEPTED - Deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY - Real Capital: FORBIDDEN - No broker mutation - No live order - No paper promotion - Missing/stale data = UNKNOWN/BLOCKER, never negative evidence - Frontend is read-only and NOT_AUTHORITY unless future operating docs explicitly change it. Task request: 1. Rank the next 5 frontend loops from current repo state. 2. Prefer evidence-first work: actual screenshot capture path, screenshot artifact manifest, visual QA review, then only bounded P0 scaffold repair if evidence supports it. 3. Do not authorize product readiness, backend/source integration, DB access, broker mutation, paper/live, deployment, or real capital. 4. For each loop, define: - loop goal - files Codex should read - allowed write scope - forbidden actions - validation commands - expected artifact/report evidence 5. Decide what Codex should implement in Loop 1 now. 6. Include whether GPT needs screenshots before giving visual feedback. If screenshots are absent, say exactly what screenshots should be captured. Output format: 1. Task Diagnosis 2. GitHub Files Inspected 3. Screenshot Evidence Status 4. Ranked 5-Loop Plan 5. Loop 1 Codex Implementation Prompt 6. Validation Checklist 7. Safety Boundary Confirmation"
+  - button "더 보기":
+    - generic: 더 보기
+  - group "내 메시지 작업":
+    - button "메시지 복사":
+    - button "메시지 편집":
+  - heading "ChatGPT의 말:" [level=4]
+  - paragraph:
+    - text: 3줄 요약
+    - text: "🟠 현재: 다음 5루프는 “화면 수정”보다 “스크린샷 증거 확보”가 먼저입니다."
+    - text: "✅ 완료 기준: 실제 캡처 산출물·manifest·리뷰 리포트가 있어야 시각 QA가 가능합니다."
+    - text: "➡️ 다음: 지정 파일을 먼저 확인하고, Loop 1을 캡처 경로 구축/증거 수집으로 제한하겠습니다."
+  - button "앱 응답 수신함":
+    - generic: 앱 응답 수신함
+  - paragraph: 운영 문서상 최신 프론트 방향은 read-only Expo app이며, 테스트 통과가 acceptance가 아니라는 경계가 반복 확인됩니다. 이제 Task3834와 screenshot QA 관련 파일을 확인하겠습니다.
+  - button "앱 응답 수신함":
+    - generic: 앱 응답 수신함
+  - button "1m 2s 동안 생각함":
+    - text: 1m 2s 동안 생각함
+  - paragraph:
+    - text: 3줄 요약
+    - text: "🟠 현재: 다음 작업은"
+    - strong: 화면 수정이 아니라 실제 스크린샷 캡처 증거 확보
+    - text: 가 1순위입니다.
+    - text: "✅ 확인: Task3834의"
+    - code: qa:screenshot
+    - text: 은
+    - strong: 캡처가 아니라 target validation only
+    - text: 입니다.
+    - text: "➡️ Loop 1: Codex는 먼저 캡처 실행 경로와 artifact manifest를 만들고 실제 PNG를 확보해야 합니다."
+  - heading "1. Task Diagnosis" [level=2]
+  - paragraph:
+    - text: 현재 병목은 UI 구현이 아니라
+    - strong: 시각 증거 부재
+    - text: 입니다.
+  - list:
+    - paragraph: README는 프론트가 read-only이며 decision/reason/evidence/source freshness/blocker/provenance를 노출해야 하고, broker mutation이나 paper/live permission을 암시하면 안 된다고 합니다.
+    - paragraph: Read-model contract는 프론트가 read-only L7 query surface이며 trading authority, broker truth, strategy acceptance, paper/live/deployment/real-capital permission을 계산하면 안 된다고 명시합니다.
+    - paragraph: Task3834 report는 screenshot target selection만 runnable하게 만들었고, 실제 screenshot capture나 visual approval은 없다고 명시합니다.
+  - paragraph: "따라서 다음 5루프는:"
+  - button "복사":
+  - code:
+    - text: Capture Path
+    - text: → Screenshot Artifacts
+    - text: → Visual QA Review
+    - text: → Evidence-based P0 Repair
+    - text: → Recapture + Closeout
+  - paragraph: 순서가 맞습니다.
+  - separator
+  - heading "2. GitHub Files Inspected" [level=2]
+  - paragraph: "확인한 파일:"
+  - list:
+    - paragraph:
+      - code: README.md
+    - paragraph:
+      - code: AGENTS.md
+    - paragraph:
+      - code: docs/operating_system/project_operating_state.md
+    - paragraph:
+      - code: docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md
+    - paragraph:
+      - code: docs/frontend_app_ssot/11_IMPLEMENTATION_PRECONDITIONS.md
+    - paragraph:
+      - code: docs/frontend_app_ssot/22_SCREENSHOT_QA_BASELINE_TARGETS.md
+    - paragraph:
+      - code: docs/reports/task_3834_frontend_screenshot_qa_baseline/task_3834_frontend_screenshot_qa_baseline.md
+    - paragraph:
+      - code: apps/ios-trader-brain/package.json
+    - paragraph:
+      - code: apps/ios-trader-brain/src/qa/screenshot-targets.json
+    - paragraph:
+      - code: apps/ios-trader-brain/src/qa/screenshot-qa-validator.mjs
+  - paragraph: "핵심 확인:"
+  - list:
+    - paragraph:
+      - code: qa:screenshot
+      - text: 은
+      - code: node src/qa/screenshot-qa-validator.mjs
+      - text: 만 실행합니다.
+    - paragraph: validator 출력도 “targets validated; screenshot capture not run”입니다.
+    - paragraph:
+      - text: target manifest의
+      - code: captureStatus
+      - text: 도
+      - code: TARGETS_READY_CAPTURE_NOT_RUN
+      - text: 입니다.
+  - separator
+  - heading "3. Screenshot Evidence Status" [level=2]
+  - heading "Screenshots absent" [level=3]
+  - paragraph:
+    - text: 현재 GPT가 시각 피드백을 하려면 screenshot이 필요합니다.
+    - text: 지금은 실제 PNG 캡처 증거가 없습니다.
+  - paragraph: "반드시 캡처할 화면:"
+  - list:
+    - paragraph:
+      - code: /
+      - text: →
+      - code: home.png
+    - paragraph:
+      - code: /brain
+      - text: →
+      - code: brain.png
+    - paragraph:
+      - code: /portfolio
+      - text: →
+      - code: portfolio.png
+    - paragraph:
+      - code: /orders
+      - text: →
+      - code: orders.png
+    - paragraph:
+      - code: /system
+      - text: →
+      - code: system.png
+    - paragraph:
+      - code: /brain/candidate/fixture-candidate-review
+      - text: →
+      - code: candidate-detail.png
+    - paragraph:
+      - code: /portfolio/position/fixture-position-unknown
+      - text: →
+      - code: position-detail.png
+    - paragraph:
+      - code: /orders/fixture-order-blocked
+      - text: →
+      - code: order-detail.png
+    - paragraph:
+      - code: /brain/chain/fixture-chain
+      - text: →
+      - code: chain-detail.png
+  - paragraph: "필수 viewport:"
+  - list:
+    - paragraph:
+      - code: iphone-se-width
+      - text: ": 375 × 667"
+    - paragraph:
+      - code: iphone-15-width
+      - text: ": 393 × 852"
+  - paragraph: 이 두 preset은 screenshot target manifest에 이미 정의되어 있습니다.
+  - separator
+  - heading "4. Ranked 5-Loop Plan" [level=2]
+  - table:
+    - rowgroup:
+      - row "Rank Loop Goal Codex read files Allowed write scope Forbidden Validation Evidence":
+        - columnheader "Rank"
+        - columnheader "Loop"
+        - columnheader "Goal"
+        - columnheader "Codex read files"
+        - columnheader "Allowed write scope"
+        - columnheader "Forbidden"
+        - columnheader "Validation"
+        - columnheader "Evidence"
+    - rowgroup:
+      - row "1 Screenshot capture path 실제 캡처 실행 경로 구축 및 PNG 생성 package, targets, validator, Task3834 report src/qa/*capture*.mjs, task3835 report/artifacts only UI 수정, package install, fixture edit typecheck/lint/test/qa validators PNG + manifest":
+        - cell "1"
+        - cell "Screenshot capture path"
+        - cell "실제 캡처 실행 경로 구축 및 PNG 생성"
+        - cell "package, targets, validator, Task3834 report"
+        - cell "src/qa/*capture*.mjs, task3835 report/artifacts only":
+          - code: src/qa/*capture*.mjs
+          - text: ", task3835 report/artifacts only"
+        - cell "UI 수정, package install, fixture edit"
+        - cell "typecheck/lint/test/qa validators"
+        - cell "PNG + manifest"
+      - row "2 Screenshot artifact manifest 캡처 결과 manifest/checksum/route/device 매핑 targets, generated PNGs data/artifacts/task_3835..., report visual approval 주장 screenshot validator + diff check artifact_manifest.csv":
+        - cell "2"
+        - cell "Screenshot artifact manifest"
+        - cell "캡처 결과 manifest/checksum/route/device 매핑"
+        - cell "targets, generated PNGs"
+        - cell "data/artifacts/task_3835..., report":
+          - code: data/artifacts/task_3835...
+          - text: ", report"
+        - cell "visual approval 주장"
+        - cell "screenshot validator + diff check"
+        - cell "artifact_manifest.csv"
+      - row "3 GPT visual QA review 실제 screenshots 기반 P0/P1 판정 PNGs, manifest, SSOT report only 코드 수정 report validation visual_qa_review.md":
+        - cell "3"
+        - cell "GPT visual QA review"
+        - cell "실제 screenshots 기반 P0/P1 판정"
+        - cell "PNGs, manifest, SSOT"
+        - cell "report only"
+        - cell "코드 수정"
+        - cell "report validation"
+        - cell "visual_qa_review.md"
+      - row "4 Bounded P0 scaffold repair 캡처 근거가 있는 P0만 수정 visual QA report + touched files 해당 screen/component 최소 파일 redesign, backend integration full frontend validation before/after notes":
+        - cell "4"
+        - cell "Bounded P0 scaffold repair"
+        - cell "캡처 근거가 있는 P0만 수정"
+        - cell "visual QA report + touched files"
+        - cell "해당 screen/component 최소 파일"
+        - cell "redesign, backend integration"
+        - cell "full frontend validation"
+        - cell "before/after notes"
+      - row "5 Recapture + closeout 수정 후 재캡처, residual blockers 기록 repair diff + targets artifacts/report/registry readiness claim full validation + recapture recapture PNGs + closeout":
+        - cell "5"
+        - cell "Recapture + closeout"
+        - cell "수정 후 재캡처, residual blockers 기록"
+        - cell "repair diff + targets"
+        - cell "artifacts/report/registry"
+        - cell "readiness claim"
+        - cell "full validation + recapture"
+        - cell "recapture PNGs + closeout"
+  - button "표 복사":
+  - separator
+  - heading "5. Loop 1 Codex Implementation Prompt" [level=2]
+  - button "복사":
+  - code:
+    - text: You are implementing frontend visual QA Loop 1/5 for minjo1009/Stock-Investment.
+    - text: "Goal:"
+    - text: Create and run the first actual screenshot capture evidence path for the scaffold-only Expo frontend.
+    - text: "Hard state:"
+    - text: "- Strategy: NOT_ACCEPTED"
+    - text: "- Deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+    - text: "- Real Capital: FORBIDDEN"
+    - text: "- Frontend remains read-only and NOT_AUTHORITY."
+    - text: "- No broker mutation, no DB/runtime/KIS/Alpaca/broker connection, no paper/live, no deployment, no real capital."
+    - text: "Read first:"
+    - text: 1. README.md
+    - text: 2. AGENTS.md
+    - text: 3. docs/operating_system/project_operating_state.md
+    - text: 4. docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md
+    - text: 5. docs/frontend_app_ssot/11_IMPLEMENTATION_PRECONDITIONS.md
+    - text: 6. docs/frontend_app_ssot/22_SCREENSHOT_QA_BASELINE_TARGETS.md
+    - text: 7. docs/reports/task_3834_frontend_screenshot_qa_baseline/task_3834_frontend_screenshot_qa_baseline.md
+    - text: 8. apps/ios-trader-brain/package.json
+    - text: 9. apps/ios-trader-brain/src/qa/screenshot-targets.json
+    - text: 10. apps/ios-trader-brain/src/qa/screenshot-qa-validator.mjs
+    - text: "Current fact:"
+    - text: npm run qa:screenshot validates targets only. It does not capture screenshots.
+    - text: Do not claim visual approval until PNG artifacts exist.
+    - text: "Implementation scope:"
+    - text: 1. Add the smallest possible web-preflight screenshot capture runner.
+    - text: 2. Prefer Playwright only if already available. Do not install packages unless explicitly approved.
+    - text: "3. If no browser automation dependency exists, create a capture instructions/report script that:"
+    - text: "- validates target manifest"
+    - text: "- emits exact route/device capture plan"
+    - text: "- writes a capture TODO manifest"
+    - text: "- exits non-zero or clearly reports CAPTURE_NOT_RUN if actual PNGs are absent"
+    - text: "4. If actual local browser capture is possible without dependency/config changes, capture all target routes for:"
+    - text: "- 375x667"
+    - text: "- 393x852"
+    - text: "5. Write artifacts under a successor task directory, not by mutating Task3834 evidence:"
+    - text: data/artifacts/task_3835_frontend_actual_screenshot_capture/
+    - text: "6. Required images:"
+    - text: "- home.png"
+    - text: "- brain.png"
+    - text: "- portfolio.png"
+    - text: "- orders.png"
+    - text: "- system.png"
+    - text: "- candidate-detail.png"
+    - text: "- position-detail.png"
+    - text: "- order-detail.png"
+    - text: "- chain-detail.png"
+    - text: for each viewport, or viewport-suffixed filenames.
+    - text: "7. Add screenshot artifact manifest:"
+    - text: "- routeId"
+    - text: "- routePath"
+    - text: "- viewport"
+    - text: "- artifactPath"
+    - text: "- captureStatus"
+    - text: "- capturedAt if actually captured"
+    - text: "- authority = NOT_AUTHORITY"
+    - text: "8. Add task report:"
+    - text: docs/reports/task_3835_frontend_actual_screenshot_capture/task_3835_frontend_actual_screenshot_capture.md
+    - text: "Allowed writes:"
+    - text: "- apps/ios-trader-brain/src/qa/*screenshot*capture*.mjs"
+    - text: "- data/artifacts/task_3835_frontend_actual_screenshot_capture/*"
+    - text: "- docs/reports/task_3835_frontend_actual_screenshot_capture/*"
+    - text: "- task registry / artifact manifest / loop ledger only if required by project convention"
+    - text: "Forbidden:"
+    - text: "- no screen UI repair"
+    - text: "- no fixture JSON edit"
+    - text: "- no package/config/tooling change unless absolutely necessary and explicitly justified"
+    - text: "- no validator weakening"
+    - text: "- no DB/runtime/broker/KIS/Alpaca imports"
+    - text: "- no order submit/cancel/approve/reject handler"
+    - text: "- no paper/live/deployment/real-capital claim"
+    - text: "- do not stage unrelated dirty operational/paper changes"
+    - text: "Validation:"
+    - text: cd apps/ios-trader-brain && npm run validate:screenshot-qa
+    - text: cd apps/ios-trader-brain && npm run validate:routes
+    - text: cd apps/ios-trader-brain && npm run validate:screen-boundary
+    - text: cd apps/ios-trader-brain && npm run typecheck
+    - text: cd apps/ios-trader-brain && npm run lint
+    - text: cd apps/ios-trader-brain && npm test
+    - text: cd apps/ios-trader-brain && npm run validate:safety
+    - text: cd apps/ios-trader-brain && npm run validate:fixtures
+    - text: python scripts/task_registry_validate.py
+    - text: git diff --check
+    - text: git diff --cached --check
+    - text: "Report must say:"
+    - text: "- Whether actual PNG screenshots were captured."
+    - text: "- If screenshots were not captured, exact blocker and next command."
+    - text: "- Screenshot artifacts are NOT_AUTHORITY."
+    - text: "- Visual approval has not occurred unless explicitly reviewed from PNG evidence."
+    - text: "- Product readiness remains blocked."
+    - text: "- Residual blockers remain."
+  - separator
+  - heading "6. Validation Checklist" [level=2]
+  - paragraph: "Loop 1 통과 조건:"
+  - list:
+    - paragraph:
+      - code: screenshot-targets.json
+      - text: target set 유지
+    - paragraph: 9개 route 모두 capture plan에 포함
+    - paragraph: 2개 viewport 포함
+    - paragraph: 실제 PNG가 있으면 artifact manifest에 경로 기록
+    - paragraph:
+      - text: PNG가 없으면
+      - code: CAPTURE_NOT_RUN
+      - text: 을 명확히 기록
+    - paragraph: Task3834를 readiness로 오해하지 않음
+    - paragraph: dirty operational/paper changes 미터치
+    - paragraph: no package/config/fixture/validator weakening
+  - separator
+  - heading "7. Safety Boundary Confirmation" [level=2]
+  - paragraph: "유지:"
+  - button "복사":
+  - code:
+    - text: Strategy = NOT_ACCEPTED
+    - text: Deployment = DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: Real Capital = FORBIDDEN
+    - text: Frontend = Read-only
+    - text: Fixtures/Screenshots = NOT_AUTHORITY
+  - paragraph: "금지:"
+  - button "복사":
+  - code:
+    - text: backend/source integration
+    - text: active DB access
+    - text: broker API
+    - text: KIS / Alpaca
+    - text: paper/live promotion
+    - text: order mutation
+    - text: deployment readiness
+    - text: real-capital permission
+    - text: visual approval without screenshot evidence
+  - paragraph:
+    - text: "결론:"
+    - strong: Loop 1은 UI 수정이 아니라 actual screenshot capture evidence loop
+    - text: 로 가야 합니다.
+  - button "출처":
+    - generic: 출처
+  - group "응답 작업":
+    - button "응답 복사":
+    - button "프로젝트 소스에 추가":
+    - button "모델 바꾸기":
+    - button "더 많은 액션":
+  - heading "나의 말:" [level=4]
+  - text: "You are the expert review panel for minjo1009/Stock-Investment frontend Task3836. Required expert roles: - Principal Expo/React Native Frontend Architect - Mobile UI QA Reviewer - Screenshot/Visual QA Engineer - Trading Governance Reviewer Original user goal: Run 5 GPT-Codex expert loops. GPT must read Git/repo context and screenshot evidence before planning and feedback. Repo context: - Task3834 installed screenshot target validation only. - Task3836 Loop 2 captured actual screenshot evidence under: -"
+  - code: data/artifacts/task_3836_frontend_actual_screenshot_capture/
+  - text: "-"
+  - code: data/artifacts/task_3836_frontend_actual_screenshot_capture/screenshot_capture_manifest.json
+  - text: "-"
+  - code: data/artifacts/task_3836_frontend_actual_screenshot_capture/contact_sheet_iphone15_width.png
+  - text: "- 18 PNG captures exist for 9 routes x 2 mobile viewport presets. - Screenshots are NOT_AUTHORITY and not visual approval. Codex visual observations from contact sheet: 1. Repeated right-edge clipped red outline status badges appear inside Governance/Scaffold Boundary rows across HOME, BRAIN, PORTFOLIO, ORDERS, SYSTEM and detail screens. 2. Long source/evidence path text appears cramped in the same rows. 3. Bottom tab labels look very small in contact sheet but require per-image confirmation before repair. Hard boundaries: - Strategy remains NOT_ACCEPTED. - Deployment remains DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY. - Real capital remains FORBIDDEN. - No DB/runtime/KIS/Alpaca/broker connection. - No broker mutation. - No order submit/cancel/approve/reject handler. - No paper/live/deployment/real-capital permission. - Frontend remains read-only and NOT_AUTHORITY. Review request: 1. Read the repo context and screenshot artifact paths. 2. Treat the screenshot evidence as actual visual evidence, not source authority. 3. Decide whether the clipped right-edge badges are P0/P1/P2. 4. Decide whether Codex should perform a bounded P0/P1 scaffold repair now in Loop 4. 5. If yes, provide the smallest patch scope and validation commands. 6. If no, recommend report-only closeout and next capture requirements. Output: 1. PASS / FAIL / BLOCKED 2. Screenshot evidence status 3. P0/P1/P2 findings 4. Files to patch 5. Patch prompt for Codex 6. Continue / Stop decision"
+  - button "더 보기":
+    - generic: 더 보기
+  - group "내 메시지 작업":
+    - button "메시지 복사":
+    - button "메시지 편집":
+  - heading "ChatGPT의 말:" [level=4]
+  - heading "1. PASS / FAIL / BLOCKED" [level=2]
+  - heading "PASS (Bounded P1 Repair Recommended)" [level=3]
+  - paragraph:
+    - text: 현재 상태는
+    - strong: BLOCKED가 아님
+    - text: .
+  - paragraph: "이유:"
+  - list:
+    - paragraph: 실제 스크린샷 증거 확보 완료
+    - paragraph: 18개 PNG 확보
+    - paragraph: Contact Sheet 확보
+    - paragraph: Screenshot Manifest 확보
+    - paragraph: 시각적 결함이 관찰됨
+    - paragraph: 결함은 구조적 안전성 문제는 아님
+    - paragraph: read-only 경계 유지 상태
+  - paragraph: "따라서:"
+  - button "복사":
+  - code:
+    - text: P0 = 아님
+    - text: P1 = 맞음
+    - text: Loop 4 Repair 진행 권장
+  - separator
+  - heading "2. Screenshot Evidence Status" [level=2]
+  - heading "상태" [level=3]
+  - button "복사":
+  - code: ACTUAL_SCREENSHOT_EVIDENCE_PRESENT
+  - paragraph: "확인된 증거:"
+  - button "복사":
+  - code:
+    - text: data/artifacts/task_3836_frontend_actual_screenshot_capture/
+    - text: 18 PNG
+    - text: screenshot_capture_manifest.json
+    - text: contact_sheet_iphone15_width.png
+  - paragraph: "현재는:"
+  - button "복사":
+  - code:
+    - text: Visual Evidence
+    - text: =
+    - text: 존재
+  - paragraph: 따라서 GPT는 이제 추측이 아니라
+  - button "복사":
+  - code: Evidence-Based UI Review
+  - paragraph: 가능.
+  - paragraph: "다만:"
+  - button "복사":
+  - code: NOT_AUTHORITY
+  - paragraph: 유지.
+  - separator
+  - heading "3. P0 / P1 / P2 Findings" [level=2]
+  - heading "Finding 1" [level=3]
+  - heading "Right-edge clipped red status badges" [level=4]
+  - paragraph: "관찰:"
+  - button "복사":
+  - code:
+    - text: Governance Boundary
+    - text: Scaffold Boundary
+    - text: NOT_AUTHORITY
+    - text: Hard State
+  - paragraph: 행에서
+  - button "복사":
+  - code: Badge
+  - paragraph: 우측 잘림.
+  - separator
+  - paragraph: "평가:"
+  - button "복사":
+  - code: P1
+  - paragraph: "이유:"
+  - list:
+    - paragraph: 화면 이해 가능
+    - paragraph: 앱 크래시 없음
+    - paragraph: 정보 존재
+    - paragraph: 하지만 상태 전달이 손상됨
+  - paragraph: 특히
+  - button "복사":
+  - code:
+    - text: NOT_ACCEPTED
+    - text: FORBIDDEN
+    - text: BLOCKED
+  - paragraph: 같은 상태는
+  - paragraph: 현재 앱의 핵심.
+  - separator
+  - heading "Finding 2" [level=3]
+  - heading "Long provenance/source text cramped" [level=4]
+  - paragraph: "관찰:"
+  - button "복사":
+  - code:
+    - text: source refs
+    - text: evidence refs
+    - text: authority paths
+  - paragraph: 좁은 폭에서 압축.
+  - separator
+  - paragraph: "평가:"
+  - button "복사":
+  - code: P1
+  - paragraph: "이유:"
+  - list:
+    - paragraph: 정보 읽기 어려움
+    - paragraph: 스크롤 없이 검증 어려움
+    - paragraph: 하지만 기능 손상 아님
+  - separator
+  - heading "Finding 3" [level=3]
+  - heading "Bottom tab labels appear small" [level=4]
+  - paragraph: "현재:"
+  - button "복사":
+  - code: Contact Sheet 기반 추정
+  - paragraph: 뿐.
+  - paragraph: 개별 PNG 확인 없음.
+  - separator
+  - paragraph: "평가:"
+  - button "복사":
+  - code: P2 (현재)
+  - paragraph: "이유:"
+  - button "복사":
+  - code: Evidence insufficient
+  - paragraph: 실제 원본 PNG 확인 전 수정 금지.
+  - separator
+  - heading "4. Files To Patch" [level=2]
+  - paragraph: "최소 범위:"
+  - button "복사":
+  - code:
+    - text: apps/ios-trader-brain/src/components/foundation/Badge.tsx
+    - text: apps/ios-trader-brain/src/components/layout/SectionContainer.tsx
+    - text: (필요한 경우만)
+    - text: apps/ios-trader-brain/src/components/generic/
+    - text: StatusRow.tsx
+    - text: (실제 badge row 위치 확인 시)
+  - separator
+  - paragraph: "수정 금지:"
+  - button "복사":
+  - code:
+    - text: routes
+    - text: fixtures
+    - text: read models
+    - text: validators
+    - text: package
+    - text: storybook config
+    - text: navigation
+  - separator
+  - heading "5. Patch Prompt For Codex" [level=2]
+  - button "복사":
+  - code:
+    - text: Task3836 Loop 4
+    - text: "Objective:"
+    - text: Fix screenshot-evidenced visual clipping only.
+    - text: "Evidence:"
+    - text: Actual screenshots exist.
+    - text: Contact sheet shows repeated right-edge clipping of red governance/status badges.
+    - text: "Hard boundaries:"
+    - text: "- No package changes"
+    - text: "- No fixture changes"
+    - text: "- No route changes"
+    - text: "- No navigation changes"
+    - text: "- No DB/runtime/broker integration"
+    - text: "- No business logic changes"
+    - text: "- No validator edits"
+    - text: "Scope:"
+    - text: P1 visual repair only.
+    - text: "Investigate:"
+    - text: "1."
+    - text: Badge component width behavior
+    - text: "2."
+    - text: Badge row flex layout
+    - text: "3."
+    - text: Status row wrapping
+    - text: "4."
+    - text: Governance boundary rows
+    - text: "Goal:"
+    - text: "Badges must never clip horizontally on:"
+    - text: 375 width
+    - text: 393 width
+    - text: "Required behavior:"
+    - text: "- wrap allowed"
+    - text: OR
+    - text: "- row stacking allowed"
+    - text: OR
+    - text: "- badge shrink strategy"
+    - text: "Forbidden:"
+    - text: "- hide labels"
+    - text: "- truncate critical governance states"
+    - text: "- remove NOT_AUTHORITY"
+    - text: "- remove BLOCKED/FORBIDDEN labels"
+    - text: "Do not touch:"
+    - text: "- read models"
+    - text: "- fixtures"
+    - text: "- routes"
+    - text: "- detail screens"
+    - text: "- validators"
+    - text: "- package.json"
+    - text: "Validation:"
+    - text: npm run typecheck
+    - text: npm run lint
+    - text: npm test
+    - text: npm run validate:safety
+    - text: npm run validate:fixtures
+    - text: npm run validate:routes
+    - text: npm run validate:screen-boundary
+    - text: npm run validate:screenshot-qa
+    - text: "After repair:"
+    - text: re-capture screenshots
+    - text: compare before/after
+    - text: report only visual differences
+    - text: "Do not claim:"
+    - text: "- product readiness"
+    - text: "- deployment readiness"
+    - text: "- acceptance"
+    - text: "- paper/live permission"
+    - text: "- real capital permission"
+  - separator
+  - heading "6. Continue / Stop Decision" [level=2]
+  - heading "CONTINUE" [level=3]
+  - paragraph: "추천 순서:"
+  - button "복사":
+  - code:
+    - text: Loop 4
+    - text: ↓
+    - text: Badge clipping repair
+    - text: ↓
+    - text: Re-capture screenshots
+    - text: ↓
+    - text: Visual Review Round 2
+    - text: ↓
+    - text: Bottom Tab Typography Review
+    - text: ↓
+    - text: Closeout
+  - paragraph: "현재 상태 판단:"
+  - table:
+    - rowgroup:
+      - row "항목 상태":
+        - columnheader "항목"
+        - columnheader "상태"
+    - rowgroup:
+      - row "Screenshot Evidence ✅":
+        - cell "Screenshot Evidence"
+        - cell "✅"
+      - row "Visual Review Evidence ✅":
+        - cell "Visual Review Evidence"
+        - cell "✅"
+      - row "P0 Issue ❌":
+        - cell "P0 Issue"
+        - cell "❌"
+      - row "P1 Issue ✅":
+        - cell "P1 Issue"
+        - cell "✅"
+      - row "Immediate Repair Justified ✅":
+        - cell "Immediate Repair Justified"
+        - cell "✅"
+      - row "Large Refactor Needed ❌":
+        - cell "Large Refactor Needed"
+        - cell "❌"
+  - button "표 복사":
+  - paragraph: "최종 결론:"
+  - button "복사":
+  - code:
+    - text: CONTINUE
+    - text: Bounded P1 Repair Only
+    - text: "Repair Scope:"
+    - text: Badge clipping + cramped governance rows
+    - text: Do NOT redesign screens.
+    - text: Do NOT touch architecture.
+    - text: Do NOT touch data flow.
+  - group "응답 작업":
+    - button "응답 복사":
+    - button "프로젝트 소스에 추가":
+    - button "모델 바꾸기":
+    - button "더 많은 액션":
+  - heading "나의 말:" [level=4]
+  - text: "You are the expert review panel for Task3836 Loop 4 after bounded P1 scaffold visual repair. Repo/screenshot evidence: - Before captures:"
+  - code: data/artifacts/task_3836_frontend_actual_screenshot_capture/
+  - text: "- Before contact sheet:"
+  - code: data/artifacts/task_3836_frontend_actual_screenshot_capture/contact_sheet_iphone15_width.png
+  - text: "- After2 captures:"
+  - code: data/artifacts/task_3836_frontend_actual_screenshot_capture/after2/
+  - text: "- After2 contact sheet:"
+  - code: data/artifacts/task_3836_frontend_actual_screenshot_capture/after2/contact_sheet_iphone15_width_after2.png
+  - text: "Codex changes: -"
+  - code: apps/ios-trader-brain/src/components/foundation/badge.tsx
+  - text: "- Added max-width/flex-shrink safety. -"
+  - code: apps/ios-trader-brain/src/components/generic/status-row.tsx
+  - text: "- Changed status header from horizontal space-between to vertical stack. - Added invisible break opportunities for long source/value tokens. Codex visual finding after repair: - The repeated right-edge clipped red status badges are no longer visible in the after2 contact sheet. - Status badges remain visible. - Long source refs wrap better but still consume vertical space. - This remains scaffold-only, NOT_AUTHORITY, read-only, not product approval. Validation already passed before after2 recapture: -"
+  - code: npm run typecheck
+  - text: "-"
+  - code: npm run lint
+  - text: "-"
+  - code: npm run validate:screen-boundary
+  - text: "Hard boundaries: - Strategy remains NOT_ACCEPTED. - Deployment remains DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY. - Real capital remains FORBIDDEN. - No DB/runtime/KIS/Alpaca/broker connection. - No broker mutation. - No order handler. - No paper/live/deployment/real-capital permission. Review request: 1. Judge whether the P1 repair is acceptable for scaffold-only visual QA closeout. 2. Identify any P0/P1 remaining issues visible from the described after2 evidence. 3. Decide whether Codex should continue patching UI in this task or stop at closeout. 4. Provide final validation/report requirements. Output: 1. PASS / FAIL / BLOCKED 2. Remaining P0/P1/P2 findings 3. Continue / Stop decision 4. Required closeout notes 5. Next loop recommendation"
+  - button "더 보기":
+    - generic: 더 보기
+  - group "내 메시지 작업":
+    - button "메시지 복사":
+    - button "메시지 편집":
+  - heading "ChatGPT의 말:" [level=4]
+  - paragraph:
+    - text: 3줄 요약
+    - text: "✅ 판정:"
+    - strong: PASS — scaffold-only visual QA closeout 가능
+    - text: "🟠 남은 이슈: 긴 source/ref 텍스트의 세로 공간 소모는"
+    - strong: P2
+    - text: ", 추가 패치 대상 아님"
+    - text: "⛔ 다음: 이 태스크에서는 UI 패치 중단, after2 증거 기반 closeout 작성"
+  - heading "1. PASS / FAIL / BLOCKED" [level=2]
+  - heading "PASS" [level=3]
+  - paragraph: P1 repair는 수용 가능합니다.
+  - paragraph: "근거:"
+  - list:
+    - paragraph: 반복되던 우측 clipped red badge가 after2 contact sheet에서 사라짐
+    - paragraph: 핵심 governance/status badge는 계속 visible
+    - paragraph:
+      - text: 수정 범위가
+      - code: Badge
+      - text: +
+      - code: StatusRow
+      - text: 로 제한됨
+    - paragraph: read-only / NOT_AUTHORITY / scaffold-only 경계 유지
+    - paragraph: DB/runtime/broker/order handler 변경 없음
+  - separator
+  - heading "2. Remaining P0/P1/P2 findings" [level=2]
+  - table:
+    - rowgroup:
+      - row "등급 판단 내용":
+        - columnheader "등급"
+        - columnheader "판단"
+        - columnheader "내용"
+    - rowgroup:
+      - row "P0 없음 화면 이해 불가, 안전 경계 훼손, mutation affordance 없음":
+        - cell "P0"
+        - cell "없음"
+        - cell "화면 이해 불가, 안전 경계 훼손, mutation affordance 없음"
+      - row "P1 없음 clipped critical badge 재현 없음":
+        - cell "P1"
+        - cell "없음"
+        - cell "clipped critical badge 재현 없음"
+      - row "P2 있음 긴 source/ref token이 줄바꿈되며 vertical space를 많이 사용":
+        - cell "P2"
+        - cell "있음"
+        - cell "긴 source/ref token이 줄바꿈되며 vertical space를 많이 사용"
+      - row "P2 보류 bottom tab label 크기는 개별 PNG 기반 확인 필요":
+        - cell "P2"
+        - cell "보류"
+        - cell "bottom tab label 크기는 개별 PNG 기반 확인 필요"
+  - button "표 복사":
+  - paragraph: P2는 현재 closeout blocker가 아닙니다.
+  - separator
+  - heading "3. Continue / Stop decision" [level=2]
+  - heading "STOP" [level=3]
+  - paragraph: 이 태스크에서 추가 UI 패치 금지.
+  - paragraph: "이유:"
+  - list:
+    - paragraph: 원래 P1 목표가 해결됨
+    - paragraph: 추가 수정은 density/design polish 범위로 확장됨
+    - paragraph: 긴 source/ref 개선은 별도 “정보 밀도/접힘/요약” 루프가 적절
+    - paragraph: 지금 더 만지면 scaffold boundary보다 redesign으로 흐를 위험이 큼
+  - separator
+  - heading "4. Required closeout notes" [level=2]
+  - paragraph: "Codex closeout report에 반드시 포함:"
+  - button "복사":
+  - code:
+    - text: Task3836 Loop 4 bounded P1 scaffold visual repair completed.
+    - text: "Before evidence:"
+    - text: data/artifacts/task_3836_frontend_actual_screenshot_capture/
+    - text: "After evidence:"
+    - text: data/artifacts/task_3836_frontend_actual_screenshot_capture/after2/
+    - text: "Finding:"
+    - text: Repeated right-edge clipped governance/status badges were visible before repair.
+    - text: "Repair:"
+    - text: Badge max-width/flex-shrink safety added.
+    - text: StatusRow header changed to vertical stack.
+    - text: Long token break opportunities added.
+    - text: "After2 result:"
+    - text: Repeated right-edge clipped red status badges are no longer visible in the contact sheet.
+    - text: Status badges remain visible.
+    - text: Long source/ref text wraps better but remains vertically dense.
+    - text: "Residual:"
+    - text: No P0/P1 visual blockers identified from after2 contact sheet.
+    - text: Remaining density concern is P2 and deferred.
+    - text: "Safety:"
+    - text: Screenshots are NOT_AUTHORITY.
+    - text: This is not product approval.
+    - text: Strategy remains NOT_ACCEPTED.
+    - text: Deployment remains DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY.
+    - text: Real capital remains FORBIDDEN.
+    - text: No DB/runtime/KIS/Alpaca/broker connection.
+    - text: No broker mutation.
+    - text: No order handler.
+    - text: No paper/live/deployment/real-capital permission.
+  - paragraph: "최종 validation 요구:"
+  - text: Bash
+  - button "복사":
+  - code:
+    - text: cd apps/ios-trader-brain && npm run typecheck
+    - text: cd apps/ios-trader-brain && npm run lint
+    - text: cd apps/ios-trader-brain && npm run validate:screen-boundary
+    - text: cd apps/ios-trader-brain && npm run validate:safety
+    - text: cd apps/ios-trader-brain && npm run validate:screenshot-qa
+    - text: cd apps/ios-trader-brain && npm test
+    - text: python scripts/task_registry_validate.py
+    - text: git diff --check
+    - text: git diff --cached --check
+  - separator
+  - heading "5. Next loop recommendation" [level=2]
+  - paragraph:
+    - text: 다음 루프는
+    - strong: report-only closeout + evidence ledger update
+    - text: 권장.
+  - paragraph: "그 다음 별도 루프에서만 진행:"
+  - button "복사":
+  - code:
+    - text: "P2 visual density review:"
+    - text: "- 원본 개별 PNG 기준 bottom tab label 크기 확인"
+    - text: "- source/ref path compact display 검토"
+    - text: "- 접힘/요약/monospace token wrapping 개선 검토"
+  - paragraph:
+    - text: "결론:"
+    - strong: Loop 4는 여기서 닫고, 추가 패치는 하지 않는 게 맞습니다.
+  - group "응답 작업":
+    - button "응답 복사":
+    - button "프로젝트 소스에 추가":
+    - button "모델 바꾸기":
+    - button "더 많은 액션":
+  - heading "나의 말:" [level=4]
+  - text: "You are the expert closeout reviewer for Task3836. Task summary: - User requested 5 GPT-Codex expert loops for frontend next work. - GPT Loop 1 selected screenshot capture as the evidence-first task. - Codex captured 18 before screenshots under"
+  - code: data/artifacts/task_3836_frontend_actual_screenshot_capture/
+  - text: . - GPT reviewed the capture evidence summary and classified right-edge clipped governance/status badges as P1. - Codex repaired only
+  - code: Badge
+  - text: and
+  - code: StatusRow
+  - text: . - Codex recaptured 18 final after2 screenshots under
+  - code: data/artifacts/task_3836_frontend_actual_screenshot_capture/after2/
+  - text: ". - GPT reviewed after2 and returned PASS, recommending no further UI patch in this task. - Codex wrote Task3836 closeout docs and artifact manifest. Changed code files: -"
+  - code: apps/ios-trader-brain/src/components/foundation/badge.tsx
+  - text: "-"
+  - code: apps/ios-trader-brain/src/components/generic/status-row.tsx
+  - text: "New evidence/report files: -"
+  - code: docs/reports/task_3836_frontend_screenshot_capture_loop/
+  - text: "-"
+  - code: data/artifacts/task_3836_frontend_actual_screenshot_capture/
+  - text: "Hard boundaries: - Strategy remains NOT_ACCEPTED. - Deployment remains DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY. - Real capital remains FORBIDDEN. - Frontend remains read-only and NOT_AUTHORITY. - No DB/runtime/KIS/Alpaca/broker connection. - No broker mutation. - No order handler. - No paper/live/deployment/real-capital permission. Review request: 1. Decide whether Task3836 should stop now. 2. List required validation before commit. 3. List any remaining blocker. 4. State the next recommended frontend task after this closeout. Output: 1. PASS / FAIL / BLOCKED 2. Stop / Continue 3. Required validation 4. Residual risks 5. Next task"
+  - button "더 보기":
+    - generic: 더 보기
+  - group "내 메시지 작업":
+    - button "메시지 복사":
+    - button "메시지 편집":
+  - heading "ChatGPT의 말:" [level=4]
+  - heading "1. PASS / FAIL / BLOCKED" [level=2]
+  - heading "PASS" [level=3]
+  - paragraph: Task3836은 종료 가능합니다.
+  - paragraph: "판단 근거:"
+  - list:
+    - paragraph:
+      - text: Loop 1 목표였던
+      - strong: 실제 screenshot evidence 확보
+      - text: 완료
+    - paragraph: Before 18장 확보
+    - paragraph: After2 18장 확보
+    - paragraph: Screenshot manifest 존재
+    - paragraph: Contact sheet 존재
+    - paragraph: GPT visual review 수행
+    - paragraph: P1로 분류된 badge clipping 수정 완료
+    - paragraph: After2에서 해당 문제 재현되지 않음
+    - paragraph:
+      - text: 수정 범위가
+      - code: badge.tsx
+      - text: ","
+      - code: status-row.tsx
+      - text: 로 제한됨
+    - paragraph: 구조/데이터/권한 모델 변경 없음
+  - paragraph: "현재 상태:"
+  - button "복사":
+  - code:
+    - text: Task3836
+    - text: = Screenshot Evidence Loop
+    - text: Status
+    - text: = PASS
+    - text: Closeout
+    - text: = Allowed
+  - separator
+  - heading "2. Stop / Continue" [level=2]
+  - heading "STOP" [level=3]
+  - paragraph: "권장 결정:"
+  - button "복사":
+  - code: STOP
+  - paragraph: "이유:"
+  - paragraph: 현재 남은 사항은
+  - button "복사":
+  - code:
+    - text: source/ref density
+    - text: bottom tab typography
+  - paragraph: 수준의 P2 후보.
+  - paragraph: Task3836의 목적은
+  - button "복사":
+  - code:
+    - text: Evidence Capture
+    - text: ↓
+    - text: Visual Review
+    - text: ↓
+    - text: P1 Repair
+    - text: ↓
+    - text: Recapture
+  - paragraph: 였음.
+  - paragraph: 이미 완료됨.
+  - paragraph: "추가 수정은:"
+  - button "복사":
+  - code: New Task
+  - paragraph: 로 분리하는 것이 맞음.
+  - separator
+  - heading "3. Required Validation" [level=2]
+  - paragraph: "커밋 전 필수:"
+  - text: Bash
+  - button "복사":
+  - code:
+    - text: cd apps/ios-trader-brain && npm run typecheck
+    - text: cd apps/ios-trader-brain && npm run lint
+    - text: cd apps/ios-trader-brain && npm test
+    - text: cd apps/ios-trader-brain && npm run validate:safety
+    - text: cd apps/ios-trader-brain && npm run validate:fixtures
+    - text: cd apps/ios-trader-brain && npm run validate:routes
+    - text: cd apps/ios-trader-brain && npm run validate:screen-boundary
+    - text: cd apps/ios-trader-brain && npm run validate:screenshot-qa
+    - text: python scripts/task_registry_validate.py
+    - text: git diff --check
+    - text: git diff --cached --check
+  - paragraph: "추가 확인:"
+  - button "복사":
+  - code:
+    - text: after2 screenshots exist
+    - text: manifest exists
+    - text: closeout report exists
+    - text: artifact manifest exists
+    - text: only intended frontend files changed
+    - text: no operational/paper files staged
+  - separator
+  - heading "4. Residual Risks" [level=2]
+  - paragraph: "현재 남은 위험요소:"
+  - heading "P0" [level=3]
+  - button "복사":
+  - code: 없음
+  - separator
+  - heading "P1" [level=3]
+  - button "복사":
+  - code: 없음
+  - separator
+  - heading "P2" [level=3]
+  - heading "Density" [level=4]
+  - button "복사":
+  - code:
+    - text: Long source refs
+    - text: consume vertical space
+  - paragraph: 현재 허용 가능.
+  - separator
+  - heading "Typography" [level=4]
+  - button "복사":
+  - code: Bottom tab label size
+  - paragraph: Contact Sheet 기준 추정만 존재.
+  - paragraph: 원본 PNG 기준 검토 필요.
+  - separator
+  - heading "Visual Review Coverage" [level=4]
+  - paragraph: "현재:"
+  - button "복사":
+  - code: Contact Sheet Review
+  - paragraph: 위주.
+  - paragraph: "향후:"
+  - button "복사":
+  - code: Per-screen review
+  - paragraph: 하면 더 좋음.
+  - separator
+  - heading "Governance Risk" [level=3]
+  - paragraph: 없음.
+  - paragraph: "유지 상태:"
+  - button "복사":
+  - code:
+    - text: NOT_ACCEPTED
+    - text: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+    - text: FORBIDDEN
+  - paragraph: 변화 없음.
+  - separator
+  - heading "5. Next Task" [level=2]
+  - heading "추천" [level=3]
+  - button "복사":
+  - code:
+    - text: Task3837
+    - text: Frontend Screenshot Visual Density Review
+  - paragraph: "범위:"
+  - button "복사":
+  - code:
+    - text: "1."
+    - text: Bottom tab typography review
+    - text: "2."
+    - text: Source/ref compact rendering review
+    - text: "3."
+    - text: Information density audit
+    - text: "4."
+    - text: Per-screen PNG review
+    - text: (Home
+    - text: Brain
+    - text: Portfolio
+    - text: Orders
+    - text: System
+    - text: Candidate
+    - text: Position
+    - text: Order
+    - text: Chain)
+    - text: "5."
+    - text: P2-only polish backlog
+  - heading "하지 말 것" [level=3]
+  - button "복사":
+  - code:
+    - text: Backend integration
+    - text: DB integration
+    - text: Runtime API
+    - text: Broker connection
+    - text: KIS
+    - text: Alpaca
+    - text: Paper promotion
+    - text: Live promotion
+    - text: Deployment work
+    - text: Real-capital work
+  - heading "다음 프론트 우선순위" [level=3]
+  - button "복사":
+  - code:
+    - text: Task3836
+    - text: Closeout
+    - text: ↓
+    - text: Task3837
+    - text: Visual Density Audit
+    - text: ↓
+    - text: Task3838
+    - text: P2 Polish (if evidence supports)
+    - text: ↓
+    - text: Future Screenshot Recapture
+    - text: ↓
+    - text: Only then
+    - text: consider broader frontend refinement
+  - paragraph: "최종 결론:"
+  - button "복사":
+  - code:
+    - text: PASS
+    - text: STOP
+    - text: Task3836 종료 가능
+    - text: 남은 이슈는 P2 수준
+    - text: 다음 작업은
+    - text: Visual Density Review 전용 태스크로 분리 권장
+  - group "응답 작업":
+    - button "응답 복사":
+    - button "프로젝트 소스에 추가":
+    - button "모델 바꾸기":
+    - button "더 많은 액션":
+  - button:
+  - button "파일 등 추가":
+  - textbox "ChatGPT와 채팅" [active]:
+    - paragraph: 무엇이든 물어보세요
+  - button "받아쓰기 시작":
+  - tooltip "Voice 사용":
+    - generic: Voice 사용
+  - button "Voice 시작":
+  - button
+  - button
+  - generic: ChatGPT는 실수를 할 수 있습니다. 중요한 정보는 재차 확인하세요.
+- alert
+- status

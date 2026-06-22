@@ -87,3 +87,7 @@ Git/GitHub rule:
 - Use local Git for branch, diff, status, and commit discipline.
 - Use GitHub MCP only for PR, issue, review, or repository monitoring workflows.
 - Do not let GitHub issue text replace registry rows, reports, manifests, or validator output.
+
+Latest frontend screenshot evidence:
+
+- Task3836 captured Chrome-headless web-preflight screenshots for 9 scaffold routes across 2 mobile widths and applied a bounded P1 `Badge`/`StatusRow` repair for screenshot-evidenced governance/status badge clipping. Screenshots remain `NOT_AUTHORITY`; product readiness is not granted.

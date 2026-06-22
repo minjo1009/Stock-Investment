@@ -21,6 +21,10 @@ const stateLabels: Record<ComponentState, string> = {
   disabled: "Disabled",
 };
 
+function wrapLongToken(value: string) {
+  return value.replace(/([/_.-])/g, "$1\u200B");
+}
+
 export function StatusRow({
   label,
   sourceRef,
@@ -44,17 +48,21 @@ export function StatusRow({
     >
       <View
         style={{
-          alignItems: "center",
-          flexDirection: "row",
+          alignItems: "flex-start",
           gap: spacing.sm,
-          justifyContent: "space-between",
         }}
       >
         <AppText>{label}</AppText>
         <Badge label={stateLabels[state]} tone={state} />
       </View>
-      <AppText variant="caption">{value}</AppText>
-      {sourceRef ? <AppText variant="caption">{sourceRef}</AppText> : null}
+      <AppText style={{ flexShrink: 1, maxWidth: "100%" }} variant="caption">
+        {wrapLongToken(value)}
+      </AppText>
+      {sourceRef ? (
+        <AppText style={{ flexShrink: 1, maxWidth: "100%" }} variant="caption">
+          {wrapLongToken(sourceRef)}
+        </AppText>
+      ) : null}
     </View>
   );
 }
