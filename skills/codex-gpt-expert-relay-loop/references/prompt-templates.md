@@ -7,6 +7,9 @@ Use these templates with the `codex-gpt-expert-relay-loop` skill.
 - "Use GPT" means one consult or review pass.
 - "Run N loops", "repeat", or "GPT-Codex ping-pong" means autonomous loop mode.
 - N loops means N captured GPT-Codex interaction cycles, not N validators, gates, files, commits, or internal reasoning passes.
+- Project, code, docs, task planning, implementation, validation, and review work defaults to Agent Mode with GitHub repo context.
+- Use Agent Mode + Deep Research when repo context and current external facts are both required.
+- Use Normal GPT only when repo context is not needed.
 - If Chrome automation is blocked, mark the loop `BLOCKED_AUTOMATION_NO_GPT_CAPTURE` and do not claim GPT reviewed the work.
 
 ## Loop Ledger
@@ -32,12 +35,16 @@ Task type:
 [INSERT TASK TYPE]
 
 Required GPT mode:
-[Normal GPT / Agent Mode / Deep Research / Agent Mode + Deep Research]
+[Agent Mode / Agent Mode + Deep Research / Deep Research / Normal GPT]
 
 GitHub context:
 - Use the Chrome GPT project for coding/investing work.
 - Enable GitHub.
 - Enable minjo1009/Stock-Investment.
+- Inspect the repository before answering Codex for any project, code, docs,
+  planning, validation, review, or implementation request.
+- Base internal project-state claims on repo files, SSOT docs, current code,
+  tests, and task reports visible through GitHub.
 
 Project hard state:
 - Strategy: NOT_ACCEPTED
@@ -75,9 +82,10 @@ Output format:
 2. Required Expert Lens
 3. Required Context
 4. Source Requirements
-5. Constraints / Forbidden Changes
-6. Codex Final Prompt
-7. Validation Checklist
+5. GitHub Files Inspected
+6. Constraints / Forbidden Changes
+7. Codex Final Prompt
+8. Validation Checklist
 ```
 
 ## Post-Implementation Chrome GPT Review Prompt

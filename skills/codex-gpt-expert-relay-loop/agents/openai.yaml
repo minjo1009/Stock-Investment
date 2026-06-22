@@ -1,4 +1,4 @@
 interface:
   display_name: "Codex GPT Expert Relay"
-  short_description: "Route GPT consults and loops."
-  default_prompt: "Use $codex-gpt-expert-relay-loop to classify this task, use one GPT consult by default, and run autonomous GPT-Codex loops only when I explicitly request loops."
+  short_description: "Route GitHub-backed GPT consults."
+  default_prompt: "Use $codex-gpt-expert-relay-loop to classify this task. For project work, use GPT Agent Mode with GitHub enabled for minjo1009/Stock-Investment by default. Add Deep Research only when current external facts are needed, and run loops only when I explicitly request loops."

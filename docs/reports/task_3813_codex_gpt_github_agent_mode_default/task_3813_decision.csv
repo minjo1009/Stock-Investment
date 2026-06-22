@@ -1,0 +1,2 @@
+task_id,decision,status,notes
+Task3813,codex_gpt_project_work_defaults_to_github_agent_mode,NOT_ACCEPTED,"Project code docs planning implementation validation and review GPT consults now default to Agent Mode with GitHub enabled for minjo1009/Stock-Investment; Agent Mode plus Deep Research is used when current external facts are also required; no strategy deployment broker paper live or real-capital status changed."

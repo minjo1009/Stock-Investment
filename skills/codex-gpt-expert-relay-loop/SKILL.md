@@ -1,6 +1,6 @@
 ---
 name: codex-gpt-expert-relay-loop
-description: Standing expert relay workflow for the Stock-Investment project. Use when a non-trivial user goal should be classified before implementation, routed to the right Chrome GPT expert role and mode, and optionally reviewed by GPT. The phrase "use GPT skill" or "use GPT" does not start a loop. Start an autonomous Codex-Chrome GPT loop only when the user explicitly requests N loops, repeated loops, autonomous iteration, or GPT-Codex back-and-forth. A requested N-loop means N captured GPT-Codex interaction cycles, not N checklist items, validators, files, or internal reasoning passes. Fall back to a user-sendable prompt only when automation is unavailable or blocked. Covers UI/UX, frontend, backend/DB, quant/backtest, portfolio/risk/execution, company research, macro, political/geopolitical, semiconductor/AI infrastructure, power/energy, and mixed tasks.
+description: Standing expert relay workflow for the Stock-Investment project. Use when a non-trivial goal should be classified before implementation, routed to the right Chrome GPT expert role and mode, and optionally reviewed by GPT. For project, code, docs, task planning, implementation, validation, or review work, GPT defaults to Agent Mode with GitHub enabled for minjo1009/Stock-Investment so GPT reads repo context before answering Codex. Add Deep Research only when current external facts are needed. "Use GPT skill" or "use GPT" does not start a loop. Start autonomous Codex-Chrome GPT loops only when the user explicitly requests N loops, repeated loops, autonomous iteration, or GPT-Codex back-and-forth. N-loop means N captured GPT-Codex interaction cycles, not N checklist items, validators, files, or internal reasoning passes. Fall back to a user-sendable prompt only when automation is unavailable or blocked.
 ---
 
 # Codex GPT Expert Relay Loop
@@ -45,6 +45,19 @@ choose the relay mode:
 - `autonomous_chrome_relay`: use only when the user explicitly asks for N loops, repeated loops, autonomous ping-pong, GPT-Codex back-and-forth, or equivalent wording.
 - `manual_user_relay`: use only when Chrome/browser automation is unavailable, login/captcha/user-session state blocks automation, a tool times out repeatedly, or the user explicitly wants to carry prompts manually.
 - `direct_codex`: use only for trivial tasks, urgent best effort, or explicit user override to skip GPT.
+
+For project, code, docs, task planning, implementation, validation, review, or
+GitHub-related work, the default GPT mode is `Agent Mode` with GitHub enabled
+for `minjo1009/Stock-Investment`. The prompt must tell GPT to inspect repo
+context before answering Codex.
+
+Use `Agent Mode + Deep Research` when the task needs both repo inspection and
+current external facts, such as latest library compatibility, official docs,
+company filings, news, macro/political updates, or industry research. Use
+`Deep Research` without Agent Mode only when the task is external-research-only
+and does not require repo state. Use `Normal GPT` only for pure language,
+summarization, prompt wording, or brainstorming tasks that do not need repo
+state.
 
 Do not infer loop permission from these phrases by themselves:
 
@@ -146,10 +159,11 @@ repeat instruction exists.
 Required behavior:
 
 1. Classify the task and choose expert roles/mode.
-2. Send one prompt to Chrome GPT when tools are available.
-3. Capture the response or mark `BLOCKED_AUTOMATION_NO_GPT_CAPTURE`.
-4. Implement only the bounded scope supported by repo evidence.
-5. Report the consult artifact and validation.
+2. For project work, default to Agent Mode with GitHub repo context.
+3. Send one prompt to Chrome GPT when tools are available.
+4. Capture the response or mark `BLOCKED_AUTOMATION_NO_GPT_CAPTURE`.
+5. Implement only the bounded scope supported by repo evidence.
+6. Report the consult artifact and validation.
 
 Do not continue into loop 2 without an explicit user loop request.
 
@@ -189,10 +203,10 @@ Choose expert roles from the task type:
 
 Choose GPT mode:
 
-- `Normal GPT`: simple prompt writing, small patch planning, already-known context.
-- `Agent Mode`: GitHub repo context, file inspection, implementation review, SSOT comparison.
-- `Deep Research`: current external facts, official docs, company IR/SEC/transcripts, latest library compatibility, macro/political/industry research.
-- `Agent Mode + Deep Research`: both repo inspection and current external research.
+- `Agent Mode`: default for project, code, docs, task planning, implementation, validation, review, and SSOT comparison because GPT must read `minjo1009/Stock-Investment` through GitHub before answering Codex.
+- `Agent Mode + Deep Research`: use when repo inspection and current external research are both required.
+- `Deep Research`: use only for external-research-only tasks that do not require repo state.
+- `Normal GPT`: use only for pure language, summary, prompt wording, or brainstorming tasks that do not require repo state.
 
 ## Source Priority
 

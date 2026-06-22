@@ -1,0 +1,7 @@
+artifact,purpose,status
+skills/codex-gpt-expert-relay-loop/SKILL.md,Skill default routing and mode contract,updated
+skills/codex-gpt-expert-relay-loop/references/prompt-templates.md,Chrome GPT prompt contract,updated
+skills/codex-gpt-expert-relay-loop/agents/openai.yaml,UI metadata default prompt,updated
+docs/reports/task_3813_codex_gpt_github_agent_mode_default/task_3813_codex_gpt_github_agent_mode_default.md,Task report,created
+docs/reports/task_3813_codex_gpt_github_agent_mode_default/task_3813_decision.csv,Decision record,created
+docs/reports/task_3813_codex_gpt_github_agent_mode_default/artifact_manifest.csv,Artifact manifest,created
