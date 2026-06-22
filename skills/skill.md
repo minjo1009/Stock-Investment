@@ -54,15 +54,14 @@ Chat memory is not higher authority than repository artifacts.
 - Strategy acceptance: `NOT_ACCEPTED`
 - Deployment readiness: `DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY`
 - Real capital: `FORBIDDEN`
-- GPT/Chrome: review-only
+- GPT relay: `CODEX_GPT_EXPERT_RELAY_LOOP_ACTIVE`
 - Tests: never change acceptance status by themselves
 
 ## Core Principles
 
 - Prefer canonical maps, artifact boundaries, and validation over new features.
 - Keep raw data, generated panels, runtime DBs, and broker archives separate from code.
-- GPT/Chrome is a reviewer or ideation partner, not source-of-truth.
-- Strategy acceptance, deployment readiness, broker truth, replay validity, source readiness, and blocker status do not change from GPT output alone.
+- Strategy acceptance, deployment readiness, broker truth, replay validity, source readiness, and blocker status do not change from external-model output alone.
 - Missing raw sources are reported, not approximated.
 - Outcome, PnL, and labels are evaluation-only and must not enter assignment logic.
 
@@ -159,7 +158,7 @@ Rules:
 - A worker edits only its write scope.
 - An explorer is read-only.
 - Two workers must not share a write scope in parallel.
-- GPT/Chrome packets are review-only.
+- Legacy GPT/Chrome packets are historical artifacts only.
 
 Subagent handoff must include:
 
@@ -170,19 +169,16 @@ Subagent handoff must include:
 - authority lane
 - next blocker
 
-## GPT/Chrome Rule
+## Codex-GPT Expert Relay Rule
 
-Use `skills/gpt-chrome-review-subagent/SKILL.md` only for bounded review.
+Use `skills/codex-gpt-expert-relay-loop/SKILL.md` for non-trivial tasks that
+benefit from expert prompt design or review before implementation.
 
-GPT may:
+The previous GPT/Chrome review skill has been deleted. Do not route new work
+through `skills/gpt-chrome-review-subagent/SKILL.md` or its packet generator.
 
-- critique strategy logic
-- find missing evidence
-- suggest better decomposition
-- improve wording
-- red-team project structure
-
-GPT may not:
+Relay output and historical GPT/Chrome notes remain review-only evidence. They
+may not:
 
 - invent facts, prices, dates, filings, fills, or labels
 - approve strategy

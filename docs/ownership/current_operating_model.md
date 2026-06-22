@@ -1,6 +1,6 @@
 # Current Operating Model
 
-Last updated: 2026-06-07
+Last updated: 2026-06-22
 
 ## Decision
 
@@ -16,7 +16,8 @@ Current standing source:
 | Deployment acceptance contract | `docs/acceptance/deployment_acceptance_contract.md` |
 | Paper week diagnosis | `docs/reports/task_598_paper_week_feedback_operating_plan/` |
 | Three-day feedback remediation plan | `docs/reports/task_604_three_day_feedback_remediation_plan/` |
-| GPT/Chrome review subagent | `docs/contracts/gpt_chrome_review_subagent_contract.md` and `skills/gpt-chrome-review-subagent/SKILL.md` |
+| Codex-GPT expert relay | `skills/codex-gpt-expert-relay-loop/SKILL.md` |
+| Legacy GPT/Chrome review artifacts | Task605/Task606 historical artifacts only; old active skill deleted by Task3807 |
 | Immediate remediation board | `docs/reports/task_597_frontend_backend_paper_ops_triage/owner_remediation_plan.csv` |
 | Prior integrated development plan | `docs/reports/task_595_feedback_integrated_development_plan/` |
 | Named lead roster | `docs/ownership/team_charter.md` |
@@ -66,7 +67,7 @@ Task599 is the current strategy acceptance program. Task598 remains the current 
 - Every non-trivial work item must close with `docs/operating_system/work_closeout_protocol.md`.
 - Every readiness change must update `docs/ownership/readiness_registry.yaml`.
 - New alpha experiments are forbidden until P0 blockers pass.
-- GPT/Chrome output is review or ideation only; it cannot change strategy acceptance, deployment readiness, broker truth, replay match, source readiness, or blocker status without repo-native artifacts and validation.
+- Codex-GPT relay output and legacy GPT/Chrome output are review or ideation only; they cannot change strategy acceptance, deployment readiness, broker truth, replay match, source readiness, or blocker status without repo-native artifacts and validation.
 
 ## Today-Executable Contract Status
 
@@ -78,7 +79,8 @@ Task599 is the current strategy acceptance program. Task598 remains the current 
 | T600-6 | Broker Truth Closed-Trade Capture | `FAIL_BROKER_TRUTH_SELL_SOURCE_MISSING` | `docs/reports/task_600_6_broker_truth_closed_trade_capture/broker_truth_closed_trade_report.md` | Current DB has 23 runtime SELL trades, 0 accepted broker-truth SELL fills, 46 rejected synthetic SELL source rows, and 48 accepted BUY order-status source rows; capture actual KIS SELL status/fill evidence next |
 | T601-4 | Concentration Stability | `CONCENTRATION_STABILITY_PASS_TOP3_0_75` | `docs/reports/task_601_4_concentration_stability/concentration_stability_report.md` | Keep sector concentration source-blocked until real sector evidence exists |
 | T603-1 | Registry Consumption | `REGISTRY_PAYLOAD_IMPLEMENTED` | `docs/reports/task_603_1_registry_backed_readiness_consumption/` | Keep catalog/frontend data reading canonical readiness payload |
-| Task606 | GPT/Chrome Review Subagent | `REVIEW_LAYER_IMPLEMENTED_NOT_SOURCE_OF_TRUTH` | `docs/reports/task_606_gpt_chrome_review_subagent_implementation/` | Use packet-based GPT/Chrome review for strategy, backtest, frontend, Slack, chart, data, execution, and governance findings |
+| Task606 | GPT/Chrome Review Subagent | `RETIRED_BY_TASK3807_SKILL_DELETED` | `docs/reports/task_606_gpt_chrome_review_subagent_implementation/` | Do not use the deleted packet-based GPT/Chrome skill; preserve historical notes as review-only artifacts |
+| Task3808 | Codex-GPT Expert Relay Skill | `ACTIVE_RELAY_SKILL_INSTALLED` | `docs/reports/task_3808_codex_gpt_expert_relay_skill/` | Use the new relay skill for non-trivial task classification, Chrome GPT prompt routing, implementation reports, and review prompts |
 | Task607 | GPT Strategy Backtest Firm-Grade Review | `BACKLOG_DEFINED_NOT_ACCEPTED` | `docs/reports/task_607_gpt_strategy_backtest_firm_grade_review/` | Execute P0 backlog in order: broker-truth SELL, exact replay 99%, exact-id review packet coverage |
 | Task608 | Strategy Backtest Firm-Grade Review | `RESEARCH_CANDIDATE_NOT_FIRM_GRADE` | `docs/reports/task_608_strategy_backtest_firm_grade_review/task_608_strategy_backtest_firm_grade_review.md` | Task505 rerun shows +722.99% diagnostic PnL, but walk-forward avg falls to 9.32%, OOS degradation is 68.7%, concentration risk remains 1, and next work is theme/symbol dependency plus parameter-neighborhood stability |
 | Task608ABC | Dependency And Parameter Stability Audit | `PASS_DEPENDENCY_STABILITY_DIAGNOSTIC` | `docs/reports/task_608abc_dependency_stability/task_608abc_dependency_stability.md` | Theme removal, top-symbol removal, and parameter-neighborhood OOS tests all pass diagnostic criteria; next work is failure-regime map, entry-reduce attribution, and ensemble validation |

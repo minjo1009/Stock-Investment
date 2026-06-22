@@ -1,0 +1,6 @@
+artifact_type,path,row_count,file_size_bytes,source,validation_command,notes
+deleted_skill,skills/gpt-chrome-review-subagent,not-applicable,not-applicable,Task3807,python scripts/task_registry_validate.py,Repo GPT Chrome review skill deleted
+deleted_personal_skill,C:/Users/minjo/.codex/skills/haeseoki-gpt-narrative-desk,not-applicable,not-applicable,Task3807,python scripts/task_registry_validate.py,Personal GPT narrative desk skill deleted
+report,docs/reports/task_3807_gpt_chrome_skill_retirement/task_3807_gpt_chrome_skill_retirement.md,not-applicable,not-recorded,Task3807,python scripts/task_registry_validate.py,Closeout report
+decision_csv,docs/reports/task_3807_gpt_chrome_skill_retirement/task_3807_decision.csv,1,not-recorded,Task3807,python scripts/task_registry_validate.py,Decision row
+manifest,docs/reports/task_3807_gpt_chrome_skill_retirement/artifact_manifest.csv,5,not-recorded,Task3807,python scripts/task_registry_validate.py,Artifact manifest

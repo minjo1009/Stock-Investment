@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex GPT Expert Relay"
+  short_description: "Route tasks through expert GPT prompts."
+  default_prompt: "Use $codex-gpt-expert-relay-loop to classify this project task, choose the Chrome GPT expert mode, and produce the relay prompt before implementation."

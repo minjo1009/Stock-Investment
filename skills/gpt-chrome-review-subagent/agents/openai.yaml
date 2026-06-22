@@ -1,4 +1,0 @@
-interface:
-  display_name: "GPT Chrome Review Subagent"
-  short_description: "Governed GPT/Chrome review packets"
-  default_prompt: "Use the GPT Chrome Review Subagent skill to create a bounded review packet, route GPT/Chrome feedback, preserve repo-native source-of-truth, and apply docs/architecture/test_validation_canonicalization_map.md before making validation claims."

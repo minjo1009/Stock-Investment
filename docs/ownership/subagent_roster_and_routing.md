@@ -36,7 +36,8 @@ Use `docs/ownership/subagent_packet_standard.md` as the exact packet standard.
 | Work Type | Owner Team | Reviewer Team | Subagent Mode | Primary Skill/Doc |
 | --- | --- | --- | --- | --- |
 | Project governance, registry, artifact policy | Research Governance | Relevant owner team | Governance worker | `skills/subagent-artifact-governance/SKILL.md` |
-| GPT/Chrome review | Research Governance | Relevant owner team | External reviewer | `skills/gpt-chrome-review-subagent/SKILL.md` |
+| Codex-GPT expert relay | Research Governance | Relevant owner team | External prompt/review relay | `skills/codex-gpt-expert-relay-loop/SKILL.md` |
+| Legacy GPT/Chrome review | Research Governance | Relevant owner team | Retired external reviewer | Historical Task605/Task606 artifacts only; no active skill |
 | Raw data/source/timestamp audit | Data & Market Microstructure | Research Governance | Data explorer first, worker second | `docs/operating_system/goal_operating_cycle.md` |
 | Microstructure collection | Data & Market Microstructure | Backtest & Simulation Infra | Data worker | Task646 reports and raw data contracts |
 | Strategy regime research | Regime Research | Backtest & Simulation Infra | Research explorer | `docs/architecture/canonical_workstream_map.md` |
@@ -55,9 +56,13 @@ Use `docs/ownership/subagent_packet_standard.md` as the exact packet standard.
 - GPT/Chrome packets are review-only.
 - Governance can write registry/report/policy files but must not alter research logic without owner review.
 
-## GPT Review Rules
+## Retired GPT Review Rules
 
-GPT can review:
+The previous GPT/Chrome review skill is retired. Do not delegate new work to it.
+Use the Codex-GPT expert relay skill for new non-trivial expert-prompt routing.
+
+Historical GPT review notes may still be read as review-only artifacts. They may
+include:
 
 - project structure
 - missing evidence
@@ -74,7 +79,7 @@ GPT cannot decide:
 - PnL validity
 - buy/sell/sizing
 
-Every GPT finding must be converted into repo-native work:
+Any historical GPT finding that is reused must be converted into repo-native work:
 
 ```text
 finding -> owner -> artifact path -> validation command -> registry/report update

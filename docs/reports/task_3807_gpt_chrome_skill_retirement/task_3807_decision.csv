@@ -1,0 +1,2 @@
+decision_id,decision,status,owner_team,reviewer_team,artifact,validation_command,notes
+Task3807-D1,Delete legacy GPT Chrome communication skills,GPT_CHROME_LEGACY_SKILLS_DELETED,Research Governance,Relevant owner team,docs/reports/task_3807_gpt_chrome_skill_retirement,python scripts/task_registry_validate.py,No strategy deployment broker paper live or real-capital state changed

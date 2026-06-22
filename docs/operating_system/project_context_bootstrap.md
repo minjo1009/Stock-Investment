@@ -63,7 +63,7 @@ Chat memory is never the highest authority.
 | Backtest, replay, OOS, cost, capacity | latest backtest task report and validation command | Backtest & Simulation Infra |
 | Execution, broker truth, paper/live orders | current operating model and readiness registry | Execution & Risk |
 | Frontend or Slack | frontend data contract, Slack reports, catalog scripts | Frontend/UI or Research Governance |
-| GPT/Chrome review | `skills/gpt-chrome-review-subagent/SKILL.md` | Research Governance reviewer |
+| Codex-GPT expert relay | `skills/codex-gpt-expert-relay-loop/SKILL.md` | Research Governance |
 
 ## Cleanup Authority Maps
 
@@ -86,7 +86,8 @@ Chat memory is never the highest authority.
 - No deployment claim without live-source readiness.
 - No strategy claim without split/OOS, leakage, cost/slippage, and artifact audit.
 - No large raw/artifact data committed directly to Git.
-- No GPT/Chrome output treated as source-of-truth.
+- No external-model output treated as source-of-truth.
+- Non-trivial work should use the Codex-GPT expert relay unless the user explicitly overrides it.
 
 ## Brain Layer Quick Map
 

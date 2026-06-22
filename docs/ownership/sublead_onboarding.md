@@ -14,7 +14,7 @@ Every new sublead receives a narrow responsibility, not a blank mandate. The lea
 4. Identify the current canonical or active task rows in `tasks/task_registry.csv`.
 5. Open the listed reports before touching code.
 6. Run or record the validation command before claiming anything is complete.
-7. If GPT/Chrome is used, create a bounded review packet with `skills/gpt-chrome-review-subagent/SKILL.md` and record the output only as `review_notes` or `ideation_notes`.
+7. For non-trivial work, use `skills/codex-gpt-expert-relay-loop/SKILL.md` unless the user explicitly overrides the relay. Do not use the retired GPT/Chrome review skill.
 
 ## Training Rules
 
@@ -51,4 +51,4 @@ A sublead task is accepted only when the lead can point to:
 - exact artifact/report location
 - validation command and result
 - remaining blocker or next action
-- GPT/Chrome review packet and notes when external GPT review influenced the task
+- relay prompt, external review notes, and validation summary when the Codex-GPT expert relay influenced the task

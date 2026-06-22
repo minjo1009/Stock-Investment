@@ -62,17 +62,31 @@ Future Codex sessions should use:
 5. `docs/ownership/subagent_roster_and_routing.md`
 6. `docs/ownership/subagent_packet_standard.md`
 7. `skills/skill.md`
-8. `skills/gpt-chrome-review-subagent/SKILL.md`
+8. `skills/codex-gpt-expert-relay-loop/SKILL.md`
 
-## GPT/Chrome Boundary
+## Retired GPT/Chrome Boundary
 
-GPT/Chrome may review:
+The previous GPT/Chrome review skill has been deleted. Historical GPT/Chrome
+artifacts may still be read as review notes, but no active skill route exists.
+
+Historical GPT/Chrome notes may review:
 
 - overclaims
 - missing evidence
 - unclear architecture
 - weak decomposition
 - validation wording
+
+## Codex-GPT Expert Relay Boundary
+
+The active expert relay skill is:
+
+- `skills/codex-gpt-expert-relay-loop/SKILL.md`
+
+It may classify tasks, select expert roles and GPT modes, generate Chrome GPT
+prompts, and generate post-implementation review prompts. It may not treat GPT
+output as source truth, approve strategy, approve deployment, verify broker
+truth, certify PnL, or create buy/sell/sizing decisions.
 
 GPT/Chrome may not decide:
 

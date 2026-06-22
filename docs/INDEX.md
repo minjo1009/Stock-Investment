@@ -19,8 +19,7 @@
 - Module ownership map: `docs/ownership/module_ownership_map.md`
 - Goal operating cycle: `docs/operating_system/goal_operating_cycle.md`
 - Work closeout protocol: `docs/operating_system/work_closeout_protocol.md`
-- GPT/Chrome review subagent contract: `docs/contracts/gpt_chrome_review_subagent_contract.md`
-- GPT/Chrome review subagent skill: `skills/gpt-chrome-review-subagent/SKILL.md`
+- Codex-GPT expert relay skill: `skills/codex-gpt-expert-relay-loop/SKILL.md`
 - Task registry: `tasks/task_registry.csv`
 - Current paper-week operating plan: `docs/reports/task_598_paper_week_feedback_operating_plan/task_598_paper_week_feedback_operating_plan.md`
 - Current strategy acceptance program: `docs/reports/task_599_strategy_acceptance_program/task_599_strategy_acceptance_program.md`
@@ -129,10 +128,9 @@ Current paper-trading status is `READY_FOR_CONTROLLED_PAPER_RUN`, strategy accep
 - Source code canonicalization map: `docs/architecture/src_canonicalization_map.md`
 - Test validation canonicalization map: `docs/architecture/test_validation_canonicalization_map.md`
 - Skill/MD/subagent canonicalization map: `docs/architecture/skill_md_subagent_canonicalization_map.md`
+- Codex-GPT expert relay skill: `skills/codex-gpt-expert-relay-loop/SKILL.md`
 - Artifact management skill: `skills/subagent-artifact-governance/SKILL.md`
 - Broker lifecycle ops skill: `skills/subagent-broker-lifecycle-ops/SKILL.md`
-- GPT/Chrome review subagent skill: `skills/gpt-chrome-review-subagent/SKILL.md`
-- GPT/Chrome review subagent contract: `docs/contracts/gpt_chrome_review_subagent_contract.md`
 - Relocation log: `docs/audits/artifact_relocation_log.md`
 - Current operating model: `docs/ownership/current_operating_model.md`
 - Readiness registry: `docs/ownership/readiness_registry.yaml`

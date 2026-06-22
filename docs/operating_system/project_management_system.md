@@ -123,7 +123,7 @@ Use skills only when they improve discipline.
 
 | Skill | When To Use |
 | --- | --- |
-| `skills/gpt-chrome-review-subagent/SKILL.md` | GPT/Chrome review, red-team, firm-grade critique |
+| `skills/codex-gpt-expert-relay-loop/SKILL.md` | Non-trivial task classification, expert prompt routing, Chrome GPT relay, and post-implementation review prompt |
 | `skills/subagent-artifact-governance/SKILL.md` | Artifact classification, report cleanup, migration planning |
 | `skills/subagent-broker-lifecycle-ops/SKILL.md` | Broker truth, order lifecycle, paper/live execution gates |
 
