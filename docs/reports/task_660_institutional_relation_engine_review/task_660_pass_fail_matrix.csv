@@ -1,0 +1,9 @@
+gate,pass_flag,observed_value,required_value
+gpt_trader_review_captured,1,Chrome ChatGPT response summarized,professional trader PM critique captured as review-only
+gpt_economist_review_captured,1,Chrome ChatGPT response summarized,professional economist macro critique captured as review-only
+institutional_sources_reviewed,1,BlackRock Morgan Stanley JPMorgan Guggenheim official/public pages reviewed,at least three institutional sources
+task659_promotion_status_preserved,1,NOT_ACCEPTED and real capital FORBIDDEN,no strategy promotion from diagnostic review
+institutional_gap_table_built,1,10 comparison dimensions,macro-to-micro gaps documented
+task661_spec_built,1,6 required artifacts specified,next code task can start without guessing
+strategy_accepted,0,research diagnostic only,requires validation/recent OOS improvement and governance gates
+deployment_ready,0,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,requires live-source readiness and accepted strategy gates

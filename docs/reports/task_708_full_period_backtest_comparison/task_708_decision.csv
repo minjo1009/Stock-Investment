@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,best_cohort,best_max_positions,best_final_capital_usd,best_max_drawdown_pct,trading_promotion_pass_flag,next_action
+Task708,TIERED_SOURCE_RISK_BACKTEST_COMPLETE_RESEARCH_ONLY,NOT_ACCEPTED,FORBIDDEN,task703_eligible_585,5,4725.305216352406,-29.12115958274898,0,Use subtype attribution and winner preservation before any rule promotion discussion.

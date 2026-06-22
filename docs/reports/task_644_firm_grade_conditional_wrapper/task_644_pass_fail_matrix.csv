@@ -1,0 +1,7 @@
+gate,pass_flag,observed_value,required_value
+gpt_design_captured,1,captured=1,GPT design review must be captured as review-only input
+best_candidate_beats_task639_return,0,best=$7639.62; task639=$7639.62,best final capital must exceed Task639
+best_candidate_reduces_task639_drawdown,0,best_dd=-23.76%; task639_dd=-23.76%,best drawdown must be less severe than Task639
+same_config_validation_and_recent_beat_qqq,1,validation=$1069.23/QQQ $1049.91; recent=$1531.90/QQQ $1124.19,same config must beat QQQ in validation and recent OOS
+no_shortcut_blacklist_or_label,1,symbol_blacklist=0; theme_blacklist=0; label_assignment=0,no blacklist or after-the-fact label shortcut
+trading_promotion,0,research backtest only,"requires live rule lock, latency audit, source readiness, and paper-shadow replay"

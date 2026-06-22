@@ -1,0 +1,2 @@
+﻿task_id,strategy_acceptance_status,deployment_ready_flag,diagnostic_only_flag,candidate_symbol_count,quote_symbol_count,trade_symbol_count,quote_row_count,trade_row_count,missing_source_approximated_flag,receive_ts_live_ready_flag
+Task572,HISTORICAL_QUOTES_AVAILABLE_TRADES_PARTIAL,0,1,57,57,20,5929114,2432355,0,0

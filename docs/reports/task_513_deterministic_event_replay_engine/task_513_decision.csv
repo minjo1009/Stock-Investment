@@ -1,0 +1,2 @@
+task_id,deterministic_replay_pass_flag,replayed_lifecycle_count,event_count,receive_ts_available_flag,strategy_acceptance_status
+Task513,1,103,515,0,DETERMINISTIC_REPLAY_V1_DIAGNOSTIC_ONLY

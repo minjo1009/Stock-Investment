@@ -1,0 +1,2 @@
+task_id,decision,pass_flag,strategy_acceptance_status,deployment_status,p0_plugin_count,workflow_count,source_lane_count,guardrail_count,real_capital_status,next_task
+Task609P,USE_PUBLIC_EQUITY_AND_DATA_ANALYTICS_AS_P0_IB_AS_P2_CONTEXT,1,NOT_ACCEPTED,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,2,5,5,6,FORBIDDEN,Task609A source capture using Public Equity routes plus Data Analytics validation surface

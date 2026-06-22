@@ -1,0 +1,2 @@
+task_id,verdict,thesis_bundle_count,policy_action_count,watch_action_count,skip_action_count,package_surface,strategy_acceptance,deployment_readiness,real_capital,replay_performed,paper_order_intents_created,live_orders_created
+Task3371-Task3380,thesis_bundles_bridge_to_l5_review_only_policy_actions,228,228,38,190,src/brain/policy_adapter.py,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,0,0,0

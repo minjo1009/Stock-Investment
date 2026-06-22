@@ -1,0 +1,2 @@
+task_id,decision,strategy_status,deployment_status,real_capital,next_action
+Task3485,PRECONDITIONS_IMPLEMENTED_PROMOTION_STILL_BLOCKED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,Implement Task3486-3500 full diagnostic scheduler using scheduler lease API

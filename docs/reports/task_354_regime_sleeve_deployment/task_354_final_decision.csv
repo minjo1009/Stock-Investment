@@ -1,0 +1,2 @@
+decision,decision_reason,best_structure,best_allocator,best_allocator_timing,best_capital_bucket,best_max_positions,best_net_pnl_r,best_anchored_oos_net_pnl_r,best_rolling_oos_robustness,combined_stress_retention,symbol_netting_retention,shadow_monitor_ready,tiny_capital_pilot_ready
+RESEARCH_ONLY,Best allocator does not retain positive post-cost PnL through anchored OOS.,sizing_template_aggressive,structural_balance_allocator,post_confirmation_allocator,bucket_20pct,1,29.544324,-1.289617,0.75,0.559378,1.0,False,False

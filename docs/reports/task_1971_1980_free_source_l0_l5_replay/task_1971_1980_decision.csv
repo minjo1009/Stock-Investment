@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,strategy_acceptance,deployment_readiness,real_capital,next_required_action,authority
+Task1980,free_source_l0_l5_replay_complete_diagnostic_only,free_source_l0_l5_top3_v1,4024.7118,0.309717,-0.240402,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,audit whether free-source adjustments improve source logic or only add noise before any policy promotion,DIAGNOSTIC_FREE_SOURCE_L0_L5_REPLAY_ONLY

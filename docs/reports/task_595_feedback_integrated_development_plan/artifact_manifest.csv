@@ -1,0 +1,11 @@
+artifact_path,artifact_type,description
+docs/reports/task_595_feedback_integrated_development_plan/task_595_feedback_integrated_development_plan.md,report,Goal operating cycle report and integrated development plan for feedback-driven project development
+docs/reports/task_595_feedback_integrated_development_plan/task_595_decision.csv,decision,Task595 decision summary and current target metrics
+docs/reports/task_595_feedback_integrated_development_plan/team_execution_board.csv,small_table,Team-by-team execution board owned by 필수 and team leads
+docs/reports/task_595_feedback_integrated_development_plan/promotion_scorecard.csv,small_table,Canonical promotion scorecard PASS/FAIL/BLOCKED matrix
+docs/reports/task_595_feedback_integrated_development_plan/blocked_source_scoreboard.csv,small_table,Blocked-source scoreboard with owners and unblock conditions
+docs/reports/task_595_feedback_integrated_development_plan/freshness_gate.csv,small_table,Runtime-to-EOD freshness gate and stale closeout rule
+docs/reports/task_595_feedback_integrated_development_plan/active_lane_triage.csv,small_table,Active lane compression targets by team
+docs/reports/task_595_feedback_integrated_development_plan/subagent_packets.md,report,Bounded team packets following the subagent packet standard
+docs/reports/task_595_feedback_integrated_development_plan/validation_results.csv,small_table,Validation commands run for Task595 and their pass outputs
+docs/reports/task_595_feedback_integrated_development_plan/artifact_manifest.csv,manifest,Artifact manifest for Task595

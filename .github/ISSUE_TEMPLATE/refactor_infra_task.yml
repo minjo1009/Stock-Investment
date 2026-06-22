@@ -1,0 +1,26 @@
+name: Refactor / Infra Task
+description: Track shared code extraction or repo hygiene work.
+title: "Infra - "
+labels: ["infra"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What repeated logic or project friction does this remove?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Exact read/write scope and files that must not be touched.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation
+      description: Regression commands and expected unchanged outputs.
+    validations:
+      required: true

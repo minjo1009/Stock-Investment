@@ -1,0 +1,2 @@
+task_id,verdict,strategy,deployment,real_capital,next_action
+Task3680,MARKET_BARS_5M_CACHED_ADAPTER_INSTALLED_STALE_BLOCKER_RETAINED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,Add broker truth fixture/cached adapter behind registered loop runner.

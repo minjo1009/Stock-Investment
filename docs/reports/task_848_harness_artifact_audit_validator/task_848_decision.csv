@@ -1,0 +1,7 @@
+field,value
+verdict,HARNESS_ARTIFACT_AUDIT_VALIDATOR_IMPLEMENTED
+strategy_acceptance,NOT_ACCEPTED
+deployment_status,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+validation_authority,GOVERNANCE_HEALTH
+next_action,Run artifact audit after every future harness plan generation

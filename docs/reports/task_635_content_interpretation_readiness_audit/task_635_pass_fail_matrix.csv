@@ -1,0 +1,7 @@
+gate,pass_flag,observed_value,required_value
+source_text_exists,1,certified_text=273,certified source text must exist before content interpretation
+scoring_uses_source_text_content,0,raw_text_path_in_scores=0; text_hash_in_scores=0,event scoring must carry raw text path and source hash
+content_prediction_schema_complete,0,missing_content_fields=11,all required content prediction fields must exist
+presence_fields_blocked_from_assignment,1,presence fields explicitly blocked,presence and density fields cannot drive assignment
+predictive_validation_ready,0,stable_predictive_features=0; content_ready=0,content prediction fields must prove validation and recent OOS predictive value
+assignment_allowed,0,content interpretation not ready,assignment allowed only after content prediction schema and predictive validation pass

@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,trading_promotion_pass_flag,candidate_set_count,candidate_symbols,allocation_approved_count,paper_or_live_trade_approved_count,pnl_run_flag,pass_gate_count,fail_gate_count,primary_result,next_action
+Task696,TINY_BACKTEST_CANDIDATE_SET_BUILT_AUDITED_NO_PNL,NOT_ACCEPTED,FORBIDDEN,0,3,ASTS|BA|TER,0,0,0,8,0,"Tiny backtest candidate set contains ASTS, BA, and TER only and passed pre-PnL audit.","Run a small PnL test only against this audited candidate set, with costs and benchmark caveats."

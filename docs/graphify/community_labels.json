@@ -1,0 +1,908 @@
+[
+  {
+    "community_id": 0,
+    "label": "External Reference Corpus / Community 0",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\experiments\\run_all_methods.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\experiments\\optuna_meta_optimizer.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\optimizers\\sharpe_optimizer.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\utils\\ou_optimal_thresholds.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\ensemble_wrapper.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\nifty_trend_strategy.py"
+    ]
+  },
+  {
+    "community_id": 1,
+    "label": "Paper Ops / Evidence Loop",
+    "top_files": [
+      "src\\backtest\\engine_full.py",
+      "src\\backtest\\engine.py",
+      "src\\app\\task_089_market_data_signal_refresh.py",
+      "src\\backtest\\data_loader.py",
+      "src\\strategy\\conditions.py",
+      "src\\backtest\\analysis_cost_realistic.py"
+    ]
+  },
+  {
+    "community_id": 2,
+    "label": "External Reference Corpus / Community 2",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\QuantTraderDL-main\\QuantTraderDL-main\\QuantConnectStrategies\\14_Temporal_CNN_Prediction\\temporalcnn.py",
+      "\ucc38\uace0 Context\\3. Github Source\\QuantTraderDL-main\\QuantTraderDL-main\\QuantConnectStrategies\\15_Gaussian_Classifier_for_Direction_Prediction\\main.py",
+      "\ucc38\uace0 Context\\3. Github Source\\QuantTraderDL-main\\QuantTraderDL-main\\QuantConnectStrategies\\08_Stoploss_Based_on_Historical_Volatility_and _Drawdown_Recovery\\03 ML Put Option Hedge\\main.py",
+      "\ucc38\uace0 Context\\3. Github Source\\QuantTraderDL-main\\QuantTraderDL-main\\QuantConnectStrategies\\12_Trading_Costs_Optimization\\main.py",
+      "\ucc38\uace0 Context\\3. Github Source\\QuantTraderDL-main\\QuantTraderDL-main\\QuantConnectStrategies\\07_Effect_of_Positive-Negative_Splits\\main.py",
+      "\ucc38\uace0 Context\\3. Github Source\\QuantTraderDL-main\\QuantTraderDL-main\\QuantConnectStrategies\\14_Temporal_CNN_Prediction\\main.py"
+    ]
+  },
+  {
+    "community_id": 3,
+    "label": "Foundation / Contract Tests",
+    "top_files": [
+      "tests\\unit\\test_structure.py",
+      "src\\common\\models.py",
+      "src\\app\\main.py",
+      "src\\execution\\interface.py",
+      "src\\strategy\\interface.py",
+      "src\\app\\pipeline.py"
+    ]
+  },
+  {
+    "community_id": 4,
+    "label": "Execution / Broker Lifecycle",
+    "top_files": [
+      "src\\app\\task_091a_controlled_broker_lifecycle.py",
+      "src\\state\\store.py",
+      "tests\\unit\\test_structure.py",
+      "tests\\test_task_091a_controlled_lifecycle.py",
+      "src\\app\\run_trade_once.py",
+      "src\\app\\report_recent_runs.py"
+    ]
+  },
+  {
+    "community_id": 5,
+    "label": "Execution / Broker Lifecycle",
+    "top_files": [
+      "src\\integration\\kis_client.py",
+      "tests\\test_kis_cancel_contract.py",
+      "src\\integration\\kis_auth_manager.py",
+      "src\\app\\task_091_broker_lifecycle_gate.py",
+      "scripts\\capture_kis_fixtures.py",
+      "tests\\unit\\test_structure.py"
+    ]
+  },
+  {
+    "community_id": 6,
+    "label": "External Reference Corpus / Community 6",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\regime_switching_strategy.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\experiments\\phase3\\portfolio_optimizer.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\nifty_trend_ladder.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\run_comprehensive_tests.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\experiments\\phase3\\meta_ensemble_final.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\testing_framework\\run_comprehensive_tests.py"
+    ]
+  },
+  {
+    "community_id": 7,
+    "label": "External Reference Corpus / Community 7",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\enhanced_regime_strategy.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\stat_arb_strategy.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\seasonality_strategy.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\experiments\\run_strategy_comparison.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\adaptive_bb_strategy.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\momentum_strategy.py"
+    ]
+  },
+  {
+    "community_id": 8,
+    "label": "External Reference Corpus / Community 8",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\strategy1_rsi2_meanrev.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\strategy_donchian.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\test_strategy.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\generate_submission.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\vol_adaptive_rsi.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\generate_strategy1_only.py"
+    ]
+  },
+  {
+    "community_id": 9,
+    "label": "External Reference Corpus / Community 9",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\walk_forward_validation.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\optimizers\\fast_optimizer.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\fast_optimizer.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\optimizers\\super_optimize.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\optimizers\\test_alternatives.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\utils\\indicators.py"
+    ]
+  },
+  {
+    "community_id": 10,
+    "label": "Backtest Analytics / Task Reports",
+    "top_files": [
+      "src\\backtest\\analysis_stop_loss_structure.py",
+      "src\\backtest\\analysis_capital_failure_review_093.py",
+      "src\\backtest\\analysis_risk_grid_068b.py",
+      "src\\backtest\\analysis_final_validation_limited_chase.py",
+      "src\\backtest\\analysis_final_validation_time_stop_only.py",
+      "src\\experiments\\registry.py"
+    ]
+  },
+  {
+    "community_id": 11,
+    "label": "External Reference Corpus / Community 11",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\adjust_these_files\\parallel_optimizer.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\optimization\\parameter_space.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\adjust_these_files\\objective_functions.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\adjust_these_files\\parameter_space.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\optimizer_v5_hour_filter.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\optimization\\parallel_optimizer.py"
+    ]
+  },
+  {
+    "community_id": 12,
+    "label": "External Reference Corpus / Community 12",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\volatility_regime_strategy.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\volume_momentum_strategy.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\pairs_trading_strategy.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\experiments\\run_advanced_strategies.py"
+    ]
+  },
+  {
+    "community_id": 13,
+    "label": "Backtest Analytics / Task Reports",
+    "top_files": [
+      "src\\backtest\\analysis_strategy_lock_084.py",
+      "src\\backtest\\analysis_capital_backtest_093.py",
+      "src\\backtest\\analysis_portfolio_validation_083.py",
+      "src\\app\\task_092_signal_alignment_audit.py",
+      "src\\sector\\sector_model.py"
+    ]
+  },
+  {
+    "community_id": 14,
+    "label": "UI / Streamlit Review",
+    "top_files": [
+      "src\\ui\\app.py",
+      "src\\ui\\trade_review_model.py",
+      "src\\strategy\\conditions.py"
+    ]
+  },
+  {
+    "community_id": 15,
+    "label": "Backtest Analytics / Task Reports",
+    "top_files": [
+      "src\\backtest\\analysis_minimal_regime_entry_gate_076.py",
+      "src\\backtest\\analysis_regime_decomposition_078.py",
+      "src\\backtest\\entry_gates.py",
+      "tests\\test_entry_gates.py",
+      "tests\\test_engine_entry_gate_off.py"
+    ]
+  },
+  {
+    "community_id": 16,
+    "label": "External Reference Corpus / Community 16",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\QuantTraderDL-main\\QuantTraderDL-main\\tft_helper.py"
+    ]
+  },
+  {
+    "community_id": 17,
+    "label": "External Reference Corpus / Community 17",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\portfolio_manager.py"
+    ]
+  },
+  {
+    "community_id": 18,
+    "label": "External Reference Corpus / Community 18",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\utils\\profit_ladder.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\utils\\adaptive_hold.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\utils\\position_sizing.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\hybrid_adaptive_v2.py"
+    ]
+  },
+  {
+    "community_id": 19,
+    "label": "Paper Ops / Evidence Loop",
+    "top_files": [
+      "src\\app\\task_087_pilot_evidence.py",
+      "tests\\test_task_087_evidence_schema.py"
+    ]
+  },
+  {
+    "community_id": 20,
+    "label": "Tests / Regression",
+    "top_files": [
+      "src\\backtest\\models.py",
+      "tests\\replay\\__init__.py",
+      "src\\__init__.py",
+      "src\\app\\__init__.py",
+      "src\\common\\models.py",
+      "src\\backtest\\__init__.py"
+    ]
+  },
+  {
+    "community_id": 21,
+    "label": "External Reference Corpus / Community 21",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\strategy_trend.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\optimizers\\tune_trend_params.py"
+    ]
+  },
+  {
+    "community_id": 22,
+    "label": "Backtest Analytics / Task Reports",
+    "top_files": [
+      "src\\backtest\\analysis_drawdown_control_094.py",
+      "src\\backtest\\analysis_risk_adoption_095.py",
+      "src\\backtest\\analysis_risk_component_review_094.py"
+    ]
+  },
+  {
+    "community_id": 23,
+    "label": "Backtest Analytics / Task Reports",
+    "top_files": [
+      "src\\backtest\\analysis_exclusion.py",
+      "src\\backtest\\analysis_sector.py"
+    ]
+  },
+  {
+    "community_id": 24,
+    "label": "External Reference Corpus / Community 24",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\optimizer.py"
+    ]
+  },
+  {
+    "community_id": 25,
+    "label": "Foundation / Contract Tests",
+    "top_files": [
+      "src\\app\\run_trade_loop.py",
+      "tests\\unit\\test_structure.py"
+    ]
+  },
+  {
+    "community_id": 26,
+    "label": "External Reference Corpus / Community 26",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\adjust_these_files\\validate_results.py"
+    ]
+  },
+  {
+    "community_id": 27,
+    "label": "State / Reconciliation / Safety",
+    "top_files": [
+      "tests\\test_cancel_loop.py",
+      "src\\execution\\cancel_loop.py"
+    ]
+  },
+  {
+    "community_id": 28,
+    "label": "External Reference Corpus / Community 28",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\QuantTraderDL-main\\QuantTraderDL-main\\QuantConnectStrategies\\19_FinBERT_Model\\02 Fine-Tuned Model\\main.py",
+      "\ucc38\uace0 Context\\3. Github Source\\QuantTraderDL-main\\QuantTraderDL-main\\QuantConnectStrategies\\13_PCA_Statistical_Arbitrage_Mean_Reversion\\main.py",
+      "\ucc38\uace0 Context\\3. Github Source\\QuantTraderDL-main\\QuantTraderDL-main\\QuantConnectStrategies\\19_FinBERT_Model\\01 Base Model\\main.py"
+    ]
+  },
+  {
+    "community_id": 29,
+    "label": "External Reference Corpus / Community 29",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\volume_quality_filter.py"
+    ]
+  },
+  {
+    "community_id": 30,
+    "label": "External Reference Corpus / Community 30",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\nifty_mean_reversion.py",
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\scripts\\optimize_nifty_mean_reversion.py"
+    ]
+  },
+  {
+    "community_id": 31,
+    "label": "External Reference Corpus / Community 31",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\experiments\\phase3\\final_submission_builder.py"
+    ]
+  },
+  {
+    "community_id": 32,
+    "label": "External Reference Corpus / Community 32",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\compliance_checker.py"
+    ]
+  },
+  {
+    "community_id": 33,
+    "label": "Paper Ops / Evidence Loop",
+    "top_files": [
+      "src\\app\\task_088_evidence_decision.py",
+      "tests\\test_task_088_evidence_decision.py"
+    ]
+  },
+  {
+    "community_id": 34,
+    "label": "External Reference Corpus / Community 34",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\ensemble_combination.py"
+    ]
+  },
+  {
+    "community_id": 35,
+    "label": "External Reference Corpus / Community 35",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\nifty_momentum_breakthrough.py"
+    ]
+  },
+  {
+    "community_id": 36,
+    "label": "Tests / Regression",
+    "top_files": [
+      "tests\\test_execution_policies.py",
+      "src\\execution\\policies.py"
+    ]
+  },
+  {
+    "community_id": 37,
+    "label": "External Reference Corpus / Community 37",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\per_symbol_optimizer.py"
+    ]
+  },
+  {
+    "community_id": 38,
+    "label": "src / backtest Cluster",
+    "top_files": [
+      "src\\backtest\\analysis.py"
+    ]
+  },
+  {
+    "community_id": 39,
+    "label": "External Reference Corpus / Community 39",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\optimizer_v2.py"
+    ]
+  },
+  {
+    "community_id": 40,
+    "label": "External Reference Corpus / Community 40",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\experiments\\focused_rescue.py"
+    ]
+  },
+  {
+    "community_id": 41,
+    "label": "External Reference Corpus / Community 41",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\scripts\\generate_submission_visuals.py"
+    ]
+  },
+  {
+    "community_id": 42,
+    "label": "External Reference Corpus / Community 42",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\submission_generator_optimized.py"
+    ]
+  },
+  {
+    "community_id": 43,
+    "label": "src / app Cluster",
+    "top_files": [
+      "src\\app\\task_082_paper_validation.py"
+    ]
+  },
+  {
+    "community_id": 44,
+    "label": "src / app Cluster",
+    "top_files": [
+      "src\\app\\task_085_paper_pilot.py"
+    ]
+  },
+  {
+    "community_id": 45,
+    "label": "Backtest Analytics / Task Reports",
+    "top_files": [
+      "src\\backtest\\analysis_task_076_review.py"
+    ]
+  },
+  {
+    "community_id": 46,
+    "label": "External Reference Corpus / Community 46",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\optimizer_v3.py"
+    ]
+  },
+  {
+    "community_id": 47,
+    "label": "External Reference Corpus / Community 47",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\optimizer_v4_time.py"
+    ]
+  },
+  {
+    "community_id": 48,
+    "label": "External Reference Corpus / Community 48",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\optimizer_v6_9am_looser.py"
+    ]
+  },
+  {
+    "community_id": 49,
+    "label": "External Reference Corpus / Community 49",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\nifty_minimal_loss.py"
+    ]
+  },
+  {
+    "community_id": 50,
+    "label": "Tests / Regression",
+    "top_files": [
+      "tests\\test_data_quality.py",
+      "data\\quality.py"
+    ]
+  },
+  {
+    "community_id": 51,
+    "label": "scripts / build_graphify_context_pack.py Cluster",
+    "top_files": [
+      "scripts\\build_graphify_context_pack.py"
+    ]
+  },
+  {
+    "community_id": 52,
+    "label": "src / app Cluster",
+    "top_files": [
+      "src\\app\\paper_eod_review_081.py"
+    ]
+  },
+  {
+    "community_id": 53,
+    "label": "Data Catalog / Quality",
+    "top_files": [
+      "data\\catalog.py"
+    ]
+  },
+  {
+    "community_id": 54,
+    "label": "scripts / fetch_us_daily_data.py Cluster",
+    "top_files": [
+      "scripts\\fetch_us_daily_data.py"
+    ]
+  },
+  {
+    "community_id": 55,
+    "label": "scripts / run_phase5_paper_loop.ps1 Cluster",
+    "top_files": [
+      "scripts\\run_phase5_paper_loop.ps1"
+    ]
+  },
+  {
+    "community_id": 56,
+    "label": "Tests / Regression",
+    "top_files": [
+      "tests\\test_phase5_orchestration_script.py"
+    ]
+  },
+  {
+    "community_id": 57,
+    "label": "External Reference Corpus / Community 57",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\run_nifty_full_optimization.py"
+    ]
+  },
+  {
+    "community_id": 58,
+    "label": "External Reference Corpus / Community 58",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\validate_strategy3.py"
+    ]
+  },
+  {
+    "community_id": 59,
+    "label": "External Reference Corpus / Community 59",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\validate_strategy4.py"
+    ]
+  },
+  {
+    "community_id": 60,
+    "label": "External Reference Corpus / Community 60",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\experiments\\phase1\\phase1_comparison.py"
+    ]
+  },
+  {
+    "community_id": 61,
+    "label": "External Reference Corpus / Community 61",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\experiments\\phase2\\phase2_comparison.py"
+    ]
+  },
+  {
+    "community_id": 62,
+    "label": "External Reference Corpus / Community 62",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\experiments\\phase3\\phase3_master_checklist.py"
+    ]
+  },
+  {
+    "community_id": 63,
+    "label": "External Reference Corpus / Community 63",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\scripts\\organize_submission.py"
+    ]
+  },
+  {
+    "community_id": 64,
+    "label": "Backtest Analytics / Task Reports",
+    "top_files": [
+      "src\\backtest\\analysis_gate_revalidation_077.py"
+    ]
+  },
+  {
+    "community_id": 65,
+    "label": "External Reference Corpus / Community 65",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\data\\raw\\historical_data.py"
+    ]
+  },
+  {
+    "community_id": 66,
+    "label": "External Reference Corpus / Community 66",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\scripts\\check_data_leakage.py"
+    ]
+  },
+  {
+    "community_id": 67,
+    "label": "External Reference Corpus / Community 67",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\scripts\\validate_pnl_accounting.py"
+    ]
+  },
+  {
+    "community_id": 68,
+    "label": "External Reference Corpus / Community 68",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\debug_nifty_trend.py"
+    ]
+  },
+  {
+    "community_id": 69,
+    "label": "External Reference Corpus / Community 69",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\test_nifty_quick.py"
+    ]
+  },
+  {
+    "community_id": 70,
+    "label": "External Reference Corpus / Community 70",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\trace_nifty_logic.py"
+    ]
+  },
+  {
+    "community_id": 71,
+    "label": "External Reference Corpus / Community 71",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\scripts\\cleanup_docs.py"
+    ]
+  },
+  {
+    "community_id": 72,
+    "label": "External Reference Corpus / Community 72",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\scripts\\cleanup_docs_retry.py"
+    ]
+  },
+  {
+    "community_id": 73,
+    "label": "External Reference Corpus / Community 73",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\check_data.py"
+    ]
+  },
+  {
+    "community_id": 74,
+    "label": "External Reference Corpus / Community 74",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\legacy\\quick_test.py"
+    ]
+  },
+  {
+    "community_id": 75,
+    "label": "External Reference Corpus / Community 75",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\validation\\verify_outliers.py"
+    ]
+  },
+  {
+    "community_id": 76,
+    "label": "scripts / run_task_087_paper_pilot.ps1 Cluster",
+    "top_files": [
+      "scripts\\run_task_087_paper_pilot.ps1"
+    ]
+  },
+  {
+    "community_id": 77,
+    "label": "scripts / run_task_088_evidence_decision.ps1 Cluster",
+    "top_files": [
+      "scripts\\run_task_088_evidence_decision.ps1"
+    ]
+  },
+  {
+    "community_id": 78,
+    "label": "scripts / run_task_089_market_refresh.ps1 Cluster",
+    "top_files": [
+      "scripts\\run_task_089_market_refresh.ps1"
+    ]
+  },
+  {
+    "community_id": 79,
+    "label": "src / analytics Cluster",
+    "top_files": [
+      "src\\analytics\\__init__.py"
+    ]
+  },
+  {
+    "community_id": 80,
+    "label": "src / experiments Cluster",
+    "top_files": [
+      "src\\experiments\\__init__.py"
+    ]
+  },
+  {
+    "community_id": 81,
+    "label": "src / portfolio Cluster",
+    "top_files": [
+      "src\\portfolio\\__init__.py"
+    ]
+  },
+  {
+    "community_id": 82,
+    "label": "src / risk Cluster",
+    "top_files": [
+      "src\\risk\\__init__.py"
+    ]
+  },
+  {
+    "community_id": 83,
+    "label": "src / sector Cluster",
+    "top_files": [
+      "src\\sector\\__init__.py"
+    ]
+  },
+  {
+    "community_id": 84,
+    "label": "src / strategy Cluster",
+    "top_files": [
+      "src\\strategy\\selectors.py"
+    ]
+  },
+  {
+    "community_id": 85,
+    "label": "src / universe Cluster",
+    "top_files": [
+      "src\\universe\\__init__.py"
+    ]
+  },
+  {
+    "community_id": 86,
+    "label": "Tests / Regression",
+    "top_files": [
+      "tests\\__init__.py"
+    ]
+  },
+  {
+    "community_id": 87,
+    "label": "Tests / Regression",
+    "top_files": [
+      "tests\\unit\\__init__.py"
+    ]
+  },
+  {
+    "community_id": 88,
+    "label": "External Reference Corpus / Community 88",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\final_safe_submission.py"
+    ]
+  },
+  {
+    "community_id": 89,
+    "label": "External Reference Corpus / Community 89",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\generate_final_submission_files.py"
+    ]
+  },
+  {
+    "community_id": 90,
+    "label": "External Reference Corpus / Community 90",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\optimal_safe_submission.py"
+    ]
+  },
+  {
+    "community_id": 91,
+    "label": "External Reference Corpus / Community 91",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\create_strategy2_files.py"
+    ]
+  },
+  {
+    "community_id": 92,
+    "label": "External Reference Corpus / Community 92",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\emergency_trade_boost.py"
+    ]
+  },
+  {
+    "community_id": 93,
+    "label": "External Reference Corpus / Community 93",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\final_rule12_check.py"
+    ]
+  },
+  {
+    "community_id": 94,
+    "label": "External Reference Corpus / Community 94",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\manual_samples.py"
+    ]
+  },
+  {
+    "community_id": 95,
+    "label": "External Reference Corpus / Community 95",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\outlier_check.py"
+    ]
+  },
+  {
+    "community_id": 96,
+    "label": "External Reference Corpus / Community 96",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\smart_trade_boost.py"
+    ]
+  },
+  {
+    "community_id": 97,
+    "label": "External Reference Corpus / Community 97",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\split_submission_by_symbol.py"
+    ]
+  },
+  {
+    "community_id": 98,
+    "label": "External Reference Corpus / Community 98",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\test.py"
+    ]
+  },
+  {
+    "community_id": 99,
+    "label": "External Reference Corpus / Community 99",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\test_nifty_minimal.py"
+    ]
+  },
+  {
+    "community_id": 100,
+    "label": "External Reference Corpus / Community 100",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\verify_costs.py"
+    ]
+  },
+  {
+    "community_id": 101,
+    "label": "External Reference Corpus / Community 101",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\adjust_these_files\\parameter_space.py"
+    ]
+  },
+  {
+    "community_id": 102,
+    "label": "External Reference Corpus / Community 102",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\adjust_these_files\\parameter_space.py"
+    ]
+  },
+  {
+    "community_id": 103,
+    "label": "External Reference Corpus / Community 103",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\adjust_these_files\\parameter_space.py"
+    ]
+  },
+  {
+    "community_id": 104,
+    "label": "External Reference Corpus / Community 104",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\archive\\adjust_these_files\\parameter_space.py"
+    ]
+  },
+  {
+    "community_id": 105,
+    "label": "External Reference Corpus / Community 105",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\config\\settings.py"
+    ]
+  },
+  {
+    "community_id": 106,
+    "label": "External Reference Corpus / Community 106",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\config\\sharpe_config.py"
+    ]
+  },
+  {
+    "community_id": 107,
+    "label": "External Reference Corpus / Community 107",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\config\\sharpe_config.py"
+    ]
+  },
+  {
+    "community_id": 108,
+    "label": "External Reference Corpus / Community 108",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\experiments\\focused_rescue.py"
+    ]
+  },
+  {
+    "community_id": 109,
+    "label": "External Reference Corpus / Community 109",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\experiments\\focused_rescue.py"
+    ]
+  },
+  {
+    "community_id": 110,
+    "label": "External Reference Corpus / Community 110",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\optimization\\__init__.py"
+    ]
+  },
+  {
+    "community_id": 111,
+    "label": "External Reference Corpus / Community 111",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\strategy_trend.py"
+    ]
+  },
+  {
+    "community_id": 112,
+    "label": "External Reference Corpus / Community 112",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\strategies\\strategy_trend.py"
+    ]
+  },
+  {
+    "community_id": 113,
+    "label": "External Reference Corpus / Community 113",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\utils\\regime_detection.py"
+    ]
+  },
+  {
+    "community_id": 114,
+    "label": "External Reference Corpus / Community 114",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\utils\\regime_detection.py"
+    ]
+  },
+  {
+    "community_id": 115,
+    "label": "External Reference Corpus / Community 115",
+    "top_files": [
+      "\ucc38\uace0 Context\\3. Github Source\\regime-adaptive-quantitative-trading-main\\regime-adaptive-quantitative-trading-main\\src\\utils\\regime_detection.py"
+    ]
+  }
+]

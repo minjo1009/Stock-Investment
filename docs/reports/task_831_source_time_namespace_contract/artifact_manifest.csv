@@ -1,0 +1,5 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"graph_packet_manifest.csv","small_table","1271","69f759014a8f5b32fda7b8db769ee2521d598eb7651b22463b19f2b0c0d377e8"
+"source_time_namespace.csv","small_table","834","5ee61948c44c6f2527614c941d1bddc50fe11159e29706a65d8e8b6d763dd401"
+"task_831_decision.csv","small_table","271","822d92f6c5af1947dd3b9764f60c9b38ad33e25a36fc298e9afd14a5c5b3c5c3"
+"task_831_source_time_namespace_contract.md","report","1365","4f6e0f30eb0bf9ce5fa212db8fef6482c6d676c3ce3bfb3c4b7feda53385f355"

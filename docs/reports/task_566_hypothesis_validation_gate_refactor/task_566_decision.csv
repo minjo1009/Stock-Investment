@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,hypothesis_count,validation_gate_count,hard_gate_count
+Task566,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,0,2,6,5

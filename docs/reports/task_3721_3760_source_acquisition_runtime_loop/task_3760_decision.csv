@@ -1,0 +1,2 @@
+task_id,decision,verdict,strategy_status,deployment_status,real_capital_status,next_action
+Task3760,closeout,SOURCE_ACQUISITION_RUNTIME_LOOP_INSTALLED_WITH_BLOCKERS,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,Install operator recurring source acquisition schedule and configure SEC_USER_AGENT before live SEC acquisition.

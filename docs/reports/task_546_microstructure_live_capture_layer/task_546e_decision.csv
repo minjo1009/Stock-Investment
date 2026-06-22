@@ -1,0 +1,2 @@
+task_id,readiness_gate_defined_flag,deployment_ready_flag,strategy_acceptance_status
+Task546E,1,0,PAPER_SHADOW_CAPTURE_READY_NBBO_ONLY_PENDING_COLLECTOR

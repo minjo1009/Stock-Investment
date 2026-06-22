@@ -1,0 +1,15 @@
+field,value
+task_id,Task746
+verdict,PRIMARY_PASS
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+scope,src classification only
+src_rows,558
+canonical_package_candidate,33
+owner_review_package_candidate,119
+active_task_code_review,16
+supporting_task_code_review,44
+historical_task_code_review,346
+changed_trading_logic,no
+deleted_or_moved_files,no
+next_task,Task747 test validation canonicalization

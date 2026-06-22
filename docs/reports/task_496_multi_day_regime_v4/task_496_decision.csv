@@ -1,0 +1,2 @@
+task_id,regime_rows,market_state_count,theme_state_count,lifecycle_outcome_used_for_regime_flag,multi_day_only_flag,validation_rows,recent_oos_rows,strategy_acceptance_status
+Task496,856,1,3,0,1,87,264,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY

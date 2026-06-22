@@ -1,0 +1,8 @@
+decision_area,status,details,does_not_mean
+operating_mode,implemented,parallel_vertical_slice_plus_data_corpus selected,strategy acceptance
+vertical_slice_scope,implemented,8 seed symbols fixed for L1-L5 mechanics,full universe coverage
+data_corpus_scope,implemented,62 missing-seed symbols assigned to data corpus lane,broad random download
+expert_panel_review,implemented,15 review roles converted into plan requirements,source-of-truth certification
+external_gpt_review,implemented,Chrome ChatGPT external review captured and incorporated as review-only feedback,source-of-truth certification
+next_task_sequence,implemented,Task897 through Task906 fixed with dependencies,permission to skip gates
+stop_doing_rules,implemented,Nine drift-prevention rules recorded including primitive/source/uncertainty/freeze gates,project completion

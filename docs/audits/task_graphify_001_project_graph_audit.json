@@ -1,0 +1,163 @@
+{
+  "status": "PASS",
+  "graph_generated": true,
+  "install": {
+    "graphifyy_installed": true,
+    "graphify_cli_available_on_path": false,
+    "graphify_cli_invoked_by_absolute_path": true,
+    "graphify_codex_install": true,
+    "graphify_platform_install": true,
+    "notes": [
+      "graphify . is not supported by this CLI build (unknown command '.')",
+      "graph generation succeeded via graphify update ."
+    ]
+  },
+  "outputs": {
+    "html": "graphify-out/graph.html",
+    "json": "graphify-out/graph.json",
+    "report": "graphify-out/GRAPH_REPORT.md"
+  },
+  "clusters": [
+    {
+      "name": "Backtest/Strategy",
+      "status": "partial",
+      "key_nodes": [
+        "engine_full.py",
+        "strategy/conditions.py",
+        "entry_gates"
+      ],
+      "missing_expected_nodes": [
+        "task_083",
+        "task_084",
+        "task_093",
+        "task_093_review",
+        "task_094"
+      ]
+    },
+    {
+      "name": "Runtime/Paper Ops",
+      "status": "found",
+      "key_nodes": [
+        "task_089_market_signal_refresh.py",
+        "run_trade_once.py",
+        "task_087_pilot_evidence.py",
+        "task_088_evidence_decision.py",
+        "run_phase5_paper_loop.ps1"
+      ],
+      "missing_expected_nodes": []
+    },
+    {
+      "name": "Broker Lifecycle",
+      "status": "partial",
+      "key_nodes": [
+        "task_091a_controlled_broker_lifecycle.py",
+        "kis_client.py",
+        "cancel_loop.py",
+        "reconciliation.py",
+        "store.py"
+      ],
+      "missing_expected_nodes": [
+        "fixtures/kis"
+      ]
+    },
+    {
+      "name": "Contracts/Safety",
+      "status": "partial",
+      "key_nodes": [
+        "unknown"
+      ],
+      "missing_expected_nodes": [
+        "execution_state_contract.md",
+        "cancel_reconcile_loop_contract.md",
+        "task_086 docs",
+        "kill switch",
+        "reconciliation critical"
+      ]
+    },
+    {
+      "name": "UI/Reporting",
+      "status": "partial",
+      "key_nodes": [
+        "src/ui/app.py"
+      ],
+      "missing_expected_nodes": [
+        "docs/reports",
+        "docs/audits",
+        "docs/INDEX.md"
+      ]
+    }
+  ],
+  "god_nodes": [
+    {
+      "label": "HybridAdaptiveStrategy",
+      "source_file": "참고 Context/3. Github Source/regime-adaptive-quantitative-trading-main/.../hybrid_adaptive.py",
+      "degree": 161
+    },
+    {
+      "label": "TestRepositoryFoundationStructure",
+      "source_file": "tests/unit/test_structure.py",
+      "degree": 122
+    },
+    {
+      "label": "app.py",
+      "source_file": "src/ui/app.py",
+      "degree": 41
+    },
+    {
+      "label": "initialize_store()",
+      "source_file": "src/state/store.py",
+      "degree": 36
+    },
+    {
+      "label": "run_controlled_lifecycle()",
+      "source_file": "src/app/task_091a_controlled_broker_lifecycle.py",
+      "degree": 30
+    },
+    {
+      "label": "engine_full.py",
+      "source_file": "src/backtest/engine_full.py",
+      "degree": 30
+    }
+  ],
+  "findings": [
+    {
+      "severity": "HIGH",
+      "title": "External reference corpus dominates graph centrality",
+      "evidence": "Top central nodes are heavily from 참고 Context external repos, masking project-local architecture signal.",
+      "recommended_action": "Run a scoped graph for src/docs/tests only, or maintain separate graphs for external references."
+    },
+    {
+      "severity": "HIGH",
+      "title": "UI integration hub is over-connected",
+      "evidence": "src/ui/app.py appears among top connected nodes with wide cross-domain coupling.",
+      "recommended_action": "Split app.py into loader/render/ops modules with explicit interfaces."
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "Contract docs are weakly represented in graph",
+      "evidence": "execution_state_contract.md and cancel_reconcile_loop_contract.md not surfaced as expected cluster nodes.",
+      "recommended_action": "Add graph-indexed metadata in contract docs and generate explicit links from code/report artifacts."
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "Safety flow semantics are fragmented",
+      "evidence": "UNKNOWN/kill-switch/reconciliation-critical appear partially as concepts but not as strong canonical graph nodes.",
+      "recommended_action": "Create a canonical safety taxonomy file and reference it from runtime and audit modules."
+    },
+    {
+      "severity": "LOW",
+      "title": "Task/report lineage underrepresented",
+      "evidence": "Task identifiers (083/084/093/094) were not consistently discoverable as graph entities.",
+      "recommended_action": "Introduce a machine-readable task lineage registry linking scripts, reports, and contracts."
+    }
+  ],
+  "recommended_tasks": [
+    "T-GRAPHIFY-002: Build scoped project-only graph profile (exclude exploratory external repos).",
+    "T-GRAPHIFY-003: Add graph-friendly metadata headers to docs/contracts and key reports.",
+    "T-ARCH-UI-REFINE: Decompose src/ui/app.py into report/ops/chart modules.",
+    "T-SAFETY-TAXONOMY-001: Canonicalize UNKNOWN/kill-switch/reconciliation-critical semantics across runtime/docs/tests.",
+    "T-LINEAGE-REGISTRY-001: Add task-script-report-contract registry for architecture traceability.",
+    "T-GRAPH-CI-001: Add graph critical-node presence check in CI (non-blocking)."
+  ],
+  "decision": "YES"
+}

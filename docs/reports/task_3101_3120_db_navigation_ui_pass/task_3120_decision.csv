@@ -1,0 +1,15 @@
+﻿field,value
+verdict,db_linked_navigation_ui_pass_completed_read_only
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+screens_updated,5
+typed_data_contract_added,CockpitData.dataHealth
+navigation_edges_exposed,5
+app_code_scope,apps/ios-trader-brain
+replay_performed,0
+paper_order_intents_created,0
+live_orders_created,0
+image_report,data/artifacts/task_3101_3120_db_navigation_ui_pass/db_navigation_ui_pass_report.png
+validation_authority,REPORTING_HEALTH
+

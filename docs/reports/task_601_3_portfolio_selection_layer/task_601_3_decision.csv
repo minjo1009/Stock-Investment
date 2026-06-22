@@ -1,0 +1,2 @@
+task_id,decision_status,strategy_acceptance_status,deployment_readiness_status,program_blocker,top3_share_after,symbol_entropy_before,symbol_entropy_after,explanation_coverage,next_required_task
+T601-3,PASS_SELECTION_LAYER_IMPLEMENTED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,P0_CANDIDATE_FUNNEL,0.75,1.059385,1.386294,1.0,Provide sector source evidence before enforcing same-sector concentration cap in live selection review.

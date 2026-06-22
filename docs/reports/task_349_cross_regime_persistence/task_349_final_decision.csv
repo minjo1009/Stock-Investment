@@ -1,0 +1,2 @@
+decision,decision_reason,persistent_structure_share,temporary_phase_share,weak_dimension_count,shadow_pass_count
+TEMPORARY_MARKET_PHASE_ARTIFACT,Temporary phase concentration dominates and persistence scores break under regime/time checks.,0.211791,0.788209,1,4

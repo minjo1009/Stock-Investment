@@ -1,0 +1,2 @@
+task_id,missing_source_approximation_flag,full_depth_blocked_flag,nbbo_only_paper_shadow_scope_allowed_flag,strategy_acceptance_status
+Task546A,0,1,1,SOURCE_CONTRACT_READY_FULL_DEPTH_BLOCKED

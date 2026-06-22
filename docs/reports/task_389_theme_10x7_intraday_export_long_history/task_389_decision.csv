@@ -1,0 +1,2 @@
+﻿task_389_verdict,alpaca_export_status,requested_symbol_count,exported_symbol_count,failed_symbol_count,timeframe,lookback_days,universe,output_dir,next_priority
+COMPLETE_PASS,EXPORTED,70,70,0,15Min,365,local_daily,data\raw\us_intraday,run_task388_intraday_engine

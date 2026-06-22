@@ -1,0 +1,10 @@
+gate_name,status,pass_flag,observed,required
+scope_target_345,PRIMARY_PASS,1,rows=345,345
+target_subtype_count_3,PRIMARY_PASS,1,subtypes=3,3
+interaction_matrix_present,PRIMARY_PASS,1,rows=5,>0
+human_review_queue_complete,PRIMARY_PASS,1,rows=345,345
+eval_guardrail_present,PRIMARY_PASS,1,0,0
+leakage_all_pass,PRIMARY_PASS,1,min=1,1
+governance_all_pass,PRIMARY_PASS,1,min=1,1
+strategy_not_accepted,PRIMARY_PASS,1,NOT_ACCEPTED,NOT_ACCEPTED
+real_capital_forbidden,PRIMARY_PASS,1,FORBIDDEN,FORBIDDEN

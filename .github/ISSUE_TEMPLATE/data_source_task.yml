@@ -1,0 +1,33 @@
+name: Data Source Task
+description: Add or audit a market data source.
+title: "Data Source - "
+labels: ["data", "integrity"]
+body:
+  - type: input
+    id: source_name
+    attributes:
+      label: Source Name
+      placeholder: "Alpaca SIP quotes / Nasdaq TotalView"
+    validations:
+      required: true
+  - type: textarea
+    id: exact_fields
+    attributes:
+      label: Exact Fields
+      description: List fields that are actually available, and fields that remain unavailable.
+    validations:
+      required: true
+  - type: textarea
+    id: archive_contract
+    attributes:
+      label: Archive Contract
+      description: Include timestamps, receive-time policy, raw payload storage, and replay constraints.
+    validations:
+      required: true
+  - type: textarea
+    id: tests
+    attributes:
+      label: Tests
+      description: How will source availability and no-fake-data behavior be validated?
+    validations:
+      required: true

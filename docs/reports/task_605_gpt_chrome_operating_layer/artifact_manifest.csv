@@ -1,0 +1,4 @@
+artifact_type,path,row_count,file_size_bytes,source,validation_command,notes
+report,docs/reports/task_605_gpt_chrome_operating_layer/task_605_gpt_chrome_operating_layer.md,not-applicable,5894,"team lead explorer reports and operating docs",python scripts/task_registry_validate.py,"Operating decision report; no strategy metric changed"
+decision_csv,docs/reports/task_605_gpt_chrome_operating_layer/task_605_decision.csv,1,435,"team lead consensus",python scripts/task_registry_validate.py,"Decision keeps GPT/Chrome as review/ideation layer only"
+manifest,docs/reports/task_605_gpt_chrome_operating_layer/artifact_manifest.csv,3,764,"generated closeout artifact",python scripts/task_registry_validate.py,"Manifest records generated Task605 artifacts"

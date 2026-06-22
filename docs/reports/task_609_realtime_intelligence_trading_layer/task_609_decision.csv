@@ -1,0 +1,2 @@
+task_id,decision,pass_flag,strategy_acceptance_status,deployment_status,source_contract_count,schema_field_count,trading_gate_count,p0_next_step_count,llm_direct_trade_allowed_flag,real_capital_status,next_task
+Task609,BUILD_INTELLIGENCE_LAYER_BEFORE_REFINEMENT,1,NOT_ACCEPTED,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,5,21,5,2,0,FORBIDDEN,Task609A/Task609B then Task610 historical intelligence replay

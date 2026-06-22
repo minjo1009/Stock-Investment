@@ -1,0 +1,8 @@
+gate,pass_flag,observed,expected
+requirements_created,1,rows=4101,>0
+family_distribution_created,1,rows=13,>0
+resolver_targets_created,1,rows=13,>0
+interaction_edges_created,1,rows=9119,>= requirements
+coverage_report_created,1,all_enrichment_bundles_have_requirement_objects,all covered
+guardrail_all_pass,1,min=1,1
+backtest_permission,0,FAIL,semantic enrichment requirements review only

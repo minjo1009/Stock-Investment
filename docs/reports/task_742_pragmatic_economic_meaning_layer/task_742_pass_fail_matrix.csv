@@ -1,0 +1,8 @@
+gate,pass_flag,observed,expected
+all_task741_packets_reinterpreted,1,"task741=3443, task742=3443",equal
+some_relation_ready_packets_created,1,rows=2159,>0
+relation_ready_tier_created,1,tiers=4,>=3
+neutral_unknown_not_directional,1,checked,0 rows
+hard_blockers_not_dominant,1,rate=0.000000,<0.05
+guardrail_all_pass,1,min=1,1
+backtest_permission,0,FAIL,pragmatic meaning packets are review-only

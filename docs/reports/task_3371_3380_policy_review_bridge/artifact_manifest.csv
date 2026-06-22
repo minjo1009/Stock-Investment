@@ -1,0 +1,8 @@
+artifact_path,artifact_type,description
+docs/reports/task_3371_3380_policy_review_bridge/task_3371_3380_policy_review_bridge.md,report,Task3371-Task3380 policy review bridge report
+docs/reports/task_3371_3380_policy_review_bridge/task_3380_decision.csv,decision,Task3371-Task3380 decision row
+data/artifacts/task_3371_3380_policy_review_bridge/policy_review_summary.csv,summary,Policy review bridge summary
+data/artifacts/task_3371_3380_policy_review_bridge/policy_review_checks.csv,validation,Policy review bridge checks
+data/artifacts/task_3371_3380_policy_review_bridge/policy_action_sample.csv,sample,Small L5 review PolicyAction sample
+data/artifacts/task_3371_3380_policy_review_bridge/decision.csv,decision,Generated validator decision row
+data/artifacts/task_3371_3380_policy_review_bridge/artifact_manifest.csv,manifest,Generated artifact manifest

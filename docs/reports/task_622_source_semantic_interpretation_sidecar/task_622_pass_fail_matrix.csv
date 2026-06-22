@@ -1,0 +1,6 @@
+gate,pass_flag,observed_value,required_value
+schema_fields_complete,1,"company_specificity,catalyst_economic_link,market_timing_risk,actionability,evidence_quality,timestamp_validity,economic_direction,materiality_level,classification_confidence,review_status,reason_code,source_gap_flag",all semantic schema fields present
+generic_filings_not_support_entry,1,generic_support_count=0,generic 8-K/Form4/title-only filings cannot be support_entry
+broad_policy_not_direct_stock_support,1,broad_support_count=0,broad policy/geopolitical events cannot be direct stock entry support
+recent_aerospace_source_certification,0,company_direct_support_entry_count=0,recent aerospace needs company-direct interpretable support before entry can be restored
+trading_promotion,0,semantic sidecar only; not score input,semantic labels must pass OOS/cost/source gates before assignment use

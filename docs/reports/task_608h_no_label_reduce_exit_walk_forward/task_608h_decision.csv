@@ -1,0 +1,2 @@
+task_id,decision,pass_flag,best_scenario_50bp,best_delta_avg_net_return_pct_50bp,best_delta_entry_reduce_failure_rate_50bp,best_positive_fold_rate_50bp,strategy_acceptance_status,deployment_status,next_action
+Task608H,FAIL_NO_LABEL_REDUCE_SIM_DID_NOT_IMPROVE_WITH_COST,0,top1_reduce_50_cost50bp,-1.7564935896909901,0.0,0.8333333333333334,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,Do not refine this reducer yet; investigate why fold-forward candidates mostly hit clean trades and add stronger live features.

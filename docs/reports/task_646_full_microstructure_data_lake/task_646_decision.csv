@@ -1,0 +1,2 @@
+decision,strategy_acceptance_status,real_capital_status,trading_promotion_pass_flag,universe_symbol_count,lake_start_date,lake_end_date,quote_coverage_rate,trade_coverage_rate,feature_builder_allowed_flag,next_action
+RAW_DATA_LAKE_PLAN_READY_FEATURE_BUILDER_BLOCKED,NOT_ACCEPTED,FORBIDDEN,0,70,2024-01-02,2026-06-03,4.706989879971758e-05,2.353494939985879e-05,0,"Run Task646 backfill command batches, rebuild catalog and coverage audit, then allow Task646D only after coverage and integrity gates pass."

@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,deployment_readiness_status,real_capital_status,code_changed,replay_changed,selector_changed,paper_order_changed,live_order_changed,next_action
+Task3230,mobile_reference_deep_dive_complete_NOT_IMPLEMENTED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,0,0,0,0,0,Implement mobile-first Scanner tab from CockpitReadModelV2 and compare against Reference 2 at 430x932.

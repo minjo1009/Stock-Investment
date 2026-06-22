@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1717,l2_l4_bad_trade_gate_implemented_diagnostic_only,bad_trade_gate_top3_v1,3525.2985,0.276522,-0.32335,audit selected replacements and blocked baseline rows before expanding candidate replacement aggressiveness,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_L2_L4_BAD_TRADE_GATE_ONLY

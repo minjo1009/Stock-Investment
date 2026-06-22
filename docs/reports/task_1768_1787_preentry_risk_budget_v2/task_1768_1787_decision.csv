@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1787,preentry_risk_budget_v2_implemented_diagnostic_only,preentry_risk_budget_v2_top3_v1,3440.6109,0.270522,-0.289135,audit v2 multiplier distribution and add true factor beta estimates before any acceptance claim,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_PREENTRY_RISK_BUDGET_V2_ONLY

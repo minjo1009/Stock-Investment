@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,row_count,trading_promotion_pass_flag,next_action
+Task707,TIERED_ACTION_LOGIC_COMPLETE_DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,NOT_ACCEPTED,FORBIDDEN,5265,0,Continue governed research only.

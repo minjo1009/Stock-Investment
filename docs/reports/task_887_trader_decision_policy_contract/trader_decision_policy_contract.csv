@@ -1,0 +1,6 @@
+policy_version,decision_state,position_state,requires_existing_position,required_conditions,does_not_mean
+trader_brain_policy_v0_1,skip,zero,0,source_gap or invalidated thesis or bad contradiction state,negative label
+trader_brain_policy_v0_1,watch,zero,0,valid thesis but insufficient confirmation,trade
+trader_brain_policy_v0_1,reduce,small,1,valid thesis with contradiction or weak price context and existing open position,synthetic sell or accepted strategy
+trader_brain_policy_v0_1,activate,normal,0,valid thesis plus clean graph state plus acceptable risk context,deployment readiness
+trader_brain_policy_v0_1,activate,capped,0,valid thesis plus high volatility or concentration cap,real capital permission

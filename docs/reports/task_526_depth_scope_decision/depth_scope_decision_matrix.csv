@@ -1,0 +1,3 @@
+scope_mode,deployment_grade_allowed_flag,paper_shadow_allowed_flag,reason
+FULL_DEPTH_REQUIRED,0,0,provider_missing
+NBBO_ONLY_SCOPE_LIMITED,0,1,allowed only for NBBO/spread-size limited paper or shadow testing

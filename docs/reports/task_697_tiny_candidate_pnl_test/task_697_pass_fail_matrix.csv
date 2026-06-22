@@ -1,0 +1,8 @@
+gate_name,status,pass_flag,observed,required
+tiny_scope_fixed_to_three_candidates,PRIMARY_PASS,1,"rows=3; symbols=ASTS,BA,TER","Task697 scope must be ASTS, BA, TER only"
+exact_lifecycle_outcome_join,PRIMARY_PASS,1,joined=3/3,PnL evaluation must join by exact lifecycle_id and symbol
+qqq_benchmark_available,PRIMARY_PASS,1,qqq_rows=1256; aligned_windows=3,QQQ benchmark must be available for all tiny candidate windows
+round_trip_cost_applied,PRIMARY_PASS,1,cost_bps=50,Strategy and matched QQQ windows must include cost
+no_overlap_in_tiny_sequence,PRIMARY_PASS,1,overlap_count=0,Tiny sequential capital comparison should not double-count overlapping positions
+outcome_eval_only_not_selection,PRIMARY_PASS,1,selection_outcome_sum=0; eval_sum=3,Outcomes are evaluation-only in Task697
+no_strategy_or_trade_promotion,PRIMARY_PASS,1,allocation_approved=0; paper_or_live_trade_approved=0,Tiny PnL cannot promote allocation or trading

@@ -1,0 +1,125 @@
+version: 1
+name: orchestrator_harness
+principle: every_user_command_routes_through_architecture_orchestrator
+
+storage_rules:
+  harness_manifest: docs/operating_system/harness_manifest.yml
+  task_state: docs/operating_system/task_state.json
+  agent_memory: docs/operating_system/agent_memory.json
+  skill_update_queue: docs/operating_system/skill_update_queue.md
+  orchestrator_protocol: docs/operating_system/orchestrator_harness.md
+  task_spec: docs/phases/{phase_id}/tasks/{task_id}.md
+  handoff_packet: docs/phases/{phase_id}/reports/{task_id}/handoff.md
+  work_summary: docs/phases/{phase_id}/reports/{task_id}/summary.md
+  validation_log: docs/phases/{phase_id}/reports/{task_id}/validation.md
+  context_pack: docs/phases/{phase_id}/reports/{task_id}/context_pack.md
+  decision_record: docs/phases/{phase_id}/decisions/{task_id}_decision.md
+  forbidden_output_roots:
+    - .
+    - docs/
+
+phase_registry:
+  PHASE_00:
+    title: Governance and operating-system setup
+    owner_agent: Architecture Orchestrator
+    default_skill: subagent-artifact-governance
+    keywords: [harness, orchestrator, operating system, governance, phase, task, skill, memory, self-update]
+  PHASE_01:
+    title: Repository classification and architecture normalization
+    owner_agent: Repository Curator
+    default_skill: subagent-artifact-governance
+    keywords: [architecture, normalize, inventory, repository, graphify cleanup, folder, manifest, migration, boundary]
+  PHASE_02:
+    title: Data, features, strategy, and backtest reliability
+    owner_agent: Backtest Architect
+    default_skill: subagent-artifact-governance
+    keywords: [backtest, strategy, alpha, feature, signal, universe, portfolio, capital, sharpe, pnl, drawdown]
+  PHASE_03:
+    title: Execution, broker lifecycle, and safety contracts
+    owner_agent: Execution Architect
+    default_skill: subagent-broker-lifecycle-ops
+    keywords: [broker, kis, order, fill, cancel, reconciliation, execution, risk, live, paper, lifecycle]
+  PHASE_04:
+    title: Paper operations, evidence, UI, and monitoring
+    owner_agent: Documentation Steward
+    default_skill: subagent-artifact-governance
+    keywords: [paper ops, evidence, monitor, ui, streamlit, report, dashboard, alert, scheduler, loop]
+  PHASE_05:
+    title: Live pilot readiness gates
+    owner_agent: Risk Architect
+    default_skill: subagent-broker-lifecycle-ops
+    keywords: [live pilot, live-ready, go live, production trading, pilot, readiness, stop condition]
+  PHASE_06:
+    title: Scaling, automation, and long-term maintenance
+    owner_agent: Architecture Orchestrator
+    default_skill: subagent-artifact-governance
+    keywords: [scale, automation, ci, long-term, maintenance, archive, retention]
+
+agent_registry:
+  Architecture Orchestrator:
+    responsibility: command intake, phase/task routing, final gates
+    allowed_roots: [docs/operating_system, docs/phases, docs/architecture]
+    forbidden_roots: [src]
+  Graphify Analyst:
+    responsibility: graph scope, graph outputs, context packs
+    allowed_roots: [docs/graphify, docs/phases]
+    forbidden_roots: [src]
+  Repository Curator:
+    responsibility: inventory, migration maps, folder conventions
+    allowed_roots: [docs/architecture, docs/phases]
+    forbidden_roots: [src]
+  Domain Model Architect:
+    responsibility: domain boundaries and contracts
+    allowed_roots: [docs/architecture, docs/contracts, docs/phases]
+    forbidden_roots: [src/integration]
+  Backtest Architect:
+    responsibility: backtest reliability and research separation
+    allowed_roots: [docs/phases, docs/reports, src/backtest]
+    forbidden_roots: [src/integration]
+  Execution Architect:
+    responsibility: execution lifecycle and broker safety
+    allowed_roots: [docs/phases, docs/contracts, src/execution, src/app, src/integration]
+    forbidden_roots: []
+  Risk Architect:
+    responsibility: risk gates and live-pilot stop conditions
+    allowed_roots: [docs/phases, docs/contracts, src/risk]
+    forbidden_roots: []
+  Storage Architect:
+    responsibility: state, schemas, artifact storage
+    allowed_roots: [docs/phases, docs/operating_system, src/state]
+    forbidden_roots: []
+  Test Architect:
+    responsibility: boundary and regression validation
+    allowed_roots: [docs/phases, tests]
+    forbidden_roots: []
+  Documentation Steward:
+    responsibility: reports, templates, indexes, continuity summaries
+    allowed_roots: [docs, templates]
+    forbidden_roots: [src]
+
+skill_registry:
+  subagent-artifact-governance:
+    path: skills/subagent-artifact-governance/SKILL.md
+    applies_to: [documentation, architecture, graphify, artifact_storage, reporting]
+  subagent-broker-lifecycle-ops:
+    path: skills/subagent-broker-lifecycle-ops/SKILL.md
+    applies_to: [broker, execution, reconciliation, paper, live_safety]
+
+safety_gates:
+  blocked_terms: [live order, real order, submit order, cancel order, broker api, kis api, api call, market order]
+  user_execution_terms: [backtest, graphify, broker, kis, live, order, fill, cancel, migration move, delete]
+  never_auto_run:
+    - backtests
+    - graphify_regeneration
+    - broker_api_calls
+    - order_lifecycle_workflows
+    - file_move_delete_migrations
+
+external_execution_requests:
+  backtest:
+    powershell: '$env:PYTHONPATH="src"; python -m backtest.analysis_strategy_lock_084'
+  graphify:
+    powershell: 'graphify update . --config docs/graphify/graphify_exclude.yml'
+  harness_validation:
+    powershell: '$env:PYTHONPATH="src"; python scripts/orchestrator_harness.py validate-state'
+

@@ -1,0 +1,4 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"schema_manifest_invariants.csv","small_table","859","d8014af652b8050a219e60f5c50eaba93e0dba379f7c660190b67e05121abf22"
+"task_804_decision.csv","small_table","304","3b563fa5af14107b459359c73fe2239b6127f399db722fae82fc3ef0b7e459f1"
+"task_804_schema_manifest_invariant_contract.md","report","1426","428bc13dd9ac9c8179b25d0239a3f057543abdd4a57d2e97a8e75fc5fb140c74"

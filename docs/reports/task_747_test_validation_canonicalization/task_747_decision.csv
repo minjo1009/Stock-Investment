@@ -1,0 +1,20 @@
+field,value
+task_id,Task747
+verdict,PRIMARY_PASS
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+scope,tests classification only
+formal_test_rows,378
+evidence_only,263
+support_only,27
+package_health,24
+governance_health,18
+research_only,14
+data_health,12
+execution_health,9
+reporting_health,7
+acceptance_evidence_review,4
+changed_trading_logic,no
+deleted_or_moved_files,no
+full_test_suite_run,no
+next_task,Task748 skills MD subagent canonicalization

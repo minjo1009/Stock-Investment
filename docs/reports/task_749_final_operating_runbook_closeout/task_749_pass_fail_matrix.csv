@@ -1,0 +1,11 @@
+check,status,evidence
+final_runbook_created,PASS,docs/operating_system/project_cleanup_final_runbook.md
+task_report_created,PASS,docs/reports/task_749_final_operating_runbook_closeout/task_749_final_operating_runbook_closeout.md
+standing_status_preserved,PASS,NOT_ACCEPTED / DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY / FORBIDDEN
+locked_resume_order_created,PASS,project_cleanup_final_runbook.md
+new_alpha_blocked_as_next_step,PASS,project_cleanup_final_runbook.md
+gpt_review_captured,PASS,existing ChatGPT tab responded with review notes
+strategy_acceptance_changed,PASS,no
+deployment_readiness_changed,PASS,no
+real_capital_permission_changed,PASS,no
+full_test_suite_run,NOT_RUN,governance closeout only

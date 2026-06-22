@@ -1,0 +1,3 @@
+decision_area,status,decision,does_not_mean
+trade_spec_gap,completed,Controlled trade-spec bridge is required before strategy replay,permission to infer symbols or direction
+

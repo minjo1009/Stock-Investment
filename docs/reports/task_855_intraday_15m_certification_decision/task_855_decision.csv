@@ -1,0 +1,2 @@
+decision_area,status,decision,does_not_mean
+task_state,completed,15m data classified as partial-no-replay with mixed-schema normalization or gap redownload required,intraday data is certified for replay

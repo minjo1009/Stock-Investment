@@ -1,0 +1,2 @@
+task_id,decision_status,strategy_acceptance,target_status,paper_operation,deployment_readiness,real_capital,next_action
+Task599,PRIMARY_PASS,NOT_ACCEPTED,ACCEPTANCE_REVIEW,READY_FOR_CONTROLLED_PAPER_RUN,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,Execute P0 gates in order: exit lifecycle; candidate funnel; exact replay.

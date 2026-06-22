@@ -1,0 +1,4 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"harness_artifact_audit.csv","small_table","449","1a761da294b0e728e76bab654754593cef91c93debabd7ec4f9c9a7f82b179e7"
+"task_848_decision.csv","small_table","289","ede41452ed96cb83ff585acf0d96b4739e6ff71e6db3329fc905aba09f4d130a"
+"task_848_harness_artifact_audit_validator.md","report","1741","e6250d17f07ab339431d8fb90c45078204fc3c56a02971c2a533bdc7c537cac6"

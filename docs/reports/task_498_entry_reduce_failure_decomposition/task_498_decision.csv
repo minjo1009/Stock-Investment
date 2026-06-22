@@ -1,0 +1,2 @@
+task_id,entry_reduce_failure_count,entry_reduce_failure_rate,root_cause_count,label_fields_evaluation_only_flag,strategy_acceptance_status
+Task498,212,0.24766355140186916,3,1,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY

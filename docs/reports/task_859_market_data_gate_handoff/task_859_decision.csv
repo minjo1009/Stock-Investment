@@ -1,0 +1,2 @@
+decision_area,status,decision,does_not_mean
+task_state,completed,Market data gate handoff is MARKET_DATA_CERTIFICATION_PARTIAL_NO_REPLAY and Task843 remains blocked,actual backtest run or replay permission

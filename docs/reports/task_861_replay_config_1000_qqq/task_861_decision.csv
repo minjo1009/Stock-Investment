@@ -1,0 +1,4 @@
+decision_area,status,decision,does_not_mean
+initial_capital,completed,Initial capital fixed at 1000 USD,capital deployment permission
+benchmark,completed,QQQ buy-and-hold reference fixed as comparison,strategy benchmark pass
+

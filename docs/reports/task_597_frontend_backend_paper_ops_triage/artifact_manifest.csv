@@ -1,0 +1,17 @@
+relative_path,artifact_type,owner,description
+docs/reports/task_597_frontend_backend_paper_ops_triage/task_597_frontend_backend_paper_ops_triage.md,report,필수,Frontend-backend paper ops triage and final team gate resolution
+docs/reports/task_597_frontend_backend_paper_ops_triage/task_597_decision.csv,decision,필수,Task597 decision summary with paper-ready and deployment-blocked split
+docs/reports/task_597_frontend_backend_paper_ops_triage/owner_remediation_plan.csv,small_table,필수,Owner-by-owner remediation plan with final status and validation
+docs/reports/task_597_frontend_backend_paper_ops_triage/promotion_scorecard_refresh.csv,small_table,동승,Current promotion gate refresh after gate resolution
+docs/reports/task_597_frontend_backend_paper_ops_triage/artifact_manifest.csv,manifest,중훈,Manifest for Task597 paper ops triage artifacts
+src/app/task_089_market_data_signal_refresh.py,source,윤헌,KIS quote pacing retry and symbol exchange fallback
+src/app/task_583_live_signal_refresh_repair.py,source,윤헌,Task583 latest-per-symbol source refresh and stale source closure scoreboard
+src/app/task_584_runtime_strategy_decision_gate.py,source,필수+성원,Task584 no-trade decomposition and candidate funnel audit
+src/app/task_589_paper_eod_slack_report.py,source,주은+서연,Task589 current-readiness coverage and fill quarantine audit
+scripts/build_trader_terminal_catalog.py,source,규승,Frontend catalog paper readiness and deployment blocker separation
+frontend/trader-terminal/src/App.jsx,source,규승,Paper ops readiness/deployment blocker UI
+frontend/trader-terminal/src/styles.css,source,규승,Paper ops readiness warning severity styling
+tests/test_task_089_market_signal_refresh.py,test,윤헌,Regression coverage for KIS rate-limit retry and exchange fallback
+tests/test_task589_nasdaq_paper_ops_hardening.py,test,주은,Regression coverage for fill quarantine and exact price policy
+tests/test_trader_terminal_catalog.py,test,규승,Regression coverage for readiness gate and timestamp ordering diagnostics
+frontend/trader-terminal/public/catalog/paper_ops_runtime_catalog.json,runtime_catalog,규승,Generated shared frontend/backend paper readiness gate

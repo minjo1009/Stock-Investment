@@ -1,0 +1,4 @@
+decision_area,status,details,does_not_mean
+program_scope,planned,Historical Trader Brain backtest preparation for 2021-01-01 through 2026-03-31,strategy acceptance
+universe_basis,planned,Use data/raw/theme_universe_10x7.csv with 10 themes x 7 symbols,deployment readiness
+execution_permission,blocked,No real brain backtest run until Task890 go decision,real capital permission

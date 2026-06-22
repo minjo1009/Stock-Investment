@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,blocked_feature_count,approximation_used_flag
+Task560,DATA_BLOCKED_MICROSTRUCTURE_CONFIRMATION_REQUIRED,0,9,0

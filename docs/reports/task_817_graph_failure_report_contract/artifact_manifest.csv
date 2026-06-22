@@ -1,0 +1,7 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"fixtures/bad_missing_edge_evidence/edges.csv","small_table","326","f7925cf85f153e3cbe1ccf8576aec731e86c6248f550167314293bb86234bd9c"
+"fixtures/bad_missing_edge_evidence/nodes.csv","small_table","802","885af2e546ef3ea74b086d72fb6c0604c3653e845921b142da5e5e34e0599eb9"
+"fixtures/bad_missing_edge_evidence/transitions.csv","small_table","156","8a6b3cdf7a19a2ce273ca79792577301624f075c2bf36988a5359250cce8f30f"
+"sample_failure_report.csv","small_table","1437","8c5fc20e14b91f71223e3bb0d0ed6cbb946f02a99a52959e40bb7a6a1e665334"
+"task_817_decision.csv","small_table","287","36a2a13ce55ce246b7473bb78367f9fde075dd10a7c206b60b6c388255868123"
+"task_817_graph_failure_report_contract.md","report","1896","94365f037b05184700872fe5c045565775118a4d050b3ae65d822d7888b43d40"

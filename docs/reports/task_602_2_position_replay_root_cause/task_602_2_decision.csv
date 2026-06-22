@@ -1,0 +1,2 @@
+﻿task_id,decision_status,strategy_acceptance_status,deployment_readiness_status,position_match,top5_rootcause_count,next_required_task
+T602-2,PASS_TOP5_ROOT_CAUSES_IDENTIFIED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,0,5,"Repair missing broker-truth exits, fill links, and symbol-level aggregation before replay acceptance."

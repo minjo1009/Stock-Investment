@@ -1,0 +1,2 @@
+﻿task_id,decision,strategy_acceptance_status,deployment_status,real_capital_status,trading_promotion_pass_flag,candidate_count,setup_bucket_count,high_quality_count,research_only_count,relation_name_alone_high_quality_violations,next_action
+Task673,SETUP_QUALITY_LAYER_BUILT_RESEARCH_ONLY,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,0,1621,5,698,156,0,Use setup buckets only as a predeclared intermediate layer; do not promote without slot and exposure validation.

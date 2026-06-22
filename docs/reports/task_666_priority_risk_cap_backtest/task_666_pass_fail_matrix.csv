@@ -1,0 +1,7 @@
+﻿gate,pass_flag,observed_value,required_value
+no_fixed_hold_or_timing_override,1,violations=0,risk caps preserve timing and exit
+risk_cap_candidates_tested,1,candidates=14,multiple cap candidates
+displacement_audit_built,1,rows=394,added/removed trade audit exists
+no_return_tuned_promotion,1,return_tuned_promoted=0,diagnostic return-tuned candidates cannot promote
+promotion_candidate_found,0,promotion_candidates=0,candidate improves return drawdown validation and recent OOS
+strategy_accepted,0,research diagnostic only,requires accepted strategy gates and live readiness

@@ -1,0 +1,2 @@
+decision,decision_reason,best_variant,best_max_positions,best_sector_cap,anchored_oos_sharpe_delta,anchored_oos_mdd_delta,anchored_oos_expectancy_delta,rolling_positive_windows,survives_cost_2x,survives_cost_3x,top_sector_share,top_symbol_share
+NO_TRANSLATION_EDGE,priority_top3 did not convert corrected subset edge into robust hybrid_full portfolio improvement,priority_top3,10,none,1.17635,-23.391602,0.121945,1,False,False,0.412371,0.134021

@@ -1,0 +1,6 @@
+﻿gate,pass_flag,observed_value,required_value
+no_fixed_hold_or_timing_override,1,violations=0,priority test must keep existing Task639 timing and exit
+priority_changes_accepted_set,1,changed_rows=9,priority should affect max5 accepted trades
+no_return_tuned_promotion,1,return-tuned promotion count=0,return-tuned diagnostic candidates cannot be promoted
+promotion_candidate_found,0,promotion_candidates=0,"candidate must improve full return, drawdown, validation, and recent OOS"
+strategy_accepted,0,research diagnostic only,requires accepted strategy gates and live readiness

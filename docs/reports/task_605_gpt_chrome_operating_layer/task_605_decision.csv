@@ -1,0 +1,3 @@
+decision_id,decision,status,owner_team,reviewer_team,source_of_truth,priority,next_action
+Task605-D1,"Adopt GPT/Chrome as bounded review and ideation layer, never source-of-truth",DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,Research Governance,"All team leads","repo artifacts, raw/runtime sources, exact IDs, registries, validation commands",P0,"Use for blocker-first review, backtest/replay wording audit, and frontend five-second review"
+

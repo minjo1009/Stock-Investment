@@ -1,0 +1,19 @@
+artifact_type,path,description
+input,C:/Users/minjo/Downloads/00_PROJECT_SSOT.md.docx,Frontend product SSOT input
+input,C:/Users/minjo/Downloads/01_DETAIL_ARCHITECTURE.md.docx,Detail workspace architecture input
+input,C:/Users/minjo/Downloads/02_DESIGN_SYSTEM.md.docx,Design system input
+input,C:/Users/minjo/Downloads/03_IMPLEMENTATION_ARCHITECTURE.md.docx,Implementation architecture input
+output,README.md,GitHub-facing latest project orientation
+output,docs/llm_wiki/frontend_app_ssot_pack.md,LLM routing memory for frontend app SSOT pack
+output,docs/obsidian/mocs/Frontend App Map.md,Obsidian frontend app navigation map
+output,docs/llm_wiki/README.md,LLM wiki index link update
+output,docs/obsidian/Vault Home.md,Obsidian cockpit link update
+output,docs/llm_wiki/task_artifact_index.md,Task artifact index note update
+output,docs/llm_wiki/anti_loop_checklist.md,Legacy mobile cockpit loop wording removed from active LLM checklist
+output,docs/obsidian/README.md,Obsidian frontend baseline pointer updated
+output,tasks/task_registry.csv,Stale legacy frontend artifact pointers repaired for registry validation
+deleted,docs/llm_wiki/frontend_ios_cockpit.md,Legacy active-routing iOS cockpit note removed
+deleted,docs/llm_wiki/ios_binance_design_tokens.md,Legacy active-routing iOS design baseline removed
+deleted,docs/obsidian/mocs/Mobile Cockpit Map.md,Legacy active-routing mobile cockpit map removed
+output,docs/reports/task_frontend_ssot_pack_github_update/task_frontend_ssot_pack_github_update.md,Task report
+output,docs/reports/task_frontend_ssot_pack_github_update/artifact_manifest.csv,Artifact manifest

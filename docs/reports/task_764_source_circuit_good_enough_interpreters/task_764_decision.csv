@@ -1,0 +1,14 @@
+field,value
+task_id,Task764
+decision,source_circuit_good_enough_policy_complete_research_only
+brain_layer,economic_meaning
+owner_team,Data & Market Microstructure
+reviewer_team,Research Governance + Regime Research
+source_family_policy,non_operating_sources_context_or_modifiers_not_discarded_not_traded_directly
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+code_promotion,none
+inferred_matching_used,no
+fallback_matching_used,no
+buy_sell_rank_sizing_backtest_created,no

@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1827,sleeve_split_playbook_implemented_diagnostic_only,sleeve_split_top3_v1,3944.5457,0.304621,-0.24476,audit sleeve attribution and decide whether to add targeted rates earnings-revision and sector-breadth data,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_SLEEVE_SPLIT_PLAYBOOK_ONLY

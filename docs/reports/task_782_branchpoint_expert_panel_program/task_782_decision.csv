@@ -1,0 +1,12 @@
+field,value
+task_id,Task782
+decision,open Task773 branchpoint expert-panel program
+status,Diagnostic Only
+canonical_state,active
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+backtest_executed,NO
+gpt_source_of_truth,NO
+inferred_matching_used,NO
+next_action,Task783 institutional trader panel contract

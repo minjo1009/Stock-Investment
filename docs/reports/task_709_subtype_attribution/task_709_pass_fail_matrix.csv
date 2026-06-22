@@ -1,0 +1,5 @@
+gate_name,status,pass_flag,observed,required
+performance_rows_present,PRIMARY_PASS,1,rows=19,>0
+mdd_exposure_present,PRIMARY_PASS,1,rows=12,>0
+examples_present,PRIMARY_PASS,1,rows=100,>0
+diagnostic_only,PRIMARY_PASS,1,no rule mutation,diagnostic only

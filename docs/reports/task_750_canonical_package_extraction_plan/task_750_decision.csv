@@ -1,0 +1,10 @@
+field,value
+task_id,Task750
+decision,create_plan_not_extract_code
+gpt_correction_applied,W1 contracts/state/interfaces before W2 backtest core
+promotion_allowed_now,no
+next_allowed_work,W0-W1 validation and import graph audit only
+new_alpha_allowed,no
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN

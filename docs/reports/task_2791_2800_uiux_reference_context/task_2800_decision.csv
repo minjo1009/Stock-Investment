@@ -1,0 +1,2 @@
+task_id,decision,status,strategy_acceptance,deployment_readiness,real_capital,primary_artifact,next_action
+Task2800,uiux_reference_context_primary_pass,PRIMARY_PASS,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,data/artifacts/task_2791_2800_uiux_reference_context,Implement P0 UI application in a separate read-only iOS task with Expo visual QA

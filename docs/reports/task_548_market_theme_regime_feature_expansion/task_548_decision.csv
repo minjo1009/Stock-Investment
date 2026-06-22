@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,assignment_uses_outcome_flag,missing_macro_source_blocker_count,regime_state_count
+Task548,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,0,0,7,2

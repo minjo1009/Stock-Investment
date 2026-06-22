@@ -1,0 +1,2 @@
+﻿task_id,task_name,decision_status,order_status,orders_submitted,broker_truth_fill_count,deployment_ready_flag,diagnostic_only_flag
+Task585,KIS Paper Order Execution And Lineage,ORDER_SUBMITTED_OR_TERMINAL_RECORDED,UNKNOWN,1,0,0,1

@@ -1,0 +1,2 @@
+decision,decision_reason,task341_state,task342_state,next_bottleneck,next_research_step
+NO_EVIDENCE_EXPANSION_GAIN,"targeted backfill added no new covered dates; remaining gap is dominated by incomplete intraday windows, not missing archive dates",REGIME_CONDITIONAL_EDGE,NO_IMPROVEMENT,event_alignment_or_provider_coverage,priority_overlay_research_should_wait_for_better_coverage_or_better_breakout_alignment

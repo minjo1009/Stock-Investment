@@ -1,0 +1,6 @@
+gate_name,status,pass_flag,observed,required
+classification_created,PRIMARY_PASS,1,rows=95,95
+distribution_created,PRIMARY_PASS,1,rows=8,>0
+prior_reclass_created,PRIMARY_PASS,1,rows=9,9
+guardrail_all_pass,PRIMARY_PASS,1,min=1,1
+backtest_permission,NOT_ACCEPTED,0,FAIL,classifier repair only

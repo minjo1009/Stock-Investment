@@ -1,0 +1,9 @@
+﻿gate,pass_flag,observed_value,required_value
+economic_transmission_template_built,1,themes=10,all active themes have economic mechanism fields
+catalyst_quality_tier_built,1,catalyst_quality_tier present,contract/customer/supply/backlog/guidance/margin tiers
+price_acceptance_state_built,1,price_acceptance_state present,accepted/neutral/rejected tape state
+oos_effect_requires_distinct_improvement,0,promotion_candidates=0,validation and recent OOS improve Task639 without worse drawdown
+scenario_invalidation_fields_built,1,scenario_base_case and scenario_invalidation_condition present,each row has scenario and invalidation condition
+all_task639_core_rows_state_assigned,1,task639_core_rows=1621,all core rows assigned mechanism relation state
+not_do_matrix_pass,1,violations=0,no forbidden macro authority
+strategy_accepted,0,research diagnostic only,requires accepted strategy gates and live readiness

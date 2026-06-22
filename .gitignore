@@ -18,12 +18,71 @@ htmlcov/
 .idea/
 .DS_Store
 Thumbs.db
+.obsidian/workspace*.json
+.obsidian/cache/
+.obsidian/plugins/
 
 # Logs
 *.log
+logs/
+.env
+*.env
+config/*.env
+configs/*.env
+configs/local/*.env
+
+# Frontend dependencies / build output
+node_modules/
+dist/
 
 # KIS token cache
 .kis_token_cache.json
 
 # Local runtime DB
 trading.db
+
+# Local and generated market data
+data/raw/
+data/artifacts/
+data/cache/
+data/panels/
+data/readonly_mcp/
+data/snapshots/
+data/**/*.jsonl
+data/**/*.parquet
+data/**/*.db
+data/**/*.sqlite
+
+# Keep intentionally tiny sample fixtures versionable
+!data/samples/
+!data/samples/**
+
+# Generated research reports: keep narrative/decision docs, exclude large panels
+docs/reports/**
+!docs/reports/
+!docs/reports/**/
+!docs/reports/**/*.md
+!docs/reports/**/artifact_manifest.csv
+!docs/reports/**/*decision*.csv
+!docs/reports/**/*pass_fail*.csv
+docs/reports/**/*snapshot_log.csv
+docs/reports/**/*decision_log.csv
+docs/reports/**/*lineage_audit.csv
+
+# Local generated outputs
+artifacts/
+outputs/
+runs/
+downloads/
+graphify-out/
+frontend_data/
+참고 Context/
+*.db
+*.sqlite
+*.jsonl
+
+# Tool caches
+.cache/
+.mypy_cache/
+.ruff_cache/
+.codex/

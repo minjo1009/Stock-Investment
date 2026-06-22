@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,stable_state_count,total_state_count,label_used_in_assignment_flag
+Task562,DIAGNOSTIC_ONLY_OOS_STABILITY_TESTED,0,3,9,0

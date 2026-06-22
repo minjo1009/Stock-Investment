@@ -1,0 +1,2 @@
+task_id,schema_defined_flag,receive_ts_required_flag,historical_without_recv_ts_live_ready_flag,inferred_lifecycle_matching_used_flag,strategy_acceptance_status
+Task546B,1,1,0,0,CAPTURE_SCHEMA_READY

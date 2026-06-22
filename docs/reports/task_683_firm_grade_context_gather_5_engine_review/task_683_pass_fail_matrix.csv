@@ -1,0 +1,7 @@
+gate_name,pass_flag,observed,required
+five_engine_context_gather_built,1,context artifacts created,all five engines covered
+active_mixed_decomposition_built,1,rows=41,active mixed rows decomposed
+active_catalyst_low_reinterpretation_built,1,rows=34,active catalyst low rows reinterpreted
+same_symbol_interpreter_built,1,rows=51,same-symbol rows interpreted
+no_assignment_promotion,1,research only,no strategy promotion
+distribution_audit_built,1,rows=59,distribution rows

@@ -1,0 +1,8 @@
+gate_name,status,pass_flag,observed,required
+source_route_map_created,PRIMARY_PASS,1,rows=7,7
+allowed_fact_family_matrix_created,PRIMARY_PASS,1,rows=49,>0
+source_routed_events_created,PRIMARY_PASS,1,rows=5302,5302
+non_operating_context_preserved,PRIMARY_PASS,1,rows=5302,5302 review-only rows
+cross_circuit_edges_created,PRIMARY_PASS,1,rows=5302,5302
+pollution_guardrail_all_pass,PRIMARY_PASS,1,min=1,1
+backtest_permission,NOT_ACCEPTED,0,FAIL,"routing only, no trading promotion"

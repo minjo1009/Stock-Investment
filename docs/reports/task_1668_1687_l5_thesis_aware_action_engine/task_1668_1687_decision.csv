@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1687,l5_thesis_aware_action_engine_implemented_not_accepted,thesis_aware_no_rerisk_top3_v1,2740.1193,0.215696,-0.2539,audit whether market-linked holds and exit quorum reduce return too much before adding stronger source-confirmed alpha entry,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_L5_THESIS_AWARE_ACTION_ENGINE_ONLY

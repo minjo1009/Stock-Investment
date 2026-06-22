@@ -1,0 +1,2 @@
+decision,recommended_candidate,decision_reason
+current_state_model_requires_broader_rebuild,local_A,local_A only improves metrics by increasing sparsity too much

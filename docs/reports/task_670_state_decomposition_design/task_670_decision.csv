@@ -1,0 +1,3 @@
+task_id,decision,strategy_acceptance_status,deployment_status,real_capital_status,core_axis_count,diagnostic_axis_count,trading_promotion_pass_flag,next_action
+Task670,STATE_DECOMPOSITION_DESIGN_READY_IMPLEMENTATION_REQUIRED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,8,3,0,Implement state axis panel and audits before any new action mapping or backtest wrapper.
+

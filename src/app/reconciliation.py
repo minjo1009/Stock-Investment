@@ -123,8 +123,24 @@ def reconcile_local_and_broker(
             )
             continue
 
+        if local_status == "CANCELLED" and broker_status == "FILLED":
+            events.append(
+                {
+                    "event_type": "LATE_FILL",
+                    "severity": "CRITICAL",
+                    "symbol": local_row.get("symbol") or broker_row.get("symbol"),
+                    "local_order_id": order_id,
+                    "broker_order_id": order_id,
+                    "local_status": local_status,
+                    "broker_status": broker_status,
+                    "details": {"reason": "order filled after local cancelled state"},
+                }
+            )
+            continue
+
         critical_status_mismatch = (
-            local_status == "SUBMITTED" and broker_status in {"CANCELLED", "REJECTED", "FILLED"}
+            local_status in {"SUBMITTED", "PENDING", "PARTIAL", "CANCEL_REQUESTED", "CANCEL_IN_PROGRESS"}
+            and broker_status in {"CANCELLED", "REJECTED", "FILLED"}
         )
         if critical_status_mismatch:
             events.append(

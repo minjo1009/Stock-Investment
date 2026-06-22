@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,credential_ready_flag,stream_client_ready_flag,raw_stream_record_count,success_record_count,connection_limit_error_count,insufficient_subscription_error_count,quote_record_count,status_record_count,luld_record_count,missing_source_approximated_flag
+Task571,DATA_BLOCKED_ALPACA_CONNECTION_LIMIT,0,1,1,12,2,4,1,0,0,0,0

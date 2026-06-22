@@ -1,0 +1,2 @@
+﻿task_id,decision_status,acceptance_status,strategy_acceptance_status,deployment_readiness_status,real_capital_status,runtime_exit_count,broker_truth_sell_fills,mapped_broker_truth_exits,missing_broker_exit_count,exit_fill_linkage_coverage,closed_positions_with_fill,inferred_matching_used_flag,next_required_task
+T600-4,FAIL_BROKER_TRUTH_SELL_FILLS_ZERO,FAIL,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,23,0,0,23,0.0,0.0,0,"Ingest actual broker/order-status SELL fills, then rerun T600-4 reconciliation."

@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,nbbo_only_scope_allowed_flag,full_depth_blocked_flag,missing_source_approximation_flag
+Task551,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,0,1,1,0

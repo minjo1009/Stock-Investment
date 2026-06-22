@@ -1,0 +1,2 @@
+task_id,gate_id,gate_name,required_before_replay,target_metric,forbidden_claim,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1617,RERISKGATE-001,implementation_go_gate,"schema, fixtures, source-time flags, policy hash, validator",CAGR moves toward 30pct while MDD remains inside or near -30pct and QQQ beat remains true,strategy_acceptance_or_real_capital,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_EXPECTATION_PAYOFF_RERISK_PLAN_ONLY

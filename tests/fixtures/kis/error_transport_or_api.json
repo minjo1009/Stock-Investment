@@ -1,0 +1,13 @@
+{
+  "_fixture_meta": {
+    "source": "synthetic-fallback",
+    "captured_at": "2026-04-24T08:10:44.032985Z",
+    "sanitized": true,
+    "case": "error_transport_or_api",
+    "real_capture": false
+  },
+  "response": {
+    "error": "KIS credentials missing in environment",
+    "mode": "read_only"
+  }
+}

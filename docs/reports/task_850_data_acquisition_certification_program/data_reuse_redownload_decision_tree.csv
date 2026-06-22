@@ -1,0 +1,11 @@
+condition,decision,action,forbidden_shortcut
+schema_stable_and_keys_explicit_and_coverage_complete_and_adjustment_proven,reuse_existing,certify manifest row and attach hashes,no acceptance claim
+symbol_missing_in_rows_but_file_mapping_is_explicit_and_hashed,reuse_with_manifest_mapping,create symbol_file_map and normalized manifest,no filename inference inside replay
+adjustment_policy_unknown_for_adjusted_replay,blocked_or_redownload_slice,attach corporate action source or redownload adjusted family,no pretending close is adjusted
+coverage_gap_for_harness_symbol_or_period,redownload_gap_only,fetch missing symbol-date-granularity slice,no full redownload unless gap pattern is systemic
+mixed_schema_but_required_columns_can_be_normalized,normalize_existing,write normalization contract and audit row,no silent column filling
+mixed_schema_loses_required_fields,blocked_or_redownload_slice,fetch missing field family for affected symbols,no synthetic vwap trade_count
+timestamp_or_session_policy_unclear,blocked_until_calendar_audit,resolve timezone/session labels,no proximity timestamp matching
+provider_or_source_unknown,blocked,do not use for controlled replay,no source approximation
+microstructure_historical_only,research_only,keep for slippage diagnostics later,no live-ready claim
+

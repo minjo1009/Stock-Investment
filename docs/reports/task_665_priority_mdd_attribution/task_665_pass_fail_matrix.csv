@@ -1,0 +1,6 @@
+﻿gate,pass_flag,observed_value,required_value
+mdd_interval_identified,1,2025-02-06 14:30:00+00:00 to 2025-06-03 00:00:00+00:00,priority peak and trough timestamps
+accepted_delta_built,1,rows=81,accepted trade delta rows
+displacement_pairs_built,1,rows=47,slot displacement pair rows
+drawdown_not_worse,0,mdd_penalty=-9.88,priority must not worsen MDD before promotion
+strategy_accepted,0,diagnostic attribution only,requires accepted strategy gates and live readiness

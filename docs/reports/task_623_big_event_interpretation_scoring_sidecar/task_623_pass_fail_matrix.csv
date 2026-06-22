@@ -1,0 +1,7 @@
+gate,pass_flag,observed_value,required_value
+scoring_schema_complete,1,"event_scope,event_interpretation_category,transmission_channel,directional_score,transmission_strength_score,company_relevance_score,event_timestamp_quality_score,priced_in_risk_score,evidence_quality_score,materiality_score,interpretation_confidence_score,composite_interpretation_score,score_action,scoring_reason_code,support_entry_certified_flag,risk_off_certified_flag,sector_support_watch_flag,source_presence_only_used_flag,gpt_score_used_as_source_flag",all big-event scoring fields present
+large_events_are_scored,1,large_events=2291 nonzero_scored=273,Trump war policy CEO events receive deterministic interpretation scores when content keywords exist
+broad_events_not_support_entry,1,broad_support_entry_count=0,macro or sector events cannot become direct support_entry without company-direct evidence
+source_presence_not_used,1,source_presence_only_used=0,event existence alone cannot drive score action
+recent_aerospace_company_direct_support,0,support_entry_candidate_count=0,recent aerospace needs pre-entry company-direct support before entry restoration
+trading_promotion,0,scoring sidecar only; no assignment or order input,must pass source timing OOS cost and account gates before strategy use

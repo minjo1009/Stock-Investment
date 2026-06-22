@@ -1,0 +1,2 @@
+task_id,decision,strategy_acceptance_status,real_capital_status,entry_count,unique_linked_event_count,source_text_certified_event_count,content_prediction_certified_event_count,entries_with_content_prediction_count,stable_predictive_feature_count,trading_promotion_pass_flag,next_action
+Task636,FAIL_CONTENT_PREDICTION_NOT_ACCEPTED,NOT_ACCEPTED,FORBIDDEN,5265,3319,3319,200,1856,0,0,If stable content features exist rerun $1000 QQQ and Task617 account comparison using content-gated entries; otherwise expand source interpretation quality.

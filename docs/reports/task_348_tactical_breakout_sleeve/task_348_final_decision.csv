@@ -1,0 +1,2 @@
+decision,decision_reason,anchored_oos_expectancy,anchored_oos_cost_1x_expectancy,anchored_oos_cost_2x_expectancy,rolling_positive_windows,diagnostic_strength_score,capacity_risk
+TACTICAL_EDGE_RESEARCH_ONLY,"Sleeve exists, but execution-quality separation or cost/capacity robustness is still weak.",0.185608,0.185608,0.085608,4,2,medium

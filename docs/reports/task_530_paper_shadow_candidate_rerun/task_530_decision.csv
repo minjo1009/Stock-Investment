@@ -1,0 +1,2 @@
+task_id,paper_shadow_candidate_count,promotion_decision,deployment_ready_flag,scope_mode,strategy_acceptance_status
+Task530,1,PROMOTE_TO_PAPER_SHADOW_CANDIDATE,0,NBBO_ONLY_SCOPE_LIMITED,PAPER_SHADOW_CANDIDATE_DIAGNOSTIC

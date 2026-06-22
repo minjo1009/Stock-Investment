@@ -1,0 +1,2 @@
+task_id,feature_contract_defined_flag,current_live_ready_feature_count,outcome_or_fill_after_field_used_flag,strategy_acceptance_status
+Task546D,1,0,0,FEATURE_CONTRACT_READY_SOURCE_BLOCKED

@@ -1,0 +1,11 @@
+gate_name,status,pass_flag,observed,required
+layer_inventory_completed,PRIMARY_PASS,1,rows=35,>=25
+corrected_five_layer_contract_completed,PRIMARY_PASS,1,rows=5,5
+interaction_rule_family_catalog_completed,PRIMARY_PASS,1,rows=28,>=25
+observed_interaction_cells_generated,PRIMARY_PASS,1,rows=210,>=100
+rule_candidate_assignments_generated,PRIMARY_PASS,1,rows=210,same as observed cells
+relation_type_diversity,PRIMARY_PASS,1,unique=7,>=5
+coverage_multiple_families_observed,PRIMARY_PASS,1,observed=12,>=10
+leakage_all_pass,PRIMARY_PASS,1,min=1,1
+governance_all_pass,PRIMARY_PASS,1,min=1,1
+backtest_permission,NOT_ACCEPTED,0,FAIL,PASS only after source-certified primitive fact and denominator gates

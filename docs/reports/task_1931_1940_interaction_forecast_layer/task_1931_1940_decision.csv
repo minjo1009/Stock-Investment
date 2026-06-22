@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,joint_target_met,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1940,interaction_forecast_layer_complete_diagnostic_only,interaction_forecast_top3_v1,4044.9636,0.310991,-0.238745,1,Audit interaction primitives by source family and only then decide whether top5 expansion replay is justified,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_INTERACTION_FORECAST_LAYER_ONLY

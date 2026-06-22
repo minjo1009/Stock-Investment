@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,broker_truth_fill_used_flag,portfolio_proxy_built_flag
+Task553,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,0,0,1

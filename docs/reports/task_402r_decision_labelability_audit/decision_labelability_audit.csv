@@ -1,0 +1,4 @@
+﻿bucket,candidate_count,lifecycle_created_count,non_lifecycle_candidate_count,exact_label_count,unlabeled_lifecycle_count,label_coverage_rate,unlabeled_treated_as_negative_flag,inferred_lifecycle_matching_used_flag
+ALLOW,60588,60588,0,0,60588,0.0,0,0
+REJECT,101428,0,101428,0,0,0.0,0,0
+WATCH,44042,0,44042,0,0,0.0,0,0

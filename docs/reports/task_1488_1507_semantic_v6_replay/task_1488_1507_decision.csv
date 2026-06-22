@@ -1,0 +1,2 @@
+task_id,verdict,candidate_rows,l3_edge_rows,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1507,semantic_v6_judgment_structure_implemented_not_accepted,3100,15500,semantic_v6_top5_v1,1975.4892,0.141016,-0.42143,review v6 thesis and displacement audit before adding true analyst PIT or source-receipt exits,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_SEMANTIC_V6_REPLAY_ONLY

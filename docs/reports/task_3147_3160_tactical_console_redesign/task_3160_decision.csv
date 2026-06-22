@@ -1,0 +1,2 @@
+task_id,decision,status,strategy_acceptance,deployment_readiness,real_capital,notes
+Task3160,tactical_console_redesign_completed_read_only,completed,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,"TradingView 70 Home 20 Analysis/Risk 10 UI redesign completed; no replay selector paper order live order or broker mutation changed."

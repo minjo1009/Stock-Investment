@@ -1,0 +1,2 @@
+task_id,entry_reduce_count,entry_reduce_rate,severe_loss_count,largest_failure_axis,label_used_for_evaluation_only_flag,strategy_acceptance_status
+Task510,37,0.3592233009708738,27,theme_id|theme_regime_state_v4|timing_state|symbol_multiday_setup_state|exit_reason,1,FAILURE_DECOMPOSITION_ONLY

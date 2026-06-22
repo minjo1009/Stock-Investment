@@ -1,0 +1,7 @@
+﻿gate,pass_flag,observed_value,required_value
+oos_action_rows_exist,1,recent_strength=92; recent_reduce=24,recent OOS has action-classified rows
+validation_reduce_duration_exists,0,validation_reduce=0,validation has reduce-duration opportunities
+accepted_trade_overlap_exists,1,recent_accepted_action_overlap=4,action rows overlap capacity-accepted trades
+accepted_delta_audited,1,rows=16,candidate accepted-trade deltas exist
+winner_cut_detected,1,winner_cut_rows=22,audit should identify whether action cuts winners
+strategy_accepted,0,forensics only,requires OOS action improvement and live readiness

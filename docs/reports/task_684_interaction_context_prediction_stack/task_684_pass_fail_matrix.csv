@@ -1,0 +1,9 @@
+gate_name,pass_flag,observed,required
+five_interaction_engine_artifacts_built,1,columns present,all interaction columns
+cohort_only_assignment,1,rows=7824,cohort allocation rows
+no_forbidden_assignment_inputs,1,violations=0,0 violations
+no_global_top5_rank,1,absent,no global rank
+best_beats_active_cap3,0,"best=10887.47, active=10887.47",best > active
+best_mdd_not_worse,1,"best=-30.52, active=-30.52",MDD not worse
+best_preserves_active_big_winners,1,removed_big=0,0 removed
+strategy_not_deployment_ready,1,research only,real capital forbidden

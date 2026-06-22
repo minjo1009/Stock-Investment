@@ -1,0 +1,12 @@
+gate_name,status,pass_flag,observed,required
+task712_720_audit_completed,PRIMARY_PASS,1,rows=5,>=5
+existing_brain_contract_pass,NOT_ACCEPTED,0,min=0,1
+economic_interaction_contract_defined,PRIMARY_PASS,1,rows=9,>=8
+required_schema_defined,PRIMARY_PASS,1,rows=28,>=15
+interaction_edge_rulebook_defined,PRIMARY_PASS,1,rows=14,>=10
+code_restructure_map_defined,PRIMARY_PASS,1,rows=8,>=6
+raw_source_ready_for_backtest,NOT_ACCEPTED,0,min=0,1
+leakage_all_pass,PRIMARY_PASS,1,min=1,1
+governance_all_pass,PRIMARY_PASS,1,min=1,1
+economic_interaction_backtest_gate,NOT_ACCEPTED,0,clean_events=1;denominator_fields_present=0;contamination_count=1;interaction_objects_present=0,"clean events, denominators, zero contamination, and interaction objects"
+backtest_permission,NOT_ACCEPTED,0,FAIL,PASS only after source-backed interaction objects exist

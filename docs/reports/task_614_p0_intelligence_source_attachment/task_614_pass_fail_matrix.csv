@@ -1,0 +1,5 @@
+gate,pass_flag,metric,threshold
+p0_source_attachment,1,3 P0 lanes attached,>=3 P0 lanes attached
+pure_p0_event_diagnostic_candidate,0,passive_13g_pre30d triggers=21 lift=13.06pp clean_false=47.62%,"triggers>=5, failure lift>=15pp, clean false<=60%"
+no_label_or_gpt_source_leakage,1,labels and GPT/plugin outputs are not used as source or assignment inputs,must pass
+trading_promotion,0,source attachment only; analyst reports and full 13F holdings remain blocked,requires fold-forward and full source certification

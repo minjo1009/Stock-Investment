@@ -1,0 +1,2 @@
+task_id,decision,status,reason
+Task3320,NO_GO_PIXEL_EXACT_YET,DIAGNOSTIC_ONLY,"Reference 2 scanner was rebuilt and captured at 854x1844 raw pixels, but side-by-side QA still shows typography, candidate-density, and chart-overlay differences. Home and Analysis/Risk expansion should wait until Scanner passes tighter visual QA."

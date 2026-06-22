@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,target_watch_candidate_count,new_layer_required_flag,interaction_logic_upgrade_required_flag,trading_promotion_pass_flag,next_action
+Task720,WATCH_BUCKET_INTERACTION_DIAGNOSTICS_BUILT_RESEARCH_ONLY,NOT_ACCEPTED,FORBIDDEN,345,0,1,0,Manually review the three interaction packets before any backtest promotion.

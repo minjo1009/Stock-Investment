@@ -1,0 +1,4 @@
+﻿gate,pass_flag,observed_value,required_value
+exposure_cluster_audit_built,1,rows=225,MDD exposure cluster audit
+assignment_not_used,1,assignment_used=0,0 assignment use
+mdd_hindsight_not_promoted,1,audit only,no MDD-only cap promotion

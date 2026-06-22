@@ -1,0 +1,2 @@
+task_id,decision,strategy_status,deployment_status,real_capital,next_action
+Task3500,RUNTIME_SAFETY_CONNECTIONS_IMPLEMENTED_PROMOTION_STILL_BLOCKED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,Implement dry-run diagnostic scheduler then single-authority execution adapter

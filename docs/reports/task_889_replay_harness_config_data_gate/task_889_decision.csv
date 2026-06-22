@@ -1,0 +1,2 @@
+decision_area,status,details,does_not_mean
+replay_harness_config_data_gate,planned,Freeze replay assumptions and required data gates,backtest acceptance

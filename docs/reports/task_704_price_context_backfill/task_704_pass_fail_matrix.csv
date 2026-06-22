@@ -1,0 +1,5 @@
+gate_name,pass_flag,observed,required
+event_linked_price_context_full,1,2445/2445,2445/2445
+all_baseline_price_context_full,1,5265/5265,5265/5265
+no_outcome_assignment,1,0,0
+no_future_price_assignment,1,0,0

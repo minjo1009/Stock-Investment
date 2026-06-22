@@ -1,0 +1,13 @@
+gate_name,status,pass_flag,observed,required
+all_345_reviewed,PRIMARY_PASS,1,rows=345,345
+queue1_deep_review_or_empty,PRIMARY_PASS,1,rows=0,empty or deep
+queue2_25_full_review,PRIMARY_PASS,1,rows=25,25 full
+queue3_qa_review_repaired,PRIMARY_PASS,1,rows=320,>0
+queue3_exception_deep_review_repaired,PRIMARY_PASS,1,rows=3,0 or more deep exceptions
+review_reason_present,PRIMARY_PASS,1,complete,complete
+evidence_span_used_present,PRIMARY_PASS,1,complete,complete
+leakage_all_pass,PRIMARY_PASS,1,min=1,1
+governance_all_pass,PRIMARY_PASS,1,min=1,1
+backtest_permission_fail,PRIMARY_PASS,1,FAIL,FAIL
+strategy_not_accepted,PRIMARY_PASS,1,NOT_ACCEPTED,NOT_ACCEPTED
+real_capital_forbidden,PRIMARY_PASS,1,FORBIDDEN,FORBIDDEN

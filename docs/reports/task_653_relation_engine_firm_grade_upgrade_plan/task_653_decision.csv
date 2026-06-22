@@ -1,0 +1,11 @@
+field,value
+task_id,Task653
+verdict,RELATION_ENGINE_UPGRADE_PLAN_READY_IMPLEMENTATION_BLOCKED_TO_TASK654
+strategy_acceptance,NOT_ACCEPTED
+real_capital,FORBIDDEN
+deployment_status,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+primary_problem,Current relation engine has partial data coverage weak join audit and overly strong action authority.
+data_decision,Do not add new source types until coverage scope and join contract are repaired.
+code_decision,Task654 must add row-level join status baseline preservation and single simulator comparison.
+logic_decision,Relation states remain diagnostic until taxonomy permissions and promotion eligibility pass.
+next_task,Task654 coverage join baseline taxonomy and action audit implementation.

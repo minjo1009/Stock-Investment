@@ -1,0 +1,4 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"fixtures/attention_packets.csv","small_table","3052","10795744eb96b938a958e1788c7303229051bbd8544417c31febabf3b6c9a216"
+"task_815_attention_packet_fixture_corpus.md","report","1715","9b4edd53ab241e60da2102b646cca933caed1fccb46e669ced616e6d56db8656"
+"task_815_decision.csv","small_table","296","5fabdba1c10ffdcc77e2c77b0ba8d68b3b14b7cb76ba47fe575f1b9914677174"

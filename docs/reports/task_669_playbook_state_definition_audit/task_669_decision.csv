@@ -1,0 +1,2 @@
+﻿task_id,decision,strategy_acceptance_status,deployment_status,real_capital_status,mixed_state_count,redefinition_candidate_count,trading_promotion_pass_flag,next_action
+Task669,PLAYBOOK_STATE_DEFINITION_AUDIT_REDEFINITION_REQUIRED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,6,6,0,Redefine playbook states before adding new action rules; especially audit confirmation_required and normal_participation.

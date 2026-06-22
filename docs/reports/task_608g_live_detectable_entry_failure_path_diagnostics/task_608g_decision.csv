@@ -1,0 +1,2 @@
+task_id,decision,pass_flag,source_coverage_pass_flag,path_coverage_pass_flag,simple_signal_candidate_count,interaction_signal_candidate_count,diagnostic_signal_candidate_count,strategy_acceptance_status,deployment_status,next_action
+Task608G,PASS_LIVE_DETECTABLE_FAILURE_CANDIDATES_FOUND_NEEDS_OOS_RULE_TEST,1,1,1,0,20,20,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,Promote only diagnostic candidates into a no-label walk-forward reduce/exit simulation with cost stress.

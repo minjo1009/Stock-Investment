@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,broker_truth_available_flag,client_order_id_decision_id_rule_flag,historical_seed_only_flag
+Task552,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,0,0,1,1

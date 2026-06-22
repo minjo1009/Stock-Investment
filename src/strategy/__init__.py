@@ -1,2 +1,3 @@
-"""Strategy layer package."""
+"""Strategy package namespace."""
 
+__all__: list[str] = []

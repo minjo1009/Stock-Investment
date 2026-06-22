@@ -1,0 +1,2 @@
+task_id,selected_scope_mode,deployment_grade_allowed_flag,paper_shadow_allowed_flag,full_depth_approximated_flag,strategy_acceptance_status
+Task526,NBBO_ONLY_SCOPE_LIMITED,0,1,0,NBBO_ONLY_PAPER_SHADOW_SCOPE_LIMITED

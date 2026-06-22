@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,snapshot_rows,microstructure_ready_rows,pre_action_snapshot_rate
+Task563,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,0,76,0,100.0

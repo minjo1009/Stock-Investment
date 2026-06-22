@@ -1,0 +1,8 @@
+﻿gate,pass_flag,observed_value,required_value
+component_mix_built,1,rows=134,playbook component mix exists
+state_purity_audit_built,1,rows=7,state purity audit exists
+performance_audit_built,1,rows=6,playbook performance audit exists
+mdd_state_audit_built,1,rows=19,MDD state audit exists
+catalyst_matrix_built,1,rows=28,playbook catalyst matrix exists
+redefinition_required,1,states=6,mixed or misleading states are identified
+strategy_accepted,0,research diagnostic only,requires accepted strategy gates and live readiness

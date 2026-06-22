@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,context_gate_count,label_used_in_assignment_flag,best_context_gate
+Task559,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,0,3,0,intraday_rejection_or_chase_blocked

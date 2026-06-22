@@ -1,0 +1,7 @@
+gate_name,status,pass_flag,observed,required
+leader_and_contender_counts_match_task690,PRIMARY_PASS,1,leaders=28; contenders=407,Task690 slot leader and contender counts must match
+leader_review_decomposed,PRIMARY_PASS,1,leader_statuses=3,leaders should split into multiple review states
+contender_confirmation_decomposed,PRIMARY_PASS,1,confirmation_types=2,contenders should split into data-supported confirmation paths
+cohort_review_present,PRIMARY_PASS,1,cohort_review=210; cohorts=210,one cohort review row per cohort
+no_outcome_columns_in_review_outputs,PRIMARY_PASS,1,none,PnL/outcome columns excluded
+no_strategy_promotion,PRIMARY_PASS,1,no PnL simulation or allocation rule promotion was run,leader/contender review only

@@ -1,0 +1,5 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"harness_run_plan.csv","small_table","1217","fe55d8d53e971802d3d2d6119efa54969193b5937890038b7bc64c588ad3e20e"
+"harness_run_summary.csv","small_table","492","0863bd1878bd0376d440f3c27cd3e95df23242d0e44650e7359acd2ee28cfa8d"
+"task_845_decision.csv","small_table","335","5df868a67fe84bc18d1c168be4fb0d5a7c82df231d5f5f51a3c274026ecc58e9"
+"task_845_no_execution_dry_replay_harness.md","report","2056","64231764523ce7d26c029464456a67779db98bba1a57e2f04e07c8a8f5aed3d5"

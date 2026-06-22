@@ -1,0 +1,13 @@
+field,value
+task_id,Task749
+verdict,PRIMARY_PASS
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+scope,five-pass cleanup closeout
+cleanup_passes_closed,5
+next_safe_task,Task750 Canonical Package Extraction Plan
+new_alpha_allowed_next,no
+gpt_review_captured,yes
+changed_trading_logic,no
+full_test_suite_run,no

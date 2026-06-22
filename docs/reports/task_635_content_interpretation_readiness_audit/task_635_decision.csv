@@ -1,0 +1,2 @@
+task_id,decision,strategy_acceptance_status,real_capital_status,source_text_certified_count,missing_content_field_count,assignment_allowed_flag,trading_promotion_pass_flag,next_action
+Task635,FAIL_CONTENT_INTERPRETATION_NOT_READY,NOT_ACCEPTED,FORBIDDEN,273,11,0,0,Build content prediction extraction from source text then validate those predictions against validation and recent OOS returns before any information field can affect entries.

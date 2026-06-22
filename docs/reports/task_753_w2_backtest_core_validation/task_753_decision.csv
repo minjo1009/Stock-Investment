@@ -1,0 +1,8 @@
+field,value
+task_id,Task753
+decision,advance_w2_by_repairing_loader_and_blocking_engines_until_boundary_repair
+new_alpha_allowed,no
+next_allowed_work,Task754 engine.py pure replay and as-of boundary repair
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN

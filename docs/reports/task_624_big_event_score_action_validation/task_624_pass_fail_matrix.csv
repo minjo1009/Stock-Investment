@@ -1,0 +1,5 @@
+gate,pass_flag,observed_value,required_value
+global_risk_off_rejected,1,recent -0.26% vs original 2.17%; full 3.26%,global risk-off score is too broad and must not become a trade filter
+aerospace_risk_off_diagnostic_improves_recent,1,recent 9.65% vs original 2.17%; validation 12.27%,aerospace-specific risk-off hold improves recent OOS and does not break validation
+company_direct_support_still_missing,1,support_entry_candidate_count=0,no entry restoration until company-direct support exists
+trading_promotion,0,diagnostic action validation only,needs full text source certification plus cost/account rerun before strategy use

@@ -1,0 +1,2 @@
+﻿task_id,strategy_acceptance_status,kis_connection_status,paper_order_run_status,slack_send_status,frontend_catalog_ready_flag,dummy_fallback_blocked_flag,deployment_ready_flag,diagnostic_only_flag
+Task582,DATA_BLOCKED_KIS_CONNECTION,SKIPPED_ENV_NOT_READY,SKIPPED_BY_DEFAULT,SKIPPED_BY_ARG,1,1,0,1

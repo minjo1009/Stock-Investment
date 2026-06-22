@@ -1,0 +1,8 @@
+artifact_path,artifact_type,description
+docs/reports/task_3351_3360_task742_meaning_adapter/task_3351_3360_task742_meaning_adapter.md,report,Task3351-Task3360 Task742 meaning adapter report
+docs/reports/task_3351_3360_task742_meaning_adapter/task_3360_decision.csv,decision,Task3351-Task3360 decision row
+data/artifacts/task_3351_3360_task742_meaning_adapter/adapter_summary.csv,summary,Task742 adapter summary
+data/artifacts/task_3351_3360_task742_meaning_adapter/adapter_checks.csv,validation,Task742 adapter checks
+data/artifacts/task_3351_3360_task742_meaning_adapter/adapter_sample.csv,sample,Small adapted EconomicMeaning sample
+data/artifacts/task_3351_3360_task742_meaning_adapter/decision.csv,decision,Generated validator decision row
+data/artifacts/task_3351_3360_task742_meaning_adapter/artifact_manifest.csv,manifest,Generated artifact manifest

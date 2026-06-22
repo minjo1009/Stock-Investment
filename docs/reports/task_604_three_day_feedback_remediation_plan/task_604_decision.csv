@@ -1,0 +1,2 @@
+task_id,verdict,decision,status,strategy_acceptance,deployment_readiness,next_action
+Task604,PRIMARY_PASS,Three-day feedback converted into durable remediation plan,Active,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,Execute broker-truth SELL closeout before any new alpha or acceptance claim

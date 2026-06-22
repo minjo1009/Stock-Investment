@@ -1,0 +1,5 @@
+gate,pass_flag,observed_value,required_value
+same_initial_capital,1,$1000.00,$1000 same starting capital
+same_capacity_grid,1,"5,10,20,50","5,10,20,50"
+turboquant_same_capital_capacity_edge,1,5=turboquant; 10=turboquant; 20=turboquant; 50=turboquant,turboquant wins every tested max-position capacity
+trading_promotion,0,PASS_TURBOQUANT_1000_CAPITAL_ALL_CAPACITY_DIAGNOSTIC,"cost/slippage, recent OOS, and live-source gates must pass"

@@ -1,0 +1,6 @@
+﻿gate,pass_flag,observed,required
+state_panel_created,1,rows=735,state panel must be nonempty
+no_label_or_outcome_assignment,1,assignment functions do not read return/win/entry_reduce labels,labels/outcomes evaluation-only
+macro_source_gap_reported,1,macro_raw_source_gap_flag=1,missing macro raw sources must be explicit
+context_state_diversity,1,states=5,at least two states for diagnostic value
+trading_promotion,0,provisional state engine only,"requires raw macro/sector/positioning sources, split validation, cost/account rerun"

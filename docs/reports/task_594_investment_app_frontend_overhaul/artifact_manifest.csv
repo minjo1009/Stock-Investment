@@ -1,0 +1,11 @@
+artifact_path,artifact_type,owner,notes
+frontend/trader-terminal/src/App.jsx,source,규승,"Investment-app style paper account, trade detail, activity feed, provenance, and mobile nav behavior."
+frontend/trader-terminal/src/ChartBlocks.jsx,source,종찬,"Paper OHLC entry chart adds limit/fill reference markers when catalog context provides prices."
+frontend/trader-terminal/src/styles.css,source,규승,"Mobile-first investment app layout, compact status/provenance, trade detail hero, timeline, and overflow handling."
+docs/ownership/module_ownership_map.md,documentation,중훈,"Sublead hiring plan and first assignments added."
+docs/ownership/sublead_onboarding.md,documentation,중훈,"New sublead onboarding and handoff packet template."
+docs/reports/task_594_investment_app_frontend_overhaul/task_594_investment_app_frontend_overhaul.md,report,규승,"Task report."
+docs/reports/task_594_investment_app_frontend_overhaul/task_594_decision.csv,decision,규승,"Task decision summary."
+docs/reports/task_594_investment_app_frontend_overhaul/mobile-home-430x932.png,qa_artifact,가온,"iPhone-width home/account visual QA screenshot."
+docs/reports/task_594_investment_app_frontend_overhaul/mobile-trades-430x932.png,qa_artifact,가온,"iPhone-width trade detail visual QA screenshot."
+docs/reports/task_594_investment_app_frontend_overhaul/mobile-ops-430x932.png,qa_artifact,가온,"iPhone-width operations visual QA screenshot."

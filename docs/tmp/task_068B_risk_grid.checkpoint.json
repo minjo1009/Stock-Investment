@@ -1,0 +1,3971 @@
+{
+  "setup": {
+    "symbols": [
+      "AAPL",
+      "AMD",
+      "AMZN",
+      "AVGO",
+      "COST",
+      "GOOGL",
+      "META",
+      "MSFT",
+      "NFLX",
+      "NVDA",
+      "QCOM",
+      "TSLA"
+    ],
+    "data_dir": "data\\raw\\us_daily",
+    "grid_size": 80
+  },
+  "baseline": {
+    "s4_kis_realistic": {
+      "trade_count": 182,
+      "pf": 1.0834642819511264,
+      "net_pnl": 4582.873640776714,
+      "mdd": 9885.240817217753,
+      "sharpe": 0.38926634377514224,
+      "stop_count": 71,
+      "good_then_stop": 24
+    },
+    "s5_kis_stress_20": {
+      "trade_count": 182,
+      "pf": 1.0285972211090686,
+      "net_pnl": 1613.6382316603497,
+      "mdd": 10731.743402380458,
+      "sharpe": 0.13771116464094582,
+      "stop_count": 71,
+      "good_then_stop": 23
+    },
+    "s6_kis_stress_30": {
+      "trade_count": 182,
+      "pf": 0.9758345662100637,
+      "net_pnl": -1400.5035492848172,
+      "mdd": 12038.629740500775,
+      "sharpe": -0.12018307258628616,
+      "stop_count": 71,
+      "good_then_stop": 19
+    }
+  },
+  "results": [
+    {
+      "config_key": "TIME_STOP_ONLY|t=5|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_ONLY",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 204,
+          "pf": 1.0551899098140511,
+          "net_pnl": 2622.61077080712,
+          "mdd": 8789.600755568052,
+          "sharpe": 0.24067456428585168,
+          "stop_count": 29,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -1960.2628699695938,
+          "mdd_delta_vs_baseline": -1095.6400616497012,
+          "sharpe_delta_vs_baseline": -0.14859177948929056,
+          "good_then_stop_delta_vs_baseline": 18
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 205,
+          "pf": 0.9763547856540042,
+          "net_pnl": -1182.8665035326442,
+          "mdd": 10031.52017711071,
+          "sharpe": -0.10894811579652632,
+          "stop_count": 30,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -2796.504735192994,
+          "mdd_delta_vs_baseline": -700.2232252697486,
+          "sharpe_delta_vs_baseline": -0.24665928043747215,
+          "good_then_stop_delta_vs_baseline": 17
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 206,
+          "pf": 0.902172513874904,
+          "net_pnl": -5118.123009615806,
+          "mdd": 12040.801397765492,
+          "sharpe": -0.47429124726842237,
+          "stop_count": 30,
+          "good_then_stop": 5,
+          "net_pnl_delta_vs_baseline": -3717.6194603309887,
+          "mdd_delta_vs_baseline": 2.1716572647164867,
+          "sharpe_delta_vs_baseline": -0.3541081746821362,
+          "good_then_stop_delta_vs_baseline": 14
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_ONLY|t=10|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_ONLY",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 186,
+          "pf": 1.1684007754803922,
+          "net_pnl": 8373.69931353969,
+          "mdd": 8919.728850663123,
+          "sharpe": 0.7237625185679555,
+          "stop_count": 55,
+          "good_then_stop": 15,
+          "net_pnl_delta_vs_baseline": 3790.825672762976,
+          "mdd_delta_vs_baseline": -965.5119665546299,
+          "sharpe_delta_vs_baseline": 0.33449617479281324,
+          "good_then_stop_delta_vs_baseline": 9
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 186,
+          "pf": 1.0893900716893146,
+          "net_pnl": 4596.762556742844,
+          "mdd": 9228.084152830294,
+          "sharpe": 0.40018263055902176,
+          "stop_count": 55,
+          "good_then_stop": 15,
+          "net_pnl_delta_vs_baseline": 2983.1243250824946,
+          "mdd_delta_vs_baseline": -1503.6592495501645,
+          "sharpe_delta_vs_baseline": 0.2624714659180759,
+          "good_then_stop_delta_vs_baseline": 8
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 188,
+          "pf": 0.9746573580337623,
+          "net_pnl": -1378.7120228869649,
+          "mdd": 12568.576296426309,
+          "sharpe": -0.12091352124972225,
+          "stop_count": 57,
+          "good_then_stop": 11,
+          "net_pnl_delta_vs_baseline": 21.791526397852294,
+          "mdd_delta_vs_baseline": 529.9465559255332,
+          "sharpe_delta_vs_baseline": -0.0007304486634360924,
+          "good_then_stop_delta_vs_baseline": 8
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_ONLY|t=15|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_ONLY",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 184,
+          "pf": 1.0844289597717696,
+          "net_pnl": 4589.407366881395,
+          "mdd": 10266.629636626896,
+          "sharpe": 0.39145033015834485,
+          "stop_count": 68,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": 6.533726104681591,
+          "mdd_delta_vs_baseline": 381.38881940914325,
+          "sharpe_delta_vs_baseline": 0.0021839863832026074,
+          "good_then_stop_delta_vs_baseline": 1
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 184,
+          "pf": 1.031814767783873,
+          "net_pnl": 1773.8334735973308,
+          "mdd": 10685.207373878964,
+          "sharpe": 0.15206843848240267,
+          "stop_count": 68,
+          "good_then_stop": 22,
+          "net_pnl_delta_vs_baseline": 160.19524193698112,
+          "mdd_delta_vs_baseline": -46.536028501494,
+          "sharpe_delta_vs_baseline": 0.014357273841456852,
+          "good_then_stop_delta_vs_baseline": 1
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 185,
+          "pf": 0.9672328383416513,
+          "net_pnl": -1890.2318482084193,
+          "mdd": 12702.36600056876,
+          "sharpe": -0.162870234828469,
+          "stop_count": 69,
+          "good_then_stop": 18,
+          "net_pnl_delta_vs_baseline": -489.7282989236021,
+          "mdd_delta_vs_baseline": 663.7362600679844,
+          "sharpe_delta_vs_baseline": -0.04268716224218283,
+          "good_then_stop_delta_vs_baseline": 1
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_ONLY|t=20|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_ONLY",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 182,
+          "pf": 1.0879243104844742,
+          "net_pnl": 4807.973994370427,
+          "mdd": 9849.725575163919,
+          "sharpe": 0.40872302833818386,
+          "stop_count": 70,
+          "good_then_stop": 24,
+          "net_pnl_delta_vs_baseline": 225.1003535937134,
+          "mdd_delta_vs_baseline": -35.5152420538343,
+          "sharpe_delta_vs_baseline": 0.019456684563041615,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 182,
+          "pf": 1.0325359515170647,
+          "net_pnl": 1828.8834019672802,
+          "mdd": 10668.472013828972,
+          "sharpe": 0.15620467144968692,
+          "stop_count": 70,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": 215.2451703069305,
+          "mdd_delta_vs_baseline": -63.27138855148587,
+          "sharpe_delta_vs_baseline": 0.018493506808741095,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 182,
+          "pf": 0.9798930714688604,
+          "net_pnl": -1161.1638148890847,
+          "mdd": 11951.111509522058,
+          "sharpe": -0.09968911986650171,
+          "stop_count": 70,
+          "good_then_stop": 19,
+          "net_pnl_delta_vs_baseline": 239.33973439573242,
+          "mdd_delta_vs_baseline": -87.51823097871784,
+          "sharpe_delta_vs_baseline": 0.02049395271978445,
+          "good_then_stop_delta_vs_baseline": 0
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_ONLY|t=30|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_ONLY",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 182,
+          "pf": 1.0834642819511264,
+          "net_pnl": 4582.873640776714,
+          "mdd": 9885.240817217753,
+          "sharpe": 0.38926634377514224,
+          "stop_count": 71,
+          "good_then_stop": 24,
+          "net_pnl_delta_vs_baseline": 0.0,
+          "mdd_delta_vs_baseline": 0.0,
+          "sharpe_delta_vs_baseline": 0.0,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 182,
+          "pf": 1.0285972211090686,
+          "net_pnl": 1613.6382316603497,
+          "mdd": 10731.743402380458,
+          "sharpe": 0.13771116464094582,
+          "stop_count": 71,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": 0.0,
+          "mdd_delta_vs_baseline": 0.0,
+          "sharpe_delta_vs_baseline": 0.0,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 182,
+          "pf": 0.9758345662100637,
+          "net_pnl": -1400.5035492848172,
+          "mdd": 12038.629740500775,
+          "sharpe": -0.12018307258628616,
+          "stop_count": 71,
+          "good_then_stop": 19,
+          "net_pnl_delta_vs_baseline": 0.0,
+          "mdd_delta_vs_baseline": 0.0,
+          "sharpe_delta_vs_baseline": 0.0,
+          "good_then_stop_delta_vs_baseline": 0
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=5|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 222,
+          "pf": 0.7927663841851045,
+          "net_pnl": -7712.221188622491,
+          "mdd": 9591.218308284935,
+          "sharpe": -0.926857246774806,
+          "stop_count": 25,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -12295.094829399204,
+          "mdd_delta_vs_baseline": -294.0225089328178,
+          "sharpe_delta_vs_baseline": -1.3161235905499482,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 225,
+          "pf": 0.6886516875903151,
+          "net_pnl": -12347.481794655416,
+          "mdd": 12826.691731164201,
+          "sharpe": -1.5095679698857627,
+          "stop_count": 26,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -13961.120026315766,
+          "mdd_delta_vs_baseline": 2094.948328783743,
+          "sharpe_delta_vs_baseline": -1.6472791345267086,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 230,
+          "pf": 0.5339249269506057,
+          "net_pnl": -20414.51791948926,
+          "mdd": 20873.299824374513,
+          "sharpe": -2.6545156904794123,
+          "stop_count": 27,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -19014.01437020444,
+          "mdd_delta_vs_baseline": 8834.670083873738,
+          "sharpe_delta_vs_baseline": -2.534332617893126,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=5|mfe=0.05|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 206,
+          "pf": 1.0200316699686773,
+          "net_pnl": 858.5823957262481,
+          "mdd": 10786.959052626278,
+          "sharpe": 0.08406677883519934,
+          "stop_count": 28,
+          "good_then_stop": 4,
+          "net_pnl_delta_vs_baseline": -3724.2912450504655,
+          "mdd_delta_vs_baseline": 901.7182354085253,
+          "sharpe_delta_vs_baseline": -0.30519956493994294,
+          "good_then_stop_delta_vs_baseline": 20
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 207,
+          "pf": 0.9507184728499715,
+          "net_pnl": -2232.1958289101285,
+          "mdd": 10933.133463527702,
+          "sharpe": -0.21867256614074948,
+          "stop_count": 29,
+          "good_then_stop": 4,
+          "net_pnl_delta_vs_baseline": -3845.834060570478,
+          "mdd_delta_vs_baseline": 201.3900611472436,
+          "sharpe_delta_vs_baseline": -0.3563837307816953,
+          "good_then_stop_delta_vs_baseline": 19
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 208,
+          "pf": 0.8817477224942164,
+          "net_pnl": -5577.54333867971,
+          "mdd": 12625.463634503514,
+          "sharpe": -0.5501167509428736,
+          "stop_count": 29,
+          "good_then_stop": 3,
+          "net_pnl_delta_vs_baseline": -4177.039789394893,
+          "mdd_delta_vs_baseline": 586.8338940027388,
+          "sharpe_delta_vs_baseline": -0.42993367835658747,
+          "good_then_stop_delta_vs_baseline": 16
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=5|mfe=0.07|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 205,
+          "pf": 0.9951810329302798,
+          "net_pnl": -225.4775224422942,
+          "mdd": 12241.959006037905,
+          "sharpe": -0.021366857769871198,
+          "stop_count": 30,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -4808.3511632190075,
+          "mdd_delta_vs_baseline": 2356.718188820152,
+          "sharpe_delta_vs_baseline": -0.4106332015450134,
+          "good_then_stop_delta_vs_baseline": 18
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 206,
+          "pf": 0.9106487820131766,
+          "net_pnl": -4419.488738984345,
+          "mdd": 13616.460769300009,
+          "sharpe": -0.42062001232703716,
+          "stop_count": 31,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -6033.126970644695,
+          "mdd_delta_vs_baseline": 2884.717366919551,
+          "sharpe_delta_vs_baseline": -0.558331176967983,
+          "good_then_stop_delta_vs_baseline": 17
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 207,
+          "pf": 0.8426820496943088,
+          "net_pnl": -8128.164343098634,
+          "mdd": 15463.685289337052,
+          "sharpe": -0.7784221954662797,
+          "stop_count": 31,
+          "good_then_stop": 5,
+          "net_pnl_delta_vs_baseline": -6727.660793813817,
+          "mdd_delta_vs_baseline": 3425.055548836277,
+          "sharpe_delta_vs_baseline": -0.6582391228799935,
+          "good_then_stop_delta_vs_baseline": 14
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=10|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 212,
+          "pf": 0.857435291560776,
+          "net_pnl": -5475.709764835453,
+          "mdd": 10095.388882877065,
+          "sharpe": -0.628078849786403,
+          "stop_count": 45,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -10058.583405612168,
+          "mdd_delta_vs_baseline": 210.14806565931212,
+          "sharpe_delta_vs_baseline": -1.0173451935615452,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 213,
+          "pf": 0.7453704640654175,
+          "net_pnl": -10365.124591618309,
+          "mdd": 11253.569712686132,
+          "sharpe": -1.209208334733375,
+          "stop_count": 46,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -11978.76282327866,
+          "mdd_delta_vs_baseline": 521.8263103056743,
+          "sharpe_delta_vs_baseline": -1.346919499374321,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 215,
+          "pf": 0.6042214840236906,
+          "net_pnl": -17568.099371632026,
+          "mdd": 18026.88127651729,
+          "sharpe": -2.152085198688958,
+          "stop_count": 49,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -16167.59582234721,
+          "mdd_delta_vs_baseline": 5988.251536016516,
+          "sharpe_delta_vs_baseline": -2.031902126102672,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=10|mfe=0.05|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 190,
+          "pf": 1.1120781070819599,
+          "net_pnl": 4858.743458458111,
+          "mdd": 9530.033322365784,
+          "sharpe": 0.46005731674468414,
+          "stop_count": 49,
+          "good_then_stop": 8,
+          "net_pnl_delta_vs_baseline": 275.86981768139685,
+          "mdd_delta_vs_baseline": -355.2074948519694,
+          "sharpe_delta_vs_baseline": 0.0707909729695419,
+          "good_then_stop_delta_vs_baseline": 16
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 189,
+          "pf": 1.0396562498866295,
+          "net_pnl": 1797.6319349513235,
+          "mdd": 9800.747628974337,
+          "sharpe": 0.1701276332510311,
+          "stop_count": 49,
+          "good_then_stop": 9,
+          "net_pnl_delta_vs_baseline": 183.99370329097383,
+          "mdd_delta_vs_baseline": -930.9957734061209,
+          "sharpe_delta_vs_baseline": 0.03241646861008529,
+          "good_then_stop_delta_vs_baseline": 14
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 191,
+          "pf": 0.9268178511154345,
+          "net_pnl": -3502.7019896992756,
+          "mdd": 12442.692818853615,
+          "sharpe": -0.3341973192880249,
+          "stop_count": 51,
+          "good_then_stop": 5,
+          "net_pnl_delta_vs_baseline": -2102.1984404144587,
+          "mdd_delta_vs_baseline": 404.0630783528395,
+          "sharpe_delta_vs_baseline": -0.21401424670173871,
+          "good_then_stop_delta_vs_baseline": 14
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=10|mfe=0.07|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 188,
+          "pf": 1.0819042688300984,
+          "net_pnl": 3932.641629007442,
+          "mdd": 10255.996844605208,
+          "sharpe": 0.35758261156093635,
+          "stop_count": 54,
+          "good_then_stop": 14,
+          "net_pnl_delta_vs_baseline": -650.2320117692716,
+          "mdd_delta_vs_baseline": 370.7560273874551,
+          "sharpe_delta_vs_baseline": -0.031683732214205895,
+          "good_then_stop_delta_vs_baseline": 10
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 187,
+          "pf": 1.0206517016488987,
+          "net_pnl": 1028.3383211989662,
+          "mdd": 11500.52789650906,
+          "sharpe": 0.09312459119623627,
+          "stop_count": 54,
+          "good_then_stop": 14,
+          "net_pnl_delta_vs_baseline": -585.2999104613834,
+          "mdd_delta_vs_baseline": 768.7844941286021,
+          "sharpe_delta_vs_baseline": -0.04458657344470955,
+          "good_then_stop_delta_vs_baseline": 9
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 189,
+          "pf": 0.9087187659593504,
+          "net_pnl": -4825.096425660948,
+          "mdd": 15405.88932891026,
+          "sharpe": -0.4402367506695903,
+          "stop_count": 56,
+          "good_then_stop": 10,
+          "net_pnl_delta_vs_baseline": -3424.5928763761303,
+          "mdd_delta_vs_baseline": 3367.2595884094844,
+          "sharpe_delta_vs_baseline": -0.3200536780833041,
+          "good_then_stop_delta_vs_baseline": 9
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=15|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 209,
+          "pf": 0.8642494169987928,
+          "net_pnl": -5126.436851103352,
+          "mdd": 10110.541905781582,
+          "sharpe": -0.5897360548033606,
+          "stop_count": 46,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -9709.310491880065,
+          "mdd_delta_vs_baseline": 225.30108856382867,
+          "sharpe_delta_vs_baseline": -0.9790023985785028,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 211,
+          "pf": 0.7621948931485734,
+          "net_pnl": -9609.966305285738,
+          "mdd": 10940.45727311015,
+          "sharpe": -1.1163845923118356,
+          "stop_count": 49,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -11223.604536946088,
+          "mdd_delta_vs_baseline": 208.71387072969264,
+          "sharpe_delta_vs_baseline": -1.2540957569527815,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 214,
+          "pf": 0.60909618785586,
+          "net_pnl": -17500.367254177436,
+          "mdd": 17959.149159062694,
+          "sharpe": -2.1258045878097813,
+          "stop_count": 54,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -16099.86370489262,
+          "mdd_delta_vs_baseline": 5920.519418561918,
+          "sharpe_delta_vs_baseline": -2.005621515223495,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=15|mfe=0.05|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 188,
+          "pf": 1.1287452199490609,
+          "net_pnl": 5716.122702473621,
+          "mdd": 9615.506913213912,
+          "sharpe": 0.5352990195459661,
+          "stop_count": 57,
+          "good_then_stop": 11,
+          "net_pnl_delta_vs_baseline": 1133.2490616969071,
+          "mdd_delta_vs_baseline": -269.7339040038405,
+          "sharpe_delta_vs_baseline": 0.1460326757708239,
+          "good_then_stop_delta_vs_baseline": 13
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 187,
+          "pf": 1.0524644999476798,
+          "net_pnl": 2440.7630605353693,
+          "mdd": 9987.202004293827,
+          "sharpe": 0.22826943182273438,
+          "stop_count": 57,
+          "good_then_stop": 11,
+          "net_pnl_delta_vs_baseline": 827.1248288750196,
+          "mdd_delta_vs_baseline": -744.5413980866306,
+          "sharpe_delta_vs_baseline": 0.09055826718178855,
+          "good_then_stop_delta_vs_baseline": 12
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 188,
+          "pf": 0.9858433363959863,
+          "net_pnl": -681.048987270198,
+          "mdd": 11388.809721387504,
+          "sharpe": -0.06401655729628343,
+          "stop_count": 58,
+          "good_then_stop": 7,
+          "net_pnl_delta_vs_baseline": 719.4545620146191,
+          "mdd_delta_vs_baseline": -649.820019113271,
+          "sharpe_delta_vs_baseline": 0.05616651529000273,
+          "good_then_stop_delta_vs_baseline": 12
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=15|mfe=0.07|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 186,
+          "pf": 1.0286679049032295,
+          "net_pnl": 1471.3093844028792,
+          "mdd": 11450.989355070145,
+          "sharpe": 0.1324622242856366,
+          "stop_count": 65,
+          "good_then_stop": 20,
+          "net_pnl_delta_vs_baseline": -3111.5642563738347,
+          "mdd_delta_vs_baseline": 1565.7485378523925,
+          "sharpe_delta_vs_baseline": -0.25680411948950566,
+          "good_then_stop_delta_vs_baseline": 4
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 185,
+          "pf": 0.9915296517158309,
+          "net_pnl": -447.62394797905904,
+          "mdd": 12577.77289961388,
+          "sharpe": -0.04001612146877388,
+          "stop_count": 65,
+          "good_then_stop": 19,
+          "net_pnl_delta_vs_baseline": -2061.2621796394087,
+          "mdd_delta_vs_baseline": 1846.0294972334214,
+          "sharpe_delta_vs_baseline": -0.17772728610971972,
+          "good_then_stop_delta_vs_baseline": 4
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 186,
+          "pf": 0.9263676165181765,
+          "net_pnl": -4040.0727780182656,
+          "mdd": 14426.686266809107,
+          "sharpe": -0.36291067936676397,
+          "stop_count": 66,
+          "good_then_stop": 15,
+          "net_pnl_delta_vs_baseline": -2639.5692287334487,
+          "mdd_delta_vs_baseline": 2388.0565263083317,
+          "sharpe_delta_vs_baseline": -0.2427276067804778,
+          "good_then_stop_delta_vs_baseline": 4
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=20|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 209,
+          "pf": 0.8474953125071137,
+          "net_pnl": -5872.985000929154,
+          "mdd": 10976.441301138693,
+          "sharpe": -0.6734937109925252,
+          "stop_count": 48,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -10455.858641705869,
+          "mdd_delta_vs_baseline": 1091.2004839209403,
+          "sharpe_delta_vs_baseline": -1.0627600547676674,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 211,
+          "pf": 0.7447974921409213,
+          "net_pnl": -10553.911666294725,
+          "mdd": 12003.634408934202,
+          "sharpe": -1.2217910053381886,
+          "stop_count": 51,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -12167.549897955076,
+          "mdd_delta_vs_baseline": 1271.8910065537439,
+          "sharpe_delta_vs_baseline": -1.3595021699791345,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 214,
+          "pf": 0.5959289770866123,
+          "net_pnl": -18489.55001913376,
+          "mdd": 18948.331924019025,
+          "sharpe": -2.2369642010082966,
+          "stop_count": 57,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -17089.04646984894,
+          "mdd_delta_vs_baseline": 6909.7021835182495,
+          "sharpe_delta_vs_baseline": -2.1167811284220104,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=20|mfe=0.05|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 188,
+          "pf": 1.0938855449971376,
+          "net_pnl": 4302.772723673242,
+          "mdd": 10388.369082058653,
+          "sharpe": 0.40088220737688723,
+          "stop_count": 60,
+          "good_then_stop": 12,
+          "net_pnl_delta_vs_baseline": -280.10091710347206,
+          "mdd_delta_vs_baseline": 503.12826484089965,
+          "sharpe_delta_vs_baseline": 0.011615863601744991,
+          "good_then_stop_delta_vs_baseline": 12
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 187,
+          "pf": 1.0189914177483566,
+          "net_pnl": 912.1697024563424,
+          "mdd": 10761.387010683855,
+          "sharpe": 0.08488824088717485,
+          "stop_count": 60,
+          "good_then_stop": 12,
+          "net_pnl_delta_vs_baseline": -701.4685292040073,
+          "mdd_delta_vs_baseline": 29.64360830339683,
+          "sharpe_delta_vs_baseline": -0.05282292375377097,
+          "good_then_stop_delta_vs_baseline": 11
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 186,
+          "pf": 0.9798972586716007,
+          "net_pnl": -986.6192430386011,
+          "mdd": 11387.892405158631,
+          "sharpe": -0.09220906324676138,
+          "stop_count": 60,
+          "good_then_stop": 8,
+          "net_pnl_delta_vs_baseline": 413.88430624621606,
+          "mdd_delta_vs_baseline": -650.7373353421444,
+          "sharpe_delta_vs_baseline": 0.027974009339524777,
+          "good_then_stop_delta_vs_baseline": 11
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=20|mfe=0.07|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 184,
+          "pf": 1.016439526059859,
+          "net_pnl": 860.3378730754557,
+          "mdd": 11799.193907116993,
+          "sharpe": 0.0771050307477871,
+          "stop_count": 67,
+          "good_then_stop": 21,
+          "net_pnl_delta_vs_baseline": -3722.535767701258,
+          "mdd_delta_vs_baseline": 1913.9530898992398,
+          "sharpe_delta_vs_baseline": -0.31216131302735517,
+          "good_then_stop_delta_vs_baseline": 3
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 183,
+          "pf": 0.9760655743725561,
+          "net_pnl": -1294.5698970832477,
+          "mdd": 13180.43404454046,
+          "sharpe": -0.11516344529600366,
+          "stop_count": 67,
+          "good_then_stop": 20,
+          "net_pnl_delta_vs_baseline": -2908.2081287435976,
+          "mdd_delta_vs_baseline": 2448.6906421600015,
+          "sharpe_delta_vs_baseline": -0.2528746099369495,
+          "good_then_stop_delta_vs_baseline": 3
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 183,
+          "pf": 0.9253847166116483,
+          "net_pnl": -4153.255103630738,
+          "mdd": 14251.99745127929,
+          "sharpe": -0.3715004368219933,
+          "stop_count": 67,
+          "good_then_stop": 16,
+          "net_pnl_delta_vs_baseline": -2752.7515543459203,
+          "mdd_delta_vs_baseline": 2213.367710778515,
+          "sharpe_delta_vs_baseline": -0.25131736423570716,
+          "good_then_stop_delta_vs_baseline": 3
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=30|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 209,
+          "pf": 0.8449888952955685,
+          "net_pnl": -5987.214444594011,
+          "mdd": 11112.912505437096,
+          "sharpe": -0.6860123392423548,
+          "stop_count": 49,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -10570.088085370724,
+          "mdd_delta_vs_baseline": 1227.6716882193432,
+          "sharpe_delta_vs_baseline": -1.0752786830174972,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 211,
+          "pf": 0.7429561770029453,
+          "net_pnl": -10656.404486377427,
+          "mdd": 12128.346725625794,
+          "sharpe": -1.2327216099497875,
+          "stop_count": 52,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -12270.042718037777,
+          "mdd_delta_vs_baseline": 1396.6033232453356,
+          "sharpe_delta_vs_baseline": -1.3704327745907334,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 214,
+          "pf": 0.5947188376499543,
+          "net_pnl": -18582.659167432557,
+          "mdd": 19041.441072317823,
+          "sharpe": -2.2465871620186197,
+          "stop_count": 58,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -17182.15561814774,
+          "mdd_delta_vs_baseline": 7002.811331817047,
+          "sharpe_delta_vs_baseline": -2.1264040894323335,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=30|mfe=0.05|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 188,
+          "pf": 1.0923274928975584,
+          "net_pnl": 4237.402678281394,
+          "mdd": 10475.980888084046,
+          "sharpe": 0.3945711825925003,
+          "stop_count": 61,
+          "good_then_stop": 12,
+          "net_pnl_delta_vs_baseline": -345.4709624953193,
+          "mdd_delta_vs_baseline": 590.7400708662935,
+          "sharpe_delta_vs_baseline": 0.0053048388173580485,
+          "good_then_stop_delta_vs_baseline": 12
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 187,
+          "pf": 1.0178074820436966,
+          "net_pnl": 856.2994369595161,
+          "mdd": 10804.62486214748,
+          "sharpe": 0.07964836072866026,
+          "stop_count": 61,
+          "good_then_stop": 12,
+          "net_pnl_delta_vs_baseline": -757.3387947008335,
+          "mdd_delta_vs_baseline": 72.88145976702253,
+          "sharpe_delta_vs_baseline": -0.05806280391228556,
+          "good_then_stop_delta_vs_baseline": 11
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 186,
+          "pf": 0.9789538788898985,
+          "net_pnl": -1033.9146133314175,
+          "mdd": 11456.460123344666,
+          "sharpe": -0.09658390560279062,
+          "stop_count": 61,
+          "good_then_stop": 8,
+          "net_pnl_delta_vs_baseline": 366.58893595339964,
+          "mdd_delta_vs_baseline": -582.1696171561089,
+          "sharpe_delta_vs_baseline": 0.02359916698349554,
+          "good_then_stop_delta_vs_baseline": 11
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE|t=30|mfe=0.07|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 184,
+          "pf": 1.015153515764236,
+          "net_pnl": 794.0410876572107,
+          "mdd": 11886.805713142385,
+          "sharpe": 0.07112709897671096,
+          "stop_count": 68,
+          "good_then_stop": 21,
+          "net_pnl_delta_vs_baseline": -3788.8325531195032,
+          "mdd_delta_vs_baseline": 2001.5648959246319,
+          "sharpe_delta_vs_baseline": -0.31813924479843125,
+          "good_then_stop_delta_vs_baseline": 3
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 183,
+          "pf": 0.9750417179724838,
+          "net_pnl": -1351.3659749387778,
+          "mdd": 13258.523806646173,
+          "sharpe": -0.12016046212789751,
+          "stop_count": 68,
+          "good_then_stop": 20,
+          "net_pnl_delta_vs_baseline": -2965.0042065991274,
+          "mdd_delta_vs_baseline": 2526.7804042657153,
+          "sharpe_delta_vs_baseline": -0.25787162676884334,
+          "good_then_stop_delta_vs_baseline": 3
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 183,
+          "pf": 0.9245990988724014,
+          "net_pnl": -4200.550473923554,
+          "mdd": 14320.565169465328,
+          "sharpe": -0.37557179549388203,
+          "stop_count": 68,
+          "good_then_stop": 16,
+          "net_pnl_delta_vs_baseline": -2800.0469246387365,
+          "mdd_delta_vs_baseline": 2281.9354289645526,
+          "sharpe_delta_vs_baseline": -0.25538872290759584,
+          "good_then_stop_delta_vs_baseline": 3
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=5|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 263,
+          "pf": 0.4717513605920746,
+          "net_pnl": -21922.107842762674,
+          "mdd": 22401.492048298656,
+          "sharpe": -4.288586181317477,
+          "stop_count": 29,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -26504.981483539388,
+          "mdd_delta_vs_baseline": 12516.251231080903,
+          "sharpe_delta_vs_baseline": -4.67785252509262,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 264,
+          "pf": 0.3973753666307464,
+          "net_pnl": -26943.676488308665,
+          "mdd": 27407.59520042689,
+          "sharpe": -5.211638776826963,
+          "stop_count": 31,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -28557.314719969014,
+          "mdd_delta_vs_baseline": 16675.85179804643,
+          "sharpe_delta_vs_baseline": -5.349349941467909,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 265,
+          "pf": 0.3267589186358311,
+          "net_pnl": -33546.509880306534,
+          "mdd": 34108.875487345154,
+          "sharpe": -6.37705574264836,
+          "stop_count": 34,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -32146.006331021716,
+          "mdd_delta_vs_baseline": 22070.24574684438,
+          "sharpe_delta_vs_baseline": -6.256872670062074,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=5|mfe=0.03|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 278,
+          "pf": 0.4845713358169038,
+          "net_pnl": -22239.191407921477,
+          "mdd": 22547.09446988169,
+          "sharpe": -4.519088554415218,
+          "stop_count": 30,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -26822.06504869819,
+          "mdd_delta_vs_baseline": 12661.853652663936,
+          "sharpe_delta_vs_baseline": -4.90835489819036,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 276,
+          "pf": 0.4090184057566416,
+          "net_pnl": -27162.27211201019,
+          "mdd": 27453.892880515188,
+          "sharpe": -5.527930608483793,
+          "stop_count": 31,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -28775.910343670537,
+          "mdd_delta_vs_baseline": 16722.14947813473,
+          "sharpe_delta_vs_baseline": -5.665641773124738,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 276,
+          "pf": 0.33700079508795316,
+          "net_pnl": -33610.60352318745,
+          "mdd": 34010.33843093902,
+          "sharpe": -6.735813862009677,
+          "stop_count": 33,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -32210.09997390263,
+          "mdd_delta_vs_baseline": 21971.70869043824,
+          "sharpe_delta_vs_baseline": -6.615630789423391,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=5|mfe=0.03|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 286,
+          "pf": 0.5473489147675232,
+          "net_pnl": -19983.30469402645,
+          "mdd": 20162.864855302985,
+          "sharpe": -4.003555887317053,
+          "stop_count": 31,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -24566.178334803164,
+          "mdd_delta_vs_baseline": 10277.624038085232,
+          "sharpe_delta_vs_baseline": -4.392822231092195,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 285,
+          "pf": 0.46507272294898,
+          "net_pnl": -25111.56042079705,
+          "mdd": 25273.978307156598,
+          "sharpe": -5.039950619546573,
+          "stop_count": 32,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -26725.1986524574,
+          "mdd_delta_vs_baseline": 14542.23490477614,
+          "sharpe_delta_vs_baseline": -5.177661784187519,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 282,
+          "pf": 0.3913073705305594,
+          "net_pnl": -31329.35855177147,
+          "mdd": 31633.082598471883,
+          "sharpe": -6.169583652490486,
+          "stop_count": 34,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -29928.855002486653,
+          "mdd_delta_vs_baseline": 19594.452857971108,
+          "sharpe_delta_vs_baseline": -6.0494005799042,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=5|mfe=0.05|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 224,
+          "pf": 0.7161080732188516,
+          "net_pnl": -12356.337838924024,
+          "mdd": 13389.13829612355,
+          "sharpe": -1.8406134710719046,
+          "stop_count": 29,
+          "good_then_stop": 4,
+          "net_pnl_delta_vs_baseline": -16939.211479700738,
+          "mdd_delta_vs_baseline": 3503.8974789057975,
+          "sharpe_delta_vs_baseline": -2.229879814847047,
+          "good_then_stop_delta_vs_baseline": 20
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 227,
+          "pf": 0.6360676573126505,
+          "net_pnl": -16792.69840435953,
+          "mdd": 17699.54960754117,
+          "sharpe": -2.526216484698037,
+          "stop_count": 30,
+          "good_then_stop": 4,
+          "net_pnl_delta_vs_baseline": -18406.336636019878,
+          "mdd_delta_vs_baseline": 6967.80620516071,
+          "sharpe_delta_vs_baseline": -2.6639276493389827,
+          "good_then_stop_delta_vs_baseline": 19
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 227,
+          "pf": 0.5890120861939273,
+          "net_pnl": -19808.84704670022,
+          "mdd": 20589.719133033697,
+          "sharpe": -2.979323096135145,
+          "stop_count": 30,
+          "good_then_stop": 3,
+          "net_pnl_delta_vs_baseline": -18408.3434974154,
+          "mdd_delta_vs_baseline": 8551.089392532922,
+          "sharpe_delta_vs_baseline": -2.859140023548859,
+          "good_then_stop_delta_vs_baseline": 16
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=5|mfe=0.05|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 234,
+          "pf": 0.6218984361419175,
+          "net_pnl": -17016.938846677385,
+          "mdd": 17627.739251658073,
+          "sharpe": -2.980822524015027,
+          "stop_count": 29,
+          "good_then_stop": 4,
+          "net_pnl_delta_vs_baseline": -21599.8124874541,
+          "mdd_delta_vs_baseline": 7742.49843444032,
+          "sharpe_delta_vs_baseline": -3.370088867790169,
+          "good_then_stop_delta_vs_baseline": 20
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 234,
+          "pf": 0.5752813621376036,
+          "net_pnl": -20266.375586051126,
+          "mdd": 20844.556432047943,
+          "sharpe": -3.48378702890276,
+          "stop_count": 31,
+          "good_then_stop": 4,
+          "net_pnl_delta_vs_baseline": -21880.013817711475,
+          "mdd_delta_vs_baseline": 10112.813029667484,
+          "sharpe_delta_vs_baseline": -3.621498193543706,
+          "good_then_stop_delta_vs_baseline": 19
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 236,
+          "pf": 0.5181243137794084,
+          "net_pnl": -24057.155581752322,
+          "mdd": 24602.700992073336,
+          "sharpe": -4.233953977163918,
+          "stop_count": 31,
+          "good_then_stop": 3,
+          "net_pnl_delta_vs_baseline": -22656.652032467504,
+          "mdd_delta_vs_baseline": 12564.07125157256,
+          "sharpe_delta_vs_baseline": -4.113770904577632,
+          "good_then_stop_delta_vs_baseline": 16
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=5|mfe=0.05|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 242,
+          "pf": 0.6613969519713992,
+          "net_pnl": -15828.338558488378,
+          "mdd": 16910.307471484226,
+          "sharpe": -2.77560810673795,
+          "stop_count": 31,
+          "good_then_stop": 4,
+          "net_pnl_delta_vs_baseline": -20411.212199265094,
+          "mdd_delta_vs_baseline": 7025.066654266473,
+          "sharpe_delta_vs_baseline": -3.1648744505130924,
+          "good_then_stop_delta_vs_baseline": 20
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 242,
+          "pf": 0.6116563474949936,
+          "net_pnl": -19236.594786859692,
+          "mdd": 20266.825935445137,
+          "sharpe": -3.308122965860933,
+          "stop_count": 33,
+          "good_then_stop": 4,
+          "net_pnl_delta_vs_baseline": -20850.23301852004,
+          "mdd_delta_vs_baseline": 9535.082533064679,
+          "sharpe_delta_vs_baseline": -3.4458341305018787,
+          "good_then_stop_delta_vs_baseline": 19
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 239,
+          "pf": 0.5893797398548278,
+          "net_pnl": -20788.859701365272,
+          "mdd": 21764.01508793066,
+          "sharpe": -3.5536799418601857,
+          "stop_count": 32,
+          "good_then_stop": 3,
+          "net_pnl_delta_vs_baseline": -19388.356152080454,
+          "mdd_delta_vs_baseline": 9725.385347429885,
+          "sharpe_delta_vs_baseline": -3.4334968692738994,
+          "good_then_stop_delta_vs_baseline": 16
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=5|mfe=0.07|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 211,
+          "pf": 0.8652822511205638,
+          "net_pnl": -6087.605518973077,
+          "mdd": 13123.01904673189,
+          "sharpe": -0.6790473386549184,
+          "stop_count": 28,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -10670.47915974979,
+          "mdd_delta_vs_baseline": 3237.778229514137,
+          "sharpe_delta_vs_baseline": -1.0683136824300608,
+          "good_then_stop_delta_vs_baseline": 18
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 214,
+          "pf": 0.7814821520223572,
+          "net_pnl": -10492.179602206881,
+          "mdd": 14871.387879043601,
+          "sharpe": -1.1752390040657104,
+          "stop_count": 29,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -12105.817833867231,
+          "mdd_delta_vs_baseline": 4139.644476663143,
+          "sharpe_delta_vs_baseline": -1.3129501687066563,
+          "good_then_stop_delta_vs_baseline": 17
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 214,
+          "pf": 0.7264386043854525,
+          "net_pnl": -13734.190942617683,
+          "mdd": 16163.182362810752,
+          "sharpe": -1.5425055653810738,
+          "stop_count": 29,
+          "good_then_stop": 5,
+          "net_pnl_delta_vs_baseline": -12333.687393332866,
+          "mdd_delta_vs_baseline": 4124.552622309977,
+          "sharpe_delta_vs_baseline": -1.4223224927947875,
+          "good_then_stop_delta_vs_baseline": 14
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=5|mfe=0.07|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 218,
+          "pf": 0.6977781974599307,
+          "net_pnl": -13717.130023247832,
+          "mdd": 14504.223291901426,
+          "sharpe": -2.1895833996267973,
+          "stop_count": 28,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -18300.003664024545,
+          "mdd_delta_vs_baseline": 4618.982474683673,
+          "sharpe_delta_vs_baseline": -2.5788497434019395,
+          "good_then_stop_delta_vs_baseline": 18
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 220,
+          "pf": 0.6204467235879397,
+          "net_pnl": -18541.459648977216,
+          "mdd": 19144.03739719545,
+          "sharpe": -2.949169791451562,
+          "stop_count": 29,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -20155.097880637564,
+          "mdd_delta_vs_baseline": 8412.293994814992,
+          "sharpe_delta_vs_baseline": -3.0868809560925077,
+          "good_then_stop_delta_vs_baseline": 17
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 219,
+          "pf": 0.5888698611059542,
+          "net_pnl": -20918.42105355995,
+          "mdd": 21472.472408201953,
+          "sharpe": -3.2960576313191603,
+          "stop_count": 29,
+          "good_then_stop": 5,
+          "net_pnl_delta_vs_baseline": -19517.91750427513,
+          "mdd_delta_vs_baseline": 9433.842667701178,
+          "sharpe_delta_vs_baseline": -3.175874558732874,
+          "good_then_stop_delta_vs_baseline": 14
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=5|mfe=0.07|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 223,
+          "pf": 0.7453422782142295,
+          "net_pnl": -11871.923568764412,
+          "mdd": 13262.225813209032,
+          "sharpe": -1.8310010954401261,
+          "stop_count": 29,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -16454.797209541124,
+          "mdd_delta_vs_baseline": 3376.984995991279,
+          "sharpe_delta_vs_baseline": -2.2202674392152684,
+          "good_then_stop_delta_vs_baseline": 18
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 224,
+          "pf": 0.6709086554806382,
+          "net_pnl": -16322.450588830041,
+          "mdd": 17420.175289219533,
+          "sharpe": -2.514826639462078,
+          "stop_count": 29,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -17936.08882049039,
+          "mdd_delta_vs_baseline": 6688.431886839075,
+          "sharpe_delta_vs_baseline": -2.652537804103024,
+          "good_then_stop_delta_vs_baseline": 17
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 223,
+          "pf": 0.6364973847872629,
+          "net_pnl": -18773.826308961026,
+          "mdd": 19645.663703090813,
+          "sharpe": -2.8628343754775827,
+          "stop_count": 29,
+          "good_then_stop": 5,
+          "net_pnl_delta_vs_baseline": -17373.322759676208,
+          "mdd_delta_vs_baseline": 7607.033962590038,
+          "sharpe_delta_vs_baseline": -2.7426513028912964,
+          "good_then_stop_delta_vs_baseline": 14
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=10|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 256,
+          "pf": 0.4922389525642488,
+          "net_pnl": -22856.816718943777,
+          "mdd": 23336.200924479745,
+          "sharpe": -4.012605574778693,
+          "stop_count": 58,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -27439.69035972049,
+          "mdd_delta_vs_baseline": 13450.960107261992,
+          "sharpe_delta_vs_baseline": -4.4018719185538355,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 254,
+          "pf": 0.4249813183433607,
+          "net_pnl": -27110.75156236386,
+          "mdd": 27574.67027448207,
+          "sharpe": -4.753302023149891,
+          "stop_count": 58,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -28724.38979402421,
+          "mdd_delta_vs_baseline": 16842.926872101612,
+          "sharpe_delta_vs_baseline": -4.891013187790836,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 253,
+          "pf": 0.3565517066395418,
+          "net_pnl": -33366.02804363759,
+          "mdd": 33928.3936506762,
+          "sharpe": -5.72145170877658,
+          "stop_count": 63,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -31965.524494352772,
+          "mdd_delta_vs_baseline": 21889.76391017542,
+          "sharpe_delta_vs_baseline": -5.6012686361902935,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=10|mfe=0.03|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 267,
+          "pf": 0.5215147358966726,
+          "net_pnl": -22291.487013484228,
+          "mdd": 22599.39007544445,
+          "sharpe": -3.98604096217356,
+          "stop_count": 61,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -26874.36065426094,
+          "mdd_delta_vs_baseline": 12714.149258226698,
+          "sharpe_delta_vs_baseline": -4.375307305948702,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 263,
+          "pf": 0.4388131148618214,
+          "net_pnl": -27484.468254282823,
+          "mdd": 27776.089022787808,
+          "sharpe": -4.975760652425667,
+          "stop_count": 61,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -29098.10648594317,
+          "mdd_delta_vs_baseline": 17044.34562040735,
+          "sharpe_delta_vs_baseline": -5.113471817066612,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 262,
+          "pf": 0.36733004683309695,
+          "net_pnl": -33543.295446147546,
+          "mdd": 33943.0303538991,
+          "sharpe": -5.965111485426566,
+          "stop_count": 64,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -32142.791896862727,
+          "mdd_delta_vs_baseline": 21904.400613398324,
+          "sharpe_delta_vs_baseline": -5.84492841284028,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=10|mfe=0.03|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 275,
+          "pf": 0.6073743475509248,
+          "net_pnl": -18600.512723064698,
+          "mdd": 18780.072884341236,
+          "sharpe": -3.249613705110826,
+          "stop_count": 63,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -23183.38636384141,
+          "mdd_delta_vs_baseline": 8894.832067123483,
+          "sharpe_delta_vs_baseline": -3.638880048885968,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 269,
+          "pf": 0.5157184814417634,
+          "net_pnl": -23872.87721789276,
+          "mdd": 24035.295104252313,
+          "sharpe": -4.236230120023088,
+          "stop_count": 62,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -25486.51544955311,
+          "mdd_delta_vs_baseline": 13303.551701871855,
+          "sharpe_delta_vs_baseline": -4.373941284664034,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 266,
+          "pf": 0.43671434997407754,
+          "net_pnl": -30086.686142607996,
+          "mdd": 30390.410189308397,
+          "sharpe": -5.226508660847573,
+          "stop_count": 66,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -28686.182593323178,
+          "mdd_delta_vs_baseline": 18351.78044880762,
+          "sharpe_delta_vs_baseline": -5.106325588261287,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=10|mfe=0.05|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 212,
+          "pf": 0.7429536999854676,
+          "net_pnl": -12133.625029536643,
+          "mdd": 12855.451433998373,
+          "sharpe": -1.6687165480480488,
+          "stop_count": 57,
+          "good_then_stop": 10,
+          "net_pnl_delta_vs_baseline": -16716.498670313355,
+          "mdd_delta_vs_baseline": 2970.2106167806196,
+          "sharpe_delta_vs_baseline": -2.0579828918231913,
+          "good_then_stop_delta_vs_baseline": 14
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 212,
+          "pf": 0.6612122030142866,
+          "net_pnl": -16848.61103012172,
+          "mdd": 17539.687355778733,
+          "sharpe": -2.318232460272164,
+          "stop_count": 58,
+          "good_then_stop": 12,
+          "net_pnl_delta_vs_baseline": -18462.249261782068,
+          "mdd_delta_vs_baseline": 6807.943953398275,
+          "sharpe_delta_vs_baseline": -2.4559436249131097,
+          "good_then_stop_delta_vs_baseline": 11
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 213,
+          "pf": 0.593663475564495,
+          "net_pnl": -21094.582531152093,
+          "mdd": 21754.888932139485,
+          "sharpe": -2.924382215078364,
+          "stop_count": 59,
+          "good_then_stop": 8,
+          "net_pnl_delta_vs_baseline": -19694.078981867275,
+          "mdd_delta_vs_baseline": 9716.25919163871,
+          "sharpe_delta_vs_baseline": -2.804199142492078,
+          "good_then_stop_delta_vs_baseline": 11
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=10|mfe=0.05|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 222,
+          "pf": 0.6832220948063616,
+          "net_pnl": -15702.746956369452,
+          "mdd": 16313.54736135014,
+          "sharpe": -2.405662103641733,
+          "stop_count": 60,
+          "good_then_stop": 12,
+          "net_pnl_delta_vs_baseline": -20285.620597146168,
+          "mdd_delta_vs_baseline": 6428.306544132387,
+          "sharpe_delta_vs_baseline": -2.794928447416875,
+          "good_then_stop_delta_vs_baseline": 12
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 220,
+          "pf": 0.6436293628104176,
+          "net_pnl": -18314.41386483666,
+          "mdd": 18892.59471083348,
+          "sharpe": -2.7558639940020404,
+          "stop_count": 61,
+          "good_then_stop": 13,
+          "net_pnl_delta_vs_baseline": -19928.05209649701,
+          "mdd_delta_vs_baseline": 8160.851308453022,
+          "sharpe_delta_vs_baseline": -2.893575158642986,
+          "good_then_stop_delta_vs_baseline": 10
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 222,
+          "pf": 0.5528445865325001,
+          "net_pnl": -24102.562225550842,
+          "mdd": 24648.10763587187,
+          "sharpe": -3.7429022825136578,
+          "stop_count": 62,
+          "good_then_stop": 9,
+          "net_pnl_delta_vs_baseline": -22702.058676266024,
+          "mdd_delta_vs_baseline": 12609.477895371096,
+          "sharpe_delta_vs_baseline": -3.6227192099273715,
+          "good_then_stop_delta_vs_baseline": 10
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=10|mfe=0.05|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 229,
+          "pf": 0.789209404902033,
+          "net_pnl": -10643.454850032613,
+          "mdd": 12584.360026964572,
+          "sharpe": -1.5626174789126666,
+          "stop_count": 63,
+          "good_then_stop": 12,
+          "net_pnl_delta_vs_baseline": -15226.328490809326,
+          "mdd_delta_vs_baseline": 2699.1192097468193,
+          "sharpe_delta_vs_baseline": -1.9518838226878088,
+          "good_then_stop_delta_vs_baseline": 12
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 227,
+          "pf": 0.7392163890582355,
+          "net_pnl": -13701.964966450141,
+          "mdd": 14821.252722403658,
+          "sharpe": -1.9760450202199864,
+          "stop_count": 64,
+          "good_then_stop": 13,
+          "net_pnl_delta_vs_baseline": -15315.603198110492,
+          "mdd_delta_vs_baseline": 4089.5093200232004,
+          "sharpe_delta_vs_baseline": -2.1137561848609323,
+          "good_then_stop_delta_vs_baseline": 10
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 225,
+          "pf": 0.6753411767074774,
+          "net_pnl": -17544.82642463592,
+          "mdd": 18564.10102858329,
+          "sharpe": -2.5511542931259754,
+          "stop_count": 63,
+          "good_then_stop": 9,
+          "net_pnl_delta_vs_baseline": -16144.322875351105,
+          "mdd_delta_vs_baseline": 6525.471288082514,
+          "sharpe_delta_vs_baseline": -2.430971220539689,
+          "good_then_stop_delta_vs_baseline": 10
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=10|mfe=0.07|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 194,
+          "pf": 0.8973034381452767,
+          "net_pnl": -4905.969729607019,
+          "mdd": 11403.128064165507,
+          "sharpe": -0.5221910347854075,
+          "stop_count": 54,
+          "good_then_stop": 15,
+          "net_pnl_delta_vs_baseline": -9488.843370383733,
+          "mdd_delta_vs_baseline": 1517.8872469477537,
+          "sharpe_delta_vs_baseline": -0.9114573785605498,
+          "good_then_stop_delta_vs_baseline": 9
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 196,
+          "pf": 0.8111503924306849,
+          "net_pnl": -9500.69080086028,
+          "mdd": 13537.439507114503,
+          "sharpe": -1.016610319339187,
+          "stop_count": 55,
+          "good_then_stop": 16,
+          "net_pnl_delta_vs_baseline": -11114.32903252063,
+          "mdd_delta_vs_baseline": 2805.6961047340446,
+          "sharpe_delta_vs_baseline": -1.154321483980133,
+          "good_then_stop_delta_vs_baseline": 7
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 197,
+          "pf": 0.7333983172942256,
+          "net_pnl": -14150.94872955024,
+          "mdd": 16380.185469902175,
+          "sharpe": -1.5197006273257652,
+          "stop_count": 56,
+          "good_then_stop": 12,
+          "net_pnl_delta_vs_baseline": -12750.445180265424,
+          "mdd_delta_vs_baseline": 4341.5557294014,
+          "sharpe_delta_vs_baseline": -1.399517554739479,
+          "good_then_stop_delta_vs_baseline": 7
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=10|mfe=0.07|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 201,
+          "pf": 0.7497853953447654,
+          "net_pnl": -12163.586331171671,
+          "mdd": 12750.769315156715,
+          "sharpe": -1.7482418703769398,
+          "stop_count": 55,
+          "good_then_stop": 16,
+          "net_pnl_delta_vs_baseline": -16746.459971948385,
+          "mdd_delta_vs_baseline": 2865.5284979389617,
+          "sharpe_delta_vs_baseline": -2.1375082141520823,
+          "good_then_stop_delta_vs_baseline": 8
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 202,
+          "pf": 0.6682202440056275,
+          "net_pnl": -17096.84268140425,
+          "mdd": 17667.463812452585,
+          "sharpe": -2.456105782397418,
+          "stop_count": 56,
+          "good_then_stop": 17,
+          "net_pnl_delta_vs_baseline": -18710.4809130646,
+          "mdd_delta_vs_baseline": 6935.7204100721265,
+          "sharpe_delta_vs_baseline": -2.5938169470383636,
+          "good_then_stop_delta_vs_baseline": 6
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 202,
+          "pf": 0.6092003062397051,
+          "net_pnl": -21120.003712540612,
+          "mdd": 21674.055067182613,
+          "sharpe": -3.0355281653567854,
+          "stop_count": 57,
+          "good_then_stop": 13,
+          "net_pnl_delta_vs_baseline": -19719.500163255794,
+          "mdd_delta_vs_baseline": 9635.425326681838,
+          "sharpe_delta_vs_baseline": -2.915345092770499,
+          "good_then_stop_delta_vs_baseline": 6
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=10|mfe=0.07|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 205,
+          "pf": 0.8384609533314253,
+          "net_pnl": -8054.133059113795,
+          "mdd": 11415.423750989568,
+          "sharpe": -1.0849808170159534,
+          "stop_count": 57,
+          "good_then_stop": 16,
+          "net_pnl_delta_vs_baseline": -12637.00669989051,
+          "mdd_delta_vs_baseline": 1530.1829337718154,
+          "sharpe_delta_vs_baseline": -1.4742471607910956,
+          "good_then_stop_delta_vs_baseline": 8
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 205,
+          "pf": 0.7579223718109482,
+          "net_pnl": -12639.622394512271,
+          "mdd": 13328.472486612842,
+          "sharpe": -1.7079879931335056,
+          "stop_count": 57,
+          "good_then_stop": 17,
+          "net_pnl_delta_vs_baseline": -14253.260626172621,
+          "mdd_delta_vs_baseline": 2596.7290842323837,
+          "sharpe_delta_vs_baseline": -1.8456991577744515,
+          "good_then_stop_delta_vs_baseline": 6
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 205,
+          "pf": 0.6961216300770826,
+          "net_pnl": -16619.838298494193,
+          "mdd": 17279.497693414756,
+          "sharpe": -2.2420149442596444,
+          "stop_count": 58,
+          "good_then_stop": 13,
+          "net_pnl_delta_vs_baseline": -15219.334749209376,
+          "mdd_delta_vs_baseline": 5240.867952913981,
+          "sharpe_delta_vs_baseline": -2.121831871673358,
+          "good_then_stop_delta_vs_baseline": 6
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=15|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 253,
+          "pf": 0.5045034771821462,
+          "net_pnl": -22281.333223332498,
+          "mdd": 22760.717428868473,
+          "sharpe": -3.8805695457175644,
+          "stop_count": 62,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -26864.206864109212,
+          "mdd_delta_vs_baseline": 12875.47661165072,
+          "sharpe_delta_vs_baseline": -4.269835889492707,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 251,
+          "pf": 0.45001132957833984,
+          "net_pnl": -25914.233316467533,
+          "mdd": 26378.152028585748,
+          "sharpe": -4.455624713836062,
+          "stop_count": 64,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -27527.87154812788,
+          "mdd_delta_vs_baseline": 15646.40862620529,
+          "sharpe_delta_vs_baseline": -4.593335878477007,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 251,
+          "pf": 0.3727383747322402,
+          "net_pnl": -32949.41452010829,
+          "mdd": 33511.78012714689,
+          "sharpe": -5.513105780295972,
+          "stop_count": 71,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -31548.91097082347,
+          "mdd_delta_vs_baseline": 21473.150386646117,
+          "sharpe_delta_vs_baseline": -5.392922707709686,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=15|mfe=0.03|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 264,
+          "pf": 0.5361655597795928,
+          "net_pnl": -21601.902355055627,
+          "mdd": 21909.805417015832,
+          "sharpe": -3.823969834605316,
+          "stop_count": 66,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -26184.77599583234,
+          "mdd_delta_vs_baseline": 12024.56459979808,
+          "sharpe_delta_vs_baseline": -4.213236178380458,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 260,
+          "pf": 0.4759195903294265,
+          "net_pnl": -25629.002693365965,
+          "mdd": 25920.623461870946,
+          "sharpe": -4.510162014768331,
+          "stop_count": 68,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -27242.640925026313,
+          "mdd_delta_vs_baseline": 15188.880059490488,
+          "sharpe_delta_vs_baseline": -4.6478731794092765,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 260,
+          "pf": 0.3955630839578206,
+          "net_pnl": -32280.98204235654,
+          "mdd": 32680.716950108104,
+          "sharpe": -5.5593743923018115,
+          "stop_count": 73,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -30880.47849307172,
+          "mdd_delta_vs_baseline": 20642.08720960733,
+          "sharpe_delta_vs_baseline": -5.439191319715525,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=15|mfe=0.03|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 272,
+          "pf": 0.6190287333848014,
+          "net_pnl": -18108.95658940492,
+          "mdd": 18288.51675068146,
+          "sharpe": -3.1313985885413826,
+          "stop_count": 68,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -22691.830230181633,
+          "mdd_delta_vs_baseline": 8403.275933463708,
+          "sharpe_delta_vs_baseline": -3.520664932316525,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 266,
+          "pf": 0.5549237004674629,
+          "net_pnl": -21971.28037342123,
+          "mdd": 22133.69825978078,
+          "sharpe": -3.7847239000929145,
+          "stop_count": 69,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -23584.918605081577,
+          "mdd_delta_vs_baseline": 11401.954857400322,
+          "sharpe_delta_vs_baseline": -3.92243506473386,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 264,
+          "pf": 0.46389385136970185,
+          "net_pnl": -29063.84939055328,
+          "mdd": 29367.573437253683,
+          "sharpe": -4.879785387430512,
+          "stop_count": 75,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -27663.345841268463,
+          "mdd_delta_vs_baseline": 17328.943696752907,
+          "sharpe_delta_vs_baseline": -4.7596023148442255,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=15|mfe=0.05|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 211,
+          "pf": 0.7596165243730397,
+          "net_pnl": -11643.690922034823,
+          "mdd": 12365.517326496558,
+          "sharpe": -1.5729877941090968,
+          "stop_count": 65,
+          "good_then_stop": 13,
+          "net_pnl_delta_vs_baseline": -16226.564562811536,
+          "mdd_delta_vs_baseline": 2480.276509278805,
+          "sharpe_delta_vs_baseline": -1.962254137884239,
+          "good_then_stop_delta_vs_baseline": 11
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 211,
+          "pf": 0.6718424200524661,
+          "net_pnl": -16759.56385707943,
+          "mdd": 17450.640182736443,
+          "sharpe": -2.269696258354202,
+          "stop_count": 66,
+          "good_then_stop": 14,
+          "net_pnl_delta_vs_baseline": -18373.202088739778,
+          "mdd_delta_vs_baseline": 6718.896780355984,
+          "sharpe_delta_vs_baseline": -2.407407422995148,
+          "good_then_stop_delta_vs_baseline": 9
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 212,
+          "pf": 0.6163624359139966,
+          "net_pnl": -20269.09493378977,
+          "mdd": 20929.401334777158,
+          "sharpe": -2.76273839258683,
+          "stop_count": 67,
+          "good_then_stop": 10,
+          "net_pnl_delta_vs_baseline": -18868.59138450495,
+          "mdd_delta_vs_baseline": 8890.771594276383,
+          "sharpe_delta_vs_baseline": -2.6425553200005436,
+          "good_then_stop_delta_vs_baseline": 9
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=15|mfe=0.05|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 221,
+          "pf": 0.7072531663637628,
+          "net_pnl": -14982.728747069572,
+          "mdd": 15593.529152050258,
+          "sharpe": -2.2261983028847734,
+          "stop_count": 69,
+          "good_then_stop": 16,
+          "net_pnl_delta_vs_baseline": -19565.602387846287,
+          "mdd_delta_vs_baseline": 5708.288334832505,
+          "sharpe_delta_vs_baseline": -2.6154646466599156,
+          "good_then_stop_delta_vs_baseline": 8
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 219,
+          "pf": 0.6648935325267412,
+          "net_pnl": -17722.153197041196,
+          "mdd": 18348.049444645778,
+          "sharpe": -2.595236451731913,
+          "stop_count": 70,
+          "good_then_stop": 16,
+          "net_pnl_delta_vs_baseline": -19335.791428701545,
+          "mdd_delta_vs_baseline": 7616.30604226532,
+          "sharpe_delta_vs_baseline": -2.7329476163728588,
+          "good_then_stop_delta_vs_baseline": 7
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 221,
+          "pf": 0.5905478462094091,
+          "net_pnl": -22455.94840533185,
+          "mdd": 23006.301382952217,
+          "sharpe": -3.3766037501419763,
+          "stop_count": 71,
+          "good_then_stop": 12,
+          "net_pnl_delta_vs_baseline": -21055.44485604703,
+          "mdd_delta_vs_baseline": 10967.671642451442,
+          "sharpe_delta_vs_baseline": -3.25642067755569,
+          "good_then_stop_delta_vs_baseline": 7
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=15|mfe=0.05|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 227,
+          "pf": 0.8176747293786136,
+          "net_pnl": -9376.127541022091,
+          "mdd": 12154.71891900024,
+          "sharpe": -1.3447373453606357,
+          "stop_count": 70,
+          "good_then_stop": 15,
+          "net_pnl_delta_vs_baseline": -13959.001181798805,
+          "mdd_delta_vs_baseline": 2269.478101782486,
+          "sharpe_delta_vs_baseline": -1.734003689135778,
+          "good_then_stop_delta_vs_baseline": 9
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 225,
+          "pf": 0.7706942743026726,
+          "net_pnl": -12281.451081438223,
+          "mdd": 13868.282097806821,
+          "sharpe": -1.7241428216166945,
+          "stop_count": 71,
+          "good_then_stop": 15,
+          "net_pnl_delta_vs_baseline": -13895.089313098573,
+          "mdd_delta_vs_baseline": 3136.538695426363,
+          "sharpe_delta_vs_baseline": -1.8618539862576404,
+          "good_then_stop_delta_vs_baseline": 8
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 224,
+          "pf": 0.7170012774820363,
+          "net_pnl": -15551.396183205254,
+          "mdd": 16723.913044171517,
+          "sharpe": -2.193801718579045,
+          "stop_count": 71,
+          "good_then_stop": 11,
+          "net_pnl_delta_vs_baseline": -14150.892633920437,
+          "mdd_delta_vs_baseline": 4685.283303670742,
+          "sharpe_delta_vs_baseline": -2.0736186459927586,
+          "good_then_stop_delta_vs_baseline": 8
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=15|mfe=0.07|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 193,
+          "pf": 0.8745089177977164,
+          "net_pnl": -6493.525122014013,
+          "mdd": 12534.89544641685,
+          "sharpe": -0.6724869812875554,
+          "stop_count": 65,
+          "good_then_stop": 21,
+          "net_pnl_delta_vs_baseline": -11076.398762790726,
+          "mdd_delta_vs_baseline": 2649.6546291990962,
+          "sharpe_delta_vs_baseline": -1.0617533250626976,
+          "good_then_stop_delta_vs_baseline": 3
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 195,
+          "pf": 0.8057505262989492,
+          "net_pnl": -10501.186952780432,
+          "mdd": 14668.59159036299,
+          "sharpe": -1.090975915696681,
+          "stop_count": 66,
+          "good_then_stop": 21,
+          "net_pnl_delta_vs_baseline": -12114.825184440782,
+          "mdd_delta_vs_baseline": 3936.848187982532,
+          "sharpe_delta_vs_baseline": -1.2286870803376269,
+          "good_then_stop_delta_vs_baseline": 2
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 195,
+          "pf": 0.7619418494495992,
+          "net_pnl": -13278.588002983204,
+          "mdd": 15579.42256517983,
+          "sharpe": -1.3808817310296728,
+          "stop_count": 66,
+          "good_then_stop": 17,
+          "net_pnl_delta_vs_baseline": -11878.084453698388,
+          "mdd_delta_vs_baseline": 3540.7928246790543,
+          "sharpe_delta_vs_baseline": -1.2606986584433866,
+          "good_then_stop_delta_vs_baseline": 2
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=15|mfe=0.07|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 200,
+          "pf": 0.7318789140540124,
+          "net_pnl": -14155.605084124923,
+          "mdd": 14742.78806810997,
+          "sharpe": -1.9513539836190346,
+          "stop_count": 67,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": -18738.478724901637,
+          "mdd_delta_vs_baseline": 4857.547250892218,
+          "sharpe_delta_vs_baseline": -2.340620327394177,
+          "good_then_stop_delta_vs_baseline": 1
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 201,
+          "pf": 0.6696844965110081,
+          "net_pnl": -18293.048706088735,
+          "mdd": 18863.669837137066,
+          "sharpe": -2.5125464382488176,
+          "stop_count": 68,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": -19906.686937749084,
+          "mdd_delta_vs_baseline": 8131.926434756608,
+          "sharpe_delta_vs_baseline": -2.6502576028897633,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 200,
+          "pf": 0.6396500281090085,
+          "net_pnl": -20558.914998916887,
+          "mdd": 21112.96635355889,
+          "sharpe": -2.8068854141578465,
+          "stop_count": 68,
+          "good_then_stop": 19,
+          "net_pnl_delta_vs_baseline": -19158.41144963207,
+          "mdd_delta_vs_baseline": 9074.336613058116,
+          "sharpe_delta_vs_baseline": -2.6867023415715603,
+          "good_then_stop_delta_vs_baseline": 0
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=15|mfe=0.07|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 204,
+          "pf": 0.8179601045011629,
+          "net_pnl": -9800.915834352852,
+          "mdd": 12382.150346996834,
+          "sharpe": -1.2724013798697922,
+          "stop_count": 68,
+          "good_then_stop": 22,
+          "net_pnl_delta_vs_baseline": -14383.789475129566,
+          "mdd_delta_vs_baseline": 2496.909529779081,
+          "sharpe_delta_vs_baseline": -1.6616677236449344,
+          "good_then_stop_delta_vs_baseline": 2
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 204,
+          "pf": 0.7601278699666072,
+          "net_pnl": -13401.443399145859,
+          "mdd": 14163.93695611937,
+          "sharpe": -1.7357063012881533,
+          "stop_count": 68,
+          "good_then_stop": 22,
+          "net_pnl_delta_vs_baseline": -15015.08163080621,
+          "mdd_delta_vs_baseline": 3432.1935537389127,
+          "sharpe_delta_vs_baseline": -1.8734174659290992,
+          "good_then_stop_delta_vs_baseline": 1
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 204,
+          "pf": 0.7195914623697344,
+          "net_pnl": -16264.347013347617,
+          "mdd": 16924.00640826817,
+          "sharpe": -2.0945302640301215,
+          "stop_count": 69,
+          "good_then_stop": 18,
+          "net_pnl_delta_vs_baseline": -14863.8434640628,
+          "mdd_delta_vs_baseline": 4885.376667767396,
+          "sharpe_delta_vs_baseline": -1.9743471914438353,
+          "good_then_stop_delta_vs_baseline": 1
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=20|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 253,
+          "pf": 0.50596960779419,
+          "net_pnl": -22535.2333747801,
+          "mdd": 23014.617580316066,
+          "sharpe": -3.88844177670441,
+          "stop_count": 64,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -27118.107015556812,
+          "mdd_delta_vs_baseline": 13129.376763098313,
+          "sharpe_delta_vs_baseline": -4.277708120479552,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 251,
+          "pf": 0.4505247790116881,
+          "net_pnl": -26314.048712950236,
+          "mdd": 26777.96742506845,
+          "sharpe": -4.484272478403585,
+          "stop_count": 66,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -27927.686944610585,
+          "mdd_delta_vs_baseline": 16046.224022687993,
+          "sharpe_delta_vs_baseline": -4.621983643044531,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 251,
+          "pf": 0.3739990748085246,
+          "net_pnl": -33363.395118160006,
+          "mdd": 33925.76072519861,
+          "sharpe": -5.532999124731734,
+          "stop_count": 74,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -31962.891568875188,
+          "mdd_delta_vs_baseline": 21887.130984697837,
+          "sharpe_delta_vs_baseline": -5.412816052145447,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=20|mfe=0.03|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 264,
+          "pf": 0.5344659220689332,
+          "net_pnl": -21991.60348299377,
+          "mdd": 22299.50654495398,
+          "sharpe": -3.8602863922197064,
+          "stop_count": 68,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -26574.477123770484,
+          "mdd_delta_vs_baseline": 12414.265727736227,
+          "sharpe_delta_vs_baseline": -4.249552735994849,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 260,
+          "pf": 0.4733606955916894,
+          "net_pnl": -26174.84055831076,
+          "mdd": 26466.461326815745,
+          "sharpe": -4.5687346344231905,
+          "stop_count": 70,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -27788.47878997111,
+          "mdd_delta_vs_baseline": 15734.717924435286,
+          "sharpe_delta_vs_baseline": -4.706445799064136,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 260,
+          "pf": 0.3931116397272474,
+          "net_pnl": -32979.67376230316,
+          "mdd": 33379.40867005471,
+          "sharpe": -5.631908493496602,
+          "stop_count": 76,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -31579.17021301834,
+          "mdd_delta_vs_baseline": 21340.778929553937,
+          "sharpe_delta_vs_baseline": -5.511725420910316,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=20|mfe=0.03|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 272,
+          "pf": 0.6170120336578506,
+          "net_pnl": -18466.37479798241,
+          "mdd": 18645.93495925895,
+          "sharpe": -3.164961105978705,
+          "stop_count": 70,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -23049.248438759125,
+          "mdd_delta_vs_baseline": 8760.694142041197,
+          "sharpe_delta_vs_baseline": -3.554227449753847,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 266,
+          "pf": 0.5521906989059147,
+          "net_pnl": -22473.774959282797,
+          "mdd": 22636.19284564235,
+          "sharpe": -3.8362534320867447,
+          "stop_count": 71,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -24087.413190943145,
+          "mdd_delta_vs_baseline": 11904.44944326189,
+          "sharpe_delta_vs_baseline": -3.9739645967276904,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 264,
+          "pf": 0.46235285014469135,
+          "net_pnl": -29581.36186850714,
+          "mdd": 29885.085915207546,
+          "sharpe": -4.922860607555843,
+          "stop_count": 78,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -28180.858319222323,
+          "mdd_delta_vs_baseline": 17846.45617470677,
+          "sharpe_delta_vs_baseline": -4.802677534969557,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=20|mfe=0.05|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 211,
+          "pf": 0.7371504917009404,
+          "net_pnl": -13111.329892100035,
+          "mdd": 13833.15629656177,
+          "sharpe": -1.756914607650976,
+          "stop_count": 68,
+          "good_then_stop": 14,
+          "net_pnl_delta_vs_baseline": -17694.20353287675,
+          "mdd_delta_vs_baseline": 3947.9154793440175,
+          "sharpe_delta_vs_baseline": -2.1461809514261185,
+          "good_then_stop_delta_vs_baseline": 10
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 211,
+          "pf": 0.6518906611687101,
+          "net_pnl": -18316.487294513852,
+          "mdd": 19007.563620170855,
+          "sharpe": -2.4603097745832345,
+          "stop_count": 69,
+          "good_then_stop": 15,
+          "net_pnl_delta_vs_baseline": -19930.1255261742,
+          "mdd_delta_vs_baseline": 8275.820217790397,
+          "sharpe_delta_vs_baseline": -2.59802093922418,
+          "good_then_stop_delta_vs_baseline": 8
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 210,
+          "pf": 0.6064237856698887,
+          "net_pnl": -21213.30133295436,
+          "mdd": 21873.60773394175,
+          "sharpe": -2.869914574707346,
+          "stop_count": 69,
+          "good_then_stop": 11,
+          "net_pnl_delta_vs_baseline": -19812.797783669543,
+          "mdd_delta_vs_baseline": 9834.977993440974,
+          "sharpe_delta_vs_baseline": -2.7497315021210595,
+          "good_then_stop_delta_vs_baseline": 8
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=20|mfe=0.05|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 221,
+          "pf": 0.6877057291493888,
+          "net_pnl": -16431.317051860824,
+          "mdd": 17042.117456841515,
+          "sharpe": -2.418514098557976,
+          "stop_count": 72,
+          "good_then_stop": 17,
+          "net_pnl_delta_vs_baseline": -21014.190692637538,
+          "mdd_delta_vs_baseline": 7156.8766396237625,
+          "sharpe_delta_vs_baseline": -2.8077804423331183,
+          "good_then_stop_delta_vs_baseline": 7
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 219,
+          "pf": 0.6447397767998843,
+          "net_pnl": -19362.571846171024,
+          "mdd": 19940.752692167833,
+          "sharpe": -2.8091137831494244,
+          "stop_count": 73,
+          "good_then_stop": 17,
+          "net_pnl_delta_vs_baseline": -20976.210077831372,
+          "mdd_delta_vs_baseline": 9209.009289787375,
+          "sharpe_delta_vs_baseline": -2.94682494779037,
+          "good_then_stop_delta_vs_baseline": 6
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 219,
+          "pf": 0.5793583870430979,
+          "net_pnl": -23553.675474202704,
+          "mdd": 24099.22088452373,
+          "sharpe": -3.513207393350648,
+          "stop_count": 73,
+          "good_then_stop": 13,
+          "net_pnl_delta_vs_baseline": -22153.171924917886,
+          "mdd_delta_vs_baseline": 12060.591144022954,
+          "sharpe_delta_vs_baseline": -3.393024320764362,
+          "good_then_stop_delta_vs_baseline": 6
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=20|mfe=0.05|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 227,
+          "pf": 0.793573164382414,
+          "net_pnl": -10924.719597630505,
+          "mdd": 12890.056112134718,
+          "sharpe": -1.5519737050058515,
+          "stop_count": 73,
+          "good_then_stop": 16,
+          "net_pnl_delta_vs_baseline": -15507.593238407218,
+          "mdd_delta_vs_baseline": 3004.8152949169653,
+          "sharpe_delta_vs_baseline": -1.9412400487809938,
+          "good_then_stop_delta_vs_baseline": 8
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 225,
+          "pf": 0.7480557092179461,
+          "net_pnl": -13885.03035523544,
+          "mdd": 14915.261503820886,
+          "sharpe": -1.9315290987179128,
+          "stop_count": 74,
+          "good_then_stop": 16,
+          "net_pnl_delta_vs_baseline": -15498.66858689579,
+          "mdd_delta_vs_baseline": 4183.518101440428,
+          "sharpe_delta_vs_baseline": -2.0692402633588585,
+          "good_then_stop_delta_vs_baseline": 7
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 222,
+          "pf": 0.7040645137595393,
+          "net_pnl": -16602.4634042265,
+          "mdd": 17577.618790791897,
+          "sharpe": -2.3234388228176783,
+          "stop_count": 73,
+          "good_then_stop": 12,
+          "net_pnl_delta_vs_baseline": -15201.959854941682,
+          "mdd_delta_vs_baseline": 5538.989050291122,
+          "sharpe_delta_vs_baseline": -2.203255750231392,
+          "good_then_stop_delta_vs_baseline": 7
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=20|mfe=0.07|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 191,
+          "pf": 0.8611147080834524,
+          "net_pnl": -7318.996780602798,
+          "mdd": 12947.991686580272,
+          "sharpe": -0.7546697157630171,
+          "stop_count": 67,
+          "good_then_stop": 22,
+          "net_pnl_delta_vs_baseline": -11901.870421379512,
+          "mdd_delta_vs_baseline": 3062.7508693625186,
+          "sharpe_delta_vs_baseline": -1.1439360595381594,
+          "good_then_stop_delta_vs_baseline": 2
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 193,
+          "pf": 0.7910898662506726,
+          "net_pnl": -11532.177891637382,
+          "mdd": 15317.476825081514,
+          "sharpe": -1.1925739294538493,
+          "stop_count": 68,
+          "good_then_stop": 22,
+          "net_pnl_delta_vs_baseline": -13145.816123297733,
+          "mdd_delta_vs_baseline": 4585.733422701056,
+          "sharpe_delta_vs_baseline": -1.3302850940947952,
+          "good_then_stop_delta_vs_baseline": 1
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 192,
+          "pf": 0.7605013262655494,
+          "net_pnl": -13525.932663223783,
+          "mdd": 15431.313336594892,
+          "sharpe": -1.3997008638399107,
+          "stop_count": 67,
+          "good_then_stop": 18,
+          "net_pnl_delta_vs_baseline": -12125.429113938966,
+          "mdd_delta_vs_baseline": 3392.683596094117,
+          "sharpe_delta_vs_baseline": -1.2795177912536244,
+          "good_then_stop_delta_vs_baseline": 1
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=20|mfe=0.07|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 198,
+          "pf": 0.7203195106335195,
+          "net_pnl": -15024.458196125272,
+          "mdd": 15611.64118011031,
+          "sharpe": -2.058647375777173,
+          "stop_count": 69,
+          "good_then_stop": 24,
+          "net_pnl_delta_vs_baseline": -19607.331836901983,
+          "mdd_delta_vs_baseline": 5726.400362892557,
+          "sharpe_delta_vs_baseline": -2.4479137195523153,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 199,
+          "pf": 0.656577692779144,
+          "net_pnl": -19412.291197380986,
+          "mdd": 19982.912328429324,
+          "sharpe": -2.649124509552218,
+          "stop_count": 70,
+          "good_then_stop": 24,
+          "net_pnl_delta_vs_baseline": -21025.929429041335,
+          "mdd_delta_vs_baseline": 9251.168926048866,
+          "sharpe_delta_vs_baseline": -2.7868356741931635,
+          "good_then_stop_delta_vs_baseline": -1
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 197,
+          "pf": 0.6371684627975497,
+          "net_pnl": -20977.65969693689,
+          "mdd": 21531.711051578895,
+          "sharpe": -2.841697107653745,
+          "stop_count": 69,
+          "good_then_stop": 20,
+          "net_pnl_delta_vs_baseline": -19577.156147652073,
+          "mdd_delta_vs_baseline": 9493.08131107812,
+          "sharpe_delta_vs_baseline": -2.7215140350674587,
+          "good_then_stop_delta_vs_baseline": -1
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=20|mfe=0.07|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 202,
+          "pf": 0.8040580285212146,
+          "net_pnl": -10724.252145692566,
+          "mdd": 12715.524698721234,
+          "sharpe": -1.385533039855592,
+          "stop_count": 70,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": -15307.12578646928,
+          "mdd_delta_vs_baseline": 2830.283881503481,
+          "sharpe_delta_vs_baseline": -1.7747993836307343,
+          "good_then_stop_delta_vs_baseline": 1
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 202,
+          "pf": 0.7433979900874954,
+          "net_pnl": -14636.243981965214,
+          "mdd": 15313.567531943661,
+          "sharpe": -1.8850407592804435,
+          "stop_count": 70,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": -16249.882213625564,
+          "mdd_delta_vs_baseline": 4581.824129563203,
+          "sharpe_delta_vs_baseline": -2.022751923921389,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 201,
+          "pf": 0.7163906989554999,
+          "net_pnl": -16654.1263292981,
+          "mdd": 17313.78572421866,
+          "sharpe": -2.130067425378855,
+          "stop_count": 70,
+          "good_then_stop": 19,
+          "net_pnl_delta_vs_baseline": -15253.622780013282,
+          "mdd_delta_vs_baseline": 5275.155983717883,
+          "sharpe_delta_vs_baseline": -2.009884352792569,
+          "good_then_stop_delta_vs_baseline": 0
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=30|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 253,
+          "pf": 0.5047214631338413,
+          "net_pnl": -22648.036606673104,
+          "mdd": 23127.42081220907,
+          "sharpe": -3.9014712916194405,
+          "stop_count": 65,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -27230.910247449818,
+          "mdd_delta_vs_baseline": 13242.179994991318,
+          "sharpe_delta_vs_baseline": -4.290737635394583,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 251,
+          "pf": 0.44955395379093566,
+          "net_pnl": -26417.46734539164,
+          "mdd": 26881.386057509855,
+          "sharpe": -4.4952144286968565,
+          "stop_count": 67,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -28031.10557705199,
+          "mdd_delta_vs_baseline": 16149.642655129397,
+          "sharpe_delta_vs_baseline": -4.632925593337802,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 251,
+          "pf": 0.37331276023867527,
+          "net_pnl": -33458.90292266085,
+          "mdd": 34021.268529699446,
+          "sharpe": -5.541900482043792,
+          "stop_count": 75,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -32058.39937337603,
+          "mdd_delta_vs_baseline": 21982.63878919867,
+          "sharpe_delta_vs_baseline": -5.421717409457505,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=30|mfe=0.03|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 264,
+          "pf": 0.5332862951245666,
+          "net_pnl": -22096.09708012287,
+          "mdd": 22404.000142083074,
+          "sharpe": -3.8722879857674877,
+          "stop_count": 69,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -26678.970720899582,
+          "mdd_delta_vs_baseline": 12518.759324865321,
+          "sharpe_delta_vs_baseline": -4.26155432954263,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 260,
+          "pf": 0.47237777717512736,
+          "net_pnl": -26278.259190752164,
+          "mdd": 26569.879959257152,
+          "sharpe": -4.579584565026964,
+          "stop_count": 71,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -27891.897422412512,
+          "mdd_delta_vs_baseline": 15838.136556876694,
+          "sharpe_delta_vs_baseline": -4.71729572966791,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 260,
+          "pf": 0.39243257282524185,
+          "net_pnl": -33073.70779529296,
+          "mdd": 33473.44270304452,
+          "sharpe": -5.640332566888796,
+          "stop_count": 77,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -31673.204246008143,
+          "mdd_delta_vs_baseline": 21434.812962543747,
+          "sharpe_delta_vs_baseline": -5.52014949430251,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=30|mfe=0.03|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 272,
+          "pf": 0.6155537315195309,
+          "net_pnl": -18580.604241647266,
+          "mdd": 18760.16440292381,
+          "sharpe": -3.1789531794233503,
+          "stop_count": 71,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -23163.47788242398,
+          "mdd_delta_vs_baseline": 8874.923585706056,
+          "sharpe_delta_vs_baseline": -3.5682195231984926,
+          "good_then_stop_delta_vs_baseline": 24
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 266,
+          "pf": 0.5511378295340891,
+          "net_pnl": -22569.648151637302,
+          "mdd": 22732.066037996858,
+          "sharpe": -3.846959537320291,
+          "stop_count": 72,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -24183.28638329765,
+          "mdd_delta_vs_baseline": 12000.3226356164,
+          "sharpe_delta_vs_baseline": -3.9846707019612366,
+          "good_then_stop_delta_vs_baseline": 23
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 264,
+          "pf": 0.46156399698024825,
+          "net_pnl": -29675.395901496948,
+          "mdd": 29979.119948197353,
+          "sharpe": -4.931980067684026,
+          "stop_count": 79,
+          "good_then_stop": 0,
+          "net_pnl_delta_vs_baseline": -28274.89235221213,
+          "mdd_delta_vs_baseline": 17940.490207696577,
+          "sharpe_delta_vs_baseline": -4.8117969950977395,
+          "good_then_stop_delta_vs_baseline": 19
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=30|mfe=0.05|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 211,
+          "pf": 0.7362186355073282,
+          "net_pnl": -13174.4665611279,
+          "mdd": 13896.29296558963,
+          "sharpe": -1.7635814111048227,
+          "stop_count": 69,
+          "good_then_stop": 14,
+          "net_pnl_delta_vs_baseline": -17757.34020190461,
+          "mdd_delta_vs_baseline": 4011.0521483718767,
+          "sharpe_delta_vs_baseline": -2.152847754879965,
+          "good_then_stop_delta_vs_baseline": 10
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 211,
+          "pf": 0.6512247733195674,
+          "net_pnl": -18370.28908036926,
+          "mdd": 19061.365406026267,
+          "sharpe": -2.465245452901164,
+          "stop_count": 70,
+          "good_then_stop": 15,
+          "net_pnl_delta_vs_baseline": -19983.92731202961,
+          "mdd_delta_vs_baseline": 8329.622003645809,
+          "sharpe_delta_vs_baseline": -2.6029566175421097,
+          "good_then_stop_delta_vs_baseline": 8
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 210,
+          "pf": 0.6059238944118152,
+          "net_pnl": -21257.768235637315,
+          "mdd": 21918.0746366247,
+          "sharpe": -2.873456683025566,
+          "stop_count": 70,
+          "good_then_stop": 11,
+          "net_pnl_delta_vs_baseline": -19857.264686352497,
+          "mdd_delta_vs_baseline": 9879.444896123925,
+          "sharpe_delta_vs_baseline": -2.7532736104392797,
+          "good_then_stop_delta_vs_baseline": 8
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=30|mfe=0.05|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 221,
+          "pf": 0.6862836585991293,
+          "net_pnl": -16540.34198864458,
+          "mdd": 17151.14239362527,
+          "sharpe": -2.4307480449171384,
+          "stop_count": 73,
+          "good_then_stop": 17,
+          "net_pnl_delta_vs_baseline": -21123.215629421295,
+          "mdd_delta_vs_baseline": 7265.901576407516,
+          "sharpe_delta_vs_baseline": -2.8200143886922806,
+          "good_then_stop_delta_vs_baseline": 7
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 219,
+          "pf": 0.6441148843846335,
+          "net_pnl": -19415.447819667726,
+          "mdd": 19993.62866566454,
+          "sharpe": -2.8137550079502516,
+          "stop_count": 74,
+          "good_then_stop": 17,
+          "net_pnl_delta_vs_baseline": -21029.086051328075,
+          "mdd_delta_vs_baseline": 9261.88526328408,
+          "sharpe_delta_vs_baseline": -2.9514661725911973,
+          "good_then_stop_delta_vs_baseline": 6
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 219,
+          "pf": 0.5788986674888231,
+          "net_pnl": -23598.14237688566,
+          "mdd": 24143.687787206676,
+          "sharpe": -3.5161834787965613,
+          "stop_count": 74,
+          "good_then_stop": 13,
+          "net_pnl_delta_vs_baseline": -22197.63882760084,
+          "mdd_delta_vs_baseline": 12105.0580467059,
+          "sharpe_delta_vs_baseline": -3.396000406210275,
+          "good_then_stop_delta_vs_baseline": 6
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=30|mfe=0.05|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.05,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 227,
+          "pf": 0.7963280351922453,
+          "net_pnl": -10773.982064132468,
+          "mdd": 12988.353609735695,
+          "sharpe": -1.5281337753341153,
+          "stop_count": 74,
+          "good_then_stop": 16,
+          "net_pnl_delta_vs_baseline": -15356.855704909181,
+          "mdd_delta_vs_baseline": 3103.1127925179426,
+          "sharpe_delta_vs_baseline": -1.9174001191092576,
+          "good_then_stop_delta_vs_baseline": 8
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 225,
+          "pf": 0.7508832335390146,
+          "net_pnl": -13714.88996966975,
+          "mdd": 14745.1211182552,
+          "sharpe": -1.9051757096607418,
+          "stop_count": 75,
+          "good_then_stop": 16,
+          "net_pnl_delta_vs_baseline": -15328.5282013301,
+          "mdd_delta_vs_baseline": 4013.3777158747416,
+          "sharpe_delta_vs_baseline": -2.0428868743016877,
+          "good_then_stop_delta_vs_baseline": 7
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 222,
+          "pf": 0.7066944926087771,
+          "net_pnl": -16429.398828240628,
+          "mdd": 17404.55421480603,
+          "sharpe": -2.296369277310975,
+          "stop_count": 74,
+          "good_then_stop": 12,
+          "net_pnl_delta_vs_baseline": -15028.895278955812,
+          "mdd_delta_vs_baseline": 5365.924474305255,
+          "sharpe_delta_vs_baseline": -2.1761862047246887,
+          "good_then_stop_delta_vs_baseline": 7
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=30|mfe=0.07|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 191,
+          "pf": 0.8600710993033753,
+          "net_pnl": -7382.9406142227945,
+          "mdd": 13033.250540807416,
+          "sharpe": -0.7607912335076731,
+          "stop_count": 68,
+          "good_then_stop": 22,
+          "net_pnl_delta_vs_baseline": -11965.814254999508,
+          "mdd_delta_vs_baseline": 3148.009723589663,
+          "sharpe_delta_vs_baseline": -1.1500575772828152,
+          "good_then_stop_delta_vs_baseline": 2
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 193,
+          "pf": 0.7903080548730042,
+          "net_pnl": -11586.786034112358,
+          "mdd": 15393.378651806674,
+          "sharpe": -1.197540213771328,
+          "stop_count": 69,
+          "good_then_stop": 22,
+          "net_pnl_delta_vs_baseline": -13200.424265772708,
+          "mdd_delta_vs_baseline": 4661.6352494262155,
+          "sharpe_delta_vs_baseline": -1.335251378412274,
+          "good_then_stop_delta_vs_baseline": 1
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 192,
+          "pf": 0.7599397403571181,
+          "net_pnl": -13567.66773395403,
+          "mdd": 15494.320755218363,
+          "sharpe": -1.4032970906028501,
+          "stop_count": 68,
+          "good_then_stop": 18,
+          "net_pnl_delta_vs_baseline": -12167.164184669213,
+          "mdd_delta_vs_baseline": 3455.6910147175877,
+          "sharpe_delta_vs_baseline": -1.2831140180165639,
+          "good_then_stop_delta_vs_baseline": 1
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=30|mfe=0.07|g=0.6|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.6,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 198,
+          "pf": 0.7194631226605951,
+          "net_pnl": -15088.402029745268,
+          "mdd": 15675.585013730306,
+          "sharpe": -2.065240876275713,
+          "stop_count": 70,
+          "good_then_stop": 24,
+          "net_pnl_delta_vs_baseline": -19671.27567052198,
+          "mdd_delta_vs_baseline": 5790.344196512553,
+          "sharpe_delta_vs_baseline": -2.4545072200508553,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 199,
+          "pf": 0.6559440042074012,
+          "net_pnl": -19466.89933985596,
+          "mdd": 20037.520470904296,
+          "sharpe": -2.654051291808172,
+          "stop_count": 71,
+          "good_then_stop": 24,
+          "net_pnl_delta_vs_baseline": -21080.53757151631,
+          "mdd_delta_vs_baseline": 9305.777068523837,
+          "sharpe_delta_vs_baseline": -2.7917624564491175,
+          "good_then_stop_delta_vs_baseline": -1
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 197,
+          "pf": 0.6366699270098393,
+          "net_pnl": -21022.932148266846,
+          "mdd": 21576.98350290885,
+          "sharpe": -2.8453768513363995,
+          "stop_count": 70,
+          "good_then_stop": 20,
+          "net_pnl_delta_vs_baseline": -19622.428598982027,
+          "mdd_delta_vs_baseline": 9538.353762408075,
+          "sharpe_delta_vs_baseline": -2.7251937787501133,
+          "good_then_stop_delta_vs_baseline": -1
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_MFE_GIVEBACK|t=30|mfe=0.07|g=0.7|p=0.0",
+      "policy_group": "TIME_STOP_MFE_GIVEBACK",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.07,
+      "giveback_ratio": 0.7,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 202,
+          "pf": 0.806936864243001,
+          "net_pnl": -10560.974171367578,
+          "mdd": 12801.28175549526,
+          "sharpe": -1.3626705918793152,
+          "stop_count": 71,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": -15143.847812144291,
+          "mdd_delta_vs_baseline": 2916.040938277507,
+          "sharpe_delta_vs_baseline": -1.7519369356544574,
+          "good_then_stop_delta_vs_baseline": 1
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 202,
+          "pf": 0.7459748008419652,
+          "net_pnl": -14475.403273417696,
+          "mdd": 15152.726823396139,
+          "sharpe": -1.8620696130102472,
+          "stop_count": 71,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": -16089.041505078047,
+          "mdd_delta_vs_baseline": 4420.9834210156805,
+          "sharpe_delta_vs_baseline": -1.999780777651193,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 201,
+          "pf": 0.7188843189022811,
+          "net_pnl": -16484.088832624475,
+          "mdd": 17143.748227545035,
+          "sharpe": -2.1060589928891638,
+          "stop_count": 71,
+          "good_then_stop": 19,
+          "net_pnl_delta_vs_baseline": -15083.585283339658,
+          "mdd_delta_vs_baseline": 5105.118487044259,
+          "sharpe_delta_vs_baseline": -1.9858759203028775,
+          "good_then_stop_delta_vs_baseline": 0
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=5|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 204,
+          "pf": 1.0551899098140511,
+          "net_pnl": 2622.61077080712,
+          "mdd": 8789.600755568052,
+          "sharpe": 0.24067456428585168,
+          "stop_count": 29,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -1960.2628699695938,
+          "mdd_delta_vs_baseline": -1095.6400616497012,
+          "sharpe_delta_vs_baseline": -0.14859177948929056,
+          "good_then_stop_delta_vs_baseline": 18
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 205,
+          "pf": 0.9763547856540042,
+          "net_pnl": -1182.8665035326442,
+          "mdd": 10031.52017711071,
+          "sharpe": -0.10894811579652632,
+          "stop_count": 30,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -2796.504735192994,
+          "mdd_delta_vs_baseline": -700.2232252697486,
+          "sharpe_delta_vs_baseline": -0.24665928043747215,
+          "good_then_stop_delta_vs_baseline": 17
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 206,
+          "pf": 0.902172513874904,
+          "net_pnl": -5118.123009615806,
+          "mdd": 12040.801397765492,
+          "sharpe": -0.47429124726842237,
+          "stop_count": 30,
+          "good_then_stop": 5,
+          "net_pnl_delta_vs_baseline": -3717.6194603309887,
+          "mdd_delta_vs_baseline": 2.1716572647164867,
+          "sharpe_delta_vs_baseline": -0.3541081746821362,
+          "good_then_stop_delta_vs_baseline": 14
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=5|mfe=0.03|g=0.5|p=0.01",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.01,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 225,
+          "pf": 0.8507368949406019,
+          "net_pnl": -6971.335995678967,
+          "mdd": 10164.217091561048,
+          "sharpe": -0.6917329582233374,
+          "stop_count": 34,
+          "good_then_stop": 7,
+          "net_pnl_delta_vs_baseline": -11554.209636455682,
+          "mdd_delta_vs_baseline": 278.9762743432948,
+          "sharpe_delta_vs_baseline": -1.0809993019984796,
+          "good_then_stop_delta_vs_baseline": 17
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 225,
+          "pf": 0.8084655428720502,
+          "net_pnl": -9345.426661373913,
+          "mdd": 10520.180418340258,
+          "sharpe": -0.9292374040143834,
+          "stop_count": 33,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -10959.064893034263,
+          "mdd_delta_vs_baseline": -211.5629840401998,
+          "sharpe_delta_vs_baseline": -1.0669485686553293,
+          "good_then_stop_delta_vs_baseline": 17
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 225,
+          "pf": 0.7049723308482041,
+          "net_pnl": -15078.002124065459,
+          "mdd": 15084.95955636649,
+          "sharpe": -1.5640462021557944,
+          "stop_count": 32,
+          "good_then_stop": 4,
+          "net_pnl_delta_vs_baseline": -13677.498574780642,
+          "mdd_delta_vs_baseline": 3046.3298158657144,
+          "sharpe_delta_vs_baseline": -1.4438631295695081,
+          "good_then_stop_delta_vs_baseline": 15
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=5|mfe=0.03|g=0.5|p=0.02",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 5,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.02,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 242,
+          "pf": 0.7770616090234708,
+          "net_pnl": -9969.778915018887,
+          "mdd": 14295.806497680685,
+          "sharpe": -1.067379006633014,
+          "stop_count": 35,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -14552.652555795601,
+          "mdd_delta_vs_baseline": 4410.5656804629325,
+          "sharpe_delta_vs_baseline": -1.4566453504081562,
+          "good_then_stop_delta_vs_baseline": 18
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 244,
+          "pf": 0.6948884728190298,
+          "net_pnl": -14582.526347570825,
+          "mdd": 16730.397640584924,
+          "sharpe": -1.565154853487156,
+          "stop_count": 36,
+          "good_then_stop": 6,
+          "net_pnl_delta_vs_baseline": -16196.164579231176,
+          "mdd_delta_vs_baseline": 5998.654238204466,
+          "sharpe_delta_vs_baseline": -1.702866018128102,
+          "good_then_stop_delta_vs_baseline": 17
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 244,
+          "pf": 0.6274570556684032,
+          "net_pnl": -18820.82497855448,
+          "mdd": 18997.30063547682,
+          "sharpe": -2.028339244899522,
+          "stop_count": 36,
+          "good_then_stop": 5,
+          "net_pnl_delta_vs_baseline": -17420.32142926966,
+          "mdd_delta_vs_baseline": 6958.670894976043,
+          "sharpe_delta_vs_baseline": -1.9081561723132356,
+          "good_then_stop_delta_vs_baseline": 14
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=10|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 186,
+          "pf": 1.1684007754803922,
+          "net_pnl": 8373.69931353969,
+          "mdd": 8919.728850663123,
+          "sharpe": 0.7237625185679555,
+          "stop_count": 55,
+          "good_then_stop": 15,
+          "net_pnl_delta_vs_baseline": 3790.825672762976,
+          "mdd_delta_vs_baseline": -965.5119665546299,
+          "sharpe_delta_vs_baseline": 0.33449617479281324,
+          "good_then_stop_delta_vs_baseline": 9
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 186,
+          "pf": 1.0893900716893146,
+          "net_pnl": 4596.762556742844,
+          "mdd": 9228.084152830294,
+          "sharpe": 0.40018263055902176,
+          "stop_count": 55,
+          "good_then_stop": 15,
+          "net_pnl_delta_vs_baseline": 2983.1243250824946,
+          "mdd_delta_vs_baseline": -1503.6592495501645,
+          "sharpe_delta_vs_baseline": 0.2624714659180759,
+          "good_then_stop_delta_vs_baseline": 8
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 188,
+          "pf": 0.9746573580337623,
+          "net_pnl": -1378.7120228869649,
+          "mdd": 12568.576296426309,
+          "sharpe": -0.12091352124972225,
+          "stop_count": 57,
+          "good_then_stop": 11,
+          "net_pnl_delta_vs_baseline": 21.791526397852294,
+          "mdd_delta_vs_baseline": 529.9465559255332,
+          "sharpe_delta_vs_baseline": -0.0007304486634360924,
+          "good_then_stop_delta_vs_baseline": 8
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=10|mfe=0.03|g=0.5|p=0.01",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.01,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 192,
+          "pf": 1.093835241250808,
+          "net_pnl": 4588.7267053862215,
+          "mdd": 9874.463693676513,
+          "sharpe": 0.4001620290838972,
+          "stop_count": 57,
+          "good_then_stop": 14,
+          "net_pnl_delta_vs_baseline": 5.853064609507783,
+          "mdd_delta_vs_baseline": -10.777123541240144,
+          "sharpe_delta_vs_baseline": 0.010895685308754954,
+          "good_then_stop_delta_vs_baseline": 10
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 193,
+          "pf": 1.0286478889770254,
+          "net_pnl": 1457.4613322024313,
+          "mdd": 11297.635816505874,
+          "sharpe": 0.12758230118623254,
+          "stop_count": 58,
+          "good_then_stop": 14,
+          "net_pnl_delta_vs_baseline": -156.17689945791835,
+          "mdd_delta_vs_baseline": 565.8924141254156,
+          "sharpe_delta_vs_baseline": -0.010128863454713283,
+          "good_then_stop_delta_vs_baseline": 9
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 193,
+          "pf": 0.9333888812266821,
+          "net_pnl": -3466.3488993811047,
+          "mdd": 14414.455102224745,
+          "sharpe": -0.31419926469815346,
+          "stop_count": 57,
+          "good_then_stop": 9,
+          "net_pnl_delta_vs_baseline": -2065.845350096288,
+          "mdd_delta_vs_baseline": 2375.8253617239698,
+          "sharpe_delta_vs_baseline": -0.1940161921118673,
+          "good_then_stop_delta_vs_baseline": 10
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=10|mfe=0.03|g=0.5|p=0.02",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 10,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.02,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 199,
+          "pf": 1.0886561719264647,
+          "net_pnl": 4155.1451802668635,
+          "mdd": 10689.886302685565,
+          "sharpe": 0.3770080088779536,
+          "stop_count": 56,
+          "good_then_stop": 12,
+          "net_pnl_delta_vs_baseline": -427.72846050985027,
+          "mdd_delta_vs_baseline": 804.6454854678123,
+          "sharpe_delta_vs_baseline": -0.012258334897188639,
+          "good_then_stop_delta_vs_baseline": 12
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 202,
+          "pf": 0.9828203845075679,
+          "net_pnl": -837.6712448832933,
+          "mdd": 12618.040056964905,
+          "sharpe": -0.07671710024791017,
+          "stop_count": 57,
+          "good_then_stop": 13,
+          "net_pnl_delta_vs_baseline": -2451.309476543643,
+          "mdd_delta_vs_baseline": 1886.2966545844465,
+          "sharpe_delta_vs_baseline": -0.214428264888856,
+          "good_then_stop_delta_vs_baseline": 10
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 203,
+          "pf": 0.9041441989028132,
+          "net_pnl": -4871.431657426884,
+          "mdd": 13971.659792500377,
+          "sharpe": -0.4485064615045436,
+          "stop_count": 58,
+          "good_then_stop": 10,
+          "net_pnl_delta_vs_baseline": -3470.928108142067,
+          "mdd_delta_vs_baseline": 1933.0300519996017,
+          "sharpe_delta_vs_baseline": -0.3283233889182574,
+          "good_then_stop_delta_vs_baseline": 9
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=15|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 184,
+          "pf": 1.0844289597717696,
+          "net_pnl": 4589.407366881395,
+          "mdd": 10266.629636626896,
+          "sharpe": 0.39145033015834485,
+          "stop_count": 68,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": 6.533726104681591,
+          "mdd_delta_vs_baseline": 381.38881940914325,
+          "sharpe_delta_vs_baseline": 0.0021839863832026074,
+          "good_then_stop_delta_vs_baseline": 1
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 184,
+          "pf": 1.031814767783873,
+          "net_pnl": 1773.8334735973308,
+          "mdd": 10685.207373878964,
+          "sharpe": 0.15206843848240267,
+          "stop_count": 68,
+          "good_then_stop": 22,
+          "net_pnl_delta_vs_baseline": 160.19524193698112,
+          "mdd_delta_vs_baseline": -46.536028501494,
+          "sharpe_delta_vs_baseline": 0.014357273841456852,
+          "good_then_stop_delta_vs_baseline": 1
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 185,
+          "pf": 0.9672328383416513,
+          "net_pnl": -1890.2318482084193,
+          "mdd": 12702.36600056876,
+          "sharpe": -0.162870234828469,
+          "stop_count": 69,
+          "good_then_stop": 18,
+          "net_pnl_delta_vs_baseline": -489.7282989236021,
+          "mdd_delta_vs_baseline": 663.7362600679844,
+          "sharpe_delta_vs_baseline": -0.04268716224218283,
+          "good_then_stop_delta_vs_baseline": 1
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=15|mfe=0.03|g=0.5|p=0.01",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.01,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 186,
+          "pf": 1.0599549393258785,
+          "net_pnl": 3218.830551822866,
+          "mdd": 9994.125130559101,
+          "sharpe": 0.27549564689544515,
+          "stop_count": 68,
+          "good_then_stop": 22,
+          "net_pnl_delta_vs_baseline": -1364.043088953848,
+          "mdd_delta_vs_baseline": 108.88431334134839,
+          "sharpe_delta_vs_baseline": -0.1137706968796971,
+          "good_then_stop_delta_vs_baseline": 2
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 186,
+          "pf": 1.0069309000375881,
+          "net_pnl": 383.0375708086738,
+          "mdd": 11226.087567072356,
+          "sharpe": 0.03292898142069448,
+          "stop_count": 68,
+          "good_then_stop": 21,
+          "net_pnl_delta_vs_baseline": -1230.600660851676,
+          "mdd_delta_vs_baseline": 494.3441646918982,
+          "sharpe_delta_vs_baseline": -0.10478218322025135,
+          "good_then_stop_delta_vs_baseline": 2
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 186,
+          "pf": 0.9636494943358297,
+          "net_pnl": -2054.050922260557,
+          "mdd": 11947.942494276696,
+          "sharpe": -0.1776141046105311,
+          "stop_count": 67,
+          "good_then_stop": 16,
+          "net_pnl_delta_vs_baseline": -653.5473729757398,
+          "mdd_delta_vs_baseline": -90.68724622407899,
+          "sharpe_delta_vs_baseline": -0.05743103202424493,
+          "good_then_stop_delta_vs_baseline": 3
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=15|mfe=0.03|g=0.5|p=0.02",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 15,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.02,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 187,
+          "pf": 1.0917145543560616,
+          "net_pnl": 4837.76519403902,
+          "mdd": 9304.671384655117,
+          "sharpe": 0.4143245381768787,
+          "stop_count": 67,
+          "good_then_stop": 21,
+          "net_pnl_delta_vs_baseline": 254.89155326230593,
+          "mdd_delta_vs_baseline": -580.5694325626355,
+          "sharpe_delta_vs_baseline": 0.025058194401736456,
+          "good_then_stop_delta_vs_baseline": 3
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 188,
+          "pf": 1.0109168873717933,
+          "net_pnl": 595.4212002662373,
+          "mdd": 10351.641844824244,
+          "sharpe": 0.05129998771915813,
+          "stop_count": 67,
+          "good_then_stop": 20,
+          "net_pnl_delta_vs_baseline": -1018.2170313941124,
+          "mdd_delta_vs_baseline": -380.1015575562142,
+          "sharpe_delta_vs_baseline": -0.0864111769217877,
+          "good_then_stop_delta_vs_baseline": 3
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 188,
+          "pf": 0.9616068190932568,
+          "net_pnl": -2156.3015801568095,
+          "mdd": 11439.743359369219,
+          "sharpe": -0.18661660897024276,
+          "stop_count": 67,
+          "good_then_stop": 16,
+          "net_pnl_delta_vs_baseline": -755.7980308719923,
+          "mdd_delta_vs_baseline": -598.8863811315568,
+          "sharpe_delta_vs_baseline": -0.0664335363839566,
+          "good_then_stop_delta_vs_baseline": 3
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=20|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 182,
+          "pf": 1.0879243104844742,
+          "net_pnl": 4807.973994370427,
+          "mdd": 9849.725575163919,
+          "sharpe": 0.40872302833818386,
+          "stop_count": 70,
+          "good_then_stop": 24,
+          "net_pnl_delta_vs_baseline": 225.1003535937134,
+          "mdd_delta_vs_baseline": -35.5152420538343,
+          "sharpe_delta_vs_baseline": 0.019456684563041615,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 182,
+          "pf": 1.0325359515170647,
+          "net_pnl": 1828.8834019672802,
+          "mdd": 10668.472013828972,
+          "sharpe": 0.15620467144968692,
+          "stop_count": 70,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": 215.2451703069305,
+          "mdd_delta_vs_baseline": -63.27138855148587,
+          "sharpe_delta_vs_baseline": 0.018493506808741095,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 182,
+          "pf": 0.9798930714688604,
+          "net_pnl": -1161.1638148890847,
+          "mdd": 11951.111509522058,
+          "sharpe": -0.09968911986650171,
+          "stop_count": 70,
+          "good_then_stop": 19,
+          "net_pnl_delta_vs_baseline": 239.33973439573242,
+          "mdd_delta_vs_baseline": -87.51823097871784,
+          "sharpe_delta_vs_baseline": 0.02049395271978445,
+          "good_then_stop_delta_vs_baseline": 0
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=20|mfe=0.03|g=0.5|p=0.01",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.01,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 182,
+          "pf": 1.089938178728091,
+          "net_pnl": 4881.171243271794,
+          "mdd": 9892.321776872672,
+          "sharpe": 0.41518333620619946,
+          "stop_count": 70,
+          "good_then_stop": 24,
+          "net_pnl_delta_vs_baseline": 298.29760249508035,
+          "mdd_delta_vs_baseline": 7.080959654918843,
+          "sharpe_delta_vs_baseline": 0.025916992431057218,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 182,
+          "pf": 1.0331542338167314,
+          "net_pnl": 1849.837747336982,
+          "mdd": 10836.643233209787,
+          "sharpe": 0.15814125289220815,
+          "stop_count": 70,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": 236.19951567663225,
+          "mdd_delta_vs_baseline": 104.8998308293285,
+          "sharpe_delta_vs_baseline": 0.02043008825126233,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 182,
+          "pf": 0.9807456071341,
+          "net_pnl": -1104.9241851043844,
+          "mdd": 12083.807939913977,
+          "sharpe": -0.09490942074421502,
+          "stop_count": 70,
+          "good_then_stop": 19,
+          "net_pnl_delta_vs_baseline": 295.5793641804328,
+          "mdd_delta_vs_baseline": 45.17819941320158,
+          "sharpe_delta_vs_baseline": 0.025273651842071143,
+          "good_then_stop_delta_vs_baseline": 0
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=20|mfe=0.03|g=0.5|p=0.02",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 20,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.02,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 182,
+          "pf": 1.088958791860645,
+          "net_pnl": 4828.017453846403,
+          "mdd": 9892.321776872672,
+          "sharpe": 0.4107211498786963,
+          "stop_count": 70,
+          "good_then_stop": 24,
+          "net_pnl_delta_vs_baseline": 245.1438130696897,
+          "mdd_delta_vs_baseline": 7.080959654918843,
+          "sharpe_delta_vs_baseline": 0.021454806103554047,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 182,
+          "pf": 1.032212484946631,
+          "net_pnl": 1796.7371649080153,
+          "mdd": 10760.208573187814,
+          "sharpe": 0.15362348850237842,
+          "stop_count": 70,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": 183.09893324766563,
+          "mdd_delta_vs_baseline": 28.465170807356117,
+          "sharpe_delta_vs_baseline": 0.015912323861432598,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 182,
+          "pf": 0.9825333186428162,
+          "net_pnl": -1000.7326751018248,
+          "mdd": 11866.511672834662,
+          "sharpe": -0.08596918105145161,
+          "stop_count": 70,
+          "good_then_stop": 19,
+          "net_pnl_delta_vs_baseline": 399.7708741829923,
+          "mdd_delta_vs_baseline": -172.11806766611335,
+          "sharpe_delta_vs_baseline": 0.03421389153483455,
+          "good_then_stop_delta_vs_baseline": 0
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=30|mfe=0.03|g=0.5|p=0.0",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.0,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 182,
+          "pf": 1.0834642819511264,
+          "net_pnl": 4582.873640776714,
+          "mdd": 9885.240817217753,
+          "sharpe": 0.38926634377514224,
+          "stop_count": 71,
+          "good_then_stop": 24,
+          "net_pnl_delta_vs_baseline": 0.0,
+          "mdd_delta_vs_baseline": 0.0,
+          "sharpe_delta_vs_baseline": 0.0,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 182,
+          "pf": 1.0285972211090686,
+          "net_pnl": 1613.6382316603497,
+          "mdd": 10731.743402380458,
+          "sharpe": 0.13771116464094582,
+          "stop_count": 71,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": 0.0,
+          "mdd_delta_vs_baseline": 0.0,
+          "sharpe_delta_vs_baseline": 0.0,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 182,
+          "pf": 0.9758345662100637,
+          "net_pnl": -1400.5035492848172,
+          "mdd": 12038.629740500775,
+          "sharpe": -0.12018307258628616,
+          "stop_count": 71,
+          "good_then_stop": 19,
+          "net_pnl_delta_vs_baseline": 0.0,
+          "mdd_delta_vs_baseline": 0.0,
+          "sharpe_delta_vs_baseline": 0.0,
+          "good_then_stop_delta_vs_baseline": 0
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=30|mfe=0.03|g=0.5|p=0.01",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.01,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 182,
+          "pf": 1.0834642819511264,
+          "net_pnl": 4582.873640776714,
+          "mdd": 9885.240817217753,
+          "sharpe": 0.38926634377514224,
+          "stop_count": 71,
+          "good_then_stop": 24,
+          "net_pnl_delta_vs_baseline": 0.0,
+          "mdd_delta_vs_baseline": 0.0,
+          "sharpe_delta_vs_baseline": 0.0,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 182,
+          "pf": 1.0285972211090686,
+          "net_pnl": 1613.6382316603497,
+          "mdd": 10731.743402380458,
+          "sharpe": 0.13771116464094582,
+          "stop_count": 71,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": 0.0,
+          "mdd_delta_vs_baseline": 0.0,
+          "sharpe_delta_vs_baseline": 0.0,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 182,
+          "pf": 0.9758345662100637,
+          "net_pnl": -1400.5035492848172,
+          "mdd": 12038.629740500775,
+          "sharpe": -0.12018307258628616,
+          "stop_count": 71,
+          "good_then_stop": 19,
+          "net_pnl_delta_vs_baseline": 0.0,
+          "mdd_delta_vs_baseline": 0.0,
+          "sharpe_delta_vs_baseline": 0.0,
+          "good_then_stop_delta_vs_baseline": 0
+        }
+      }
+    },
+    {
+      "config_key": "TIME_STOP_PROFIT_BUFFER|t=30|mfe=0.03|g=0.5|p=0.02",
+      "policy_group": "TIME_STOP_PROFIT_BUFFER",
+      "time_stop_days": 30,
+      "mfe_trigger": 0.03,
+      "giveback_ratio": 0.5,
+      "min_profit_buffer": 0.02,
+      "scenarios": {
+        "s4_kis_realistic": {
+          "trade_count": 182,
+          "pf": 1.0834642819511264,
+          "net_pnl": 4582.873640776714,
+          "mdd": 9885.240817217753,
+          "sharpe": 0.38926634377514224,
+          "stop_count": 71,
+          "good_then_stop": 24,
+          "net_pnl_delta_vs_baseline": 0.0,
+          "mdd_delta_vs_baseline": 0.0,
+          "sharpe_delta_vs_baseline": 0.0,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s5_kis_stress_20": {
+          "trade_count": 182,
+          "pf": 1.0285972211090686,
+          "net_pnl": 1613.6382316603497,
+          "mdd": 10731.743402380458,
+          "sharpe": 0.13771116464094582,
+          "stop_count": 71,
+          "good_then_stop": 23,
+          "net_pnl_delta_vs_baseline": 0.0,
+          "mdd_delta_vs_baseline": 0.0,
+          "sharpe_delta_vs_baseline": 0.0,
+          "good_then_stop_delta_vs_baseline": 0
+        },
+        "s6_kis_stress_30": {
+          "trade_count": 182,
+          "pf": 0.9758345662100637,
+          "net_pnl": -1400.5035492848172,
+          "mdd": 12038.629740500775,
+          "sharpe": -0.12018307258628616,
+          "stop_count": 71,
+          "good_then_stop": 19,
+          "net_pnl_delta_vs_baseline": 0.0,
+          "mdd_delta_vs_baseline": 0.0,
+          "sharpe_delta_vs_baseline": 0.0,
+          "good_then_stop_delta_vs_baseline": 0
+        }
+      }
+    }
+  ]
+}

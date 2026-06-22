@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,denominator_coverage_rows,source_receipt_exit_ready_rows,price_path_risk_exit_ready_rows,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1427,ruler_acquisition_replay_diagnostic_not_accepted,ruler_top3_v1,2112.7778,0.155968,-0.385207,3052,299,54,"acquire broader verified denominators, true analyst PIT estimates, and non-SEC source receipts",NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_FULL_RULER_SOURCE_TIME_ACQUISITION_ONLY

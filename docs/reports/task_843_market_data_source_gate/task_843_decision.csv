@@ -1,0 +1,7 @@
+field,value
+verdict,MARKET_DATA_SOURCE_GATE_IMPLEMENTED_BLOCKED
+strategy_acceptance,NOT_ACCEPTED
+deployment_status,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+validation_authority,DATA_HEALTH
+next_action,Attach certified market data manifest before any controlled replay

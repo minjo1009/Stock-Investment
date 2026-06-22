@@ -1,0 +1,22 @@
+﻿factor_name,source_availability_status,required_raw_fields_json,available_raw_field_count,exact_source_available_flag,missing_raw_source_flag,inferred_matching_used_flag,decision_rebuild_allowed_flag,strategy_validation_allowed_flag
+ohlcv_bar,available_exact,"[""timestamp"", ""open"", ""high"", ""low"", ""close"", ""volume""]",6,1,0,0,1,0
+trade_count,collectable_but_missing,"[""trade_count""]",1,0,1,0,0,0
+vwap,collectable_but_missing,"[""vwap""]",1,0,1,0,0,0
+entry_momentum_2bar,available_exact,"[""timestamp"", ""close""]",2,1,0,0,1,0
+entry_range_position,available_exact,"[""timestamp"", ""high"", ""low"", ""close""]",4,1,0,0,1,0
+entry_range_expansion,available_exact,"[""timestamp"", ""high"", ""low"", ""close""]",4,1,0,0,1,0
+symbol_liquidity_ratio,available_exact,"[""timestamp"", ""close"", ""volume""]",3,1,0,0,1,0
+market_breadth,available_exact,"[""timestamp"", ""close"", ""open""]",3,1,0,0,1,0
+market_liquidity_ratio,available_exact,"[""timestamp"", ""close"", ""volume""]",3,1,0,0,1,0
+theme_return_rank,available_exact,"[""timestamp"", ""close"", ""open""]",3,1,0,0,1,0
+quote_bid_ask,collectable_but_missing,[],0,0,1,0,0,0
+spread_bps,collectable_but_missing,[],0,0,1,0,0,0
+quote_staleness,collectable_but_missing,[],0,0,1,0,0,0
+displayed_depth,collectable_but_missing,[],0,0,1,0,0,0
+trading_status,collectable_but_missing,[],0,0,1,0,0,0
+luld_status,collectable_but_missing,[],0,0,1,0,0,0
+trade_corrections,collectable_but_missing,[],0,0,1,0,0,0
+trade_cancel_errors,collectable_but_missing,[],0,0,1,0,0,0
+raw_stream_receive_timestamp,collectable_but_missing,[],0,0,1,0,0,0
+full_depth_order_book,not_available_in_current_source,[],0,0,1,0,0,0
+official_order_imbalance_feed,not_available_in_current_source,[],0,0,1,0,0,0

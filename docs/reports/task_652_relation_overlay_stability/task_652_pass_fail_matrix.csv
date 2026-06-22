@@ -1,0 +1,8 @@
+﻿gate,pass_flag,observed_value,required_value
+gpt_review_attempted,1,ATTEMPTED_BUT_CHROME_TIMEOUT,GPT review should be attempted and captured when Chrome is responsive
+gpt_used_as_source,1,used_as_source=0,GPT must not be used as source truth
+candidate_grid_built,1,candidates=9,multiple baseline-preserving overlays tested
+baseline_beats_qqq,1,baseline=$7639.62; qqq=$1606.83,baseline must beat QQQ
+best_overlay_beats_task639,0,best_overlay=chart_not_fragile_or_unconfirmed $6229.59; baseline=$7639.62,overlay must beat Task639 baseline to be useful
+overlay_promotion_candidate,0,promotion_candidates=0,"must beat Task639, improve drawdown, and beat QQQ in validation/recent"
+trading_promotion,0,diagnostic only,"requires accepted OOS, source timing repair, paper shadow, and live readiness"

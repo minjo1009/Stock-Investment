@@ -1,0 +1,2 @@
+decision,decision_reason
+CLEAR_STRONG_SUBSET,"live-eligible subset entry_only|atr_regime:high_atr|contraction_regime:vol_expanding passed OOS, holdout, and concentration checks"

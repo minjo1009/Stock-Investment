@@ -1,0 +1,2 @@
+decision,decision_reason,best_primary_variant,anchored_oos_sharpe_delta,anchored_oos_mdd_delta,anchored_oos_expectancy_delta,rolling_positive_windows,survives_cost_2x,survives_cost_3x,symbol_concentration_share,sector_concentration_share
+NO_IMPROVEMENT,overlay_2p0_0p5 did not deliver robust hybrid_full anchored OOS improvement after rolling or cost checks,overlay_2p0_0p5,0.497383,-8.1074,0.118183,2,False,False,0.16668,0.571473

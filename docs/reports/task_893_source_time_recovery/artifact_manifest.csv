@@ -1,0 +1,3 @@
+relative_path,artifact_class,size_bytes,sha256
+task_893_decision.csv,decision,617,35d4636dffe5fc556e5ec473ec66daf4e837cd23e3d08924674654f51e426dac
+task_893_source_time_recovery.md,report,3210,249b957cced898098760c09b977c6a74621630f34a42db7541fec15ebd321874

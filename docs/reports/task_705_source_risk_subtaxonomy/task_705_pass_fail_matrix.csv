@@ -1,0 +1,5 @@
+gate_name,status,pass_flag,observed,required
+scope_5265,PRIMARY_PASS,1,rows=5265,5265
+event_linked_2445,PRIMARY_PASS,1,event=2445,2445
+subtypes_present,PRIMARY_PASS,1,subtypes=13,>5
+no_assignment_leakage,PRIMARY_PASS,1,assignment leakage=0,0

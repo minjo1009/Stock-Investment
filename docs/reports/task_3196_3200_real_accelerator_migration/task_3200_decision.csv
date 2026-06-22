@@ -1,0 +1,17 @@
+field,value
+task_id,Task3196-Task3200
+decision,real_strict_gate_aggregate_path_migrated_behind_core_accelerator
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+migrated_script,scripts/trader_brain_3141_external_tool_helper_contract.py
+core_api,src.infra.accelerators.strict_gate_aggregate_accelerated
+selector_changed,0
+sizing_changed,0
+replay_performed,0
+source_acquisition_performed,0
+paper_order_intents_created,0
+live_orders_created,0
+validation_command,python scripts/trader_brain_3196_3200_real_accelerator_migration_validate.py
+next_action,migrate another real pandas bottleneck only with reference hash and pandas correctness parity
+

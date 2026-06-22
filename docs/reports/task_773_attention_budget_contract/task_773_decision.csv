@@ -1,0 +1,14 @@
+field,value
+task_id,Task773
+decision,attention budget contract complete
+status,Diagnostic Only
+canonical_state,active
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+intake_states,enough_for_review|defer|source_gap|block|noise
+minimal_packet_fields,8
+expert_lens_budget_rows,15
+backtest_executed,NO
+inferred_matching_used,NO
+next_action,Task774 salience triage contract

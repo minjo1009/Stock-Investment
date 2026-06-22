@@ -1,0 +1,7 @@
+gate_name,status,pass_flag,observed,required
+source_direct_scope_9,PRIMARY_PASS,1,"rows=9; symbols=ASTS,BA,CEG,DDOG,PH,SNOW,TER",Task699 scope must be the 9 Task698 source-direct rows
+freeze_has_no_outcomes,PRIMARY_PASS,1,none,Source-direct feature freeze cannot include outcome columns
+direct_family_features_present,PRIMARY_PASS,1,feature_rows=9,Every source-direct row needs economic family and risk buckets
+eval_exact_rows,PRIMARY_PASS,1,eval_rows=9,Every frozen source-direct row must have one evaluation row
+failure_success_contrast_present,PRIMARY_PASS,1,failures_asts_snow|large_winners_ter_ddog|middle_ba_ceg_ph,"Contrast must compare failures, large winners, and middle cases"
+no_strategy_or_trade_promotion,PRIMARY_PASS,1,allocation_approved=0; paper_or_live_trade_approved=0,Task699 is diagnostic only

@@ -1,0 +1,2 @@
+task_id,candidate_set_count,selected_count,selected_avg_net_pct,selected_win_rate,selected_entry_reduce_rate,median_holding_days,same_day_exit_share,validation_count,recent_oos_count,goal_achieved_flag,inferred_lifecycle_matching_used_flag,strategy_acceptance_status
+Task499,1,327,0.9387481669647563,0.6269113149847095,0.20489296636085627,0.9791666666666666,0.8226299694189603,37,129,0,0,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY

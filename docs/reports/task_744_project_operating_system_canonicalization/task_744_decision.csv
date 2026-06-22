@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,deployment_status,real_capital_permission,backtest_permission,next_action
+Task744,PROJECT_OPERATING_SYSTEM_BASELINE_CREATED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,FAIL,Classify untracked src and tests into canonical experiment archive and local-only groups before further feature work.

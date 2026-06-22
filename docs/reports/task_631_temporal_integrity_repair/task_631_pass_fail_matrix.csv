@@ -1,0 +1,11 @@
+gate,pass_flag,observed_value,required_value
+date_only_strong_action_blocked,1,strong_date_only_after_gate=0; original_action_date_only=23,"date-only events cannot create BLOCK_HOLD, SIZE_DOWN, or DELAY_ENTRY"
+future_event_action_blocked,1,future_strong_actions_after_gate=0,tradable_after_ts must be before or equal to entry_ts
+stale_strong_action_blocked,1,stale_strong_actions_after_gate=0,strong actions require timestamp-certified fresh events
+source_time_gap_reported,1,source_time_gap_rows=23,missing/date-only time gaps must be reported rather than treated as positive or negative
+recent_oos_not_worse_gross,1,temporal_strict_exact_delay_15m recent 2.17% vs original 2.17%,temporal strict policy should not reduce recent OOS gross average
+validation_not_broken_gross,1,temporal_strict_exact_delay_15m validation 9.63% vs original 9.63%,temporal strict policy should not reduce validation gross average
+recent_oos_50bp_account_edge,0,temporal_strict_exact_delay_15m wins=0/4; max5 variant=$1313.22 original=$1313.22; max10 variant=$1044.35 original=$1044.35; max20 variant=$1043.58 original=$1043.58; max50 variant=$1057.44 original=$1057.44,temporal strict policy beats original in at least 3 of 4 recent-OOS capacities at 50bp
+validation_50bp_not_broken,0,temporal_strict_exact_delay_15m wins=0/4; max5 variant=$1225.81 original=$1225.81; max10 variant=$1151.47 original=$1151.47; max20 variant=$1225.36 original=$1225.36; max50 variant=$1128.52 original=$1128.52,temporal strict policy is at least mixed on validation account performance at 50bp
+full_panel_50bp_account_edge,0,temporal_strict_exact_delay_15m wins=0/4; max5 variant=$4158.91 original=$4158.91; max10 variant=$3229.78 original=$3229.78; max20 variant=$2924.57 original=$2924.57; max50 variant=$2422.26 original=$2423.35,temporal strict policy is at least mixed on full-panel account performance at 50bp
+trading_promotion,0,temporal repair diagnostic only,requires live received_at/published_at capture and confirmation-gated entry before promotion

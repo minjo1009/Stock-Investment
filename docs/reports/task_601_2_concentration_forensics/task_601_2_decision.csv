@@ -1,0 +1,2 @@
+﻿task_id,decision_status,strategy_acceptance_status,deployment_readiness_status,symbol_entropy,top1_share,top3_share,gini_coefficient,next_required_task
+T601-2,PASS_ROOT_CAUSE_IDENTIFIED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,1.059385,0.416667,1.0,0.483333,"T601-3 decision only after PM reviews cooldown, ranking, and portfolio selection root cause."

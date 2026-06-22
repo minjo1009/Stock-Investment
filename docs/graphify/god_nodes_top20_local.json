@@ -1,0 +1,142 @@
+[
+  {
+    "id": "test_structure_testrepositoryfoundationstructure",
+    "label": "TestRepositoryFoundationStructure",
+    "source_file": "tests\\unit\\test_structure.py",
+    "degree": 122,
+    "external_reference": false
+  },
+  {
+    "id": "src_ui_app_py",
+    "label": "app.py",
+    "source_file": "src\\ui\\app.py",
+    "degree": 41,
+    "external_reference": false
+  },
+  {
+    "id": "store_initialize_store",
+    "label": "initialize_store()",
+    "source_file": "src\\state\\store.py",
+    "degree": 36,
+    "external_reference": false
+  },
+  {
+    "id": "registry_experimentrecord_to_dict",
+    "label": ".to_dict()",
+    "source_file": "src\\experiments\\registry.py",
+    "degree": 32,
+    "external_reference": false
+  },
+  {
+    "id": "models_riskdecision",
+    "label": "RiskDecision",
+    "source_file": "src\\common\\models.py",
+    "degree": 30,
+    "external_reference": false
+  },
+  {
+    "id": "task_091a_controlled_broker_lifecycle_run_controlled_lifecycle",
+    "label": "run_controlled_lifecycle()",
+    "source_file": "src\\app\\task_091a_controlled_broker_lifecycle.py",
+    "degree": 30,
+    "external_reference": false
+  },
+  {
+    "id": "src_backtest_engine_full_py",
+    "label": "engine_full.py",
+    "source_file": "src\\backtest\\engine_full.py",
+    "degree": 30,
+    "external_reference": false
+  },
+  {
+    "id": "models_brokerorder",
+    "label": "BrokerOrder",
+    "source_file": "src\\common\\models.py",
+    "degree": 29,
+    "external_reference": false
+  },
+  {
+    "id": "src_state_store_py",
+    "label": "store.py",
+    "source_file": "src\\state\\store.py",
+    "degree": 29,
+    "external_reference": false
+  },
+  {
+    "id": "models_fillevent",
+    "label": "FillEvent",
+    "source_file": "src\\common\\models.py",
+    "degree": 28,
+    "external_reference": false
+  },
+  {
+    "id": "kis_client_kisclient",
+    "label": "KISClient",
+    "source_file": "src\\integration\\kis_client.py",
+    "degree": 27,
+    "external_reference": false
+  },
+  {
+    "id": "src_app_task_091a_controlled_broker_lifecycle_py",
+    "label": "task_091a_controlled_broker_lifecycle.py",
+    "source_file": "src\\app\\task_091a_controlled_broker_lifecycle.py",
+    "degree": 27,
+    "external_reference": false
+  },
+  {
+    "id": "engine_full_run_full_backtest_universe_with_stats",
+    "label": "run_full_backtest_universe_with_stats()",
+    "source_file": "src\\backtest\\engine_full.py",
+    "degree": 26,
+    "external_reference": false
+  },
+  {
+    "id": "src_backtest_engine_py",
+    "label": "engine.py",
+    "source_file": "src\\backtest\\engine.py",
+    "degree": 26,
+    "external_reference": false
+  },
+  {
+    "id": "run_trade_once_run",
+    "label": "run()",
+    "source_file": "src\\app\\run_trade_once.py",
+    "degree": 25,
+    "external_reference": false
+  },
+  {
+    "id": "main_dummyexecutionport",
+    "label": "DummyExecutionPort",
+    "source_file": "src\\app\\main.py",
+    "degree": 24,
+    "external_reference": false
+  },
+  {
+    "id": "engine_full_run_full_backtest_with_stats",
+    "label": "run_full_backtest_with_stats()",
+    "source_file": "src\\backtest\\engine_full.py",
+    "degree": 24,
+    "external_reference": false
+  },
+  {
+    "id": "src_common_models_py",
+    "label": "models.py",
+    "source_file": "src\\common\\models.py",
+    "degree": 24,
+    "external_reference": false
+  },
+  {
+    "id": "store_connect",
+    "label": "_connect()",
+    "source_file": "src\\state\\store.py",
+    "degree": 24,
+    "external_reference": false
+  },
+  {
+    "id": "models_orderintent",
+    "label": "OrderIntent",
+    "source_file": "src\\common\\models.py",
+    "degree": 22,
+    "external_reference": false
+  }
+]

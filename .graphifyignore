@@ -1,0 +1,33 @@
+# secrets / credentials
+.env
+*.env
+config/*.env
+**/*secret*
+**/*token*
+**/*key*
+kis_paper.env
+
+# runtime DB / cache
+*.db
+*.sqlite
+*.sqlite3
+trading.db
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# generated / large / noisy
+graphify-out/
+dist/
+build/
+node_modules/
+.venv/
+venv/
+logs/
+tmp/
+docs/tmp/
+
+# broker fixtures with possible sensitive data
+tests/fixtures/kis/real/*.raw.json
+tests/fixtures/kis/real/*unsanitized*

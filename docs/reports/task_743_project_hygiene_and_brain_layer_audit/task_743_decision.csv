@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,deployment_status,real_capital_permission,backtest_permission,next_action
+Task743,PROJECT_CLEANUP_REQUIRED_BEFORE_MORE_BRAIN_FEATURES,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,FAIL,Select canonical commit subset after cleanup policy review.

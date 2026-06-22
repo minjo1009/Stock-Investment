@@ -1,0 +1,4 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"decision_journal_trace_schema.csv","small_table","777","0ddac85061d27f59b6d55ad399d5f883224c65daf861fa69ab204b6fc56b4bbe"
+"task_779_decision.csv","small_table","317","433cc1b199c454a984efc2ccda0729c5362bdb6c30eccdb6d1460a94dd1bf1f6"
+"task_779_decision_journal_trace_contract.md","report","1337","ba18b4c3e326ffbdd46ebf8e759c28491221a5bfb1439cf9875d7f63224e0170"

@@ -1,0 +1,16 @@
+field,value
+task_id,Task595
+verdict,ACTIVE_DEVELOPMENT_PLAN_CREATED
+strategy_acceptance_status,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+canonical_promotion_target,Task584 Runtime Strategy Decision Gate
+owner_team,Regime Research
+lead,필수
+reviewer_team,Research Governance
+active_rows_baseline_before_task595,102
+active_rows_after_task595_registration,103
+active_rows_wave1_target,40
+blocked_source_rows_current,30
+blocked_source_rows_wave1_target,20
+deployment_ready_flag,0
+diagnostic_only_flag,1
+next_action,Execute team board and close runtime state capture plus scorecard blockers

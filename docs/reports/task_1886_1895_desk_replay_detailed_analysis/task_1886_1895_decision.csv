@@ -1,0 +1,2 @@
+task_id,verdict,primary_bottleneck,top3_final_equity,top3_cagr,top3_max_drawdown,top3_delta_vs_baseline_final,top3_delta_vs_source_attached_final,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1895,desk_replay_detailed_analysis_complete,winner_watch_calibration_after_broad_trim_repair,3204.0915,0.253109,-0.240886,-740.4542,106.6753,Task1896-1900 watch subtype split and calibration audit before any new replay,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_DESK_REPLAY_DETAILED_ANALYSIS_ONLY

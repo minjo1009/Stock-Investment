@@ -1,0 +1,10 @@
+gate_name,pass_flag,observed,required
+winner_archetype_study_built,1,rows=7,winner archetype rows
+same_symbol_divergence_built,1,rows=11,same symbol divergence rows
+catalyst_path_study_built,1,rows=14,catalyst path rows
+winner_preservation_audit_built,1,rows=10,preservation rows
+slot_competition_study_built,1,rows=840,slot competition rows
+max10_comparison_built,1,max10 present,active cap3 max10
+max10_beats_active_cap3_max5_return,0,"max10=3397.55, max5=10887.47",max10 final greater than max5
+max10_mdd_not_worse_than_active_cap3_max5,1,"max10=-23.14, max5=-30.52",max10 MDD not worse
+strategy_accepted,0,research only,promotion gates require new predeclared rules and OOS validation

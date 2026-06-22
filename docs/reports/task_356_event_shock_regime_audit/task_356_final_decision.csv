@@ -1,0 +1,2 @@
+decision,decision_reason,best_match_episode,best_match_similarity_score,current_baseline_net_pnl_r,best_shock_rule,best_shock_rule_net_pnl_r,best_shock_rule_improvement_r
+NEW_REGIME_BREAKDOWN,"Current failure window does not look sufficiently similar to prior shock episodes, so a deeper sleeve breakdown is more plausible.",russia_invasion_shock,0.271576,-0.629882,shock_skip_rule,0.0,0.629882

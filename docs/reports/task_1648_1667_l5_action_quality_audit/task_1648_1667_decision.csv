@@ -1,0 +1,2 @@
+task_id,verdict,best_final_policy_variant_id,best_final_equity,best_final_cagr,best_final_max_drawdown,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1667,l5_action_quality_audit_implemented_not_accepted,aq_combo_top3_v1,2485.1764,0.192908,-0.279259,fix weak reduce and rerisk action precision with stronger source-confirmed timing before another combined replay,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_L5_ACTION_QUALITY_AUDIT_ONLY

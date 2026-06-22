@@ -1,0 +1,7 @@
+gate,pass_flag,observed_value,required_value
+current_data_only_design,1,yes,no pending quote/trade/NBBO source used
+implementable_axes_defined,1,8,current entry-time data axes
+proxy_risk_context_diagnostic_only,1,diagnostic_only,no hard gate
+microstructure_excluded,1,SOURCE_PENDING_NOT_USED,source pending not used
+trading_action_allowed,0,design_only,no action mapping in Task671
+real_capital_allowed,0,forbidden,strategy remains not accepted

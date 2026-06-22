@@ -1,0 +1,55 @@
+version: 1
+default_exclude:
+  - 참고 Context/
+  - archive/
+  - experiments/
+  - docs/reports/
+  - "**/task_*.py"
+  - "**/run_task_*.ps1"
+  - "**/__pycache__/"
+  - .venv/
+  - "*.pyc"
+  - trading.db
+  - .kis_token_cache.json
+modes:
+  production_graph:
+    description: Production runtime/library/app/test/config/docs boundary graph.
+    include:
+      - src/
+      - tests/
+      - config/
+      - docs/contracts/
+      - docs/specs/
+      - docs/architecture/
+      - docs/operating_system/
+    exclude:
+      - 참고 Context/
+      - archive/
+      - experiments/
+      - docs/reports/
+      - docs/audits/task_graphify_*.json
+      - "**/task_*.py"
+      - "**/run_task_*.ps1"
+      - "**/__pycache__/"
+      - .venv/
+  research_graph:
+    description: Research graph with experiments and external references separated from production.
+    include:
+      - src/
+      - tests/
+      - docs/
+      - experiments/
+      - 참고 Context/
+    separate_groups:
+      production:
+        - src/
+        - tests/
+      reports:
+        - docs/reports/
+      experiments:
+        - experiments/
+        - src/experiments/
+        - src/backtest/analysis_*
+      external_references:
+        - 참고 Context/
+

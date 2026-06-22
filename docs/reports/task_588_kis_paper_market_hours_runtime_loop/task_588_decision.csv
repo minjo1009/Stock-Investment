@@ -1,0 +1,2 @@
+﻿task_id,task_name,decision_status,iterations,orders_submitted_total,active_broker_truth_fill_count,confirmed_broker_truth_fill_total,latest_status,exception_count,max_open_orders,partial_loop_active_flag,deployment_ready_flag,diagnostic_only_flag,intelligence_sidecar_status,intelligence_event_store_rows,intelligence_sidecar_trade_signal_used_flag
+Task588,KIS Paper Market Hours Runtime Loop,PAPER_RUNTIME_LOOP_RUNNING_OK,1,0,1,1,ORDER_SKIPPED,0,1,0,0,1,INTELLIGENCE_SIDECAR_COLLECTION_OK,11999,0

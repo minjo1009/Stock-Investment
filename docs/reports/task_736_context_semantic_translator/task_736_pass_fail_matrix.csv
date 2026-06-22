@@ -1,0 +1,7 @@
+gate_name,status,pass_flag,observed,required
+semantic_translation_created,PRIMARY_PASS,1,rows=5302,5302
+semantic_distribution_created,PRIMARY_PASS,1,rows=20,>0
+transmission_distribution_created,PRIMARY_PASS,1,rows=24,>0
+layer_edges_created,PRIMARY_PASS,1,rows=5374,>= translations
+guardrail_all_pass,PRIMARY_PASS,1,min=1,1
+backtest_permission,NOT_ACCEPTED,0,FAIL,semantic translator review only

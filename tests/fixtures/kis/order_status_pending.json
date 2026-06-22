@@ -1,0 +1,21 @@
+{
+  "_fixture_meta": {
+    "source": "synthetic-fallback",
+    "captured_at": "2026-04-24T00:00:00Z",
+    "sanitized": true,
+    "case": "order_status_pending",
+    "real_capture": false
+  },
+  "response": {
+    "rt_cd": "0",
+    "output1": [
+      {
+        "odno": "ord-1",
+        "pdno": "AAPL",
+        "ord_qty": "1",
+        "tot_ccld_qty": "0",
+        "ord_stts": "PENDING"
+      }
+    ]
+  }
+}

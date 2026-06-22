@@ -1,0 +1,2 @@
+﻿task_id,decision_status,strategy_acceptance_status,deployment_readiness_status,program_blocker,next_required_task
+T603-1,REGISTRY_PAYLOAD_IMPLEMENTED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,P2_GOVERNANCE_ENFORCEMENT,Render canonical readiness payload in frontend without re-derived acceptance state.

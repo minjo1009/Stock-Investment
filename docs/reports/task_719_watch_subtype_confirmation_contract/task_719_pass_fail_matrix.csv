@@ -1,0 +1,9 @@
+gate_name,status,pass_flag,observed,required
+scope_watch_358,PRIMARY_PASS,1,rows=358,358
+subtype_count_4,PRIMARY_PASS,1,subtypes=4,4
+rulebook_count_4,PRIMARY_PASS,1,rules=4,4
+interaction_graph_present,PRIMARY_PASS,1,edges=1790,5 edges per row
+guardrail_eval_present,PRIMARY_PASS,1,top=18; bottom=0,<=50/<=50 watch subset
+governance_all_pass,PRIMARY_PASS,1,min=1,1
+strategy_not_accepted,PRIMARY_PASS,1,NOT_ACCEPTED,NOT_ACCEPTED
+real_capital_forbidden,PRIMARY_PASS,1,FORBIDDEN,FORBIDDEN

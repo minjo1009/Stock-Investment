@@ -1,0 +1,14 @@
+relative_path,artifact_type,owner,description
+task_596_daily_feedback_complete_application.md,report,Pilsu,Task596 standard report and decision summary
+task_596_decision.csv,decision,Pilsu,Task596 status row
+team_execution_board.csv,governance,Pilsu,Team-lead execution board
+universe_coverage_audit.csv,audit,Yoonheon,Theme 10x7 universe coverage blocker
+promotion_scorecard.csv,scorecard,Dongseung,Promotion gates and blocker treatment
+frontend_visibility_audit.csv,audit,Kyuseung,Paper ops frontend catalog visibility evidence
+validation_results.csv,validation,Pilsu,Validation command results
+frontend_headless_dom.html,validation,Kyuseung,Headless Chrome rendered DOM evidence for paper ops source health display
+frontend_after_ui_fix_mobile_cdp.png,validation,Kyuseung,CDP mobile viewport screenshot after account-first paper trading UI redesign
+frontend_account_holdings_redesign_cdp.png,validation,Kyuseung,CDP mobile screenshot of holdings PnL card redesign
+frontend_filled_trade_detail_cdp.png,validation,Jongchan,CDP mobile screenshot of filled-only trade evidence chart view
+frontend_ui_redesign_cdp_layout.json,validation,Kyuseung,CDP layout and text evidence for no SKIPPED/no ops source on account and trade views
+artifact_manifest.csv,manifest,Research Governance,Task596 artifact manifest

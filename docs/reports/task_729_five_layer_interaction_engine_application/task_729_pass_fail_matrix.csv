@@ -1,0 +1,11 @@
+gate_name,status,pass_flag,observed,required
+interaction_engine_applied_to_all_candidates,PRIMARY_PASS,1,resolution=5265;input=5265,one resolution per candidate
+seven_edges_per_candidate,PRIMARY_PASS,1,edges=36855,36855
+all_relation_priorities_declared,PRIMARY_PASS,1,"['blocker', 'confidence_cap', 'escalation', 'invalidation', 'offsetting', 'prerequisite', 'reinforcing', 'sizing_modifier']",declared relation types
+final_actionability_generated,PRIMARY_PASS,1,unique=5,>=3
+dependency_audit_pass,PRIMARY_PASS,1,min=1,1
+coderabbit_plugin_available,NOT_ACCEPTED,0,not_available,available
+coderabbit_fallback_review_pass,PRIMARY_PASS,1,local fallback pass,1
+leakage_all_pass,PRIMARY_PASS,1,min=1,1
+governance_all_pass,PRIMARY_PASS,1,min=1,1
+backtest_permission,NOT_ACCEPTED,0,FAIL,PASS only after primitive fact and denominator gates

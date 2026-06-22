@@ -1,0 +1,30 @@
+name: Data Integrity Bug
+description: Report leakage, inference matching, labelability, or source-contract problems.
+title: "Data Integrity - "
+labels: ["bug", "data-integrity"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the observed integrity failure.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Include file paths, row counts, task IDs, and reproduction command.
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Blocks deployment claim
+        - Blocks research acceptance
+        - Diagnostic inconsistency
+        - Documentation only
+    validations:
+      required: true

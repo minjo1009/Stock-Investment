@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "updated_at": "2026-04-25T06:33:43.948283Z",
+  "agents": {
+    "Architecture Orchestrator": {
+      "facts": [
+        {
+          "timestamp": "2026-04-25T06:33:43.948283Z",
+          "task_id": "TASK_001",
+          "phase_id": "PHASE_00",
+          "summary": "# Summary - TASK_001\n\nPending.",
+          "artifacts": {
+            "task_spec": "docs/phases/PHASE_00/tasks/TASK_001.md",
+            "handoff": "docs/phases/PHASE_00/reports/TASK_001/handoff.md",
+            "summary": "docs/phases/PHASE_00/reports/TASK_001/summary.md",
+            "validation": "docs/phases/PHASE_00/reports/TASK_001/validation.md",
+            "context_pack": "docs/phases/PHASE_00/reports/TASK_001/context_pack.md",
+            "decision": "docs/phases/PHASE_00/decisions/TASK_001_decision.md"
+          }
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Compact continuity memory by agent.",
+    "Only validated summaries, decisions, constraints, blockers, and artifact paths belong here."
+  ]
+}

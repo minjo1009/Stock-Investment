@@ -1,0 +1,15 @@
+field,value
+verdict,tab_benchmark_context_pack_completed_read_only
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+tabs_benchmarked,5
+subagent_packets_completed,5
+benchmark_screenshots_captured,17
+image_report,data/artifacts/task_3041_3060_tab_benchmark_context/tab_benchmark_image_report.png
+app_code_changed,0
+replay_performed,0
+paper_order_intents_created,0
+live_orders_created,0
+validation_authority,REPORTING_HEALTH
+next_action,plan_next_ui_pass_from_tab_benchmark_matrix

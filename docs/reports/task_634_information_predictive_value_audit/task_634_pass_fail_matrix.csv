@@ -1,0 +1,5 @@
+gate,pass_flag,observed_value,required_value
+information_features_have_predictive_value,0,stable_predictive_features=0,at least one information feature must improve validation and recent OOS return without worse entry-reduce
+strict_filter_does_not_discard_better_trades,0,kept_avg=10.29%; missed_avg=16.78%,strict information filter should not discard a higher-return bucket
+strict_filter_reduces_entry_reduce,0,kept_entry_reduce=33.53%; missed_entry_reduce=30.79%,strict information filter should lower entry-reduce failure
+presence_based_information_scoring,0,current strict score still rewards source/event presence,replace presence scoring with relevance and predictive validation gates

@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,translation_count,semantic_state_count,semantic_polarity_count,layer_edge_count,guardrail_pass,backtest_permission,next_action
+Task736,CONTEXT_SEMANTIC_TRANSLATOR_BUILT_REVIEW_ONLY,NOT_ACCEPTED,FORBIDDEN,5302,19,5,5374,1,FAIL,"Attach semantic modifier edges into candidate bundles and audit whether constructive/adverse/mixed modifiers change confidence, risk, slot priority, or research queues without creating direct buy/sell rules."

@@ -1,0 +1,19 @@
+{
+  "_fixture_meta": {
+    "source": "KIS paper",
+    "captured_at": "2026-04-24T17:21:56.674567Z",
+    "sanitized": true,
+    "captured": true,
+    "reason": null,
+    "case": "task_091a_cancel_response"
+  },
+  "response": {
+    "success": false,
+    "broker_status": "UNKNOWN",
+    "raw_response": {
+      "rt_cd": "1",
+      "msg_cd": "40330000",
+      "msg1": "\ubaa8\uc758\ud22c\uc790 \uc815\uc815/\ucde8\uc18c\ud560 \uc218\ub7c9\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
+    }
+  }
+}

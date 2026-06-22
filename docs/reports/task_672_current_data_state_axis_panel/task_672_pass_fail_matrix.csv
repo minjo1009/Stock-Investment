@@ -1,0 +1,13 @@
+﻿gate,pass_flag,observed_value,required_value
+state_axis_panel_built,1,rows=1621,candidate-level current-data state panel exists
+all_8_axes_present,1,axes=8,8 implementable axes
+microstructure_not_used,1,SOURCE_PENDING_NOT_USED,microstructure assignment flag zero
+forbidden_input_audit_clean,1,violations=0,0 forbidden-input violations
+axis_value_performance_built,1,rows=125,axis diagnostics exist
+active_cap3_axis_exposure_built,1,rows=37,active cap3 axis exposure exists
+mdd_axis_exposure_built,1,rows=32,MDD window axis exposure exists
+capacity_context_built,1,rows=218,slot/capacity context exists
+sparse_cell_report_built,1,rows=764,sparse cells identified
+comparison_summary_built,1,rows=22,Task639 active cap3 Task668 comparison exists
+trading_action_allowed,0,diagnostic decomposition only,predeclared action mapping and OOS gates required
+real_capital_allowed,0,FORBIDDEN,accepted strategy plus live-source readiness

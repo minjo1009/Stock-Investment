@@ -1,0 +1,2 @@
+decision,strategy_acceptance_status,real_capital_status,task639_final_capital_usd,task639_max_drawdown_pct,task640_combo_final_capital_usd,task640_combo_max_drawdown_pct,top_priority_gap,next_action
+DIAGNOSE_FIRM_GRADE_GAPS_BEFORE_MORE_ALPHA_SEARCH,NOT_ACCEPTED,FORBIDDEN,7639.620310821465,-23.755747663170702,7692.603156894304,-23.627756955860917,entry_quality_confirmation_missing,"Discuss gap matrix with GPT, then test Task641A entry confirmation, Task641B ATR sizing, and Task641C signal tier sizing in that order."

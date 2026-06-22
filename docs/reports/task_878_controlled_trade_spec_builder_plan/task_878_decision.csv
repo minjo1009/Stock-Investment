@@ -1,0 +1,3 @@
+decision_area,status,decision,does_not_mean
+task_state,planned,Plan controlled trade-spec builder that blocks missing fields instead of inventing trades,trade execution permission
+

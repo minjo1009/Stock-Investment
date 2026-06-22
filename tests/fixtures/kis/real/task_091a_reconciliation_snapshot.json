@@ -1,0 +1,17 @@
+{
+  "_fixture_meta": {
+    "source": "KIS paper",
+    "captured_at": "2026-04-24T17:21:56.675538Z",
+    "sanitized": true,
+    "captured": true,
+    "reason": null,
+    "case": "task_091a_reconciliation_snapshot"
+  },
+  "response": {
+    "status": "CLEAN",
+    "severity": "INFO",
+    "block_new_orders": false,
+    "summary_text": "local and broker states are consistent",
+    "events": []
+  }
+}

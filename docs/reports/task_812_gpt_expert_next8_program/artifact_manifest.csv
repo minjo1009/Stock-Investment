@@ -1,0 +1,8 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"gpt_expert_next8_discussion_matrix.csv","small_table","4248","bdcf9dccaa8ee750d836d5ca3a80a06c2668963704d854e3de4b501c22f75c4a"
+"gpt_review_task812_next8/gpt_chrome_review_packet.md","report","2637","055b7fe5a06e0ee750ac033e980eeeda10091253ecf06a4a28557aed72b1f0f6"
+"gpt_role_implementation_requirements.csv","small_table","4474","0e03ba1590018cf45bc928233cc22157c668811133f5e9c94315063b88c569bc"
+"next8_step_registry.csv","small_table","1267","2234c82602e008f229eec6df7d62c654d06dbe9614b03107dfd8c413a0c063b4"
+"subagent_packet_plan.md","report","2417","accec8a39319053c0c099c3cceb0d93ac80871460447c0569a34dab3db118d8c"
+"task_812_decision.csv","small_table","310","91bd92ec343c3a6f218092f1ce1b2e24ba7b634d055ff1d577ff119378e8a6a9"
+"task_812_gpt_expert_next8_program.md","report","2632","43bcdada55099e91597ef9b3cd84b4ba35a03662b20ec5269cf0f39bf70227ab"

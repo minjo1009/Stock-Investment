@@ -1,0 +1,11 @@
+gate_name,status,pass_flag,observed,required
+scope_345,PRIMARY_PASS,1,rows=345,345
+next_state_count,PRIMARY_PASS,1,states=12,>=8
+edge_matrix_complete,PRIMARY_PASS,1,edges=1380,4 edges per row
+packet_queue_complete,PRIMARY_PASS,1,rows=345,345
+protocol_present,PRIMARY_PASS,1,rows=5,5
+eval_guardrail_eval_only,PRIMARY_PASS,1,0,0
+leakage_all_pass,PRIMARY_PASS,1,min=1,1
+governance_all_pass,PRIMARY_PASS,1,min=1,1
+strategy_not_accepted,PRIMARY_PASS,1,NOT_ACCEPTED,NOT_ACCEPTED
+real_capital_forbidden,PRIMARY_PASS,1,FORBIDDEN,FORBIDDEN

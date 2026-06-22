@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,pass_gate_count,data_blocked_gate_count
+Task570,DATA_BLOCKED_WAIT_FOR_MICROSTRUCTURE_CAPTURE,0,3,2

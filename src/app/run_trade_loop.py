@@ -10,7 +10,9 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Callable
 
+from state.continuation_capture import capture_due_persistence_for_open_lifecycles
 from app.run_trade_once import run as run_trade_once
+from app.task_615_realtime_intelligence_sidecar import run_task615_realtime_intelligence_sidecar, sidecar_enabled
 from state.store import initialize_store, list_open_orders, list_positions
 
 
@@ -34,6 +36,15 @@ def _interval_seconds() -> int:
         parsed = int(raw)
     except ValueError:
         parsed = 60
+    return max(1, parsed)
+
+
+def _persistence_minutes() -> int:
+    raw = os.environ.get("TRADING_CONTINUATION_PERSISTENCE_MINUTES", "15")
+    try:
+        parsed = int(raw)
+    except ValueError:
+        parsed = 15
     return max(1, parsed)
 
 
@@ -157,10 +168,30 @@ def run_loop(
 
             run_status = "OK"
             try:
+                if sidecar_enabled():
+                    try:
+                        sidecar = run_task615_realtime_intelligence_sidecar()
+                        latest = sidecar["latest_runtime_intelligence_sidecar_status.csv"].iloc[-1].to_dict()
+                        print(
+                            "[INTELLIGENCE] "
+                            f"status={latest.get('decision_status', '')} "
+                            f"rows={latest.get('event_store_rows', 0)} "
+                            f"trade_signal_used={latest.get('sidecar_trade_signal_used_flag', 0)}"
+                        )
+                    except Exception as exc:
+                        print(f"[INTELLIGENCE ERROR] {exc}")
                 executor()
             except Exception as exc:
                 run_status = f"ERROR: {exc}"
                 print(f"[RUN ERROR] {exc}")
+            else:
+                emitted = capture_due_persistence_for_open_lifecycles(
+                    db_path,
+                    event_timestamp=_now_iso(),
+                    persistence_minutes=_persistence_minutes(),
+                )
+                if emitted > 0:
+                    print(f"[CAPTURE] persistence events emitted={emitted}")
             finally:
                 print(f"[RUN END] status={run_status}")
 

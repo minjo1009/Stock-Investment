@@ -1,0 +1,6 @@
+gate_name,status,pass_flag,observed,required
+eval_scope_5265,PRIMARY_PASS,1,rows=5265,5265
+event_linked_scope_2445,PRIMARY_PASS,1,event=2445,2445
+tiered_candidates_nonzero,PRIMARY_PASS,1,trade_candidates=1951,>0
+portfolio_cohorts_present,PRIMARY_PASS,1,cohorts=7,>=7
+no_assignment_leakage,PRIMARY_PASS,1,assignment leakage=0,0

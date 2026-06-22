@@ -1,0 +1,8 @@
+gate,pass_flag,observed,expected
+engineering_high_requirements_processed,1,"trace=3443, primitives=3443, resolvers=3443",all equal
+coverage_report_created,1,all_engineering_high_requirements_processed,all processed
+quality_metrics_created,1,rows=15,>=8
+unresolved_join_blockers_created,1,rows=4729,>0
+completion_states_valid,1,source_only_resolved|unresolved_join_needed,valid states
+guardrail_all_pass,1,min=1,1
+backtest_permission,0,FAIL,source semantic closure only

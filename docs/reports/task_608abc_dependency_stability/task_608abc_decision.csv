@@ -1,0 +1,5 @@
+task_id,decision,pass_flag,worst_degradation_ratio,strategy_acceptance_status,next_action,neighborhood_positive_rate,baseline_avg_net_pct
+Task608A,PASS_THEME_DEPENDENCY_ROBUST,1,0.16597015784204416,NOT_ACCEPTED,"If fail, do not refine until theme dependency is explained.",,
+Task608B,PASS_SYMBOL_DEPENDENCY_ROBUST,1,0.3933345663861306,NOT_ACCEPTED,"If fail, prove the edge is not carried by the top symbols before paper-shadow promotion.",,
+Task608C,PASS_PARAMETER_NEIGHBORHOOD_STABLE,1,,NOT_ACCEPTED,"If fail, prefer ensemble or reject the single best cell as a parameter spike.",1.0,
+Task608ABC,PASS_DEPENDENCY_STABILITY_DIAGNOSTIC,1,,NOT_ACCEPTED,"Proceed to Task608D/E/F: regime failure map, entry-reduce attribution, and ensemble validation.",,9.32476175227673

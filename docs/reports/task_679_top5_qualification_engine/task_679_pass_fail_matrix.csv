@@ -1,0 +1,10 @@
+gate_name,pass_flag,observed,required
+top5_columns_built,1,columns present,required columns
+no_return_label_future_assignment,1,violations=0,0 violations
+candidate_grid_built,1,rows=12,candidate grid
+winner_preservation_guardrail_built,1,rows=4,guardrail rows
+slot_audit_built,1,rows=28,slot audit rows
+best_beats_active_cap3_return,0,"best=10887.47, active=10887.47",best final > active cap3
+best_mdd_not_worse_than_active_cap3,1,"best=-30.52, active=-30.52",best MDD not worse
+best_preserves_big_winners,1,removed_big=0,0 removed big winners
+strategy_accepted,0,research only,requires robust OOS promotion

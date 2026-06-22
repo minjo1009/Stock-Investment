@@ -1,0 +1,2 @@
+decision,decision_reason,top_regime_id,top_continuation_quality_score,positive_drift_exists,offensive_convex_exists,structural_continuation_exists
+REGIME_DEPENDENT_CONTINUATION_ALPHA,"Top-ranked regimes have usable continuation edge, but persistence remains regime-specific rather than broad.",market_breadth_state=broad|broad_participation_state=narrow_participation,0.742647,True,True,False

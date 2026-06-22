@@ -1,0 +1,5 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"memory_eviction_fixture.csv","small_table","646","935810c2e47309eb8a64e5d6abf45e939f0071f29721ed1d27fe79aa79ac3cfd"
+"memory_eviction_policy.csv","small_table","608","460ec7fdfb6574cb7a170019974008f7899767c4179c5e5d29da44e983e5cf6c"
+"task_825_attention_memory_eviction_rules.md","report","1514","dd6f96b128ed38e4887d8357af77b3dc27f4460adc91b69f42c055a3660ca0ac"
+"task_825_decision.csv","small_table","294","dacad7750637a19e59c684ba2b7e56bae822c64ebb22af4dfe83b47042c4393f"

@@ -1,0 +1,7 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"adapter_program_steps.csv","small_table","1512","df9f6ffa002bc77653af4576992d831785e099c568708c8b09ccc88589826c04"
+"gpt_adapter_review_requirements.csv","small_table","3276","bd1c44a8ddb7229fe74dde388c19c235db786e232f41e5b485f82fd1dc3e85b9"
+"gpt_review_task828_adapter/gpt_chrome_review_packet.md","report","2537","571fd45304915d623c55975daabdbadf97a3c0ca210a983424771e49c8240b5c"
+"subagent_packet_plan.md","report","2864","420528186b9a88ec586fe89b9edc8afb104fc98bc1de82bcda89434800894153"
+"task_828_controlled_adapter_program.md","report","1696","f0c3598e4c405f9e9dcfb80d8f4e42a381e98887beb1be7cd927694ef8d1e0b1"
+"task_828_decision.csv","small_table","320","4d7a20e1707ffd78ecd93f91c335a03f020c87e6c39d5caa8b21802d4d3822c3"

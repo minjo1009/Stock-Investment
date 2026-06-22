@@ -1,0 +1,5 @@
+decision_area,status,details,does_not_mean
+source_time_recovery,implemented,139 Task372 SOURCE_CAPTURED rows normalized into recovered source-time panel,strategy acceptance
+derived_event_isolation,implemented,359 replay/session/harness/period-outside rows rejected from source evidence,negative evidence
+source_gap_preservation,implemented,All recovered rows retain raw_external_document_missing,raw external document exists
+first_real_historical_brain_replay,no_go_until_external_source_or_owner_approved_internal_event_scope,Recovered internal-event panel is a seed not a full source corpus,real capital permission

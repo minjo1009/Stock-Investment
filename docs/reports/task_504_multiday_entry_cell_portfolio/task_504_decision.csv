@@ -1,0 +1,2 @@
+task_id,candidate_cell_count,selected_cell_count,selected_count,selected_avg_net_pct,selected_win_rate,selected_entry_reduce_rate,median_holding_days,same_day_exit_share,goal_achieved_flag,inferred_lifecycle_matching_used_flag,label_used_in_assignment_flag,strategy_acceptance_status
+Task504,52,5,314,16.642306939007597,0.767515923566879,0.1942675159235669,85.54166666666667,0.0,1,0,0,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY

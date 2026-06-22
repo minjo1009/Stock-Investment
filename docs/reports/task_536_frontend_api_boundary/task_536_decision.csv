@@ -1,0 +1,2 @@
+task_id,hybrid_frontend_boundary_ready_flag,streamlit_v1_client_flag,react_fastapi_v2_compatible_flag,strategy_acceptance_status
+Task536,1,1,1,FRONTEND_API_BOUNDARY_READY

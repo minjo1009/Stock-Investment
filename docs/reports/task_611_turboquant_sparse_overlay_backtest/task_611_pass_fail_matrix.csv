@@ -1,0 +1,5 @@
+gate,pass_flag,observed_value,required_value
+exact_rule_review_candidate,1,triggers=6; lift=44.01pp; clean_false_ratio=0.17,triggers>=5 for review candidate; lift>=25pp; clean_false_ratio<=0.25
+turbo_score_trading_overlay,0,best=turbo_score_ge_0.25; triggers=50; lift=4.67pp; clean_false_ratio=0.56; sizedown_delta=-2.29pp,triggers>=12; lift>=25pp; clean_false_ratio<=0.25; sizedown_delta>=1.0pp
+fold_stability,0,eligible_folds=5; positive_folds=1; positive_share=0.20,eligible_folds>=10 and positive_share>=0.60
+plugin_operability,0,Quartr not called due provider-guide resource; Alpaca multi-symbol snapshot timeout; fallback modeled only,certified source sequence and timeout fallback coverage 100%

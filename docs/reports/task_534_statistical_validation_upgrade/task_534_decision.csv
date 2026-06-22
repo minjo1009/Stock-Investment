@@ -1,0 +1,2 @@
+task_id,statistical_validation_upgrade_ready_flag,bootstrap_proxy_generated_flag,multiple_testing_audit_generated_flag,strategy_acceptance_status
+Task534,1,1,1,STATISTICAL_VALIDATION_DIAGNOSTIC_ONLY

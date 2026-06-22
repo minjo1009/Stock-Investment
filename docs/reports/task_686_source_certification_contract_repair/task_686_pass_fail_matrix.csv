@@ -1,0 +1,7 @@
+gate_name,status,pass_flag,observed,required
+source_gap_collapse_fixed,PRIMARY_PASS,1,source_gap=0,0 source_gap rows
+partial_assignment_ready_opened,PRIMARY_PASS,1,ready=1621/1621,all Task672 core rows ready
+macro_not_promoted,PRIMARY_PASS,1,"macro_cert=0, macro_used=0",macro remains diagnostic
+no_macro_provisional_bypass,PRIMARY_PASS,1,macro_provisional_used_as_certified=0,0 bypass
+allocation_provenance_preserved,PRIMARY_PASS,1,missing=[],all provenance columns present
+guarded_still_not_strategy_promotion,PRIMARY_PASS,1,challenger_accepted=0,document remaining slot displacement blocker

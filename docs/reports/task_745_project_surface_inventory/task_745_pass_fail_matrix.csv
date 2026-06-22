@@ -1,0 +1,8 @@
+gate,pass_flag,observed,expected
+inventory_script_created,1,scripts/project_surface_inventory.py,exists
+inventory_csv_created,1,2707 rows,>0
+summary_created,1,task745_project_surface_inventory_summary.md,exists
+workstream_doc_created,1,docs/architecture/workstream_surface_inventory.md,exists
+deletion_performed,1,none,no deletion
+strategy_state_changed,1,not changed,not changed
+backtest_permission,0,FAIL,governance inventory only

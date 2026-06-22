@@ -1,0 +1,11 @@
+artifact_type,path,row_count,file_size_bytes,source,validation_command,notes
+skill,skills/gpt-chrome-review-subagent/SKILL.md,not-applicable,3327,Task606,python C:/Users/minjo/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/gpt-chrome-review-subagent,Reusable project skill
+skill_metadata,skills/gpt-chrome-review-subagent/agents/openai.yaml,not-applicable,283,Task606,python C:/Users/minjo/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/gpt-chrome-review-subagent,Skill UI metadata
+script,skills/gpt-chrome-review-subagent/scripts/new_review_packet.py,not-applicable,4151,Task606,python skills/gpt-chrome-review-subagent/scripts/new_review_packet.py --task-id task_606 --lane strategy --objective "dry run" --dry-run,Packet generator
+reference,skills/gpt-chrome-review-subagent/references/gpt_chrome_review_contract.md,not-applicable,2399,Task606,python scripts/task_registry_validate.py,Skill reference
+reference,skills/gpt-chrome-review-subagent/references/team_routes.md,not-applicable,2014,Task606,python scripts/task_registry_validate.py,Lane routing reference
+contract,docs/contracts/gpt_chrome_review_subagent_contract.md,not-applicable,2959,Task606,python scripts/operating_closeout_validate.py,Project operating contract
+report,docs/reports/task_606_gpt_chrome_review_subagent_implementation/task_606_gpt_chrome_review_subagent_implementation.md,not-applicable,3624,Task606,python scripts/task_registry_validate.py,Task report
+decision_csv,docs/reports/task_606_gpt_chrome_review_subagent_implementation/task_606_decision.csv,1,491,Task606,python scripts/task_registry_validate.py,Task decision
+review_packet,docs/reports/task_606_gpt_chrome_review_subagent_implementation/gpt_chrome_review_packet.md,not-applicable,2065,Task606,python skills/gpt-chrome-review-subagent/scripts/new_review_packet.py --task-id task_606 --lane strategy --objective "dry run" --dry-run,Seed Pilsu-led review packet
+manifest,docs/reports/task_606_gpt_chrome_review_subagent_implementation/artifact_manifest.csv,10,2139,Task606,python scripts/task_registry_validate.py,Artifact manifest recorded at closeout

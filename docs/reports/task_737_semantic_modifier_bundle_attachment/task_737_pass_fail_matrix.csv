@@ -1,0 +1,8 @@
+gate_name,status,pass_flag,observed,required
+bundle_attachment_created,PRIMARY_PASS,1,rows=345,345
+attachment_edges_created,PRIMARY_PASS,1,rows=671,>= bundles
+queue_summary_created,PRIMARY_PASS,1,rows=7,>0
+conflict_summary_created,PRIMARY_PASS,1,rows=3,>0
+coverage_report_created,PRIMARY_PASS,1,rows=2,>=1
+guardrail_all_pass,PRIMARY_PASS,1,min=1,1
+backtest_permission,NOT_ACCEPTED,0,FAIL,semantic modifier bundle attachment review only

@@ -1,0 +1,4 @@
+decision_area,status,details,does_not_mean
+as_is_diagnosis,implemented,Market data ready for diagnostic replay but historical source-time panel not ready,strategy acceptance
+to_be_definition,implemented,Need Task883 compliant source-time rows before brain-state backtest,deployment readiness
+first_real_historical_brain_replay,no_go,Blocked by historical_source_time_panel_not_ready,real capital permission

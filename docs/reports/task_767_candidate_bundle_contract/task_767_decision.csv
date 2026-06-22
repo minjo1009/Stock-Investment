@@ -1,0 +1,2 @@
+task_id,decision,brain_layer,owner_team,reviewer_team,strategy_acceptance,deployment_readiness,real_capital,backtest_permission,bundle_is_trade_candidate,bundle_is_slot_priority,inferred_matching_used,validation_authority,next_action
+Task767,RESEARCH_CONTRACT_COMPLETE,candidate_bundle,Research Governance,Regime Research + Backtest & Simulation Infra,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,FAIL,0,0,0,RESEARCH_ONLY_DIAGNOSTIC_CONTRACT_VALIDATION,Task768 may define same-timestamp slot inputs separately

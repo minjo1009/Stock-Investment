@@ -1,0 +1,8 @@
+artifact_path,artifact_type,description
+docs/reports/task_3391_3400_frontend_review_bridge/task_3391_3400_frontend_review_bridge.md,report,Task3391-Task3400 frontend review bridge report
+docs/reports/task_3391_3400_frontend_review_bridge/task_3400_decision.csv,decision,Task3391-Task3400 decision row
+data/artifacts/task_3391_3400_frontend_review_bridge/frontend_review_summary.csv,summary,Frontend review bridge summary
+data/artifacts/task_3391_3400_frontend_review_bridge/frontend_review_checks.csv,validation,Frontend review bridge checks
+data/artifacts/task_3391_3400_frontend_review_bridge/frontend_read_model_sample.csv,sample,Small L7 FrontendReadModel sample
+data/artifacts/task_3391_3400_frontend_review_bridge/decision.csv,decision,Generated validator decision row
+data/artifacts/task_3391_3400_frontend_review_bridge/artifact_manifest.csv,manifest,Generated artifact manifest

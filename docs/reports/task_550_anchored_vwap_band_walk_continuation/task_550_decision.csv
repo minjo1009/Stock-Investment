@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,continuation_structure_count,label_used_in_assignment_flag,missing_event_source_flag
+Task550,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,0,36,0,1

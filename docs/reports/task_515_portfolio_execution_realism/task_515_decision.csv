@@ -1,0 +1,2 @@
+task_id,best_execution_scenario,best_capital_pnl_pct,broker_truth_fill_available_flag,execution_realism_complete_flag,strategy_acceptance_status
+Task515,pos10_reported,722.9889484456075,0,0,EXECUTION_REALISM_DIAGNOSTIC_BLOCKED_BY_LIVE_SOURCES

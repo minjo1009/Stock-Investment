@@ -1,0 +1,2 @@
+﻿task_id,decision_status,strategy_acceptance_status,deployment_readiness_status,generated_sell_fills,broker_truth_sell_fills,next_required_task
+T600-2,PASS_DIAGNOSTIC_EXIT_GENERATOR,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,23,0,Convert diagnostic exit generator into controlled paper broker-truth SELL lifecycle evidence.

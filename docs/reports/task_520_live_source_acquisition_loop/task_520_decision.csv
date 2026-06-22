@@ -1,0 +1,2 @@
+task_id,live_source_loop_ready_flag,full_depth_provider_ready_flag,next_source_to_build,strategy_acceptance_status
+Task520,1,0,order_fill_update_archive,LIVE_SOURCE_COLLECTION_PARTIAL_FULL_DEPTH_BLOCKED

@@ -166,5 +166,83 @@
 - Main artifacts:
 - `src/backtest/analysis_sector.py`
 
+### Task 050-2 - Cost / Slippage Sensitivity
+- Status: DONE
+- Summary:
+- Added cost/slippage scenario rerun CLI and collapse-point reporting.
+- Main artifacts:
+- `src/backtest/analysis_cost_sensitivity.py`
+
+### Task 050-2A - KIS Realistic Cost Stress Test
+- Status: DONE
+- Summary:
+- Added KIS-fee-based realistic stress scenarios and survival-check output.
+- Main artifacts:
+- `src/backtest/analysis_cost_realistic.py`
+
+### Task 055 - Pilot Entry KPI Gate Definition
+- Status: DONE
+- Summary:
+- Fixed pilot entry KPI gates and stop conditions into a single operating document.
+- Main artifacts:
+- `docs/pilot_kpi_gate.md`
+
+### Task 056 - Trade Review Data Model & Binding
+- Status: DONE
+- Summary:
+- Added a review-ready trade record model that binds trade result + OHLC context.
+- Main artifacts:
+- `src/ui/trade_review_model.py`
+
+### Task 057 - Expert Trade Review UI v2
+- Status: DONE
+- Summary:
+- Upgraded Trade Detail into a review-model-first UI with filtering and richer metadata.
+- Main artifacts:
+- `src/ui/app.py`
+
+### Task 057-A - UI Data Binding Fix & Trade Reason Overlay
+- Status: DONE
+- Summary:
+- Restored operations-tab diagnostics and added trade-reason/debug visibility.
+- Main artifacts:
+- `src/ui/app.py`
+
+### Task 058-A - Candlestick & Advanced Trade Overlay
+- Status: DONE
+- Summary:
+- Replaced fallback-first trade view with candlestick-first annotated charting.
+- Main artifacts:
+- `src/ui/app.py`
+
+### Task 058-A1 / 058-A2 - Annotation Fix & Indicator Overlay
+- Status: DONE
+- Summary:
+- Improved trade marker visibility/annotations and added overlay-based indicator reasoning.
+- Main artifacts:
+- `src/ui/app.py`
+
+### Task 058-A3 - Plotly Recovery & Alignment Diagnostics
+- Status: DONE
+- Summary:
+- Diagnosed/fixed Plotly availability path and added signal-vs-review alignment diagnostics.
+- Main artifacts:
+- `src/ui/app.py`
+
+### Task 059 - Indicator Pipeline
+- Status: DONE
+- Summary:
+- Added reusable EMA/MACD/RSI computation layer and connected it to UI diagnostics.
+- Main artifacts:
+- `src/backtest/indicators.py`
+- `src/ui/app.py`
+
+### Task 060 - Portfolio Timeline UI
+- Status: DONE
+- Summary:
+- Added portfolio-level overview with equity curve, drawdown, timeline, and summary metrics.
+- Main artifacts:
+- `src/ui/app.py`
+
 ## Next Candidate
-- Task 050-2 - Cost/Slippage Sensitivity Stress Test
+- Task 058-B - Compare Trades

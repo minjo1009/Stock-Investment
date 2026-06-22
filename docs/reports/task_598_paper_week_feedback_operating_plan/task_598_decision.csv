@@ -1,0 +1,2 @@
+task_id,decision_status,strategy_acceptance,data_readiness,paper_readiness,deployment_readiness,verdict,next_action
+Task598,PRIMARY_PASS,NOT_ACCEPTED,raw-ready,READY_FOR_CONTROLLED_PAPER_RUN,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,"The existing paper-trading system is operational but the observed week is not a complete strategy validation because it is buy-only; concentrated; noisy at candidate level; and lacks deterministic replay acceptance.","Run the durable team development plan; prioritize exit lifecycle; candidate funnel repair; replay acceptance; week-feedback frontend."

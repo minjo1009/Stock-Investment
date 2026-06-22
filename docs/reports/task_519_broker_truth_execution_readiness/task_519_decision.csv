@@ -1,0 +1,2 @@
+task_id,broker_truth_execution_ready_flag,simulated_execution_available_flag,broker_truth_missing_component_count,strategy_acceptance_status
+Task519,0,1,2,BROKER_TRUTH_EXECUTION_BLOCKED

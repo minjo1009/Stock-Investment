@@ -1,0 +1,11 @@
+gate_name,status,pass_flag,observed,required
+all_345_subtyped,PRIMARY_PASS,1,rows=345,345 with subtype
+queue1_decomposed_or_empty,PRIMARY_PASS,1,rows=0; subtypes=0,empty or >=1 subtype
+queue2_decomposed,PRIMARY_PASS,1,subtypes=2,>=1
+queue3_decomposed,PRIMARY_PASS,1,rows=320; subtypes=5,>0 and >=2
+queue_summary_present,PRIMARY_PASS,1,rows=2,>=2; queue1 may be empty after parser repair
+subtype_summary_present,PRIMARY_PASS,1,rows=7,>0
+leakage_all_pass,PRIMARY_PASS,1,min=1,1
+governance_all_pass,PRIMARY_PASS,1,min=1,1
+strategy_not_accepted,PRIMARY_PASS,1,NOT_ACCEPTED,NOT_ACCEPTED
+real_capital_forbidden,PRIMARY_PASS,1,FORBIDDEN,FORBIDDEN

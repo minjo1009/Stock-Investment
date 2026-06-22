@@ -1,0 +1,13 @@
+{
+  "_fixture_meta": {
+    "source": "KIS paper",
+    "captured_at": "2026-04-24T16:30:03.166121Z",
+    "sanitized": true,
+    "case": "order_submit_response",
+    "note": "submit response may be unavailable unless a new order is submitted in this session."
+  },
+  "response": {
+    "order_id": null,
+    "symbol": null
+  }
+}

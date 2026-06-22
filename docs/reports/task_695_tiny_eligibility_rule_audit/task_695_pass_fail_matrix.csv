@@ -1,0 +1,6 @@
+gate_name,status,pass_flag,observed,required
+eligibility_row_count,PRIMARY_PASS,1,rows=11,one eligibility row per Task694 candidate packet
+pass_conditional_excluded_counts,PRIMARY_PASS,1,eligible=3; conditional=8; excluded=0,"pass 3 eligible, conditional 8 needs extra confirmation, reject 0 excluded"
+no_allocation_or_trade_approval,PRIMARY_PASS,1,allocation_approved_sum=0; trade_approved_sum=0,eligibility draft cannot approve allocation or trading
+no_outcome_columns_in_task695_outputs,PRIMARY_PASS,1,none,PnL/outcome columns excluded
+no_strategy_promotion,PRIMARY_PASS,1,no PnL simulation or allocation rule promotion was run,eligibility draft audit only

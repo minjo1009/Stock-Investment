@@ -1,0 +1,11 @@
+gate,pass_flag,observed_value,required_value
+runtime_temporal_contract_columns,1,received=1; published=1; tradable=1,event store must carry received_at published_at tradable_after_ts
+temporal_strict_candidate_count,1,temporal_strategy_entries=377,>=50 full-period temporal strict strategy entries
+date_only_events_not_used_as_support,1,date_only_support_used=0,date-only events must be reported as gaps and never support entry
+future_event_support_leakage,1,future_event_support_leaks=0,no event after entry may support the entry score
+full_period_avg_beats_baseline,1,strict=11.14% baseline=8.62% original_task617=13.92%,temporal strict avg return must beat all-confirmed baseline by >=2pp
+split_stability,0,positive_splits=1/3,>=2 positive splits across >=3 splits
+recent_oos_50bp_account_vs_original,0,strict_wins=0/4; max5 strict=$1000.47 original=$1313.22; max10 strict=$910.69 original=$1044.35; max20 strict=$970.73 original=$1043.58; max50 strict=$985.94 original=$1057.44,strict strategy beats original Task617 in >=3 of 4 recent-OOS capacities at 50bp
+validation_50bp_account_vs_original,1,strict_wins=2/4; max5 strict=$1324.89 original=$1225.81; max10 strict=$1395.94 original=$1151.47; max20 strict=$1152.57 original=$1225.36; max50 strict=$1125.43 original=$1128.52,strict strategy is at least mixed versus original on validation at 50bp
+full_panel_50bp_account_vs_original,0,strict_wins=0/4; max5 strict=$2642.31 original=$4158.91; max10 strict=$2283.57 original=$3229.78; max20 strict=$2209.69 original=$2924.57; max50 strict=$1502.62 original=$2423.35,strict strategy is at least mixed versus original on full panel at 50bp
+trading_promotion,0,full-period temporal strict backtest only,requires live source readiness and confirmation-gated entry before promotion

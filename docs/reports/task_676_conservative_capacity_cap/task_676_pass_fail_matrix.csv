@@ -1,0 +1,6 @@
+﻿gate,pass_flag,observed_value,required_value
+capacity_backtest_built,1,rows=10,capacity promotion report
+capacity_reason_audit_built,1,rows=93,capacity reason audit
+forbidden_inputs_clean,1,violations=0,0 violations
+promotion_candidate_found,0,promotion_candidates=0,must beat Task639 final MDD validation recent
+strategy_accepted,0,not accepted,separate acceptance gate

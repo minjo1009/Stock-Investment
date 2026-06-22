@@ -1,0 +1,6 @@
+gate,pass_flag,observed_value,required_value
+source_retyping_certification,0,recent aerospace CEO-IR and no-CEO-IR buckets both remain negative,a source subtype must rescue recent aerospace before source-certified entry can be restored
+full_panel_50bp_account_edge,1,max5 proactive=$4870.51 original=$4158.91; max10 proactive=$4991.39 original=$3229.78; max20 proactive=$3689.79 original=$2924.57; max50 proactive=$2620.92 original=$2423.35,proactive risk-off beats original TurboQuant at every max position under 50bp
+recent_oos_50bp_account_edge,1,max5 proactive=$1234.88 original=$1313.22; max10 proactive=$1251.43 original=$1044.35; max20 proactive=$1333.58 original=$1043.58; max50 proactive=$1164.40 original=$1057.44,proactive risk-off beats original in at least 3 of 4 recent-OOS capacities under 50bp
+negative_control_rejected,1,recent_oos rejected_global_ir_filter final capital below $1000 in 2/4 capacities at 50bp,negative control should fail account viability in at least two recent-OOS capacities
+trading_promotion,0,source retyping not certified; mixed recent capacity edge; real capital forbidden,source certification plus cost/account and live-source gates must pass

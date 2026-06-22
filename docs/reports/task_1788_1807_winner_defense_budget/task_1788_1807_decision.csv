@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1807,winner_defense_budget_implemented_diagnostic_only,winner_defense_budget_top3_v1,3920.9554,0.303105,-0.314619,audit winner defense misses and add true sector-relative quality beta before any acceptance claim,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_WINNER_DEFENSE_BUDGET_ONLY

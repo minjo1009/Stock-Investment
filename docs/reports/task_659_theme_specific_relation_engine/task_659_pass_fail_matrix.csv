@@ -1,0 +1,9 @@
+﻿gate,pass_flag,observed_value,required_value
+theme_exposure_matrix_built,1,themes=10,all active themes mapped
+driver_conflicts_split,1,rates/oil/dollar/credit/liquidity,driver conflicts not collapsed into one macro bucket
+relation_state_panel_built,1,diagnostic_rows=60,relation diagnostics present
+not_do_matrix_pass,1,violations=0,no forbidden macro authority
+best_candidate_beats_task639_return,1,best=$8308.82; baseline=$7639.62,beat Task639 return
+best_candidate_improves_drawdown,1,best_dd=-21.97; baseline_dd=-23.76,improve drawdown
+promotion_candidate_found,0,promotion_candidates=0,candidate passes return drawdown OOS and permission gates
+trading_promotion,0,research backtest only,requires accepted strategy gates and live readiness

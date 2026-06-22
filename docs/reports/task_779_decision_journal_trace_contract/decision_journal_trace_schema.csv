@@ -1,0 +1,13 @@
+field,required,description,forbidden_use
+journal_trace_id,yes,Unique trace id,not order id
+attention_packet_id,yes,Task773 packet id,not rank key
+asof_ts,yes,As-of boundary,not fallback match
+source_event_id,yes,Explicit source event id,not GPT substitute
+salience_class,yes,Task774 class,not score
+working_memory_slot,yes,Task775 retained slot,not portfolio slot
+hypothesis_state,yes,Task776 state,not expected return
+contradiction_state,yes,Task777 state,not net score
+disconfirming_check,yes,Task778 strongest contrary check,not negative label
+uncertainty_cap,yes,Reason confidence is capped,not numeric confidence
+owner_next_check,yes,Single bounded next check,not open-ended research
+review_state,yes,enough_for_review defer source_gap block or noise,not trade permission

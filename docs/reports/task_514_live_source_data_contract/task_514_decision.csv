@@ -1,0 +1,2 @@
+task_id,required_source_count,available_source_count,missing_source_count,missing_source_approximation_used_flag,live_contract_complete_flag,strategy_acceptance_status
+Task514,6,2,4,0,0,LIVE_CONTRACT_BLOCKED_BY_MISSING_SOURCES

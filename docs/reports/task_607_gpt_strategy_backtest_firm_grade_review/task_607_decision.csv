@@ -1,0 +1,3 @@
+decision_id,decision,status,owner_team,reviewer_team,key_artifact,validation_command,notes
+Task607-D1,"Convert GPT/Chrome firm-grade review into repo-native backtest upgrade backlog",DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,Backtest & Simulation Infra,Research Governance,docs/reports/task_607_gpt_strategy_backtest_firm_grade_review/firm_grade_upgrade_backlog.csv,python scripts/task_registry_validate.py,"No strategy acceptance change; backlog prioritizes broker truth exact replay review packet source health and robustness"
+

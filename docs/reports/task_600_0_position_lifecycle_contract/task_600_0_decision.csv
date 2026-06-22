@@ -1,0 +1,2 @@
+task_id,decision_status,scope,owner,team,program_blocker,strategy_acceptance,next_action
+T600-0,CONTRACT_DEFINED,position_lifecycle_contract,주은,Execution & Risk,P0_EXIT_LIFECYCLE,NOT_ACCEPTED,Implement T600-1 hard_stop_exit using exact broker-truth order/fill IDs.

@@ -1,0 +1,2 @@
+﻿task_id,decision,strategy_acceptance_status,deployment_status,real_capital_status,next_action
+T600-6,FAIL_BROKER_TRUTH_SELL_SOURCE_MISSING,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,"Capture actual broker/order-status SELL fills from KIS status/fill polling, then rerun T600-6 and T600-4 exact reconciliation."

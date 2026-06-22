@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,candidate_count,queue_1_count,queue_2_count,queue_3_count,trading_promotion_pass_flag,next_action
+Task724,QUEUE_DEEP_DIVE_REVIEW_BUILT_DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,NOT_ACCEPTED,FORBIDDEN,345,0,25,320,0,Queue1 is empty after parser repair; repair queue2 parser-miss versus true-empty cases and queue3 taxonomy exceptions before any backtest.

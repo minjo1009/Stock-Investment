@@ -1,0 +1,15 @@
+gate_name,status,pass_flag,observed,required
+scope_345,PRIMARY_PASS,1,rows=345,345
+event_detail_present,PRIMARY_PASS,1,rows=5302,>345
+source_join_coverage,PRIMARY_PASS,1,linked=345/345,100%
+event_id_link_coverage,PRIMARY_PASS,1,best_event_id=345/345,100%
+review_readiness_populated,PRIMARY_PASS,1,complete,complete
+raw_text_path_status_populated,PRIMARY_PASS,1,complete,complete
+evidence_span_status_populated,PRIMARY_PASS,1,complete,complete
+readiness_audit_present,PRIMARY_PASS,1,rows=2,>0
+sample_packets_present,PRIMARY_PASS,1,rows=20,>= state count
+eval_guardrail_eval_only,PRIMARY_PASS,1,0,0
+leakage_all_pass,PRIMARY_PASS,1,min=1,1
+governance_all_pass,PRIMARY_PASS,1,min=1,1
+strategy_not_accepted,PRIMARY_PASS,1,NOT_ACCEPTED,NOT_ACCEPTED
+real_capital_forbidden,PRIMARY_PASS,1,FORBIDDEN,FORBIDDEN

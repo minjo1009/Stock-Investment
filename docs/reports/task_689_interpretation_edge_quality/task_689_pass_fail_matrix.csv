@@ -1,0 +1,7 @@
+gate_name,status,pass_flag,observed,required
+quality_panels_present,PRIMARY_PASS,1,interpretation_quality=9726; edge_quality=9726; weak_layer=1621,"interpretation, edge, and weak-layer panels must have rows"
+weak_layer_one_row_per_candidate,PRIMARY_PASS,1,rows=1621; unique_lifecycle=1621,one weak-layer audit row per lifecycle
+sector_specific_edge_rules_present,PRIMARY_PASS,1,sector_families=6,multiple sector families must be handled
+weak_layers_are_not_all_same,PRIMARY_PASS,1,weakest_layer_count=5,weakest layer should decompose candidates into multiple failure modes
+no_outcome_columns_in_quality_outputs,PRIMARY_PASS,1,none,PnL/outcome columns excluded
+macro_still_not_promoted,PRIMARY_PASS,1,macro eligible edge sum=0,macro diagnostic-only edge cannot become slot authority

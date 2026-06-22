@@ -1,0 +1,11 @@
+﻿gate,pass_flag,observed_value,required_value
+no_fixed_hold_or_timing_override,1,violations=0,preserve Task639 entry timing and exits
+dynamic_cap_tested,1,"market_account_dynamic,market_dynamic,none,static3",dynamic relation cap candidates exist
+slot_hurdle_tested,1,"drawdown_hurdle,none,scarce_slot_quality,weak_scarce_slot",slot hurdle candidates exist
+sizing_tested,1,"contextual_risk_scaled,drawdown_scaled,equal,risk_proxy_scaled",risk proxy sizing candidates exist
+allocation_audit_built,1,rows=28688,allocation panel exists
+sizing_audit_built,1,rows=800,sizing audit exists
+mdd_audit_built,1,rows=221,MDD interval audit exists
+no_return_tuned_promotion,1,return_tuned_promoted=0,return-tuned candidate cannot promote
+promotion_candidate_found,0,promotion_candidates=0,candidate improves return drawdown validation and recent OOS
+strategy_accepted,0,research diagnostic only,requires accepted strategy gates and live readiness

@@ -1,0 +1,6 @@
+type,rule,robustness_level,expectancy_delta,drawdown_delta,key_features
+Block,"if regime in {true_early_trend, failed_recovery} and sector in {semis, software/internet} and (crowding_proxy or rs_percentile_20d in high band): block",low,0.05536,4.216024,"regime_state, adverse_excursion_5d_pct, sector_bucket"
+Allow,"if regime in {strong_trend, extended, risk_off} and not crowded and entry extension band <= mid and semis concentration < high: allow",low,,28.253707,"regime_state, adverse_excursion_5d_pct, sector_bucket"
+Size,if mixed_ft_high_mae then reduce_next_open_day3,medium,0.094174,6.010872,"regime_state, adverse_excursion_5d_pct, sector_bucket"
+Exit,if weak_ft5_or_high_retrace5 then exit_next_open_day5,medium,0.105695,6.986726,"regime_state, adverse_excursion_5d_pct, sector_bucket"
+System Flow,Pre-entry: regime/cross-section gate -> Entry: allow/size -> Post-entry: day3/day5 validation -> Exit/Reduce next open,,,,"regime_state, adverse_excursion_5d_pct, sector_bucket, follow_through_5d_pct, follow_through_3d_pct"

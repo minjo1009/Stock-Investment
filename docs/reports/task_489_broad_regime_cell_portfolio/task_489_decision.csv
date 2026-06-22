@@ -1,0 +1,2 @@
+task_id,task_name,broad_market_source_status,candidate_cell_count,selected_cell_count,selected_count,selected_avg_net_pct,selected_win_rate,selected_entry_reduce_rate,validation_count,validation_avg_net_pct,recent_oos_count,recent_oos_avg_net_pct,goal_achieved_flag,leakage_pass_flag,strategy_acceptance_status
+Task489,Broad Regime Intraday Cell Portfolio,cache_loaded,4041,7,856,0.650388409915038,0.5654205607476636,0.24766355140186916,87,1.7663917361751973,264,0.9105187198762589,1,1,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY

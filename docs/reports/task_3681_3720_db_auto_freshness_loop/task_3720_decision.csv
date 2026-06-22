@@ -1,0 +1,2 @@
+task_id,verdict,strategy,deployment,real_capital,next_action
+Task3720,DB_AUTO_FRESHNESS_LOOP_EXPANDED_WITH_CACHED_EVIDENCE,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,Implement actual source acquisition loops for fresh market bars ticks daily macro SEC and authority evidence gates.

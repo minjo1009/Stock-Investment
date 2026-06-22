@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,joint_target_met,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1950,gap_hardening_complete_diagnostic_only,interaction_hardened_top3_v1,3976.1542,0.30664,-0.239038,1,Run primitive ablation and source-receipt upgrade before any acceptance claim or top5 replay promotion,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_GAP_HARDENING_ONLY

@@ -1,0 +1,7 @@
+artifact_type,path,row_count,file_size_bytes,source,validation_command,notes
+review_packet,docs/reports/task_607_gpt_strategy_backtest_firm_grade_review/gpt_chrome_review_packet.md,not-applicable,2552,Task607,python skills/gpt-chrome-review-subagent/scripts/new_review_packet.py --task-id task_607 --lane backtest --objective "dry run" --dry-run,Generated bounded GPT/Chrome packet
+review_notes,docs/reports/task_607_gpt_strategy_backtest_firm_grade_review/gpt_review_notes.md,not-applicable,3236,Chrome/ChatGPT review,python scripts/task_registry_validate.py,GPT output converted to review_notes only
+backlog_csv,docs/reports/task_607_gpt_strategy_backtest_firm_grade_review/firm_grade_upgrade_backlog.csv,6,3821,Task607 synthesis,python scripts/task_registry_validate.py,Repo-native upgrade backlog
+report,docs/reports/task_607_gpt_strategy_backtest_firm_grade_review/task_607_gpt_strategy_backtest_firm_grade_review.md,not-applicable,3510,Task607 synthesis,python scripts/task_registry_validate.py,Task report
+decision_csv,docs/reports/task_607_gpt_strategy_backtest_firm_grade_review/task_607_decision.csv,1,525,Task607 synthesis,python scripts/task_registry_validate.py,Task decision
+manifest,docs/reports/task_607_gpt_strategy_backtest_firm_grade_review/artifact_manifest.csv,6,1387,Task607 synthesis,python scripts/task_registry_validate.py,Artifact manifest recorded at closeout

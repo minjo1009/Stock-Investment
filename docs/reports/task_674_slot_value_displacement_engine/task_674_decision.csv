@@ -1,0 +1,2 @@
+﻿task_id,decision,strategy_acceptance_status,deployment_status,real_capital_status,trading_promotion_pass_flag,best_candidate_name,best_final_capital_usd,best_max_drawdown_pct,displacement_rows,next_action
+Task674,SLOT_VALUE_LADDER_TESTED_NO_PROMOTION_YET,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,0,active_relation_cap3_reference,10887.474713480713,-30.524857842425657,30,Review displacement and winner damage before accepting any same-timestamp slot ladder.

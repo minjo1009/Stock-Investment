@@ -1,0 +1,4 @@
+task_id,decision,pass_flag,hard_break_quarter_count,weak_quarter_count,strategy_acceptance_status,next_action,clean_avg_net_return_pct,failed_avg_net_return_pct,failed_win_rate,entry_reduce_failure_rate,deployment_status
+Task608D,PASS_FAILURE_REGIME_MAP_IDENTIFIED_NOT_RESOLVED,1,1.0,4.0,NOT_ACCEPTED,Use weak-quarter map to test entry suppression or separated policy logic.,,,,,
+Task608E,FAIL_ENTRY_REDUCE_FAILURE_MATERIAL,0,,,NOT_ACCEPTED,Do not refine headline rule until entry-reduce failure is suppressed or isolated.,26.027767321708446,-16.44558969770362,0.0,0.39325842696629215,
+Task608DE,FAIL_FAILURE_ENTRY_REDUCE_NOT_FIRM_GRADE,0,1.0,4.0,NOT_ACCEPTED,"Task608F should test entry-reduce suppression, separated clean-entry policy, and OOS capital impact.",,,,,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY

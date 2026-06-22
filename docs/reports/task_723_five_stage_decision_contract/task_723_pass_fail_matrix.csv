@@ -1,0 +1,11 @@
+gate_name,status,pass_flag,observed,required
+five_stage_artifacts_present,PRIMARY_PASS,1,all present,all present
+one_object_per_candidate_except_edges,PRIMARY_PASS,1,matched,matched
+relation_edges_four_per_candidate,PRIMARY_PASS,1,edges=1380,4 per candidate
+weakest_layer_populated,PRIMARY_PASS,1,complete,complete
+manual_review_queue_populated,PRIMARY_PASS,1,complete,complete
+slot_judgment_cohort_only,PRIMARY_PASS,1,cohort_only=1,cohort_only=1
+leakage_all_pass,PRIMARY_PASS,1,min=1,1
+governance_all_pass,PRIMARY_PASS,1,min=1,1
+strategy_not_accepted,PRIMARY_PASS,1,NOT_ACCEPTED,NOT_ACCEPTED
+real_capital_forbidden,PRIMARY_PASS,1,FORBIDDEN,FORBIDDEN

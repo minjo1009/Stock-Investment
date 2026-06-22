@@ -1,116 +1,213 @@
-# Project Operating System
+# Project Operating System Skill
 
 ## Purpose
-- 이 문서는 저장소 전체의 작업 운영체계를 정의하는 헌법이다.
-- 인간과 AI는 동일한 규칙, 동일한 용어, 동일한 변경 절차를 따른다.
-- 모든 구현, 문서 수정, 보고는 이 문서의 계층과 통제 규칙을 따른다.
 
-## Scope
-- 작업 계층 정의
-- 표준 작업 흐름 정의
-- 변경 통제 규칙 정의
-- 산출물과 완료 판정의 기본 원칙 정의
+This is the repository-level operating skill for Codex work in this project.
+
+Goal:
+
+```text
+Keep the US-equity quant/event trading and paper-trading project understandable across Codex sessions.
+```
+
+## Required Read Order
+
+Default to low-token context loading.
+
+Before non-trivial work, read only the short operating state first, then open detailed maps only when the task touches that domain.
+
+Minimum start:
+
+1. `docs/operating_system/project_operating_state.md`
+2. Latest relevant task report or file being edited
+
+Open the full stack below only for broad governance, handoff, or ambiguous cross-domain work:
+
+1. `docs/operating_system/project_context_bootstrap.md`
+2. `docs/operating_system/project_operating_state.md`
+3. `docs/architecture/project_status_authority_matrix.md`
+4. `docs/operating_system/project_cleanup_final_runbook.md`
+5. `docs/ownership/current_operating_model.md`
+6. `docs/architecture/canonical_workstream_map.md`
+7. `docs/architecture/brain_layer_map.md`
+8. `docs/architecture/src_canonicalization_map.md`
+9. `docs/architecture/test_validation_canonicalization_map.md`
+10. `docs/architecture/skill_md_subagent_canonicalization_map.md`
+11. `docs/ownership/subagent_roster_and_routing.md`
+12. `tasks/task_registry.csv`
+13. Latest relevant task report
+
+Chat memory is not higher authority than repository artifacts.
+
+## Low-Token Operating Rule
+
+- Do not preload every governance document every turn.
+- Open `src_canonicalization_map.md` only when touching `src/`.
+- Open `test_validation_canonicalization_map.md` only when discussing or running tests.
+- Open `skill_md_subagent_canonicalization_map.md` only when touching skills, MD files, GPT, or subagents.
+- Open `project_status_authority_matrix.md` only when a task could affect acceptance, deployment, real capital, or validation wording.
+- Prefer validator scripts over rereading long reports.
+- Keep chat reports short; put expert detail in repo reports.
+
+## Standing Status
+
+- Strategy acceptance: `NOT_ACCEPTED`
+- Deployment readiness: `DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY`
+- Real capital: `FORBIDDEN`
+- GPT/Chrome: review-only
+- Tests: never change acceptance status by themselves
 
 ## Core Principles
-- 모든 매매 의사결정은 룰 기반으로 정의한다.
-- LLM은 분석, 리포트, 우선순위 보조 역할만 수행한다.
-- 백테스트는 룰 기반 only로 운영하며 LLM을 의사결정 경로에 포함하지 않는다.
-- KR과 US는 전략, 유니버스, 세션, 체결 가정을 분리한다.
-- 자동 운영, 긴급중지, 킬스위치, Slack 기반 명령 체계를 수용할 수 있도록 설계한다.
-- 장애복구, 리스크통제, 감사추적성, 운영관제, 유지보수 체계를 향후 수용할 수 있어야 한다.
-- 모든 변경은 phase 또는 task 체계 안에서 관리한다.
-- 직접적인 무규칙 수정은 금지한다.
-- silent refactor는 금지한다.
-- 문서 또는 요구사항이 불명확하면 STOP 한다.
 
-## Working Hierarchy
-- `skill.md`: 프로젝트 작업 헌법이다. 상위 원칙과 작업 계층을 정의한다.
-- `prompts/phase-create.md`: 실행계획인 phase의 생성 규격을 정의한다.
-- `prompts/task-create.md`: 구현단위인 task의 생성 규격을 정의한다.
-- `phases/*.md`: 특정 목표를 위한 phase 실행계획을 정의한다.
-- `tasks/*.md`: 개별 구현, 수정, 검증 단위를 정의한다.
-- 구현 코드와 보고 문서는 승인된 phase/task의 범위 안에서만 변경한다.
+- Prefer canonical maps, artifact boundaries, and validation over new features.
+- Keep raw data, generated panels, runtime DBs, and broker archives separate from code.
+- GPT/Chrome is a reviewer or ideation partner, not source-of-truth.
+- Strategy acceptance, deployment readiness, broker truth, replay validity, source readiness, and blocker status do not change from GPT output alone.
+- Missing raw sources are reported, not approximated.
+- Outcome, PnL, and labels are evaluation-only and must not enter assignment logic.
+
+## Work Classification
+
+Classify work before editing:
+
+| Type | Meaning | Required Owner |
+| --- | --- | --- |
+| `governance` | registry, artifact policy, canonical maps, report standard | Research Governance |
+| `data` | raw source, provenance, timestamp, quality, source readiness | Data & Market Microstructure |
+| `research` | regime, intraday, content, relation, hypothesis | Relevant research team |
+| `backtest` | deterministic replay, OOS, cost, portfolio simulation | Backtest & Simulation Infra |
+| `execution` | paper/live order lifecycle, broker truth, risk | Execution & Risk |
+| `frontend` | trader terminal, chart/report UI, catalog surface | Frontend/UI |
+| `reporting` | Slack, EOD, PM/CIO report, delivery safety | Research Governance or Slack owner |
+
+## Source Code Rule
+
+Use `docs/architecture/src_canonicalization_map.md`.
+
+- `canonical_package_candidate` means review target, not production-ready.
+- `active_task_code_review` means current task code that needs supersession notes before reuse.
+- `historical_task_code_review` means preserve as evidence, not current engine.
+- Do not build new features on task-scoped code without owner review.
+
+## Test Authority Rule
+
+Use `docs/architecture/test_validation_canonicalization_map.md`.
+
+Allowed fast local gate candidates:
+
+- `PACKAGE_HEALTH`
+- `GOVERNANCE_HEALTH`
+
+Not fast local quality gates:
+
+- `EVIDENCE_ONLY`
+- `RESEARCH_ONLY`
+- `SUPPORT_ONLY`
+- `EXECUTION_HEALTH`
+- `ACCEPTANCE_EVIDENCE_REVIEW`
+- `DATA_HEALTH`
+- `REPORTING_HEALTH`
+
+Every test result must preserve this footer:
+
+```text
+Test results do not modify strategy acceptance status.
+Strategy: NOT_ACCEPTED
+Deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+Real Capital: FORBIDDEN
+```
 
 ## Standard Workflow
-- Clarify: 요구사항과 제약을 확인한다.
-- Context Gather: 근거 문서와 현재 코드 상태를 수집한다.
-- Plan: phase/task를 구체화하고 승인 가능한 구현 계획을 확정한다.
-- Generate: 승인된 범위 내에서 구현 산출물을 생성한다.
-- Evaluate: 검증 결과를 남기고 완료/차단을 판정한다.
 
-## Pipeline Harness (Sub-Agent)
-- 표준 파이프라인은 아래 5단계로 고정한다.
-- `clarify -> context_gather -> plan -> generate -> evaluate`
-- 각 단계는 별도 sub-agent 실행 단위로 취급한다.
-- 각 단계는 자신의 artifact를 생성하고 다음 단계는 직전 artifact를 입력으로 사용한다.
-- artifact 없이 다음 단계로 건너뛰는 실행은 금지한다.
-- 동일 Task 내에서 단계 재실행은 허용하되, 기존 artifact를 보존하고 신규 버전을 추가한다.
+1. Clarify the objective.
+2. Gather current repo context.
+3. Assign owner team and reviewer team.
+4. Decide artifact scope.
+5. Make the smallest safe change.
+6. Validate with the right authority lane.
+7. Update registry/report/manifest when applicable.
+8. Report `done / failed / next` plainly.
 
-## Stage Artifact Contract
-- Clarify artifact:
-- 목적: 요구사항/범위/미결정/제약 고정
-- 예시: `artifacts/<task-id>/clarify.md`
-- Context Gather artifact:
-- 목적: 근거 문서, 코드 관찰, 사실/해석 분리 기록
-- 예시: `artifacts/<task-id>/context-gather.md`
-- Plan artifact:
-- 목적: phase/task 구체화, Target Files, Acceptance Criteria, Tests 확정
-- 예시: `artifacts/<task-id>/plan.md`
-- Generate artifact:
-- 목적: 변경 파일 목록과 구현 결과 기록
-- 예시: `artifacts/<task-id>/generate.md`
-- Evaluate artifact:
-- 목적: 검증 로그, 판정(done/blocked), 잔여 리스크 기록
-- 예시: `artifacts/<task-id>/evaluate.md`
+## Artifact Rule
 
-## Read Order Before Work
-- `skills/skill.md`
-- 관련 `phases/*.md`
-- 관련 `tasks/*.md`
-- `context/README.md` 및 필요한 근거 문서
-- 대상 코드와 테스트
+Commit candidates:
 
-## Change Control Rules
-- 모든 변경은 phase 또는 task에 연결되어야 한다.
-- phase 없이 진행되는 대규모 변경은 금지한다.
-- task 없이 진행되는 직접 수정은 금지한다.
-- `skills/skill.md`, `prompts/task-create.md`, `prompts/phase-create.md`는 고위험 문서다.
-- 고위험 문서 수정은 별도 task를 생성하고 영향 범위를 검토해야 한다.
-- Phase 0 문서도 임의 수정하지 않는다.
-- 변경 사유, 범위, 완료 기준, 검증 방법이 없는 수정은 금지한다.
+- `src/**/*.py`
+- `tests/**/*.py`
+- small `docs/**/*.md`
+- decision CSVs
+- pass/fail CSVs
+- artifact manifests
 
-## Output Contract
-- 모든 작업 결과는 변경 파일, 요약, 검증, 리스크, 다음 행동을 포함한다.
-- 구현 산출물은 어떤 phase/task에 속하는지 추적 가능해야 한다.
-- 문서는 선언형 문장으로 작성하고, 모호한 표현을 피한다.
+Local or manifest-only by default:
 
-## Quality Gate
-- 문서 또는 코드 변경은 목적과 범위가 명확해야 한다.
-- acceptance criteria와 검증 방법이 존재해야 한다.
-- 문서 간 역할 중복이 없어야 한다.
-- 상위 원칙과 하위 실행 문서 간 참조 관계가 유지되어야 한다.
-- 룰 기반 매매 원칙과 LLM 보조 원칙을 훼손하지 않아야 한다.
+- `data/raw/**`
+- `data/artifacts/**`
+- large `docs/reports/**/*.csv`
+- `docs/reports/**/*.jsonl`
+- runtime databases
+- broker/account archives
 
-## STOP Rules
-- 요구사항이 phase인지 task인지 구분되지 않으면 STOP 한다.
-- 근거 없이 전략, 체결 가정, 리스크 통제를 변경하려 하면 STOP 한다.
-- 영향 범위를 설명할 수 없는 고위험 문서 수정은 STOP 한다.
-- task 또는 phase 없이 직접 수정하라는 요청은 STOP 한다.
-- context가 부족해 사실과 해석을 구분할 수 없으면 STOP 한다.
+## Subagent Rule
 
-## Directory Convention
-- `skills/`: 프로젝트 작업 헌법과 상위 운영 규칙을 둔다.
-- `prompts/`: phase/task 생성 규격을 둔다.
-- `phases/`: 상위 실행계획 문서를 둔다.
-- `tasks/`: 구현 단위 문서를 둔다.
-- `templates/`: phase/task 실사용 템플릿을 둔다.
-- `context/`: 근거 중심의 제품, 아키텍처, 코드베이스, 워크플로 문서를 둔다.
-- `src/`: 구현 코드를 둔다.
-- `tests/`: 검증 코드를 둔다.
+Use `docs/ownership/subagent_packet_standard.md`.
 
-## Lifecycle
-- 새 요구가 들어오면 먼저 phase 필요 여부를 판단한다.
-- 복수 task가 필요한 변화면 phase를 만든다.
-- 단일 목적 구현이면 task를 만든다.
-- 구현 후 결과를 보고하고, 후속 phase 또는 task로 handoff 한다.
-- 문서 체계 자체의 변경도 동일하게 task 기반으로 관리한다.
+Use `docs/ownership/subagent_roster_and_routing.md` to choose the owner lane.
+
+Rules:
+
+- A worker edits only its write scope.
+- An explorer is read-only.
+- Two workers must not share a write scope in parallel.
+- GPT/Chrome packets are review-only.
+
+Subagent handoff must include:
+
+- changed files
+- artifacts produced
+- validation commands run
+- commands not run
+- authority lane
+- next blocker
+
+## GPT/Chrome Rule
+
+Use `skills/gpt-chrome-review-subagent/SKILL.md` only for bounded review.
+
+GPT may:
+
+- critique strategy logic
+- find missing evidence
+- suggest better decomposition
+- improve wording
+- red-team project structure
+
+GPT may not:
+
+- invent facts, prices, dates, filings, fills, or labels
+- approve strategy
+- approve deployment
+- replace raw sources or validation
+- create buy/sell/sizing decisions
+- change the task registry or readiness state by conversation alone
+
+## Stop Rules
+
+Stop and report when:
+
+- required raw source is missing and the task is source-backed
+- lifecycle matching would require symbol/date/price/time fallback
+- assignment logic would require outcome, PnL, or label leakage
+- artifact movement would require deletion or relocation without a migration plan
+- current canonical task is unclear and several tasks conflict
+
+## Closeout Rule
+
+Every non-trivial task must close with:
+
+- report or explicit non-reportable note
+- registry update when active/canonical state changes
+- artifact manifest when files are produced
+- validation command
+- authority lane
+- clear next action and blocker

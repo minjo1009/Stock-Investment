@@ -1,0 +1,7 @@
+field,value
+verdict,BACKTEST_ADAPTER_READINESS_NOT_READY_RESEARCH_ONLY
+strategy_acceptance,NOT_ACCEPTED
+deployment_status,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+validation_authority,GOVERNANCE_HEALTH
+next_action,Do not implement backtest adapter until a future owner-approved adapter task clears checklist

@@ -1,0 +1,10 @@
+field,value
+task_id,Task787
+decision,space defense industrial theme contract complete
+status,Diagnostic Only
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+theme_filter_rows,7
+ticker_promotion_allowed,NO
+next_action,Task788 backend data budget contract

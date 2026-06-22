@@ -1,0 +1,2 @@
+﻿task_id,verdict,strategy_acceptance_status,real_capital_status,entry_rows,macro_series_count,augmented_context_state_count,vintage_source_gap_flag,release_calendar_gap_flag,strategy_promotion_flag
+Task649,MACRO_SOURCES_ATTACHED_PROVISIONAL_STATE_ENGINE_NOT_PROMOTED,NOT_ACCEPTED,FORBIDDEN,735,15,10,1,1,0

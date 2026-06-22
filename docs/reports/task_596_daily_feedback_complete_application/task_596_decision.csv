@@ -1,0 +1,2 @@
+task_id,decision_status,active_delta,universe_coverage,runtime_capture,frontend_visibility,scorecard_status,deployment_ready_flag,diagnostic_only_flag,first_promotion_target,next_action
+Task596,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,"103 active backlog unchanged; Wave 1 target <=40 after paper-ops blocker closeout",FULL_UNIVERSE_EVALUATED_WITH_SOURCE_GAPS,CAPTURED,CATALOG_VISIBLE_WITH_WARNINGS,BLOCKED,0,1,Task584 Runtime Strategy Decision Gate,"윤헌 closes 47 source freshness gaps; 동승 closes split/OOS and cost/slippage; 규승 verifies UI visibility"

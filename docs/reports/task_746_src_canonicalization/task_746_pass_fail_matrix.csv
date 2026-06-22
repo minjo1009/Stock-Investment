@@ -1,0 +1,9 @@
+check,status,evidence
+src_inventory_generated,PASS,docs/reports/task_746_src_canonicalization/task746_src_canonicalization_inventory.csv
+summary_generated,PASS,docs/reports/task_746_src_canonicalization/task746_src_canonicalization_summary.md
+architecture_map_generated,PASS,docs/architecture/src_canonicalization_map.md
+strategy_acceptance_unchanged,PASS,NOT_ACCEPTED
+deployment_readiness_unchanged,PASS,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+no_trading_logic_changed,PASS,Task746 edits only scripts/docs/reports/index/registry
+gpt_review_attempted,PASS_WITH_TOOL_FAILURE,Chrome control failed after existing-tab and fresh-tab attempts
+files_deleted_or_moved,PASS,No delete or move performed by Task746

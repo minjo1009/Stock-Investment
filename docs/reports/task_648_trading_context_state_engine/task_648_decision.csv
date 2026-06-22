@@ -1,0 +1,2 @@
+﻿task_id,verdict,strategy_acceptance_status,real_capital_status,state_panel_rows,distinct_context_states,macro_raw_source_gap_flag,strategy_promotion_flag
+Task648,PROVISIONAL_CONTEXT_STATE_ENGINE_BUILT_SOURCE_GAPS_BLOCK_PROMOTION,NOT_ACCEPTED,FORBIDDEN,735,5,1,0

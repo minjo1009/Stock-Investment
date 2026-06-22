@@ -1,0 +1,32 @@
+{
+  "collapse-filter": false,
+  "search": "-path:data/ -path:downloads/ -path:logs/ -path:frontend_data/ -path:graphify-out/graph.json",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": true,
+  "colorGroups": [
+    {
+      "query": "path:docs/reports/",
+      "color": {
+        "a": 1,
+        "rgb": 14701138
+      }
+    },
+    {
+      "query": "path:tasks/",
+      "color": {
+        "a": 1,
+        "rgb": 6736947
+      }
+    },
+    {
+      "query": "path:docs/operating_system/ OR path:docs/ownership/",
+      "color": {
+        "a": 1,
+        "rgb": 11657298
+      }
+    }
+  ]
+}

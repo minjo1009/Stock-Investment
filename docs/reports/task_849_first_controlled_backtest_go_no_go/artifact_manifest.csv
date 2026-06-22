@@ -1,0 +1,4 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"go_no_go_matrix.csv","small_table","1317","72dbb2362e1dcba5159388f4fce7a032b86ac99f5d28890ad13fbb85a8f65915"
+"task_849_decision.csv","small_table","345","174154bfcf16fb96faac72d472aab5a0b527779b6888fbf3e053bb11485f7095"
+"task_849_first_controlled_backtest_go_no_go.md","report","1679","812d036162b1d078552d486775c4d041694d2cdb0e22f92611c756b05e33ac5a"

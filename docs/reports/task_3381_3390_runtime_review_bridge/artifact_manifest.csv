@@ -1,0 +1,8 @@
+artifact_path,artifact_type,description
+docs/reports/task_3381_3390_runtime_review_bridge/task_3381_3390_runtime_review_bridge.md,report,Task3381-Task3390 runtime review bridge report
+docs/reports/task_3381_3390_runtime_review_bridge/task_3390_decision.csv,decision,Task3381-Task3390 decision row
+data/artifacts/task_3381_3390_runtime_review_bridge/runtime_review_summary.csv,summary,Runtime review bridge summary
+data/artifacts/task_3381_3390_runtime_review_bridge/runtime_review_checks.csv,validation,Runtime review bridge checks
+data/artifacts/task_3381_3390_runtime_review_bridge/runtime_decision_sample.csv,sample,Small L6 RuntimeDecision sample
+data/artifacts/task_3381_3390_runtime_review_bridge/decision.csv,decision,Generated validator decision row
+data/artifacts/task_3381_3390_runtime_review_bridge/artifact_manifest.csv,manifest,Generated artifact manifest

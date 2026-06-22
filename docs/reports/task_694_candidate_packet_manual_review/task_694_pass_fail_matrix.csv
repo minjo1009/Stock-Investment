@@ -1,0 +1,5 @@
+gate_name,status,pass_flag,observed,required
+candidate_packet_count,PRIMARY_PASS,1,candidate_packets=11,9 source-supported leaders plus 2 price absorption packets
+packet_review_states_decomposed,PRIMARY_PASS,1,states=3,manual packet review should split pass/conditional/reject where data supports it
+no_outcome_columns_in_task694_outputs,PRIMARY_PASS,1,none,PnL/outcome columns excluded
+no_strategy_promotion,PRIMARY_PASS,1,no PnL simulation or allocation rule promotion was run,manual packet review only

@@ -1,0 +1,9 @@
+gate,pass_flag,observed,expected
+bootstrap_created,1,docs/operating_system/project_context_bootstrap.md,exists
+management_system_created,1,docs/operating_system/project_management_system.md,exists
+canonical_workstream_map_created,1,docs/architecture/canonical_workstream_map.md,exists
+subagent_routing_created,1,docs/ownership/subagent_roster_and_routing.md,exists
+agents_repaired,1,AGENTS.md,readable working rules
+skill_repaired,1,skills/skill.md,readable project skill
+strategy_state_changed,1,not changed,not changed
+backtest_permission,0,FAIL,governance task only

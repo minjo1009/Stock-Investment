@@ -1,0 +1,11 @@
+﻿gate,pass_flag,observed_value,required_value
+coverage_scope_report_built,1,scopes=4,all required scopes present
+join_contract_required_columns,1,columns=24,join audit must contain required row-level authority fields
+task639_core_assignment_coverage,0,assignment_eligible_rate=0.0000,>=0.80 before relation can affect Task639 execution
+baseline_preservation_audit_built,1,rows=1621,Task639 candidate treatment must be auditable
+taxonomy_permissions_split,1,promotion_permission_nonzero=0,taxonomy names cannot grant promotion
+action_transition_matrix_built,1,rows=51,state-to-action transitions must be visible
+relation_assignment_rows_available,0,assignment_rows=0,>0 rows with valid source coverage before relation assignment
+promotion_eligibility_report_built,1,candidates=10,all relation candidates must be checked
+relation_promotion_candidate_found,0,promotion_candidates=0,candidate must beat Task639 return and drawdown plus OOS and source gates
+trading_promotion,0,relation remains diagnostic only,all gates above plus live source readiness

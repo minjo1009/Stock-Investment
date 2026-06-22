@@ -1,0 +1,4 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"failure_decomposition_schema.csv","small_table","1017","6deed3a6510b45260c724a6d88b8f9c1f222a9b823beecd2ec296a424096a811"
+"task_847_decision.csv","small_table","288","1ff1877aa60a8ccec85627cb2ca89058dae0b5363acbbec070b8de614656a72e"
+"task_847_failure_decomposition_schema.md","report","1287","848e20c5e76f24323d5162a988ac8e46939579e0d45499f6cc4d704a9cba2a82"

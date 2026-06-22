@@ -1,0 +1,10 @@
+gate,pass_flag,observed_value,required_value
+full_period_through_june,1,entry_end=2026-06-03,entry panel must extend into June 2026
+content_signal_recent_oos_stability,1,recent_oos_stable_universes=5,at least one content strategy must have positive recent OOS lift and no worse entry-reduce
+best_50bp_beats_qqq,1,content_negative_score max5=$5148.31; qqq=$1751.31,best content strategy at 50bp must beat QQQ
+best_50bp_beats_task617_original_max5,1,content_negative_score max5=$5148.31; task617_max5=$3248.89,content strategy must beat existing Task617 max5 before promotion
+best_100bp_still_beats_qqq,1,content_negative_score max5=$4964.79; qqq=$1751.31,best content strategy at 100bp must still beat QQQ
+validation_oos_50bp_account_beats_qqq,1,content_guidance_supply_combo max5=$1236.73; qqq=$1020.64,validation-only $1000 account must beat same-period QQQ
+recent_oos_50bp_account_beats_qqq,1,content_any_stable_feature max10=$1470.57; qqq=$1140.89,recent OOS-only $1000 account must beat same-period QQQ
+presence_fields_not_used,1,presence fields not used,content interpretation only
+trading_promotion,0,research candidate only,requires exact deployment rules and live source readiness before runtime use

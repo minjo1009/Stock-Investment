@@ -1,0 +1,2 @@
+﻿task_id,decision_status,strategy_acceptance_status,deployment_readiness_status,real_capital_status,runtime_paper_sell_fills,broker_truth_sell_fills,closed_positions,inferred_matching_used_flag,next_required_task
+T600-3,PASS_RUNTIME_PAPER_EXIT_ENGINE,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,23,0,23,0,Controlled paper review of runtime exit evidence; strategy acceptance remains blocked.

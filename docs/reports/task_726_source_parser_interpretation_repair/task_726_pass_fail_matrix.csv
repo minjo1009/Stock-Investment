@@ -1,0 +1,10 @@
+gate_name,status,pass_flag,observed,required
+task636_parser_rebuilt,PRIMARY_PASS,1,source parser regenerated,Task636 outputs regenerated from raw text without live fetch
+filing_family_blocker_added,PRIMARY_PASS,1,source_form_family and ownership blocker present,Form4 13D 13G 13F ownership filings cannot become economic catalyst
+context_blocker_added,PRIMARY_PASS,1,financing governance boilerplate weak keyword blockers present,Keywords are certified only after context blocker checks
+substring_false_positive_fixed,PRIMARY_PASS,1,term boundary matching added,RPO sales order contract cannot match inside unrelated words
+downstream_rebuilt,PRIMARY_PASS,1,Task722 Task723 Task724 Task725 regenerated,Downstream packets use repaired parser outputs
+cashflow_queue_after_repair,PRIMARY_PASS,1,queue1=0,False cashflow queue should be removed until real economic evidence exists
+backtest_permission,NOT_ACCEPTED,0,FAIL,Requires repaired semantic taxonomy and stable predictive validation
+strategy_acceptance,NOT_ACCEPTED,1,NOT_ACCEPTED,No trading promotion
+real_capital,PRIMARY_PASS,1,FORBIDDEN,Capital remains forbidden

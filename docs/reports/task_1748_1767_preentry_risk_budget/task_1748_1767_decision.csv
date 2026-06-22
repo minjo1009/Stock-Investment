@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1767,preentry_risk_budget_implemented_diagnostic_only,preentry_risk_budget_top3_v1,3088.6343,0.244229,-0.213011,audit whether pre-entry caps are too broad and add true factor exposure estimates before further capital promotion,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_PREENTRY_RISK_BUDGET_ONLY

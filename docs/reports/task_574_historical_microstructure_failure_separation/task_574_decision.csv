@@ -1,0 +1,2 @@
+﻿task_id,strategy_acceptance_status,deployment_ready_flag,diagnostic_only_flag,tested_bucket_count,tested_lifecycle_count,missing_source_approximated_flag,live_ready_flag
+Task574,DIAGNOSTIC_PASS_HISTORICAL_MICROSTRUCTURE_TESTED,0,1,36,9388,0,0

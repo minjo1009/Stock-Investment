@@ -1,0 +1,2 @@
+task_id,decision,strategy_acceptance_status,real_capital_status,initial_capital_usd,qqq_final_capital_usd,task617_original_max5_final_capital_usd,task632_strict_max5_final_capital_usd,strategy_entry_start,strategy_entry_end,trading_promotion_pass_flag,next_action
+Task633,FAIL_QQQ_BENCHMARK_OR_ORIGINAL_EDGE_NOT_ACCEPTED,NOT_ACCEPTED,FORBIDDEN,1000.0,1751.3102758937964,3248.886373245641,2214.3657755760537,2024-01-02,2026-06-03,0,Build Task634 event relevance certification plus confirmation gated entry because strict qualitative interpretation still loses to the prior strategy.

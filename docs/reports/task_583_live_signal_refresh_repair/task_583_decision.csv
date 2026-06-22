@@ -1,0 +1,2 @@
+﻿task_id,task_name,decision_status,universe_scope,expected_universe_count,evaluated_symbol_count,fresh_symbol_count,selected_symbol_count,missing_or_stale_symbol_count,coverage_status,fresh_rows,paper_order_candidate_rows,stale_rows,strategy_acceptance_status,diagnostic_only_flag,deployment_ready_flag
+Task583,Live Signal Refresh Repair,LIVE_SIGNAL_REFRESH_REPAIRED,theme_10x7,70,70,70,3,0,FULL_UNIVERSE_EVALUATED,70,0,0,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,1,0

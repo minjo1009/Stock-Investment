@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1885,desk_specific_policy_replay_complete_target_not_met,desk_specific_top3_v1,3204.0915,0.253109,-0.240886,audit sleeve attribution after desk-specific replay before adding more micro sizing,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_DESK_SPECIFIC_POLICY_REPLAY_ONLY

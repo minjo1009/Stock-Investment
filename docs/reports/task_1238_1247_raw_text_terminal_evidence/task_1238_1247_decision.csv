@@ -1,0 +1,2 @@
+task_id,decision,replay_executed,selection_promoted,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1238-1247,raw_text_terminal_evidence_layer_implemented,0,0,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_RAW_TEXT_TERMINAL_EVIDENCE_ONLY

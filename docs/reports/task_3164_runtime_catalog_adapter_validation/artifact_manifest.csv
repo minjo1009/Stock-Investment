@@ -1,0 +1,8 @@
+artifact_path,artifact_type,commit_policy,description
+scripts/trader_brain_3164_runtime_catalog_adapter_validate.py,validator_script,commit_ready,Read-only runtime catalog adapter validator.
+data/artifacts/task_3164_runtime_catalog_adapter_validation/runtime_catalog_adapter_validation.csv,validation_artifact,commit_ready,Task3164 validation check rows.
+docs/reports/task_3164_runtime_catalog_adapter_validation/task_3164_runtime_catalog_adapter_validation.md,task_report,commit_ready,Task3164 report.
+docs/reports/task_3164_runtime_catalog_adapter_validation/task_3164_decision.csv,decision_csv,commit_ready,Task3164 decision row.
+docs/reports/task_3164_runtime_catalog_adapter_validation/artifact_manifest.csv,artifact_manifest,commit_ready,Task3164 artifact manifest.
+tasks/task_registry.csv,registry,commit_ready,Task3164 registry row.
+docs/operating_system/project_operating_state.md,operating_state,commit_ready,Task3164 operating state entry.

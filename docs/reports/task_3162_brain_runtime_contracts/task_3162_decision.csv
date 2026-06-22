@@ -1,0 +1,2 @@
+task_id,verdict,contract_docs_added,package_files_added,tests_added,unit_tests_run,failed_tests,replay_performed,selector_changed,sizing_changed,paper_order_intents_created,live_orders_created,strategy_acceptance,deployment_readiness,real_capital,authority
+Task3162,brain_runtime_contracts_added_package_health_only,1,2,1,13,0,0,0,0,0,0,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,PACKAGE_HEALTH_CONTRACT_ONLY

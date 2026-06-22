@@ -1,0 +1,11 @@
+field,value
+task_id,Task774
+decision,salience triage contract complete
+status,Diagnostic Only
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+salience_classes,6
+numeric_score_created,NO
+rank_created,NO
+next_action,Task775 working memory state contract

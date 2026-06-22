@@ -1,0 +1,2 @@
+task_id,firm_grade_overfit_stats_pass_flag,fold_count,top_family_positive_fold_rate,top_family_entry_reduce_rate,strategy_acceptance_status
+Task518,0,7,0.8142857142857143,0.3315326778484673,OVERFIT_STATS_FAIL

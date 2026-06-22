@@ -1,0 +1,9 @@
+gate_name,status,pass_flag,observed,required
+candidate_set_count,PRIMARY_PASS,1,rows=3,tiny candidate set must contain exactly 3 rows
+candidate_symbols_match,PRIMARY_PASS,1,"symbols=ASTS,BA,TER","candidate symbols must be ASTS, BA, TER"
+candidate_set_from_eligible_only,PRIMARY_PASS,1,eligible_only={'eligible_review_candidate': 3}; flags=3,only eligible_review_candidate rows can enter tiny candidate set
+conditional_candidates_excluded,PRIMARY_PASS,1,conditional_count=8,needs_extra_confirmation rows must stay out of candidate set
+no_allocation_or_trade_approval,PRIMARY_PASS,1,allocation_approved_sum=0; trade_approved_sum=0,candidate set cannot approve allocation or trading
+pnl_not_run,PRIMARY_PASS,1,pnl_not_run_sum=3,candidate set is pre-PnL only
+no_outcome_columns_in_task696_outputs,PRIMARY_PASS,1,none,PnL/outcome columns excluded
+no_strategy_promotion,PRIMARY_PASS,1,no PnL simulation or allocation rule promotion was run,candidate-set audit only

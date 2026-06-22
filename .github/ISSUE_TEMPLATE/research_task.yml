@@ -1,0 +1,46 @@
+name: Research Task
+description: Propose or track a quant research task.
+title: "Task XXX - "
+labels: ["research"]
+body:
+  - type: input
+    id: task_id
+    attributes:
+      label: Task ID
+      placeholder: "Task496"
+    validations:
+      required: true
+  - type: dropdown
+    id: owner_team
+    attributes:
+      label: Owner Team
+      options:
+        - Regime Research
+        - Intraday Continuation Research
+        - Backtest & Simulation Infra
+        - Data & Market Microstructure
+        - Execution & Risk
+        - Research Governance
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: State the hypothesis and success criteria.
+    validations:
+      required: true
+  - type: textarea
+    id: data_contract
+    attributes:
+      label: Data Contract
+      description: List exact data sources, joins, and missing-source handling.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation Plan
+      description: Include split/OOS, leakage, cost/slippage, and artifact requirements.
+    validations:
+      required: true

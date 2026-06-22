@@ -1,0 +1,2 @@
+task_id,decision,status,strategy_acceptance,deployment,real_capital,next_action
+Task3480,P0_RUNTIME_HARDENING_IMPLEMENTED_PROMOTION_STILL_BLOCKED,DIAGNOSTIC_ONLY,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,Implement full semantic 5-10-30 scheduler and migrate order-capable paths behind latest L6 RuntimeDecision before any runtime promotion.

@@ -1,0 +1,2 @@
+task_id,lineage_complete_flag,broker_truth_available_flag,historical_seed_only_flag,deployment_ready_flag,strategy_acceptance_status
+Task546C,1,0,1,0,LINEAGE_READY_HISTORICAL_SEED_ONLY

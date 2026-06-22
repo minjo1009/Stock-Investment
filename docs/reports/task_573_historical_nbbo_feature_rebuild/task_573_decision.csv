@@ -1,0 +1,2 @@
+﻿task_id,strategy_acceptance_status,deployment_ready_flag,diagnostic_only_flag,candidate_rows,quote_matched_rows,historical_quote_used_as_live_ready_flag,missing_source_approximated_flag
+Task573,HISTORICAL_NBBO_FEATURES_AVAILABLE,0,1,9478,9388,0,0

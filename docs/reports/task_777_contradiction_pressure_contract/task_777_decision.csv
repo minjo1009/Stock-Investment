@@ -1,0 +1,11 @@
+field,value
+task_id,Task777
+decision,contradiction pressure contract complete
+status,Diagnostic Only
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+pressure_states,7
+net_score_created,NO
+source_gap_rescue_allowed,NO
+next_action,Task778 disconfirming evidence minimal pack

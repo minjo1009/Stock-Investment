@@ -1,0 +1,4 @@
+decision_area,status,details,does_not_mean
+accepted_source_time_panel,implemented_empty,No Task883-compliant row-level source evidence accepted yet,source absence as negative evidence
+rejected_source_artifact_ledger,implemented,Non-compliant repo artifacts are blocked from brain backtest,strategy rejection
+first_real_historical_brain_replay,no_go,Blocked until accepted source-time rows exist,real capital permission

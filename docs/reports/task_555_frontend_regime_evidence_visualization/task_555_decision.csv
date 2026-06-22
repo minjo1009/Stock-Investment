@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,frontend_reads_catalog_only_flag,fake_marker_allowed_flag
+Task555,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,0,1,0

@@ -1,2 +1,3 @@
-"""Risk layer package."""
+"""Risk package namespace."""
 
+__all__: list[str] = []

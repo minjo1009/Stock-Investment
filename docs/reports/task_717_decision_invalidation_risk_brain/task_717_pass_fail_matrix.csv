@@ -1,0 +1,9 @@
+gate_name,status,pass_flag,observed,required
+scope_5265,PRIMARY_PASS,1,rows=5265,5265
+event_linked_2445,PRIMARY_PASS,1,event=2445,2445
+governance_all_pass,PRIMARY_PASS,1,min=1,1
+no_action_output,PRIMARY_PASS,1,0,0
+real_capital_forbidden,PRIMARY_PASS,1,FORBIDDEN,FORBIDDEN
+invalidation_all_present,PRIMARY_PASS,1,all_present,all_present
+risk_budget_all_present,PRIMARY_PASS,1,all_present,all_present
+guardrail_eval_present,PRIMARY_PASS,1,rows=8,>0

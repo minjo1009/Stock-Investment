@@ -1,0 +1,2 @@
+task_id,suppression_oos_pass_flag,selected_family,selected_entry_reduce_rate,selected_positive_fold_rate,strategy_acceptance_status
+Task524,0,none,,,SUPPRESSION_FAIL_NEEDS_NEW_FEATURES

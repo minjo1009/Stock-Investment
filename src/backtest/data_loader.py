@@ -72,13 +72,14 @@ def load_bars_for_quick_backtest(
     csv_path: str | None = None,
     years: int = 2,
     base_dir: str | Path = DEFAULT_BASE_DIR,
+    allow_sample_fallback: bool = False,
 ) -> list[Bar]:
     """Compatibility helper for quick backtest engine.
 
     Priority:
     1) Explicit CSV path
     2) Symbol CSV from base_dir
-    3) Deterministic local sample fallback
+    3) Explicit deterministic sample fallback only when allow_sample_fallback=True
     """
     years = max(1, years)
 
@@ -94,8 +95,13 @@ def load_bars_for_quick_backtest(
         df = load_daily_bars(symbol, base_dir=base_dir)
         clipped = _clip_df_years(df, years=years)
         return _to_bars(clipped)
-    except (FileNotFoundError, ValueError):
-        return _generate_sample_bars(years=years)
+    except (FileNotFoundError, ValueError) as exc:
+        if allow_sample_fallback:
+            return _generate_sample_bars(years=years)
+        raise FileNotFoundError(
+            f"raw daily bars unavailable for symbol={_normalize_symbol(symbol)}; "
+            "sample fallback is disabled for canonical backtests"
+        ) from exc
 
 
 def _normalize_daily_dataframe(df: pd.DataFrame, *, symbol: str) -> pd.DataFrame:

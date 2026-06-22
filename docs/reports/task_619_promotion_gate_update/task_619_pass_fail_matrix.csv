@@ -1,0 +1,5 @@
+gate,pass_flag,observed_value,required_value
+gpt_review_captured,1,CAPTURED_CHROME_CHATGPT_PROJECT_TAB,Chrome ChatGPT review captured as non-source interpretation
+promotion_gate_priority_locked,1,recent_oos_stability -> cost_slippage_stress -> live_source_readiness,recent_oos_stability -> cost_slippage_stress -> live_source_readiness
+strategy_refinement_allowed,0,recent OOS and cost gates are still open,P1/P2 gates must pass before refinement
+trading_promotion,0,strategy remains NOT_ACCEPTED; real capital remains FORBIDDEN,P1/P2/P3 gates plus existing broker/source gates must pass

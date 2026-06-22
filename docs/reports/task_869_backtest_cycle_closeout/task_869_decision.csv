@@ -1,0 +1,2 @@
+decision_area,status,decision,does_not_mean
+closeout,BACKTEST_CYCLE_REFERENCE_ONLY_STRATEGY_NO_REPLAY,QQQ reference completed and strategy replay remains blocked,strategy rejection acceptance or deployment readiness

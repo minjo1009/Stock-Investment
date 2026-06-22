@@ -1,0 +1,2 @@
+decision,recommended_candidate,decision_reason,current_oos_linkage_retention,recommended_oos_linkage_retention
+keep_current_task_329_state_model_as_is,candidate_B,refined candidates do not beat the current state model clearly enough,-0.472453,0.528067

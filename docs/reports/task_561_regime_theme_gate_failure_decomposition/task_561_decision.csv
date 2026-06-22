@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,aligned_entry_reduce_rate,best_other_entry_reduce_rate,label_used_in_assignment_flag,inferred_matching_used_flag
+Task561,DIAGNOSTIC_ONLY_CONTEXT_GATE_FAILED,0,35.254341478407866,31.91395314571976,0,0

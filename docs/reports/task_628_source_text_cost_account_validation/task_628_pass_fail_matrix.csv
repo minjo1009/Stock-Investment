@@ -1,0 +1,5 @@
+gate,pass_flag,observed_value,required_value
+recent_oos_50bp_account_edge,0,hold_wins=2/4; max5 hold=$1182.12 original=$1313.22; max10 hold=$1165.75 original=$1044.35; max20 hold=$1027.78 original=$1043.58; max50 hold=$1100.24 original=$1057.44,source-text hold beats original in at least 3 of 4 recent-OOS capacities at 50bp
+validation_50bp_not_broken,1,hold_wins=2/4; max5 hold=$1225.81 original=$1225.81; max10 hold=$1126.85 original=$1151.47; max20 hold=$1226.66 original=$1225.36; max50 hold=$1140.96 original=$1128.52,source-text hold does not break validation account performance at 50bp
+full_panel_50bp_account_edge,0,hold_wins=0/4; max5 hold=$2800.58 original=$4158.91; max10 hold=$2930.51 original=$3229.78; max20 hold=$2876.15 original=$2924.57; max50 hold=$2171.11 original=$2423.35,source-text hold should be at least mixed or better on full panel at 50bp
+trading_promotion,0,cost/account diagnostic only,requires parameter/split robustness and live-source readiness before strategy use

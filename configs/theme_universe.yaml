@@ -1,0 +1,52 @@
+version: theme-universe-v1
+themes:
+  - theme_id: aerospace_defense_space
+    effective_date: 2024-02-20
+    representative_ticker: RTX
+    owner_team: Regime Research
+    constituents: [RTX, BA, RKLB, ASTS]
+  - theme_id: ai_semiconductors
+    effective_date: 2024-01-08
+    representative_ticker: TSM
+    owner_team: Regime Research
+    constituents: [TSM, NVDA, ASML, AVGO, AMD, MRVL, ARM]
+  - theme_id: biotech_glp1_healthcare
+    effective_date: 2024-01-02
+    representative_ticker: LLY
+    owner_team: Regime Research
+    constituents: [LLY, AMGN, REGN, ISRG, NVO, VRTX, MRNA]
+  - theme_id: cloud_ai_platforms
+    effective_date: 2024-01-04
+    representative_ticker: GOOGL
+    owner_team: Regime Research
+    constituents: [GOOGL, ORCL, META, AMZN, MSFT, NOW, CRM]
+  - theme_id: crypto_fintech
+    effective_date: 2024-01-02
+    representative_ticker: IBIT
+    owner_team: Regime Research
+    constituents: [IBIT, HOOD, SOFI, PYPL, MSTR, AFRM, COIN]
+  - theme_id: cybersecurity
+    effective_date: 2024-01-03
+    representative_ticker: CRWD
+    owner_team: Regime Research
+    constituents: [CRWD, ZS, PANW, NET, FTNT]
+  - theme_id: data_devops_software
+    effective_date: 2024-01-11
+    representative_ticker: PLTR
+    owner_team: Regime Research
+    constituents: [PLTR, SNOW, DDOG, TEAM, MDB]
+  - theme_id: ev_autonomy_mobility
+    effective_date: 2024-01-02
+    representative_ticker: GM
+    owner_team: Regime Research
+    constituents: [GM, TSLA, F, UBER]
+  - theme_id: industrial_automation_robotics
+    effective_date: 2024-01-02
+    representative_ticker: TER
+    owner_team: Regime Research
+    constituents: [TER, GE, PH, ROK]
+  - theme_id: power_grid_electrification
+    effective_date: 2024-01-04
+    representative_ticker: VRT
+    owner_team: Regime Research
+    constituents: [VRT, PWR, GEV, ETN, VST, NEE, CEG]

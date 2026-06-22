@@ -1,0 +1,28 @@
+{
+  "_fixture_meta": {
+    "source": "KIS paper",
+    "captured_at": "2026-04-24T17:21:56.663688Z",
+    "sanitized": true,
+    "captured": true,
+    "reason": null,
+    "case": "task_091a_quote_response"
+  },
+  "response": {
+    "output": {
+      "rsym": "DNASMSFT",
+      "zdiv": "4",
+      "base": "415.7500",
+      "pvol": "38307959",
+      "last": "419.2700",
+      "sign": "2",
+      "diff": "3.5200",
+      "rate": "+0.85",
+      "tvol": "9105515",
+      "tamt": "3816921475",
+      "ordy": "\ub9e4\ub3c4\ubd88\uac00"
+    },
+    "rt_cd": "0",
+    "msg_cd": "MCA00000",
+    "msg1": "\uc815\uc0c1\ucc98\ub9ac \ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  }
+}

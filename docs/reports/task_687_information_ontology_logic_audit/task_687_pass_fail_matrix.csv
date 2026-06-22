@@ -1,0 +1,6 @@
+gate_name,status,pass_flag,observed,required
+information_groups_listed,PRIMARY_PASS,1,groups=9,>=8 groups
+overlap_risk_identified,PRIMARY_PASS,1,content/catalyst/relation/theme overlaps documented,overlaps documented
+logic_gaps_identified,PRIMARY_PASS,1,high=5,>=3 high gaps
+relation_not_overclaimed,PRIMARY_PASS,1,relation partial,do not claim firm-grade
+no_strategy_promotion,PRIMARY_PASS,1,audit only,NOT_ACCEPTED/FORBIDDEN

@@ -1,0 +1,5 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"negative_adapter_audit.csv","small_table","2514","083fdd4b9a1f3c527ac1241f656d71cd7124a436298b656e0b5b791d662510ca"
+"negative_adapter_bundles.csv","small_table","2649","f1b26d4fdbd270545b9cd44f9ab09fbe5d4ccd5ae0f0868fcd17c22d226747ea"
+"task_834_decision.csv","small_table","282","9d8ece1e88dacd044c24da87864e542b54137880314773118077353cc4d1a9fa"
+"task_834_negative_adapter_fixture_pack.md","report","1823","84f376573f05d73fb3a917267fdbfea3919fdf73c34a86ebbd2259d02c408ce9"

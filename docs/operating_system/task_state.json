@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "updated_at": "2026-04-25T06:33:43.948283Z",
+  "tasks": [
+    {
+      "command_id": "CMD_8CA69FBF0F57",
+      "original_command": "Normalize architecture harness storage rules and update orchestrator continuity docs",
+      "phase_id": "PHASE_00",
+      "phase_title": "Governance and operating-system setup",
+      "owner_agent": "Architecture Orchestrator",
+      "sub_agents": [],
+      "required_skill": "subagent-artifact-governance",
+      "confidence": 2,
+      "status": "completed",
+      "safety_level": "normal",
+      "requires_user_execution": false,
+      "powershell_commands": [],
+      "routing_scores": {
+        "PHASE_00": 2,
+        "PHASE_01": 2,
+        "PHASE_02": 0,
+        "PHASE_03": 0,
+        "PHASE_04": 1,
+        "PHASE_05": 0,
+        "PHASE_06": 0
+      },
+      "task_id": "TASK_001",
+      "created_at": "2026-04-25T06:33:35.375133Z",
+      "updated_at": "2026-04-25T06:33:43.948283Z",
+      "artifacts": {
+        "task_spec": "docs/phases/PHASE_00/tasks/TASK_001.md",
+        "handoff": "docs/phases/PHASE_00/reports/TASK_001/handoff.md",
+        "summary": "docs/phases/PHASE_00/reports/TASK_001/summary.md",
+        "validation": "docs/phases/PHASE_00/reports/TASK_001/validation.md",
+        "context_pack": "docs/phases/PHASE_00/reports/TASK_001/context_pack.md",
+        "decision": "docs/phases/PHASE_00/decisions/TASK_001_decision.md"
+      },
+      "validation_result": "completed_from_user_summary",
+      "unresolved_risks": [],
+      "next_recommended_tasks": [],
+      "summary_path": "docs/phases/PHASE_00/reports/TASK_001/summary.md",
+      "continuity_summary": "# Summary - TASK_001\n\nPending."
+    }
+  ],
+  "notes": [
+    "Durable orchestrator task ledger.",
+    "No secrets, credentials, raw broker responses, or unvalidated claims may be stored here."
+  ]
+}

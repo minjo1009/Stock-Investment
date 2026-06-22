@@ -1,0 +1,2 @@
+﻿task_376_verdict,acceptance_decision,prediction_boundary_clean,labels_present,lifecycle_coverage_present,sample_adequacy_present,full_period_gate_status,anchored_oos_gate_status,core_target_rate,overall_target_rate
+COMPLETE_PASS,EXPANDED_SAMPLE_REQUIRED,True,True,True,True,diagnostic_only,diagnostic_only,0.404255,0.087558

@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,attribution_axis_count,next_action
+Task709,SUBTYPE_ATTRIBUTION_COMPLETE_DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,NOT_ACCEPTED,FORBIDDEN,4,Use attribution to design audited rule candidates only after winner preservation review.

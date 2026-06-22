@@ -1,0 +1,3 @@
+decision_area,status,decision,does_not_mean
+attempt1,not_executed,Strategy replay blocked by market data gate and missing adapter trade spec,strategy failure or acceptance result
+

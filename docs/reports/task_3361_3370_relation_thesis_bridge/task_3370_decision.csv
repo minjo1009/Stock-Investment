@@ -1,0 +1,2 @@
+task_id,verdict,meaning_count,relation_edge_count,thesis_bundle_count,package_surface,strategy_acceptance,deployment_readiness,real_capital,replay_performed,paper_order_intents_created,live_orders_created
+Task3361-Task3370,economic_meanings_bridge_to_relation_edges_and_l4_thesis_bundles,3443,228,228,src/brain/relation_adapter.py,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,0,0,0

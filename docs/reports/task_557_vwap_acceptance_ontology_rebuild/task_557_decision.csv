@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,ontology_state_count,label_used_in_assignment_flag,inferred_matching_used_flag
+Task557,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,0,9,0,0

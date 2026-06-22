@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,candidate_rows,audit_rows,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1467,conditional_materiality_ranker_diagnostic_not_accepted,conditional_materiality_top10_v1,1096.2926,0.017973,-0.322251,3100,406,review v5 displacement audit and add true expectation/source receipt data before acceptance claims,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_CONDITIONAL_MATERIALITY_RANKER_ONLY

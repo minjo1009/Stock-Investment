@@ -1,0 +1,6 @@
+gate,pass_flag,observed_value,required_value
+source_chart_fusion_connected,1,attached_source_groups=4; fusion_selected=67,>=3 source groups and >0 fusion selected rows
+diagnostic_performance_candidate,1,selected=67; return_delta=4.83pp; failure_delta=-5.00pp,selected>=50; return_delta>=3pp; failure_delta<=-3pp
+quarter_stability,1,positive_quarters=4/7,>=4 positive quarters across >=6 quarters
+leakage_guard,1,label_used=0; gpt_or_plugin_source=0,must be 0
+trading_promotion,0,"diagnostic fusion uses simulated original entry returns; no delayed-entry fill, cost, or full OOS replay yet","requires exact delayed-entry/exit replay, cost/slippage, source audit, and live readiness"

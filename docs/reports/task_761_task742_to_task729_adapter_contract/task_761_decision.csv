@@ -1,0 +1,14 @@
+field,value
+task_id,Task761
+decision,adapter_contract_defined_research_only
+brain_layer,relation_edge
+owner_team,Backtest & Simulation Infra
+reviewer_team,Research Governance + Regime Research
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+assignment_output_allowed,0
+outcome_fields_allowed,0
+backtest_permission,FAIL
+validation_authority,RESEARCH_ONLY
+next_task_dependency,Task762 primitive gate repair design

@@ -1,0 +1,11 @@
+gate_name,status,pass_flag,observed,required
+event_reality_packets_created,PRIMARY_PASS,1,rows=5302,>0
+candidate_reality_bundle_created,PRIMARY_PASS,1,rows=345,>0
+task729_injection_created,PRIMARY_PASS,1,rows=5265,5265
+primitive_fact_extraction_present,PRIMARY_PASS,1,unique=2,>=2
+denominator_audit_present,PRIMARY_PASS,1,rows=5,5
+coderabbit_plugin_available,NOT_ACCEPTED,0,not_callable,callable
+coderabbit_local_fallback_pass,PRIMARY_PASS,1,local fallback pass,1
+leakage_all_pass,PRIMARY_PASS,1,min=1,1
+governance_all_pass,PRIMARY_PASS,1,min=1,1
+backtest_permission,NOT_ACCEPTED,0,FAIL,PASS only after semantic extraction and manual audit

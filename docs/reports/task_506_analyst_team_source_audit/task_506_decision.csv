@@ -1,0 +1,2 @@
+task_id,analyst_team_count,available_team_count,all_four_analyst_layers_ready_flag,missing_sources_are_approximated_flag,strategy_acceptance_status
+Task506,4,1,0,0,SOURCE_AUDIT_ONLY_NOT_DEPLOYMENT_READY

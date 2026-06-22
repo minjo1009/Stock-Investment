@@ -1,0 +1,13 @@
+artifact_path,artifact_type,commit_policy,description
+docs/contracts/brain_runtime_contract.md,contract_doc,commit_ready,L3-L7 brain runtime contract.
+src/brain/__init__.py,package_file,commit_ready,Brain contract package export surface.
+src/brain/contracts.py,package_file,commit_ready,Dataclass and enum contracts for brain runtime handoff.
+tests/test_brain_runtime_contracts.py,test_file,commit_ready,Package-health tests for brain runtime contracts.
+docs/reports/task_3162_brain_runtime_contracts/task_3162_brain_runtime_contracts.md,task_report,commit_ready,Task3162 report.
+docs/reports/task_3162_brain_runtime_contracts/task_3162_decision.csv,decision_csv,commit_ready,Task3162 decision row.
+docs/reports/task_3162_brain_runtime_contracts/artifact_manifest.csv,artifact_manifest,commit_ready,Task3162 artifact manifest.
+data/artifacts/task_3162_brain_runtime_contracts/.gitkeep,artifact_dir_marker,commit_ready,Empty artifact directory marker for registry path validation.
+tasks/task_registry.csv,registry,commit_ready,Task3162 registry row.
+docs/operating_system/project_operating_state.md,operating_state,commit_ready,Task3162 operating state entry.
+docs/architecture/src_canonicalization_map.md,architecture_map,commit_ready,Task3162 source contract candidate classification.
+docs/architecture/test_validation_canonicalization_map.md,architecture_map,commit_ready,Task3162 package-health test classification.

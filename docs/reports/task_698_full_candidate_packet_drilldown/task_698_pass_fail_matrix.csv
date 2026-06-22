@@ -1,0 +1,9 @@
+gate_name,status,pass_flag,observed,required
+full_candidate_scope_435,PRIMARY_PASS,1,"rows=435; roles={'contender': 407, 'leader': 28}",Task698 must cover Task691 28 leaders plus 407 contenders
+freeze_panel_has_no_outcome_columns,PRIMARY_PASS,1,none,Freeze panel cannot contain PnL/outcome columns
+review_ready_packet_count_11,PRIMARY_PASS,1,review_ready=11,Review-ready automated packet scope should be 9 source-direct plus 2 price-confirmed rows
+exact_outcome_eval_count,PRIMARY_PASS,1,eval_rows=435; eval_flags=435,All frozen rows must evaluate by exact lifecycle join only
+cost_and_qqq_applied,PRIMARY_PASS,1,cost_bps=50; qqq_rows=435,Every evaluated row needs costed return and QQQ matched-window return
+bucket_summary_complete,PRIMARY_PASS,1,bucket_sum=435,Bucket summary must account for every frozen row
+portfolio_comparison_present,PRIMARY_PASS,1,rows=24,Portfolio comparison must cover declared cohorts and max position grids
+no_strategy_or_trade_promotion,PRIMARY_PASS,1,allocation_approved=0; paper_or_live_trade_approved=0,Full drilldown cannot promote allocation or trading

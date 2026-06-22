@@ -1,0 +1,9 @@
+gate_name,status,pass_flag,observed,required
+freeze_scope_5265,PRIMARY_PASS,1,rows=5265,full baseline candidate scope
+event_linked_scope_2445,PRIMARY_PASS,1,event_linked=2445,Task636 event-linked lifecycle coverage
+eligible_nonzero,PRIMARY_PASS,1,eligible=585,parser should produce eligible candidates
+price_context_full_coverage,PRIMARY_PASS,1,price_context=5265/5265,Task704 as-of-entry price context should cover the full freeze scope
+gpt_review_complete_before_report,PRIMARY_PASS,1,gpt_review_complete=1,GPT review artifact must exist before final Task703 report
+eval_rows_complete,PRIMARY_PASS,1,eval_rows=5265,evaluation attaches outcomes after freeze
+portfolio_comparison_present,PRIMARY_PASS,1,QQQ_buy_and_hold_same_horizon|all_5265_baseline_costed|event_linked_2445_costed|full_event_axis_eligible,portfolio cohorts and QQQ benchmark present
+no_strategy_or_trade_promotion,PRIMARY_PASS,1,allocation_approved=0; paper_or_live_trade_approved=0,Task703 is research-only

@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance,deployment_readiness,real_capital,summary,next_action
+Task3570,OPS_CLEANUP_SKILLIZATION_AUDIT_COMPLETE,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,"Removed generated caches, classified logs DBs Graphify external references and archive candidates, and produced a P0/P1/P2 skillization backlog; no trading logic source replay selector paper order broker submit live order or deployment status change.","Approve P0 skills after scheduler fallback monitoring and DB/log retention policy."

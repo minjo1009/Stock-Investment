@@ -1,0 +1,11 @@
+field,value
+task_id,Task658
+decision,RELATION_ENGINE_NOT_FIRM_GRADE_THEME_EXPOSURE_LAYER_REQUIRED
+strategy_acceptance_status,NOT_ACCEPTED
+real_capital_status,FORBIDDEN
+deployment_status,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+primary_finding,Current relation engine is macro sentiment overlay not firm-grade relation logic.
+firm_grade_gap,Missing macro-to-theme exposure translation and mechanism-level relation states.
+industry_specific_decision,Required for next implementation; use minimal exposure matrix not broad industry expansion.
+next_task,Task659 theme-specific macro company relation engine backtest.
+trading_promotion_pass_flag,0

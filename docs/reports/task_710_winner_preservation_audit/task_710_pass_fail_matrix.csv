@@ -1,0 +1,5 @@
+gate_name,status,pass_flag,observed,required
+winner_audit_present,PRIMARY_PASS,1,rows=2,>=2
+concentration_audit_present,PRIMARY_PASS,1,rows=108,>0
+overfit_matrix_present,PRIMARY_PASS,1,rows=4,>0
+no_rule_promotion,PRIMARY_PASS,1,diagnostic only,no promotion

@@ -1,0 +1,6 @@
+gate,pass_flag,metric,threshold
+official_source_ingestion,1,2 official lanes active,>=2 active official lanes
+event_overlay_diagnostic_candidate,0,earnings_proxy_sec_pre14d triggers=13 lift=6.83pp clean_false=53.85%,"triggers>=5, failure lift>=15pp, clean false<=60%"
+task610_reference_review_trigger,1,task610_exact_review_trigger triggers=6 lift=44.01pp clean_false=16.67%,reference only; not event-lane promotion
+source_completeness_for_trading_promotion,0,4 source lanes pending,0 pending material intelligence lanes
+no_leakage_or_label_assignment,1,same-day SEC filings require acceptance_ts <= entry_ts; labels not used in assignment,"no inferred lifecycle, no post-entry same-day filings, no labels"

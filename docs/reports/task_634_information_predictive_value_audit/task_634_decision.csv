@@ -1,0 +1,2 @@
+task_id,decision,strategy_acceptance_status,real_capital_status,stable_predictive_feature_count,strict_kept_count,strict_kept_avg_return_pct,missed_by_strict_count,missed_by_strict_avg_return_pct,trading_promotion_pass_flag,next_action
+Task634,FAIL_INFORMATION_PRESENCE_NOT_PREDICTIVE_NOT_ACCEPTED,NOT_ACCEPTED,FORBIDDEN,0,331,10.293253610919166,302,16.778596262868874,0,Replace event presence scoring with event-to-symbol relevance and validation/recent-OOS predictive gates before using information in assignment.

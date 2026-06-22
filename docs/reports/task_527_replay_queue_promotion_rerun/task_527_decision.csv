@@ -1,0 +1,2 @@
+task_id,candidate_count,promoted_candidate_count,has_clear_terminal_decision_flag,strategy_acceptance_status
+Task527,25,0,1,PROMOTION_RERUN_NEEDS_SUPPRESSION

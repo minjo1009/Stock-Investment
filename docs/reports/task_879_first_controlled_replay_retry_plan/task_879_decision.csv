@@ -1,0 +1,3 @@
+decision_area,status,decision,does_not_mean
+task_state,planned,Retry controlled replay only after market-data and trade-spec gates pass,strategy acceptance or deployment readiness
+

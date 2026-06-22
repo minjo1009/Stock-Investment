@@ -1,0 +1,11 @@
+field,value
+task_id,Task809
+decision,Task773 packet validator implemented
+status,Diagnostic Only
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+validator_script,scripts/trader_brain_attention_packet_validate.py
+sufficiency_states,enough_for_review|defer|source_gap|block|noise
+backtest_executed,NO
+next_action,Task810 cross layer jump guard

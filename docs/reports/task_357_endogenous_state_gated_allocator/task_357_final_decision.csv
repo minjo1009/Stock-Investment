@@ -1,0 +1,2 @@
+decision,decision_reason,best_framework_name,best_allocator_variant,best_anchored_oos_net_pnl_r,best_anchored_oos_drawdown,best_semis_loss_share,best_rolling_oos_robustness,anchored_oos_improvement_vs_baseline
+STATE_GATED_CONTINUATION,"State-aware allocation improves anchored OOS and concentration damage, but the sleeve is not yet fully repaired.",full_dislocation_mode,marginal_utility_allocator,-0.564779,2.594101,0.0,0.75,0.724838

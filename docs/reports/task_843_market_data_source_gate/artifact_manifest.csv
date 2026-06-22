@@ -1,0 +1,5 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"market_data_source_gate.csv","small_table","345","eada786750a736988af8499aef941f8f74abd61954c7c062ba704c79aab0f490"
+"market_data_source_manifest_schema.csv","small_table","497","c42de03fc8299e416f7929914bc4b0a1bb43c7cafefa30e1cb316da83fad65a8"
+"task_843_decision.csv","small_table","287","d760eec2fbcaf12a82134ad0f4be90a665b6424a7330739c176c77e24a30cc33"
+"task_843_market_data_source_gate.md","report","1337","42be2d91a25934d60a38fa224ebcc0e7909f85f8611d98063adf3ac1cb420287"

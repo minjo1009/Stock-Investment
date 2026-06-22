@@ -1,0 +1,11 @@
+﻿gate,pass_flag,observed_value,required_value
+gpt_review_captured,1,captured=1,GPT review-only implementation guidance must be captured
+deterministic_relation_state_panel,1,rows=189102,state panel must be nonempty
+no_assignment_leakage,1,violations=0,no label return future price or missing-source direction leakage
+sparse_cells_marked,1,sparse_cells=0,sparse cells must be marked research-only
+macro_vintage_release_gap_blocks_promotion,1,promotion_blocked_rows=189102,latest-vintage/release gap must block promotion
+relation_account_beats_qqq_full,1,Task651=$7341.22; QQQ=$1606.83,Task651 diagnostic account should beat full-period QQQ
+relation_account_beats_task639_full,0,Task651=$7341.22; Task639_recomputed=$7639.62,Task651 should beat recomputed Task639 to claim improvement
+validation_beats_qqq,1,validation=$1075.38; qqq=$1049.91,validation must beat same-period QQQ
+recent_oos_beats_qqq,1,recent=$1531.90; qqq=$1124.19,recent OOS must beat same-period QQQ
+trading_promotion,0,diagnostic relation engine only,"requires source-latency, release/vintage repair, paper-shadow replay, and live source readiness"

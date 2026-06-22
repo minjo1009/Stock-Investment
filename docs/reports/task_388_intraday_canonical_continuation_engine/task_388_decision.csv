@@ -1,0 +1,2 @@
+﻿task_388_verdict,intraday_engine_status,available_symbol_count,canonical_event_count,canonical_lifecycle_count,entry_count,add_count,scale_count,reduce_count,exit_count,closed_lifecycle_count,event_ordering_ready_flag,symbol_session_inference_used_flag,threshold_relaxation_flag,next_priority
+COMPLETE_PASS,INTRADAY_CANONICAL_STREAM_READY,12,679,216,216,106,54,92,211,211,1,0,0,task386_387_on_intraday_stream

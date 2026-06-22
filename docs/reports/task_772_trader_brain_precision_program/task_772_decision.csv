@@ -1,0 +1,12 @@
+field,value
+task_id,Task772
+decision,open Task772-Task781 as research-only precision program
+status,Diagnostic Only
+canonical_state,active
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+backtest_executed,NO
+gpt_source_of_truth,NO
+inferred_matching_used,NO
+next_action,Task773 attention budget contract

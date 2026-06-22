@@ -1,0 +1,13 @@
+artifact_path,artifact_type,commit_policy,description
+src/brain/runtime_catalog.py,package_file,commit_ready,Read-only adapter from paper ops runtime catalog payload to FrontendReadModel.
+src/brain/__init__.py,package_file,commit_ready,Updated brain package exports.
+src/brain/contracts.py,package_file,commit_ready,SourceGap.NONE hardening.
+tests/test_brain_runtime_catalog_adapter.py,test_file,commit_ready,Adapter package-health/reporting-boundary tests.
+tests/test_brain_runtime_contracts.py,test_file,commit_ready,Contract hardening test added.
+docs/contracts/brain_runtime_contract.md,contract_doc,commit_ready,Runtime catalog adapter contract section.
+docs/reports/task_3163_l6_l7_runtime_catalog_adapter/task_3163_l6_l7_runtime_catalog_adapter.md,task_report,commit_ready,Task3163 report.
+docs/reports/task_3163_l6_l7_runtime_catalog_adapter/task_3163_decision.csv,decision_csv,commit_ready,Task3163 decision row.
+docs/reports/task_3163_l6_l7_runtime_catalog_adapter/artifact_manifest.csv,artifact_manifest,commit_ready,Task3163 artifact manifest.
+data/artifacts/task_3163_l6_l7_runtime_catalog_adapter/.gitkeep,artifact_dir_marker,commit_ready,Empty artifact directory marker for registry path validation.
+tasks/task_registry.csv,registry,commit_ready,Task3163 registry row.
+docs/operating_system/project_operating_state.md,operating_state,commit_ready,Task3163 operating state entry.

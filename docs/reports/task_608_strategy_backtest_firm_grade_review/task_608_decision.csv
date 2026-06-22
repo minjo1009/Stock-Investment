@@ -1,0 +1,2 @@
+task_id,decision,firm_grade_pass_flag,strategy_acceptance_status,deployment_status,next_action
+Task608,RESEARCH_CANDIDATE_NOT_FIRM_GRADE,0,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,Run Task608A Theme Dependency Audit and Task608B Symbol Dependency Audit before any new alpha experiment.

@@ -1,0 +1,9 @@
+artifact_path,artifact_type,description
+docs/reports/task_3361_3370_relation_thesis_bridge/task_3361_3370_relation_thesis_bridge.md,report,Task3361-Task3370 relation thesis bridge report
+docs/reports/task_3361_3370_relation_thesis_bridge/task_3370_decision.csv,decision,Task3361-Task3370 decision row
+data/artifacts/task_3361_3370_relation_thesis_bridge/relation_summary.csv,summary,Relation thesis bridge summary
+data/artifacts/task_3361_3370_relation_thesis_bridge/relation_checks.csv,validation,Relation thesis bridge checks
+data/artifacts/task_3361_3370_relation_thesis_bridge/relation_edge_sample.csv,sample,Small relation edge sample
+data/artifacts/task_3361_3370_relation_thesis_bridge/thesis_sample.csv,sample,Small ThesisBundle sample
+data/artifacts/task_3361_3370_relation_thesis_bridge/decision.csv,decision,Generated validator decision row
+data/artifacts/task_3361_3370_relation_thesis_bridge/artifact_manifest.csv,manifest,Generated artifact manifest

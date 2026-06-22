@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import statistics
 from dataclasses import asdict
 from dataclasses import dataclass
@@ -13,6 +14,9 @@ import pandas as pd
 
 from backtest.data_loader import DEFAULT_BASE_DIR, DEFAULT_US_UNIVERSE, REQUIRED_COLUMNS, Bar, load_daily_bars, load_universe_daily_bars
 from backtest.models import TradeResult
+from backtest.analysis_sector import SYMBOL_TO_SECTOR
+from strategy.conditions import is_breakout, is_exit_condition, is_ma_trend, prepare_condition_frame
+from strategy.validator import validate_trade_alignment
 
 
 STRATEGY_ID = "us_swing_breakout_v0"
@@ -24,14 +28,21 @@ MA_SLOW = 50
 ATR_PERIOD = 14
 ATR_MULT = 2.0
 MAX_HOLDING_DAYS = 20
+MAX_WAIT_BARS = 3
 GAP_FILTER_MAX = 0.03
 ENTRY_LIMIT_BUFFER = 0.001
+NEXT_BAR_EXECUTION_CONVENTION = (
+    "Signals are detected after bar i close. Entry gap checks and non-stop order "
+    "execution are evaluated on bar i+1 when that bar is available."
+)
 
 MIN_CLOSE = 5.0
 MIN_AVG_VOLUME = 1_000_000.0
 MIN_AVG_TURNOVER = 20_000_000.0
 MAX_POSITION_WEIGHT = 0.10
 MIN_UNIVERSE_SIZE = 10
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -45,6 +56,42 @@ class OpenPosition:
     breakout_level: float
     stop_price: float
     reason: str
+    regime: str
+    signal_index: int
+    signal_time: datetime
+    breakout_flag: bool
+    ma_trend_flag: bool
+    canonical_lifecycle_id: str | None = None
+    had_exit_expired: bool = False
+
+
+@dataclass
+class PendingEntryOrder:
+    symbol: str
+    signal_index: int
+    signal_time: datetime
+    start_index: int
+    limit_price: float
+    quantity: float
+    breakout_level: float
+    stop_price: float
+    regime: str
+    breakout_flag: bool
+    ma_trend_flag: bool
+    signal_close: float
+    wait_bars: int = 0
+    status: str = "PENDING"
+
+
+@dataclass
+class PendingExitOrder:
+    signal_index: int
+    signal_time: datetime
+    start_index: int
+    limit_price: float | None
+    exit_rule: str
+    wait_bars: int = 0
+    status: str = "PENDING"
 
 
 @dataclass(frozen=True)
@@ -59,100 +106,323 @@ class BacktestSummary:
     max_drawdown: float
 
 
+@dataclass(frozen=True)
+class ExecutionStats:
+    entry_submitted: int
+    entry_filled: int
+    entry_expired: int
+    exit_submitted: int
+    exit_filled: int
+    exit_expired: int
+
+
 def run_quick_backtest(
     bars: list[Bar],
     *,
     symbol: str,
     initial_equity: float = 100_000.0,
 ) -> list[TradeResult]:
+    trades, _metadata, _stats = _run_quick_backtest_with_metadata(
+        bars,
+        symbol=symbol,
+        initial_equity=initial_equity,
+    )
+    return trades
+
+
+def _run_quick_backtest_with_metadata(
+    bars: list[Bar],
+    *,
+    symbol: str,
+    initial_equity: float = 100_000.0,
+    canonical_db_path: str | Path | None = None,
+) -> tuple[list[TradeResult], dict[str, dict[str, object]], ExecutionStats]:
     if len(bars) < MA_SLOW + 5:
-        return []
+        return [], {}, ExecutionStats(0, 0, 0, 0, 0, 0)
 
     equity = initial_equity
     trades: list[TradeResult] = []
+    metadata_by_trade_id: dict[str, dict[str, object]] = {}
     position: OpenPosition | None = None
+    pending_entry: PendingEntryOrder | None = None
+    pending_exit: PendingExitOrder | None = None
+    entry_submitted = 0
+    entry_filled = 0
+    entry_expired = 0
+    exit_submitted = 0
+    exit_filled = 0
+    exit_expired = 0
 
     closes = [bar.close for bar in bars]
     highs = [bar.high for bar in bars]
     lows = [bar.low for bar in bars]
     opens = [bar.open for bar in bars]
-    volumes = [bar.volume for bar in bars]
+    frame = prepare_condition_frame(
+        pd.DataFrame(
+            {
+                "timestamp": [bar.timestamp for bar in bars],
+                "open": opens,
+                "high": highs,
+                "low": lows,
+                "close": closes,
+                "volume": [bar.volume for bar in bars],
+            }
+        )
+    )
 
     start_index = max(MA_SLOW, BREAKOUT_WINDOW, ATR_PERIOD + 1)
     if start_index >= len(bars) - 1:
-        return []
+        return [], {}, ExecutionStats(0, 0, 0, 0, 0, 0)
 
     for i in range(start_index, len(bars) - 1):
-        if position is not None:
-            exit_reason = _exit_reason(i=i, closes=closes, lows=lows, position=position)
-            if exit_reason is not None:
-                exit_signal_price = closes[i]
-                exit_fill_price = opens[i + 1]
-                exit_time = bars[i + 1].timestamp
-                expected_pnl = (exit_signal_price - position.entry_price) * position.quantity
-                actual_pnl = (exit_fill_price - position.entry_fill_price) * position.quantity
-                holding_time = float((exit_time - position.entry_time).total_seconds())
-
-                trades.append(
-                    TradeResult(
-                        trade_id=f"bt-{symbol}-{len(trades) + 1:04d}",
-                        strategy_id=STRATEGY_ID,
-                        symbol=symbol,
-                        entry_time=position.entry_time,
-                        entry_price=position.entry_price,
-                        entry_fill_price=position.entry_fill_price,
-                        exit_time=exit_time,
-                        exit_price=exit_signal_price,
-                        exit_fill_price=exit_fill_price,
-                        quantity=position.quantity,
-                        expected_pnl=expected_pnl,
-                        actual_pnl=actual_pnl,
-                        slippage=position.entry_fill_price - position.entry_price,
-                        holding_time=holding_time,
-                    )
-                )
-                equity += actual_pnl
-                position = None
-                continue
-
-        if position is None:
-            entry_signal = _entry_signal(
-                i=i,
-                bars=bars,
-                closes=closes,
-                highs=highs,
-                volumes=volumes,
-                equity=equity,
-            )
-            if entry_signal is None:
-                continue
-
-            breakout_level, atr_value, reference_price = entry_signal
-            next_open = opens[i + 1]
-            close_now = closes[i]
-            gap_pct = (next_open - close_now) / close_now
+        # 1) Entry pending order execution.
+        if position is None and pending_entry is not None and i >= pending_entry.start_index:
+            gap_pct = _entry_execution_gap_pct(open_price=opens[i], signal_close=pending_entry.signal_close)
             if gap_pct > GAP_FILTER_MAX:
-                continue
+                entry_expired += 1
+                pending_entry.status = "EXPIRED"
+                pending_entry = None
+            elif lows[i] <= pending_entry.limit_price <= highs[i]:
+                entry_filled += 1
+                pending_entry.status = "FILLED"
+                canonical_lifecycle_id = None
+                if canonical_db_path is not None:
+                    (
+                        build_canonical_lifecycle_id,
+                        start_canonical_position_lifecycle,
+                        _append_canonical_position_event,
+                    ) = _load_canonical_lifecycle_writers()
+                    entry_ts = _canonical_backtest_event_timestamp(bars[i].timestamp)
+                    canonical_lifecycle_id = build_canonical_lifecycle_id(
+                        symbol=symbol,
+                        entry_timestamp=entry_ts,
+                        entry_order_id=f"bt-entry|{symbol}|{pending_entry.signal_index}|{i}",
+                        trade_run_id=f"offline_backtest|{symbol}",
+                    )
+                    start_canonical_position_lifecycle(
+                        str(canonical_db_path),
+                        lifecycle_id=canonical_lifecycle_id,
+                        symbol=symbol,
+                        entry_timestamp=entry_ts,
+                        entry_order_id=f"bt-entry|{symbol}|{pending_entry.signal_index}|{i}",
+                        trade_run_id=f"offline_backtest|{symbol}",
+                        quantity=float(pending_entry.quantity),
+                        price=float(pending_entry.limit_price),
+                        size_multiplier=1.0,
+                        capture_mode="historical_backfill",
+                        capture_batch_id="engine_quick_backtest",
+                        details={
+                            "capture_expansion_task": "384",
+                            "emission_mode": "engine_event_time",
+                            "source_engine": "backtest.engine",
+                            "signal_index": pending_entry.signal_index,
+                            "entry_index": i,
+                        },
+                    )
+                position = OpenPosition(
+                    symbol=symbol,
+                    quantity=pending_entry.quantity,
+                    entry_index=i,
+                    entry_time=bars[i].timestamp,
+                    entry_price=pending_entry.breakout_level,
+                    entry_fill_price=pending_entry.limit_price,
+                    breakout_level=pending_entry.breakout_level,
+                    stop_price=pending_entry.stop_price,
+                    reason="ENTRY_BREAKOUT",
+                    regime=pending_entry.regime,
+                    signal_index=pending_entry.signal_index,
+                    signal_time=pending_entry.signal_time,
+                    breakout_flag=pending_entry.breakout_flag,
+                    ma_trend_flag=pending_entry.ma_trend_flag,
+                    canonical_lifecycle_id=canonical_lifecycle_id,
+                )
+                pending_entry = None
+            else:
+                pending_entry.wait_bars = i - pending_entry.signal_index
+                if pending_entry.wait_bars >= MAX_WAIT_BARS:
+                    entry_expired += 1
+                    pending_entry.status = "EXPIRED"
+                    pending_entry = None
 
-            entry_limit_price = reference_price * (1 + ENTRY_LIMIT_BUFFER)
-            position_cap = equity * MAX_POSITION_WEIGHT
-            quantity = floor(position_cap / entry_limit_price)
-            if quantity < 1:
-                continue
+        # 2) Generate entry signal only when flat and no pending order.
+        if position is None and pending_entry is None:
+            entry_signal = _entry_signal(i=i, frame=frame, equity=equity)
+            if entry_signal is not None:
+                breakout_level, atr_value, reference_price, breakout_flag, ma_trend_flag = entry_signal
+                close_now = closes[i]
+                limit_price = reference_price * (1 + ENTRY_LIMIT_BUFFER)
+                position_cap = equity * MAX_POSITION_WEIGHT
+                quantity = floor(position_cap / limit_price)
+                if quantity >= 1:
+                    entry_submitted += 1
+                    regime = _regime_label(frame=frame, i=i)
+                    pending_entry = PendingEntryOrder(
+                        symbol=symbol,
+                        signal_index=i,
+                        signal_time=bars[i].timestamp,
+                        start_index=i + 1,
+                        limit_price=limit_price,
+                        quantity=float(quantity),
+                        breakout_level=breakout_level,
+                        stop_price=reference_price - ATR_MULT * atr_value,
+                        regime=regime,
+                        breakout_flag=breakout_flag,
+                        ma_trend_flag=ma_trend_flag,
+                        signal_close=close_now,
+                    )
 
-            position = OpenPosition(
+        # 3) Exit pending order execution and stop handling.
+        if position is not None:
+            if lows[i] <= position.stop_price:
+                exit_submitted += 1
+                exit_filled += 1
+                exit_signal_price = position.stop_price
+                exit_fill_price = position.stop_price
+                exit_time = bars[i].timestamp
+                stop_hit_flag = True
+                trend_break_2bar_flag = False
+                exit_rule = "STOP"
+                exit_signal_time = bars[i].timestamp
+                entry_wait_bars = max(0, position.entry_index - position.signal_index)
+                exit_wait_bars = 0
+                entry_order_status = "FILLED"
+                exit_order_status = "FILLED"
+            else:
+                if pending_exit is None:
+                    exit_reason = _exit_reason(i=i, frame=frame, lows=lows, position=position)
+                    if exit_reason is not None:
+                        exit_submitted += 1
+                        pending_exit = PendingExitOrder(
+                            signal_index=i,
+                            signal_time=bars[i].timestamp,
+                            start_index=i + 1,
+                            limit_price=None,
+                            exit_rule=("TREND_BREAK_2BAR" if exit_reason == "EXIT_TREND_BREAK" else "TIME_EXIT"),
+                        )
+
+                if pending_exit is not None and i >= pending_exit.start_index:
+                    exit_execution_price = _pending_exit_execution_price(pending_exit=pending_exit, open_price=opens[i])
+                    if lows[i] <= exit_execution_price <= highs[i]:
+                        exit_filled += 1
+                        pending_exit.status = "FILLED"
+                        exit_signal_price = closes[pending_exit.signal_index]
+                        exit_fill_price = exit_execution_price
+                        exit_time = bars[i].timestamp
+                        stop_hit_flag = False
+                        trend_break_2bar_flag = pending_exit.exit_rule == "TREND_BREAK_2BAR"
+                        exit_rule = pending_exit.exit_rule
+                        exit_signal_time = pending_exit.signal_time
+                        entry_wait_bars = max(0, position.entry_index - position.signal_index)
+                        exit_wait_bars = max(0, i - pending_exit.signal_index)
+                        entry_order_status = "FILLED"
+                        exit_order_status = "FILLED"
+                        pending_exit = None
+                    else:
+                        pending_exit.wait_bars = i - pending_exit.signal_index
+                        if pending_exit.wait_bars >= MAX_WAIT_BARS:
+                            exit_expired += 1
+                            pending_exit.status = "EXPIRED"
+                            pending_exit = None
+                            position.had_exit_expired = True
+                        continue
+                else:
+                    continue
+
+            expected_pnl = (exit_signal_price - position.entry_price) * position.quantity
+            actual_pnl = (exit_fill_price - position.entry_fill_price) * position.quantity
+            holding_time = float((exit_time - position.entry_time).total_seconds())
+            trade_id = f"bt-{symbol}-{len(trades) + 1:04d}"
+            trade = TradeResult(
+                trade_id=trade_id,
+                strategy_id=STRATEGY_ID,
                 symbol=symbol,
-                quantity=float(quantity),
-                entry_index=i + 1,
-                entry_time=bars[i + 1].timestamp,
-                entry_price=reference_price,
-                entry_fill_price=next_open,
-                breakout_level=breakout_level,
-                stop_price=reference_price - ATR_MULT * atr_value,
-                reason="ENTRY_BREAKOUT",
+                entry_time=position.entry_time,
+                entry_price=position.entry_price,
+                entry_fill_price=position.entry_fill_price,
+                exit_time=exit_time,
+                exit_price=exit_signal_price,
+                exit_fill_price=exit_fill_price,
+                quantity=position.quantity,
+                expected_pnl=expected_pnl,
+                actual_pnl=actual_pnl,
+                slippage=position.entry_fill_price - position.entry_price,
+                holding_time=holding_time,
             )
+            trades.append(trade)
+            if canonical_db_path is not None and position.canonical_lifecycle_id is not None:
+                (
+                    _build_canonical_lifecycle_id,
+                    _start_canonical_position_lifecycle,
+                    append_canonical_position_event,
+                ) = _load_canonical_lifecycle_writers()
+                append_canonical_position_event(
+                    str(canonical_db_path),
+                    lifecycle_id=position.canonical_lifecycle_id,
+                    event_type="EXIT",
+                    event_timestamp=_canonical_backtest_event_timestamp(exit_time),
+                    order_id=f"{trade_id}|EXIT",
+                    trade_run_id=trade_id,
+                    quantity=-float(position.quantity),
+                    price=float(exit_fill_price),
+                    size_multiplier=0.0,
+                    capture_mode="historical_backfill",
+                    capture_batch_id="engine_quick_backtest",
+                    details={
+                        "capture_expansion_task": "384",
+                        "emission_mode": "engine_event_time",
+                        "source_engine": "backtest.engine",
+                        "exit_rule": exit_rule,
+                    },
+                )
+            metadata: dict[str, object] = {
+                "signal_bar_index": position.signal_index,
+                "signal_bar_time": position.signal_time.isoformat(),
+                "entry_fill_bar_time": position.entry_time.isoformat(),
+                "exit_signal_bar_time": exit_signal_time.isoformat(),
+                "exit_fill_bar_time": exit_time.isoformat(),
+                "entry_rule": "BREAKOUT + MA_TREND",
+                "exit_rule": exit_rule,
+                "breakout_level": float(position.breakout_level),
+                "stop_price": float(position.stop_price),
+                "target_price": None,
+                "breakout_flag": bool(position.breakout_flag),
+                "ma_trend_flag": bool(position.ma_trend_flag),
+                "trend_break_2bar_flag": trend_break_2bar_flag,
+                "stop_hit_flag": stop_hit_flag,
+                "entry_order_status": entry_order_status,
+                "exit_order_status": exit_order_status,
+                "entry_wait_bars": entry_wait_bars,
+                "exit_wait_bars": exit_wait_bars,
+                "unfilled_flag": bool(position.had_exit_expired),
+                "expired_flag": bool(position.had_exit_expired),
+                "regime": position.regime,
+                "sector": SYMBOL_TO_SECTOR.get(symbol, "UNMAPPED"),
+                "reason": "ENTRY_BREAKOUT",
+                "lifecycle_id": position.canonical_lifecycle_id,
+            }
+            validation = validate_trade_alignment(asdict(trade) | metadata, frame)
+            if validation.alignment_result != "MATCH":
+                metadata["validation_error"] = ", ".join(validation.mismatch_reasons) if validation.mismatch_reasons else "alignment mismatch"
+                logger.warning(
+                    "alignment mismatch trade_id=%s symbol=%s reasons=%s",
+                    trade_id,
+                    symbol,
+                    metadata["validation_error"],
+                )
+            else:
+                metadata["validation_error"] = None
+            metadata_by_trade_id[trade_id] = metadata
+            equity += actual_pnl
+            position = None
 
-    return trades
+    return trades, metadata_by_trade_id, ExecutionStats(
+        entry_submitted=entry_submitted,
+        entry_filled=entry_filled,
+        entry_expired=entry_expired,
+        exit_submitted=exit_submitted,
+        exit_filled=exit_filled,
+        exit_expired=exit_expired,
+    )
 
 
 def run_quick_backtest_universe(
@@ -161,13 +431,55 @@ def run_quick_backtest_universe(
     base_dir: str | Path = DEFAULT_BASE_DIR,
     initial_equity: float = 100_000.0,
 ) -> list[TradeResult]:
+    trades, _metadata, _stats = run_quick_backtest_universe_with_metadata(
+        symbols=symbols,
+        base_dir=base_dir,
+        initial_equity=initial_equity,
+    )
+    return trades
+
+
+def run_quick_backtest_universe_with_metadata(
+    *,
+    symbols: list[str],
+    base_dir: str | Path = DEFAULT_BASE_DIR,
+    initial_equity: float = 100_000.0,
+    canonical_db_path: str | Path | None = None,
+) -> tuple[list[TradeResult], dict[str, dict[str, object]], ExecutionStats]:
     frames = load_universe_daily_bars(symbols, base_dir=base_dir)
     all_trades: list[TradeResult] = []
+    metadata_by_trade_id: dict[str, dict[str, object]] = {}
+    entry_submitted = 0
+    entry_filled = 0
+    entry_expired = 0
+    exit_submitted = 0
+    exit_filled = 0
+    exit_expired = 0
     for symbol in sorted(frames.keys()):
         bars = _bars_from_dataframe(frames[symbol])
-        symbol_trades = run_quick_backtest(bars, symbol=symbol, initial_equity=initial_equity)
+        symbol_trades, symbol_metadata, stats = _run_quick_backtest_with_metadata(
+            bars,
+            symbol=symbol,
+            initial_equity=initial_equity,
+            canonical_db_path=canonical_db_path,
+        )
         all_trades.extend(symbol_trades)
-    return sorted(all_trades, key=lambda trade: trade.entry_time)
+        metadata_by_trade_id.update(symbol_metadata)
+        entry_submitted += stats.entry_submitted
+        entry_filled += stats.entry_filled
+        entry_expired += stats.entry_expired
+        exit_submitted += stats.exit_submitted
+        exit_filled += stats.exit_filled
+        exit_expired += stats.exit_expired
+    sorted_trades = sorted(all_trades, key=lambda trade: trade.entry_time)
+    return sorted_trades, metadata_by_trade_id, ExecutionStats(
+        entry_submitted=entry_submitted,
+        entry_filled=entry_filled,
+        entry_expired=entry_expired,
+        exit_submitted=exit_submitted,
+        exit_filled=exit_filled,
+        exit_expired=exit_expired,
+    )
 
 
 def save_trades(
@@ -175,6 +487,8 @@ def save_trades(
     *,
     path: str | Path = "data/backtest/trades.json",
     default_reason: str = "ENTRY_BREAKOUT",
+    metadata_by_trade_id: dict[str, dict[str, object]] | None = None,
+    execution_stats: ExecutionStats | None = None,
 ) -> Path:
     """Persist trade results for UI consumption.
 
@@ -196,16 +510,50 @@ def save_trades(
             if isinstance(value, datetime):
                 item[key] = value.isoformat()
 
-        # Keep model contract intact while exporting optional UI hints.
-        item["breakout_level"] = None
-        item["stop_price"] = None
-        item["reason"] = default_reason
+        metadata = (metadata_by_trade_id or {}).get(trade.trade_id, {})
+        item["signal_bar_index"] = metadata.get("signal_bar_index")
+        item["signal_bar_time"] = metadata.get("signal_bar_time")
+        item["entry_fill_bar_time"] = metadata.get("entry_fill_bar_time")
+        item["exit_signal_bar_time"] = metadata.get("exit_signal_bar_time")
+        item["exit_fill_bar_time"] = metadata.get("exit_fill_bar_time")
+        item["entry_rule"] = metadata.get("entry_rule", "BREAKOUT + MA_TREND")
+        item["exit_rule"] = metadata.get("exit_rule")
+        item["breakout_level"] = metadata.get("breakout_level")
+        item["stop_price"] = metadata.get("stop_price")
+        item["target_price"] = metadata.get("target_price")
+        item["breakout_flag"] = metadata.get("breakout_flag")
+        item["ma_trend_flag"] = metadata.get("ma_trend_flag")
+        item["trend_break_2bar_flag"] = metadata.get("trend_break_2bar_flag")
+        item["stop_hit_flag"] = metadata.get("stop_hit_flag")
+        item["entry_order_status"] = metadata.get("entry_order_status")
+        item["exit_order_status"] = metadata.get("exit_order_status")
+        item["entry_wait_bars"] = metadata.get("entry_wait_bars")
+        item["exit_wait_bars"] = metadata.get("exit_wait_bars")
+        item["unfilled_flag"] = metadata.get("unfilled_flag")
+        item["expired_flag"] = metadata.get("expired_flag")
+        item["regime"] = metadata.get("regime")
+        item["sector"] = metadata.get("sector")
+        item["reason"] = metadata.get("reason", default_reason)
+        item["lifecycle_id"] = metadata.get("lifecycle_id")
+        item["validation_error"] = metadata.get("validation_error")
         rows.append(item)
 
     payload = {
         "generated_at": datetime.now().astimezone().isoformat(),
         "strategy_id": STRATEGY_ID,
         "count": len(rows),
+        "execution_stats": (
+            {
+                "entry_submitted": execution_stats.entry_submitted,
+                "entry_filled": execution_stats.entry_filled,
+                "entry_expired": execution_stats.entry_expired,
+                "exit_submitted": execution_stats.exit_submitted,
+                "exit_filled": execution_stats.exit_filled,
+                "exit_expired": execution_stats.exit_expired,
+            }
+            if execution_stats is not None
+            else None
+        ),
         "trades": rows,
     }
     output_path.write_text(json.dumps(payload, ensure_ascii=True, indent=2), encoding="utf-8")
@@ -304,58 +652,66 @@ def _bars_from_dataframe(frame: pd.DataFrame) -> list[Bar]:
     return bars
 
 
+def _entry_execution_gap_pct(*, open_price: float, signal_close: float) -> float:
+    if signal_close <= 0:
+        raise ValueError("signal_close must be positive")
+    return (open_price - signal_close) / signal_close
+
+
+def _pending_exit_execution_price(*, pending_exit: PendingExitOrder, open_price: float) -> float:
+    return float(open_price) if pending_exit.limit_price is None else float(pending_exit.limit_price)
+
+
+def _load_canonical_lifecycle_writers():
+    from backtest.canonical_position_lifecycle_event_sourcing import (
+        append_canonical_position_event,
+        build_canonical_lifecycle_id,
+        start_canonical_position_lifecycle,
+    )
+
+    return build_canonical_lifecycle_id, start_canonical_position_lifecycle, append_canonical_position_event
+
+
 def _entry_signal(
     *,
     i: int,
-    bars: list[Bar],
-    closes: list[float],
-    highs: list[float],
-    volumes: list[float],
+    frame: pd.DataFrame,
     equity: float,
-) -> tuple[float, float, float] | None:
-    close_now = closes[i]
-    if close_now < MIN_CLOSE:
+) -> tuple[float, float, float, bool, bool] | None:
+    close_now = _frame_value(frame, i, "close")
+    if close_now is None or close_now < MIN_CLOSE:
         return None
 
     max_affordable_price = equity * MAX_POSITION_WEIGHT
     if close_now > max_affordable_price:
         return None
 
-    sma20 = _sma(closes, i, MA_FAST)
-    sma50 = _sma(closes, i, MA_SLOW)
-    if sma20 is None or sma50 is None:
+    breakout_flag = bool(is_breakout(frame, i) is True)
+    ma_trend_flag = bool(is_ma_trend(frame, i) is True)
+    if not breakout_flag or not ma_trend_flag:
         return None
 
-    trend_ok = close_now > sma50 and sma20 > sma50
-    if not trend_ok:
-        return None
-
-    avg_volume20 = _avg(volumes, i, 20)
-    turnover = [bar.close * bar.volume for bar in bars]
-    avg_turnover20 = _avg(turnover, i, 20)
+    avg_volume20 = _frame_value(frame, i, "avg_volume_20")
+    avg_turnover20 = _frame_value(frame, i, "avg_turnover_20")
     if avg_volume20 is None or avg_turnover20 is None:
         return None
     if avg_volume20 < MIN_AVG_VOLUME or avg_turnover20 < MIN_AVG_TURNOVER:
         return None
 
-    breakout_level = _highest_prev(highs, i, BREAKOUT_WINDOW)
-    if breakout_level is None or close_now < breakout_level:
-        return None
-
-    atr_value = _atr(bars, i, ATR_PERIOD)
+    breakout_level = _frame_value(frame, i, "rolling_high_20")
+    atr_value = _frame_value(frame, i, "atr14")
     if atr_value is None or atr_value <= 0:
         return None
 
     reference_price = breakout_level
-    return breakout_level, atr_value, reference_price
+    return breakout_level, atr_value, reference_price, breakout_flag, ma_trend_flag
 
 
-def _exit_reason(*, i: int, closes: list[float], lows: list[float], position: OpenPosition) -> str | None:
+def _exit_reason(*, i: int, frame: pd.DataFrame, lows: list[float], position: OpenPosition) -> str | None:
     if lows[i] <= position.stop_price:
         return "EXIT_STOP"
 
-    sma20_now = _sma(closes, i, MA_FAST)
-    if sma20_now is not None and closes[i] < sma20_now:
+    if is_exit_condition(frame, i) is True:
         return "EXIT_TREND_BREAK"
 
     holding_days = i - position.entry_index + 1
@@ -363,6 +719,23 @@ def _exit_reason(*, i: int, closes: list[float], lows: list[float], position: Op
         return "EXIT_TIME"
 
     return None
+
+
+def _frame_value(frame: pd.DataFrame, i: int, column: str) -> float | None:
+    if column not in frame.columns or not (0 <= i < len(frame)):
+        return None
+    value = frame.iloc[i][column]
+    if pd.isna(value):
+        return None
+    return float(value)
+
+
+def _regime_label(*, frame: pd.DataFrame, i: int) -> str:
+    close_now = _frame_value(frame, i, "close")
+    ma200 = _frame_value(frame, i, "ma200")
+    if close_now is None or ma200 is None:
+        return "BEAR"
+    return "BULL" if close_now >= ma200 else "BEAR"
 
 
 def _avg(series: list[float], i: int, window: int) -> float | None:
@@ -454,6 +827,7 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--print-trades", type=int, default=5, help="How many trade rows to print")
     parser.add_argument("--initial-equity", type=float, default=100_000.0, help="Per-symbol quick sizing equity")
     parser.add_argument("--output", type=str, default="data/backtest/trades.json", help="TradeResult export JSON path")
+    parser.add_argument("--canonical-db", type=str, default="", help="Optional canonical lifecycle DB path")
     return parser.parse_args(argv)
 
 
@@ -464,18 +838,61 @@ def main(argv: list[str] | None = None) -> int:
 
     _validate_preconditions(symbols, base_dir=data_dir)
 
-    trades = run_quick_backtest_universe(symbols=symbols, base_dir=data_dir, initial_equity=args.initial_equity)
+    trades, metadata_by_trade_id, execution_stats = run_quick_backtest_universe_with_metadata(
+        symbols=symbols,
+        base_dir=data_dir,
+        initial_equity=args.initial_equity,
+        canonical_db_path=args.canonical_db or None,
+    )
     summary = summarize(trades)
 
     print(f"[INPUT] data_dir={data_dir} symbols={len(symbols)}")
     _print_summary(summary)
     _print_trade_samples(trades, max_rows=max(1, args.print_trades))
-    output_path = save_trades(trades, path=args.output)
+    output_path = save_trades(
+        trades,
+        path=args.output,
+        metadata_by_trade_id=metadata_by_trade_id,
+        execution_stats=execution_stats,
+    )
     print(f"[EXPORT] trades_json={output_path} count={len(trades)}")
+    if execution_stats.entry_submitted > 0:
+        entry_fill_rate = execution_stats.entry_filled / execution_stats.entry_submitted * 100.0
+        entry_expired_rate = execution_stats.entry_expired / execution_stats.entry_submitted * 100.0
+    else:
+        entry_fill_rate = 0.0
+        entry_expired_rate = 0.0
+    if execution_stats.exit_submitted > 0:
+        exit_fill_rate = execution_stats.exit_filled / execution_stats.exit_submitted * 100.0
+        exit_expired_rate = execution_stats.exit_expired / execution_stats.exit_submitted * 100.0
+    else:
+        exit_fill_rate = 0.0
+        exit_expired_rate = 0.0
+    print(
+        "[EXECUTION] "
+        f"entry_submitted={execution_stats.entry_submitted} "
+        f"entry_filled={execution_stats.entry_filled} "
+        f"entry_expired={execution_stats.entry_expired} "
+        f"entry_fill_rate={entry_fill_rate:.2f}% "
+        f"entry_expired_rate={entry_expired_rate:.2f}%"
+    )
+    print(
+        "[EXECUTION] "
+        f"exit_submitted={execution_stats.exit_submitted} "
+        f"exit_filled={execution_stats.exit_filled} "
+        f"exit_expired={execution_stats.exit_expired} "
+        f"exit_fill_rate={exit_fill_rate:.2f}% "
+        f"exit_expired_rate={exit_expired_rate:.2f}%"
+    )
 
     if not trades:
         print("[WARN] no trades generated for the selected universe.")
     return 0
+
+
+def _canonical_backtest_event_timestamp(value: datetime) -> str:
+    """Daily-bar offline convention: record generated events at US cash open proxy."""
+    return value.date().isoformat() + "T14:30:00+00:00"
 
 
 if __name__ == "__main__":

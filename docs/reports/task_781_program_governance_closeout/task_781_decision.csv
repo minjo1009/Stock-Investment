@@ -1,0 +1,11 @@
+field,value
+task_id,Task781
+decision,precision program closeout complete
+status,Diagnostic Only
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+child_contracts_completed,Task773|Task774|Task775|Task776|Task777|Task778|Task779|Task780
+backtest_executed,NO
+acceptance_changed,NO
+next_action,Task782-791 branchpoint closeout and Task773 handoff

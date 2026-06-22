@@ -1,0 +1,6 @@
+gate_name,status,pass_flag,observed,required
+competition_panel_present,PRIMARY_PASS,1,competition=1621; explanations=1621,one explanation per competition row
+same_timestamp_rank_scope_only,PRIMARY_PASS,1,{'same_entry_ts_split_only': 1621},no global ranking scope
+slot_hurdle_decomposed,PRIMARY_PASS,1,hurdle_states=4,slot hurdle candidates should split into multiple states
+no_outcome_columns_in_slot_outputs,PRIMARY_PASS,1,none,PnL/outcome columns excluded
+no_strategy_promotion,PRIMARY_PASS,1,no PnL simulation or allocation rule promotion was run,slot hurdle explanation only

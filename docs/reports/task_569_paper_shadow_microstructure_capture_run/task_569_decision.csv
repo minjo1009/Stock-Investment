@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,snapshot_rows,microstructure_ready_rows,pre_action_snapshot_rate
+Task569,DATA_INFRASTRUCTURE_ONLY_MARKET_HOURS_CAPTURE_REQUIRED,0,76,0,100.0

@@ -1,0 +1,4 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"leakage_guard_rules.csv","small_table","1020","0b13d28c24f591a1a0f49131676a5a277778b7be029ef59814b7c8f583c2d380"
+"task_832_decision.csv","small_table","272","d2e1f6d5198b7044ae50fe562129c1eddf07cba54c2bc9dda74507a312feef73"
+"task_832_leakage_guard_validator_design.md","report","1441","7e3f218df9603ff5a1a67b50483615b8e698104d484d61bec4dfa7daada9e78a"

@@ -1,0 +1,8 @@
+gate_name,status,pass_flag,observed,required
+freeze_scope_435,PRIMARY_PASS,1,rows=435,full Task698 freeze set
+source_event_available_19,PRIMARY_PASS,1,source_event_available=19,all Task693 source packet rows should be covered
+eligible_count_5,PRIMARY_PASS,1,eligible=5,expected eligible rows after full source packet axes
+asts_snow_blocked,PRIMARY_PASS,1,ASTS/SNOW eligible count=0,ASTS and SNOW should remain blocked
+eval_rows_complete,PRIMARY_PASS,1,eval_rows=435,evaluation attaches outcomes after freeze
+portfolio_comparison_present,PRIMARY_PASS,1,full_axis_eligible_5|source_packet_available_19,portfolio comparison cohorts are present
+no_strategy_or_trade_promotion,PRIMARY_PASS,1,allocation_approved=0; paper_or_live_trade_approved=0,Task702 is research-only

@@ -1,0 +1,2 @@
+decision,decision_reason,signal_classification,subset_classification,portfolio_classification
+PARTIAL_ARTIFACT_WITH_REAL_WEAKNESS,"Coverage artifact materially suppressed the intraday and subset signal, but portfolio translation remains weak after correction.",PARTIAL,STRONG,NONE

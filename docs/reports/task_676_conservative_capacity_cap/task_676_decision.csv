@@ -1,0 +1,2 @@
+﻿task_id,decision,strategy_acceptance_status,deployment_status,real_capital_status,trading_promotion_pass_flag,promotion_candidate_count,best_candidate_name,best_final_capital_usd,best_max_drawdown_pct,next_action
+Task676,CONSERVATIVE_CAP_TESTED_PROMOTION_GATE_EVALUATED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,0,0,active_relation_cap3_reference,10887.474713480713,-30.524857842425657,"If no candidate passes all gates, keep as research and inspect which cap damaged winners."

@@ -1,0 +1,7 @@
+gate_name,status,pass_flag,observed,required
+circuit_contexts_created,PRIMARY_PASS,1,rows=5302,5302
+context_edges_created,PRIMARY_PASS,1,rows=5302,5302
+coverage_has_seven_families,PRIMARY_PASS,1,families=7,7
+alive_states_present,PRIMARY_PASS,1,states=7,>=7
+forbidden_fact_guardrail_all_pass,PRIMARY_PASS,1,min=1,1
+backtest_permission,NOT_ACCEPTED,0,FAIL,context interpreter only

@@ -1,0 +1,11 @@
+field,value
+task_id,Task789
+decision,source sufficiency state contract complete
+status,Diagnostic Only
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+sufficiency_states,5
+missing_to_negative_conversion,NO
+hidden_score_created,NO
+next_action,Task790 cross expert conflict arbitration

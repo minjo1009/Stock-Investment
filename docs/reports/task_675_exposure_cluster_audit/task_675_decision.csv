@@ -1,0 +1,2 @@
+﻿task_id,decision,strategy_acceptance_status,deployment_status,real_capital_status,trading_promotion_pass_flag,exposure_audit_rows,assignment_used_flag,next_action
+Task675,EXPOSURE_CLUSTER_AUDIT_BUILT_DIAGNOSTIC_ONLY,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,0,225,0,Use exposure audit to predeclare conservative caps; do not derive caps from MDD-only hindsight.

@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,ready_grid_axis_count,blocked_grid_axis_count,approximation_used_flag
+Task565,DATA_BLOCKED_MICROSTRUCTURE_RETEST_NOT_RUN,0,3,3,0

@@ -1,0 +1,2 @@
+decision,decision_reason,best_candidate_id,anchored_oos_expectancy_delta_vs_base_subset,rolling_positive_window_count,converted_failure_windows,holdout_mean_lift,survives_2x_cost,symbol_concentration_share
+REGIME_CONDITIONAL_EDGE,"candidate_C is not universal, but sector_group=software_internet stabilizes the edge enough to justify regime-conditional deployment",candidate_C,1.467233,4,2,0.604018,True,1.0

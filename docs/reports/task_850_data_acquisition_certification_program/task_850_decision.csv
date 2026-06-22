@@ -1,0 +1,7 @@
+decision_area,status,decision,does_not_mean
+program_opened,go,Open Task850-Task859 as data acquisition certification program,strategy acceptance or deployment readiness
+existing_data_policy,keep_and_audit,Do not delete existing raw data and do not redownload everything by default,existing data is certified
+first_replay_data_target,defined,Daily adjusted OHLCV plus 15m bars plus market calendar plus corporate actions plus symbol master,backtest execution permission
+microstructure_scope,research_only,Alpaca SIP parquet stays out of first controlled replay unless explicitly scoped later,live-ready source claim
+market_data_gate,current_no_go,Task843 remains blocked until certified market data manifest exists,program failure
+

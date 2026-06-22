@@ -1,0 +1,6 @@
+gate_name,status,pass_flag,observed,required
+source_gap_audit_complete,PRIMARY_PASS,1,source_gap=1621/1621,identify source gap scope
+assignment_ready_zero_detected,PRIMARY_PASS,1,assignment_ready=0,0 ready rows
+active_cap3_not_assignment_ready,PRIMARY_PASS,1,active_ready=0,active cap3 also not ready
+guarded_identity_explained,PRIMARY_PASS,1,accepted_context_superiority_challenger=0,no challenger admitted
+no_strategy_promotion,PRIMARY_PASS,1,Task685 audit only,NOT_ACCEPTED/FORBIDDEN

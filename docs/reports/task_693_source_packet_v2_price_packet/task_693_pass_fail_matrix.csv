@@ -1,0 +1,6 @@
+gate_name,status,pass_flag,observed,required
+source_event_evidence_present,PRIMARY_PASS,1,events=192; lifecycles=19,source event v2 evidence for all 19 leader source packets
+source_packet_v2_states_present,PRIMARY_PASS,1,packet_states=2,v2 interpreter should separate noise/manual/direct states where data supports it
+price_review_ready_packet_count,PRIMARY_PASS,1,price_packets=2,one packet for each Task692 review-ready price absorption candidate
+no_outcome_columns_in_task693_outputs,PRIMARY_PASS,1,none,PnL/outcome columns excluded
+no_strategy_promotion,PRIMARY_PASS,1,no PnL simulation or allocation rule promotion was run,packet review only

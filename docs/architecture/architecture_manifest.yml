@@ -1,0 +1,168 @@
+version: 1
+generated_for: architecture_normalization
+principle: documentation_first_no_trading_behavior_change
+
+layers:
+  market_data:
+    locations: [src/market, data/raw, future/src/market_data]
+    responsibilities: [ingest_quotes, normalize_bars, freshness_checks]
+    allowed_dependencies: [storage, config]
+    forbidden_dependencies: [broker, execution]
+  universe:
+    locations: [src/universe]
+    responsibilities: [symbol_selection, ranking]
+    allowed_dependencies: [market_data, storage]
+    forbidden_dependencies: [broker, execution]
+  features:
+    locations: [src/strategy/conditions.py, future/src/features]
+    responsibilities: [indicator_calculation, feature_frames]
+    allowed_dependencies: [market_data]
+    forbidden_dependencies: [broker, execution]
+  strategy:
+    locations: [src/strategy]
+    responsibilities: [candidate_signals]
+    allowed_dependencies: [features, universe, storage]
+    forbidden_dependencies: [broker, execution, integration]
+  risk:
+    locations: [src/risk]
+    responsibilities: [approval_gate, risk_limits, kill_switch_policy]
+    allowed_dependencies: [portfolio, storage, reporting]
+    forbidden_dependencies: [strategy_alpha_generation, broker_direct_ordering]
+  execution:
+    locations: [src/execution]
+    responsibilities: [order_lifecycle, cancel_loop, idempotency]
+    allowed_dependencies: [risk, storage, broker]
+    forbidden_dependencies: [strategy, features]
+  portfolio:
+    locations: [src/portfolio]
+    responsibilities: [allocation, exposure]
+    allowed_dependencies: [strategy, risk, storage]
+    forbidden_dependencies: [broker]
+  broker:
+    locations: [src/integration]
+    responsibilities: [kis_client, auth, external_api_adapters]
+    allowed_dependencies: [storage, config]
+    forbidden_dependencies: [strategy, portfolio]
+  storage:
+    locations: [src/state]
+    responsibilities: [sqlite_state, schema, persistence]
+    allowed_dependencies: [config]
+    forbidden_dependencies: [strategy_alpha_generation]
+  reporting:
+    locations: [src/reporting, src/analytics, docs/reports]
+    responsibilities: [metrics, reports, attribution]
+    allowed_dependencies: [storage, backtest]
+    forbidden_dependencies: [broker_order_submission]
+  intelligence:
+    locations: [docs/graphify, skills, future/src/intelligence]
+    responsibilities: [architecture_context, graph_analysis, advisory_outputs]
+    allowed_dependencies: [docs, reporting]
+    forbidden_dependencies: [execution, broker, trading_decision_creation]
+  apps:
+    locations: [src/app, src/ui]
+    responsibilities: [orchestration, cli_entrypoints, operator_ui]
+    allowed_dependencies: [market_data, strategy, risk, execution, broker, storage, reporting]
+    forbidden_dependencies: [core_business_logic_ownership]
+  backtest:
+    locations: [src/backtest]
+    responsibilities: [historical_simulation, research_metrics]
+    allowed_dependencies: [market_data, features, strategy, risk, portfolio, reporting]
+    forbidden_dependencies: [broker, integration.kis_client]
+  replay:
+    locations: [tests/replay, future/src/replay]
+    responsibilities: [deterministic_event_replay]
+    allowed_dependencies: [storage, execution, tests]
+    forbidden_dependencies: [real_broker_calls]
+  tests:
+    locations: [tests]
+    responsibilities: [regression, boundary_validation]
+    allowed_dependencies: [all_project_layers]
+    forbidden_dependencies: [real_order_submission]
+  docs:
+    locations: [docs, context, phases, tasks]
+    responsibilities: [contracts, reports, operating_system]
+    allowed_dependencies: []
+    forbidden_dependencies: [runtime_behavior]
+  experiments:
+    locations: [experiments, src/experiments, future/migrated_analysis_scripts]
+    responsibilities: [research_runs, task_runs]
+    allowed_dependencies: [backtest, reporting]
+    forbidden_dependencies: [production_runtime_imports]
+  archive:
+    locations: [archive, 참고 Context]
+    responsibilities: [external_references, obsolete_artifacts]
+    allowed_dependencies: []
+    forbidden_dependencies: [production_graph, production_imports]
+
+forbidden_dependencies:
+  - from: strategy
+    to: [broker, execution, integration]
+  - from: intelligence
+    to: [execution, broker]
+  - from: backtest
+    to: [broker, integration.kis_client]
+  - from: execution
+    to: [strategy, features]
+
+phase_structure:
+  root: docs/phases
+  phase_id_pattern: PHASE_[0-9][0-9]
+  required_files: [phase.md]
+  child_directories: [tasks, reports, decisions]
+
+task_structure:
+  task_id_pattern: TASK_[0-9][0-9][0-9]
+  required_fields:
+    - task_id
+    - phase_id
+    - owner_agent
+    - sub_agents
+    - required_skill
+    - input_artifacts
+    - expected_output_artifacts
+    - file_change_boundary
+    - acceptance_criteria
+    - validation_commands
+    - rollback_plan
+    - report_path
+
+artifact_storage_rules:
+  task_reports: docs/phases/{phase_id}/reports/{task_id}/
+  task_specs: docs/phases/{phase_id}/tasks/{task_id}.md
+  graphify_raw: docs/graphify/raw/
+  graphify_clean: docs/graphify/clean/
+  graphify_reports: docs/graphify/reports/
+  graphify_context_packs: docs/graphify/context_packs/
+  experiments: experiments/task_runs/ or experiments/backtest_research/
+  archive_external: archive/external_references/
+
+agent_roles:
+  - Architecture Orchestrator
+  - Graphify Analyst
+  - Repository Curator
+  - Domain Model Architect
+  - Backtest Architect
+  - Execution Architect
+  - Risk Architect
+  - Storage Architect
+  - Test Architect
+  - Documentation Steward
+
+graphify:
+  default_exclude:
+    - 참고 Context/
+    - archive/
+    - experiments/
+    - docs/reports/
+    - "**/task_*.py"
+    - "**/run_task_*.ps1"
+    - "**/__pycache__/"
+    - .venv/
+  modes:
+    production_graph:
+      include: [src, tests, config, docs/contracts, docs/specs, docs/architecture, docs/operating_system]
+      exclude: [참고 Context, archive, experiments, docs/reports, "**/task_*.py", "**/run_task_*.ps1", "**/__pycache__", .venv]
+    research_graph:
+      include: [src, tests, docs, experiments, 참고 Context]
+      separate_external_references: true
+

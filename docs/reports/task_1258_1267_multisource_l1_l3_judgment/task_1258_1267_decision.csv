@@ -1,0 +1,2 @@
+task_id,verdict,rulebook_rows,source_contract_rows,l1_rows,policy_shadow_rows,l2_rows,l3_rows,gap_rows,selection_promoted,replay_executed,strategy_acceptance,deployment_readiness,real_capital,next_action,authority
+Task1267,multisource_l1_l3_judgment_layer_implemented_no_replay,30,6,310,279,310,1860,4,0,0,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,"Attach historical source-time IR/CEO/transcript, contract/order, and analyst expectation feeds before replay.",DIAGNOSTIC_MULTISOURCE_L1_L3_JUDGMENT_ONLY

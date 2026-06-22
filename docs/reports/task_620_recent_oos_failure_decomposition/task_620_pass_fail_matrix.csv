@@ -1,0 +1,5 @@
+gate,pass_flag,observed_value,required_value
+taxonomy_coverage,1,100.00%,>=80.00% of recent OOS problem trades assigned to a taxonomy
+recent_oos_performance,0,avg=2.17%; win=33.03%; entry_reduce=60.55%,"avg>=5.00%, win>=50.00%, entry_reduce<=40.00%"
+degradation_explained,1,top_taxonomy_problem_count=29; overall_delta=-7.47pp,top taxonomy count >=20 and recent OOS degradation visible
+trading_promotion,0,recent OOS performance gate fails,"must pass recent OOS, cost/slippage, and live-source gates"

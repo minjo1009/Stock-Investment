@@ -1,0 +1,3 @@
+decision_area,status,decision,does_not_mean
+qqq_reference,completed,QQQ reference-only benchmark calculated from managed yfinance QQQ data,strategy replay pass or deployment readiness
+

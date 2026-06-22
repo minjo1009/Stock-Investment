@@ -1,0 +1,7 @@
+field,value
+verdict,NEGATIVE_ADAPTER_FIXTURES_IMPLEMENTED_RESEARCH_ONLY
+strategy_acceptance,NOT_ACCEPTED
+deployment_status,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+validation_authority,RESEARCH_ONLY
+next_action,Require new negative fixtures for new adapter rules

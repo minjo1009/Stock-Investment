@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,trading_promotion_pass_flag,information_group_count,high_severity_logic_gap_count,macro_assignment_status,relation_engine_status,primary_result,next_action
+Task687,INFORMATION_ONTOLOGY_LOGIC_AUDIT_COMPLETE_NOT_FIRM_GRADE_YET,NOT_ACCEPTED,FORBIDDEN,0,9,5,diagnostic_only,partial_not_full_context_graph,"Information exists, but firm-grade relational usage is not implemented yet.",Build explicit evidence-object -> economic-interpretation -> state-graph-edge contracts before another allocation rule.

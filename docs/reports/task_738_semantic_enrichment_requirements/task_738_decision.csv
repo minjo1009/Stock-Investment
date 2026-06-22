@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,requirement_count,bundle_count,requirement_family_count,resolver_target_count,high_review_lane_count,normal_review_lane_count,coverage_state,guardrail_pass,backtest_permission,next_action
+Task738,SEMANTIC_ENRICHMENT_REQUIREMENTS_BUILT_REVIEW_ONLY,NOT_ACCEPTED,FORBIDDEN,4101,235,13,12,86,4015,all_enrichment_bundles_have_requirement_objects,1,FAIL,"Use Task738 requirements to upgrade source extractors and resolvers by circuit before any allocation, scoring, or backtest experiment."

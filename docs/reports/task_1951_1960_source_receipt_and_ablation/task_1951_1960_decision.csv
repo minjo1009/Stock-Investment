@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,top5_shadow_candidate_count,strategy_acceptance,deployment_readiness,real_capital,next_required_action,authority
+Task1960,source_receipt_ablation_complete_diagnostic_only,source_receipt_hardened_top3_v1,3965.2058,0.305942,-0.238461,0,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,certify raw price/breadth source manifests and acquire PIT analyst/guidance or freeze top3-only policy before any top5 replay,DIAGNOSTIC_SOURCE_RECEIPT_ABLATION_ONLY

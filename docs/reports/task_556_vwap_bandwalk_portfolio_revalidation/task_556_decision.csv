@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,source_task,candidate_set_count,baseline_entry_reduce_rate,passing_candidate_set_count,validation_rows,recent_oos_rows,broker_truth_fill_used_flag,inferred_matching_used_flag,label_used_in_assignment_flag
+Task556,DIAGNOSTIC_PASS_ENTRY_REDUCE_REDUCED,0,Task550+Task553,48,33.18385650224215,1,45,46,0,0,0

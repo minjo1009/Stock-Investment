@@ -1,0 +1,81 @@
+{
+  "T092_SIGNAL_ALIGNMENT": {
+    "purpose": "Verify runtime/backtest consistency for data-feature-selection-signal.",
+    "core_files": [
+      "src/backtest/engine_full.py",
+      "src/strategy/conditions.py",
+      "src/app/run_trade_once.py",
+      "src/app/task_089_market_data_signal_refresh.py",
+      "src/ui/trade_review_model.py",
+      "src/ui/app.py",
+      "docs/reports/task_092/task_092_signal_alignment.md"
+    ],
+    "related_tests": [
+      "tests/test_run_trade_once_runtime_signal.py",
+      "tests/test_engine_entry_gate_off.py"
+    ]
+  },
+  "T094_RISK_OVERLAY": {
+    "purpose": "Non-alpha risk overlay evaluation and attribution.",
+    "core_files": [
+      "src/backtest/analysis_drawdown_control_094.py",
+      "src/backtest/analysis_risk_component_review_094.py",
+      "src/backtest/analysis_risk_adoption_095.py",
+      "src/backtest/analysis_capital_backtest_093.py",
+      "src/backtest/analysis_capital_failure_review_093.py",
+      "docs/reports/task_093_review/task_093_review_failure_analysis.md",
+      "docs/reports/task_094/task_094_risk_architecture.md",
+      "docs/reports/task_094_review/task_094_review_component_attribution.md",
+      "docs/reports/task_095/task_095_risk_adoption.md"
+    ],
+    "related_tests": []
+  },
+  "BROKER_LIFECYCLE": {
+    "purpose": "Order submit/cancel/reconcile/late-fill safety path.",
+    "core_files": [
+      "src/app/task_091a_controlled_broker_lifecycle.py",
+      "src/integration/kis_client.py",
+      "src/execution/cancel_loop.py",
+      "src/app/reconciliation.py",
+      "src/state/store.py",
+      "docs/contracts/execution_state_contract.md",
+      "docs/contracts/cancel_reconcile_loop_contract.md",
+      "docs/reports/task_091a/task_091a_controlled_lifecycle.md"
+    ],
+    "related_tests": [
+      "tests/test_cancel_loop.py",
+      "tests/test_kis_cancel_contract.py",
+      "tests/test_task_091a_controlled_lifecycle.py"
+    ]
+  },
+  "PHASE5_PAPER_OPS": {
+    "purpose": "Realtime market refresh + evidence collection + aggregate decision loop.",
+    "core_files": [
+      "scripts/run_task_089_market_refresh.ps1",
+      "scripts/run_phase5_paper_loop.ps1",
+      "src/app/task_089_market_data_signal_refresh.py",
+      "src/app/task_087_pilot_evidence.py",
+      "src/app/task_088_evidence_decision.py",
+      "src/app/run_trade_once.py",
+      "docs/reports/task_086/task_086_risk_guard_lock.md",
+      "docs/reports/task_086/task_086_sample_plan.md",
+      "docs/reports/task_088/task_088_evidence_summary.md"
+    ],
+    "related_tests": [
+      "tests/test_task_087_evidence_schema.py",
+      "tests/test_task_088_evidence_decision.py",
+      "tests/test_phase5_orchestration_script.py"
+    ]
+  },
+  "UI_REPORTING": {
+    "purpose": "Streamlit rendering and report ingestion boundaries.",
+    "core_files": [
+      "src/ui/app.py",
+      "src/ui/trade_review_model.py",
+      "docs/INDEX.md",
+      "docs/reports",
+      "docs/audits"
+    ],
+    "related_tests": []
+  }
+}

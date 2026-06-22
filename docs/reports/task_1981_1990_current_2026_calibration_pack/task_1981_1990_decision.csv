@@ -1,0 +1,2 @@
+source_count,download_attempts,downloaded_count,calibration_rows,winner_requirements,verdict,historical_backtest_assignment_permission,strategy_acceptance,deployment_readiness,real_capital
+13,13,12,6,7,current_2026_calibration_pack_complete_design_only,0,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN

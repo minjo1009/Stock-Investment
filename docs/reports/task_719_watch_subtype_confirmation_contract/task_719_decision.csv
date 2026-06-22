@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,watch_candidate_count,watch_subtype_count,confirmation_contract_satisfied_count,trading_promotion_pass_flag,next_action
+Task719,WATCH_SUBTYPE_CONFIRMATION_CONTRACT_BUILT_DIAGNOSTIC_ONLY,NOT_ACCEPTED,FORBIDDEN,358,4,0,0,Review confirmation gaps before any allocation or backtest promotion.

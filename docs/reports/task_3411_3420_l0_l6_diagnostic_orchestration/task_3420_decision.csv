@@ -1,0 +1,2 @@
+task_id,verdict,strategy,deployment,real_capital,module,tests,notes
+Task3420,l0_l6_diagnostic_orchestration_state_hash_idempotency_guard_implemented,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,src/brain/diagnostic_orchestration.py,tests/test_brain_diagnostic_orchestration.py,"Implements deterministic runtime state hash idempotency key duplicate-state skip and cadence guardrails for diagnostic-only 5-minute safety and 10-minute brain heartbeats; no paper/live permission."

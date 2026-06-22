@@ -1,0 +1,6 @@
+decision_area,status,details,does_not_mean
+current_state_to_be_diagnosis,implemented,AS-IS and TO-BE now materialized in current_state_to_be_diagnosis.csv,strategy acceptance
+symbol_coverage,implemented,70-symbol source-time coverage matrix produced,source completeness
+decision_asof_coverage,implemented,4410 decision-symbol coverage rows produced,trade signal
+l1_seed_state,implemented,139 recovered rows emitted as L1 source-evidence seed only,L2 meaning or L3 relation
+acquisition_queue,implemented,62 missing-seed symbols prioritized for source-time acquisition,broad redownload instruction

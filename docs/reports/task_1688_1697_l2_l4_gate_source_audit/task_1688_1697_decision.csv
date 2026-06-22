@@ -1,0 +1,9 @@
+field,value
+verdict,direction_validated_review_only_not_implemented
+reviewed_direction,bad_trade_prevention_plus_top3_payoff_concentration_in_L2_L3_L4
+source_count,10
+expert_role_count,10
+implementation_authorized,next_plan_only_not_strategy_acceptance
+strategy_status,NOT_ACCEPTED
+deployment_status,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN

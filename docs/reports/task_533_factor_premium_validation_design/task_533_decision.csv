@@ -1,0 +1,2 @@
+task_id,factor_validation_contract_ready_flag,fama_french_data_available_flag,fama_macbeth_panel_available_flag,factor_result_used_as_trading_trigger_flag,strategy_acceptance_status
+Task533,1,0,0,0,FACTOR_VALIDATION_DESIGNED_DATA_BLOCKED

@@ -1,0 +1,7 @@
+gate,pass_flag,observed_value,required_value
+source_features_available,1,atr=100.00%; entry_variants=2706,ATR risk and entry quality variant data must exist
+best_candidate_beats_task639_return,0,best=$7639.62; task639=$7639.62,full-period final capital above Task639
+best_candidate_reduces_task639_drawdown,0,best_dd=-23.76%; task639_dd=-23.76%,max drawdown less severe than Task639
+same_config_validation_and_recent_beat_qqq,1,validation=$1069.23/QQQ $1049.91; recent=$1531.90/QQQ $1124.19,same config must beat QQQ in validation and recent OOS
+no_blacklist_or_label_shortcut,1,symbol_blacklist=0; theme_blacklist=0; label_assignment=0,no blacklists or after-the-fact labels
+trading_promotion,0,research backtest only,"requires live-readable rule lock, latency audit, paper-shadow replay, and source readiness"

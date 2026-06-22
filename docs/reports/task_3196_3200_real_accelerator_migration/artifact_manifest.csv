@@ -1,0 +1,10 @@
+artifact_path,artifact_type,rows,description,validation_command
+scripts/trader_brain_3141_external_tool_helper_contract.py,migrated_script,0,Task3141 real aggregate path now routes through core accelerator API,python scripts/trader_brain_3196_3200_real_accelerator_migration_validate.py
+src/infra/accelerators.py,source,0,Core accelerator API now supports shared pandas baseline reuse for repeated real-panel checks,python -m unittest tests.test_backend_accelerators
+tests/test_backend_accelerators.py,test,5,Package-health tests including shared pandas baseline reuse,python -m unittest tests.test_backend_accelerators
+data/artifacts/task_3196_3200_real_accelerator_migration/migration_result.csv,migration_result,3,Real artifact accelerator migration results,python scripts/trader_brain_3196_3200_real_accelerator_migration_validate.py
+data/artifacts/task_3196_3200_real_accelerator_migration/decision.csv,decision,1,Task3196-3200 migration decision,python scripts/trader_brain_3196_3200_real_accelerator_migration_validate.py
+data/artifacts/task_3196_3200_real_accelerator_migration/acceptance_checks.csv,validation,5,Task3196-3200 validation checks,python scripts/trader_brain_3196_3200_real_accelerator_migration_validate.py
+data/artifacts/task_3196_3200_real_accelerator_migration/artifact_manifest.csv,manifest,6,Task3196-3200 artifact manifest,python scripts/task_registry_validate.py
+docs/reports/task_3196_3200_real_accelerator_migration/task_3196_3200_real_accelerator_migration.md,report,0,Task3196-3200 closeout report,python scripts/task_registry_validate.py
+docs/reports/task_3196_3200_real_accelerator_migration/task_3200_decision.csv,decision,1,Task3200 decision file,python scripts/task_registry_validate.py

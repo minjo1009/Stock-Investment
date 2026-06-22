@@ -1,0 +1,6 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"governance_failure_report.csv","small_table","1044","6b42d7ef9c5efb3f534d575430acb774305ba260d041540ce8de687ba322fa3d"
+"governance_gate_manifest.csv","small_table","569","2b41d02e7d1e36b3ef14b100e8cbb2f2aed27f2cd674a05bcd6de1d873c7f654"
+"governance_gate_summary.csv","small_table","403","4bbf8dfd30d5a21f845cb2ce024c73bac742db53b0d0ec16ad1212208042cd97"
+"task_818_ci_governance_gate_contract.md","report","2240","99a12dfeb3b7e3cc53a05bc81906de768590d1e151a2f501e56aba07a79fc320"
+"task_818_decision.csv","small_table","299","adf2ffa1dee3210ae8d18eb7313313159b90b09b69934e347c2014430af09b6d"

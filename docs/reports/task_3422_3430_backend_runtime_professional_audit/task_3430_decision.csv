@@ -1,0 +1,2 @@
+task_id,decision,status,strategy_acceptance,deployment,real_capital,next_action
+Task3430,BLOCK_RUNTIME_PROMOTION_UNTIL_P0_P1_CLOSED,DIAGNOSTIC_ONLY,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,Fix P0 fail-closed parser single-execution-authority orchestration-wiring and real-capital-reachability blockers before scheduler or paper-runtime promotion.

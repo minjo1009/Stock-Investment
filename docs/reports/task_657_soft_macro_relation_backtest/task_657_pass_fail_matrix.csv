@@ -1,0 +1,8 @@
+﻿gate,pass_flag,observed_value,required_value
+baseline_built,1,baseline=$7639.62,Task639 baseline must be present
+soft_macro_candidates_built,1,candidates=8,multiple soft macro candidates
+permission_audit_pass,1,forbidden=0,no hard block/full entry/size boost/standalone macro authority
+best_soft_candidate_beats_task639_return,0,best_soft=$7625.35; baseline=$7639.62,soft candidate must beat Task639 return
+best_soft_candidate_improves_drawdown,1,best_soft_dd=-23.16; baseline_dd=-23.76,soft candidate must improve drawdown
+promotion_candidate_found,0,promotion_candidates=0,must beat baseline return/drawdown plus validation/recent QQQ and permission gates
+trading_promotion,0,research backtest only,requires acceptance gates and live readiness

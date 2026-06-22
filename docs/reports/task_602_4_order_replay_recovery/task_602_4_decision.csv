@@ -1,0 +1,2 @@
+﻿task_id,decision_status,strategy_acceptance_status,deployment_readiness_status,decision_match_rate,order_match_rate,fill_match_rate,position_match_rate,missing_intent_key_rows,order_mismatch_rows,inferred_matching_used_flag,next_required_task
+T602-4,STRETCH,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,1.0,1.0,1.0,0.958333,6,0,0,Governance review can inspect exact order_id recovery; deployment remains blocked until broker-truth and full replay review update the registries.

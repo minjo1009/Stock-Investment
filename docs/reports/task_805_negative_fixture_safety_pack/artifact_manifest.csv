@@ -1,0 +1,4 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"negative_fixture_catalog.csv","small_table","625","f16673b63967949f24d9a4e3476d51ea10493f48256cfa79f672fb9dedd72598"
+"task_805_decision.csv","small_table","308","07ea2985683a27682c65b8d53c86cbf1fb884490796ab1057e0bce79975c1157"
+"task_805_negative_fixture_safety_pack.md","report","1551","84a2105e18f8a5027042a0718a1ba96774a1e3496048518030ec66c8fc29740c"

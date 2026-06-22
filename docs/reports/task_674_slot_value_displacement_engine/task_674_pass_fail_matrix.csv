@@ -1,0 +1,7 @@
+﻿gate,pass_flag,observed_value,required_value
+candidate_grid_built,1,rows=30,slot ladder candidate grid
+same_timestamp_ladder_only,1,entry/exit/cost unchanged,only ordering changed
+rank_ladder_not_weighted_score,1,predeclared rank columns,no tuned score weights
+displacement_audit_built,1,rows=30,Task639 displacement audit
+winner_damage_audit_built,1,rows=60,added removed trade audit
+strategy_accepted,0,research only,Task676 promotion gates required

@@ -1,0 +1,2 @@
+decision_area,status,details,does_not_mean
+rolling_graph_snapshot,planned,Prepare as-of graph snapshots without future edges,strategy acceptance

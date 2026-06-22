@@ -1,0 +1,5 @@
+gate_name,status,pass_flag,observed,required
+bundle_scope_5265,PRIMARY_PASS,1,rows=5265,5265
+price_context_full,PRIMARY_PASS,1,price=5265,5265
+macro_not_promoted,PRIMARY_PASS,1,macro_authority=0,0
+no_assignment_leakage,PRIMARY_PASS,1,assignment leakage=0,0

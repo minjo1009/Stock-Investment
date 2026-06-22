@@ -1,0 +1,15 @@
+artifact_type,path,purpose,validation
+setting,.obsidian/app.json,Minimal vault behavior for relative links and attachments,JSON parse
+setting,.obsidian/core-plugins.json,Enable core navigation plugins,JSON parse
+setting,.obsidian/templates.json,Point Obsidian Templates plugin to repo template folder,JSON parse
+setting,.obsidian/graph.json,Default graph filters and color groups,JSON parse
+gitignore,.gitignore,Exclude personal Obsidian workspace/cache/plugin state,Manual diff review
+guide,docs/obsidian/README.md,Operating plan and maintenance rules,Markdown link review
+entrypoint,docs/obsidian/Vault Home.md,Single start page for vault navigation,Markdown link review
+board,docs/obsidian/boards/Research Cockpit.canvas,Visual control-room board for named leads teams current runtime lane research backbone blockers and Codex work loop,JSON parse and file-node path review
+guide,docs/obsidian/Codex Obsidian Workflow.md,Full workflow for how Codex should use Obsidian in this project,Markdown link review
+moc,docs/obsidian/mocs/Operating System Map.md,Governance and validation map,Markdown link review
+moc,docs/obsidian/mocs/Quant Research Map.md,Research lane and blocker map,Markdown link review
+template,docs/obsidian/templates/task-note-template.md,Working-note template aligned to goal intake,Markdown link review
+report,docs/reports/task_obsidian_vault_application/task_obsidian_vault_application.md,Task report for this application work,Markdown link review
+manifest,docs/reports/task_obsidian_vault_application/artifact_manifest.csv,Manifest for created/changed artifacts,CSV row review

@@ -1,0 +1,2 @@
+task_id,raw_native_replay_complete_flag,raw_intraday_symbol_coverage,raw_bar_exact_match_rate,receive_ts_available_flag,strategy_acceptance_status
+Task517,1,1.0,1.0,0,RAW_NATIVE_REPLAY_DIAGNOSTIC_RECEIVE_TS_BLOCKED

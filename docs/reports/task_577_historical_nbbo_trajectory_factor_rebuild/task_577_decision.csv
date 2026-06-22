@@ -1,0 +1,2 @@
+﻿task_id,strategy_acceptance_status,deployment_ready_flag,diagnostic_only_flag,total_rows,q60_covered_rows,q30_covered_rows,q10_covered_rows,receive_ts_live_ready_flag,missing_source_approximated_flag
+Task577,DIAGNOSTIC_PASS_NBBO_TRAJECTORY_BUILT,0,1,9478,9340,9222,8784,0,0

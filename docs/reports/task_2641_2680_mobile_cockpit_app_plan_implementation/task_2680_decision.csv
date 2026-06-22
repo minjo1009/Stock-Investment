@@ -1,0 +1,2 @@
+task_id,decision,status,strategy_acceptance,deployment_readiness,real_capital,read_only_flag,real_orders_allowed_flag,live_order_buttons_allowed_flag,next_action
+Task2680,mobile_read_only_cockpit_implemented_for_paper_shadow_observation,Diagnostic Only,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,1,0,0,run mobile cockpit over paper/shadow sessions and add source-backed MDD attribution journal

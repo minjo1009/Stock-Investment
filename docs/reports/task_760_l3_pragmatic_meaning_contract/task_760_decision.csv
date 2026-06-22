@@ -1,0 +1,2 @@
+task_id,decision,brain_layer,owner_team,reviewer_team,strategy_acceptance,deployment_readiness,real_capital,assignment_output_allowed,rank_score_sizing_allowed,backtest_permission,direction_hint_is_trade_instruction,inferred_matching_used,validation_authority,next_task_dependency
+Task760,l3_pragmatic_meaning_contract_defined_research_only,economic_meaning,Regime Research,Research Governance + Data & Market Microstructure,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,0,0,FAIL,0,0,RESEARCH_ONLY,Task762 primitive gate repair design

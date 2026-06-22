@@ -1,0 +1,23 @@
+# Professional Quant Trading Team ownership map.
+# Replace placeholder teams with real GitHub teams when the repository is moved into an org.
+
+* @quant-governance
+
+/src/data/ @data-microstructure-team
+/src/backtest/core/ @backtest-simulation-infra-team
+/src/backtest/engines/ @backtest-simulation-infra-team
+/src/backtest/experiments/ @intraday-continuation-research-team
+/src/backtest/reports/ @research-governance-team
+/src/execution/ @execution-risk-team
+/src/risk/ @execution-risk-team
+
+/data/raw/ @data-microstructure-team
+/docs/ownership/ @research-governance-team
+/docs/architecture/ @research-governance-team
+/docs/reports/ @research-governance-team
+/tasks/ @research-governance-team
+/scripts/ @backtest-simulation-infra-team @research-governance-team
+
+/src/backtest/build_task48* @regime-research-team
+/src/backtest/build_task49* @intraday-continuation-research-team @data-microstructure-team
+/src/backtest/analysis_structural_breakout_task49* @intraday-continuation-research-team @research-governance-team

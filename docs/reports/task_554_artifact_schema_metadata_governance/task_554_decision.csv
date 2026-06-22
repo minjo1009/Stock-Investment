@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,manifest_v2_contract_defined_flag
+Task554,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,0,1

@@ -1,0 +1,2 @@
+﻿task_id,decision,strategy_acceptance_status,deployment_status,real_capital_status,trading_promotion_pass_flag,action_permission_rows,forbidden_action_rows,next_action
+Task677,ACTION_PERMISSION_MATRIX_BUILT_NOT_DEPLOYMENT_READY,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,0,11,0,Use matrix as permission contract for future OOS tests only.

@@ -1,0 +1,16 @@
+field,value
+task_id,Task3191-Task3195
+decision,polars_duckdb_promoted_to_core_backend_acceleration_layer
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+selector_changed,0
+sizing_changed,0
+replay_performed,0
+source_acquisition_performed,0
+paper_order_intents_created,0
+live_orders_created,0
+primary_module,src/infra/accelerators.py
+primary_validator,python scripts/trader_brain_3191_3195_backend_accelerator_promotion_validate.py
+next_action,migrate one real pandas bottleneck behind strict_gate_aggregate_accelerated with parity locked
+

@@ -1,0 +1,10 @@
+gate,pass_flag,observed_value,required_value
+task639_baseline_reproduced,1,"$7639.62, dd=-23.76%",Task639 reported baseline must be reproduced
+leveraged_etf_data_available,1,"LABU,QLD,SOXL,SSO,TQQQ,UPRO",leveraged ETF daily data must exist for overlay test
+exclusion_filter_improves_task639,0,"best=symbol:MDB $8482.25, dd=-23.76%",final capital above Task639 and drawdown less severe
+leveraged_etf_improves_task639,0,"best=long_3x_theme_proxy w=0.30 $3777.95, dd=-26.41%",final capital above Task639 and drawdown less severe
+drawdown_throttle_improves_task639,0,"best=size_reduce $7217.35, dd=-23.76%",final capital above Task639 and drawdown less severe
+exclusion_plus_throttle_improves_task639,1,"best=symbol:MDB thr=-5.0 mult=0.75 $7692.60, dd=-23.63%",final capital above Task639 and drawdown less severe
+combo_overfit_risk_block,0,combo uses single symbol/theme exclusion,single-name or single-theme exclusions require fresh OOS and causal pre-entry rule before acceptance
+any_return_up_drawdown_down_upgrade_found,1,any_pass=1,at least one tested upgrade must improve both return and drawdown
+trading_promotion,0,research rejection or candidate only,"requires live-readable rule lock, source latency audit, and paper-shadow replay"

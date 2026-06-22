@@ -1,0 +1,7 @@
+field,value
+verdict,PROVENANCE_COVERAGE_AUDIT_IMPLEMENTED_RESEARCH_ONLY
+strategy_acceptance,NOT_ACCEPTED
+deployment_status,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+validation_authority,GOVERNANCE_HEALTH
+next_action,Rerun audit after fixture or provenance manifest changes

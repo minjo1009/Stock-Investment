@@ -1,0 +1,4 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"provenance_coverage_audit.csv","small_table","11326","0f51bab231f708a4dfdf73ba96ba68c5b148aa443cf3cae5382a6de9bfce469e"
+"task_822_decision.csv","small_table","291","252e9ea6486fd39b611df9f933cc14ee579dfe826855fcd0c1a5f117af1c31e7"
+"task_822_provenance_coverage_audit.md","report","2211","43d2d10aba349e054d92173e652794b0b0bb6ff33ab08b9974ac525332c0567d"

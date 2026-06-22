@@ -1,0 +1,15 @@
+field,value
+task_id,Task757
+decision,brain_dag_and_supersession_audit_complete_research_only
+brain_layer,qa_resolver
+owner_team,Research Governance
+reviewer_team,Backtest & Simulation Infra
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+backtest_permission,FAIL
+current_meaning_candidate,Task742
+relation_engine_candidate,Task729
+superseded_active_meaning,Task741
+next_required_task,Task761
+validation_authority,research_only_governance_validation

@@ -1,0 +1,7 @@
+field,value
+verdict,ATTENTION_FIXTURE_CORPUS_IMPLEMENTED_RESEARCH_ONLY
+strategy_acceptance,NOT_ACCEPTED
+deployment_status,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+validation_authority,RESEARCH_ONLY
+next_action,Keep state coverage across enough defer source_gap block and noise

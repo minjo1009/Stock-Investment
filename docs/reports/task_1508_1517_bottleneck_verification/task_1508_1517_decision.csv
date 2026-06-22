@@ -1,0 +1,2 @@
+task_id,check_name,verdict,evidence,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1517,overall_bottleneck,L5_IS_A_MAJOR_BOTTLENECK_BUT_L2L3_BREADTH_REMAINS_INCOMPLETE,"L2/L3 shows top-end signal, but L5 exits/holding do not control drawdown and rank breadth decays beyond top5.",NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_BOTTLENECK_VERIFICATION_ONLY

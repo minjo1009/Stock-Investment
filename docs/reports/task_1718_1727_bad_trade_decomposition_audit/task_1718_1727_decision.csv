@@ -1,0 +1,2 @@
+task_id,verdict,main_conclusion,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1727,bad_trade_decomposition_completed_diagnostic_only,MDD loop is not mainly from new open-slot candidates; it is baseline cluster risk and late/weak reduce behavior.,freeze replay rules and implement cluster-risk exposure control before more candidate expansion,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_BAD_TRADE_DECOMPOSITION_AUDIT_ONLY

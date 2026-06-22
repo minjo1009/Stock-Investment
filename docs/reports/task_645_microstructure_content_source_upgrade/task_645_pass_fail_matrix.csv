@@ -1,0 +1,9 @@
+gate,pass_flag,observed_value,required_value
+gpt_design_captured,1,captured=1,GPT review packet must be captured as review-only input
+task639_baseline_reproduced,1,task645_base=$7639.62; task639=$7639.62,Task645 base/equal must reproduce Task639 account result
+feature_candidate_beats_task639_return,1,best=$7670.99; task639=$7639.62,best feature-linked candidate must exceed Task639
+feature_candidate_reduces_task639_drawdown,1,best_dd=-23.37%; task639_dd=-23.76%,best feature-linked candidate must reduce drawdown severity
+same_config_validation_recent_beat_qqq,1,validation=$1069.23/QQQ $1049.91; recent=$1531.90/QQQ $1124.19,same config must beat QQQ in validation and recent OOS
+microstructure_coverage_sufficient_for_micro_rule,0,best_uses_micro=1; quote_rate=0.019; trade_rate=0.005,microstructure-linked account rule needs at least 20% quote-row and 10% trade-row coverage
+no_shortcut_or_missing_as_negative,1,no labels/blacklists; missing_microstructure_used_as_negative=0,"missing sources must be reported, not treated as bearish"
+trading_promotion,0,feature validation only; historical sources are not live-ready,live-source readiness and paper-shadow replay required

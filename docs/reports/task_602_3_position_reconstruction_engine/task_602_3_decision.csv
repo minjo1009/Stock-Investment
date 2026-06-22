@@ -1,0 +1,2 @@
+﻿task_id,decision_status,strategy_acceptance_status,deployment_readiness_status,decision_match_rate,order_match_rate,fill_match_rate,position_match_rate,inferred_matching_used_flag,next_required_task
+T602-3,STRETCH,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,1.0,0.888889,1.0,0.958333,0,Acceptance review can inspect exact-ID runtime paper reconstruction; deployment remains blocked until broker-truth review.

@@ -1,0 +1,2 @@
+task_id,decision_status,production_claim,frontend_contract_status,mobile_qa_status,notes
+Task594,PRIMARY_PASS,NO_GO_FOR_REAL_CAPITAL,CATALOG_BACKED_ONLY,PASS_MANUAL_430X932,"Paper frontend reorganized into investment-app style account, trade detail, activity, provenance, and operations views."

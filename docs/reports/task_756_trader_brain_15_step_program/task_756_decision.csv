@@ -1,0 +1,9 @@
+field,value
+task_id,Task756
+decision,define_trader_brain_15_step_program_research_only
+child_tasks,Task757-Task771
+new_alpha_allowed,no
+backtest_allowed,no
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN

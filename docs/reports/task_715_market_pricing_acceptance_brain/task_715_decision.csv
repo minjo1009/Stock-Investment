@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,row_count,trading_promotion_pass_flag,next_action
+Task715,MARKET_PRICING_ACCEPTANCE_BRAIN_BUILT_DIAGNOSTIC_ONLY,NOT_ACCEPTED,FORBIDDEN,5265,0,Keep as diagnostic translator-brain layer; do not promote to trading or paper execution.

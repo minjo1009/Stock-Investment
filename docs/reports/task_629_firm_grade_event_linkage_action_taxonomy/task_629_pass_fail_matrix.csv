@@ -1,0 +1,9 @@
+gate,pass_flag,observed_value,required_value
+economic_linkage_not_theme_only,1,theme_only_actionable_events=0,theme-only events must not create trading actions
+action_taxonomy_exists,1,trades_with_actionable_event=155,at least one trade must receive deterministic non-NO_ACTION bucket
+recent_oos_not_worse_gross,1,recent 4.34% vs original 2.17%,action taxonomy should not reduce recent OOS gross average
+validation_not_broken_gross,1,validation 10.01% vs original 9.63%,action taxonomy should not reduce validation gross average
+recent_oos_50bp_account_edge,1,taxonomy_wins=3/4; max5 taxonomy=$1313.22 original=$1313.22; max10 taxonomy=$1047.68 original=$1044.35; max20 taxonomy=$1063.13 original=$1043.58; max50 taxonomy=$1097.16 original=$1057.44,taxonomy must beat original in at least 3 of 4 recent-OOS capacities at 50bp
+validation_50bp_not_broken,1,taxonomy_wins=2/4; max5 taxonomy=$1191.96 original=$1225.81; max10 taxonomy=$1167.32 original=$1151.47; max20 taxonomy=$1215.49 original=$1225.36; max50 taxonomy=$1138.73 original=$1128.52,taxonomy must be at least mixed on validation account performance at 50bp
+full_panel_50bp_account_edge,0,taxonomy_wins=0/4; max5 taxonomy=$3516.90 original=$4158.91; max10 taxonomy=$2934.58 original=$3229.78; max20 taxonomy=$2836.03 original=$2924.57; max50 taxonomy=$2260.16 original=$2423.35,taxonomy must be at least mixed on full-panel account performance at 50bp
+trading_promotion,0,firm-grade action taxonomy diagnostic only,"requires exact delayed-entry replay, broader entity coverage, split robustness, and live-source readiness"

@@ -1,0 +1,13 @@
+gate_name,status,pass_flag,observed,required
+task705_scope_5265,PRIMARY_PASS,1,rows=5265,5265
+task706_scope_5265,PRIMARY_PASS,1,rows=5265,5265
+task707_scope_5265,PRIMARY_PASS,1,rows=5265,5265
+task708_eval_scope_5265,PRIMARY_PASS,1,rows=5265,5265
+event_linked_scope_2445,PRIMARY_PASS,1,event=2445,2445
+price_context_full,PRIMARY_PASS,1,price=5265,5265
+no_outcome_assignment,PRIMARY_PASS,1,0,0
+no_future_price_assignment,PRIMARY_PASS,1,0,0
+missing_source_not_negative,PRIMARY_PASS,1,0,0
+macro_not_promoted,PRIMARY_PASS,1,0,0
+no_symbol_theme_blacklist,PRIMARY_PASS,1,symbol_blacklist=0; theme_blacklist=0,0
+real_capital_forbidden,PRIMARY_PASS,1,FORBIDDEN,FORBIDDEN

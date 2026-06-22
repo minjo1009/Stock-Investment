@@ -1,0 +1,447 @@
+{
+  "setup": {
+    "entry_policy": "LIMITED_CHASE",
+    "symbols": [
+      "AAPL",
+      "AMD",
+      "AMZN",
+      "AVGO",
+      "COST",
+      "GOOGL",
+      "META",
+      "MSFT",
+      "NFLX",
+      "NVDA",
+      "QCOM",
+      "TSLA"
+    ],
+    "data_dir": "data\\raw\\us_daily",
+    "initial_equity": 100000.0
+  },
+  "final_results": {
+    "scenario": "S4_KIS_REALISTIC",
+    "fee_rate": 0.0025,
+    "slippage_rate": 0.001,
+    "total_pnl": 13650.697938889818,
+    "net_pnl": 4582.873640776714,
+    "trades": 182,
+    "win_rate": 37.362637362637365,
+    "profit_factor": 1.0834642819511264,
+    "max_drawdown": 9885.240817217753,
+    "sharpe": 0.38926634377514224,
+    "fill_rate": 60.86956521739131,
+    "expired_rate": 35.11705685618729,
+    "big_miss": 98,
+    "missed_trades": 105,
+    "task_066_gate": {
+      "status": "WARNING",
+      "pf_ok": false,
+      "net_pnl_ok": true,
+      "sharpe_ok": false,
+      "mdd_ok": false,
+      "mdd_to_net_pnl_pct": 215.69961539551383
+    }
+  },
+  "cost_sensitivity": [
+    {
+      "scenario": "S1_ZERO_COST",
+      "fee_rate": 0.0,
+      "slippage_rate": 0.0,
+      "total_pnl": 16500.088963706996,
+      "net_pnl": 16500.088963706996,
+      "trades": 182,
+      "win_rate": 37.91208791208791,
+      "profit_factor": 1.3421817197338517,
+      "max_drawdown": 8362.972628210882,
+      "sharpe": 1.3870129889851954,
+      "fill_rate": 60.86956521739131,
+      "expired_rate": 35.11705685618729,
+      "big_miss": 98,
+      "missed_trades": 105,
+      "task_066_gate": {
+        "status": "WARNING",
+        "pf_ok": true,
+        "net_pnl_ok": true,
+        "sharpe_ok": true,
+        "mdd_ok": false,
+        "mdd_to_net_pnl_pct": 50.6844093180696
+      }
+    },
+    {
+      "scenario": "S2_LOW_COST",
+      "fee_rate": 0.0005,
+      "slippage_rate": 0.0005,
+      "total_pnl": 15052.416070186404,
+      "net_pnl": 13226.908512891223,
+      "trades": 182,
+      "win_rate": 37.362637362637365,
+      "profit_factor": 1.2643762187642666,
+      "max_drawdown": 8802.5147955376,
+      "sharpe": 1.1154386298937415,
+      "fill_rate": 60.86956521739131,
+      "expired_rate": 35.11705685618729,
+      "big_miss": 98,
+      "missed_trades": 105,
+      "task_066_gate": {
+        "status": "WARNING",
+        "pf_ok": true,
+        "net_pnl_ok": true,
+        "sharpe_ok": true,
+        "mdd_ok": false,
+        "mdd_to_net_pnl_pct": 66.5500542848579
+      }
+    },
+    {
+      "scenario": "S3_MEDIUM_COST",
+      "fee_rate": 0.001,
+      "slippage_rate": 0.0005,
+      "total_pnl": 15010.762585263728,
+      "net_pnl": 11361.65341846039,
+      "trades": 182,
+      "win_rate": 37.362637362637365,
+      "profit_factor": 1.2221855398414188,
+      "max_drawdown": 9077.37031581351,
+      "sharpe": 0.9591720509495435,
+      "fill_rate": 60.86956521739131,
+      "expired_rate": 35.11705685618729,
+      "big_miss": 98,
+      "missed_trades": 105,
+      "task_066_gate": {
+        "status": "WARNING",
+        "pf_ok": true,
+        "net_pnl_ok": true,
+        "sharpe_ok": false,
+        "mdd_ok": false,
+        "mdd_to_net_pnl_pct": 79.8948003559466
+      }
+    },
+    {
+      "scenario": "S4_KIS_REALISTIC",
+      "fee_rate": 0.0025,
+      "slippage_rate": 0.001,
+      "total_pnl": 13650.697938889818,
+      "net_pnl": 4582.873640776714,
+      "trades": 182,
+      "win_rate": 37.362637362637365,
+      "profit_factor": 1.0834642819511264,
+      "max_drawdown": 9885.240817217753,
+      "sharpe": 0.38926634377514224,
+      "fill_rate": 60.86956521739131,
+      "expired_rate": 35.11705685618729,
+      "big_miss": 98,
+      "missed_trades": 105,
+      "task_066_gate": {
+        "status": "WARNING",
+        "pf_ok": false,
+        "net_pnl_ok": true,
+        "sharpe_ok": false,
+        "mdd_ok": false,
+        "mdd_to_net_pnl_pct": 215.69961539551383
+      }
+    },
+    {
+      "scenario": "S5_KIS_STRESS_20",
+      "fee_rate": 0.0025,
+      "slippage_rate": 0.002,
+      "total_pnl": 10673.245951484078,
+      "net_pnl": 1613.6382316603497,
+      "trades": 182,
+      "win_rate": 36.26373626373626,
+      "profit_factor": 1.0285972211090686,
+      "max_drawdown": 10731.743402380458,
+      "sharpe": 0.13771116464094582,
+      "fill_rate": 60.86956521739131,
+      "expired_rate": 35.11705685618729,
+      "big_miss": 98,
+      "missed_trades": 105,
+      "task_066_gate": {
+        "status": "WARNING",
+        "pf_ok": false,
+        "net_pnl_ok": true,
+        "sharpe_ok": false,
+        "mdd_ok": false,
+        "mdd_to_net_pnl_pct": 665.0650184049032
+      }
+    },
+    {
+      "scenario": "S6_KIS_STRESS_30",
+      "fee_rate": 0.0025,
+      "slippage_rate": 0.003,
+      "total_pnl": 7649.074824205535,
+      "net_pnl": -1400.5035492848172,
+      "trades": 182,
+      "win_rate": 36.26373626373626,
+      "profit_factor": 0.9758345662100637,
+      "max_drawdown": 12038.629740500775,
+      "sharpe": -0.12018307258628616,
+      "fill_rate": 60.86956521739131,
+      "expired_rate": 35.11705685618729,
+      "big_miss": 98,
+      "missed_trades": 105,
+      "task_066_gate": {
+        "status": "FAIL",
+        "pf_ok": false,
+        "net_pnl_ok": false,
+        "sharpe_ok": false,
+        "mdd_ok": false,
+        "mdd_to_net_pnl_pct": null
+      }
+    }
+  ],
+  "drawdown_analysis": {
+    "worst_segments": [
+      {
+        "peak_time": "2024-06-21 00:00:00+00:00",
+        "trough_time": "2026-04-17 00:00:00+00:00",
+        "drawdown": 9257.1430447573,
+        "trade_count": 83,
+        "top_symbol_losses": [
+          {
+            "symbol": "AMZN",
+            "net_pnl": -2039.9984092516659
+          },
+          {
+            "symbol": "COST",
+            "net_pnl": -1771.9510711828952
+          },
+          {
+            "symbol": "TSLA",
+            "net_pnl": -1725.842014221491
+          },
+          {
+            "symbol": "META",
+            "net_pnl": -1643.9681793290204
+          },
+          {
+            "symbol": "QCOM",
+            "net_pnl": -1154.8996703923733
+          }
+        ],
+        "exit_rule_loss": [
+          {
+            "exit_rule": "STOP",
+            "net_pnl": -23195.713331658393
+          },
+          {
+            "exit_rule": "TREND_BREAK_2BAR",
+            "net_pnl": -2077.4736315234127
+          },
+          {
+            "exit_rule": "TIME_EXIT",
+            "net_pnl": 16742.926104742095
+          }
+        ],
+        "regime_loss": [
+          {
+            "regime": "BULL",
+            "net_pnl": -8299.442868806502
+          },
+          {
+            "regime": "BEAR",
+            "net_pnl": -230.81798963320966
+          }
+        ]
+      },
+      {
+        "peak_time": "2024-06-21 00:00:00+00:00",
+        "trough_time": "2025-02-27 00:00:00+00:00",
+        "drawdown": 9200.67140717326,
+        "trade_count": 39,
+        "top_symbol_losses": [
+          {
+            "symbol": "NFLX",
+            "net_pnl": -1568.9740462107234
+          },
+          {
+            "symbol": "AMZN",
+            "net_pnl": -1553.0251469809307
+          },
+          {
+            "symbol": "GOOGL",
+            "net_pnl": -1335.9137793920884
+          },
+          {
+            "symbol": "AMD",
+            "net_pnl": -1035.2454351333583
+          },
+          {
+            "symbol": "COST",
+            "net_pnl": -898.7112456942751
+          }
+        ],
+        "exit_rule_loss": [
+          {
+            "exit_rule": "STOP",
+            "net_pnl": -10720.186822882662
+          },
+          {
+            "exit_rule": "TREND_BREAK_2BAR",
+            "net_pnl": -1638.3673790548582
+          },
+          {
+            "exit_rule": "TIME_EXIT",
+            "net_pnl": 3884.7649810818552
+          }
+        ],
+        "regime_loss": [
+          {
+            "regime": "BULL",
+            "net_pnl": -7882.5202806846155
+          },
+          {
+            "regime": "BEAR",
+            "net_pnl": -591.26894017105
+          }
+        ]
+      },
+      {
+        "peak_time": "2024-06-21 00:00:00+00:00",
+        "trough_time": "2025-06-05 00:00:00+00:00",
+        "drawdown": 8922.8870738655,
+        "trade_count": 42,
+        "top_symbol_losses": [
+          {
+            "symbol": "AMZN",
+            "net_pnl": -1553.0251469809307
+          },
+          {
+            "symbol": "GOOGL",
+            "net_pnl": -1335.9137793920884
+          },
+          {
+            "symbol": "AMD",
+            "net_pnl": -1035.2454351333583
+          },
+          {
+            "symbol": "NFLX",
+            "net_pnl": -768.3271152145154
+          },
+          {
+            "symbol": "TSLA",
+            "net_pnl": -751.4283482443203
+          }
+        ],
+        "exit_rule_loss": [
+          {
+            "exit_rule": "STOP",
+            "net_pnl": -11657.102287071966
+          },
+          {
+            "exit_rule": "TREND_BREAK_2BAR",
+            "net_pnl": -1638.3673790548582
+          },
+          {
+            "exit_rule": "TIME_EXIT",
+            "net_pnl": 5099.46477857892
+          }
+        ],
+        "regime_loss": [
+          {
+            "regime": "BULL",
+            "net_pnl": -7604.735947376855
+          },
+          {
+            "regime": "BEAR",
+            "net_pnl": -591.26894017105
+          }
+        ]
+      }
+    ],
+    "symbol_contribution": [
+      {
+        "symbol": "NFLX",
+        "net_pnl": -3511.5180905427433
+      },
+      {
+        "symbol": "TSLA",
+        "net_pnl": -3047.9411432085667
+      },
+      {
+        "symbol": "AVGO",
+        "net_pnl": -2966.3673255697213
+      },
+      {
+        "symbol": "AMZN",
+        "net_pnl": -1877.1484730698983
+      },
+      {
+        "symbol": "GOOGL",
+        "net_pnl": -1457.8339086403878
+      },
+      {
+        "symbol": "QCOM",
+        "net_pnl": -1020.988642835556
+      },
+      {
+        "symbol": "AMD",
+        "net_pnl": -335.3654633438563
+      },
+      {
+        "symbol": "MSFT",
+        "net_pnl": 422.8221550374103
+      },
+      {
+        "symbol": "COST",
+        "net_pnl": 623.6104537527947
+      },
+      {
+        "symbol": "AAPL",
+        "net_pnl": 3144.26094465638
+      },
+      {
+        "symbol": "META",
+        "net_pnl": 6915.787838526163
+      },
+      {
+        "symbol": "NVDA",
+        "net_pnl": 7693.555296014695
+      }
+    ],
+    "exit_rule_contribution": [
+      {
+        "exit_rule": "STOP",
+        "net_pnl": -43639.94122103256
+      },
+      {
+        "exit_rule": "TREND_BREAK_2BAR",
+        "net_pnl": -5886.121210040173
+      },
+      {
+        "exit_rule": "TIME_EXIT",
+        "net_pnl": 54108.93607184945
+      }
+    ],
+    "regime_contribution": [
+      {
+        "regime": "BULL",
+        "net_pnl": 1248.1663524676378
+      },
+      {
+        "regime": "BEAR",
+        "net_pnl": 3334.707288309076
+      }
+    ]
+  },
+  "kpi_gate_result": {
+    "task_066": {
+      "status": "WARNING",
+      "pf_ok": false,
+      "net_pnl_ok": true,
+      "sharpe_ok": false,
+      "mdd_ok": false,
+      "mdd_to_net_pnl_pct": 215.69961539551383
+    },
+    "pilot_kpi_gate_doc": {
+      "status": "WARNING",
+      "checks": {
+        "scenario_4_pf_1_25": false,
+        "scenario_4_net_positive": true,
+        "scenario_4_sharpe_1": false,
+        "scenario_5_pf_1_10": false,
+        "scenario_5_net_positive": true,
+        "scenario_6_pf_1_05": false,
+        "scenario_4_mdd_40pct_net": false
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"batch_manifest.csv","small_table","741","c4f1eed0f01a1137b925985600346e207c65e28844b84e45f6dfe4e87193625d"
+"task_814_decision.csv","small_table","284","e00592793c06246decf25e93358a340ccc895077ca1e1005f92c57bcce51230e"
+"task_814_graph_batch_runner_contract.md","report","1924","5862b14bde68e404fc996e31873cf3dcb9523a1e0a22d7b63dfb5d69cc63e6ea"

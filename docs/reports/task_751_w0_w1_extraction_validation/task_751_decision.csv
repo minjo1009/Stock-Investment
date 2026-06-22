@@ -1,0 +1,10 @@
+field,value
+task_id,Task751
+decision,PARTIAL_PASS_WITH_RECLASSIFICATION_BLOCKERS
+promote_w0_w1_now,no
+reason,W0 contains non-namespace fan-out and state/store is implementation not contract
+allowed_next_work,repair W0 package init fan-out and split state store contract from implementation
+new_alpha_allowed,no
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN

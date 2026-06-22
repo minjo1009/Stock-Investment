@@ -1,0 +1,6 @@
+﻿gate,pass_flag,observed_value,required_value
+no_fixed_hold_or_timing_override,1,violations=0,relation selection must keep existing Task639 timing and exit
+relation_selection_candidates_tested,1,candidates=6,baseline plus multiple relation-selection candidates
+oos_movement_observed,1,both_oos_improvers=4,at least one candidate changes validation and recent OOS result
+promotion_candidate_found,0,promotion_candidates=0,"candidate must improve full return, drawdown, validation, and recent OOS"
+strategy_accepted,0,research diagnostic only,requires accepted strategy gates and live readiness

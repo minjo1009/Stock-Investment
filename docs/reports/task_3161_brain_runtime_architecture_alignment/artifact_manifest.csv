@@ -1,0 +1,8 @@
+artifact_path,artifact_type,commit_policy,description
+docs/architecture/brain_layer_map.md,architecture_map,commit_ready,Updated brain-to-runtime-to-frontend architecture map.
+docs/reports/task_3161_brain_runtime_architecture_alignment/task_3161_brain_runtime_architecture_alignment.md,task_report,commit_ready,Task3161 architecture alignment report.
+docs/reports/task_3161_brain_runtime_architecture_alignment/task_3161_decision.csv,decision_csv,commit_ready,Task3161 decision row.
+docs/reports/task_3161_brain_runtime_architecture_alignment/artifact_manifest.csv,artifact_manifest,commit_ready,Task3161 artifact manifest.
+tasks/task_registry.csv,registry,commit_ready,Task3161 registry row.
+docs/operating_system/project_operating_state.md,operating_state,commit_ready,Task3161 compact state entry.
+data/artifacts/task_3161_brain_runtime_architecture_alignment/.gitkeep,artifact_dir_marker,commit_ready,Empty artifact directory marker for registry path validation.

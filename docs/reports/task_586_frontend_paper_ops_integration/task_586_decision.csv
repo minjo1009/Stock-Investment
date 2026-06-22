@@ -1,0 +1,2 @@
+﻿task_id,task_name,decision_status,catalog_path,catalog_exists_flag,catalog_build_returncode,frontend_build_returncode,ui_reads_catalog_only_flag,deployment_ready_flag,diagnostic_only_flag
+Task586,Frontend Paper Ops Integration V2,FRONTEND_PAPER_OPS_V2_READY,frontend\trader-terminal\public\catalog\trader_terminal_catalog.json,1,0,0,1,0,1

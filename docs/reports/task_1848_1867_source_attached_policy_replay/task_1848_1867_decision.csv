@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1867,source_attached_policy_replay_complete_diagnostic_only,source_attached_top3_v1,3097.4162,0.244914,-0.214878,audit whether source-attached policy improved true sleeve behavior before promoting any rule,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_SOURCE_ATTACHED_POLICY_REPLAY_ONLY

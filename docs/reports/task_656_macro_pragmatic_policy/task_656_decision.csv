@@ -1,0 +1,2 @@
+﻿task_id,decision,strategy_acceptance_status,real_capital_status,deployment_status,task655_parent_decision,task639_pragmatic_macro_eligible_rate,vintage_asof_required_flag,trading_promotion_pass_flag,next_action
+Task656,PRAGMATIC_RELEASE_TIME_MACRO_POLICY_READY_FOR_SOFT_RELATION_BACKTEST,NOT_ACCEPTED,FORBIDDEN,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,RELEASE_TIME_REPAIRED_VINTAGE_ASOF_STILL_BLOCKS_ASSIGNMENT,1.0,0,0,"Run relation engine backtest with macro as soft modifier only. Do not use macro for standalone entry, hard block, full entry, or size boost."

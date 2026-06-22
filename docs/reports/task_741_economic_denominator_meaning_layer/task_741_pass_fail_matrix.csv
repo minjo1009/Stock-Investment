@@ -1,0 +1,7 @@
+gate,pass_flag,observed,expected
+all_task740_resolvers_have_packets,1,"resolvers=3443, packets=3443",equal
+coverage_report_created,1,all_task740_resolvers_have_economic_meaning_packet,all covered
+quality_metrics_created,1,rows=12,>=10
+missing_source_blockers_emitted,1,rows=8117,>0
+guardrail_all_pass,1,min=1,1
+backtest_permission,0,FAIL,economic meaning packets review only

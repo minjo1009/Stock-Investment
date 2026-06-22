@@ -1,13 +1,3 @@
-"""Backtest domain contracts."""
+"""Backtest package namespace."""
 
-from .models import BacktestTrade, ExecutionIntent, ExecutionResult, PositionSnapshot, SignalEvent, TradeResult
-
-__all__ = [
-    "BacktestTrade",
-    "ExecutionIntent",
-    "ExecutionResult",
-    "PositionSnapshot",
-    "SignalEvent",
-    "TradeResult",
-]
-
+__all__: list[str] = []

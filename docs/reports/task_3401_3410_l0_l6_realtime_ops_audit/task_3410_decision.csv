@@ -1,0 +1,2 @@
+task_id,verdict,strategy,deployment,real_capital,default_cadence,notes
+Task3410,event_driven_plus_10_min_intraday_heartbeat_diagnostic_only,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,10_min_changed_candidate_brain_heartbeat,"Use 5-minute safety and freshness heartbeat plus 30-minute heavy-source refresh; no full 5-minute trading loop and no paper/live permission."

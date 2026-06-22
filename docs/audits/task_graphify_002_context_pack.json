@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "community_labels_path": "docs/graphify/community_labels.json",
+  "god_nodes_path": "docs/graphify/god_nodes_top20_local.json",
+  "context_packs_path": "docs/graphify/context_packs.json",
+  "community_count": 116,
+  "local_god_nodes_count": 20,
+  "context_pack_count": 5,
+  "graph_html_label_injection": "ok_changed_nodes=0;legend_labels_changed=0"
+}

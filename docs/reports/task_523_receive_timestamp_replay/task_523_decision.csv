@@ -1,0 +1,2 @@
+task_id,receive_ts_replay_ready_flag,decision_snapshot_count,receive_ts_missing_decision_count,missing_receive_ts_treated_live_ready_flag,strategy_acceptance_status
+Task523,0,103,103,0,RECEIVE_TS_REPLAY_BLOCKED_FOR_HISTORICAL_ROWS

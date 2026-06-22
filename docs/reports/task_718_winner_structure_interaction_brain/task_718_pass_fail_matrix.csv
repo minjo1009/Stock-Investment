@@ -1,0 +1,9 @@
+gate_name,status,pass_flag,observed,required
+scope_5265,PRIMARY_PASS,1,rows=5265,5265
+event_linked_2445,PRIMARY_PASS,1,event=2445,2445
+winner_states_present,PRIMARY_PASS,1,states=10,>=6
+watch_decomposition_present,PRIMARY_PASS,1,rows=358,>0
+interaction_graph_present,PRIMARY_PASS,1,edges=26325,5 edges per row
+guardrail_eval_present,PRIMARY_PASS,1,top=50; bottom=50,50/50
+governance_all_pass,PRIMARY_PASS,1,min=1,1
+real_capital_forbidden,PRIMARY_PASS,1,FORBIDDEN,FORBIDDEN

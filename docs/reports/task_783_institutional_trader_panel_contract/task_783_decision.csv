@@ -1,0 +1,10 @@
+field,value
+task_id,Task783
+decision,institutional trader panel contract complete
+status,Diagnostic Only
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+institution_lenses,10
+trade_decisions_created,0
+next_action,Task784 macro politics filter contract

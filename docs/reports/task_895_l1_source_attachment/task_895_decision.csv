@@ -1,0 +1,6 @@
+decision_area,status,details,does_not_mean
+l1_local_lineage_attachment,implemented,139 of 139 L1 seed rows linked to event snapshot lifecycle and setup hashes,raw external document exists
+local_lineage_gaps,closed,0 incomplete local lineage attachment gaps remain,L2 readiness
+raw_external_document_attachment,structured_gap,139 raw external documents remain missing and are queued,negative evidence
+raw_source_acquisition_queue,implemented,8 existing-seed symbols need raw document attachment and 62 missing-seed symbols need seed collection,broad redownload
+l2_readiness,blocked,Blocked until raw source attachment or owner-approved internal evidence scope,trade signal

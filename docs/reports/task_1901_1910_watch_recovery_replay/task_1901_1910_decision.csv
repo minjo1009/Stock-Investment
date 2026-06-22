@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1910,watch_recovery_replay_complete_target_not_met,watch_recovery_top3_v1,3256.0927,0.257024,-0.240886,audit whether recovery candidates improved CAGR without unacceptable MDD before expanding beyond 36 rows,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_WATCH_RECOVERY_REPLAY_ONLY

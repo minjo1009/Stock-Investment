@@ -1,0 +1,11 @@
+check,status,evidence
+test_inventory_generated,PASS,docs/reports/task_747_test_validation_canonicalization/task747_test_validation_inventory.csv
+summary_generated,PASS,docs/reports/task_747_test_validation_canonicalization/task747_test_validation_summary.md
+architecture_map_generated,PASS,docs/architecture/test_validation_canonicalization_map.md
+authority_tags_added,PASS,task747_test_validation_inventory.csv
+pass_implication_added,PASS,task747_test_validation_inventory.csv
+strategy_acceptance_unchanged,PASS,NOT_ACCEPTED
+deployment_readiness_unchanged,PASS,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+full_test_suite_run,NOT_RUN,classification-only cleanup pass
+gpt_review_captured,PASS,existing ChatGPT tab responded with review notes
+files_deleted_or_moved,PASS,No delete or move performed by Task747

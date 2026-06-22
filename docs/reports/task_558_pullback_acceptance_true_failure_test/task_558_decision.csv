@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,tested_pullback_rows,controlled_pullback_rows,label_used_in_assignment_flag
+Task558,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,0,16859,8374,0

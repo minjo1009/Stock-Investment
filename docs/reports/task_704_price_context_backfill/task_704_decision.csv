@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,all_row_count,event_linked_row_count,event_linked_price_context_available_count,event_linked_price_context_missing_count,event_linked_price_context_available_rate,outcome_used_for_assignment_flag_sum,future_price_used_for_assignment_flag_sum,next_action
+Task704,PRICE_CONTEXT_BACKFILL_COMPLETE,NOT_ACCEPTED,FORBIDDEN,5265,2445,2445,0,1.0,0,0,Rerun Task703 using this as-of price context panel before changing parser rules.

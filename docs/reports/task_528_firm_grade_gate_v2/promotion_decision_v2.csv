@@ -1,0 +1,2 @@
+task_id,promotion_decision_v2,passed_gate_count,required_gate_count,deployment_ready_flag,strategy_acceptance_status
+Task528,NEEDS_SUPPRESSION_RERUN,1,5,0,NOT_DEPLOYMENT_READY

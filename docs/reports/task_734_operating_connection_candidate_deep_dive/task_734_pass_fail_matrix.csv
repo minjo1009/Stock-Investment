@@ -1,0 +1,8 @@
+gate_name,status,pass_flag,observed,required
+candidate_deep_dive_created,PRIMARY_PASS,1,rows=9,9
+summary_created,PRIMARY_PASS,1,rows=5,>0
+guardrail_all_pass,PRIMARY_PASS,1,min=1,1
+false_positive_count_expected,PRIMARY_PASS,1,8,8
+one_candidate_survives,PRIMARY_PASS,1,1,1
+zero_supported,PRIMARY_PASS,1,0,0
+backtest_permission,NOT_ACCEPTED,0,FAIL,deep dive review only

@@ -1,0 +1,2 @@
+﻿task_398_verdict,evaluation_status,trade_count,final_equity,max_drawdown,positive_period_rate,cost_model_applied_flag,capital_constraint_applied_flag,deployment_claim_flag,next_priority
+COMPLETE_PASS,PORTFOLIO_PATH_SIMULATION_COMPLETE,2659,0.7136999011321865,-0.31596192069665874,0.39964317573595004,1,1,0,use_task397_false_positive_map_before_policy_refinement

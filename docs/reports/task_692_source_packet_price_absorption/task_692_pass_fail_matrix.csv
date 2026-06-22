@@ -1,0 +1,7 @@
+gate_name,status,pass_flag,observed,required
+leader_source_packet_target_count,PRIMARY_PASS,1,source_packet_rows=19,one source packet review row per leader_source_packet_needed candidate
+price_absorption_target_count,PRIMARY_PASS,1,price_absorption_rows=293,one price absorption row per price_absorption_confirmation contender
+source_packet_states_decomposed,PRIMARY_PASS,1,source_packet_states=1,source packet review must produce valid source states even when all leaders share one blocker
+price_absorption_states_decomposed,PRIMARY_PASS,1,price_absorption_states=4,price absorption review should split candidates into multiple states
+no_outcome_columns_in_confirmation_outputs,PRIMARY_PASS,1,none,PnL/outcome columns excluded
+no_strategy_promotion,PRIMARY_PASS,1,no PnL simulation or allocation rule promotion was run,confirmation review only

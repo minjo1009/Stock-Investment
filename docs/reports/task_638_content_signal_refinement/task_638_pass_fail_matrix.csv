@@ -1,0 +1,11 @@
+gate,pass_flag,observed_value,required_value
+all_five_refinement_axes_tested,1,timing=6; exits=6; sizing=3,negative split positive split dynamic sizing timing and exit axes must be tested
+best_50bp_beats_task637,1,best638=$6660.26; task637=$5148.31,refinement should improve prior Task637 best result
+risk_controlled_50bp_beats_task637,1,risk_best=$5618.37; dd=-30.04%; task637=$5148.31,risk-controlled refinement should beat Task637 with max drawdown no worse than -35%
+best_50bp_beats_task617_max5,1,best638=$6660.26; task617_max5=$3248.89,refined candidate must beat existing Task617 max5
+best_100bp_beats_task617_max5,1,risk100=$5341.74; task617_max5=$3248.89,refined candidate should survive 100bp cost stress
+same_rule_validation_oos_beats_qqq,0,same_rule_validation=$863.73; qqq=$1020.64,same risk-controlled full-period rule should beat validation QQQ
+same_rule_recent_oos_beats_qqq,1,same_rule_recent=$1374.52; qqq=$1140.89,same risk-controlled full-period rule should beat recent OOS QQQ
+best_oos_risk_controlled_accounts_beat_qqq,1,validation_best=$1481.53; recent_best=$1628.22,validation and recent OOS risk-controlled candidate accounts should beat same-period QQQ
+presence_fields_not_used,1,presence fields not used,content interpretation only
+trading_promotion,0,research candidate only,"requires GPT review capture, live rule lock, latency/source readiness, and runtime paper shadow replay"

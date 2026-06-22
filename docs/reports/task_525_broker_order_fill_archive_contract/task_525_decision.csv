@@ -1,0 +1,2 @@
+task_id,contract_defined_flag,historical_task505_broker_truth_available_flag,collector_implemented_flag,strategy_acceptance_status
+Task525,1,0,0,CONTRACT_READY_COLLECTION_BLOCKED

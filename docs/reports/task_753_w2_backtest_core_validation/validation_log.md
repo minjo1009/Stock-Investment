@@ -1,0 +1,10 @@
+# Task753 Validation Log
+
+Commands:
+
+```text
+python scripts\canonical_w2_backtest_core_validate.py
+python -m py_compile src\backtest\data_loader.py scripts\canonical_w2_backtest_core_validate.py tests\test_task753_w2_backtest_core_boundary.py
+python -m unittest tests.test_task753_w2_backtest_core_boundary
+python -m unittest tests.unit.test_structure.TestRepositoryFoundationStructure.test_backtest_daily_loader_loads_and_sorts_csv tests.unit.test_structure.TestRepositoryFoundationStructure.test_backtest_daily_loader_missing_required_columns_raises tests.unit.test_structure.TestRepositoryFoundationStructure.test_backtest_universe_loader_returns_symbol_map
+```

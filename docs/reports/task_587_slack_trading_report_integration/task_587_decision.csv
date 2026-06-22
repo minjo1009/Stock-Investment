@@ -1,0 +1,2 @@
+﻿task_id,task_name,decision_status,message_type,deployment_ready_flag,diagnostic_only_flag
+Task587,Slack Trading Report Integration,SKIPPED_NO_FILLED_TRADE,SKIPPED_NO_FILLED_TRADE,0,1

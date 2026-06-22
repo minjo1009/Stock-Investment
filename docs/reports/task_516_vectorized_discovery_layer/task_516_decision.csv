@@ -1,0 +1,2 @@
+task_id,vectorized_candidate_count,replay_queue_count,discovery_validation_separated_flag,strategy_acceptance_status
+Task516,1053,25,1,DISCOVERY_ONLY_REPLAY_REQUIRED

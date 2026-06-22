@@ -1,0 +1,41 @@
+{
+  "owner_id": "operator-db-source-acquisition-scheduler",
+  "default_allow_network": false,
+  "sec_user_agent_env_name": "SEC_USER_AGENT",
+  "sec_user_agent_env_file": "configs/local/sec_user_agent.env",
+  "artifact_dir": "data/artifacts/task_3761_3800_db_source_scheduler_config_freshness_validator/scheduler_runs",
+  "jobs": [
+    {
+      "name": "intraday_market_sources_5m",
+      "enabled": true,
+      "interval_minutes": 5,
+      "allow_network": true,
+      "families": ["market_bars_5m", "market_ticks_intraday"],
+      "symbols": ["AAPL", "MSFT", "NVDA", "AMD", "QQQ"],
+      "macro_series": []
+    },
+    {
+      "name": "heavy_sources_60m",
+      "enabled": true,
+      "interval_minutes": 60,
+      "allow_network": true,
+      "families": ["daily_ohlcv", "macro_rates", "sec_events"],
+      "symbols": ["AAPL", "MSFT", "NVDA", "AMD", "QQQ"],
+      "macro_series": ["DFF", "DGS10"]
+    },
+    {
+      "name": "registered_db_loop_5m",
+      "enabled": true,
+      "interval_minutes": 5,
+      "allow_network": false,
+      "families": [],
+      "symbols": [],
+      "macro_series": []
+    }
+  ],
+  "status": {
+    "strategy": "NOT_ACCEPTED",
+    "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "real_capital": "FORBIDDEN"
+  }
+}

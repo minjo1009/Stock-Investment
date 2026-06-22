@@ -1,0 +1,2 @@
+task_id,decision,strategy_acceptance_status,real_capital_status,priority_1,priority_2,priority_3,priority_4,next_action
+Task642,LOCK_PRIORITY_ORDER_ENTRY_RISK_TIER_TURNOVER_NOT_ACCEPTED,NOT_ACCEPTED,FORBIDDEN,Task642A_entry_quality_confirmation,Task642B_volatility_risk_sizing,Task642C_signal_tier_sizing,Task642D_exit_capital_recycling,"Run Task642A first with Task639 signal fixed; only after it passes test ATR sizing, then signal tier sizing, then exit/capital recycling."

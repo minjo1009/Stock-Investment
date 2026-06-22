@@ -1,0 +1,2 @@
+task_id,reported_pnl_pct,roundtrip_100bp_pnl_pct,roundtrip_100bp_positive_flag,explicit_cost_model_added_flag,inferred_lifecycle_matching_used_flag,strategy_acceptance_status
+Task508,722.9889484456075,663.022029896882,1,1,0,COST_STRESS_DIAGNOSTIC_ONLY

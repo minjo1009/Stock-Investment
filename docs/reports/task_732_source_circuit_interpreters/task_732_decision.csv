@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,context_count,edge_count,discarded_source_count,operating_primitive_created_count,guardrail_pass,backtest_permission,next_action
+Task732,SOURCE_CIRCUIT_INTERPRETERS_BUILT_REVIEW_ONLY,NOT_ACCEPTED,FORBIDDEN,5302,5302,0,0,1,FAIL,"Review circuit context quality by source family, then build denominator and cross-context interaction checks before any actionability or backtest promotion."

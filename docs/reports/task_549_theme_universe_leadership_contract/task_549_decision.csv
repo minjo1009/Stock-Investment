@@ -1,0 +1,2 @@
+task_id,strategy_acceptance_status,deployment_ready_flag,theme_count,missing_options_news_source_flag,theme_universe_versioned_flag
+Task549,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,0,10,1,1

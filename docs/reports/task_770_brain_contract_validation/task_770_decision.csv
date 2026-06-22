@@ -1,0 +1,19 @@
+field,value
+task_id,Task770
+decision,contract_validation_catalog_complete_research_only
+brain_layer,qa_resolver
+owner_team,Research Governance
+reviewer_team,Backtest & Simulation Infra + Data & Market Microstructure
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+validation_catalog_rows,14
+brain_validation_registry_rows,14
+performance_test_run,NO
+backtest_approval_created,NO
+buy_sell_rank_sizing_created,NO
+inferred_matching_used,NO
+validation_authority,diagnostic_research_contract_validation_only
+commands_run,"python scripts/trader_brain_first_batch_validate.py | python scripts/trader_brain_second_batch_validate.py | python scripts/trader_brain_third_batch_validate.py | python scripts/trader_brain_fourth_batch_validate.py | python scripts/trader_brain_program_validate.py"
+commands_not_run,"performance test | backtest | optimizer | broker/live execution command | source-code tests outside requested validators"
+next_action,Task771 canonical brain registry and future backtest gate design without executing a backtest or changing acceptance/deployment/capital status

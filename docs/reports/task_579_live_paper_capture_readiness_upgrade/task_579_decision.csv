@@ -1,0 +1,2 @@
+﻿task_id,strategy_acceptance_status,deployment_ready_flag,diagnostic_only_flag,blocking_check_count,historical_nbbo_live_ready_flag,broker_truth_ready_flag
+Task579,PAPER_SHADOW_CAPTURE_PLAN_READY_NOT_LIVE_READY,0,1,3,0,0

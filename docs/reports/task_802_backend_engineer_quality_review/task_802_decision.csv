@@ -1,0 +1,12 @@
+field,value
+task_id,Task802
+decision,backend engineer quality review complete
+status,Diagnostic Only
+canonical_state,active
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+backend_review_roles,5
+runtime_code_changed,NO
+backtest_executed,NO
+next_action,Task803 validator strictness upgrade

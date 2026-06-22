@@ -1,0 +1,7 @@
+field,value
+verdict,BACKTEST_INPUT_MANIFEST_IMPLEMENTED_NO_EXECUTION
+strategy_acceptance,NOT_ACCEPTED
+deployment_status,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+validation_authority,GOVERNANCE_HEALTH
+next_action,Apply tradable-after and market data gates before replay

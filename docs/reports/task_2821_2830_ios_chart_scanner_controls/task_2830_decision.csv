@@ -1,0 +1,2 @@
+task_id,decision,status,strategy_acceptance,deployment_readiness,real_capital,next_action
+Task2830,ios_chart_scanner_controls_primary_pass,PRIMARY_PASS,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,Run Expo Go device QA and connect scanner fields to paper runtime catalog rows

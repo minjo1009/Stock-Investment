@@ -1,0 +1,9 @@
+{
+  "_fixture_meta": {
+    "source": "KIS paper",
+    "captured_at": "2026-04-24T16:30:03.170160Z",
+    "sanitized": true,
+    "case": "order_status_cancelled"
+  },
+  "response": null
+}

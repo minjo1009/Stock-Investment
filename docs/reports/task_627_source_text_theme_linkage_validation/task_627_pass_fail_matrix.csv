@@ -1,0 +1,5 @@
+gate,pass_flag,observed_value,required_value
+source_text_linkage_exists,1,source_text_aerospace_risk_events=42,certified official text must contain both aerospace/theme and risk terms
+recent_oos_improves,1,removed_recent=11; recent 4.67% vs original 2.17%,source-text aerospace risk hold must improve recent OOS
+validation_not_broken,1,validation 10.19% vs original 9.63%,source-text aerospace risk hold must not reduce validation average
+trading_promotion,0,source-text linkage diagnostic only,needs cost/account and parameter/split robustness before strategy use

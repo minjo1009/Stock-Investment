@@ -1,0 +1,2 @@
+task_id,decision_status,scope,owner,team,program_blocker,strategy_acceptance,next_action
+T601-0,CONTRACT_DEFINED,candidate_funnel_schema_and_contract,성원,Candidate Funnel Research,P0_CANDIDATE_FUNNEL,NOT_ACCEPTED,Implement T601-1 candidate_funnel_events population and funnel metrics.

@@ -1,0 +1,2 @@
+task_id,decision_status,scope,owner,team,strategy_acceptance,next_action
+T603,PRIMARY_PASS,registry_consumption_audit,중훈,Research Governance,NOT_ACCEPTED,Implement T603-1 registry-backed readiness payload for catalog and frontend consumption.

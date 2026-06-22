@@ -1,0 +1,10 @@
+gate_name,pass_flag,observed,required
+five_engine_columns_built,1,columns present,all engine outputs
+cohort_slot_assignment_built,1,rows=2608,cohort allocation rows
+no_forbidden_assignment_inputs,1,violations=0,0 violations
+task678_assignment_reuse_removed,1,old assignment column absent,no Task678 assignment column
+global_top5_rank_removed,1,global top5 rank absent,no global top5 rank
+best_beats_active_cap3_return,0,"best=10887.47, active=10887.47",best final > active cap3
+best_mdd_not_worse_than_active_cap3,1,"best=-30.52, active=-30.52",best MDD not worse
+best_preserves_active_big_winners,1,removed_big=0,0 removed big winners
+strategy_accepted,0,research only,split/OOS promotion required

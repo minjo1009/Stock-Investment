@@ -1,0 +1,3 @@
+decision_id,decision,status,owner_team,reviewer_team,key_artifact,validation_command,notes
+Task606-D1,"Implement persistent GPT/Chrome review subagent skill and contract",DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,Research Governance,Regime Research,skills/gpt-chrome-review-subagent/SKILL.md,python C:/Users/minjo/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/gpt-chrome-review-subagent,"No strategy readiness change; GPT/Chrome remains review and ideation only"
+

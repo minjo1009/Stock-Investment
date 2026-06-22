@@ -1,0 +1,2 @@
+task_id,decision,status,strategy_acceptance,deployment_readiness,real_capital,next_action
+Task2810,ios_trade_lifecycle_chart_markers_primary_pass,PRIMARY_PASS,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,Run iPhone Expo Go visual QA and then attach source-backed realtime bars when certified

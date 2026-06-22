@@ -1,0 +1,2 @@
+task_id,decision,pass_flag,strategy_acceptance_status,deployment_status,next_action
+Task608F,FAIL_ENTRY_REDUCE_IS_OUTCOME_LABEL_NOT_LIVE_LOGIC,0,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,Build live-detectable path diagnostics before any entry-reduce refinement or suppression claim.

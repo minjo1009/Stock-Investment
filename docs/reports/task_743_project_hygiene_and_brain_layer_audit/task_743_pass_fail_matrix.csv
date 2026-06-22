@@ -1,0 +1,7 @@
+gate,pass_flag,observed,expected
+worktree_inventory_completed,1,"983 untracked; 16 modified; 3 deleted","inventory captured"
+large_artifact_policy_added,1,".gitignore updated","large local artifacts excluded by default"
+brain_layer_map_added,1,"docs/architecture/brain_layer_map.md","map exists"
+task_registry_contract_added,1,"docs/contracts/task_registry_contract.md","contract exists"
+deletion_performed,1,"none","no deletion during audit"
+backtest_permission,0,"FAIL","cleanup task only"

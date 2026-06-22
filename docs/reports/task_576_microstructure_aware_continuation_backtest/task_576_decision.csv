@@ -1,0 +1,2 @@
+﻿task_id,strategy_acceptance_status,deployment_ready_flag,diagnostic_only_flag,total_rows,quote_matched_rows,selected_rows,candidate_set_count,best_candidate_set,best_count,best_avg_net,best_win_rate,best_entry_reduce_rate,missing_source_approximated_flag,live_ready_flag
+Task576,DIAGNOSTIC_PASS_MICROSTRUCTURE_AWARE_BACKTESTED,0,1,9478,9388,8056,6,diagnostic_micro_friction_sleeve,6006,0.09680792189555769,0.6366966366966367,0.30336330336330336,0,0

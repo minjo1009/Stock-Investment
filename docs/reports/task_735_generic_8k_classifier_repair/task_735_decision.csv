@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,generic_8k_count,agreement_family_count,operating_candidate_count,operating_supported_count,task734_prior_count,task734_prior_supported_count,guardrail_pass,backtest_permission,next_action
+Task735,GENERIC_8K_CLASSIFIER_REPAIRED_REVIEW_ONLY,NOT_ACCEPTED,FORBIDDEN,95,8,0,0,9,0,1,FAIL,"Rebuild Task732/733 with repaired generic 8-K states, then inspect remaining operating candidates for denominator, expectations, and price absorption before any allocation or PnL test."

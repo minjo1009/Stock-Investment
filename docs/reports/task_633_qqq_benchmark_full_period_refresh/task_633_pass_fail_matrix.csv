@@ -1,0 +1,8 @@
+gate,pass_flag,observed_value,required_value
+latest_data_horizon,1,strategy_end=2026-06-03; qqq_end=2026-06-05; market_end=2026-06-04,strategy and QQQ benchmark must extend into June 2026
+temporal_integrity,1,date_only_support=0; future_leaks=0,no date-only support and no future-event support leakage
+strict_strategy_beats_qqq_50bp_account,0,strict_beats_qqq=3/4; qqq_final=$1751.31,Task632 strict strategy must beat QQQ at every tested capacity
+original_strategy_beats_qqq_50bp_account,1,original_beats_qqq=4/4; qqq_final=$1751.31,Task617 original strategy must beat QQQ at every tested capacity
+baseline_beats_qqq_50bp_account,0,baseline_beats_qqq=1/4; qqq_final=$1751.31,all-candidate baseline must beat QQQ at every tested capacity
+strict_strategy_beats_original,0,strict_vs_original_wins=0/4,new qualitative interpretation should not lose to the prior broad intelligence strategy
+trading_promotion,0,benchmark comparison only,requires accepted OOS and live-source readiness before promotion

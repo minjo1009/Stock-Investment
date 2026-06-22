@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,trading_promotion_pass_flag,universe_rows,universe_source_gap_rows,universe_assignment_ready_rows,active_cap3_rows,active_cap3_assignment_ready_rows,guarded_challenger_accepted_rows,primary_blocker,next_action
+Task685,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,NOT_ACCEPTED,FORBIDDEN,0,1621,1621,0,51,0,0,Source readiness certification is zero; guarded challenger admission is zero.,Fix data/source certification contract before further relation-engine trading-rule promotion.

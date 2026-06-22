@@ -1,0 +1,2 @@
+decision,decision_reason,best_candidate,best_anchored_oos_net_pnl_r,best_anchored_oos_cost_adjusted_expectancy,best_rolling_oos_robustness,best_combined_stress_retention,best_deployment_uplift_score
+PARTIAL_UPLIFT_RESEARCH,"Some candidates improve anchored OOS damage, but none restore anchored OOS to positive post-cost PnL.",combo_earlier_timing_plus_max3,-1.189342,-0.034981,0.75,0.488287,0.30016

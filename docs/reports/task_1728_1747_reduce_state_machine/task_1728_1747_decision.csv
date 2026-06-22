@@ -1,0 +1,2 @@
+task_id,verdict,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1747,reduce_state_machine_implemented_diagnostic_only,reduce_state_machine_top3_v1,2278.8662,0.173043,-0.341442,audit whether failed-reduce exits improve true daily drawdown and calibrate cluster-aware pre-entry risk budget before another candidate expansion,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_REDUCE_STATE_MACHINE_ONLY

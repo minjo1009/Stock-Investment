@@ -1,0 +1,2 @@
+﻿task_id,decision_status,strategy_acceptance_status,deployment_readiness_status,program_blocker,next_required_task
+T602-1,FAIL,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,P0_EXACT_REPLAY,Position Match must pass at 99 percent with exact CLOSED lifecycle evidence.

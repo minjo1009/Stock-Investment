@@ -1,0 +1,2 @@
+decision,decision_reason,valid_rolling_windows,non_positive_windows,symbol_concentration_flag,survives_scenario_1,survives_scenario_2,permutation_p_value,random_subset_percentile_rank
+REJECT_SUBSET,"subset fails one or more core robustness checks across time, concentration, cost, or significance",4,0,False,True,True,0.151,85.9

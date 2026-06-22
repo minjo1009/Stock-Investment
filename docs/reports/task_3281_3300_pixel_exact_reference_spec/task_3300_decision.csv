@@ -1,0 +1,3 @@
+﻿task_id,verdict,strategy_acceptance_status,deployment_readiness_status,real_capital_status,code_changed,replay_changed,selector_changed,paper_order_changed,live_order_changed,next_action
+Task3300,pixel_exact_reference_spec_complete_NOT_IMPLEMENTED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,0,0,0,0,0,Implement Reference 2 Scanner at 426.5x922 CSS with deviceScaleFactor 2 and side-by-side pixel comparison.
+

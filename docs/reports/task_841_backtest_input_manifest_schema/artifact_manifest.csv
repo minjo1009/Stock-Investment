@@ -1,0 +1,5 @@
+﻿"relative_path","artifact_class","size_bytes","sha256"
+"backtest_input_manifest.csv","small_table","1128","984c517f28db7b8f72819dfe318213000bfb64cf8929a0425c90420e8350e7b7"
+"backtest_input_manifest_schema.csv","small_table","931","6e7eb1baa14a1665f3b5984e2339151669659a1b8a13d54db7dc696adbd210e6"
+"task_841_backtest_input_manifest_schema.md","report","1327","db1f503743c36574fd75d19a3413d93ef61a0faf3bae055db96c9bb70c3fcd34"
+"task_841_decision.csv","small_table","288","8a5092eb1fafdcfcea99ae79b85e90da903a350d6df553bea25ccba5117ac372"

@@ -1,0 +1,7 @@
+﻿gate,pass_flag,observed,required
+macro_sources_fetched,1,fetched=15/15,all configured macro series fetched
+macro_attached_to_entries,1,rows=735,at least one entry has macro state
+no_label_or_outcome_assignment,1,macro/state assignment does not read returns or labels,labels and outcomes evaluation-only
+vintage_gap_reported,1,latest FRED vintage only,latest-vintage limitation must be explicit
+release_calendar_gap_reported,1,conservative lag instead of exact release timestamp,exact release gap must be explicit
+trading_promotion,0,macro context diagnostic only,"requires ALFRED/vintage or exact release calendar, split/account/cost validation, live source readiness"

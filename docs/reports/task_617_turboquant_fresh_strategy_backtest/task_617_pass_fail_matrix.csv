@@ -1,0 +1,6 @@
+gate,pass_flag,observed_value,required_value
+fresh_candidate_generation,1,baseline_candidates=5041,>=300 fresh raw-generated candidates
+fresh_strategy_diagnostic_performance,1,strategy_count=735; strategy_avg=13.92%; baseline_avg=8.62%; strategy_entry_reduce=31.70%; baseline_entry_reduce=35.13%,count>=50; avg return >= baseline+2pp; entry_reduce <= baseline
+split_stability,1,positive_splits=2/3,>=2 positive splits across >=3 splits
+gpt_review,1,CAPTURED_NEW_ALLOWED_TAB,captured via allowed 1. coding/investment ChatGPT tab
+trading_promotion,0,"fresh diagnostic backtest only; cost, slippage, broker truth, and GPT review are not complete",must pass before live or real capital

@@ -1,0 +1,196 @@
+{
+  "overall_verdict": "A. Ready for continued paper evidence accumulation",
+  "scores": {
+    "architecture": 7,
+    "backtest_reliability": 5,
+    "strategy_edge": 5,
+    "execution_safety": 7,
+    "realtime_data_pipeline": 5,
+    "evidence_harness": 7,
+    "ui_operator_console": 6,
+    "testing": 7,
+    "folder_convention": 6,
+    "operational_readiness": 5
+  },
+  "findings": [
+    {
+      "id": "F001",
+      "severity": "HIGH",
+      "category": "Execution Safety",
+      "title": "No real order/fill/cancel sample yet",
+      "evidence": "trading.db read-only counts: orders=0, fills=0, position_events=0; docs/reports/task_088/task_088_evidence_summary.json has order_attempts=0, filled_orders=0, cancelled_orders=0",
+      "recommended_action": "Continue paper only until at least one real submitted, filled/partial, cancelled, and reconciled sample is captured.",
+      "suggested_task_id": "T091"
+    },
+    {
+      "id": "F002",
+      "severity": "HIGH",
+      "category": "Realtime Data Pipeline",
+      "title": "Runtime signals are not proven equivalent to backtest signals",
+      "evidence": "src/app/task_089_market_data_signal_refresh.py::_compute_row; src/app/run_trade_once.py::_load_runtime_candidate; src/backtest/engine_full.py::run_full_backtest_with_stats",
+      "recommended_action": "Add a backtest/live signal alignment replay test over the same bars and selected symbols.",
+      "suggested_task_id": "T092"
+    },
+    {
+      "id": "F003",
+      "severity": "HIGH",
+      "category": "Backtest Reliability",
+      "title": "Backtest PnL is not capital-return evidence",
+      "evidence": "src/backtest/engine_full.py uses initial_equity, MAX_POSITION_WEIGHT, and quantity sizing; docs/reports/task_083/task_083_portfolio_validation.md shows low CapUtil; docs/reports/task_084/task_084_strategy_lock.md reports NetPnL/PF",
+      "recommended_action": "Build capital-based portfolio backtest reporting CAGR, exposure, cash, position sizing, and return on capital.",
+      "suggested_task_id": "T093"
+    },
+    {
+      "id": "F004",
+      "severity": "HIGH",
+      "category": "Realtime Data Pipeline",
+      "title": "KIS quote throttling causes partial symbol evaluation",
+      "evidence": "docs/reports/task_089/task_089_market_signal_refresh.json evaluated 4/12 symbols and records eight EGW00201 throttle failures",
+      "recommended_action": "Add quote throttling/backoff, per-symbol retry budget, and explicit degraded-universe status.",
+      "suggested_task_id": "T094"
+    },
+    {
+      "id": "F005",
+      "severity": "HIGH",
+      "category": "Operational Readiness",
+      "title": "Production scheduler and alerting are not sufficient",
+      "evidence": "scripts/run_phase5_paper_loop.ps1; src/app/run_trade_once.py::_send_recon_alert_if_enabled only alerts reconciliation critical/error",
+      "recommended_action": "Add a supervised scheduler, heartbeat, structured logs, and alerts for stale data, no-order streaks, throttle failures, and evidence FAIL.",
+      "suggested_task_id": "T095"
+    },
+    {
+      "id": "F006",
+      "severity": "MEDIUM",
+      "category": "Harness",
+      "title": "Task 087/088/089 responsibilities overlap and can obscure root cause",
+      "evidence": "scripts/run_phase5_paper_loop.ps1 runs 089 -> 087 -> 088; src/app/task_087_pilot_evidence.py invokes task 085 and records external failures",
+      "recommended_action": "Define a single run envelope schema with component status, broker status, signal status, and evidence status.",
+      "suggested_task_id": "T096"
+    },
+    {
+      "id": "F007",
+      "severity": "MEDIUM",
+      "category": "Execution Safety",
+      "title": "Live environment is blocked in Task 087 but run_trade_once has separate live gating semantics",
+      "evidence": "src/app/task_087_pilot_evidence.py::_preflight_failures blocks non-paper env; src/app/run_trade_once.py::_assert_trading_allowed requires control_state.run_mode=LIVE_ENABLED",
+      "recommended_action": "Document and test the exact paper/live state machine and required env/control_state transitions.",
+      "suggested_task_id": "T097"
+    },
+    {
+      "id": "F008",
+      "severity": "MEDIUM",
+      "category": "Backtest Reliability",
+      "title": "Fixed 12-symbol universe and survivorship risk remain",
+      "evidence": "src/backtest/data_loader.py::DEFAULT_US_UNIVERSE; data/raw/us_daily/*.csv; docs/reports/task_083/task_083_portfolio_validation.md",
+      "recommended_action": "Add dated universe snapshots or clearly label results as fixed-universe candidate research.",
+      "suggested_task_id": "T098"
+    },
+    {
+      "id": "F009",
+      "severity": "MEDIUM",
+      "category": "Testing",
+      "title": "KIS fixtures are synthetic contract samples, not broker proof",
+      "evidence": "tests/fixtures/kis/*.json; tests/test_kis_cancel_contract.py; no non-empty tests/replay broker sample",
+      "recommended_action": "Capture sanitized real KIS order/fill/cancel/reconcile fixtures and replay them in tests.",
+      "suggested_task_id": "T099"
+    },
+    {
+      "id": "F010",
+      "severity": "MEDIUM",
+      "category": "UI/Operator Console",
+      "title": "UI does not yet make no-order/no-signal/root-cause decisions obvious enough",
+      "evidence": "src/ui/app.py; docs/reports/task_087/task_087_latest_run.json; docs/reports/task_088/task_088_evidence_summary.json",
+      "recommended_action": "Add a Paper Ops decision panel with root-cause hierarchy and red/yellow risk states.",
+      "suggested_task_id": "T100"
+    },
+    {
+      "id": "F011",
+      "severity": "MEDIUM",
+      "category": "Folder Convention",
+      "title": "Artifacts and runtime DB are spread across task folders and project root",
+      "evidence": "docs/reports/task_066b through task_089; docs/audits; root trading.db; docs/tmp",
+      "recommended_action": "Adopt data/runtime, docs/reports/tasks/task_xxx, and retention/archive conventions.",
+      "suggested_task_id": "T101"
+    },
+    {
+      "id": "F012",
+      "severity": "MEDIUM",
+      "category": "Performance",
+      "title": "Evidence and report accumulation can become slower over time",
+      "evidence": "src/app/task_088_evidence_decision.py scans all docs/reports/task_087/runs/*.json; docs/reports/task_087/runs currently has 9 JSON runs",
+      "recommended_action": "Add rolling indexes, date partitions, and archive policy for evidence and logs.",
+      "suggested_task_id": "T102"
+    },
+    {
+      "id": "F013",
+      "severity": "LOW",
+      "category": "Documentation",
+      "title": "Strategy reports use confident labels that can create false confidence",
+      "evidence": "docs/reports/task_084/task_084_strategy_lock.md says answer_q1_real_money: YES; docs/reports/task_066b/task_066B_final_validation_time_stop_only.md is WARNING",
+      "recommended_action": "Rewrite strategy-lock language to distinguish candidate strategy, paper readiness, and live readiness.",
+      "suggested_task_id": "T103"
+    },
+    {
+      "id": "F014",
+      "severity": "LOW",
+      "category": "Skills/Codex Workflow",
+      "title": "Task granularity is useful but needs checkpoint discipline",
+      "evidence": "docs/reports/task_087, task_088, task_089; skills/subagent-artifact-governance/SKILL.md",
+      "recommended_action": "Use planner/executor/reviewer/tester roles for large tasks and require checkpoint summaries.",
+      "suggested_task_id": "T104"
+    }
+  ],
+  "recommended_next_tasks": [
+    {
+      "task_id": "T091",
+      "title": "Paper Broker Lifecycle Evidence Gate",
+      "priority": 1,
+      "acceptance_criteria": [
+        "At least one real paper submitted order is captured and sanitized.",
+        "At least one fill or partial fill sample is captured and reconciled.",
+        "At least one cancel path sample is captured or explicitly marked unavailable with broker evidence.",
+        "Task 088 aggregate distinguishes no-signal/no-order from lifecycle evidence completion."
+      ]
+    },
+    {
+      "task_id": "T092",
+      "title": "Backtest/Runtime Signal Alignment",
+      "priority": 2,
+      "acceptance_criteria": [
+        "Replay uses the same symbols and bars for locked backtest logic and Task 089/runtime logic.",
+        "All mismatches are reported with symbol, timestamp, input values, and reason.",
+        "Locked strategy sample has zero unexplained alignment mismatches."
+      ]
+    },
+    {
+      "task_id": "T094",
+      "title": "KIS Quote Throttle Hardening",
+      "priority": 3,
+      "acceptance_criteria": [
+        "Task 089 either evaluates all configured symbols or marks the run as degraded.",
+        "Throttle failures include skipped symbols and retry counts.",
+        "Candidate selection cannot silently rank only the first successfully queried subset."
+      ]
+    },
+    {
+      "task_id": "T093",
+      "title": "Capital-Based Portfolio Backtest",
+      "priority": 4,
+      "acceptance_criteria": [
+        "Report includes cash, exposure, position sizing, CAGR or return on capital, MDD on equity, and capital utilization.",
+        "NetPnL is no longer presented as investable return without capital context.",
+        "D_PORTFOLIO_SECTOR_FILTER is reclassified as candidate, paper-ready, or rejected under capital metrics."
+      ]
+    },
+    {
+      "task_id": "T100",
+      "title": "Paper Ops Decision UI",
+      "priority": 5,
+      "acceptance_criteria": [
+        "Latest run UI explains no order using a clear root-cause hierarchy.",
+        "Risk states such as UNKNOWN, reconciliation critical, stale data, throttle, and missing credentials are visually prominent.",
+        "Operator can see order/fill/cancel/reconcile status without reading JSON files."
+      ]
+    }
+  ]
+}

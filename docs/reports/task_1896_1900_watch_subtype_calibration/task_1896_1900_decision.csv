@@ -1,0 +1,2 @@
+task_id,decision,watch_rows,upgrade_or_full_hold_candidate_rows,damage_watch_rows,primary_result,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1900,watch_subtype_calibration_complete_no_replay,113,36,56,watch_is_not_one_state_anymore,run one frozen replay only after reviewing upgrade candidates and live dilution precision rows,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_WATCH_SUBTYPE_CALIBRATION_ONLY

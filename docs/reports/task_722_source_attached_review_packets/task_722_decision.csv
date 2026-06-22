@@ -1,0 +1,2 @@
+task_id,verdict,strategy_acceptance_status,real_capital_status,candidate_count,source_review_ready_cashflow_count,source_review_noise_triage_count,trading_promotion_pass_flag,next_action
+Task722,SOURCE_ATTACHED_REVIEW_PACKETS_BUILT_RESEARCH_ONLY,NOT_ACCEPTED,FORBIDDEN,345,0,320,0,Parser repair removed all cashflow-ready packets; repair remaining semantic enrichment and ownership/noise taxonomy before any backtest candidate rule.

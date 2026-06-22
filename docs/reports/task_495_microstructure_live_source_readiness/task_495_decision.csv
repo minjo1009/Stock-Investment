@@ -1,0 +1,2 @@
+task_id,task_name,raw_receive_timestamp_implemented_flag,status_luld_live_archive_implemented_flag,full_depth_book_implemented_flag,full_depth_book_blocked_reason,fake_depth_or_luld_used_flag,task_495_status,strategy_acceptance_status
+Task495,Microstructure Live Source Readiness,1,1,0,"Alpaca stock quotes provide NBBO bid/ask and size, not full depth book levels.",0,LIVE_QUOTE_STATUS_LULD_ARCHIVE_READY_FULL_DEPTH_PROVIDER_REQUIRED,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY

@@ -1,0 +1,13 @@
+field,value
+task_id,Task3181-Task3190
+decision,brain_code_operating_loop_recorded
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+replay_or_backtest_run,0
+source_acquisition_run,0
+paper_order_created,0
+live_order_created,0
+validation_authority,GOVERNANCE_HEALTH_PACKAGE_HEALTH_REPORTING_HEALTH_BOUNDARY
+next_action,run validator suite and reuse loop for future brain/runtime/frontend promotion work
+

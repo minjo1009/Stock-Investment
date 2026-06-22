@@ -1,0 +1,11 @@
+gate_name,status,pass_flag,observed,required
+context_quality_created,PRIMARY_PASS,1,rows=5302,5302
+quality_edges_created,PRIMARY_PASS,1,rows=5302,5302
+permission_states_not_all_block,PRIMARY_PASS,1,states=4:connection_candidate|modifier_only|not_applicable|review_required,>=3 states
+operating_connection_candidates_present,PRIMARY_PASS,1,rows=9,>0 review-only
+modifier_edges_present,PRIMARY_PASS,1,rows=5293,>0
+operating_fact_creation_zero,PRIMARY_PASS,1,0,0
+trading_flags_zero,PRIMARY_PASS,1,"trading=0,backtest=0",0
+guardrail_violation_zero,PRIMARY_PASS,1,0,0
+distribution_report_present,PRIMARY_PASS,1,rows=13,>0
+backtest_permission,NOT_ACCEPTED,0,FAIL,quality review only

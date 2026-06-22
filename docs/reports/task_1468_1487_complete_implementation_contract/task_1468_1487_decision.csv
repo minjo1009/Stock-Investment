@@ -1,0 +1,2 @@
+task_id,decision,strategy_acceptance,deployment_readiness,real_capital,next_action,authority
+Task1487,complete_implementation_contract_defined_not_strategy_acceptance,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,implement Task1472-1487 semantic extractor and balanced v6 replay under this contract,DIAGNOSTIC_COMPLETE_IMPLEMENTATION_CONTRACT_ONLY

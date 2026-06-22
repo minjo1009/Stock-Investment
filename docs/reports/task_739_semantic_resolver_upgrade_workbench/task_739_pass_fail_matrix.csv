@@ -1,0 +1,10 @@
+gate,pass_flag,observed,expected
+extractor_work_orders_created,1,rows=13,13
+resolver_work_orders_created,1,rows=13,13
+requirement_trace_created,1,rows=4101,4101
+denominator_contracts_created,1,rows=31,>0
+comparator_contracts_created,1,rows=32,>0
+timing_contracts_created,1,rows=35,>0
+coverage_report_created,1,all_requirements_mapped_to_extractor_and_resolver_work_orders,all mapped
+guardrail_all_pass,1,min=1,1
+backtest_permission,0,FAIL,extractor/resolver workbench review only

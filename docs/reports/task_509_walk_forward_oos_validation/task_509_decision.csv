@@ -1,0 +1,2 @@
+task_id,walk_forward_fold_count,walk_forward_total_count,walk_forward_avg_net_pct,walk_forward_win_rate,walk_forward_entry_reduce_rate,hindsight_grid_selection_removed_flag,strategy_acceptance_status
+Task509,7,89,9.32476175227673,0.5617977528089888,0.39325842696629215,1,WALK_FORWARD_DIAGNOSTIC_ONLY

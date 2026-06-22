@@ -1,0 +1,5 @@
+gate,pass_flag,observed_value,required_value
+pre_entry_only_rule_columns,1,none,"no outcome, exit, or holding-period columns in rule conditions"
+aerospace_risk_off_diagnostic_candidate,1,recent_kept_avg=9.65%; recent_kept_er=46.25%; validation_kept_avg=12.46%,"recent kept avg>=5%, recent kept entry_reduce<=50%, validation kept avg>=base"
+global_ir_requirement_rejected,1,recent_kept_avg=1.13%; validation_kept_avg=7.13%,global company-IR requirement should not be promoted if it damages both splits
+treatment_rule_acceptance,0,diagnostic proactive rule candidates only,"must pass split/OOS, cost/slippage, parameter, and source-retyping audits"

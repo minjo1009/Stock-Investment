@@ -1,0 +1,2 @@
+task_id,verdict,next_action,strategy_acceptance,deployment_readiness,real_capital,authority
+Task1847,targeted_sources_implemented_no_replay,review targeted source panels then implement source-attached L2/L3/L4 policy before any controlled replay,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,DIAGNOSTIC_TARGETED_SOURCE_IMPLEMENTATION_ONLY

@@ -1,0 +1,2 @@
+task_id,verdict,price_symbols_downloaded,sec_guidance_asof_hits,readiness_rows,strategy_acceptance,deployment_readiness,real_capital,next_required_action,authority
+Task1970,free_source_acquisition_complete_diagnostic_only,73,7270,5,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,wire acquired free sources into raw-source-certified receipt gates before any replay promotion,DIAGNOSTIC_FREE_SOURCE_ACQUISITION_ONLY

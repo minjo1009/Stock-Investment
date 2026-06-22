@@ -1,0 +1,2 @@
+task_id,verdict,planned_unique_cik_count,companyfacts_available_count,best_policy_variant_id,best_final_equity,best_cagr,best_max_drawdown,strategy_acceptance,deployment_readiness,real_capital,next_action,authority
+Task1447,full_ruler_source_time_acquisition_diagnostic_not_accepted,280,280,ruler_top3_v1,2112.7778,0.155968,-0.385207,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,fill analyst PIT and non-SEC source receipt gaps before another acceptance claim,DIAGNOSTIC_FULL_RULER_SOURCE_TIME_ACQUISITION_ONLY

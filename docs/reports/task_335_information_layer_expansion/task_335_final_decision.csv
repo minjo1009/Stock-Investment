@@ -1,0 +1,2 @@
+decision,decision_reason,positive_oos_lift_exists,best_bad_state_recall,best_clean_state_precision,holdout_mean_lift,holdout_positive_share,oos_expectancy_delta,trade_count_retention,full_period_return_damage_ratio
+NO_INFORMATION_EDGE,no family set produced stable OOS lift with robust holdout support,False,1.0,0.0,-0.017103,0.041667,0.257538,0.0,0.0

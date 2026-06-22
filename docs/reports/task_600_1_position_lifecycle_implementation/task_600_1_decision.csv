@@ -1,0 +1,2 @@
+﻿task_id,decision_status,strategy_acceptance_status,deployment_readiness_status,program_blocker,next_required_task
+T600-1,IMPLEMENTED_ACCEPTANCE_BLOCKED_SELL_FILLS_MISSING,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,P0_EXIT_LIFECYCLE,Generate exact SELL lifecycle fills through STOP/TAKE_PROFIT/TIMEOUT/TRIM before acceptance review.

@@ -1,0 +1,2 @@
+task_id,decision_status,scope,owner,team,program_blocker,strategy_acceptance,next_action
+T602-0,CONTRACT_DEFINED,replay_acceptance_contract,동승,Replay & Simulation,P0_EXACT_REPLAY,NOT_ACCEPTED,Implement T602-1 paper replay match and replay_diff artifacts.

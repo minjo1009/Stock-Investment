@@ -1,0 +1,9 @@
+gate_name,status,pass_flag,observed,required
+five_layer_artifacts_present,PRIMARY_PASS,1,evidence_objects=12968; economic_interpretation_objects=9726; state_graph_edges=9726; candidate_context_bundles=1621; slot_decision_explanations=1621,all five object layers must have rows
+bundle_row_count_matches_candidates,PRIMARY_PASS,1,bundles=1621; candidates=1621,one bundle per candidate lifecycle
+slot_explanation_row_count_matches_candidates,PRIMARY_PASS,1,slot_explanations=1621; candidates=1621,one slot explanation per candidate lifecycle
+object_ids_unique,PRIMARY_PASS,1,object ids checked across five layers,all object ids unique inside each layer
+no_outcome_columns_in_object_contracts,PRIMARY_PASS,1,none,PnL/outcome columns excluded from object contracts
+macro_edges_are_diagnostic_only,PRIMARY_PASS,1,macro edges assignment eligible count=0,macro context cannot grant slot authority until certified
+missing_sources_not_used_as_negative,PRIMARY_PASS,1,evidence_missing_negative_sum=0; bundle_forbidden_sum=0,missing source cannot become a negative signal
+no_strategy_promotion,PRIMARY_PASS,1,no PnL simulation or allocation rule promotion was run,context contracts only

@@ -1,0 +1,5 @@
+gate,pass_flag,observed_value,required_value
+policy_only_link_disallowed,1,policy_tags alone are no longer sufficient for trade linkage,macro policy-only events stay context until symbol or theme linkage exists
+task624_aerospace_rule_source_certified,0,strict_aerospace_risk_off_trades=1; recent_removed=0,Task624 aerospace hold must remove certified recent-OOS symbol/theme-linked risk events and improve recent OOS
+strict_relevance_recent_improvement,0,recent 2.17% vs original 2.17%,strict source-certified relevance rule must improve recent OOS
+trading_promotion,0,strict relevance validation only,needs certified source-rescore and cost/account rerun before strategy use

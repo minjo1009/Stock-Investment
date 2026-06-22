@@ -1,0 +1,2 @@
+﻿task_id,strategy_acceptance_status,deployment_ready_flag,diagnostic_only_flag,selected_rows,candidate_set_count,best_candidate_set,best_count,best_avg_net,best_win_rate,best_entry_reduce_rate,assignment_used_outcome_flag,missing_source_approximated_flag
+Task578,DIAGNOSTIC_PASS_TRAJECTORY_BACKTESTED,0,1,7886,5,capital_flow_active_quote_support,960,0.11042696993948753,0.6270833333333333,0.31666666666666665,0,0

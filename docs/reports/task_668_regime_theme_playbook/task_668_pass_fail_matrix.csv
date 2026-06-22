@@ -1,0 +1,10 @@
+﻿gate,pass_flag,observed_value,required_value
+no_fixed_hold_or_timing_override,1,violations=0,preserve Task639 timing and exits
+playbook_panel_built,1,accepted_rows=737,playbook assigned to accepted trades
+capacity_decision_panel_built,1,rows=26080,accepted and rejected decisions logged
+playbook_performance_built,1,rows=134,performance by playbook and split
+transition_matrix_built,1,rows=45,market/theme/playbook transition matrix
+mdd_audit_built,1,rows=197,MDD interval audit
+no_return_tuned_promotion,1,return_tuned_promoted=0,no return-tuned candidate can promote
+promotion_candidate_found,0,promotion_candidates=0,return drawdown validation recent OOS all pass
+strategy_accepted,0,research diagnostic only,accepted gates and live readiness
