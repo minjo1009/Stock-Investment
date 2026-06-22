@@ -329,3 +329,10 @@ Task3827-Task3828 scaffold-only screen assemblies:
 - Both screens use typed fixture wrappers under `apps/ios-trader-brain/src/read-models/` derived from existing JSON fixtures.
 - Both remain `NOT_AUTHORITY`, read-only, and not product screen readiness.
 - Authoritative read-source integration, screenshot QA readiness, Maestro readiness, iOS dev build validation, broker mutation, paper/live permission, deployment readiness, and real-capital permission remain blocked.
+
+Task3831 scaffold-only 10-loop implementation:
+
+- The selected frontend 10-loop run expanded scaffold-only fixture-backed assemblies to BRAIN, PORTFOLIO, ORDERS, SYSTEM, Position Detail, Order Detail, Chain Detail, read-only cross-links, and a Storybook scaffold overview.
+- These surfaces remain `NOT_AUTHORITY`, read-only, and fixture-backed.
+- The reference document `docs/frontend_app_ssot/20_PRODUCTION_UI_TOOLCHAIN_REFERENCE.md` is a project-local reference note only; it does not override `00_PROJECT_SSOT.md`, `08_FRONTEND_READ_MODEL_CONTRACT.md`, `09_DISABLED_ACTION_AND_ORDER_CONTROL_CONTRACT.md`, `10_IMPLEMENTATION_ARCHITECTURE.md`, or this preconditions document.
+- Product screen readiness, authoritative read-source integration, screenshot QA readiness, Maestro readiness, iOS dev build validation, broker mutation, paper/live permission, deployment readiness, and real-capital permission remain blocked.

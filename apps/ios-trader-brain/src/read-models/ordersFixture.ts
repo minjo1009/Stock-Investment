@@ -1,0 +1,97 @@
+import type { OrdersReadModel } from "./common";
+
+// Scaffold-only wrapper derived from src/mocks/fixtures/orders.json.
+// NOT_AUTHORITY: not broker truth, local order truth, trading permission,
+// deployment readiness, paper/live permission, or real-capital permission.
+export const ordersFixture = {
+  generatedAt: "2026-06-22T00:00:00Z",
+  contractVersion: "frontend-read-model-v1",
+  readPath: "json_catalog",
+  governance: {
+    strategyAcceptance: "NOT_ACCEPTED",
+    deploymentReadiness: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    realCapital: "FORBIDDEN",
+    brokerMutationPermitted: false,
+    paperPermission: false,
+    livePermission: false,
+    killSwitchActive: true,
+    controlStateSource: "docs/operating_system/project_operating_state.md",
+    authorityReportPath:
+      "docs/reports/task_frontend_read_model_fixtures_domain_contracts/task_frontend_read_model_fixtures_domain_contracts.md",
+  },
+  sourceSummary: {
+    freshCount: 0,
+    staleCount: 1,
+    missingCount: 1,
+    unknownCount: 1,
+    strictGateOpenCount: 0,
+  },
+  blockers: [
+    {
+      blockerId: "orders-mutation-blocked",
+      severity: "P0",
+      label: "Order mutation blocked",
+      reason: "Orders fixture is observation-only.",
+      sourceRefs: ["docs/frontend_app_ssot/09_DISABLED_ACTION_AND_ORDER_CONTROL_CONTRACT.md"],
+      detectedAt: "2026-06-22T00:00:00Z",
+    },
+  ],
+  disabledActions: [
+    {
+      actionId: "submit",
+      label: "Submit disabled",
+      actionState: "disabled",
+      disabledReason: "No broker mutation permission exists.",
+      requiredGovernanceChange: [
+        "brokerMutationPermitted must become true in authority documents",
+      ],
+    },
+  ],
+  orderRows: [
+    {
+      orderId: "fixture-order-blocked",
+      symbol: null,
+      side: "UNKNOWN",
+      quantity: null,
+      localState: "BLOCKED",
+      brokerTruthState: "BLOCKED",
+      mutationPermitted: false,
+      disabledActions: [
+        {
+          actionId: "submit",
+          label: "Submit disabled",
+          actionState: "disabled",
+          disabledReason: "Broker mutation is forbidden.",
+          requiredGovernanceChange: [
+            "brokerMutationPermitted must become true in authority documents",
+          ],
+        },
+      ],
+      sourceStates: [
+        {
+          sourceId: "fixture-order-source-stale",
+          sourceLabel: "Order stale source",
+          freshnessStatus: "STALE",
+          observedAt: "2026-06-01T00:00:00Z",
+          generatedAt: "2026-06-22T00:00:00Z",
+          sourceCount: 1,
+          strictGateAllowed: false,
+          proxyAllowed: false,
+          provenanceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
+          blockerReason: "Order source is stale.",
+        },
+      ],
+      blockers: [
+        {
+          blockerId: "order-broker-truth-blocked",
+          severity: "P0",
+          label: "Broker truth blocked",
+          reason: "Broker truth is not attached.",
+          sourceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
+          detectedAt: null,
+        },
+      ],
+      route: "/orders/fixture-order-blocked",
+    },
+  ],
+} satisfies OrdersReadModel;

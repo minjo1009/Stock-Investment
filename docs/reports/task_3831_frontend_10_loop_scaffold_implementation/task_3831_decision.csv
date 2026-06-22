@@ -1,0 +1,8 @@
+decision_key,decision_value,authority,notes
+task_id,Task3831,canonical,Registry task id.
+decision,frontend-10-loop-scaffold-implementation-complete,canonical,All ten bounded loops completed under scaffold-only constraints.
+strategy_acceptance,NOT_ACCEPTED,canonical,No strategy acceptance changed.
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,canonical,No deployment readiness changed.
+real_capital,FORBIDDEN,canonical,No real-capital permission changed.
+broker_mutation,false,canonical,No broker mutation path added.
+fixture_authority,NOT_AUTHORITY,canonical,Fixtures remain scaffold-only and not source/backend/broker truth.

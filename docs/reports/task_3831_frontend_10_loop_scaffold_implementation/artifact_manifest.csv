@@ -1,0 +1,24 @@
+artifact_path,artifact_type,authority,notes
+apps/ios-trader-brain/app/(tabs)/brain.tsx,frontend_route,not_authority,BRAIN v0 scaffold-only fixture-backed tab.
+apps/ios-trader-brain/app/(tabs)/portfolio.tsx,frontend_route,not_authority,PORTFOLIO v0 scaffold-only fixture-backed tab.
+apps/ios-trader-brain/app/(tabs)/orders.tsx,frontend_route,not_authority,ORDERS v0 scaffold-only fixture-backed tab.
+apps/ios-trader-brain/app/(tabs)/system.tsx,frontend_route,not_authority,SYSTEM v0 scaffold-only fixture-backed tab.
+apps/ios-trader-brain/app/(tabs)/index.tsx,frontend_route,not_authority,HOME v0 read-only cross-link update.
+apps/ios-trader-brain/app/portfolio/position/[positionId].tsx,frontend_route,not_authority,Position Detail v0 scaffold-only fixture-backed route.
+apps/ios-trader-brain/app/orders/[orderId].tsx,frontend_route,not_authority,Order Detail v0 scaffold-only fixture-backed route.
+apps/ios-trader-brain/app/brain/chain/[chainId].tsx,frontend_route,not_authority,Chain Detail v0 scaffold-only fixture-backed route.
+apps/ios-trader-brain/app/brain/candidate/[candidateId].tsx,frontend_route,not_authority,Candidate Detail v0 read-only chain trace link update.
+apps/ios-trader-brain/src/read-models/brainFixture.ts,typed_fixture_wrapper,not_authority,BRAIN fixture wrapper.
+apps/ios-trader-brain/src/read-models/portfolioFixture.ts,typed_fixture_wrapper,not_authority,PORTFOLIO fixture wrapper.
+apps/ios-trader-brain/src/read-models/ordersFixture.ts,typed_fixture_wrapper,not_authority,ORDERS fixture wrapper.
+apps/ios-trader-brain/src/read-models/systemHealthFixture.ts,typed_fixture_wrapper,not_authority,SYSTEM fixture wrapper.
+apps/ios-trader-brain/src/read-models/positionDetailFixture.ts,typed_fixture_wrapper,not_authority,Position Detail fixture wrapper.
+apps/ios-trader-brain/src/read-models/orderDetailFixture.ts,typed_fixture_wrapper,not_authority,Order Detail fixture wrapper.
+apps/ios-trader-brain/src/read-models/chainDetailFixture.ts,typed_fixture_wrapper,not_authority,Chain Detail fixture wrapper.
+apps/ios-trader-brain/src/stories/screen-scaffold-overview.stories.tsx,storybook_story,not_authority,Scaffold route coverage overview story.
+apps/ios-trader-brain/src/qa/storybook-smoke-test.mjs,validator,canonical,Storybook smoke required story list updated.
+docs/frontend_app_ssot/20_PRODUCTION_UI_TOOLCHAIN_REFERENCE.md,reference_doc,pointer,Imported reference note from the user's downloaded MD; current SSOT remains authoritative.
+docs/reports/task_3831_frontend_10_loop_scaffold_implementation/task_3831_frontend_10_loop_scaffold_implementation.md,task_report,canonical,Task3831 closeout report.
+docs/reports/task_3831_frontend_10_loop_scaffold_implementation/artifact_manifest.csv,artifact_manifest,canonical,Task3831 artifact manifest.
+docs/reports/task_3831_frontend_10_loop_scaffold_implementation/loop_plan_gpt_response_summary.md,gpt_response_summary,review_only,GPT-designed 10-loop plan summary; not source of truth.
+docs/reports/task_3831_frontend_10_loop_scaffold_implementation/loop_closeout_gpt_review_summary.md,gpt_response_summary,review_only,Final GPT/subagent closeout review summary; not source of truth.

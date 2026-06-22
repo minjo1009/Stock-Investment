@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import { useLocalSearchParams } from "expo-router";
 import { View } from "react-native";
 
@@ -94,6 +95,12 @@ export default function CandidateDetailRoute() {
 
       <SectionContainer title="Evidence" description="Unknown evidence remains unknown, not negative evidence.">
         <EvidenceList evidence={candidate.sections.evidence} />
+      </SectionContainer>
+
+      <SectionContainer title="Chain Trace" description="Read-only scaffold link to the fixture chain view.">
+        <Link href="/brain/chain/fixture-chain">
+          <AppText variant="caption">Open read-only chain detail</AppText>
+        </Link>
       </SectionContainer>
 
       <RiskGate

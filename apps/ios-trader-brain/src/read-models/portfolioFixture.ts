@@ -1,0 +1,86 @@
+import type { PortfolioReadModel } from "./common";
+
+// Scaffold-only wrapper derived from src/mocks/fixtures/portfolio.json.
+// NOT_AUTHORITY: not broker truth, account truth, trading permission,
+// deployment readiness, paper/live permission, or real-capital permission.
+export const portfolioFixture = {
+  generatedAt: "2026-06-22T00:00:00Z",
+  contractVersion: "frontend-read-model-v1",
+  readPath: "json_catalog",
+  governance: {
+    strategyAcceptance: "NOT_ACCEPTED",
+    deploymentReadiness: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    realCapital: "FORBIDDEN",
+    brokerMutationPermitted: false,
+    paperPermission: false,
+    livePermission: false,
+    killSwitchActive: true,
+    controlStateSource: "docs/operating_system/project_operating_state.md",
+    authorityReportPath:
+      "docs/reports/task_frontend_read_model_fixtures_domain_contracts/task_frontend_read_model_fixtures_domain_contracts.md",
+  },
+  sourceSummary: {
+    freshCount: 0,
+    staleCount: 1,
+    missingCount: 1,
+    unknownCount: 1,
+    strictGateOpenCount: 0,
+  },
+  blockers: [
+    {
+      blockerId: "portfolio-broker-truth-blocked",
+      severity: "P0",
+      label: "Broker truth not authoritative",
+      reason: "Portfolio fixture is not broker truth.",
+      sourceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
+      detectedAt: "2026-06-22T00:00:00Z",
+    },
+  ],
+  disabledActions: [
+    {
+      actionId: "broker_sync",
+      label: "Broker sync disabled",
+      actionState: "disabled",
+      disabledReason: "Broker mutation is not permitted.",
+      requiredGovernanceChange: [
+        "brokerMutationPermitted must become true in authority documents",
+      ],
+    },
+  ],
+  positions: [
+    {
+      positionId: "fixture-position-unknown",
+      symbol: "FIXA",
+      quantity: null,
+      marketValue: null,
+      unrealizedPnl: null,
+      thesisState: "UNKNOWN",
+      brokerTruthState: "BLOCKED",
+      sourceStates: [
+        {
+          sourceId: "fixture-portfolio-source-missing",
+          sourceLabel: "Portfolio missing source",
+          freshnessStatus: "MISSING",
+          observedAt: null,
+          generatedAt: null,
+          sourceCount: null,
+          strictGateAllowed: false,
+          proxyAllowed: false,
+          provenanceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
+          blockerReason: "Broker truth source not attached.",
+        },
+      ],
+      blockers: [
+        {
+          blockerId: "position-broker-truth-blocked",
+          severity: "P0",
+          label: "Broker truth blocked",
+          reason: "Local fixture record must not be treated as broker truth.",
+          sourceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
+          detectedAt: "2026-06-22T00:00:00Z",
+        },
+      ],
+      route: "/portfolio/position/fixture-position-unknown",
+    },
+  ],
+} satisfies PortfolioReadModel;

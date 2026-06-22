@@ -21,6 +21,7 @@ const domainStoryFiles = [
   "src/stories/chart-with-source-state.stories.tsx",
   "src/stories/system-health.stories.tsx",
   "src/stories/order-state-summary.stories.tsx",
+  "src/stories/screen-scaffold-overview.stories.tsx",
 ];
 
 const requiredExports = [

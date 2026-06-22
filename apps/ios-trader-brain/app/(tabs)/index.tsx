@@ -1,3 +1,4 @@
+import { Link, type Href } from "expo-router";
 import { View } from "react-native";
 
 import { DisabledActionBar } from "../../src/components/domain";
@@ -97,6 +98,9 @@ export default function HomeRoute() {
               <AppText>{item.label}</AppText>
               <AppText variant="caption">{item.reason}</AppText>
               <AppText variant="caption">{`${item.kind} / ${item.route}`}</AppText>
+              <Link href={item.route as Href}>
+                <AppText variant="caption">Open read-only destination</AppText>
+              </Link>
               {item.sourceRefs.map((sourceRef) => (
                 <AppText key={sourceRef} variant="caption">
                   {sourceRef}

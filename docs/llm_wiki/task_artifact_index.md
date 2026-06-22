@@ -53,6 +53,7 @@ Use this index to find current truth without rereading all historical reports.
 | Task3826 | frontend real-implementation Loop 1: scaffold-only screen assembly boundary, preserving product screen blockers while allowing future selected NOT_AUTHORITY screen assembly | [report](../reports/task_3826_scaffold_only_screen_assembly_boundary/task_3826_scaffold_only_screen_assembly_boundary.md) |
 | Task3827 | frontend real-implementation Loop 2: HOME v0 scaffold-only fixture-backed assembly with visible read-only and NOT_AUTHORITY boundaries | [report](../reports/task_3827_home_v0_scaffold_only_assembly/task_3827_home_v0_scaffold_only_assembly.md) |
 | Task3828 | frontend real-implementation Loop 3: Candidate Detail v0 scaffold-only fixture-backed route with six-section detail frame and visible blocker states | [report](../reports/task_3828_candidate_detail_v0_scaffold_only_assembly/task_3828_candidate_detail_v0_scaffold_only_assembly.md) |
+| Task3831 | frontend 10-loop scaffold implementation: BRAIN, PORTFOLIO, ORDERS, SYSTEM, detail routes, read-only cross-links, and Storybook scaffold overview | [report](../reports/task_3831_frontend_10_loop_scaffold_implementation/task_3831_frontend_10_loop_scaffold_implementation.md) |
 
 ## Current Interpretation
 
@@ -79,4 +80,5 @@ Use this index to find current truth without rereading all historical reports.
 - Task3826 opens only a restricted frontend implementation boundary: future selected loops may assemble scaffold-only fixture-backed screens from existing `NOT_AUTHORITY` fixtures with visible read-only boundaries. It does not authorize product screen implementation, authoritative read-source integration, screenshot QA readiness, broker mutation, paper/live promotion, deployment readiness, or real-capital permission.
 - Task3827 implements HOME v0 only as scaffold-only fixture-backed assembly. It shows governance state, source freshness, blockers, and disabled actions, while preserving `NOT_AUTHORITY` and read-only boundaries.
 - Task3828 implements Candidate Detail v0 only as scaffold-only fixture-backed assembly. It adds a non-tab detail route and typed fixture wrapper, while preserving missing/stale/chart-source blockers and disabled action boundaries.
+- Task3831 completes a 10-loop scaffold implementation pass across the remaining tabs and detail routes. It adds read-only cross-links and Storybook scaffold overview coverage, but it still does not authorize product readiness, DB/runtime/broker integration, paper/live promotion, deployment readiness, or real-capital permission.
 - The frontend should show review-only shadow decisions, blockers, provenance, and source freshness, not issue real orders.

@@ -53,6 +53,7 @@ The project is moving from repeated source/backtest loops toward governed paper/
 - latest frontend implementation boundary is Task3826: `docs/frontend_app_ssot/21_SCAFFOLD_ONLY_SCREEN_ASSEMBLY_BOUNDARY.md` allows only future selected scaffold-only fixture-backed screen assembly under visible read-only and `NOT_AUTHORITY` constraints. Product screen implementation, authoritative read source, screenshot QA readiness, broker mutation, paper/live, deployment readiness, and real-capital permission remain blocked.
 - latest frontend visible implementation is Task3827: HOME now has a scaffold-only fixture-backed `HOME v0` under `apps/ios-trader-brain/app/(tabs)/index.tsx`, backed by `src/read-models/homeFixture.ts`. It is `NOT_AUTHORITY`, read-only, and does not change strategy/deployment/paper/live/broker/real-capital state.
 - latest frontend detail implementation is Task3828: Candidate Detail now exists at `apps/ios-trader-brain/app/brain/candidate/[candidateId].tsx`, backed by `src/read-models/candidateDetailFixture.ts`. It is scaffold-only, `NOT_AUTHORITY`, read-only, and shows stale/missing/chart-source blockers rather than implying readiness.
+- latest frontend scaffold implementation is Task3831: the 10-loop run added scaffold-only fixture-backed BRAIN, PORTFOLIO, ORDERS, SYSTEM, Position Detail, Order Detail, Chain Detail, read-only cross-links, and Storybook scaffold overview coverage. These are still `NOT_AUTHORITY`, read-only, and not product readiness.
 
 Standing status:
 

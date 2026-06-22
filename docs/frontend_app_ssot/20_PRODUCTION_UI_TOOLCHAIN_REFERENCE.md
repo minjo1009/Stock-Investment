@@ -1,6 +1,6 @@
 # Production UI Toolchain Reference for the Read-only Trader Brain Frontend
 
-> 참고 상태: 이 문서는 최신 운영 상태가 아니라, 프론트엔드 실구현 도구체인과 워크플로우를 잡기 위한 참고 자료다. 현재 프로젝트 권한과 SSOT는 `docs/operating_system/project_operating_state.md`, `docs/frontend_app_ssot/`, task reports, validator output이 우선한다.
+> 참고 상태: 이 문서는 최신 운영 상태가 아니라 프론트엔드 도구체인과 워크플로우를 잡기 위한 참고 자료입니다. 현재 프로젝트 권한과 SSOT는 `docs/operating_system/project_operating_state.md`, `docs/frontend_app_ssot/`, task reports, validator output을 우선합니다.
 
 ## Executive summary
 
