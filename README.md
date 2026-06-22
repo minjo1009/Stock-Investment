@@ -7,7 +7,7 @@ This repository is the working system for a United States equity quant trading p
 - Strategy acceptance: `NOT_ACCEPTED`
 - Deployment readiness: `DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY`
 - Real capital: `FORBIDDEN`
-- Latest canonical closeout: Task3809 read-model fixture snapshot and domain component contracts.
+- Latest canonical closeout: Task3811 frontend pre-screen GPT 10-loop gate.
 - Current frontend direction: Expo Development Build iOS-first read-only app surfaces must expose decisions, reasons, evidence, source freshness, blockers, and provenance. They must not create broker mutations or imply paper/live permission.
 
 Validation results never grant acceptance by themselves. Promotion requires split/OOS evidence, leakage review, cost/slippage review, artifact audit, live-source readiness, and explicit status change in the project operating documents.

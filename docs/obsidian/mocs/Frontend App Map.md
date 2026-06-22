@@ -53,6 +53,7 @@ Do not add Backtest, Paper, or Live as top-level tabs. Treat them as lifecycle s
 - DB scheduler/freshness latest: [Task3761-3800](../../reports/task_3761_3800_db_source_scheduler_config_freshness_validator/task_3761_3800_db_source_scheduler_config_freshness_validator.md)
 - Latest frontend foundation report: [Task3806](../../reports/task_frontend_foundation_hardening/task_frontend_foundation_hardening.md)
 - Latest frontend fixture/domain report: [Task3809](../../reports/task_frontend_read_model_fixtures_domain_contracts/task_frontend_read_model_fixtures_domain_contracts.md)
+- Latest frontend pre-screen QA report: [Task3811](../../reports/task_3811_frontend_pre_screen_gpt_loop_hardening/task_3811_frontend_pre_screen_gpt_loop_hardening.md)
 
 ## Build Guardrails
 

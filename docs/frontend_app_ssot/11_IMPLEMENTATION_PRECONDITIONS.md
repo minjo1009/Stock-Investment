@@ -78,6 +78,7 @@ They must be finalized by the scaffold task and then reflected here.
 | Maestro | `REQUIRED_POST_SCAFFOLD_HARDENING` | not installed in Task3804 |
 | Frontend safety validator | `npm run validate:safety` | hardened and validated in Task3805 |
 | Read-model fixture validator | `npm run validate:fixtures` | validates Task3809 generated JSON catalog fixture snapshot |
+| Pre-screen GPT loop validator | `npm run validate:pre-screen` | validates Task3811 10-loop gate before product screen work |
 
 Do not document a command as runnable until a task proves it.
 
@@ -292,3 +293,10 @@ Task3809 decisions:
 - Fixture validator: `npm run validate:fixtures`.
 - P0 domain component contracts represented in Storybook: `DecisionHeader`, `EvidenceList`, `ValidationReadinessPanel`, `RiskGate`, `DisabledActionBar`, `ChartWithSourceState`, `SystemHealth`, and `OrderStateSummary`.
 - Product screen implementation remains blocked until a future task selects an authoritative backend/read-only source and screenshot QA is configured.
+
+Task3811 decisions:
+
+- GPT relay was used in autonomous override mode for a 10-loop pre-screen hardening pass.
+- `npm run validate:pre-screen` is the local 10-loop gate.
+- `npm test` now includes Storybook smoke, safety validation, fixture validation, and pre-screen validation.
+- Product screen implementation remains blocked until screenshot QA and authoritative read source decisions are made.

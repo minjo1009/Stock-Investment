@@ -1,0 +1,6 @@
+artifact_id,path,artifact_type,status,authority,row_count,notes
+task3811_report,docs/reports/task_3811_frontend_pre_screen_gpt_loop_hardening/task_3811_frontend_pre_screen_gpt_loop_hardening.md,report,created,task_closeout,1,Task3811 closeout report.
+task3811_manifest,docs/reports/task_3811_frontend_pre_screen_gpt_loop_hardening/artifact_manifest.csv,manifest,created,task_closeout,1,Artifact manifest for Task3811.
+task3811_decision,docs/reports/task_3811_frontend_pre_screen_gpt_loop_hardening/task_3811_decision.csv,decision,created,task_closeout,1,Decision row for Task3811.
+pre_screen_validator,apps/ios-trader-brain/src/qa/pre-screen-gpt-loop-validator.mjs,validator,created,frontend_validator,10,Ten-loop pre-screen validator.
+package_scripts,apps/ios-trader-brain/package.json,source,updated,frontend_validator,,Adds validate:pre-screen and extends npm test.

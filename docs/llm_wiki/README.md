@@ -49,6 +49,7 @@ The project is moving from repeated source/backtest loops toward governed paper/
 - latest frontend QA baseline is Task3805: Storybook web runtime is runnable through `npm run storybook` and smoke-tested through `npm run storybook:smoke`; `npm run lint`, `npm test`, and hardened `npm run validate:safety` pass. NativeWind, screenshot QA, Maestro, iOS dev build, and source-derived fixture payloads remain blocked/deferred.
 - latest frontend foundation baseline is Task3806: foundation/layout/generic components now cover source freshness, blockers, missing/unknown/stale/blocked states, and disabled-action display in Storybook. Static typed fixtures under `apps/ios-trader-brain/src/mocks/fixtures/foundation-states.ts` are scaffold-only and NOT authority. NativeWind and on-device Storybook remain deferred.
 - latest frontend read-model fixture/domain-contract baseline is Task3809: generated JSON catalog fixture snapshot under `apps/ios-trader-brain/src/mocks/fixtures/` is scaffold-only and NOT authority; `npm run validate:fixtures` validates the contract-shaped payloads; P0 domain components are props-only and Storybook-covered. Product screens and authoritative backend/read-only source integration remain future work.
+- latest frontend pre-screen QA baseline is Task3811: `npm run validate:pre-screen` runs the user-requested GPT-style 10-loop gate before product screens, and `npm test` now includes Storybook, safety, fixture, and pre-screen validation. Product screens remain blocked.
 
 Standing status:
 
