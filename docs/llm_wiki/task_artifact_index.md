@@ -34,6 +34,7 @@ Use this index to find current truth without rereading all historical reports.
 | Docs-only 2026-06-22 | frontend app SSOT DOCX pack summarized for LLM Wiki, Obsidian, and GitHub-facing README | [report](../reports/task_frontend_ssot_pack_github_update/task_frontend_ssot_pack_github_update.md) |
 | Task3801 | frontend SSOT P0 alignment: Expo Development Build iOS-first active target, five-tab IA, six-section detail frame V2, read-only action contract | [report](../reports/task_frontend_ssot_p0_alignment/task_frontend_ssot_p0_alignment.md) |
 | Task3802 | frontend screen-ready read-model contract: read path, common types, screen inventory, view-model schemas, stale/blocker semantics | [report](../reports/task_frontend_read_model_contract/task_frontend_read_model_contract.md) |
+| Task3803 | frontend implementation preconditions: app root, scaffold command placeholders, fixtures, Storybook, screenshot QA, safety validator gates | [report](../reports/task_frontend_implementation_preconditions/task_frontend_implementation_preconditions.md) |
 
 ## Current Interpretation
 
@@ -50,4 +51,5 @@ Use this index to find current truth without rereading all historical reports.
 - Task3761-3800 adds operator source scheduler config/scripts and diagnostic fresh-loop wiring. Indicator/runtime rows are current diagnostic evidence only and broker-truth rows remain `BLOCKED`; source gates, paper permissions, deployment readiness, and real-capital permission stay closed.
 - Task3801 fixes the active frontend implementation direction as Expo Development Build iOS-first, keeps the app IA as `HOME / BRAIN / PORTFOLIO / ORDERS / SYSTEM`, and supersedes the detail frame to V2: `Decision Summary / Thesis-Logic / Validation-Readiness / Evidence / Risk / Next Action`. It is planning authority for frontend implementation, not an acceptance/deployment authority.
 - Task3802 makes `docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md` the implementation gate for frontend data props: Storybook fixtures, screenshot QA states, and safety validators should derive from it rather than ad hoc UI mock fields.
+- Task3803 makes `docs/frontend_app_ssot/11_IMPLEMENTATION_PRECONDITIONS.md` the pre-scaffold gate: app root is fixed to `apps/ios-trader-brain`, but commands, fixtures, QA, and validator remain `REQUIRED_PRE_SCAFFOLD_DECISION` until a scaffold task proves them.
 - The frontend should show review-only shadow decisions, blockers, provenance, and source freshness, not issue real orders.

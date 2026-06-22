@@ -48,3 +48,4 @@ Before code implementation expands, the implementation task must name:
 - the Storybook and screenshot QA commands
 - the no-live-order/no-broker-mutation validator
 
+Task3803 records these preconditions in `docs/frontend_app_ssot/11_IMPLEMENTATION_PRECONDITIONS.md`.

@@ -1,0 +1,5 @@
+artifact_id,path,kind,status,notes
+implementation_preconditions,docs/frontend_app_ssot/11_IMPLEMENTATION_PRECONDITIONS.md,doc,canonical,Implementation gate before frontend scaffold/component/screen work.
+task_report,docs/reports/task_frontend_implementation_preconditions/task_frontend_implementation_preconditions.md,report,canonical,Docs-only closeout report.
+task_decision,docs/reports/task_frontend_implementation_preconditions/task_3803_decision.csv,decision,canonical,Task decision summary.
+

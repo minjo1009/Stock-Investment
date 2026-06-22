@@ -75,11 +75,12 @@ The prior React plus TypeScript web structure is retained as design input only. 
 
 ## Next Build Shape
 
-1. Confirm exact app path and read-model endpoint/catalog sources.
-2. Map current DB/runtime catalog fields into the five IA tabs.
-3. Implement read-only screens and universal detail frame V2 first.
-4. Add trading actions only as disabled/blocked affordances until governance allows otherwise.
-5. Validate with frontend continuity, source freshness, no-live-order, no-broker-mutation, and screenshot QA checks.
+1. Follow `docs/frontend_app_ssot/11_IMPLEMENTATION_PRECONDITIONS.md` before scaffold, Storybook, foundation components, or screens.
+2. Confirm the read-model endpoint/catalog source before fixtures are created.
+3. Map current DB/runtime catalog fields into the five IA tabs.
+4. Implement read-only foundation components before screens.
+5. Add trading actions only as disabled/blocked affordances until governance allows otherwise.
+6. Validate with frontend continuity, source freshness, no-live-order, no-broker-mutation, and screenshot QA checks.
 
 Standing status:
 
