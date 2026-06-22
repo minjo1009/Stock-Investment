@@ -1,0 +1,5 @@
+artifact_id,path,kind,status,notes
+frontend_read_model_contract,docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md,doc,canonical,Screen-ready read-model contract for frontend implementation.
+task_report,docs/reports/task_frontend_read_model_contract/task_frontend_read_model_contract.md,report,canonical,Docs-only closeout report.
+task_decision,docs/reports/task_frontend_read_model_contract/task_3802_decision.csv,decision,canonical,Task decision summary.
+
