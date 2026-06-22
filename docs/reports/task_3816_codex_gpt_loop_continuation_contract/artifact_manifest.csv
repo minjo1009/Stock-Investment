@@ -1,0 +1,8 @@
+artifact,purpose,status
+skills/codex-gpt-expert-relay-loop/SKILL.md,Loop continuation skill contract,updated
+skills/codex-gpt-expert-relay-loop/references/prompt-templates.md,GPT prompt continuation instructions,updated
+skills/codex-gpt-expert-relay-loop/agents/openai.yaml,UI metadata prompt,updated
+docs/llm_wiki/codex_gpt_expert_relay_loop_ledger.md,Loop ledger continuation semantics,updated
+docs/reports/task_3816_codex_gpt_loop_continuation_contract/task_3816_codex_gpt_loop_continuation_contract.md,Task report,created
+docs/reports/task_3816_codex_gpt_loop_continuation_contract/task_3816_decision.csv,Decision record,created
+docs/reports/task_3816_codex_gpt_loop_continuation_contract/artifact_manifest.csv,Artifact manifest,created

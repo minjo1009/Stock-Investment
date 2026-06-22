@@ -8,7 +8,18 @@ The user requested that the next work proceed through approximately ten GPT-Code
 
 ## Non-Authorization Rule
 
-A ranked queue candidate is not implementation authorization. Only the selected loop may be implemented. Product screen implementation requires explicit selection in a future loop and its own GPT-Codex prompt/review cycle.
+A ranked queue candidate is not implementation authorization. Only the selected
+loop may be implemented. Product screen implementation requires explicit
+selection in a future loop and its own GPT-Codex prompt/review cycle.
+
+Inside an already requested N-loop run, a `selected` next-loop row is a
+continuation target. Codex should promote the selected row to `active` and keep
+going unless the requested count is complete, the user stops, Chrome/GPT capture
+is blocked, validation/SSOT/safety fails, scope expansion needs approval, or the
+runtime must checkpoint with `PAUSED_RESOURCE_LIMIT`.
+
+Intermediate commits, pushes, and reports are checkpoints. They are not a reason
+to end the requested loop run.
 
 ## User Clarification
 
@@ -96,6 +107,11 @@ Alternate terminal states:
 | `superseded` | Replaced by clarification or better direction. |
 | `cancelled` | User or governance stopped the loop. |
 | `deferred` | Valid but intentionally delayed. |
+
+`selected` means "continue next" when the user has already requested an N-loop
+run and completed loop count is below the requested count. It does not require a
+fresh user confirmation unless the selected work would expand scope or touch a
+forbidden boundary.
 
 ## Next-Loop Queue Semantics
 

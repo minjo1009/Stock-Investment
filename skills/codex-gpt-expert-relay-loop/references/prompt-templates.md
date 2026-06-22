@@ -10,6 +10,11 @@ Use these templates with the `codex-gpt-expert-relay-loop` skill.
 - Project, code, docs, task planning, implementation, validation, and review work defaults to Agent Mode with GitHub repo context.
 - Use Agent Mode + Deep Research when repo context and current external facts are both required.
 - Use Normal GPT only when repo context is not needed.
+- An explicit N-loop request is standing authorization to continue selected,
+  bounded GPT-Codex loops until the requested count, user stop, automation
+  blocker, validation/SSOT/safety blocker, or `PAUSED_RESOURCE_LIMIT`.
+- A selected next-loop item should be promoted to active in the same run; do not
+  stop only because unselected queue candidates are not authorization.
 - If Chrome automation is blocked, mark the loop `BLOCKED_AUTOMATION_NO_GPT_CAPTURE` and do not claim GPT reviewed the work.
 
 ## Loop Ledger
@@ -19,6 +24,9 @@ For autonomous loops, write or update a ledger with:
 ```text
 loop_id,user_goal,task_candidate,expert_role,gpt_mode,prompt_artifact,gpt_response_artifact,codex_action,validation_result,review_prompt_artifact,review_response_artifact,status,stop_reason
 ```
+
+When requested loops remain, the next selected row is a continuation target.
+Return `continue_to_next_loop` unless there is a real stop condition.
 
 ## Initial Chrome GPT Prompt
 
@@ -138,6 +146,7 @@ Output:
 3. Files to patch
 4. Patch prompt for Codex
 5. Next loop goal
+6. Continue / Stop decision with stop reason if any
 ```
 
 ## Loop State Log

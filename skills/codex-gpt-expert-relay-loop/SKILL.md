@@ -11,7 +11,7 @@ Use this skill to make Codex the implementation node in an expert relay system:
 
 ```text
 user goal -> classify -> choose expert role and GPT mode -> generate Chrome GPT prompt
--> if explicit loop was requested, run captured Chrome GPT <-> Codex cycles
+-> if explicit loop was requested, run captured Chrome GPT <-> Codex cycles until count/blocker/user stop
 -> otherwise use at most one GPT consult/review when useful
 -> implement small patch -> validate -> report
 ```
@@ -105,6 +105,20 @@ When the user requests N loops, a 10-loop pass, or says Codex and GPT should wor
 back and forth by themselves, treat that as permission to run the relay without
 asking the user to paste prompts between steps.
 
+An explicit N-loop request is standing authorization to continue through bounded
+GPT-Codex work cycles until one of these stop conditions occurs:
+
+- the requested loop count is completed
+- the user tells Codex to stop, pause, or change direction
+- Chrome/GPT automation is blocked and no capture is possible
+- validation, repo SSOT, safety boundaries, secrets, destructive operations, or
+  scope expansion require a human decision
+- the runtime context or tool session must be checkpointed; report this as
+  `PAUSED_RESOURCE_LIMIT`, not as completion or a safety blocker
+
+Intermediate reports, commits, and pushes are checkpoints inside the loop. They
+do not end the N-loop run by themselves.
+
 An N-loop request means N captured GPT-Codex interaction cycles. It does not
 mean N checklist items, N validators, N gates, N files, N commits, or N internal
 reasoning passes. If fewer than N cycles run, report the exact stop reason.
@@ -127,6 +141,18 @@ In autonomous mode:
 8. Send a review prompt directly to Chrome GPT when useful.
 9. Patch P0/P1 review issues or stop if GPT says PASS/BLOCKED.
 10. Continue until the requested loop count, a natural completion point, or a blocker.
+
+If a loop ledger or GPT response marks the next item as `selected`, promote it
+to `active` and continue in the same autonomous run unless a stop condition
+above applies. Do not ask the user for fresh permission merely because the item
+was previously a queue candidate.
+
+The rule "queue candidates are not implementation authorization" applies only
+to unselected candidates, scope expansion, product-screen implementation,
+DB/runtime connection, broker access, paper/live promotion, deployment
+readiness, real-capital use, or other actions outside the selected loop scope.
+It must not be used to stop an already requested N-loop run after a selected
+safe planning/governance loop.
 
 Every autonomous loop must produce a loop ledger row with:
 
@@ -244,6 +270,9 @@ loop evidence
 - completed_loops:
 - ledger_path:
 - gpt_capture_status:
+- continuation_status: continuing | completed_requested_count | blocked | paused_resource_limit | stopped_by_user
+- next_loop_id:
+- next_loop_action:
 
 done
 1. ...
@@ -273,7 +302,8 @@ safety boundary confirmation
 7. Missing/stale data remains UNKNOWN/BLOCKER.
 
 next
-1. Chrome GPT review captured, skipped, blocked, or generated below.
+1. If requested loops remain and no stop condition exists, continue to the next
+   selected loop instead of ending with a final-style next item.
 ```
 
 ## References
