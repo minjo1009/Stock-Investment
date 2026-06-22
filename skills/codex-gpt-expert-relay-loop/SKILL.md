@@ -1,6 +1,6 @@
 ---
 name: codex-gpt-expert-relay-loop
-description: Standing expert relay workflow for the Stock-Investment project. Use when a non-trivial user goal should be classified before implementation, routed to the right Chrome GPT expert role and mode, turned into a user-sendable Chrome GPT prompt, executed only after the user returns the expert prompt or explicitly overrides the relay, then reported with safety boundaries and a review prompt. Covers UI/UX, frontend, backend/DB, quant/backtest, portfolio/risk/execution, company research, macro, political/geopolitical, semiconductor/AI infrastructure, power/energy, and mixed tasks.
+description: Standing expert relay workflow for the Stock-Investment project. Use when a non-trivial user goal should be classified before implementation, routed to the right Chrome GPT expert role and mode, and run through an autonomous Codex-Chrome GPT ping-pong loop when browser/Chrome tools are available or when the user asks for repeated loops, a 10-loop pass, autonomous iteration, or GPT-Codex back-and-forth. Fall back to a user-sendable prompt only when automation is unavailable or blocked. Covers UI/UX, frontend, backend/DB, quant/backtest, portfolio/risk/execution, company research, macro, political/geopolitical, semiconductor/AI infrastructure, power/energy, and mixed tasks.
 ---
 
 # Codex GPT Expert Relay Loop
@@ -11,8 +11,9 @@ Use this skill to make Codex the implementation node in an expert relay system:
 
 ```text
 user goal -> classify -> choose expert role and GPT mode -> generate Chrome GPT prompt
--> wait for returned expert prompt or explicit override -> implement small patch
--> validate -> report -> generate Chrome GPT review prompt
+-> send prompt to Chrome GPT directly when tools are available -> implement small patch
+-> validate -> send review prompt to Chrome GPT directly when tools are available
+-> patch or stop on PASS/BLOCKED
 ```
 
 This replaces the retired `gpt-chrome-review-subagent` skill. Do not call the
@@ -37,7 +38,14 @@ paper/live promotion, restate these boundaries before and after implementation.
 
 ## Default Behavior
 
-For non-trivial goals, do not implement immediately. First return:
+For non-trivial goals, classify and choose the expert route before coding. Then
+choose the relay mode:
+
+- `autonomous_chrome_relay`: use when Chrome/browser tools are available, or the user asks for repeated loops, a 10-loop pass, autonomous ping-pong, GPT-Codex back-and-forth, or equivalent wording.
+- `manual_user_relay`: use only when Chrome/browser automation is unavailable, login/captcha/user-session state blocks automation, a tool times out repeatedly, or the user explicitly wants to carry prompts manually.
+- `direct_codex`: use only for trivial tasks, urgent best effort, or explicit user override to skip GPT.
+
+In `manual_user_relay`, first return:
 
 ```text
 1. Task Classification
@@ -55,9 +63,9 @@ Safety Boundaries:
 
 Tell the user to run the prompt in the Chrome GPT project with GitHub enabled for
 `minjo1009/Stock-Investment`. Wait for the user to paste back the Chrome GPT
-result before implementation.
+result before implementation only in this manual fallback mode.
 
-Proceed without relay only when:
+Proceed without GPT relay only when:
 
 - the task is trivial, such as typo/copy/label updates or a short repo answer
 - the user explicitly says to proceed without relay
@@ -65,6 +73,36 @@ Proceed without relay only when:
 
 When skipping relay, state that the relay was skipped and preserve all hard
 state boundaries.
+
+## Autonomous Loop Mode
+
+When the user requests N loops, a 10-loop pass, or says Codex and GPT should work
+back and forth by themselves, treat that as permission to run the relay without
+asking the user to paste prompts between steps.
+
+In autonomous mode:
+
+1. Load the appropriate browser/Chrome control skill before controlling Chrome.
+2. Open or reuse the project ChatGPT conversation when available.
+3. Send the expert prompt directly to Chrome GPT.
+4. Capture or summarize GPT's response.
+5. Convert the response into a bounded Codex patch plan.
+6. Implement one small loop.
+7. Validate.
+8. Send a review prompt directly to Chrome GPT when useful.
+9. Patch P0/P1 review issues or stop if GPT says PASS/BLOCKED.
+10. Continue until the requested loop count, a natural completion point, or a blocker.
+
+Do not ask the user to manually paste anything during autonomous mode unless:
+
+- Chrome/GPT login, captcha, rate limit, upload, or response extraction blocks progress.
+- The browser-control tool is unavailable or repeatedly times out.
+- The next action would require secrets, broker mutation, live order, paper promotion, real-capital permission, destructive file operations, or scope expansion beyond the user goal.
+- GPT output conflicts with repo SSOT and a human decision is needed.
+
+If autonomous Chrome relay is blocked, report the blocker and provide the prompt
+as a fallback. Do not pretend GPT reviewed the work if the response was not
+captured.
 
 ## Task Classifier
 
@@ -135,6 +173,9 @@ When the user returns a Chrome GPT prompt:
 After implementation, report:
 
 ```text
+relay mode
+- autonomous_chrome_relay | manual_user_relay | direct_codex
+
 done
 1. ...
 
@@ -163,7 +204,7 @@ safety boundary confirmation
 7. Missing/stale data remains UNKNOWN/BLOCKER.
 
 next
-1. Chrome GPT review prompt generated below.
+1. Chrome GPT review captured, skipped, blocked, or generated below.
 ```
 
 ## References

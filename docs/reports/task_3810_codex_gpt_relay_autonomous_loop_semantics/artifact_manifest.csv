@@ -1,0 +1,7 @@
+artifact_type,path,row_count,file_size_bytes,source,validation_command,notes
+skill,skills/codex-gpt-expert-relay-loop/SKILL.md,not-applicable,not-recorded,Task3810,python C:/Users/minjo/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/codex-gpt-expert-relay-loop,Autonomous loop semantics corrected
+skill_metadata,skills/codex-gpt-expert-relay-loop/agents/openai.yaml,not-applicable,not-recorded,Task3810,python C:/Users/minjo/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/codex-gpt-expert-relay-loop,Skill UI metadata updated
+reference,skills/codex-gpt-expert-relay-loop/references/prompt-templates.md,not-applicable,not-recorded,Task3810,python C:/Users/minjo/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/codex-gpt-expert-relay-loop,Autonomous relay note added
+report,docs/reports/task_3810_codex_gpt_relay_autonomous_loop_semantics/task_3810_codex_gpt_relay_autonomous_loop_semantics.md,not-applicable,not-recorded,Task3810,python scripts/task_registry_validate.py,Closeout report
+decision_csv,docs/reports/task_3810_codex_gpt_relay_autonomous_loop_semantics/task_3810_decision.csv,1,not-recorded,Task3810,python scripts/task_registry_validate.py,Decision row
+manifest,docs/reports/task_3810_codex_gpt_relay_autonomous_loop_semantics/artifact_manifest.csv,6,not-recorded,Task3810,python scripts/task_registry_validate.py,Artifact manifest

@@ -2,6 +2,13 @@
 
 Use these templates with the `codex-gpt-expert-relay-loop` skill.
 
+## Autonomous Relay Note
+
+When browser or Chrome tools are available and the user asks for repeated loops
+or autonomous ping-pong, Codex should send these prompts to Chrome GPT directly
+and capture the response. Do not ask the user to paste prompts manually unless
+Chrome automation is blocked.
+
 ## Initial Chrome GPT Prompt
 
 ```text
