@@ -1,2 +1,2 @@
 task_id,verdict,strategy_acceptance,deployment_readiness,real_capital,broker_mutation,validator,next_action
-Task3811,PRE_SCREEN_GPT_10_LOOP_GATE_INSTALLED,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,FORBIDDEN,npm run validate:pre-screen,Configure screenshot QA or authoritative read-only source selection before product screen implementation.
+Task3811,SUPERSEDED_BY_USER_CLARIFICATION,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,FORBIDDEN,NOT_ACTIVE_REQUIRED_COMMAND,Historical audit evidence only; user clarified that 10 loops means GPT-Codex work cycles not validators.

@@ -1,5 +1,14 @@
 # Task3811 Frontend Pre-screen GPT Loop Hardening
 
+## Supersession Notice
+
+- Status: `SUPERSEDED_BY_USER_CLARIFICATION`
+- Active direction: `NOT_ACTIVE_NEXT_WORK_DIRECTION`
+- Validator program: `NOT_REQUIRED_PRE_SCREEN_VALIDATOR_PROGRAM`
+- New validator authorization: `NO_NEW_VALIDATORS_AUTHORIZED_BY_THIS_CLARIFICATION`
+
+The user clarified after Task3811 that "10 loops" means approximately ten captured GPT-Codex work cycles, not ten validators, gates, files, or internal reasoning passes. This report is retained as historical audit evidence only and must not be used as current frontend implementation direction.
+
 ## Decision Summary
 
 - Verdict: `PRE_SCREEN_GPT_10_LOOP_GATE_INSTALLED`
@@ -8,7 +17,7 @@
 - Real capital: `FORBIDDEN`
 - Broker mutation: `FORBIDDEN`
 
-Task3811 uses the Codex-GPT expert relay skill in user-authorized autonomous loop mode and converts the next ten frontend pre-screen tasks into a repeatable local gate: `npm run validate:pre-screen`.
+Historical Task3811 originally claimed that the Codex-GPT expert relay skill converted the next ten frontend pre-screen tasks into a repeatable local gate, `npm run validate:pre-screen`. That direction is now superseded by user clarification and must not be treated as active.
 
 No product screen, HOME real UI, Candidate Detail real UI, DB connection, active `trading.db` access, runtime API connection, broker/API call, KIS/Alpaca integration, paper/live order path, deployment command, real-capital action, strategy acceptance, deployment readiness, paper/live permission, broker mutation permission, or real-capital permission was added.
 
@@ -16,7 +25,7 @@ No product screen, HOME real UI, Candidate Detail real UI, DB connection, active
 
 The user explicitly requested the GPT skill to be used for about ten repeated loops. This overrides the default manual Chrome GPT handoff. GPT remains a reviewer/planner pattern, not source of truth.
 
-## Ten Loops Installed
+## Historical Ten Gates Originally Installed
 
 1. Fixture catalog authority stays `NOT_AUTHORITY`.
 2. Governance hard state stays closed.
@@ -29,7 +38,7 @@ The user explicitly requested the GPT skill to be used for about ten repeated lo
 9. Chart components expose missing/source-not-attached blockers and no synthetic chart data.
 10. Frontend app/source files avoid direct broker, KIS/Alpaca, active DB, and SQLite imports.
 
-## What Changed
+## Historical What Changed
 
 - Added `apps/ios-trader-brain/src/qa/pre-screen-gpt-loop-validator.mjs`.
 - Added `npm run validate:pre-screen`.
@@ -79,7 +88,7 @@ This does not make the project tradable. It only reduces the chance that future 
 
 ## Validation
 
-Required validation commands:
+Historical validation commands originally run for Task3811:
 
 ```powershell
 cd apps/ios-trader-brain && npm run typecheck
@@ -94,7 +103,7 @@ git diff --check
 git diff --cached --check
 ```
 
-Validation results must not be interpreted as strategy acceptance, deployment readiness, paper/live permission, broker mutation permission, or real-capital permission.
+These historical commands must not be interpreted as current active requirements. Validation results must not be interpreted as strategy acceptance, deployment readiness, paper/live permission, broker mutation permission, or real-capital permission.
 
 ## Artifact Manifest
 

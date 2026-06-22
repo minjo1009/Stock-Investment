@@ -78,7 +78,7 @@ They must be finalized by the scaffold task and then reflected here.
 | Maestro | `REQUIRED_POST_SCAFFOLD_HARDENING` | not installed in Task3804 |
 | Frontend safety validator | `npm run validate:safety` | hardened and validated in Task3805 |
 | Read-model fixture validator | `npm run validate:fixtures` | validates Task3809 generated JSON catalog fixture snapshot |
-| Pre-screen GPT loop validator | `npm run validate:pre-screen` | validates Task3811 10-loop gate before product screen work |
+| Task3811 pre-screen validator | `SUPERSEDED_BY_USER_CLARIFICATION` | not an active required command; `10 loops` means captured GPT-Codex work cycles, not ten validators |
 
 Do not document a command as runnable until a task proves it.
 
@@ -294,9 +294,10 @@ Task3809 decisions:
 - P0 domain component contracts represented in Storybook: `DecisionHeader`, `EvidenceList`, `ValidationReadinessPanel`, `RiskGate`, `DisabledActionBar`, `ChartWithSourceState`, `SystemHealth`, and `OrderStateSummary`.
 - Product screen implementation remains blocked until a future task selects an authoritative backend/read-only source and screenshot QA is configured.
 
-Task3811 decisions:
+Task3811 supersession:
 
-- GPT relay was used in autonomous override mode for a 10-loop pre-screen hardening pass.
-- `npm run validate:pre-screen` is the local 10-loop gate.
-- `npm test` now includes Storybook smoke, safety validation, fixture validation, and pre-screen validation.
+- `SUPERSEDED_BY_USER_CLARIFICATION`: Task3811 is not an accepted active next-work direction.
+- The user clarified that "10 loops" means approximately ten captured GPT-Codex work cycles, not ten validators or a pre-screen validator program.
+- `npm run validate:pre-screen` is not part of the active required scaffold command set.
+- `npm test` includes Storybook smoke, safety validation, and fixture validation.
 - Product screen implementation remains blocked until screenshot QA and authoritative read source decisions are made.

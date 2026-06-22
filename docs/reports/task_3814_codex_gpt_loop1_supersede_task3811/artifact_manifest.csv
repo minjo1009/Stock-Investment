@@ -1,0 +1,12 @@
+artifact_path,artifact_type,authority,description
+docs/reports/task_3814_codex_gpt_loop1_supersede_task3811/task_3814_codex_gpt_loop1_supersede_task3811.md,report,canonical,Task3814 closeout report for GPT-Codex Loop 1 correction
+docs/reports/task_3814_codex_gpt_loop1_supersede_task3811/task_3814_decision.csv,decision,canonical,Task3814 decision row
+docs/reports/task_3814_codex_gpt_loop1_supersede_task3811/loop1_gpt_prompt.md,gpt_prompt,review_only,Chrome GPT prompt sent for Loop 1
+docs/reports/task_3814_codex_gpt_loop1_supersede_task3811/loop1_gpt_response_summary.md,gpt_response_summary,review_only,Captured Chrome GPT response summary for Loop 1
+docs/reports/task_3814_codex_gpt_loop1_supersede_task3811/loop1_gpt_review_prompt.md,gpt_review_prompt,review_only,Chrome GPT review prompt sent after Loop 1 implementation
+docs/reports/task_3814_codex_gpt_loop1_supersede_task3811/loop1_gpt_review_response_summary.md,gpt_review_response_summary,review_only,Captured Chrome GPT review response summary for Loop 1
+docs/llm_wiki/codex_gpt_expert_relay_loop_ledger.md,ledger,navigation,Loop ledger and ranked next-work queue
+apps/ios-trader-brain/src/qa/frontend-safety-validator.mjs,source,active,Marks the retained Task3811 validator exclusion as historical-only
+docs/reports/task_3811_frontend_pre_screen_gpt_loop_hardening/task_3811_frontend_pre_screen_gpt_loop_hardening.md,report,superseded,Marks Task3811 report as historical audit evidence only
+docs/reports/task_3811_frontend_pre_screen_gpt_loop_hardening/task_3811_decision.csv,decision,superseded,Marks Task3811 decision as superseded by user clarification
+docs/reports/task_3811_frontend_pre_screen_gpt_loop_hardening/artifact_manifest.csv,manifest,superseded,Marks Task3811 validator/package script artifacts as superseded

@@ -75,7 +75,7 @@ The prior React plus TypeScript web structure is retained as design input only. 
 - Current Storybook/QA baseline: Task3805 adds runnable Storybook web runtime, scaffold lint/test, and hardened frontend safety validator.
 - Current foundation baseline: Task3806 adds common read-model types, static typed Storybook fixture fragments marked NOT_AUTHORITY, and reusable foundation/layout/generic components for freshness, blockers, metrics, status rows, and disabled-action states. Storybook remains web-vite; NativeWind and on-device Storybook are deferred.
 - Current read-model fixture/domain baseline: Task3809 selects a scaffold-only generated JSON catalog fixture snapshot, adds nine contract-shaped screen fixtures and `npm run validate:fixtures`, and installs props-only P0 domain component contracts. These fixtures are NOT authority and must be replaced by an authoritative backend-generated/read-only source later.
-- Current pre-screen QA baseline: Task3811 adds `npm run validate:pre-screen`, a 10-loop gate for fixture authority, governance closure, source freshness visibility, disabled action reasons, domain contracts, Storybook states, placeholder tabs, chart source blockers, and integration boundaries.
+- Current GPT-Codex loop correction: Task3814 supersedes Task3811 as an active direction. Task3811 is historical audit evidence only; "10 loops" means captured GPT-Codex work cycles with ledger evidence, not ten validators or a pre-screen validator program.
 - Any frontend must display blockers, stale source state, and provenance rather than hiding them behind polished UI.
 
 ## Next Build Shape

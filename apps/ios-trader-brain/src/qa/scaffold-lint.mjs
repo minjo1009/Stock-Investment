@@ -27,7 +27,6 @@ const requiredFiles = [
   "src/read-models/common.ts",
   "src/read-models/index.ts",
   "src/qa/frontend-safety-validator.mjs",
-  "src/qa/pre-screen-gpt-loop-validator.mjs",
   "src/qa/read-model-fixture-validator.mjs",
   "src/qa/scaffold-lint.mjs",
   "src/qa/storybook-smoke-test.mjs",

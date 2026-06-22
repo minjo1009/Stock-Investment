@@ -1,0 +1,2 @@
+task_id,decision,status,safety_state,notes
+Task3814,GPT_CODEX_LOOP1_TASK3811_SUPERSEDED,canonical,NOT_ACCEPTED_DIAGNOSTIC_ONLY_FORBIDDEN,Task3811 is superseded by user clarification and removed from active frontend test command path; 10 loops means captured GPT-Codex work cycles.

@@ -1,6 +1,15 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { extname, join, relative } from "node:path";
 
+// SUPERSEDED_BY_USER_CLARIFICATION:
+// HISTORICAL_ARTIFACT_ONLY
+// NOT_ACTIVE_VALIDATOR
+// NOT_REQUIRED_BY_TEST_OR_LINT
+// DO_NOT_REENABLE_WITHOUT_USER_APPROVAL
+// Task3811 is retained as a historical artifact only. It is not part of the
+// active frontend test command path, and "10 loops" means captured GPT-Codex
+// work cycles rather than ten validators.
+
 const appRoot = process.cwd();
 const fixtureDir = join(appRoot, "src/mocks/fixtures");
 const findings = [];
