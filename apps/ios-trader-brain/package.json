@@ -14,8 +14,13 @@
     "react-native-screens": "4.25.2"
   },
   "devDependencies": {
+    "@storybook/react-native-web-vite": "^10.4.6",
     "@types/react": "~19.2.2",
-    "typescript": "~6.0.3"
+    "react-dom": "^19.2.3",
+    "react-native-web": "^0.21.2",
+    "storybook": "^10.4.6",
+    "typescript": "~6.0.3",
+    "vite": "^8.0.16"
   },
   "scripts": {
     "start": "expo start",
@@ -24,9 +29,10 @@
     "ios:dev": "node src/qa/required-post-scaffold-hardening.mjs ios:dev",
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
-    "lint": "node src/qa/required-post-scaffold-hardening.mjs lint",
-    "test": "node src/qa/required-post-scaffold-hardening.mjs test",
-    "storybook": "node src/qa/required-post-scaffold-hardening.mjs storybook",
+    "lint": "node src/qa/scaffold-lint.mjs",
+    "test": "node src/qa/storybook-smoke-test.mjs && npm run validate:safety",
+    "storybook": "storybook dev -p 6006 --ci --no-open",
+    "storybook:smoke": "storybook dev -p 6006 --ci --no-open --smoke-test",
     "qa:screenshot": "node src/qa/required-post-scaffold-hardening.mjs qa:screenshot",
     "validate:safety": "node src/qa/frontend-safety-validator.mjs"
   },

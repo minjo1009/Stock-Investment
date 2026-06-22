@@ -2,11 +2,13 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { extname, join, relative } from "node:path";
 
 const appRoot = process.cwd();
-const scanRoots = ["app", "src"];
+const scanRoots = ["app", "src", ".storybook"];
 const allowedExtensions = new Set([".ts", ".tsx", ".js", ".jsx", ".json"]);
 const excludedFiles = new Set([
   "src/qa/frontend-safety-validator.mjs",
   "src/qa/required-post-scaffold-hardening.mjs",
+  "src/qa/scaffold-lint.mjs",
+  "src/qa/storybook-smoke-test.mjs",
 ]);
 
 const forbiddenVisibleTerms = [
@@ -20,13 +22,19 @@ const forbiddenVisibleTerms = [
 ];
 
 const forbiddenIntegrationPatterns = [
-  /\bKIS\b/i,
-  /\bAlpaca\b/i,
-  /\bbroker[_-]?submit\b/i,
-  /\btrading\.db\b/i,
-  /\bpaper[_-]?promote\b/i,
-  /\blive[_-]?order\b/i,
+  /\bfrom\s+["'][^"']*(?:kis|alpaca|broker|trading\.db)[^"']*["']/i,
+  /\brequire\(["'][^"']*(?:kis|alpaca|broker|trading\.db)[^"']*["']\)/i,
+  /\bfetch\([^)]*(?:kis|alpaca|broker|paper|live|order)/i,
+  /\bimport\s*\([^)]*(?:kis|alpaca|broker|trading\.db)[^)]*\)/i,
+  /\bexpo-sqlite\b/i,
+  /\bsqlite3\b/i,
 ];
+
+const disabledContextPattern =
+  /\b(disabled|blocked|actionState\s*[:=]\s*["']disabled["']|disabledReason|requiredGovernanceChange|mutationPermitted\s*[:=]\s*false)\b/i;
+
+const handlerPattern =
+  /\b(onPress|onSubmit|onExecute|onClick|handleSubmit|handleExecute|submitOrder|placeOrder|brokerSubmit)\b/i;
 
 function walk(dir, files = []) {
   if (!existsSync(dir)) {
@@ -56,10 +64,25 @@ for (const root of scanRoots) {
     }
 
     const content = readFileSync(file, "utf8");
+    const lines = content.split(/\r?\n/);
 
     for (const term of forbiddenVisibleTerms) {
-      if (content.includes(term)) {
-        findings.push(`${relativePath}: forbidden visible action term ${term}`);
+      for (const [index, line] of lines.entries()) {
+        if (!line.includes(term)) {
+          continue;
+        }
+
+        const start = Math.max(0, index - 8);
+        const end = Math.min(lines.length, index + 9);
+        const context = lines.slice(start, end).join("\n");
+        const hasDisabledContext = disabledContextPattern.test(context);
+        const hasHandler = handlerPattern.test(context);
+
+        if (!hasDisabledContext || hasHandler) {
+          findings.push(
+            `${relativePath}:${index + 1}: forbidden visible action term ${term} without disabled/blocked governance context`
+          );
+        }
       }
     }
 

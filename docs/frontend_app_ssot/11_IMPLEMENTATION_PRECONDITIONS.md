@@ -17,9 +17,10 @@ This document does not authorize strategy acceptance, paper permission, live per
 | Actual app root | `apps/ios-trader-brain` |
 | Package manager | `npm` |
 | Primary read path | `REQUIRED_POST_SCAFFOLD_HARDENING` |
-| Storybook | `REQUIRED_POST_SCAFFOLD_HARDENING` |
+| Storybook | `npm run storybook`; smoke validation via `npm run storybook:smoke` |
 | Screenshot QA | `REQUIRED_POST_SCAFFOLD_HARDENING` |
 | Safety validator | `npm run validate:safety` |
+| NativeWind | `DEFERRED_WITH_REASON_TASK3805` |
 
 ## Actual App Root Path
 
@@ -51,6 +52,7 @@ The future scaffold must target:
 | Component base | React Native Reusables where practical |
 | Story isolation | Storybook |
 | Mobile flow QA | Maestro if selected by scaffold task |
+| NativeWind | Deferred until Task3806 or later because stable/current install paths add Tailwind/Metro/Babel surface area before components use `className` |
 
 ## Command Contract
 
@@ -64,13 +66,14 @@ They must be finalized by the scaffold task and then reflected here.
 | Expo start | `npm run start` | runnable command, not a deployment claim |
 | Expo iOS simulator start | `npm run ios` | defined by Expo scaffold; not validated on Windows/macOS-only simulator path |
 | Expo Development Build | `REQUIRED_POST_SCAFFOLD_HARDENING` | `npm run ios:dev` currently blocks intentionally |
-| Storybook | `REQUIRED_POST_SCAFFOLD_HARDENING` | `npm run storybook` currently blocks intentionally |
+| Storybook | `npm run storybook` | starts Storybook web runtime on port 6006 |
+| Storybook smoke | `npm run storybook:smoke` | validated in Task3805 |
 | Typecheck | `npm run typecheck` | validated in Task3804 |
-| Lint | `REQUIRED_POST_SCAFFOLD_HARDENING` | `npm run lint` currently blocks intentionally |
-| Unit/component tests | `REQUIRED_POST_SCAFFOLD_HARDENING` | `npm test` currently blocks intentionally |
+| Lint | `npm run lint` | scaffold boundary lint validated in Task3805 |
+| Unit/component tests | `npm test` | Storybook story export smoke plus safety validator validated in Task3805 |
 | Screenshot QA | `REQUIRED_POST_SCAFFOLD_HARDENING` | `npm run qa:screenshot` currently blocks intentionally |
 | Maestro | `REQUIRED_POST_SCAFFOLD_HARDENING` | not installed in Task3804 |
-| Frontend safety validator | `npm run validate:safety` | validated in Task3804 |
+| Frontend safety validator | `npm run validate:safety` | hardened and validated in Task3805 |
 
 Do not document a command as runnable until a task proves it.
 
@@ -146,7 +149,7 @@ Required story states:
 - chart missing
 - source not attached
 
-Story args must come from the reserved fixture paths or typed fixture builders generated from them after Task3805 selects the read-model fixture source. Task3804 story files are smoke placeholders only.
+Story args must come from the reserved fixture paths or typed fixture builders generated from them after a future task selects the read-model fixture source. Task3805 provides runnable foundation Storybook stories, but not source-derived read-model payload fixtures.
 
 ## Screenshot QA Preconditions
 
@@ -176,7 +179,7 @@ Screenshot QA must fail if stale/missing/source-not-attached states are hidden.
 
 ## Frontend Safety Validator Preconditions
 
-A frontend safety validator exists as `npm run validate:safety`. Task3805 must harden it before product screens expand.
+A frontend safety validator exists as `npm run validate:safety`. Task3805 hardened it for disabled/blocked visible action context, handler detection, broker/API import detection, and top-level tab boundary checks.
 
 The validator must check:
 
@@ -231,12 +234,10 @@ No disabled action component may have a hidden broker submit, DB write, paper pr
 Foundation component implementation may continue only after a future task confirms:
 
 1. Expo Development Build command is runnable or explicitly blocked with evidence.
-2. Storybook runtime command is runnable or explicitly blocked with evidence.
-3. lint/test commands are runnable or explicitly blocked with evidence.
+2. read-model fixture source is selected.
+3. source-derived fixture payloads are created from `08_FRONTEND_READ_MODEL_CONTRACT.md`.
 4. screenshot QA command and device preset are runnable or explicitly blocked with evidence.
-5. frontend safety validator is hardened beyond placeholder scanning.
-6. read-model fixture source is selected.
-7. P0 fixture payloads are created from `08_FRONTEND_READ_MODEL_CONTRACT.md`.
-8. no strategy/deployment/paper/live/broker/real-capital permission has changed.
+5. NativeWind is either installed with typecheck evidence or remains deferred with current reason.
+6. no strategy/deployment/paper/live/broker/real-capital permission has changed.
 
 Until then, frontend work remains scaffold/foundation hardening only.

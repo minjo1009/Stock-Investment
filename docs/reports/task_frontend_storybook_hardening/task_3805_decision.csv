@@ -1,0 +1,19 @@
+field,value
+task_id,Task3805
+verdict,STORYBOOK_RUNTIME_AND_QA_BASELINE_INSTALLED_WITH_LIMITED_SCOPE
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+broker_mutation,FORBIDDEN
+storybook,npm run storybook
+storybook_smoke,npm run storybook:smoke
+lint,npm run lint
+test,npm test
+safety_validator,npm run validate:safety
+nativewind,DEFERRED_WITH_REASON_TASK3805
+screenshot_qa,REQUIRED_POST_SCAFFOLD_HARDENING
+maestro,REQUIRED_POST_SCAFFOLD_HARDENING
+code_changed,storybook_qa_foundation_only
+db_changed,no
+broker_api_called,no
+live_or_paper_permission_changed,no

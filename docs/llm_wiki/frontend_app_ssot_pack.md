@@ -72,14 +72,15 @@ The prior React plus TypeScript web structure is retained as design input only. 
 - Latest mobile/cockpit history remains useful for display and migration patterns, not for route or stack authority.
 - Canonical frontend pack: `docs/frontend_app_ssot/`.
 - Current app scaffold: `apps/ios-trader-brain` from Task3804. It contains placeholder tabs only, not product screens.
+- Current Storybook/QA baseline: Task3805 adds runnable Storybook web runtime, scaffold lint/test, and hardened frontend safety validator.
 - Any frontend must display blockers, stale source state, and provenance rather than hiding them behind polished UI.
 
 ## Next Build Shape
 
-1. Harden Storybook runtime and foundation component isolation.
-2. Confirm the read-model endpoint/catalog source before fixtures are created.
+1. Confirm the read-model endpoint/catalog source before fixtures are created.
+2. Create source-derived fixture payloads for foundation/domain Storybook states.
 3. Map current DB/runtime catalog fields into the five IA tabs.
-4. Implement read-only foundation components before product screens.
+4. Implement read-only domain components before product screens.
 5. Add trading actions only as disabled/blocked affordances until governance allows otherwise.
 6. Validate with frontend continuity, source freshness, no-live-order, no-broker-mutation, and screenshot QA checks.
 

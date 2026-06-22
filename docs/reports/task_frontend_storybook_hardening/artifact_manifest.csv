@@ -1,0 +1,7 @@
+artifact_id,path,kind,status,notes
+storybook_config,apps/ios-trader-brain/.storybook,config,canonical,Storybook web runtime config for React Native Web Vite.
+foundation_stories,apps/ios-trader-brain/src/stories,storybook,canonical,Foundation stories for AppText Badge and CardContainer.
+qa_scripts,apps/ios-trader-brain/src/qa,validator,canonical,Scaffold lint storybook smoke and hardened safety validator scripts.
+preconditions_update,docs/frontend_app_ssot/11_IMPLEMENTATION_PRECONDITIONS.md,doc,canonical,Updated command and NativeWind status after Task3805.
+task_report,docs/reports/task_frontend_storybook_hardening/task_frontend_storybook_hardening.md,report,canonical,Task3805 closeout report.
+task_decision,docs/reports/task_frontend_storybook_hardening/task_3805_decision.csv,decision,canonical,Task3805 decision summary.
