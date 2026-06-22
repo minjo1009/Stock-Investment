@@ -1,0 +1,158 @@
+import type { CandidateDetailReadModel } from "./common";
+
+// Scaffold-only wrapper derived from src/mocks/fixtures/candidate-detail.json.
+// NOT_AUTHORITY: not backend truth, broker truth, source truth, trading permission,
+// deployment readiness, paper/live permission, or real-capital permission.
+export const candidateDetailFixture = {
+  generatedAt: "2026-06-22T00:00:00Z",
+  contractVersion: "frontend-read-model-v1",
+  readPath: "json_catalog",
+  governance: {
+    strategyAcceptance: "NOT_ACCEPTED",
+    deploymentReadiness: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    realCapital: "FORBIDDEN",
+    brokerMutationPermitted: false,
+    paperPermission: false,
+    livePermission: false,
+    killSwitchActive: true,
+    controlStateSource: "docs/operating_system/project_operating_state.md",
+    authorityReportPath:
+      "docs/reports/task_frontend_read_model_fixtures_domain_contracts/task_frontend_read_model_fixtures_domain_contracts.md",
+  },
+  sourceSummary: {
+    freshCount: 1,
+    staleCount: 1,
+    missingCount: 1,
+    unknownCount: 1,
+    strictGateOpenCount: 0,
+  },
+  blockers: [
+    {
+      blockerId: "candidate-fixture-not-authority",
+      severity: "P0",
+      label: "Fixture not authority",
+      reason: "Candidate detail fixture cannot approve a strategy.",
+      sourceRefs: ["apps/ios-trader-brain/src/mocks/fixtures/catalog-manifest.json"],
+      detectedAt: "2026-06-22T00:00:00Z",
+    },
+  ],
+  disabledActions: [
+    {
+      actionId: "execute",
+      label: "Execution disabled",
+      actionState: "disabled",
+      disabledReason: "No paper/live/broker permission exists.",
+      requiredGovernanceChange: [
+        "strategyAcceptance must change from NOT_ACCEPTED",
+        "deploymentReadiness must change from DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+      ],
+    },
+  ],
+  candidateId: "fixture-candidate-review",
+  symbol: "FIXA",
+  sections: {
+    decisionSummary: {
+      decisionState: "REVIEW_ONLY",
+      authority: "NOT_AUTHORITY scaffold fixture",
+      generatedAt: "2026-06-22T00:00:00Z",
+      disabledActions: [
+        {
+          actionId: "execute",
+          label: "Execution disabled",
+          actionState: "disabled",
+          disabledReason: "Scaffold fixture cannot authorize action.",
+          requiredGovernanceChange: ["strategyAcceptance must change from NOT_ACCEPTED"],
+        },
+      ],
+    },
+    thesisLogic: {
+      thesis: "Read-only fixture thesis for component contract validation.",
+      reason: "This text verifies display wiring only.",
+      economicMeaningRefs: ["L2_FIXTURE_MEANING"],
+      relationRefs: ["L3_FIXTURE_RELATION"],
+    },
+    validationReadiness: {
+      splitOosStatus: "UNKNOWN",
+      leakageStatus: "UNKNOWN",
+      costSlippageStatus: "UNKNOWN",
+      sourceGateStatus: "BLOCKED",
+      readinessSummary: "Fixture has no split/OOS, leakage, cost, or source authority.",
+    },
+    evidence: [
+      {
+        evidenceId: "fixture-evidence-unknown",
+        label: "Unknown evidence fixture",
+        value: null,
+        unit: "not_applicable",
+        sourceId: "fixture-source-unknown",
+        provenanceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
+        freshnessStatus: "UNKNOWN",
+      },
+    ],
+    risk: {
+      blockers: [
+        {
+          blockerId: "candidate-source-missing",
+          severity: "P1",
+          label: "Source missing",
+          reason: "Required source is missing in the scaffold fixture.",
+          sourceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
+          detectedAt: null,
+        },
+      ],
+      sourceStates: [
+        {
+          sourceId: "fixture-source-stale",
+          sourceLabel: "Stale fixture source",
+          freshnessStatus: "STALE",
+          observedAt: "2026-06-01T00:00:00Z",
+          generatedAt: "2026-06-22T00:00:00Z",
+          sourceCount: 1,
+          strictGateAllowed: false,
+          proxyAllowed: false,
+          provenanceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
+          blockerReason: "Stale fixture source.",
+        },
+        {
+          sourceId: "fixture-source-missing",
+          sourceLabel: "Missing fixture source",
+          freshnessStatus: "MISSING",
+          observedAt: null,
+          generatedAt: null,
+          sourceCount: null,
+          strictGateAllowed: false,
+          proxyAllowed: false,
+          provenanceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
+          blockerReason: "Missing fixture source.",
+        },
+      ],
+      chartStates: [
+        {
+          chartId: "fixture-chart-missing",
+          status: "CHART_MISSING",
+          sourceIds: [],
+          blockerReason: "No chart source attached in scaffold fixture.",
+        },
+        {
+          chartId: "fixture-chart-source-not-attached",
+          status: "SOURCE_NOT_ATTACHED",
+          sourceIds: [],
+          blockerReason: "Chart source is not attached.",
+        },
+      ],
+    },
+    nextAction: {
+      allowedReadOnlyActions: ["Open Evidence", "View Risk"],
+      disabledTradingActions: [
+        {
+          actionId: "paper_promote",
+          label: "Paper promotion disabled",
+          actionState: "disabled",
+          disabledReason: "Paper permission is false.",
+          requiredGovernanceChange: ["paperPermission must become true in operating documents"],
+        },
+      ],
+      nextEngineeringAction: "Select authoritative read-only backend catalog source.",
+    },
+  },
+} satisfies CandidateDetailReadModel;

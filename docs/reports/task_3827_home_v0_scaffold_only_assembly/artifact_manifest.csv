@@ -1,0 +1,7 @@
+artifact_path,artifact_type,authority,notes
+apps/ios-trader-brain/src/read-models/homeFixture.ts,typed_fixture_wrapper,not_authority,Scaffold-only typed wrapper derived from home.json; not backend/source/broker truth.
+apps/ios-trader-brain/app/(tabs)/index.tsx,frontend_route,not_authority,HOME v0 scaffold-only fixture-backed screen assembly.
+docs/reports/task_3827_home_v0_scaffold_only_assembly/task_3827_home_v0_scaffold_only_assembly.md,task_report,canonical,Task3827 report.
+docs/reports/task_3827_home_v0_scaffold_only_assembly/artifact_manifest.csv,artifact_manifest,canonical,Task3827 artifact list.
+docs/reports/task_3827_home_v0_scaffold_only_assembly/loop2_gpt_prompt.md,gpt_prompt,review_only,Captured prompt summary for Loop 2 GPT consult.
+docs/reports/task_3827_home_v0_scaffold_only_assembly/loop2_gpt_response_summary.md,gpt_response_summary,review_only,Captured GPT response summary for Loop 2; GPT is not source of truth.

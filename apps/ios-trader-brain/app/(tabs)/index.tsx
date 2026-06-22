@@ -1,5 +1,142 @@
-import { PlaceholderScreen } from "../../src/components/layout/placeholder-screen";
+import { View } from "react-native";
+
+import { DisabledActionBar } from "../../src/components/domain";
+import { AppText, Badge, CardContainer } from "../../src/components/foundation";
+import {
+  BlockerList,
+  MetricCard,
+  SourceFreshnessBadge,
+  StatusRow,
+} from "../../src/components/generic";
+import { ScreenContainer, SectionContainer } from "../../src/components/layout";
+import { homeFixture } from "../../src/read-models/homeFixture";
+import { spacing } from "../../src/theme/tokens";
 
 export default function HomeRoute() {
-  return <PlaceholderScreen title="HOME" />;
+  const home = homeFixture;
+
+  return (
+    <ScreenContainer>
+      <View style={{ gap: spacing.sm }}>
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
+          <Badge label="HOME v0" tone="readOnly" />
+          <Badge label="Read-only" tone="readOnly" />
+          <Badge label="NOT_AUTHORITY" tone="blocked" />
+        </View>
+        <AppText variant="title">HOME</AppText>
+        <AppText variant="caption">
+          Scaffold-only fixture-backed view. Current payload is not backend truth,
+          source truth, broker truth, or product readiness evidence.
+        </AppText>
+      </View>
+
+      <SectionContainer title="Governance Boundary" description="Visible hard state for this scaffold screen.">
+        <StatusRow
+          label="Strategy"
+          value={`Strategy ${home.governance.strategyAcceptance}`}
+          state="blocked"
+          sourceRef={home.governance.controlStateSource}
+        />
+        <StatusRow
+          label="Deployment"
+          value={`Deployment ${home.governance.deploymentReadiness}`}
+          state="blocked"
+          sourceRef={home.governance.authorityReportPath}
+        />
+        <StatusRow
+          label="Real capital"
+          value={`Real capital ${home.governance.realCapital}`}
+          state="blocked"
+          sourceRef={home.governance.controlStateSource}
+        />
+        <StatusRow
+          label="Kill switch"
+          value={home.governance.killSwitchActive ? "active" : "inactive"}
+          state={home.governance.killSwitchActive ? "blocked" : "unknown"}
+        />
+      </SectionContainer>
+
+      <SectionContainer title="Portfolio Snapshot" description="Fixture values stay unknown until an authority path exists.">
+        <View style={{ gap: spacing.sm }}>
+          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
+            <MetricCard label="Account value" value={displayMoney(home.portfolioSnapshot.accountValue)} state="unknown" />
+            <MetricCard label="Cash" value={displayMoney(home.portfolioSnapshot.cash)} state="unknown" />
+            <MetricCard label="Invested cash" value={displayMoney(home.portfolioSnapshot.investedCash)} state="unknown" />
+            <MetricCard label="Open PnL" value={displayMoney(home.portfolioSnapshot.openPnl)} state="unknown" />
+            <MetricCard label="Realized PnL" value={displayMoney(home.portfolioSnapshot.realizedPnl)} state="unknown" />
+          </View>
+          <SourceFreshnessBadge sourceState={home.portfolioSnapshot.sourceState} />
+          {home.portfolioSnapshot.sourceState.blockerReason ? (
+            <AppText variant="caption">{home.portfolioSnapshot.sourceState.blockerReason}</AppText>
+          ) : null}
+        </View>
+      </SectionContainer>
+
+      <SectionContainer title="Brain Snapshot" description="Review-only candidate counts from scaffold fixture state.">
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
+          <MetricCard label="Candidates" value={home.brainSnapshot.candidateCount} state="readOnly" />
+          <MetricCard label="Blocked" value={home.brainSnapshot.blockedCount} state="blocked" />
+          <MetricCard label="Review-only" value={home.brainSnapshot.reviewOnlyCount} state="readOnly" />
+          <MetricCard
+            label="Latest runtime decision"
+            value={home.brainSnapshot.latestRuntimeDecisionAt ?? "UNKNOWN"}
+            state="unknown"
+          />
+        </View>
+        <SourceFreshnessBadge sourceState={home.brainSnapshot.sourceState} />
+        {home.brainSnapshot.sourceState.blockerReason ? (
+          <AppText variant="caption">{home.brainSnapshot.sourceState.blockerReason}</AppText>
+        ) : null}
+      </SectionContainer>
+
+      <SectionContainer title="Attention Queue" description="Routes are read-only destination hints in this scaffold.">
+        <View style={{ gap: spacing.sm }}>
+          {home.attentionQueue.map((item) => (
+            <CardContainer key={item.itemId}>
+              <Badge label={item.severity} tone="blocked" />
+              <AppText>{item.label}</AppText>
+              <AppText variant="caption">{item.reason}</AppText>
+              <AppText variant="caption">{`${item.kind} / ${item.route}`}</AppText>
+              {item.sourceRefs.map((sourceRef) => (
+                <AppText key={sourceRef} variant="caption">
+                  {sourceRef}
+                </AppText>
+              ))}
+            </CardContainer>
+          ))}
+        </View>
+      </SectionContainer>
+
+      <SectionContainer title="Freshness Summary" description="Fresh does not imply permission; stale or missing remains visible.">
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
+          <MetricCard label="Fresh" value={home.sourceSummary.freshCount} state="fresh" />
+          <MetricCard label="Stale" value={home.sourceSummary.staleCount} state="stale" />
+          <MetricCard label="Missing" value={home.sourceSummary.missingCount} state="missing" />
+          <MetricCard label="Unknown" value={home.sourceSummary.unknownCount} state="unknown" />
+          <MetricCard label="Strict gate open" value={home.sourceSummary.strictGateOpenCount} state="blocked" />
+        </View>
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
+          {home.freshnessSummary.map((sourceState) => (
+            <SourceFreshnessBadge key={sourceState.sourceId} sourceState={sourceState} />
+          ))}
+        </View>
+      </SectionContainer>
+
+      <SectionContainer title="Blocker Summary" description="Fixture blockers are displayed as blockers, not negative evidence.">
+        <BlockerList blockers={[...home.blockers, ...home.blockerSummary]} />
+      </SectionContainer>
+
+      <SectionContainer title="Disabled Actions" description="Trading mutation remains disabled by governance.">
+        <DisabledActionBar actions={home.disabledActions} />
+      </SectionContainer>
+    </ScreenContainer>
+  );
+}
+
+function displayMoney(value: number | null) {
+  if (value === null) {
+    return "UNKNOWN";
+  }
+
+  return value;
 }

@@ -1,0 +1,6 @@
+artifact_path,artifact_type,authority,notes
+docs/frontend_app_ssot/21_SCAFFOLD_ONLY_SCREEN_ASSEMBLY_BOUNDARY.md,frontend_ssot_boundary,canonical,Defines restricted scaffold-only NOT_AUTHORITY screen assembly before product screen implementation.
+docs/reports/task_3826_scaffold_only_screen_assembly_boundary/task_3826_scaffold_only_screen_assembly_boundary.md,task_report,canonical,Task3826 report for Loop 1 frontend real-implementation boundary work.
+docs/reports/task_3826_scaffold_only_screen_assembly_boundary/artifact_manifest.csv,artifact_manifest,canonical,Task3826 artifact list.
+docs/reports/task_3826_scaffold_only_screen_assembly_boundary/loop1_gpt_prompt.md,gpt_prompt,review_only,Captured prompt summary for Loop 1 GPT consult.
+docs/reports/task_3826_scaffold_only_screen_assembly_boundary/loop1_gpt_response_summary.md,gpt_response_summary,review_only,Captured GPT response summary for Loop 1; GPT is not source of truth.

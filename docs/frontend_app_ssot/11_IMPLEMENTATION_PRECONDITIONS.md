@@ -312,3 +312,20 @@ Task3811 supersession:
 - `npm run validate:pre-screen` is not part of the active required scaffold command set.
 - `npm test` includes Storybook smoke, safety validation, and fixture validation.
 - Product screen implementation remains blocked until screenshot QA and authoritative read source decisions are made.
+
+Task3826 scaffold-only screen assembly boundary:
+
+- `docs/frontend_app_ssot/21_SCAFFOLD_ONLY_SCREEN_ASSEMBLY_BOUNDARY.md` defines a narrower implementation class: scaffold-only fixture-backed screen assembly.
+- Product screen implementation remains blocked until authoritative read-source and screenshot QA requirements are satisfied.
+- Scaffold-only fixture-backed screen assembly may be selected by a future loop only under the Task3826 boundary.
+- Existing generated JSON fixtures remain `NOT_AUTHORITY`; they do not prove source truth, backend truth, broker truth, paper/live permission, deployment readiness, or real-capital permission.
+- Allowed future candidates are limited to explicitly selected loops, currently `HOME v0` and `Candidate Detail v0`.
+- No screenshot QA, Maestro, iOS dev build, NativeWind, authoritative read path, product readiness, paper/live, broker mutation, deployment readiness, or real-capital permission is granted by this boundary.
+
+Task3827-Task3828 scaffold-only screen assemblies:
+
+- `HOME v0` exists as scaffold-only fixture-backed assembly under `apps/ios-trader-brain/app/(tabs)/index.tsx`.
+- `Candidate Detail v0` exists as scaffold-only fixture-backed assembly under `apps/ios-trader-brain/app/brain/candidate/[candidateId].tsx`.
+- Both screens use typed fixture wrappers under `apps/ios-trader-brain/src/read-models/` derived from existing JSON fixtures.
+- Both remain `NOT_AUTHORITY`, read-only, and not product screen readiness.
+- Authoritative read-source integration, screenshot QA readiness, Maestro readiness, iOS dev build validation, broker mutation, paper/live permission, deployment readiness, and real-capital permission remain blocked.
