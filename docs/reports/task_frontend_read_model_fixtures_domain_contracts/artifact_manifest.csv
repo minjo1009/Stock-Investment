@@ -1,0 +1,10 @@
+artifact_id,path,artifact_type,status,authority,row_count,notes
+task3809_report,docs/reports/task_frontend_read_model_fixtures_domain_contracts/task_frontend_read_model_fixtures_domain_contracts.md,report,created,task_closeout,1,Closeout report for source-derived fixture snapshot and domain component contracts.
+task3809_manifest,docs/reports/task_frontend_read_model_fixtures_domain_contracts/artifact_manifest.csv,manifest,created,task_closeout,1,Artifact manifest for Task3809.
+task3809_decision,docs/reports/task_frontend_read_model_fixtures_domain_contracts/task_3809_decision.csv,decision,created,task_closeout,1,Decision row for Task3809.
+fixture_catalog_manifest,apps/ios-trader-brain/src/mocks/fixtures/catalog-manifest.json,fixture_manifest,created,not_authority,1,Scaffold-only generated JSON catalog fixture manifest.
+screen_fixtures,apps/ios-trader-brain/src/mocks/fixtures,fixtures,created,not_authority,9,Contract-shaped screen read-model JSON fixtures.
+read_model_types,apps/ios-trader-brain/src/read-models,source,updated,frontend_contract,,Common and screen read-model TypeScript types.
+domain_components,apps/ios-trader-brain/src/components/domain,source,created,frontend_scaffold,8,Props-only P0 domain component contracts.
+domain_stories,apps/ios-trader-brain/src/stories,source,updated,frontend_scaffold,8,Domain Storybook coverage for source and disabled states.
+fixture_validator,apps/ios-trader-brain/src/qa/read-model-fixture-validator.mjs,validator,created,frontend_validator,1,Validates scaffold fixture shape and governance boundaries.

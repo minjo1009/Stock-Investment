@@ -38,6 +38,7 @@ Use this index to find current truth without rereading all historical reports.
 | Task3804 | Expo app scaffold and Storybook foundation setup: app root, Expo Router placeholder tabs, foundation components, smoke story files, typecheck and safety validator | [report](../reports/task_frontend_app_scaffold_storybook/task_frontend_app_scaffold_storybook.md) |
 | Task3805 | Storybook runtime hardening and frontend QA baseline: runnable Storybook web, scaffold lint/test, hardened safety validator, NativeWind deferred | [report](../reports/task_frontend_storybook_hardening/task_frontend_storybook_hardening.md) |
 | Task3806 | foundation component hardening and fixture source decision: reusable freshness/blocker/status/metric components, static typed Storybook fixtures marked NOT_AUTHORITY, NativeWind and on-device Storybook deferred | [report](../reports/task_frontend_foundation_hardening/task_frontend_foundation_hardening.md) |
+| Task3809 | read-model fixture snapshot and domain component contracts: scaffold-only generated JSON catalog fixtures, fixture validator, and P0 props-only domain components | [report](../reports/task_frontend_read_model_fixtures_domain_contracts/task_frontend_read_model_fixtures_domain_contracts.md) |
 
 ## Current Interpretation
 
@@ -58,4 +59,5 @@ Use this index to find current truth without rereading all historical reports.
 - Task3804 creates `apps/ios-trader-brain` with Expo SDK 56, Expo Router placeholder tabs, foundation components, and smoke story files. Storybook runtime, NativeWind, lint/test, screenshot QA, Maestro, fixture payloads, and full safety validator hardening remain blocked for Task3805.
 - Task3805 makes Storybook web runtime runnable and validates it with `npm run storybook:smoke`; `npm run lint`, `npm test`, and `npm run validate:safety` pass. NativeWind, screenshot QA, Maestro, iOS dev build, and source-derived fixture payloads remain future blockers.
 - Task3806 hardens reusable foundation/layout/generic components before product screens. Static typed fixture fragments are selected for Storybook component work only and are NOT authority. Full app read path and full screen source-derived fixtures remain future blockers.
+- Task3809 selects a scaffold-only generated JSON catalog fixture snapshot, creates contract-shaped full screen fixture payloads, adds `npm run validate:fixtures`, and installs P0 domain component contracts in Storybook. These fixtures are NOT authority and do not connect the frontend to DB, runtime API, broker, paper/live, deployment, or real-capital systems.
 - The frontend should show review-only shadow decisions, blockers, provenance, and source freshness, not issue real orders.

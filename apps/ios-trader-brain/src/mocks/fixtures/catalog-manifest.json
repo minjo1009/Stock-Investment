@@ -1,0 +1,25 @@
+{
+  "catalogId": "task3809-scaffold-read-model-fixture-catalog",
+  "contractVersion": "frontend-read-model-v1",
+  "readPath": "json_catalog",
+  "authority": "NOT_AUTHORITY",
+  "generatedAt": "2026-06-22T00:00:00Z",
+  "fingerprint": "task3809-scaffold-fixture-contract-v1",
+  "sourceRefs": [
+    "docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md",
+    "docs/frontend_app_ssot/09_DISABLED_ACTION_AND_ORDER_CONTROL_CONTRACT.md",
+    "docs/reports/task_frontend_read_model_fixtures_domain_contracts/task_frontend_read_model_fixtures_domain_contracts.md"
+  ],
+  "fixtureFiles": [
+    "home.json",
+    "brain.json",
+    "candidate-detail.json",
+    "chain-detail.json",
+    "portfolio.json",
+    "position-detail.json",
+    "orders.json",
+    "order-detail.json",
+    "system-health.json"
+  ],
+  "notes": "Scaffold-only generated JSON catalog fixture snapshot. It is not backend authority, broker truth, source truth, trading permission, paper permission, deployment readiness, or real-capital permission."
+}

@@ -16,7 +16,7 @@ This document does not authorize strategy acceptance, paper permission, live per
 | App scaffold | `CREATED_TASK3804` |
 | Actual app root | `apps/ios-trader-brain` |
 | Package manager | `npm` |
-| Primary app read path | `REQUIRED_POST_SCAFFOLD_HARDENING` |
+| Primary app read path | `GENERATED_JSON_CATALOG_FIXTURE_SNAPSHOT_TASK3809_NOT_AUTHORITY` |
 | Storybook/component fixture source | `STATIC_TYPED_FIXTURES_DERIVED_FROM_08_TASK3806_NOT_AUTHORITY` |
 | Storybook | `npm run storybook`; smoke validation via `npm run storybook:smoke` |
 | Storybook on-device | `DEFERRED_WITH_REASON_TASK3806` |
@@ -77,6 +77,7 @@ They must be finalized by the scaffold task and then reflected here.
 | Screenshot QA | `REQUIRED_POST_SCAFFOLD_HARDENING` | `npm run qa:screenshot` currently blocks intentionally |
 | Maestro | `REQUIRED_POST_SCAFFOLD_HARDENING` | not installed in Task3804 |
 | Frontend safety validator | `npm run validate:safety` | hardened and validated in Task3805 |
+| Read-model fixture validator | `npm run validate:fixtures` | validates Task3809 generated JSON catalog fixture snapshot |
 
 Do not document a command as runnable until a task proves it.
 
@@ -91,6 +92,16 @@ Task3806 selected the first Storybook/component fixture strategy:
 - Scope: component-state fragments for Storybook only.
 - Authority status: `NOT_AUTHORITY`; these fixtures are not backend truth, broker truth, source truth, trading permission, or app read-path authority.
 - Full screen payload paths below remain reserved until a backend-generated JSON catalog, read-only runtime API snapshot, or read-only SQLite export transformer is selected.
+
+Task3809 selected the first full app read-model fixture source strategy:
+
+- Option selected: generated JSON catalog fixture snapshot.
+- Current manifest path: `apps/ios-trader-brain/src/mocks/fixtures/catalog-manifest.json`.
+- Current screen fixture paths: the reserved JSON files listed below.
+- Scope: scaffold-only screen read-model payloads for Storybook/domain component contracts.
+- Authority status: `NOT_AUTHORITY`; these fixtures are not backend truth, broker truth, source truth, trading permission, paper permission, deployment readiness, or real-capital permission.
+- Frontend direct active `trading.db` access remains forbidden.
+- Future production read path must replace this snapshot with a backend-generated JSON catalog, read-only runtime API response, or read-only SQLite export transformer selected by a later authority task.
 
 Reserved fixture paths:
 
@@ -112,7 +123,7 @@ Full screen fixture source path must be one of:
 - read-only runtime API response
 - read-only SQLite export transformed into this contract
 
-The exact full screen source must be selected before screen payload files are created. Task3804 created only the fixture directory placeholder. Task3806 created only typed foundation-state fixture fragments for Storybook.
+The exact full screen source must be selected before screen payload files are created. Task3804 created only the fixture directory placeholder. Task3806 created only typed foundation-state fixture fragments for Storybook. Task3809 created the first full screen scaffold fixture snapshot under these paths and added `npm run validate:fixtures`.
 
 ## Required P0 Components Before Screens
 
@@ -274,3 +285,10 @@ Task3806 decisions:
 - Storybook path: keep web-vite Storybook for now. On-device Storybook is deferred until a native-device QA task needs it and can own Expo Router/Metro entry wrapping.
 - NativeWind: `DEFERRED_WITH_REASON_TASK3806`. Official install paths add Metro/Babel/CSS configuration and Expo web Metro assumptions; the current scaffold is stable with tokens/style props and Storybook web-vite.
 - Fixture source: static typed fixtures derived from `08_FRONTEND_READ_MODEL_CONTRACT.md` for Storybook foundation states only. Full app read path remains unselected.
+
+Task3809 decisions:
+
+- Full app read-model fixture source: generated JSON catalog fixture snapshot, scaffold-only, `NOT_AUTHORITY`.
+- Fixture validator: `npm run validate:fixtures`.
+- P0 domain component contracts represented in Storybook: `DecisionHeader`, `EvidenceList`, `ValidationReadinessPanel`, `RiskGate`, `DisabledActionBar`, `ChartWithSourceState`, `SystemHealth`, and `OrderStateSummary`.
+- Product screen implementation remains blocked until a future task selects an authoritative backend/read-only source and screenshot QA is configured.

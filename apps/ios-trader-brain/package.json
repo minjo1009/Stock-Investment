@@ -34,7 +34,8 @@
     "storybook": "storybook dev -p 6006 --ci --no-open",
     "storybook:smoke": "storybook dev -p 6006 --ci --no-open --smoke-test",
     "qa:screenshot": "node src/qa/required-post-scaffold-hardening.mjs qa:screenshot",
-    "validate:safety": "node src/qa/frontend-safety-validator.mjs"
+    "validate:safety": "node src/qa/frontend-safety-validator.mjs",
+    "validate:fixtures": "node src/qa/read-model-fixture-validator.mjs"
   },
   "private": true
 }

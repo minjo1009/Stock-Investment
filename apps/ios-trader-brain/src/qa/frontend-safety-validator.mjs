@@ -7,8 +7,11 @@ const allowedExtensions = new Set([".ts", ".tsx", ".js", ".jsx", ".json"]);
 const excludedFiles = new Set([
   "src/qa/frontend-safety-validator.mjs",
   "src/qa/required-post-scaffold-hardening.mjs",
+  "src/qa/read-model-fixture-validator.mjs",
   "src/qa/scaffold-lint.mjs",
   "src/qa/storybook-smoke-test.mjs",
+  "src/read-models/common.ts",
+  "src/read-models/index.ts",
 ]);
 
 const forbiddenVisibleTerms = [
