@@ -45,6 +45,7 @@ The project is moving from repeated source/backtest loops toward governed paper/
 - latest frontend planning authority is the canonical pack in `docs/frontend_app_ssot/`, summarized in [frontend_app_ssot_pack.md](frontend_app_ssot_pack.md): active target is Expo Development Build iOS-first, fixed IA is `HOME / BRAIN / PORTFOLIO / ORDERS / SYSTEM`, detail workspaces use `Decision Summary / Thesis-Logic / Validation-Readiness / Evidence / Risk / Next Action`, and frontend surfaces remain read-only until governance changes. React web and Expo Go 3052 cockpit materials are design/migration evidence only.
 - latest frontend implementation gate is Task3802: [08_FRONTEND_READ_MODEL_CONTRACT.md](../frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md) defines screen-ready read models, source freshness, provenance, blockers, and disabled-action props before UI coding.
 - latest frontend pre-scaffold gate is Task3803: [11_IMPLEMENTATION_PRECONDITIONS.md](../frontend_app_ssot/11_IMPLEMENTATION_PRECONDITIONS.md) fixes `apps/ios-trader-brain` as the app root and marks commands/fixtures/QA/safety validator as scaffold decisions until proved runnable.
+- latest frontend scaffold line is Task3804: `apps/ios-trader-brain` now exists with Expo SDK 56, Expo Router placeholder tabs, foundation components, smoke story files, `npm run typecheck`, and `npm run validate:safety`; Storybook runtime, NativeWind, lint/test, screenshot QA, Maestro, and fixture source selection remain post-scaffold hardening.
 
 Standing status:
 

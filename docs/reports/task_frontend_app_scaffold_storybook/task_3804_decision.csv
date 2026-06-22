@@ -1,0 +1,20 @@
+field,value
+task_id,Task3804
+verdict,EXPO_APP_SCAFFOLD_CREATED_STORYBOOK_RUNTIME_BLOCKED
+strategy_acceptance,NOT_ACCEPTED
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+real_capital,FORBIDDEN
+broker_mutation,FORBIDDEN
+app_root,apps/ios-trader-brain
+app_scaffold_exists,yes
+package_manager,npm
+expo_sdk,56
+typecheck,npm run typecheck
+safety_validator,npm run validate:safety
+storybook,REQUIRED_POST_SCAFFOLD_HARDENING
+nativewind,REQUIRED_POST_SCAFFOLD_HARDENING
+screenshot_qa,REQUIRED_POST_SCAFFOLD_HARDENING
+code_changed,scaffold_only
+db_changed,no
+broker_api_called,no
+live_or_paper_permission_changed,no

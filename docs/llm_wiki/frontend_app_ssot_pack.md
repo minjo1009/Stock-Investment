@@ -71,14 +71,15 @@ The prior React plus TypeScript web structure is retained as design input only. 
 - Latest L7 bridge line remains Task3391-3400: read-only frontend models from runtime decisions.
 - Latest mobile/cockpit history remains useful for display and migration patterns, not for route or stack authority.
 - Canonical frontend pack: `docs/frontend_app_ssot/`.
+- Current app scaffold: `apps/ios-trader-brain` from Task3804. It contains placeholder tabs only, not product screens.
 - Any frontend must display blockers, stale source state, and provenance rather than hiding them behind polished UI.
 
 ## Next Build Shape
 
-1. Follow `docs/frontend_app_ssot/11_IMPLEMENTATION_PRECONDITIONS.md` before scaffold, Storybook, foundation components, or screens.
+1. Harden Storybook runtime and foundation component isolation.
 2. Confirm the read-model endpoint/catalog source before fixtures are created.
 3. Map current DB/runtime catalog fields into the five IA tabs.
-4. Implement read-only foundation components before screens.
+4. Implement read-only foundation components before product screens.
 5. Add trading actions only as disabled/blocked affordances until governance allows otherwise.
 6. Validate with frontend continuity, source freshness, no-live-order, no-broker-mutation, and screenshot QA checks.
 

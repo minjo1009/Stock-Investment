@@ -1,0 +1,5 @@
+artifact_id,path,kind,status,notes
+app_scaffold,apps/ios-trader-brain,app,canonical,Minimal Expo TypeScript app scaffold with Expo Router placeholder tabs.
+preconditions_update,docs/frontend_app_ssot/11_IMPLEMENTATION_PRECONDITIONS.md,doc,canonical,Updated with Task3804 scaffold command status.
+task_report,docs/reports/task_frontend_app_scaffold_storybook/task_frontend_app_scaffold_storybook.md,report,canonical,Docs-only closeout report for scaffold task.
+task_decision,docs/reports/task_frontend_app_scaffold_storybook/task_3804_decision.csv,decision,canonical,Task decision summary.

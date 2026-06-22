@@ -13,13 +13,13 @@ This document does not authorize strategy acceptance, paper permission, live per
 | Item | Status |
 | --- | --- |
 | Frontend target | Expo Development Build, iOS-first |
-| App scaffold | `NOT_CREATED` |
+| App scaffold | `CREATED_TASK3804` |
 | Actual app root | `apps/ios-trader-brain` |
-| Package manager | `REQUIRED_PRE_SCAFFOLD_DECISION` |
-| Primary read path | `REQUIRED_PRE_SCAFFOLD_DECISION` |
-| Storybook | `REQUIRED_PRE_SCAFFOLD_DECISION` |
-| Screenshot QA | `REQUIRED_PRE_SCAFFOLD_DECISION` |
-| Safety validator | `REQUIRED_PRE_SCAFFOLD_DECISION` |
+| Package manager | `npm` |
+| Primary read path | `REQUIRED_POST_SCAFFOLD_HARDENING` |
+| Storybook | `REQUIRED_POST_SCAFFOLD_HARDENING` |
+| Screenshot QA | `REQUIRED_POST_SCAFFOLD_HARDENING` |
+| Safety validator | `npm run validate:safety` |
 
 ## Actual App Root Path
 
@@ -35,7 +35,7 @@ Reason:
 - The repo currently has no tracked `apps/` scaffold.
 - Using this reserved path prevents arbitrary future app roots such as `apps/tos-mobile` or `apps/trading-os-mobile`.
 
-No app directory is created by this task.
+Task3804 created the app directory.
 
 ## Scaffold Baseline
 
@@ -59,18 +59,20 @@ They must be finalized by the scaffold task and then reflected here.
 
 | Purpose | Required current value | Future command slot |
 | --- | --- | --- |
-| Package manager | `REQUIRED_PRE_SCAFFOLD_DECISION` | `npm` or another documented manager |
-| Install dependencies | `REQUIRED_PRE_SCAFFOLD_DECISION` | scaffold-owned command |
-| Expo Development Build | `REQUIRED_PRE_SCAFFOLD_DECISION` | `npm run ios` or scaffold-owned equivalent |
-| Storybook | `REQUIRED_PRE_SCAFFOLD_DECISION` | `npm run storybook` or RN Storybook equivalent |
-| Typecheck | `REQUIRED_PRE_SCAFFOLD_DECISION` | `npm run typecheck` |
-| Lint | `REQUIRED_PRE_SCAFFOLD_DECISION` | `npm run lint` |
-| Unit/component tests | `REQUIRED_PRE_SCAFFOLD_DECISION` | `npm test` or scaffold-owned equivalent |
-| Screenshot QA | `REQUIRED_PRE_SCAFFOLD_DECISION` | `npm run qa:screenshot` or Maestro-backed equivalent |
-| Maestro | `REQUIRED_PRE_SCAFFOLD_DECISION` | `npx maestro test .maestro` if Maestro is installed |
-| Frontend safety validator | `REQUIRED_PRE_SCAFFOLD_DECISION` | validator command must be created before screen implementation |
+| Package manager | `npm` | selected by Task3804 scaffold |
+| Install dependencies | `npm install` | executed by `create-expo-app` and `npx expo install` |
+| Expo start | `npm run start` | runnable command, not a deployment claim |
+| Expo iOS simulator start | `npm run ios` | defined by Expo scaffold; not validated on Windows/macOS-only simulator path |
+| Expo Development Build | `REQUIRED_POST_SCAFFOLD_HARDENING` | `npm run ios:dev` currently blocks intentionally |
+| Storybook | `REQUIRED_POST_SCAFFOLD_HARDENING` | `npm run storybook` currently blocks intentionally |
+| Typecheck | `npm run typecheck` | validated in Task3804 |
+| Lint | `REQUIRED_POST_SCAFFOLD_HARDENING` | `npm run lint` currently blocks intentionally |
+| Unit/component tests | `REQUIRED_POST_SCAFFOLD_HARDENING` | `npm test` currently blocks intentionally |
+| Screenshot QA | `REQUIRED_POST_SCAFFOLD_HARDENING` | `npm run qa:screenshot` currently blocks intentionally |
+| Maestro | `REQUIRED_POST_SCAFFOLD_HARDENING` | not installed in Task3804 |
+| Frontend safety validator | `npm run validate:safety` | validated in Task3804 |
 
-Do not document a command as runnable until the scaffold task proves it.
+Do not document a command as runnable until a task proves it.
 
 ## Read Model Fixture Paths
 
@@ -96,7 +98,7 @@ Fixture source path must be one of:
 - read-only runtime API response
 - read-only SQLite export transformed into this contract
 
-The exact source must be selected before the fixture files are created.
+The exact source must be selected before fixture payload files are created. Task3804 created only the fixture directory placeholder.
 
 ## Required P0 Components Before Screens
 
@@ -116,7 +118,7 @@ Each component must receive props from the read-model contract, not ad hoc mock 
 | `SystemHealth` | `SystemReadModel` |
 | `OrderStateSummary` | `OrdersReadModel`, `OrderDetailReadModel` |
 
-Screen implementation must not start until these component contracts are represented in Storybook or an equivalent scaffold-approved component isolation layer.
+Screen implementation must not start until these component contracts are represented in Storybook or an equivalent scaffold-approved component isolation layer. Task3804 added only `AppText`, `Badge`, and `CardContainer`.
 
 ## Storybook Preconditions
 
@@ -144,7 +146,7 @@ Required story states:
 - chart missing
 - source not attached
 
-Story args must come from the reserved fixture paths or typed fixture builders generated from them.
+Story args must come from the reserved fixture paths or typed fixture builders generated from them after Task3805 selects the read-model fixture source. Task3804 story files are smoke placeholders only.
 
 ## Screenshot QA Preconditions
 
@@ -174,7 +176,7 @@ Screenshot QA must fail if stale/missing/source-not-attached states are hidden.
 
 ## Frontend Safety Validator Preconditions
 
-A frontend safety validator must exist before screen implementation expands.
+A frontend safety validator exists as `npm run validate:safety`. Task3805 must harden it before product screens expand.
 
 The validator must check:
 
@@ -226,18 +228,15 @@ No disabled action component may have a hidden broker submit, DB write, paper pr
 
 ## Implementation Start Gate
 
-Storybook setup and foundation component implementation may start only after a future task confirms:
+Foundation component implementation may continue only after a future task confirms:
 
-1. `apps/ios-trader-brain` scaffold exists.
-2. package manager is selected and lockfile policy is documented.
-3. Expo Development Build command is runnable or explicitly blocked with evidence.
-4. Storybook command is runnable or explicitly blocked with evidence.
-5. typecheck/lint/test commands are runnable or explicitly blocked with evidence.
-6. screenshot QA command and device preset are documented.
-7. frontend safety validator command exists.
-8. read-model fixture source is selected.
-9. P0 fixture paths are created from `08_FRONTEND_READ_MODEL_CONTRACT.md`.
-10. no strategy/deployment/paper/live/broker/real-capital permission has changed.
+1. Expo Development Build command is runnable or explicitly blocked with evidence.
+2. Storybook runtime command is runnable or explicitly blocked with evidence.
+3. lint/test commands are runnable or explicitly blocked with evidence.
+4. screenshot QA command and device preset are runnable or explicitly blocked with evidence.
+5. frontend safety validator is hardened beyond placeholder scanning.
+6. read-model fixture source is selected.
+7. P0 fixture payloads are created from `08_FRONTEND_READ_MODEL_CONTRACT.md`.
+8. no strategy/deployment/paper/live/broker/real-capital permission has changed.
 
-Until then, frontend work remains documentation and scaffold planning only.
-
+Until then, frontend work remains scaffold/foundation hardening only.
