@@ -336,3 +336,11 @@ Task3831 scaffold-only 10-loop implementation:
 - These surfaces remain `NOT_AUTHORITY`, read-only, and fixture-backed.
 - The reference document `docs/frontend_app_ssot/20_PRODUCTION_UI_TOOLCHAIN_REFERENCE.md` is a project-local reference note only; it does not override `00_PROJECT_SSOT.md`, `08_FRONTEND_READ_MODEL_CONTRACT.md`, `09_DISABLED_ACTION_AND_ORDER_CONTROL_CONTRACT.md`, `10_IMPLEMENTATION_ARCHITECTURE.md`, or this preconditions document.
 - Product screen readiness, authoritative read-source integration, screenshot QA readiness, Maestro readiness, iOS dev build validation, broker mutation, paper/live permission, deployment readiness, and real-capital permission remain blocked.
+
+Task3834 screenshot QA baseline:
+
+- `npm run qa:screenshot` is now a runnable screenshot-target validator, not a screenshot capture command.
+- Screenshot target readiness is documented in `docs/frontend_app_ssot/22_SCREENSHOT_QA_BASELINE_TARGETS.md`.
+- The target manifest is `apps/ios-trader-brain/src/qa/screenshot-targets.json`.
+- Route and screen-boundary validators are installed as `npm run validate:routes` and `npm run validate:screen-boundary`.
+- Actual screenshot capture, visual approval, Maestro traversal, iOS simulator evidence, product readiness, authoritative read-source integration, broker mutation, paper/live permission, deployment readiness, and real-capital permission remain blocked.

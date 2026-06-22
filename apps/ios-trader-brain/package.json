@@ -30,12 +30,15 @@
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "lint": "node src/qa/scaffold-lint.mjs",
-    "test": "node src/qa/storybook-smoke-test.mjs && npm run validate:safety && npm run validate:fixtures",
+    "test": "node src/qa/storybook-smoke-test.mjs && npm run validate:safety && npm run validate:fixtures && npm run validate:routes && npm run validate:screen-boundary && npm run validate:screenshot-qa",
     "storybook": "storybook dev -p 6006 --ci --no-open",
     "storybook:smoke": "storybook dev -p 6006 --ci --no-open --smoke-test",
-    "qa:screenshot": "node src/qa/required-post-scaffold-hardening.mjs qa:screenshot",
+    "qa:screenshot": "node src/qa/screenshot-qa-validator.mjs",
     "validate:safety": "node src/qa/frontend-safety-validator.mjs",
-    "validate:fixtures": "node src/qa/read-model-fixture-validator.mjs"
+    "validate:fixtures": "node src/qa/read-model-fixture-validator.mjs",
+    "validate:routes": "node src/qa/route-link-validator.mjs",
+    "validate:screen-boundary": "node src/qa/scaffold-screen-boundary-validator.mjs",
+    "validate:screenshot-qa": "node src/qa/screenshot-qa-validator.mjs"
   },
   "private": true
 }

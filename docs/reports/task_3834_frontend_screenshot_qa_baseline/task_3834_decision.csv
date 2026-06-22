@@ -1,0 +1,8 @@
+decision_key,decision_value,authority,notes
+task_id,Task3834,canonical,Registry task id.
+decision,frontend-screenshot-qa-target-baseline-installed,canonical,Screenshot QA target validation and route/boundary validators are installed.
+strategy_acceptance,NOT_ACCEPTED,canonical,No strategy acceptance changed.
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,canonical,No deployment readiness changed.
+real_capital,FORBIDDEN,canonical,No real-capital permission changed.
+broker_mutation,false,canonical,No broker mutation path added.
+screenshot_capture,TARGETS_READY_CAPTURE_NOT_RUN,canonical,Screenshot target validation is runnable but no screenshot capture occurred.

@@ -1,0 +1,11 @@
+artifact_path,artifact_type,authority,notes
+apps/ios-trader-brain/src/qa/screenshot-targets.json,qa_manifest,not_authority,Screenshot target manifest; capture not run.
+apps/ios-trader-brain/src/qa/screenshot-qa-validator.mjs,validator,canonical,Validates screenshot QA targets and hard-state boundaries.
+apps/ios-trader-brain/src/qa/route-link-validator.mjs,validator,canonical,Validates scaffold route references and local route files.
+apps/ios-trader-brain/src/qa/scaffold-screen-boundary-validator.mjs,validator,canonical,Validates route surfaces preserve read-only scaffold boundaries.
+apps/ios-trader-brain/package.json,package_config,canonical,Adds runnable screenshot target validation and expanded npm test checks.
+docs/frontend_app_ssot/22_SCREENSHOT_QA_BASELINE_TARGETS.md,frontend_ssot_note,canonical,Defines screenshot QA target baseline and non-capture boundary.
+docs/reports/task_3834_frontend_screenshot_qa_baseline/task_3834_frontend_screenshot_qa_baseline.md,task_report,canonical,Task3834 closeout report.
+docs/reports/task_3834_frontend_screenshot_qa_baseline/artifact_manifest.csv,artifact_manifest,canonical,Task3834 artifact manifest.
+docs/reports/task_3834_frontend_screenshot_qa_baseline/gpt_expert_response_summary.md,gpt_response_summary,review_only,GPT expert review summary; not source of truth.
+docs/reports/task_3834_frontend_screenshot_qa_baseline/task_3834_decision.csv,decision_record,canonical,Task3834 decision record.

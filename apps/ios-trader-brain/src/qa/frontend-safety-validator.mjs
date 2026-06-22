@@ -8,9 +8,12 @@ const excludedFiles = new Set([
   "src/qa/frontend-safety-validator.mjs",
   "src/qa/required-post-scaffold-hardening.mjs",
   "src/qa/read-model-fixture-validator.mjs",
+  "src/qa/route-link-validator.mjs",
   // Historical Task3811 artifact only; not an active validator command.
   "src/qa/pre-screen-gpt-loop-validator.mjs",
   "src/qa/scaffold-lint.mjs",
+  "src/qa/scaffold-screen-boundary-validator.mjs",
+  "src/qa/screenshot-qa-validator.mjs",
   "src/qa/storybook-smoke-test.mjs",
   "src/read-models/common.ts",
   "src/read-models/index.ts",

@@ -1,0 +1,92 @@
+{
+  "authority": "NOT_AUTHORITY",
+  "captureStatus": "TARGETS_READY_CAPTURE_NOT_RUN",
+  "contractVersion": "frontend-screenshot-qa-v1",
+  "devicePresets": [
+    {
+      "deviceId": "iphone-se-width",
+      "height": 667,
+      "platform": "web-preflight",
+      "width": 375
+    },
+    {
+      "deviceId": "iphone-15-width",
+      "height": 852,
+      "platform": "web-preflight",
+      "width": 393
+    }
+  ],
+  "hardState": {
+    "brokerMutationPermitted": false,
+    "deploymentReadiness": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "livePermission": false,
+    "paperPermission": false,
+    "realCapital": "FORBIDDEN",
+    "strategyAcceptance": "NOT_ACCEPTED"
+  },
+  "targets": [
+    {
+      "artifactPath": "data/artifacts/task_3834_frontend_screenshot_qa_baseline/home.png",
+      "routeFile": "app/(tabs)/index.tsx",
+      "routeId": "home",
+      "routePath": "/",
+      "surfaceType": "tab"
+    },
+    {
+      "artifactPath": "data/artifacts/task_3834_frontend_screenshot_qa_baseline/brain.png",
+      "routeFile": "app/(tabs)/brain.tsx",
+      "routeId": "brain",
+      "routePath": "/brain",
+      "surfaceType": "tab"
+    },
+    {
+      "artifactPath": "data/artifacts/task_3834_frontend_screenshot_qa_baseline/portfolio.png",
+      "routeFile": "app/(tabs)/portfolio.tsx",
+      "routeId": "portfolio",
+      "routePath": "/portfolio",
+      "surfaceType": "tab"
+    },
+    {
+      "artifactPath": "data/artifacts/task_3834_frontend_screenshot_qa_baseline/orders.png",
+      "routeFile": "app/(tabs)/orders.tsx",
+      "routeId": "orders",
+      "routePath": "/orders",
+      "surfaceType": "tab"
+    },
+    {
+      "artifactPath": "data/artifacts/task_3834_frontend_screenshot_qa_baseline/system.png",
+      "routeFile": "app/(tabs)/system.tsx",
+      "routeId": "system",
+      "routePath": "/system",
+      "surfaceType": "tab"
+    },
+    {
+      "artifactPath": "data/artifacts/task_3834_frontend_screenshot_qa_baseline/candidate-detail.png",
+      "routeFile": "app/brain/candidate/[candidateId].tsx",
+      "routeId": "candidate-detail",
+      "routePath": "/brain/candidate/fixture-candidate-review",
+      "surfaceType": "detail"
+    },
+    {
+      "artifactPath": "data/artifacts/task_3834_frontend_screenshot_qa_baseline/position-detail.png",
+      "routeFile": "app/portfolio/position/[positionId].tsx",
+      "routeId": "position-detail",
+      "routePath": "/portfolio/position/fixture-position-unknown",
+      "surfaceType": "detail"
+    },
+    {
+      "artifactPath": "data/artifacts/task_3834_frontend_screenshot_qa_baseline/order-detail.png",
+      "routeFile": "app/orders/[orderId].tsx",
+      "routeId": "order-detail",
+      "routePath": "/orders/fixture-order-blocked",
+      "surfaceType": "detail"
+    },
+    {
+      "artifactPath": "data/artifacts/task_3834_frontend_screenshot_qa_baseline/chain-detail.png",
+      "routeFile": "app/brain/chain/[chainId].tsx",
+      "routeId": "chain-detail",
+      "routePath": "/brain/chain/fixture-chain",
+      "surfaceType": "detail"
+    }
+  ]
+}
