@@ -1,0 +1,2 @@
+task_id,decision,status,safety_state,notes
+Task3815,LOOP_LEDGER_SCHEMA_AND_QUEUE_FORMALIZED,canonical,NOT_ACCEPTED_DIAGNOSTIC_ONLY_FORBIDDEN,Loop 2 formalized ledger schema status lifecycle queue semantics and non-authorization rules; no product screen DB broker mutation paper live deployment or real-capital promotion.

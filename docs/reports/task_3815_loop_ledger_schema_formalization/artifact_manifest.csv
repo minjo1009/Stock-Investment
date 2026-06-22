@@ -1,0 +1,6 @@
+artifact_path,artifact_type,authority,description
+docs/reports/task_3815_loop_ledger_schema_formalization/task_3815_loop_ledger_schema_formalization.md,report,canonical,Task3815 closeout report for Loop 2 ledger schema formalization
+docs/reports/task_3815_loop_ledger_schema_formalization/task_3815_decision.csv,decision,canonical,Task3815 decision row
+docs/reports/task_3815_loop_ledger_schema_formalization/loop2_gpt_prompt.md,gpt_prompt,review_only,Chrome GPT prompt sent for Loop 2
+docs/reports/task_3815_loop_ledger_schema_formalization/loop2_gpt_response_summary.md,gpt_response_summary,review_only,Captured Chrome GPT response summary for Loop 2
+docs/llm_wiki/codex_gpt_expert_relay_loop_ledger.md,ledger,navigation,Formalized loop ledger schema and next-loop queue

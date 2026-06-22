@@ -41,6 +41,7 @@ Use this index to find current truth without rereading all historical reports.
 | Task3809 | read-model fixture snapshot and domain component contracts: scaffold-only generated JSON catalog fixtures, fixture validator, and P0 props-only domain components | [report](../reports/task_frontend_read_model_fixtures_domain_contracts/task_frontend_read_model_fixtures_domain_contracts.md) |
 | Task3811 | superseded frontend pre-screen GPT 10-loop gate; retained as historical audit evidence only, not active direction | [report](../reports/task_3811_frontend_pre_screen_gpt_loop_hardening/task_3811_frontend_pre_screen_gpt_loop_hardening.md) |
 | Task3814 | GPT-Codex loop correction: Task3811 supersession, correct 10-loop ledger semantics, and ranked next work candidates | [report](../reports/task_3814_codex_gpt_loop1_supersede_task3811/task_3814_codex_gpt_loop1_supersede_task3811.md) |
+| Task3815 | GPT-Codex Loop 2 ledger schema and next-loop queue formalization | [report](../reports/task_3815_loop_ledger_schema_formalization/task_3815_loop_ledger_schema_formalization.md) |
 
 ## Current Interpretation
 
@@ -63,4 +64,5 @@ Use this index to find current truth without rereading all historical reports.
 - Task3806 hardens reusable foundation/layout/generic components before product screens. Static typed fixture fragments are selected for Storybook component work only and are NOT authority. Full app read path and full screen source-derived fixtures remain future blockers.
 - Task3809 selects a scaffold-only generated JSON catalog fixture snapshot, creates contract-shaped full screen fixture payloads, adds `npm run validate:fixtures`, and installs P0 domain component contracts in Storybook. These fixtures are NOT authority and do not connect the frontend to DB, runtime API, broker, paper/live, deployment, or real-capital systems.
 - Task3811 is superseded by Task3814. The user clarified that the requested 10-loop pass means GPT-Codex work cycles with captured ledger evidence, not a validator program. Task3811 must not be treated as active frontend direction.
+- Task3815 formalizes the GPT-Codex loop ledger schema, status lifecycle, and next-loop queue. Queue rank is planning only, not implementation authorization.
 - The frontend should show review-only shadow decisions, blockers, provenance, and source freshness, not issue real orders.
