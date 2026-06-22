@@ -7,10 +7,20 @@ export const colors = {
   border: "#D8DEE6",
   ink: "#111827",
   mutedInk: "#4B5563",
+  freshSurface: "#E8F7EF",
+  freshBorder: "#75C99A",
+  staleSurface: "#FFF7E6",
+  staleBorder: "#E8B84C",
+  missingSurface: "#FFF1F0",
+  missingBorder: "#FFB4AB",
+  unknownSurface: "#F3F4F6",
+  unknownBorder: "#C7CED8",
   readOnlySurface: "#E8F2FF",
   readOnlyBorder: "#9BC4FF",
   blockedSurface: "#FFF1F0",
   blockedBorder: "#FFB4AB",
+  disabledSurface: "#F4F0FF",
+  disabledBorder: "#C4B5FD",
 };
 
 export const spacing = {

@@ -37,6 +37,7 @@ Use this index to find current truth without rereading all historical reports.
 | Task3803 | frontend implementation preconditions: app root, scaffold command placeholders, fixtures, Storybook, screenshot QA, safety validator gates | [report](../reports/task_frontend_implementation_preconditions/task_frontend_implementation_preconditions.md) |
 | Task3804 | Expo app scaffold and Storybook foundation setup: app root, Expo Router placeholder tabs, foundation components, smoke story files, typecheck and safety validator | [report](../reports/task_frontend_app_scaffold_storybook/task_frontend_app_scaffold_storybook.md) |
 | Task3805 | Storybook runtime hardening and frontend QA baseline: runnable Storybook web, scaffold lint/test, hardened safety validator, NativeWind deferred | [report](../reports/task_frontend_storybook_hardening/task_frontend_storybook_hardening.md) |
+| Task3806 | foundation component hardening and fixture source decision: reusable freshness/blocker/status/metric components, static typed Storybook fixtures marked NOT_AUTHORITY, NativeWind and on-device Storybook deferred | [report](../reports/task_frontend_foundation_hardening/task_frontend_foundation_hardening.md) |
 
 ## Current Interpretation
 
@@ -56,4 +57,5 @@ Use this index to find current truth without rereading all historical reports.
 - Task3803 makes `docs/frontend_app_ssot/11_IMPLEMENTATION_PRECONDITIONS.md` the pre-scaffold gate: app root is fixed to `apps/ios-trader-brain`, but commands, fixtures, QA, and validator remain `REQUIRED_PRE_SCAFFOLD_DECISION` until a scaffold task proves them.
 - Task3804 creates `apps/ios-trader-brain` with Expo SDK 56, Expo Router placeholder tabs, foundation components, and smoke story files. Storybook runtime, NativeWind, lint/test, screenshot QA, Maestro, fixture payloads, and full safety validator hardening remain blocked for Task3805.
 - Task3805 makes Storybook web runtime runnable and validates it with `npm run storybook:smoke`; `npm run lint`, `npm test`, and `npm run validate:safety` pass. NativeWind, screenshot QA, Maestro, iOS dev build, and source-derived fixture payloads remain future blockers.
+- Task3806 hardens reusable foundation/layout/generic components before product screens. Static typed fixture fragments are selected for Storybook component work only and are NOT authority. Full app read path and full screen source-derived fixtures remain future blockers.
 - The frontend should show review-only shadow decisions, blockers, provenance, and source freshness, not issue real orders.

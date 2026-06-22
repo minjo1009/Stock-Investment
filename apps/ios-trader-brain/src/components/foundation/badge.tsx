@@ -3,7 +3,15 @@ import { View, type ViewStyle } from "react-native";
 import { colors, radii, spacing, typography } from "../../theme/tokens";
 import { AppText } from "./app-text";
 
-type BadgeTone = "neutral" | "blocked" | "readOnly";
+export type BadgeTone =
+  | "neutral"
+  | "blocked"
+  | "readOnly"
+  | "fresh"
+  | "stale"
+  | "missing"
+  | "unknown"
+  | "disabled";
 
 type BadgeProps = {
   label: string;
@@ -22,6 +30,26 @@ const toneStyles: Record<BadgeTone, ViewStyle> = {
   readOnly: {
     backgroundColor: colors.readOnlySurface,
     borderColor: colors.readOnlyBorder,
+  },
+  fresh: {
+    backgroundColor: colors.freshSurface,
+    borderColor: colors.freshBorder,
+  },
+  stale: {
+    backgroundColor: colors.staleSurface,
+    borderColor: colors.staleBorder,
+  },
+  missing: {
+    backgroundColor: colors.missingSurface,
+    borderColor: colors.missingBorder,
+  },
+  unknown: {
+    backgroundColor: colors.unknownSurface,
+    borderColor: colors.unknownBorder,
+  },
+  disabled: {
+    backgroundColor: colors.disabledSurface,
+    borderColor: colors.disabledBorder,
   },
 };
 

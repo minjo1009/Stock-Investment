@@ -1,3 +1,3 @@
 export { AppText } from "./app-text";
-export { Badge } from "./badge";
+export { Badge, type BadgeTone } from "./badge";
 export { CardContainer } from "./card-container";

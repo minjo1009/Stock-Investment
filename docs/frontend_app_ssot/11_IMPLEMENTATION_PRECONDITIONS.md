@@ -16,11 +16,13 @@ This document does not authorize strategy acceptance, paper permission, live per
 | App scaffold | `CREATED_TASK3804` |
 | Actual app root | `apps/ios-trader-brain` |
 | Package manager | `npm` |
-| Primary read path | `REQUIRED_POST_SCAFFOLD_HARDENING` |
+| Primary app read path | `REQUIRED_POST_SCAFFOLD_HARDENING` |
+| Storybook/component fixture source | `STATIC_TYPED_FIXTURES_DERIVED_FROM_08_TASK3806_NOT_AUTHORITY` |
 | Storybook | `npm run storybook`; smoke validation via `npm run storybook:smoke` |
+| Storybook on-device | `DEFERRED_WITH_REASON_TASK3806` |
 | Screenshot QA | `REQUIRED_POST_SCAFFOLD_HARDENING` |
 | Safety validator | `npm run validate:safety` |
-| NativeWind | `DEFERRED_WITH_REASON_TASK3805` |
+| NativeWind | `DEFERRED_WITH_REASON_TASK3806` |
 
 ## Actual App Root Path
 
@@ -48,11 +50,11 @@ The future scaffold must target:
 | Platform priority | iOS first |
 | Navigation | Expo Router |
 | Language | TypeScript |
-| Styling | NativeWind |
+| Styling | Token and React Native style props now; NativeWind deferred |
 | Component base | React Native Reusables where practical |
 | Story isolation | Storybook |
 | Mobile flow QA | Maestro if selected by scaffold task |
-| NativeWind | Deferred until Task3806 or later because stable/current install paths add Tailwind/Metro/Babel surface area before components use `className` |
+| NativeWind | Deferred until a component or design-system task proves the className/Tailwind path is needed and compatible with Storybook web-vite |
 
 ## Command Contract
 
@@ -68,6 +70,7 @@ They must be finalized by the scaffold task and then reflected here.
 | Expo Development Build | `REQUIRED_POST_SCAFFOLD_HARDENING` | `npm run ios:dev` currently blocks intentionally |
 | Storybook | `npm run storybook` | starts Storybook web runtime on port 6006 |
 | Storybook smoke | `npm run storybook:smoke` | validated in Task3805 |
+| Storybook on-device | `DEFERRED_WITH_REASON_TASK3806` | deferred because on-device Storybook requires Expo Router/Metro entry wrapping and native runtime proof that is larger than foundation component hardening |
 | Typecheck | `npm run typecheck` | validated in Task3804 |
 | Lint | `npm run lint` | scaffold boundary lint validated in Task3805 |
 | Unit/component tests | `npm test` | Storybook story export smoke plus safety validator validated in Task3805 |
@@ -80,6 +83,14 @@ Do not document a command as runnable until a task proves it.
 ## Read Model Fixture Paths
 
 Future Storybook and component fixtures must derive from `docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md`.
+
+Task3806 selected the first Storybook/component fixture strategy:
+
+- Option selected: static typed fixtures derived from `08_FRONTEND_READ_MODEL_CONTRACT.md`.
+- Current fixture path: `apps/ios-trader-brain/src/mocks/fixtures/foundation-states.ts`.
+- Scope: component-state fragments for Storybook only.
+- Authority status: `NOT_AUTHORITY`; these fixtures are not backend truth, broker truth, source truth, trading permission, or app read-path authority.
+- Full screen payload paths below remain reserved until a backend-generated JSON catalog, read-only runtime API snapshot, or read-only SQLite export transformer is selected.
 
 Reserved fixture paths:
 
@@ -95,13 +106,13 @@ Reserved fixture paths:
 | Order detail | `apps/ios-trader-brain/src/mocks/fixtures/order-detail.json` | `OrderDetailReadModel` |
 | System health | `apps/ios-trader-brain/src/mocks/fixtures/system-health.json` | `SystemReadModel` |
 
-Fixture source path must be one of:
+Full screen fixture source path must be one of:
 
 - generated JSON catalog from the backend
 - read-only runtime API response
 - read-only SQLite export transformed into this contract
 
-The exact source must be selected before fixture payload files are created. Task3804 created only the fixture directory placeholder.
+The exact full screen source must be selected before screen payload files are created. Task3804 created only the fixture directory placeholder. Task3806 created only typed foundation-state fixture fragments for Storybook.
 
 ## Required P0 Components Before Screens
 
@@ -122,6 +133,20 @@ Each component must receive props from the read-model contract, not ad hoc mock 
 | `OrderStateSummary` | `OrdersReadModel`, `OrderDetailReadModel` |
 
 Screen implementation must not start until these component contracts are represented in Storybook or an equivalent scaffold-approved component isolation layer. Task3804 added only `AppText`, `Badge`, and `CardContainer`.
+
+Task3806 hardened the foundation/layout/generic layer with:
+
+- `AppText`
+- `Badge`
+- `CardContainer`
+- `ScreenContainer`
+- `SectionContainer`
+- `MetricCard`
+- `StatusRow`
+- `SourceFreshnessBadge`
+- `BlockerList`
+
+These components are props-only, read-only, and Storybook-covered for default/read-only/blocked/stale/missing/unknown/disabled-action states. They do not replace the future domain components listed above.
 
 ## Storybook Preconditions
 
@@ -150,6 +175,8 @@ Required story states:
 - source not attached
 
 Story args must come from the reserved fixture paths or typed fixture builders generated from them after a future task selects the read-model fixture source. Task3805 provides runnable foundation Storybook stories, but not source-derived read-model payload fixtures.
+
+Task3806 adds typed fixture fragments in `src/mocks/fixtures/foundation-states.ts` for the foundation/layout/generic Storybook stories. They are scaffold-only and must not be used as backend/source authority.
 
 ## Screenshot QA Preconditions
 
@@ -241,3 +268,9 @@ Foundation component implementation may continue only after a future task confir
 6. no strategy/deployment/paper/live/broker/real-capital permission has changed.
 
 Until then, frontend work remains scaffold/foundation hardening only.
+
+Task3806 decisions:
+
+- Storybook path: keep web-vite Storybook for now. On-device Storybook is deferred until a native-device QA task needs it and can own Expo Router/Metro entry wrapping.
+- NativeWind: `DEFERRED_WITH_REASON_TASK3806`. Official install paths add Metro/Babel/CSS configuration and Expo web Metro assumptions; the current scaffold is stable with tokens/style props and Storybook web-vite.
+- Fixture source: static typed fixtures derived from `08_FRONTEND_READ_MODEL_CONTRACT.md` for Storybook foundation states only. Full app read path remains unselected.

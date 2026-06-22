@@ -47,6 +47,7 @@ The project is moving from repeated source/backtest loops toward governed paper/
 - latest frontend pre-scaffold gate is Task3803: [11_IMPLEMENTATION_PRECONDITIONS.md](../frontend_app_ssot/11_IMPLEMENTATION_PRECONDITIONS.md) fixes `apps/ios-trader-brain` as the app root and marks commands/fixtures/QA/safety validator as scaffold decisions until proved runnable.
 - latest frontend scaffold line is Task3804: `apps/ios-trader-brain` now exists with Expo SDK 56, Expo Router placeholder tabs, foundation components, smoke story files, `npm run typecheck`, and `npm run validate:safety`; Storybook runtime, NativeWind, lint/test, screenshot QA, Maestro, and fixture source selection remain post-scaffold hardening.
 - latest frontend QA baseline is Task3805: Storybook web runtime is runnable through `npm run storybook` and smoke-tested through `npm run storybook:smoke`; `npm run lint`, `npm test`, and hardened `npm run validate:safety` pass. NativeWind, screenshot QA, Maestro, iOS dev build, and source-derived fixture payloads remain blocked/deferred.
+- latest frontend foundation baseline is Task3806: foundation/layout/generic components now cover source freshness, blockers, missing/unknown/stale/blocked states, and disabled-action display in Storybook. Static typed fixtures under `apps/ios-trader-brain/src/mocks/fixtures/foundation-states.ts` are scaffold-only and NOT authority. NativeWind and on-device Storybook remain deferred.
 
 Standing status:
 

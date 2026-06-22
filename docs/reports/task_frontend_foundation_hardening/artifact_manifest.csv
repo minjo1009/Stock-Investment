@@ -1,0 +1,11 @@
+artifact_id,path,artifact_type,status,authority,row_count,notes
+task3806_report,docs/reports/task_frontend_foundation_hardening/task_frontend_foundation_hardening.md,report,created,task_closeout,1,Foundation component hardening report with fixture and Storybook decisions.
+task3806_manifest,docs/reports/task_frontend_foundation_hardening/artifact_manifest.csv,manifest,created,task_closeout,1,Artifact manifest for Task3806.
+task3806_decision,docs/reports/task_frontend_foundation_hardening/task_3806_decision.csv,decision,created,task_closeout,1,Decision row for Task3806.
+common_read_model_types,apps/ios-trader-brain/src/read-models/common.ts,source,created,frontend_contract,7,Common TypeScript types derived from frontend read-model contract.
+foundation_state_fixtures,apps/ios-trader-brain/src/mocks/fixtures/foundation-states.ts,fixture,created,not_authority,3,Static typed Storybook fixture fragments only.
+foundation_components,apps/ios-trader-brain/src/components/foundation,source,updated,frontend_scaffold,,AppText Badge CardContainer foundation primitives.
+layout_components,apps/ios-trader-brain/src/components/layout,source,updated,frontend_scaffold,,ScreenContainer and SectionContainer.
+generic_components,apps/ios-trader-brain/src/components/generic,source,updated,frontend_scaffold,,MetricCard StatusRow SourceFreshnessBadge BlockerList.
+storybook_stories,apps/ios-trader-brain/src/stories,source,updated,frontend_scaffold,9,Stories cover default read-only blocked stale missing unknown and disabled-action states.
+qa_scripts,apps/ios-trader-brain/src/qa,source,updated,frontend_validator,,Scaffold lint and Storybook smoke require Task3806 baseline.

@@ -1,5 +1,6 @@
-import { Badge } from "../components/foundation";
 import type { Meta, StoryObj } from "@storybook/react-native-web-vite";
+
+import { Badge } from "../components/foundation";
 
 const meta = {
   title: "Foundation/Badge",
@@ -30,9 +31,30 @@ export const Blocked: Story = {
   },
 };
 
-export const StaleUnknown: Story = {
+export const Stale: Story = {
   args: {
-    label: "Unknown source",
-    tone: "neutral",
+    label: "Stale",
+    tone: "stale",
+  },
+};
+
+export const Missing: Story = {
+  args: {
+    label: "Missing",
+    tone: "missing",
+  },
+};
+
+export const Unknown: Story = {
+  args: {
+    label: "Unknown",
+    tone: "unknown",
+  },
+};
+
+export const DisabledAction: Story = {
+  args: {
+    label: "Disabled",
+    tone: "disabled",
   },
 };
