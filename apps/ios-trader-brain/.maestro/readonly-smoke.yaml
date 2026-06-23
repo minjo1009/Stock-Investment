@@ -1,4 +1,4 @@
-appId: ios-trader-brain
+appId: com.minjo.stockinvestment.iostraderbrain.dev
 name: Read-only scaffold smoke traversal
 tags:
   - readonly

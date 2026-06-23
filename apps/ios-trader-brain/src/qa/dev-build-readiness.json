@@ -5,6 +5,9 @@
   "authority": "NOT_AUTHORITY",
   "executionStatus": "BLOCKED_UNTIL_MAC_OR_OPERATOR",
   "blockedExternalActions": [
+    "EAS login",
+    "Apple Developer login",
+    "UDID registration",
     "Xcode build",
     "iOS simulator launch",
     "physical iPhone install",
@@ -13,6 +16,9 @@
   ],
   "requiredEvidenceBeforeUnblock": [
     "expo-dev-client dependency and config reviewed",
+    "eas.json development profiles reviewed",
+    "ios.bundleIdentifier reviewed",
+    "operator runbook reviewed",
     "developer build command recorded",
     "iOS simulator or device launch screenshot captured",
     "no broker mutation route reachable",

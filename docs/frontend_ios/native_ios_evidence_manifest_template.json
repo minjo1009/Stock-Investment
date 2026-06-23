@@ -1,0 +1,31 @@
+{
+  "contractVersion": "native-ios-evidence-manifest-v1",
+  "authority": "NOT_AUTHORITY",
+  "captureStatus": "TEMPLATE_ONLY_NOT_RUN",
+  "bundleIdentifier": "com.minjo.stockinvestment.iostraderbrain.dev",
+  "buildProfile": "development",
+  "buildEvidence": {
+    "easBuildId": null,
+    "localBuildLogPath": null,
+    "installedBundleIdentifier": null,
+    "installedAt": null
+  },
+  "deviceEvidence": {
+    "deviceType": null,
+    "iosVersion": null,
+    "screenshotManifestPath": null,
+    "maestroRunPath": null
+  },
+  "safetyEvidence": {
+    "readOnlyBoundaryObserved": false,
+    "brokerMutationPathReachable": "UNKNOWN",
+    "paperLivePermissionObserved": false,
+    "realCapitalPermissionObserved": false
+  },
+  "blockedUntilFilledByOperator": [
+    "EAS build id or local Xcode build log",
+    "installed bundle id",
+    "native launch screenshot",
+    "read-only traversal proof"
+  ]
+}

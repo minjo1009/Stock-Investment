@@ -3,6 +3,20 @@
   "authority": "NOT_AUTHORITY",
   "captureStatus": "NOT_RUN_WINDOWS_ENVIRONMENT",
   "artifactRoot": "data/artifacts/task_3843_frontend_platform_qa_10_loop/ios",
+  "buildEvidenceStatus": "NOT_RUN_REQUIRES_USER_OPERATOR",
+  "bundleIdentifier": "com.minjo.stockinvestment.iostraderbrain.dev",
+  "requiredBuildProfiles": [
+    "development",
+    "development-simulator",
+    "preview-internal"
+  ],
+  "requiredBuildEvidence": [
+    "EAS build id or local Xcode build log",
+    "installed app bundle id",
+    "iPhone or simulator launch screenshot",
+    "read-only tab traversal proof",
+    "no broker mutation path reachable"
+  ],
   "requiredRoutes": [
     "/",
     "/brain",
@@ -19,6 +33,10 @@
     "iphone-current"
   ],
   "blockedExternalActions": [
+    "EAS login",
+    "Apple Developer login",
+    "EAS cloud build",
+    "UDID registration",
     "iOS simulator screenshot capture",
     "physical iPhone screenshot capture"
   ]

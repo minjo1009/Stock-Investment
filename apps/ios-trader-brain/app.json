@@ -8,6 +8,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
+      "bundleIdentifier": "com.minjo.stockinvestment.iostraderbrain.dev",
       "supportsTablet": true
     },
     "android": {

@@ -4,6 +4,9 @@ import { join } from "node:path";
 const root = process.cwd();
 const packageJson = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
 const appJson = JSON.parse(readFileSync(join(root, "app.json"), "utf8"));
+const easJson = existsSync(join(root, "eas.json"))
+  ? JSON.parse(readFileSync(join(root, "eas.json"), "utf8"))
+  : null;
 const contractPath = join(root, "src/qa/dev-build-readiness.json");
 const findings = [];
 
@@ -26,10 +29,15 @@ if (contract) {
 }
 
 expect(packageJson.main === "expo-router/entry", "main must remain expo-router/entry");
+expect(Boolean(packageJson.dependencies?.["expo-dev-client"]), "expo-dev-client dependency must be installed for a development build");
 expect(packageJson.scripts?.["ios:dev"]?.includes("required-post-scaffold-hardening"), "ios:dev must not silently run a build");
 expect(packageJson.scripts?.["ios:dev:preflight"] === "node src/qa/dev-build-readiness-validator.mjs", "ios:dev:preflight must run this validator");
 expect(appJson.expo?.ios?.supportsTablet === true, "iOS config must remain present");
+expect(appJson.expo?.ios?.bundleIdentifier === "com.minjo.stockinvestment.iostraderbrain.dev", "iOS bundleIdentifier must be configured for the dev client app");
 expect(appJson.expo?.plugins?.includes("expo-router"), "expo-router plugin must remain configured");
+expect(easJson?.build?.development?.developmentClient === true, "EAS development profile must enable developmentClient");
+expect(easJson?.build?.development?.distribution === "internal", "EAS development profile must remain internal distribution");
+expect(easJson?.build?.["development-simulator"]?.ios?.simulator === true, "EAS simulator profile must set ios.simulator true");
 
 if (findings.length > 0) {
   console.error("[DEV_BUILD_READINESS_FAIL]");

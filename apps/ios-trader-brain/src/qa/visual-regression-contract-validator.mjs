@@ -11,6 +11,8 @@ if (!existsSync(contractPath)) {
   if (contract.contractVersion !== "visual-regression-contract-v1") findings.push("contractVersion must be visual-regression-contract-v1");
   if (contract.authority !== "NOT_AUTHORITY") findings.push("authority must remain NOT_AUTHORITY");
   if (contract.diffStatus !== "NOT_RUN_NO_NATIVE_BASELINE") findings.push("diffStatus must not claim a visual diff run");
+  if (contract.nativeBaselineStatus !== "BLOCKED_UNTIL_USER_OPERATOR") findings.push("nativeBaselineStatus must stay operator-blocked");
+  if (!existsSync(join(process.cwd(), contract.nativeEvidenceTemplate))) findings.push("nativeEvidenceTemplate must point to an existing template");
   if (!existsSync(join(process.cwd(), contract.sourceManifest))) findings.push("sourceManifest must point to an existing manifest");
   for (const state of ["read-only", "blocked", "stale", "missing", "unknown", "not-authority"]) {
     if (!contract.requiredStates?.includes(state)) findings.push(`requiredStates missing ${state}`);

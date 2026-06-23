@@ -1,0 +1,11 @@
+artifact_id,path,type,authority,status,notes
+task3848_report,docs/reports/task_3848_ios_dev_client_build_path_10_loop/task_3848_ios_dev_client_build_path_10_loop.md,report,NOT_AUTHORITY,present,iOS dev-client build path closeout report.
+task3848_manifest,docs/reports/task_3848_ios_dev_client_build_path_10_loop/artifact_manifest.csv,manifest,NOT_AUTHORITY,present,Artifact manifest for Task3848.
+task3848_loop_ledger,docs/reports/task_3848_ios_dev_client_build_path_10_loop/gpt_task_loop_ledger.csv,ledger,NOT_AUTHORITY,present,GPT-prioritized 10 task loop ledger.
+dev_client_dependency,apps/ios-trader-brain/package.json,config,NOT_AUTHORITY,present,expo-dev-client dependency and validation scripts.
+eas_profiles,apps/ios-trader-brain/eas.json,config,NOT_AUTHORITY,present,Development and internal iOS build profiles; execution remains operator-gated.
+app_config,apps/ios-trader-brain/app.json,config,NOT_AUTHORITY,present,Governed iOS bundle identifier for dev client app.
+operator_runbook,docs/frontend_ios/ios_dev_client_operator_runbook.md,runbook,NOT_AUTHORITY,present,Operator-owned EAS/iOS build execution instructions.
+native_evidence_template,docs/frontend_ios/native_ios_evidence_manifest_template.json,evidence_template,NOT_AUTHORITY,present,Template only; native capture not run.
+eas_validator,apps/ios-trader-brain/src/qa/eas-build-contract-validator.mjs,validator,NOT_AUTHORITY,present,EAS profile and no-silent-build contract validator.
+runbook_validator,apps/ios-trader-brain/src/qa/ios-operator-runbook-validator.mjs,validator,NOT_AUTHORITY,present,Operator runbook safety validator.
