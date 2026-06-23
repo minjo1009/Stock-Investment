@@ -1,4 +1,4 @@
-import { ScrollView, type ScrollViewProps } from "react-native";
+import { Platform, ScrollView, type ScrollViewProps } from "react-native";
 
 import { colors, mobile, spacing } from "../../theme/tokens";
 
@@ -19,12 +19,15 @@ export function ScreenContainer({
       style={[{ backgroundColor: colors.background, flex: 1 }, style]}
       contentContainerStyle={[
         {
+          boxSizing: "border-box",
           gap: spacing.lg,
           marginHorizontal: "auto",
           maxWidth: mobile.contentMaxWidth,
           padding: padded ? spacing.lg : 0,
           paddingBottom: spacing.xl,
-          width: "100%",
+          width: (padded && Platform.OS === "web"
+            ? `calc(100% - ${spacing.lg * 2}px)`
+            : "100%") as "100%",
         },
         contentContainerStyle,
       ]}

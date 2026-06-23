@@ -28,6 +28,7 @@ type ScreenSummaryProps = ViewProps & {
   title: string;
   description: string;
   badges?: SummaryBadge[];
+  fullWidthMetrics?: boolean;
   metrics?: SummaryMetric[];
   links?: SummaryLink[];
   footer?: string;
@@ -37,6 +38,7 @@ export function ScreenSummary({
   badges = [],
   description,
   footer,
+  fullWidthMetrics = false,
   links = [],
   metrics = [],
   title,
@@ -62,6 +64,7 @@ export function ScreenSummary({
               helperText={metric.helperText}
               label={metric.label}
               state={metric.state ?? "unknown"}
+              style={fullWidthMetrics ? { flexBasis: "100%" } : undefined}
               value={metric.value}
             />
           ))}

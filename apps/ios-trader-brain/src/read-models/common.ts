@@ -72,6 +72,27 @@ export type ChartSourceState = {
   blockerReason: string | null;
 };
 
+export type ChartResolution = "1D" | "1H" | "30M" | "15M" | "5M";
+
+export type RelativeReturnChartPoint = {
+  timestamp: string;
+  portfolioReturnPct: number | null;
+  qqqReturnPct: number | null;
+  relativeReturnPct: number | null;
+  maxDrawdownPct: number | null;
+};
+
+export type HomeRelativeReturnChart = {
+  chartId: "home-relative-return-vs-qqq";
+  title: "수익현황";
+  benchmarkSymbol: "QQQ";
+  selectedResolution: ChartResolution;
+  allowedResolutions: ChartResolution[];
+  chartState: ChartSourceState;
+  sourceState: SourceState;
+  points: RelativeReturnChartPoint[];
+};
+
 export type ComponentState =
   | "fresh"
   | "stale"
@@ -135,6 +156,7 @@ export type DetailSections = {
 };
 
 export type HomeReadModel = AppShellReadModel & {
+  relativeReturnChart: HomeRelativeReturnChart;
   portfolioSnapshot: {
     accountValue: number | null;
     cash: number | null;

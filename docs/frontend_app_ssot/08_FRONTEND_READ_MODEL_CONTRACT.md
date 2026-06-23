@@ -89,6 +89,27 @@ type ChartSourceState = {
   sourceIds: string[];
   blockerReason: string | null;
 };
+
+type ChartResolution = "1D" | "1H" | "30M" | "15M" | "5M";
+
+type RelativeReturnChartPoint = {
+  timestamp: string;
+  portfolioReturnPct: number | null;
+  qqqReturnPct: number | null;
+  relativeReturnPct: number | null;
+  maxDrawdownPct: number | null;
+};
+
+type HomeRelativeReturnChart = {
+  chartId: "home-relative-return-vs-qqq";
+  title: "수익현황";
+  benchmarkSymbol: "QQQ";
+  selectedResolution: ChartResolution;
+  allowedResolutions: ChartResolution[];
+  chartState: ChartSourceState;
+  sourceState: SourceState;
+  points: RelativeReturnChartPoint[];
+};
 ```
 
 ## Global App Shell Read Model
@@ -138,6 +159,7 @@ Shell rules:
 
 ```ts
 type HomeReadModel = AppShellReadModel & {
+  relativeReturnChart: HomeRelativeReturnChart;
   portfolioSnapshot: {
     accountValue: number | null;
     cash: number | null;
@@ -170,7 +192,7 @@ type HomeReadModel = AppShellReadModel & {
 };
 ```
 
-HOME first-screen priority is product/account comprehension: invested cash, account state, return state, win-rate state, and MDD must appear before governance/source detail. HOME must not hide stale DB/source state behind a green portfolio summary; source freshness and disabled permissions remain visible as secondary context.
+HOME first-screen priority is product/account comprehension: invested cash, account state, win-rate state, and the QQQ-relative return/MDD chart area must appear before governance/source detail. The return/MDD chart must use `relativeReturnChart`; it must render `SOURCE_NOT_ATTACHED`, `CHART_MISSING`, `STALE`, or `UNKNOWN` when authoritative portfolio equity curve and QQQ benchmark series are absent. HOME must not draw fake or synthetic chart series. HOME must not show duplicate account snapshot, operating restriction, or disabled-action sections as primary first-level sections; source freshness and disabled permissions remain visible as secondary context or in SYSTEM.
 
 ## BRAIN Read Model
 

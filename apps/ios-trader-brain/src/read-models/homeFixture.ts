@@ -49,6 +49,34 @@ export const homeFixture = {
       ],
     },
   ],
+  relativeReturnChart: {
+    chartId: "home-relative-return-vs-qqq",
+    title: "수익현황",
+    benchmarkSymbol: "QQQ",
+    selectedResolution: "1D",
+    allowedResolutions: ["1D", "1H", "30M", "15M", "5M"],
+    chartState: {
+      chartId: "home-relative-return-vs-qqq",
+      status: "SOURCE_NOT_ATTACHED",
+      sourceIds: [],
+      blockerReason:
+        "QQQ 대비 수익률과 MDD 차트에는 권위 있는 포트폴리오 수익 곡선과 QQQ 벤치마크 시계열이 필요합니다.",
+    },
+    points: [],
+    sourceState: {
+      sourceId: "home-relative-return-chart-source",
+      sourceLabel: "QQQ 대비 수익/MDD 차트 출처",
+      freshnessStatus: "MISSING",
+      observedAt: null,
+      generatedAt: null,
+      sourceCount: null,
+      strictGateAllowed: false,
+      proxyAllowed: false,
+      provenanceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
+      blockerReason:
+        "권위 있는 포트폴리오 수익 곡선과 QQQ 벤치마크 시계열이 아직 연결되지 않았습니다.",
+    },
+  },
   portfolioSnapshot: {
     accountValue: null,
     cash: null,
@@ -97,7 +125,7 @@ export const homeFixture = {
       reason: "Required source must remain visible as missing.",
       severity: "P1",
       route: "/system",
-      sourceRefs: ["apps/ios-trader-brain/src/mocks/fixtures/catalog-manifest.json"],
+      sourceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
     },
   ],
   freshnessSummary: [
@@ -132,7 +160,7 @@ export const homeFixture = {
       severity: "P0",
       label: "Fixture is not authority",
       reason: "Generated JSON fixture snapshot is scaffold-only and cannot approve trading.",
-      sourceRefs: ["apps/ios-trader-brain/src/mocks/fixtures/catalog-manifest.json"],
+      sourceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
       detectedAt: "2026-06-22T00:00:00Z",
     },
   ],

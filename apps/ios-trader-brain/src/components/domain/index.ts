@@ -3,6 +3,7 @@ export { DecisionHeader } from "./decision-header";
 export { DisabledActionBar } from "./disabled-action-bar";
 export { EvidenceList } from "./evidence-list";
 export { FreshnessBanner } from "./freshness-banner";
+export { HomeRelativeReturnChartCard } from "./home-relative-return-chart-card";
 export { MobileScanListItem } from "./mobile-scan-list-item";
 export { MobileV1StatusRail } from "./mobile-v1-status-rail";
 export { OrderStateSummary } from "./order-state-summary";

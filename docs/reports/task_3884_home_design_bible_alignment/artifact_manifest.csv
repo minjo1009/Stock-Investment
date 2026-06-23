@@ -1,0 +1,5 @@
+artifact_id,path,type,status,notes
+task3884_report,docs/reports/task_3884_home_design_bible_alignment/task_3884_home_design_bible_alignment.md,report,canonical,Task closeout report
+task3884_manifest,docs/reports/task_3884_home_design_bible_alignment/artifact_manifest.csv,manifest,canonical,Artifact manifest
+task3884_final_screenshot,data/artifacts/task_3884_home_design_bible_alignment/home_design_alignment_final_textfit_390x844.png,screenshot,diagnostic,Local web-preview screenshot only; not native iOS evidence
+task3884_design_bible,docs/frontend_app_ssot/05_UI_DESIGN_BIBLE.md,design_reference,canonical,Frontend design reference only; grants no trading or deployment permission

@@ -35,7 +35,7 @@ for (const file of routeFiles) {
   if (!content.includes("NOT_AUTHORITY")) {
     findings.push(`${file}: missing visible NOT_AUTHORITY boundary`);
   }
-  if (!/Scaffold-only|scaffold-only/.test(content)) {
+  if (!(/Scaffold-only|scaffold-only/.test(content) || content.includes("참고 화면"))) {
     findings.push(`${file}: missing scaffold-only copy`);
   }
   for (const pattern of forbiddenPatterns) {
