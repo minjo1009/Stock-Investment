@@ -6,6 +6,8 @@ import {
   DisabledActionBar,
   EvidenceList,
   RiskGate,
+  ScreenSummary,
+  TimelineList,
   ValidationReadinessPanel,
 } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
@@ -33,6 +35,55 @@ export default function OrderDetailRoute() {
           Scaffold-only fixture-backed view. Route params do not select broker or order truth.
         </AppText>
       </View>
+
+      <ScreenSummary
+        badges={[
+          { label: order.sections.orderState.localState, tone: "blocked" },
+          { label: order.sections.orderState.brokerTruthState, tone: "blocked" },
+          { label: order.governance.deploymentReadiness, tone: "blocked" },
+        ]}
+        description="Read-only order detail for local state, broker-truth state, evidence, validation, and disabled actions."
+        footer="Route params are display hints only and do not select broker or order truth."
+        links={[
+          {
+            href: "/orders",
+            label: "Back to order rows",
+            helperText: "Return to read-only lifecycle review.",
+          },
+          {
+            href: "/system",
+            label: "Open operating state",
+            helperText: "Check hard-state and mutation boundary.",
+          },
+        ]}
+        metrics={[
+          { label: "Evidence rows", value: order.sections.evidence.length, state: "readOnly" },
+          { label: "Risk blockers", value: order.sections.risk.blockers.length, state: "blocked" },
+          { label: "Disabled actions", value: order.disabledActions.length, state: "blocked" },
+          { label: "Unknown age", value: order.sections.orderState.unknownAgeSeconds ?? "UNKNOWN", state: "unknown" },
+        ]}
+        title="Order detail review"
+      />
+
+      <TimelineList
+        items={[
+          {
+            label: "Local state",
+            value: order.sections.orderState.localState,
+            state: "blocked",
+          },
+          {
+            label: "Broker truth",
+            value: order.sections.orderState.brokerTruthState,
+            state: "blocked",
+          },
+          {
+            label: "Reconciled",
+            value: order.sections.orderState.reconciledAt ?? "UNKNOWN",
+            state: "unknown",
+          },
+        ]}
+      />
 
       <DecisionHeader decisionSummary={order.sections.decisionSummary} governance={order.governance} />
 

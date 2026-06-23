@@ -1,7 +1,7 @@
 import { useLocalSearchParams } from "expo-router";
 import { View } from "react-native";
 
-import { DisabledActionBar } from "../../../src/components/domain";
+import { DisabledActionBar, ScreenSummary, TimelineList } from "../../../src/components/domain";
 import { AppText, Badge, CardContainer, type BadgeTone } from "../../../src/components/foundation";
 import { BlockerList, MetricCard, StatusRow } from "../../../src/components/generic";
 import { ScreenContainer, SectionContainer } from "../../../src/components/layout";
@@ -27,6 +27,44 @@ export default function ChainDetailRoute() {
           Scaffold-only fixture-backed chain view. Layer presence is not source authority.
         </AppText>
       </View>
+
+      <ScreenSummary
+        badges={[
+          { label: "fixture-backed", tone: "readOnly" },
+          { label: routeMismatch ? "route mismatch" : "fixture route", tone: routeMismatch ? "blocked" : "readOnly" },
+          { label: chain.governance.strategyAcceptance, tone: "blocked" },
+        ]}
+        description="Read-only evidence-chain view for checking whether layer, artifact, and provenance references are visible."
+        footer="Layer presence is not source authority and cannot authorize a decision."
+        links={[
+          {
+            href: "/brain",
+            label: "Back to review queue",
+            helperText: "Return to candidate rows.",
+          },
+          {
+            href: "/brain/candidate/fixture-candidate-review",
+            label: "Open candidate detail",
+            helperText: "Compare chain evidence with the candidate detail frame.",
+          },
+        ]}
+        metrics={[
+          { label: "Layers", value: chain.layers.length, state: "readOnly" },
+          { label: "Present", value: countStatus("PRESENT"), state: "fresh" },
+          { label: "Blocked", value: countStatus("BLOCKED"), state: "blocked" },
+          { label: "Unknown", value: countStatus("UNKNOWN"), state: "unknown" },
+        ]}
+        title="Evidence chain review"
+      />
+
+      <TimelineList
+        items={chain.layers.map((layer) => ({
+          label: layer.layer,
+          value: layer.blockerReason ?? "No blocker supplied by fixture.",
+          state: statusToComponentState(layer.status),
+          helperText: joinOrUnknown(layer.provenanceRefs),
+        }))}
+      />
 
       <SectionContainer title="Chain Summary" description="Layer presence is display evidence, not authority.">
         <StatusRow label="Chain ID" value={chain.chainId} state="readOnly" />
@@ -111,6 +149,14 @@ function joinOrUnknown(values: string[]) {
 }
 
 function toneForLayerStatus(status: "PRESENT" | "MISSING" | "STALE" | "BLOCKED" | "UNKNOWN"): BadgeTone {
+  if (status === "PRESENT") return "fresh";
+  if (status === "STALE") return "stale";
+  if (status === "MISSING") return "missing";
+  if (status === "BLOCKED") return "blocked";
+  return "unknown";
+}
+
+function statusToComponentState(status: "PRESENT" | "MISSING" | "STALE" | "BLOCKED" | "UNKNOWN") {
   if (status === "PRESENT") return "fresh";
   if (status === "STALE") return "stale";
   if (status === "MISSING") return "missing";

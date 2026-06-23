@@ -1,8 +1,7 @@
-import { Link, type Href } from "expo-router";
 import { View } from "react-native";
 
-import { DisabledActionBar } from "../../src/components/domain";
-import { AppText, Badge, CardContainer } from "../../src/components/foundation";
+import { DisabledActionBar, ReviewCard, ScreenSummary } from "../../src/components/domain";
+import { AppText, Badge } from "../../src/components/foundation";
 import {
   BlockerList,
   MetricCard,
@@ -31,6 +30,35 @@ export default function PortfolioRoute() {
         </AppText>
       </View>
 
+      <ScreenSummary
+        badges={[
+          { label: "fixture-backed", tone: "readOnly" },
+          { label: "broker truth blocked", tone: "blocked" },
+          { label: portfolio.governance.strategyAcceptance, tone: "blocked" },
+        ]}
+        description="Read-only holdings surface for reviewing position-shaped data before any authoritative account path exists."
+        footer="Null broker/account values remain UNKNOWN and are never rendered as zero."
+        links={[
+          {
+            href: "/portfolio/position/fixture-position-unknown",
+            label: "Open sample position detail",
+            helperText: "Inspect broker-truth blockers and reconciliation state.",
+          },
+          {
+            href: "/orders",
+            label: "Review order lifecycle",
+            helperText: "Compare position blockers with order blockers.",
+          },
+        ]}
+        metrics={[
+          { label: "Positions", value: portfolio.positions.length, state: "readOnly" },
+          { label: "Fresh", value: portfolio.sourceSummary.freshCount, state: "fresh" },
+          { label: "Missing", value: portfolio.sourceSummary.missingCount, state: "missing" },
+          { label: "Unknown", value: portfolio.sourceSummary.unknownCount, state: "unknown" },
+        ]}
+        title="Read-only portfolio review"
+      />
+
       <SectionContainer title="Portfolio Summary" description="Null account values render as UNKNOWN, not zero.">
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
           <MetricCard label="Positions" value={portfolio.positions.length} state="readOnly" />
@@ -44,28 +72,31 @@ export default function PortfolioRoute() {
       <SectionContainer title="Positions" description="Position detail routes are read-only scaffold links.">
         <View style={{ gap: spacing.sm }}>
           {portfolio.positions.map((position) => (
-            <CardContainer key={position.positionId}>
-              <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-                <Badge label={position.thesisState} tone="unknown" />
-                <Badge label={position.brokerTruthState} tone="blocked" />
-              </View>
-              <AppText variant="title">{position.symbol}</AppText>
-              <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-                <MetricCard label="Quantity" value={displayUnknown(position.quantity)} state="unknown" />
-                <MetricCard label="Market value" value={displayUnknown(position.marketValue)} state="unknown" />
-                <MetricCard label="Unrealized PnL" value={displayUnknown(position.unrealizedPnl)} state="unknown" />
-              </View>
-              <AppText variant="caption">Detail hint: {position.route}</AppText>
-              <Link href={position.route as Href}>
-                <AppText variant="caption">Open read-only position detail</AppText>
-              </Link>
+            <View key={position.positionId} style={{ gap: spacing.sm }}>
+              <ReviewCard
+                badges={[
+                  { label: position.thesisState, tone: "unknown" },
+                  { label: position.brokerTruthState, tone: "blocked" },
+                ]}
+                body="Position row is fixture-backed and cannot prove account or broker truth."
+                href={position.route}
+                hrefLabel="Open read-only position detail"
+                metrics={[
+                  { label: "Quantity", value: displayUnknown(position.quantity), state: "unknown" },
+                  { label: "Market value", value: displayUnknown(position.marketValue), state: "unknown" },
+                  { label: "Unrealized PnL", value: displayUnknown(position.unrealizedPnl), state: "unknown" },
+                ]}
+                sourceRefs={position.sourceStates.flatMap((sourceState) => sourceState.provenanceRefs)}
+                subtitle={position.positionId}
+                title={position.symbol}
+              />
               <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
                 {position.sourceStates.map((sourceState) => (
                   <SourceFreshnessBadge key={sourceState.sourceId} sourceState={sourceState} />
                 ))}
               </View>
               <BlockerList blockers={position.blockers} />
-            </CardContainer>
+            </View>
           ))}
         </View>
       </SectionContainer>

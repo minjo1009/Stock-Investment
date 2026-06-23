@@ -1,7 +1,6 @@
-import { Link, type Href } from "expo-router";
 import { View } from "react-native";
 
-import { DisabledActionBar } from "../../src/components/domain";
+import { DisabledActionBar, ReviewCard, ScreenSummary } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
 import {
   BlockerList,
@@ -37,6 +36,35 @@ export default function BrainRoute() {
         </AppText>
       </View>
 
+      <ScreenSummary
+        badges={[
+          { label: "fixture-backed", tone: "readOnly" },
+          { label: brain.governance.strategyAcceptance, tone: "blocked" },
+          { label: "review queue", tone: "readOnly" },
+        ]}
+        description="Candidate scanning surface for read-only review. Candidate rows are not assignment, acceptance, or trading instructions."
+        footer="Future outcomes, realized labels, and post-event returns remain excluded from filtering."
+        links={[
+          {
+            href: "/brain/candidate/fixture-candidate-review",
+            label: "Open sample candidate detail",
+            helperText: "Review the current detail hierarchy with fixture evidence.",
+          },
+          {
+            href: "/brain/chain/fixture-chain",
+            label: "Open evidence chain",
+            helperText: "Inspect read-only source and provenance layers.",
+          },
+        ]}
+        metrics={[
+          { label: "Candidates", value: brain.candidates.length, state: "readOnly" },
+          { label: "Review-only", value: reviewOnlyCount, state: "readOnly" },
+          { label: "Blocked", value: blockedCount, state: "blocked" },
+          { label: "Strict gate open", value: brain.sourceSummary.strictGateOpenCount, state: "blocked" },
+        ]}
+        title="Candidate review queue"
+      />
+
       <SectionContainer title="Brain Overview" description="Fresh counts do not open any trading gate.">
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
           <MetricCard label="Candidates" value={brain.candidates.length} state="readOnly" />
@@ -49,20 +77,41 @@ export default function BrainRoute() {
       <SectionContainer title="Review Queue" description="Rows are read-only and fixture-backed.">
         <View style={{ gap: spacing.sm }}>
           {brain.candidates.map((candidate) => (
-            <CardContainer key={candidate.candidateId}>
+            <ReviewCard
+              key={candidate.candidateId}
+              badges={[
+                {
+                  label: candidate.lifecycleState,
+                  tone: candidate.lifecycleState === "BLOCKED" ? "blocked" : "readOnly",
+                },
+                {
+                  label: candidate.decisionState,
+                  tone: candidate.decisionState === "BLOCKED" ? "blocked" : "readOnly",
+                },
+                {
+                  label: candidate.validationState,
+                  tone: candidate.validationState === "BLOCKED" ? "blocked" : "unknown",
+                },
+              ]}
+              body={candidate.reasonSummary ?? "UNKNOWN"}
+              href={candidate.route}
+              hrefLabel="Open read-only candidate detail"
+              metrics={[
+                { label: "Evidence", value: candidate.evidenceStrength, state: "unknown" },
+                { label: "Sources", value: candidate.sourceStates.length, state: "readOnly" },
+                { label: "Blockers", value: candidate.blockers.length, state: candidate.blockers.length > 0 ? "blocked" : "readOnly" },
+              ]}
+              sourceRefs={candidate.sourceStates.flatMap((sourceState) => sourceState.provenanceRefs)}
+              subtitle={candidate.displayName}
+              title={candidate.symbol}
+            />
+          ))}
+          {brain.candidates.map((candidate) => (
+            <CardContainer key={`${candidate.candidateId}-source-state`}>
               <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-                <Badge label={candidate.lifecycleState} tone={candidate.lifecycleState === "BLOCKED" ? "blocked" : "readOnly"} />
-                <Badge label={candidate.decisionState} tone={candidate.decisionState === "BLOCKED" ? "blocked" : "readOnly"} />
-                <Badge label={candidate.validationState} tone={candidate.validationState === "BLOCKED" ? "blocked" : "unknown"} />
+                <Badge label={candidate.symbol} tone="readOnly" />
+                <Badge label="source state" tone="unknown" />
               </View>
-              <AppText variant="title">{candidate.symbol}</AppText>
-              <AppText>{candidate.displayName}</AppText>
-              <AppText variant="caption">{candidate.thesisSummary ?? "UNKNOWN"}</AppText>
-              <AppText variant="caption">{candidate.reasonSummary ?? "UNKNOWN"}</AppText>
-              <AppText variant="caption">Detail hint: {candidate.route}</AppText>
-              <Link href={candidate.route as Href}>
-                <AppText variant="caption">Open read-only candidate detail</AppText>
-              </Link>
               <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
                 {candidate.sourceStates.map((sourceState) => (
                   <SourceFreshnessBadge key={sourceState.sourceId} sourceState={sourceState} />

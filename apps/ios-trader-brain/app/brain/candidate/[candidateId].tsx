@@ -7,6 +7,8 @@ import {
   DisabledActionBar,
   EvidenceList,
   RiskGate,
+  ScreenSummary,
+  TimelineList,
   ValidationReadinessPanel,
 } from "../../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../../src/components/foundation";
@@ -37,6 +39,55 @@ export default function CandidateDetailRoute() {
           Scaffold-only fixture-backed view. Route params do not select authoritative data.
         </AppText>
       </View>
+
+      <ScreenSummary
+        badges={[
+          { label: candidate.sections.decisionSummary.decisionState, tone: "readOnly" },
+          { label: candidate.sections.validationReadiness.sourceGateStatus, tone: "blocked" },
+          { label: candidate.governance.strategyAcceptance, tone: "blocked" },
+        ]}
+        description="Read-only candidate detail hierarchy for reviewing decision summary, evidence, validation, risk, and next engineering action."
+        footer="Route params are display hints only and do not select authoritative backend rows."
+        links={[
+          {
+            href: "/brain",
+            label: "Back to review queue",
+            helperText: "Return to scaffold-only candidate rows.",
+          },
+          {
+            href: "/brain/chain/fixture-chain",
+            label: "Open evidence chain",
+            helperText: "Trace fixture evidence and provenance layers.",
+          },
+        ]}
+        metrics={[
+          { label: "Evidence rows", value: candidate.sections.evidence.length, state: "readOnly" },
+          { label: "Risk blockers", value: candidate.sections.risk.blockers.length, state: "blocked" },
+          { label: "Source states", value: candidate.sections.risk.sourceStates.length, state: "unknown" },
+          { label: "Disabled actions", value: candidate.disabledActions.length, state: "blocked" },
+        ]}
+        title={`${candidate.symbol} detail review`}
+      />
+
+      <TimelineList
+        items={[
+          {
+            label: "Decision",
+            value: candidate.sections.decisionSummary.authority,
+            state: "readOnly",
+          },
+          {
+            label: "Validation",
+            value: candidate.sections.validationReadiness.readinessSummary,
+            state: "blocked",
+          },
+          {
+            label: "Next action",
+            value: candidate.sections.nextAction.nextEngineeringAction ?? "UNKNOWN",
+            state: "unknown",
+          },
+        ]}
+      />
 
       <DecisionHeader
         decisionSummary={candidate.sections.decisionSummary}

@@ -1,8 +1,7 @@
-import { Link, type Href } from "expo-router";
 import { View } from "react-native";
 
-import { DisabledActionBar } from "../../src/components/domain";
-import { AppText, Badge, CardContainer } from "../../src/components/foundation";
+import { DisabledActionBar, ReviewCard, ScreenSummary } from "../../src/components/domain";
+import { AppText, Badge } from "../../src/components/foundation";
 import {
   BlockerList,
   MetricCard,
@@ -30,6 +29,35 @@ export default function HomeRoute() {
           source truth, broker truth, or product readiness evidence.
         </AppText>
       </View>
+
+      <ScreenSummary
+        badges={[
+          { label: "fixture-backed", tone: "readOnly" },
+          { label: home.governance.strategyAcceptance, tone: "blocked" },
+          { label: "kill switch active", tone: "blocked" },
+        ]}
+        description="Read-only overview for operator scanning. Values are display fixtures until an authority source is selected."
+        footer="Missing and stale inputs stay visible and never become negative evidence."
+        links={[
+          {
+            href: "/brain",
+            label: "Review candidate queue",
+            helperText: "Open the read-only BRAIN queue.",
+          },
+          {
+            href: "/system",
+            label: "Check operating state",
+            helperText: "Open source, validator, and hard-state status.",
+          },
+        ]}
+        metrics={[
+          { label: "Candidates", value: home.brainSnapshot.candidateCount, state: "readOnly" },
+          { label: "Blocked items", value: home.brainSnapshot.blockedCount, state: "blocked" },
+          { label: "Stale sources", value: home.sourceSummary.staleCount, state: "stale" },
+          { label: "Unknown sources", value: home.sourceSummary.unknownCount, state: "unknown" },
+        ]}
+        title="Morning review surface"
+      />
 
       <SectionContainer title="Portfolio Snapshot" description="Fixture values stay unknown until an authority path exists.">
         <View style={{ gap: spacing.sm }}>
@@ -67,20 +95,19 @@ export default function HomeRoute() {
       <SectionContainer title="Attention Queue" description="Routes are read-only destination hints in this scaffold.">
         <View style={{ gap: spacing.sm }}>
           {home.attentionQueue.map((item) => (
-            <CardContainer key={item.itemId}>
-              <Badge label={item.severity} tone="blocked" />
-              <AppText>{item.label}</AppText>
-              <AppText variant="caption">{item.reason}</AppText>
-              <AppText variant="caption">{`${item.kind} / ${item.route}`}</AppText>
-              <Link href={item.route as Href}>
-                <AppText variant="caption">Open read-only destination</AppText>
-              </Link>
-              {item.sourceRefs.map((sourceRef) => (
-                <AppText key={sourceRef} variant="caption">
-                  {sourceRef}
-                </AppText>
-              ))}
-            </CardContainer>
+            <ReviewCard
+              key={item.itemId}
+              badges={[
+                { label: item.severity, tone: "blocked" },
+                { label: item.kind, tone: "readOnly" },
+              ]}
+              body={item.reason}
+              href={item.route}
+              hrefLabel="Open read-only destination"
+              sourceRefs={item.sourceRefs}
+              subtitle={item.route}
+              title={item.label}
+            />
           ))}
         </View>
       </SectionContainer>

@@ -6,6 +6,8 @@ import {
   DisabledActionBar,
   EvidenceList,
   RiskGate,
+  ScreenSummary,
+  TimelineList,
   ValidationReadinessPanel,
 } from "../../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../../src/components/foundation";
@@ -33,6 +35,56 @@ export default function PositionDetailRoute() {
           Scaffold-only fixture-backed view. Route params do not select broker truth.
         </AppText>
       </View>
+
+      <ScreenSummary
+        badges={[
+          { label: position.sections.reconciliation.localRecordState, tone: "unknown" },
+          { label: position.sections.reconciliation.brokerTruthState, tone: "blocked" },
+          { label: position.governance.strategyAcceptance, tone: "blocked" },
+        ]}
+        description="Read-only position detail for thesis, evidence, validation, risk, and reconciliation blockers."
+        footer="Route params are display hints only and do not select broker account truth."
+        links={[
+          {
+            href: "/portfolio",
+            label: "Back to positions",
+            helperText: "Return to read-only portfolio rows.",
+          },
+          {
+            href: "/orders",
+            label: "Review order boundary",
+            helperText: "Compare position reconciliation with order lifecycle.",
+          },
+        ]}
+        metrics={[
+          { label: "Evidence rows", value: position.sections.evidence.length, state: "readOnly" },
+          { label: "Risk blockers", value: position.sections.risk.blockers.length, state: "blocked" },
+          { label: "Source states", value: position.sections.risk.sourceStates.length, state: "unknown" },
+          { label: "Disabled actions", value: position.disabledActions.length, state: "blocked" },
+        ]}
+        title={`${position.symbol} position review`}
+      />
+
+      <TimelineList
+        items={[
+          {
+            label: "Local record",
+            value: position.sections.reconciliation.localRecordState,
+            state: "unknown",
+          },
+          {
+            label: "Broker truth",
+            value: position.sections.reconciliation.brokerTruthState,
+            state: "blocked",
+          },
+          {
+            label: "Latest reconciliation",
+            value: position.sections.reconciliation.latestReconciliationAt ?? "UNKNOWN",
+            state: "unknown",
+            helperText: position.sections.reconciliation.blockerReason,
+          },
+        ]}
+      />
 
       <DecisionHeader decisionSummary={position.sections.decisionSummary} governance={position.governance} />
 

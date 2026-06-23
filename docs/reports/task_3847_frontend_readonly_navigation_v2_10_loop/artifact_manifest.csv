@@ -1,0 +1,6 @@
+artifact_id,path,type,authority,status,notes
+task3847_report,docs/reports/task_3847_frontend_readonly_navigation_v2_10_loop/task_3847_frontend_readonly_navigation_v2_10_loop.md,report,NOT_AUTHORITY,present,Read-only frontend implementation closeout report.
+task3847_manifest,docs/reports/task_3847_frontend_readonly_navigation_v2_10_loop/artifact_manifest.csv,manifest,NOT_AUTHORITY,present,Artifact manifest for Task3847.
+screen_summary_component,apps/ios-trader-brain/src/components/domain/screen-summary.tsx,source,NOT_AUTHORITY,present,Shared read-only summary/review/timeline component family.
+screen_summary_story,apps/ios-trader-brain/src/stories/screen-summary.stories.tsx,storybook,NOT_AUTHORITY,present,Storybook smoke coverage for summary component family.
+frontend_routes,apps/ios-trader-brain/app,source,NOT_AUTHORITY,present,Read-only fixture-backed route hierarchy updates.

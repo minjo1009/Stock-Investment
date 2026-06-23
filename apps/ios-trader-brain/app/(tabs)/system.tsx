@@ -1,6 +1,6 @@
 import { View } from "react-native";
 
-import { DisabledActionBar, SystemHealth } from "../../src/components/domain";
+import { DisabledActionBar, ScreenSummary, SystemHealth, TimelineList } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
 import { MetricCard, StatusRow } from "../../src/components/generic";
 import { ScreenContainer, SectionContainer } from "../../src/components/layout";
@@ -23,6 +23,56 @@ export default function SystemRoute() {
           Scaffold-only fixture-backed monitor. Fresh fixture rows do not imply deployment readiness.
         </AppText>
       </View>
+
+      <ScreenSummary
+        badges={[
+          { label: "fixture-backed", tone: "readOnly" },
+          { label: system.controlState.runMode, tone: "blocked" },
+          { label: system.controlState.killSwitchActive ? "kill switch active" : "kill switch inactive", tone: "blocked" },
+        ]}
+        description="Read-only operating monitor for hard-state, freshness, validators, and artifact visibility."
+        footer="Fresh fixture rows do not imply strategy acceptance, deployment readiness, or trading permission."
+        links={[
+          {
+            href: "/brain",
+            label: "Review candidate surface",
+            helperText: "Confirm candidate display remains blocked/read-only.",
+          },
+          {
+            href: "/orders",
+            label: "Review order boundary",
+            helperText: "Confirm order mutation remains disabled.",
+          },
+        ]}
+        metrics={[
+          { label: "Fresh", value: system.sourceSummary.freshCount, state: "fresh" },
+          { label: "Stale", value: system.sourceSummary.staleCount, state: "stale" },
+          { label: "Missing", value: system.sourceSummary.missingCount, state: "missing" },
+          { label: "Unknown", value: system.sourceSummary.unknownCount, state: "unknown" },
+        ]}
+        title="Operating state review"
+      />
+
+      <TimelineList
+        items={[
+          {
+            label: "Hard state",
+            value: system.controlState.runMode,
+            state: "blocked",
+            helperText: system.controlState.sourcePath,
+          },
+          {
+            label: "Kill switch",
+            value: system.controlState.killSwitchActive ? "active" : "inactive",
+            state: system.controlState.killSwitchActive ? "blocked" : "unknown",
+          },
+          {
+            label: "Authority catalog",
+            value: system.artifactHealth.find((artifact) => artifact.artifactId === "backend-authority-catalog")?.status ?? "UNKNOWN",
+            state: "unknown",
+          },
+        ]}
+      />
 
       <SectionContainer title="Operating Boundary" description="Diagnostic-only state remains visible.">
         <StatusRow
