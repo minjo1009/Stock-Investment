@@ -1,0 +1,8 @@
+job_name,source_family,enabled,cadence_seconds,max_lag_seconds,diagnostic_only,execution_permitted,broker_mutation_permitted,paper_promotion_permitted,real_capital_permitted,policy_present
+market_ticks_intraday_refresh,market_ticks_intraday,1,300,600,1,0,0,0,0,1
+market_bars_5m_refresh,market_bars_5m,1,600,1200,1,0,0,0,0,1
+macro_rates_refresh,macro_rates,1,3600,86400,1,0,0,0,0,1
+sec_events_refresh,sec_events,1,3600,86400,1,0,0,0,0,1
+official_public_releases_refresh,official_public_releases,0,1800,3600,1,0,0,0,0,1
+gdelt_news_events_refresh,gdelt_news_events,0,900,3600,1,0,0,0,0,1
+marketaux_news_free_refresh,marketaux_news_free,0,3600,7200,1,0,0,0,0,1

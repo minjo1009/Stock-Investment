@@ -1,0 +1,2 @@
+decision_area,status,reason,price_lookup_count,trade_row_count,pnl_metric_count,engine_call_count,validation_authority
+controlled_diagnostic_replay,NO_GO,"Scope G keeps replay blocked until source-time, market-data, split/OOS, and cost/slippage blockers are explicitly cleared by a later owner-approved task.",0,0,0,0,GOVERNANCE_HEALTH

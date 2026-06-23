@@ -1,0 +1,2 @@
+market_data_gate_id,current_state,blocked_reason,validation_authority
+market-data-gate-scope-f,blocked,MARKET_DATA_MANIFEST_NOT_CERTIFIED_FOR_CONTROLLED_REPLAY,GOVERNANCE_HEALTH

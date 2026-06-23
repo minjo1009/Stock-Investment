@@ -1,0 +1,20 @@
+{
+  "broker_mutation": "FORBIDDEN",
+  "database": "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\trading.db",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "errors": [],
+  "live_order": "FORBIDDEN",
+  "paper_promotion": "FORBIDDEN",
+  "real_capital": "FORBIDDEN",
+  "required_families": [
+    "market_ticks_intraday",
+    "market_bars_5m",
+    "macro_rates",
+    "sec_events",
+    "official_public_releases",
+    "gdelt_news_events",
+    "marketaux_news_free"
+  ],
+  "status": "PASS",
+  "strategy": "NOT_ACCEPTED"
+}

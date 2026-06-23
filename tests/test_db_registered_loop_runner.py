@@ -8,6 +8,7 @@ import json
 from datetime import UTC, datetime
 from pathlib import Path
 
+from tools.db import run_source_acquisition_once as source_runner
 from tools.db.apply_management_schema import _create_schema, _seed
 from tools.db.run_registered_loop_once import run_once
 
@@ -113,8 +114,14 @@ class DbRegisteredLoopRunnerTests(unittest.TestCase):
         con = sqlite3.connect(path)
         try:
             self.assertEqual(con.execute("SELECT COUNT(*) FROM source_receipts").fetchone()[0], 4)
-            self.assertEqual(con.execute("SELECT COUNT(*) FROM reference_hashes").fetchone()[0], 4)
+            self.assertEqual(con.execute("SELECT COUNT(*) FROM reference_hashes").fetchone()[0], 3)
             self.assertEqual(con.execute("SELECT COUNT(*) FROM data_lineage_edges").fetchone()[0], 4)
+            self.assertEqual(
+                con.execute(
+                    "SELECT COUNT(DISTINCT input_ref_id) FROM data_lineage_edges WHERE source_family IN ('frontend_read_models', 'catalog_report_artifacts')"
+                ).fetchone()[0],
+                1,
+            )
             self.assertEqual(
                 con.execute(
                     "SELECT freshness_status FROM source_freshness WHERE source_family='diagnostic_runtime_heartbeats'"
@@ -179,6 +186,79 @@ class DbRegisteredLoopRunnerTests(unittest.TestCase):
                     ).fetchone()[0],
                     1,
                 )
+        finally:
+            con.close()
+
+    def test_cached_news_event_l0_refresh_is_disabled_until_enabled(self) -> None:
+        path = self._db()
+        con = sqlite3.connect(path)
+        try:
+            disabled = con.execute(
+                """
+                SELECT enabled
+                FROM scheduler_job_registry
+                WHERE job_name='official_public_releases_refresh'
+                """
+            ).fetchone()[0]
+            self.assertEqual(disabled, 0)
+            source_runner._ensure_news_event_tables(con)
+            con.execute(
+                """
+                INSERT INTO news_event_l0(
+                    raw_item_id, source_family, provider, provider_item_id, source_url,
+                    canonical_url, title, body_or_summary, publication_ts, collection_ts,
+                    publisher, author, language, raw_hash, raw_receipt_id, raw_path,
+                    terms_or_license_note, provider_metadata_json, inserted_at, updated_at
+                )
+                VALUES (
+                    'news_raw:official:1', 'official_public_releases', 'company_ir',
+                    'ir-1', 'https://example.com/ir', 'https://example.com/ir',
+                    'Official release', 'summary', '2026-06-20T12:00:00Z',
+                    '2026-06-20T12:01:00Z', 'Example', '', 'en', 'hash',
+                    'receipt:fixture', 'data/raw/news.json', 'official source fixture',
+                    '{}', '2026-06-20T12:01:00Z', '2026-06-20T12:01:00Z'
+                )
+                """
+            )
+            con.execute(
+                """
+                UPDATE scheduler_job_registry
+                SET enabled=1
+                WHERE job_name='official_public_releases_refresh'
+                """
+            )
+            con.commit()
+        finally:
+            con.close()
+
+        result = run_once(
+            db_path=path,
+            apply=True,
+            only_job="official_public_releases_refresh",
+            bucket="2026-06-20T00:05:00Z",
+            raw_dir=path.parent / "raw",
+        )
+
+        self.assertEqual(result["success_count"], 1)
+        con = sqlite3.connect(path)
+        try:
+            fresh = con.execute(
+                """
+                SELECT provider, freshness_status, strict_gate_allowed, proxy_allowed
+                FROM source_freshness
+                WHERE source_family='official_public_releases'
+                """
+            ).fetchone()
+            self.assertEqual(fresh, ("trading_db_cached_official_public_releases", "STALE", 0, 0))
+            ledger = con.execute(
+                """
+                SELECT validation_refs_json
+                FROM scheduler_run_ledger
+                WHERE cadence='official_public_releases_refresh'
+                """
+            ).fetchone()[0]
+            self.assertIn('"cached_source_only": 1', ledger)
+            self.assertIn('"live_fetch": 0', ledger)
         finally:
             con.close()
 

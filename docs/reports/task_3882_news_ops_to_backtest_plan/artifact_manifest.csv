@@ -1,0 +1,4 @@
+artifact_path,artifact_type,description,status
+docs/reports/task_3882_news_ops_to_backtest_plan/gpt_agent_mode_plan_prompt.md,prompt,GPT Agent Mode planning prompt for scheduler-to-backtest sequence,ACTIVE
+docs/reports/task_3882_news_ops_to_backtest_plan/gpt_agent_mode_plan_response.md,review,GPT visible-output capture summary for scheduler-to-backtest sequence,ACTIVE
+docs/reports/task_3882_news_ops_to_backtest_plan/news_ops_to_backtest_plan.md,report,Codex-adopted Scope A-F plan after GPT consult,ACTIVE

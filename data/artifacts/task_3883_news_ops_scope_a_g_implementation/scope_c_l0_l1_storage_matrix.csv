@@ -1,0 +1,8 @@
+source_family,freshness_present,freshness_status,receipt_count,reference_hash_count,lineage_edge_count,scheduler_ledger_count,target_tables,strict_gate_allowed,proxy_allowed,evidence_ref,news_event_l0_count,news_event_l1_count
+market_ticks_intraday,1,STALE,305,250,304,299,"market_ticks,source_freshness",0,0,receipt:market_ticks_intraday:2026-06-23T22:30:00Z,,
+market_bars_5m,1,STALE,307,252,306,298,"market_bars_5m,source_freshness",0,0,receipt:market_bars_5m:2026-06-23T22:30:00Z,,
+macro_rates,1,STALE,290,150,290,309,"macro_rates,source_freshness",0,0,receipt:macro_rates:2026-06-23T22:30:00Z,,
+sec_events,1,CURRENT_OR_RECENT,293,148,293,320,"sec_events,source_freshness",0,0,receipt:sec_events:2026-06-23T22:30:00Z,,
+official_public_releases,1,CURRENT_OR_RECENT,93,93,93,89,news_event_l0,0,0,receipt:official_public_releases:provider:4f3833bb28acf2ff,2609,28
+gdelt_news_events,1,STALE,14,14,14,89,news_event_l0,0,0,receipt:gdelt_news_events:provider:04c9aecb4121ee67,14,3
+marketaux_news_free,1,CURRENT_OR_RECENT,88,88,88,88,news_event_l0,0,0,receipt:marketaux_news_free:provider:9e3c67034ef9dbbd,264,15

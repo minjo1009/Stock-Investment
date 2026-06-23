@@ -1,0 +1,2 @@
+harness_input_id,adapter_input_id,candidate_bundle_id,source_graph_id,bundle_asof_ts,market_data_gate_id,replay_config_id,adapter_input_state,harness_input_state,blocked_reason
+scope-f-input-1,dry-adapter-input-news-ops-1,dry-candidate-bundle-placeholder,source-graph-diagnostic-news-ops,2026-06-24T00:00:00Z,market-data-gate-scope-f,replay-config-scope-f,dry_adapter_input,planned_only,CONTROLLED_REPLAY_NOT_AUTHORIZED_SCOPE_G_NO_GO

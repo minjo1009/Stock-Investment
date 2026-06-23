@@ -1,24 +1,118 @@
 from __future__ import annotations
 
 import argparse
+import gzip
 import hashlib
 import json
 import os
+import re
 import sqlite3
+import time
 import uuid
+import zipfile
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any
+from urllib.parse import parse_qsl, quote_plus, urlencode, urlsplit, urlunsplit
+from urllib.error import HTTPError
 from urllib.request import Request, urlopen
+from xml.etree import ElementTree
 
 import pandas as pd
 
 from .apply_management_schema import _create_schema
 from .common import ACTIVE_DB, ROOT, rel, sha256_file, utc_now
+from .news_l0_l1 import FAMILY_DEFAULT_PROVIDER, NEWS_SOURCE_FAMILIES, normalize_news_records
 
 
 RAW_DIR = ROOT / "data" / "raw" / "source_acquisition_runtime"
+NEWS_USER_AGENT = "Minjo Stock-Investment source acquisition minjo1009@naver.com"
+NEWS_REQUEST_TIMEOUT_SECONDS = 20
+NEWS_REQUEST_INTERVAL_SECONDS = 0.5
+OFFICIAL_NEWS_ITEM_LIMIT_PER_ENDPOINT = 8
+GDELT_MAX_RECORDS = 1
+GDELT_TIMESPAN = "15m"
+GDELT_REQUEST_INTERVAL_SECONDS = 5.5
+GDELT_COOLDOWN_SECONDS = 300
+GDELT_BLOCK_STATE = ROOT / "data" / "artifacts" / "gdelt_access_block_state.json"
+MARKETAUX_ENV_FILE = ROOT / "configs" / "local" / "marketaux.env"
+MARKETAUX_DAILY_REQUEST_LIMIT = 90
+MARKETAUX_ARTICLES_PER_REQUEST_LIMIT = 3
+MARKETAUX_USAGE_LEDGER = ROOT / "data" / "artifacts" / "marketaux_usage_ledger.json"
+SEC_COMPANY_TICKERS_CACHE = ROOT / "data" / "raw" / "fundamental" / "sec_companyfacts" / "company_tickers.json"
+SEC_BULK_SUBMISSIONS_ZIP = ROOT / "data" / "raw" / "task_1161_1170_sec_bulk_submissions" / "submissions.zip"
+SEC_LIVE_BLOCK_STATE = ROOT / "data" / "artifacts" / "sec_live_access_block_state.json"
+SEC_RSS_ENTRY_LIMIT = 40
+SEC_REQUEST_INTERVAL_SECONDS = 1.1
+SEC_LIVE_COOLDOWN_SECONDS = 600
+SEC_LIVE_COOLDOWN_ESCALATION_SECONDS = (600, 1800, 21600, 86400)
+SEC_EDGARTOOLS_RATE_LIMIT_PER_SEC = 1
+SEC_BROWSER_COMPAT_USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+)
+SEC_UNDECLARED_TOOL_TEXT = "Undeclared Automated Tool"
+SEC_RATE_THRESHOLD_TEXT = "Request Rate Threshold Exceeded"
+SEC_PROVIDER_PRIORITY = {
+    "sec_live_delta": 0,
+    "sec_rss_delta": 1,
+    "sec_bulk_baseline": 2,
+    "sec_submissions_cache": 3,
+}
+OFFICIAL_RSS_FEEDS = (
+    {
+        "provider": "apple_newsroom_rss",
+        "endpoint": "apple_newsroom",
+        "url": "https://www.apple.com/newsroom/rss-feed.rss",
+        "tickers": "AAPL",
+        "entities": "Apple Inc",
+        "publisher": "Apple",
+        "event_type": "company_ir_newsroom",
+    },
+    {
+        "provider": "federal_reserve_press_all_rss",
+        "endpoint": "fed_press_all",
+        "url": "https://www.federalreserve.gov/feeds/press_all.xml",
+        "tickers": "",
+        "entities": "Federal Reserve Board",
+        "publisher": "Federal Reserve Board",
+        "event_type": "official_macro_press_release",
+    },
+    {
+        "provider": "bea_news_release_rss",
+        "endpoint": "bea_news_release_feed",
+        "url": "https://apps.bea.gov/rss/rss.xml",
+        "tickers": "",
+        "entities": "U.S. Bureau of Economic Analysis",
+        "publisher": "U.S. Bureau of Economic Analysis",
+        "event_type": "official_macro_release",
+    },
+)
+OFFICIAL_IR_PAGES = (
+    {
+        "provider": "apple_investor_relations_html",
+        "endpoint": "apple_investor_relations",
+        "url": "https://investor.apple.com/investor-relations/default.aspx",
+        "tickers": "AAPL",
+        "entities": "Apple Inc",
+        "publisher": "Apple Investor Relations",
+        "event_type": "company_ir_page_snapshot",
+    },
+)
+BLS_LATEST_SERIES = (
+    {"series_id": "CUSR0000SA0", "name": "Consumer Price Index for All Urban Consumers", "entity": "U.S. Bureau of Labor Statistics"},
+    {"series_id": "LNS14000000", "name": "Unemployment Rate", "entity": "U.S. Bureau of Labor Statistics"},
+)
+TREASURY_FISCALDATA_ENDPOINTS = (
+    {
+        "provider": "treasury_fiscaldata_avg_interest_rates",
+        "endpoint": "avg_interest_rates",
+        "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/avg_interest_rates?sort=-record_date&page%5Bsize%5D=3&format=json",
+        "entity": "U.S. Treasury Fiscal Data",
+    },
+)
 DEFAULT_SYMBOLS = ("AAPL", "MSFT", "NVDA", "AMD", "QQQ")
 DEFAULT_MACRO_SERIES = ("DFF", "DGS10")
 FAMILY_TO_JOB = {
@@ -26,6 +120,9 @@ FAMILY_TO_JOB = {
     "macro_rates": "macro_rates_refresh",
     "market_bars_5m": "market_bars_5m_refresh",
     "market_ticks_intraday": "market_ticks_intraday_refresh",
+    "official_public_releases": "official_public_releases_refresh",
+    "gdelt_news_events": "gdelt_news_events_refresh",
+    "marketaux_news_free": "marketaux_news_free_refresh",
     "sec_events": "sec_events_refresh",
 }
 
@@ -50,6 +147,17 @@ def _bucket_ts() -> str:
 
 def _digest_text(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
+def _provider_receipt_id(
+    *,
+    family: str,
+    provider: str,
+    source_key: str,
+    source_ts: str,
+    stable_input_hash: str,
+) -> str:
+    return f"receipt:{family}:provider:{_digest_text(provider + source_key + source_ts + stable_input_hash)[:16]}"
 
 
 def _guard(con: sqlite3.Connection) -> None:
@@ -93,6 +201,101 @@ def _ensure_runtime_market_tables(con: sqlite3.Connection) -> None:
 
         CREATE INDEX IF NOT EXISTS idx_market_ticks_ts ON market_ticks(timestamp);
         CREATE INDEX IF NOT EXISTS idx_bars_5m_symbol_ts ON market_bars_5m(symbol, bar_start_ts);
+        """
+    )
+
+
+def _ensure_news_event_tables(con: sqlite3.Connection) -> None:
+    con.executescript(
+        """
+        CREATE TABLE IF NOT EXISTS news_event_l0 (
+            raw_item_id TEXT PRIMARY KEY,
+            source_family TEXT NOT NULL,
+            provider TEXT NOT NULL,
+            provider_item_id TEXT NOT NULL,
+            source_url TEXT NOT NULL,
+            canonical_url TEXT NOT NULL,
+            title TEXT NOT NULL,
+            body_or_summary TEXT,
+            publication_ts TEXT,
+            collection_ts TEXT NOT NULL,
+            publisher TEXT,
+            author TEXT,
+            language TEXT,
+            raw_hash TEXT NOT NULL,
+            raw_receipt_id TEXT NOT NULL,
+            raw_path TEXT NOT NULL,
+            terms_or_license_note TEXT NOT NULL,
+            provider_metadata_json TEXT NOT NULL,
+            inserted_at TEXT NOT NULL,
+            updated_at TEXT NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS news_story_cluster (
+            dedupe_group_id TEXT PRIMARY KEY,
+            canonical_event_hash TEXT NOT NULL,
+            normalized_title TEXT NOT NULL,
+            primary_entity TEXT,
+            primary_ticker TEXT,
+            publication_date TEXT,
+            source_count INTEGER NOT NULL,
+            providers_seen_json TEXT NOT NULL,
+            first_seen_at TEXT NOT NULL,
+            last_seen_at TEXT NOT NULL,
+            updated_at TEXT NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS news_event_entity_map (
+            map_id TEXT PRIMARY KEY,
+            raw_item_id TEXT NOT NULL,
+            event_id TEXT NOT NULL,
+            entity_name_raw TEXT,
+            entity_type TEXT NOT NULL,
+            ticker TEXT,
+            mapping_method TEXT NOT NULL,
+            mapping_confidence REAL NOT NULL,
+            is_primary_subject INTEGER NOT NULL,
+            needs_review INTEGER NOT NULL,
+            created_at TEXT NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS news_event_l1_evidence (
+            event_id TEXT PRIMARY KEY,
+            raw_item_id TEXT NOT NULL,
+            dedupe_group_id TEXT NOT NULL,
+            source_family TEXT NOT NULL,
+            provider TEXT NOT NULL,
+            publication_time TEXT,
+            event_time TEXT,
+            normalized_title TEXT NOT NULL,
+            normalized_summary TEXT,
+            event_type TEXT NOT NULL,
+            event_subtype TEXT,
+            affected_tickers_json TEXT NOT NULL,
+            affected_entities_json TEXT NOT NULL,
+            entity_roles_json TEXT NOT NULL,
+            keywords_json TEXT NOT NULL,
+            source_count INTEGER NOT NULL,
+            confidence REAL NOT NULL,
+            freshness_status TEXT NOT NULL,
+            evidence_score REAL NOT NULL,
+            contradiction_flag INTEGER NOT NULL,
+            missing_fields_json TEXT NOT NULL,
+            quality_flags_json TEXT NOT NULL,
+            provider_lineage_json TEXT NOT NULL,
+            promotion_status TEXT NOT NULL,
+            blocker_code TEXT,
+            blocker_reason TEXT,
+            created_at TEXT NOT NULL,
+            updated_at TEXT NOT NULL
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_news_event_l0_family_time
+            ON news_event_l0(source_family, publication_ts);
+        CREATE INDEX IF NOT EXISTS idx_news_event_l1_family_status
+            ON news_event_l1_evidence(source_family, promotion_status);
+        CREATE INDEX IF NOT EXISTS idx_news_event_entity_ticker
+            ON news_event_entity_map(ticker);
         """
     )
 
@@ -417,7 +620,13 @@ def _write_evidence(
     target_key: str,
     transform_name: str,
 ) -> tuple[str, str, str]:
-    receipt_id = f"receipt:{family}:provider:{_digest_text(provider + source_key + source_ts + stable_input_hash)[:16]}"
+    receipt_id = _provider_receipt_id(
+        family=family,
+        provider=provider,
+        source_key=source_key,
+        source_ts=source_ts,
+        stable_input_hash=stable_input_hash,
+    )
     ref_id = f"ref:{family}:provider:{stable_input_hash[:16]}"
     edge_id = f"edge:{family}:provider:{_digest_text(receipt_id + target_table + target_key)[:16]}"
     con.execute(
@@ -503,6 +712,195 @@ def _write_evidence(
     return receipt_id, ref_id, edge_id
 
 
+def _frame_records(frame: pd.DataFrame) -> list[dict[str, Any]]:
+    if frame.empty:
+        return []
+    return json.loads(frame.to_json(orient="records", date_format="iso"))
+
+
+def _upsert_news_events(
+    con: sqlite3.Connection,
+    *,
+    family: str,
+    provider: str,
+    frame: pd.DataFrame,
+    raw_path: Path,
+    raw_sha: str,
+    capture_ts: str,
+    raw_receipt_id: str,
+) -> tuple[int, str]:
+    bundle = normalize_news_records(
+        _frame_records(frame),
+        source_family=family,
+        provider=provider,
+        capture_ts=capture_ts,
+        raw_path=rel(raw_path),
+        raw_sha=raw_sha,
+        raw_receipt_id=raw_receipt_id,
+    )
+    for row in bundle.raw_items:
+        con.execute(
+            """
+            INSERT INTO news_event_l0(
+                raw_item_id, source_family, provider, provider_item_id, source_url,
+                canonical_url, title, body_or_summary, publication_ts, collection_ts,
+                publisher, author, language, raw_hash, raw_receipt_id, raw_path,
+                terms_or_license_note, provider_metadata_json, inserted_at, updated_at
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(raw_item_id) DO UPDATE SET
+                source_family=excluded.source_family,
+                provider=excluded.provider,
+                provider_item_id=excluded.provider_item_id,
+                source_url=excluded.source_url,
+                canonical_url=excluded.canonical_url,
+                title=excluded.title,
+                body_or_summary=excluded.body_or_summary,
+                publication_ts=excluded.publication_ts,
+                collection_ts=excluded.collection_ts,
+                publisher=excluded.publisher,
+                author=excluded.author,
+                language=excluded.language,
+                raw_hash=excluded.raw_hash,
+                raw_receipt_id=excluded.raw_receipt_id,
+                raw_path=excluded.raw_path,
+                terms_or_license_note=excluded.terms_or_license_note,
+                provider_metadata_json=excluded.provider_metadata_json,
+                updated_at=excluded.updated_at
+            """,
+            (
+                row["raw_item_id"],
+                row["source_family"],
+                row["provider"],
+                row["provider_item_id"],
+                row["source_url"],
+                row["canonical_url"],
+                row["title"],
+                row["body_or_summary"],
+                row["publication_ts"],
+                row["collection_ts"],
+                row["publisher"],
+                row["author"],
+                row["language"],
+                row["raw_hash"],
+                row["raw_receipt_id"],
+                row["raw_path"],
+                row["terms_or_license_note"],
+                row["provider_metadata_json"],
+                capture_ts,
+                capture_ts,
+            ),
+        )
+    for row in bundle.clusters:
+        con.execute(
+            """
+            INSERT INTO news_story_cluster(
+                dedupe_group_id, canonical_event_hash, normalized_title,
+                primary_entity, primary_ticker, publication_date, source_count,
+                providers_seen_json, first_seen_at, last_seen_at, updated_at
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(dedupe_group_id) DO UPDATE SET
+                source_count=news_story_cluster.source_count + excluded.source_count,
+                providers_seen_json=excluded.providers_seen_json,
+                first_seen_at=min(news_story_cluster.first_seen_at, excluded.first_seen_at),
+                last_seen_at=max(news_story_cluster.last_seen_at, excluded.last_seen_at),
+                updated_at=excluded.updated_at
+            """,
+            (
+                row["dedupe_group_id"],
+                row["canonical_event_hash"],
+                row["normalized_title"],
+                row["primary_entity"],
+                row["primary_ticker"],
+                row["publication_date"],
+                row["source_count"],
+                row["providers_seen_json"],
+                row["first_seen_at"],
+                row["last_seen_at"],
+                capture_ts,
+            ),
+        )
+    for row in bundle.entity_maps:
+        con.execute(
+            """
+            INSERT OR REPLACE INTO news_event_entity_map(
+                map_id, raw_item_id, event_id, entity_name_raw, entity_type,
+                ticker, mapping_method, mapping_confidence, is_primary_subject,
+                needs_review, created_at
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                row["map_id"],
+                row["raw_item_id"],
+                row["event_id"],
+                row["entity_name_raw"],
+                row["entity_type"],
+                row["ticker"],
+                row["mapping_method"],
+                row["mapping_confidence"],
+                row["is_primary_subject"],
+                row["needs_review"],
+                capture_ts,
+            ),
+        )
+    for row in bundle.l1_events:
+        con.execute(
+            """
+            INSERT INTO news_event_l1_evidence(
+                event_id, raw_item_id, dedupe_group_id, source_family, provider,
+                publication_time, event_time, normalized_title, normalized_summary,
+                event_type, event_subtype, affected_tickers_json,
+                affected_entities_json, entity_roles_json, keywords_json,
+                source_count, confidence, freshness_status, evidence_score,
+                contradiction_flag, missing_fields_json, quality_flags_json,
+                provider_lineage_json, promotion_status, blocker_code,
+                blocker_reason, created_at, updated_at
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(event_id) DO UPDATE SET
+                source_count=news_event_l1_evidence.source_count + excluded.source_count,
+                provider_lineage_json=excluded.provider_lineage_json,
+                promotion_status=excluded.promotion_status,
+                blocker_code=excluded.blocker_code,
+                blocker_reason=excluded.blocker_reason,
+                updated_at=excluded.updated_at
+            """,
+            (
+                row["event_id"],
+                row["raw_item_id"],
+                row["dedupe_group_id"],
+                row["source_family"],
+                row["provider"],
+                row["publication_time"],
+                row["event_time"],
+                row["normalized_title"],
+                row["normalized_summary"],
+                row["event_type"],
+                row["event_subtype"],
+                row["affected_tickers_json"],
+                row["affected_entities_json"],
+                row["entity_roles_json"],
+                row["keywords_json"],
+                row["source_count"],
+                row["confidence"],
+                row["freshness_status"],
+                row["evidence_score"],
+                row["contradiction_flag"],
+                row["missing_fields_json"],
+                row["quality_flags_json"],
+                row["provider_lineage_json"],
+                row["promotion_status"],
+                row["blocker_code"],
+                row["blocker_reason"],
+                capture_ts,
+                capture_ts,
+            ),
+        )
+    return len(bundle.raw_items), bundle.max_source_ts
+
+
 def _normalize_yfinance(raw: pd.DataFrame, symbol: str, *, interval: str) -> pd.DataFrame:
     if raw.empty:
         return pd.DataFrame()
@@ -558,6 +956,550 @@ def _fetch_yfinance(symbols: tuple[str, ...], *, interval: str, period: str, all
     if not rows:
         return pd.DataFrame(), "PROVIDER_RETURNED_EMPTY"
     return pd.concat(rows, ignore_index=True), ""
+
+
+def _sanitize_url_for_ledger(url: str) -> str:
+    parts = urlsplit(url)
+    query = [
+        (key, "***" if key.lower() in {"api_token", "apikey", "api_key", "token", "authorization"} else value)
+        for key, value in parse_qsl(parts.query, keep_blank_values=True)
+    ]
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(query), parts.fragment))
+
+
+def _news_http_get(url: str, *, accept: str = "*/*") -> tuple[bytes, dict[str, Any]]:
+    time.sleep(NEWS_REQUEST_INTERVAL_SECONDS)
+    safe_url = _sanitize_url_for_ledger(url)
+    started_at = utc_now()
+    request = Request(
+        url,
+        headers={
+            "User-Agent": NEWS_USER_AGENT,
+            "Accept": accept,
+            "Accept-Encoding": "gzip, deflate",
+        },
+    )
+    try:
+        with urlopen(request, timeout=NEWS_REQUEST_TIMEOUT_SECONDS) as response:  # noqa: S310
+            body = response.read()
+            if str(response.headers.get("Content-Encoding") or "").lower() == "gzip":
+                body = gzip.decompress(body)
+            return body, {
+                "url": safe_url,
+                "status": "SUCCESS",
+                "status_code": int(getattr(response, "status", 200)),
+                "started_at": started_at,
+                "finished_at": utc_now(),
+                "body_sha256": hashlib.sha256(body).hexdigest(),
+                "body_bytes": len(body),
+            }
+    except HTTPError as exc:
+        body = exc.read()
+        if str(exc.headers.get("Content-Encoding") or "").lower() == "gzip":
+            try:
+                body = gzip.decompress(body)
+            except OSError:
+                pass
+        reason = "HTTP_ERROR"
+        if exc.code == 429:
+            reason = "RATE_LIMIT_OR_QUOTA_429"
+        elif exc.code == 403:
+            reason = "PROVIDER_FORBIDDEN_403"
+        return b"", {
+            "url": safe_url,
+            "status": "SKIPPED",
+            "status_code": int(exc.code),
+            "reason": reason,
+            "started_at": started_at,
+            "finished_at": utc_now(),
+            "response_body_sha256": hashlib.sha256(body).hexdigest(),
+            "response_body_bytes": len(body),
+        }
+    except Exception as exc:
+        return b"", {
+            "url": safe_url,
+            "status": "SKIPPED",
+            "status_code": 0,
+            "reason": f"REQUEST_FAILED:{type(exc).__name__}",
+            "started_at": started_at,
+            "finished_at": utc_now(),
+        }
+
+
+def _parse_news_ts(value: Any, *, fallback: str = "") -> str:
+    text = "" if value is None else str(value).strip()
+    if not text:
+        return fallback
+    try:
+        parsed = parsedate_to_datetime(text)
+    except (TypeError, ValueError):
+        parsed = pd.to_datetime(text, utc=True, errors="coerce")
+        if pd.isna(parsed):
+            return fallback
+        return parsed.strftime("%Y-%m-%dT%H:%M:%SZ")
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=UTC)
+    return parsed.astimezone(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def _xml_child_text(node: ElementTree.Element, names: tuple[str, ...]) -> str:
+    wanted = set(names)
+    for child in list(node):
+        local_name = child.tag.rsplit("}", 1)[-1].lower()
+        if local_name in wanted:
+            return str(child.text or "").strip()
+    return ""
+
+
+def _xml_entry_link(node: ElementTree.Element) -> str:
+    for child in list(node):
+        local_name = child.tag.rsplit("}", 1)[-1].lower()
+        if local_name != "link":
+            continue
+        href = child.attrib.get("href")
+        if href:
+            return str(href).strip()
+        if child.text:
+            return str(child.text).strip()
+    return ""
+
+
+def _parse_rss_or_atom_items(xml_bytes: bytes, spec: dict[str, str], capture_ts: str) -> list[dict[str, Any]]:
+    try:
+        root = ElementTree.fromstring(xml_bytes)
+    except ElementTree.ParseError:
+        return []
+    rows: list[dict[str, Any]] = []
+    for node in root.iter():
+        local_name = node.tag.rsplit("}", 1)[-1].lower()
+        if local_name not in {"item", "entry"}:
+            continue
+        title = _xml_child_text(node, ("title",))
+        link = _xml_child_text(node, ("link",)) or _xml_entry_link(node)
+        summary = _xml_child_text(node, ("description", "summary", "content"))
+        published = _xml_child_text(node, ("pubdate", "published", "updated"))
+        publication_ts = _parse_news_ts(published, fallback=capture_ts)
+        provider_item_id = _xml_child_text(node, ("guid", "id")) or _digest_text(f"{spec['provider']}|{title}|{link}")[:24]
+        rows.append(
+            {
+                "provider": spec["provider"],
+                "provider_item_id": provider_item_id,
+                "source_url": link or spec["url"],
+                "title": title,
+                "body_or_summary": summary,
+                "publication_ts": publication_ts,
+                "collection_ts": capture_ts,
+                "publisher": spec["publisher"],
+                "language": "en",
+                "tickers": spec.get("tickers", ""),
+                "entities": spec.get("entities", ""),
+                "event_type": spec["event_type"],
+                "event_subtype": spec["endpoint"],
+                "keywords": "official;rss",
+            }
+        )
+        if len(rows) >= OFFICIAL_NEWS_ITEM_LIMIT_PER_ENDPOINT:
+            break
+    return rows
+
+
+def _html_title(html_bytes: bytes) -> str:
+    text = html_bytes.decode("utf-8", errors="ignore")
+    match = re.search(r"<title[^>]*>(.*?)</title>", text, flags=re.IGNORECASE | re.DOTALL)
+    if not match:
+        return ""
+    title = re.sub(r"\s+", " ", match.group(1)).strip()
+    return title
+
+
+def _fetch_official_public_releases(symbols: tuple[str, ...], *, allow_network: bool) -> tuple[pd.DataFrame, str]:
+    if not allow_network:
+        return pd.DataFrame(), "NETWORK_FETCH_DISABLED"
+    capture_ts = utc_now()
+    rows: list[dict[str, Any]] = []
+    call_ledger: list[dict[str, Any]] = []
+    wanted_symbols = {symbol.upper() for symbol in symbols}
+    for spec in OFFICIAL_RSS_FEEDS:
+        tickers = {value.strip().upper() for value in str(spec.get("tickers") or "").split(",") if value.strip()}
+        if tickers and wanted_symbols and not tickers.intersection(wanted_symbols):
+            continue
+        body, ledger = _news_http_get(spec["url"], accept="application/rss+xml, application/atom+xml, text/xml, */*")
+        ledger.update({"provider": spec["provider"], "endpoint": spec["endpoint"], "token_used": 0})
+        call_ledger.append(ledger)
+        if ledger["status"] == "SUCCESS":
+            rows.extend(_parse_rss_or_atom_items(body, spec, capture_ts))
+    for spec in OFFICIAL_IR_PAGES:
+        tickers = {value.strip().upper() for value in str(spec.get("tickers") or "").split(",") if value.strip()}
+        if tickers and wanted_symbols and not tickers.intersection(wanted_symbols):
+            continue
+        body, ledger = _news_http_get(spec["url"], accept="text/html, */*")
+        ledger.update({"provider": spec["provider"], "endpoint": spec["endpoint"], "token_used": 0})
+        call_ledger.append(ledger)
+        if ledger["status"] != "SUCCESS":
+            continue
+        title = _html_title(body) or f"{spec['publisher']} page snapshot"
+        rows.append(
+            {
+                "provider": spec["provider"],
+                "provider_item_id": f"{spec['endpoint']}:{_digest_text(ledger.get('body_sha256', '') + capture_ts)[:16]}",
+                "source_url": spec["url"],
+                "title": title,
+                "body_or_summary": json.dumps(
+                    {
+                        "snapshot_body_sha256": ledger.get("body_sha256"),
+                        "snapshot_body_bytes": ledger.get("body_bytes"),
+                        "source_time_basis": "capture_time_only_ir_page_snapshot",
+                    },
+                    sort_keys=True,
+                ),
+                "publication_ts": capture_ts,
+                "collection_ts": capture_ts,
+                "publisher": spec["publisher"],
+                "language": "en",
+                "tickers": spec.get("tickers", ""),
+                "entities": spec.get("entities", ""),
+                "event_type": spec["event_type"],
+                "event_subtype": spec["endpoint"],
+                "keywords": "official;ir;html;capture_time_only",
+            }
+        )
+    for spec in BLS_LATEST_SERIES:
+        url = f"https://api.bls.gov/publicAPI/v2/timeseries/data/{quote_plus(spec['series_id'])}?latest=true"
+        body, ledger = _news_http_get(url, accept="application/json")
+        ledger.update({"provider": "bls_public_api_v2", "endpoint": spec["series_id"], "token_used": 0})
+        call_ledger.append(ledger)
+        if ledger["status"] != "SUCCESS":
+            continue
+        try:
+            payload = json.loads(body.decode("utf-8"))
+        except json.JSONDecodeError:
+            continue
+        series = (payload.get("Results") or {}).get("series") or []
+        data = series[0].get("data") if series else []
+        if not data:
+            continue
+        latest = data[0]
+        year = str(latest.get("year") or "")
+        period = str(latest.get("period") or "").replace("M", "")
+        source_ts = f"{year}-{period.zfill(2)}-01T21:00:00Z" if year and period.isdigit() else capture_ts
+        rows.append(
+            {
+                "provider": "bls_public_api_v2",
+                "provider_item_id": f"{spec['series_id']}:{year}:{latest.get('period')}",
+                "source_url": _sanitize_url_for_ledger(url),
+                "title": f"BLS latest {spec['name']}: {latest.get('value')}",
+                "body_or_summary": json.dumps(
+                    {"series_id": spec["series_id"], "period": latest.get("periodName"), "value": latest.get("value")},
+                    sort_keys=True,
+                ),
+                "publication_ts": source_ts,
+                "collection_ts": capture_ts,
+                "publisher": "U.S. Bureau of Labor Statistics",
+                "language": "en",
+                "tickers": "",
+                "entities": spec["entity"],
+                "event_type": "official_macro_data_latest",
+                "event_subtype": "bls_public_api_latest",
+                "keywords": "official;bls;macro",
+            }
+        )
+    for spec in TREASURY_FISCALDATA_ENDPOINTS:
+        body, ledger = _news_http_get(spec["url"], accept="application/json")
+        ledger.update({"provider": spec["provider"], "endpoint": spec["endpoint"], "token_used": 0})
+        call_ledger.append(ledger)
+        if ledger["status"] != "SUCCESS":
+            continue
+        try:
+            payload = json.loads(body.decode("utf-8"))
+        except json.JSONDecodeError:
+            continue
+        for index, item in enumerate((payload.get("data") or [])[:3]):
+            record_date = str(item.get("record_date") or "")[:10]
+            source_ts = f"{record_date}T21:00:00Z" if record_date else capture_ts
+            rows.append(
+                {
+                    "provider": spec["provider"],
+                    "provider_item_id": f"{spec['endpoint']}:{record_date}:{index}",
+                    "source_url": _sanitize_url_for_ledger(spec["url"]),
+                    "title": f"Treasury Fiscal Data {spec['endpoint']} {record_date}",
+                    "body_or_summary": json.dumps(item, sort_keys=True),
+                    "publication_ts": source_ts,
+                    "collection_ts": capture_ts,
+                    "publisher": "U.S. Treasury Fiscal Data",
+                    "language": "en",
+                    "tickers": "",
+                    "entities": spec["entity"],
+                    "event_type": "official_treasury_data_latest",
+                    "event_subtype": spec["endpoint"],
+                    "keywords": "official;treasury;macro",
+                }
+            )
+    if not rows:
+        reason = "PROVIDER_RETURNED_EMPTY"
+        for ledger in call_ledger:
+            if ledger.get("reason"):
+                reason = str(ledger["reason"])
+                break
+        frame = pd.DataFrame()
+        frame.attrs["provider_call_ledger"] = call_ledger
+        return frame, reason
+    frame = pd.DataFrame(rows)
+    frame.attrs["provider_call_ledger"] = call_ledger
+    return frame, ""
+
+
+def _gdelt_query_symbol(symbols: tuple[str, ...]) -> str:
+    for symbol in symbols:
+        text = str(symbol or "").strip().upper()
+        if text:
+            return text
+    return "AAPL"
+
+
+def _gdelt_cooldown_state() -> dict[str, Any]:
+    if not GDELT_BLOCK_STATE.exists():
+        return {"active": False, "retry_after_ts": ""}
+    try:
+        payload = json.loads(GDELT_BLOCK_STATE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {"active": False, "retry_after_ts": ""}
+    retry_after = str(payload.get("retry_after_ts") or "")
+    parsed = pd.to_datetime(retry_after, utc=True, errors="coerce")
+    if pd.isna(parsed):
+        return {"active": False, "retry_after_ts": ""}
+    return {
+        "active": datetime.now(UTC) < parsed.to_pydatetime(),
+        "retry_after_ts": retry_after,
+        "reason": payload.get("reason", ""),
+    }
+
+
+def _record_gdelt_block(ledger: dict[str, Any]) -> None:
+    now = datetime.now(UTC)
+    payload = {
+        "status": "GDELT_TEMPORARILY_BLOCKED",
+        "reason": str(ledger.get("reason") or "RATE_LIMIT_OR_QUOTA_429"),
+        "detected_at": now.isoformat().replace("+00:00", "Z"),
+        "retry_after_ts": (now + timedelta(seconds=GDELT_COOLDOWN_SECONDS)).isoformat().replace("+00:00", "Z"),
+        "cooldown_seconds": GDELT_COOLDOWN_SECONDS,
+        "required_action": "Stop GDELT requests during cooldown; retry with one symbol, maxrecords=1, timespan=15m, and >=5 seconds between requests.",
+        "provider_call": ledger,
+    }
+    GDELT_BLOCK_STATE.parent.mkdir(parents=True, exist_ok=True)
+    GDELT_BLOCK_STATE.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _clear_gdelt_block() -> None:
+    if GDELT_BLOCK_STATE.exists():
+        try:
+            payload = json.loads(GDELT_BLOCK_STATE.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            payload = {}
+        payload.update({"status": "GDELT_ACCESS_RECOVERED", "recovered_at": utc_now()})
+        GDELT_BLOCK_STATE.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _fetch_gdelt_news_events(symbols: tuple[str, ...], *, allow_network: bool) -> tuple[pd.DataFrame, str]:
+    if not allow_network:
+        return pd.DataFrame(), "NETWORK_FETCH_DISABLED"
+    cooldown = _gdelt_cooldown_state()
+    if cooldown["active"]:
+        frame = pd.DataFrame()
+        frame.attrs["provider_call_ledger"] = [
+            {
+                "provider": "gdelt_doc_api",
+                "endpoint": "doc_artlist",
+                "status": "SKIPPED",
+                "reason": "GDELT_COOLDOWN_ACTIVE",
+                "retry_after_ts": cooldown["retry_after_ts"],
+                "token_used": 0,
+            }
+        ]
+        return frame, "GDELT_COOLDOWN_ACTIVE"
+    capture_ts = utc_now()
+    query_terms = _gdelt_query_symbol(symbols)
+    params = {
+        "query": query_terms,
+        "mode": "artlist",
+        "format": "json",
+        "maxrecords": str(GDELT_MAX_RECORDS),
+        "timespan": GDELT_TIMESPAN,
+        "sort": "datedesc",
+    }
+    url = "https://api.gdeltproject.org/api/v2/doc/doc?" + urlencode(params)
+    time.sleep(GDELT_REQUEST_INTERVAL_SECONDS)
+    body, ledger = _news_http_get(url, accept="application/json")
+    ledger.update({"provider": "gdelt_doc_api", "endpoint": "doc_artlist", "token_used": 0})
+    if ledger["status"] != "SUCCESS":
+        if ledger.get("status_code") == 429:
+            _record_gdelt_block(ledger)
+        frame = pd.DataFrame()
+        frame.attrs["provider_call_ledger"] = [ledger]
+        return frame, str(ledger.get("reason") or "GDELT_REQUEST_FAILED")
+    try:
+        payload = json.loads(body.decode("utf-8"))
+    except json.JSONDecodeError:
+        ledger["reason"] = "GDELT_JSON_PARSE_FAILED"
+        ledger["response_preview_sha256"] = hashlib.sha256(body[:256]).hexdigest()
+        frame = pd.DataFrame()
+        frame.attrs["provider_call_ledger"] = [ledger]
+        return frame, "GDELT_JSON_PARSE_FAILED"
+    _clear_gdelt_block()
+    rows: list[dict[str, Any]] = []
+    for index, article in enumerate((payload.get("articles") or [])[:GDELT_MAX_RECORDS]):
+        title = str(article.get("title") or "")
+        url_value = str(article.get("url") or "")
+        domain = str(article.get("domain") or "")
+        seendate = _parse_news_ts(article.get("seendate") or article.get("datetime"), fallback=capture_ts)
+        matched = [symbol.upper() for symbol in symbols if symbol.upper() in f"{title} {url_value}".upper()]
+        rows.append(
+            {
+                "provider": "gdelt_doc_api",
+                "provider_item_id": str(article.get("url_mobile") or url_value or f"gdelt-row-{index}"),
+                "source_url": url_value,
+                "title": title,
+                "body_or_summary": str(article.get("snippet") or ""),
+                "publication_ts": seendate,
+                "collection_ts": capture_ts,
+                "publisher": domain,
+                "language": str(article.get("language") or "unknown"),
+                "tickers": ",".join(matched),
+                "entities": "",
+                "event_type": "news_discovery",
+                "event_subtype": "gdelt_doc_artlist",
+                "keywords": "gdelt;discovery",
+            }
+        )
+    if not rows:
+        frame = pd.DataFrame()
+        frame.attrs["provider_call_ledger"] = [ledger]
+        return frame, "PROVIDER_RETURNED_EMPTY"
+    frame = pd.DataFrame(rows)
+    frame.attrs["provider_call_ledger"] = [ledger]
+    return frame, ""
+
+
+def _load_local_env_file(path: Path) -> None:
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8-sig").splitlines():
+        text = line.strip()
+        if not text or text.startswith("#") or "=" not in text:
+            continue
+        key, value = text.split("=", 1)
+        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+
+
+def _marketaux_token() -> str:
+    _load_local_env_file(MARKETAUX_ENV_FILE)
+    return str(os.environ.get("MARKETAUX_API_TOKEN") or "").strip()
+
+
+def _marketaux_usage_state() -> dict[str, Any]:
+    today = datetime.now(UTC).strftime("%Y-%m-%d")
+    if not MARKETAUX_USAGE_LEDGER.exists():
+        return {"date": today, "request_count": 0}
+    try:
+        payload = json.loads(MARKETAUX_USAGE_LEDGER.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {"date": today, "request_count": 0}
+    if payload.get("date") != today:
+        return {"date": today, "request_count": 0}
+    return {"date": today, "request_count": int(payload.get("request_count") or 0)}
+
+
+def _record_marketaux_usage(count: int) -> None:
+    state = _marketaux_usage_state()
+    state["request_count"] = int(state["request_count"]) + count
+    state["daily_limit"] = MARKETAUX_DAILY_REQUEST_LIMIT
+    state["updated_at"] = utc_now()
+    MARKETAUX_USAGE_LEDGER.parent.mkdir(parents=True, exist_ok=True)
+    MARKETAUX_USAGE_LEDGER.write_text(json.dumps(state, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _fetch_marketaux_news_free(symbols: tuple[str, ...], *, allow_network: bool) -> tuple[pd.DataFrame, str]:
+    if not allow_network:
+        return pd.DataFrame(), "NETWORK_FETCH_DISABLED"
+    token = _marketaux_token()
+    if not token:
+        return pd.DataFrame(), "MARKETAUX_API_TOKEN_MISSING_SKIP"
+    state = _marketaux_usage_state()
+    if int(state["request_count"]) >= MARKETAUX_DAILY_REQUEST_LIMIT:
+        return pd.DataFrame(), "MARKETAUX_DAILY_LIMIT_GUARD_ACTIVE"
+    capture_ts = utc_now()
+    symbol_list = ",".join(sorted({symbol.upper() for symbol in symbols if symbol})[:5])
+    params = {
+        "api_token": token,
+        "symbols": symbol_list,
+        "filter_entities": "true",
+        "must_have_entities": "true",
+        "language": "en",
+        "limit": str(MARKETAUX_ARTICLES_PER_REQUEST_LIMIT),
+    }
+    url = "https://api.marketaux.com/v1/news/all?" + urlencode(params)
+    body, ledger = _news_http_get(url, accept="application/json")
+    ledger.update(
+        {
+            "provider": "marketaux_free_api",
+            "endpoint": "news_all",
+            "token_used": 1,
+            "token_persisted": 0,
+            "daily_limit": MARKETAUX_DAILY_REQUEST_LIMIT,
+            "articles_per_request_limit": MARKETAUX_ARTICLES_PER_REQUEST_LIMIT,
+            "request_count_before": int(state["request_count"]),
+        }
+    )
+    _record_marketaux_usage(1)
+    if ledger["status"] != "SUCCESS":
+        frame = pd.DataFrame()
+        frame.attrs["provider_call_ledger"] = [ledger]
+        return frame, str(ledger.get("reason") or "MARKETAUX_REQUEST_FAILED")
+    try:
+        payload = json.loads(body.decode("utf-8"))
+    except json.JSONDecodeError:
+        frame = pd.DataFrame()
+        frame.attrs["provider_call_ledger"] = [ledger]
+        return frame, "MARKETAUX_JSON_PARSE_FAILED"
+    rows: list[dict[str, Any]] = []
+    for article in (payload.get("data") or [])[:MARKETAUX_ARTICLES_PER_REQUEST_LIMIT]:
+        entities = article.get("entities") or []
+        tickers = [str(entity.get("symbol") or "").upper() for entity in entities if entity.get("symbol")]
+        entity_names = [str(entity.get("name") or "") for entity in entities if entity.get("name")]
+        rows.append(
+            {
+                "provider": "marketaux_free_api",
+                "provider_item_id": str(article.get("uuid") or article.get("url") or _digest_text(str(article))[:24]),
+                "source_url": str(article.get("url") or ""),
+                "title": str(article.get("title") or ""),
+                "body_or_summary": str(article.get("description") or article.get("snippet") or ""),
+                "publication_ts": _parse_news_ts(article.get("published_at"), fallback=capture_ts),
+                "collection_ts": capture_ts,
+                "publisher": str((article.get("source") or "") if isinstance(article.get("source"), str) else (article.get("source") or {}).get("name", "")),
+                "language": str(article.get("language") or "en"),
+                "tickers": ",".join(tickers),
+                "entities": ",".join(entity_names),
+                "event_type": "market_news_metadata",
+                "event_subtype": "marketaux_free_news_all",
+                "keywords": "marketaux;metadata;free_plan",
+            }
+        )
+    if not rows:
+        frame = pd.DataFrame()
+        frame.attrs["provider_call_ledger"] = [ledger]
+        return frame, "PROVIDER_RETURNED_EMPTY"
+    frame = pd.DataFrame(rows)
+    frame.attrs["provider_call_ledger"] = [ledger]
+    return frame, ""
+
+
+def _fetch_news_family(family: str, symbols: tuple[str, ...], *, allow_network: bool) -> tuple[pd.DataFrame, str]:
+    if family == "official_public_releases":
+        return _fetch_official_public_releases(symbols, allow_network=allow_network)
+    if family == "gdelt_news_events":
+        return _fetch_gdelt_news_events(symbols, allow_network=allow_network)
+    if family == "marketaux_news_free":
+        return _fetch_marketaux_news_free(symbols, allow_network=allow_network)
+    return pd.DataFrame(), "UNKNOWN_NEWS_FAMILY"
 
 
 def _upsert_market_bars(con: sqlite3.Connection, frame: pd.DataFrame, raw_path: Path, raw_sha: str, capture_ts: str) -> int:
@@ -723,69 +1665,669 @@ def _upsert_macro(con: sqlite3.Connection, frame: pd.DataFrame, raw_path: Path, 
     return len(rows)
 
 
-def _fetch_sec_events(symbols: tuple[str, ...], *, allow_network: bool) -> tuple[pd.DataFrame, str]:
-    user_agent = os.environ.get("SEC_USER_AGENT", "").strip()
-    if not allow_network:
-        return pd.DataFrame(), "NETWORK_FETCH_DISABLED"
-    if not user_agent:
-        return pd.DataFrame(), "SEC_USER_AGENT_MISSING"
-    request = Request(
-        "https://www.sec.gov/files/company_tickers.json",
-        headers={"User-Agent": user_agent, "Accept": "application/json"},
+def _load_sec_company_tickers_cache(path: Path | None = None) -> dict[str, Any] | None:
+    path = path or SEC_COMPANY_TICKERS_CACHE
+    if not path.exists():
+        return None
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+    return payload if isinstance(payload, dict) else None
+
+
+def _load_sec_submission_cache(
+    cik: str,
+    path: Path | None = None,
+) -> tuple[dict[str, Any], str] | None:
+    path = path or SEC_BULK_SUBMISSIONS_ZIP
+    if not path.exists():
+        return None
+    normalized_cik = str(cik or "").replace("CIK", "").zfill(10)
+    candidate_names = (
+        f"CIK{normalized_cik}.json",
+        f"submissions/CIK{normalized_cik}.json",
     )
     try:
+        with zipfile.ZipFile(path) as archive:
+            for name in candidate_names:
+                try:
+                    with archive.open(name) as handle:
+                        payload = json.loads(handle.read().decode("utf-8"))
+                except KeyError:
+                    continue
+                return (payload, f"{rel(path)}::{name}") if isinstance(payload, dict) else None
+    except (OSError, zipfile.BadZipFile, json.JSONDecodeError, UnicodeDecodeError):
+        return None
+    return None
+
+
+def _sec_contact_email(user_agent: str) -> str:
+    email_match = re.search(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}", user_agent)
+    return email_match.group(0) if email_match else ""
+
+
+def _sec_browser_compat_headers_enabled(user_agent: str) -> bool:
+    if str(os.environ.get("SEC_DISABLE_BROWSER_COMPAT_HEADERS") or "").strip().lower() in {"1", "true", "yes"}:
+        return False
+    return bool(_sec_contact_email(user_agent))
+
+
+def _sec_header_strategy(user_agent: str) -> str:
+    return "browser_compat_from_contact" if _sec_browser_compat_headers_enabled(user_agent) else "declared_user_agent"
+
+
+def _sec_effective_user_agent(user_agent: str) -> str:
+    if not _sec_browser_compat_headers_enabled(user_agent):
+        return user_agent
+    override = str(os.environ.get("SEC_BROWSER_COMPAT_USER_AGENT") or "").strip()
+    return override or SEC_BROWSER_COMPAT_USER_AGENT
+
+
+def _sec_headers(user_agent: str) -> dict[str, str]:
+    headers = {
+        "User-Agent": _sec_effective_user_agent(user_agent),
+        "Accept": "application/json,text/plain,*/*",
+        "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Accept-Encoding": "gzip, deflate",
+    }
+    contact_email = _sec_contact_email(user_agent)
+    if contact_email:
+        headers["From"] = contact_email
+    return headers
+
+
+def _sec_request_fingerprint(user_agent: str) -> str:
+    return _digest_text(json.dumps(_sec_headers(user_agent), ensure_ascii=True, sort_keys=True))
+
+
+def _sec_endpoint_group(url: str) -> str:
+    if "data.sec.gov/submissions/" in url:
+        return "sec_submissions_json"
+    if "cgi-bin/browse-edgar" in url:
+        return "sec_rss_delta"
+    if "company_tickers.json" in url:
+        return "sec_company_tickers"
+    return "sec_other"
+
+
+def _sec_live_force_retry_enabled() -> bool:
+    return str(os.environ.get("SEC_LIVE_FORCE_RETRY") or "").strip().lower() in {"1", "true", "yes"}
+
+
+def _sec_block_state() -> dict[str, Any] | None:
+    if not SEC_LIVE_BLOCK_STATE.exists():
+        return None
+    try:
+        payload = json.loads(SEC_LIVE_BLOCK_STATE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+    return payload if isinstance(payload, dict) else None
+
+
+def _sec_live_block_active(user_agent: str | None = None, url: str = "") -> bool:
+    if _sec_live_force_retry_enabled():
+        return False
+    payload = _sec_block_state()
+    if not payload:
+        return False
+    if str(payload.get("status") or "") == "SEC_LIVE_ACCESS_RECOVERED":
+        return False
+    previous_endpoint_group = str(payload.get("endpoint_group") or "")
+    if url and previous_endpoint_group and previous_endpoint_group != _sec_endpoint_group(url):
+        return False
+    if not url and previous_endpoint_group == "sec_rss_delta":
+        return False
+    if user_agent:
+        current_strategy = _sec_header_strategy(user_agent)
+        previous_strategy = str(payload.get("request_header_strategy") or "")
+        if current_strategy != previous_strategy and current_strategy == "browser_compat_from_contact":
+            return False
+        previous_fingerprint = str(payload.get("request_headers_sha256") or "")
+        if previous_fingerprint and previous_fingerprint != _sec_request_fingerprint(user_agent):
+            return False
+    detected_at = _parse_ts(str(payload.get("detected_at") or ""))
+    if detected_at is not None:
+        cooldown_seconds = int(payload.get("cooldown_seconds") or SEC_LIVE_COOLDOWN_SECONDS)
+        retry_after = detected_at + timedelta(seconds=cooldown_seconds)
+    else:
+        retry_after = _parse_ts(str(payload.get("retry_after_ts") or ""))
+    if retry_after is None:
+        return False
+    return datetime.now(UTC) < retry_after
+
+
+def _clear_sec_live_block(*, url: str, user_agent: str) -> None:
+    previous = _sec_block_state() or {}
+    payload = {
+        "status": "SEC_LIVE_ACCESS_RECOVERED",
+        "last_success_url": url,
+        "endpoint_group": _sec_endpoint_group(url),
+        "recovered_at": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
+        "request_header_strategy": _sec_header_strategy(user_agent),
+        "request_headers_sha256": _sec_request_fingerprint(user_agent),
+        "previous_status": previous.get("status", ""),
+        "previous_reason": previous.get("reason", ""),
+        "secrets_excluded": True,
+    }
+    SEC_LIVE_BLOCK_STATE.parent.mkdir(parents=True, exist_ok=True)
+    SEC_LIVE_BLOCK_STATE.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=True, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+
+def _record_sec_live_block(
+    *,
+    url: str,
+    reason: str,
+    user_agent: str = "",
+    status_code: int | None = None,
+    response_body: str = "",
+) -> None:
+    now = datetime.now(UTC)
+    previous = _sec_block_state() or {}
+    previous_count = int(previous.get("consecutive_block_count") or (1 if previous else 0))
+    consecutive_block_count = previous_count + 1
+    cooldown_seconds = SEC_LIVE_COOLDOWN_ESCALATION_SECONDS[
+        min(consecutive_block_count - 1, len(SEC_LIVE_COOLDOWN_ESCALATION_SECONDS) - 1)
+    ]
+    response_body_sha256 = hashlib.sha256(response_body.encode("utf-8")).hexdigest() if response_body else ""
+    payload = {
+        "status": "SEC_LIVE_TEMPORARILY_BLOCKED",
+        "reason": reason,
+        "status_code": status_code,
+        "last_blocked_url": url,
+        "endpoint_group": _sec_endpoint_group(url),
+        "detected_at": now.isoformat().replace("+00:00", "Z"),
+        "retry_after_ts": (now + timedelta(seconds=cooldown_seconds)).isoformat().replace("+00:00", "Z"),
+        "cooldown_seconds": cooldown_seconds,
+        "consecutive_block_count": consecutive_block_count,
+        "cooldown_policy_seconds": list(SEC_LIVE_COOLDOWN_ESCALATION_SECONDS),
+        "required_action": "Stop SEC live requests during cooldown; retry once with declared User-Agent and <=1 request/second after cooldown.",
+    }
+    if user_agent:
+        payload["request_header_strategy"] = _sec_header_strategy(user_agent)
+        payload["request_headers_sha256"] = _sec_request_fingerprint(user_agent)
+    if response_body:
+        payload["response_body_sha256"] = response_body_sha256
+        payload["response_body_length"] = len(response_body)
+        previous_hash = str(previous.get("response_body_sha256") or "")
+        if previous_hash:
+            payload["previous_response_body_sha256"] = previous_hash
+            payload["same_response_body_as_previous"] = previous_hash == response_body_sha256
+    SEC_LIVE_BLOCK_STATE.parent.mkdir(parents=True, exist_ok=True)
+    SEC_LIVE_BLOCK_STATE.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=True, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+
+def _classify_sec_live_exception(exc: BaseException, *, url: str, user_agent: str = "") -> None:
+    status_code = getattr(getattr(exc, "response", None), "status_code", None)
+    body = str(getattr(getattr(exc, "response", None), "text", "") or "")
+    message = str(exc)
+    combined = f"{body}\n{message}"
+    if status_code == 403 and SEC_UNDECLARED_TOOL_TEXT in combined:
+        _record_sec_live_block(
+            url=url,
+            reason="SEC_UNDECLARED_AUTOMATED_TOOL_403",
+            user_agent=user_agent,
+            status_code=status_code,
+            response_body=combined,
+        )
+    elif status_code == 403 and SEC_RATE_THRESHOLD_TEXT in combined:
+        _record_sec_live_block(
+            url=url,
+            reason="SEC_REQUEST_RATE_THRESHOLD_403",
+            user_agent=user_agent,
+            status_code=status_code,
+            response_body=combined,
+        )
+    elif status_code == 403:
+        _record_sec_live_block(
+            url=url,
+            reason="SEC_FORBIDDEN_UNKNOWN_403",
+            user_agent=user_agent,
+            status_code=status_code,
+            response_body=combined,
+        )
+    elif status_code == 429:
+        _record_sec_live_block(
+            url=url,
+            reason="SEC_TOO_MANY_REQUESTS_429",
+            user_agent=user_agent,
+            status_code=status_code,
+            response_body=combined,
+        )
+
+
+def _fetch_sec_json_edgartools(url: str, user_agent: str) -> dict[str, Any]:
+    os.environ["EDGAR_IDENTITY"] = user_agent
+    os.environ["EDGAR_RATE_LIMIT_PER_SEC"] = str(SEC_EDGARTOOLS_RATE_LIMIT_PER_SEC)
+    try:
+        from edgar import configure_http, set_identity
+        from edgar.httprequests import download_json
+    except ImportError:
+        raise RuntimeError("EDGARTOOLS_NOT_INSTALLED")
+    set_identity(user_agent)
+    configure_http(http2=False)
+    payload = download_json(url)
+    return payload if isinstance(payload, dict) else {}
+
+
+def _fetch_sec_text_browser_compat(url: str, user_agent: str) -> str:
+    try:
+        from curl_cffi import requests as curl_cffi_requests
+    except ImportError as exc:
+        raise RuntimeError("CURL_CFFI_NOT_INSTALLED") from exc
+    response = curl_cffi_requests.get(
+        url,
+        headers={**_sec_headers(user_agent), "Accept": "application/atom+xml, application/xml, text/xml, */*"},
+        impersonate="chrome120",
+        timeout=30,
+    )
+    if response.status_code >= 400:
+        raise HTTPError(url, response.status_code, response.reason, response.headers, None)
+    return str(response.text or "")
+
+
+def _fetch_sec_json_live(url: str, user_agent: str) -> dict[str, Any]:
+    time.sleep(SEC_REQUEST_INTERVAL_SECONDS)
+    request = Request(url, headers=_sec_headers(user_agent))
+    try:
         with urlopen(request, timeout=30) as response:  # noqa: S310
-            mapping = json.loads(response.read().decode("utf-8"))
+            body_bytes = response.read()
+            if str(getattr(response, "headers", {}).get("Content-Encoding") or "").lower() == "gzip":
+                body_bytes = gzip.decompress(body_bytes)
+            payload = json.loads(body_bytes.decode("utf-8"))
+    except HTTPError as exc:
+        body_bytes = exc.read()
+        if str(exc.headers.get("Content-Encoding") or "").lower() == "gzip":
+            try:
+                body_bytes = gzip.decompress(body_bytes)
+            except OSError:
+                pass
+        body = body_bytes.decode("utf-8", errors="replace")
+        if exc.code == 403 and SEC_UNDECLARED_TOOL_TEXT in body:
+            _record_sec_live_block(
+                url=url,
+                reason="SEC_UNDECLARED_AUTOMATED_TOOL_403",
+                user_agent=user_agent,
+                status_code=exc.code,
+                response_body=body,
+            )
+        elif exc.code == 403 and SEC_RATE_THRESHOLD_TEXT in body:
+            _record_sec_live_block(
+                url=url,
+                reason="SEC_REQUEST_RATE_THRESHOLD_403",
+                user_agent=user_agent,
+                status_code=exc.code,
+                response_body=body,
+            )
+        elif exc.code == 403:
+            _record_sec_live_block(
+                url=url,
+                reason="SEC_FORBIDDEN_UNKNOWN_403",
+                user_agent=user_agent,
+                status_code=exc.code,
+                response_body=body,
+            )
+        elif exc.code == 429:
+            _record_sec_live_block(
+                url=url,
+                reason="SEC_TOO_MANY_REQUESTS_429",
+                user_agent=user_agent,
+                status_code=exc.code,
+                response_body=body,
+            )
+        raise
     except Exception:
-        return pd.DataFrame(), "SEC_COMPANY_TICKERS_FETCH_FAILED"
+        try:
+            return _fetch_sec_json_edgartools(url, user_agent)
+        except Exception as exc:
+            _classify_sec_live_exception(exc, url=url, user_agent=user_agent)
+            raise
+    if isinstance(payload, dict):
+        _clear_sec_live_block(url=url, user_agent=user_agent)
+        return payload
+    try:
+        return _fetch_sec_json_edgartools(url, user_agent)
+    except Exception as exc:
+        _classify_sec_live_exception(exc, url=url, user_agent=user_agent)
+        raise
+
+
+def _fetch_sec_text_live(url: str, user_agent: str) -> str:
+    time.sleep(SEC_REQUEST_INTERVAL_SECONDS)
+    request = Request(url, headers={**_sec_headers(user_agent), "Accept": "application/atom+xml, application/xml, text/xml"})
+    try:
+        with urlopen(request, timeout=30) as response:  # noqa: S310
+            body_bytes = response.read()
+            if str(getattr(response, "headers", {}).get("Content-Encoding") or "").lower() == "gzip":
+                body_bytes = gzip.decompress(body_bytes)
+    except HTTPError as exc:
+        body_bytes = exc.read()
+        if str(exc.headers.get("Content-Encoding") or "").lower() == "gzip":
+            try:
+                body_bytes = gzip.decompress(body_bytes)
+            except OSError:
+                pass
+        body = body_bytes.decode("utf-8", errors="replace")
+        if exc.code == 403 and _sec_endpoint_group(url) == "sec_rss_delta":
+            try:
+                body = _fetch_sec_text_browser_compat(url, user_agent)
+            except Exception:
+                pass
+            else:
+                _clear_sec_live_block(url=url, user_agent=user_agent)
+                return body
+        if exc.code == 403 and SEC_UNDECLARED_TOOL_TEXT in body:
+            _record_sec_live_block(
+                url=url,
+                reason="SEC_UNDECLARED_AUTOMATED_TOOL_403",
+                user_agent=user_agent,
+                status_code=exc.code,
+                response_body=body,
+            )
+        elif exc.code == 403 and SEC_RATE_THRESHOLD_TEXT in body:
+            _record_sec_live_block(
+                url=url,
+                reason="SEC_REQUEST_RATE_THRESHOLD_403",
+                user_agent=user_agent,
+                status_code=exc.code,
+                response_body=body,
+            )
+        elif exc.code == 403:
+            _record_sec_live_block(
+                url=url,
+                reason="SEC_FORBIDDEN_UNKNOWN_403",
+                user_agent=user_agent,
+                status_code=exc.code,
+                response_body=body,
+            )
+        elif exc.code == 429:
+            _record_sec_live_block(
+                url=url,
+                reason="SEC_TOO_MANY_REQUESTS_429",
+                user_agent=user_agent,
+                status_code=exc.code,
+                response_body=body,
+            )
+        raise
+    _clear_sec_live_block(url=url, user_agent=user_agent)
+    return body_bytes.decode("utf-8", errors="replace")
+
+
+def _sec_submission_rows(
+    *,
+    symbol: str,
+    cik: str,
+    payload: dict[str, Any],
+    provider: str,
+    source_url: str,
+    max_rows: int = 20,
+    seen_accessions: set[str] | None = None,
+) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
+    seen_accessions = seen_accessions if seen_accessions is not None else set()
+    recent = payload.get("filings", {}).get("recent", {})
+    forms = recent.get("form", [])[:max_rows]
+    accessions = recent.get("accessionNumber", [])[:max_rows]
+    filing_dates = recent.get("filingDate", [])[:max_rows]
+    acceptances = recent.get("acceptanceDateTime", [])[:max_rows]
+    reports = recent.get("reportDate", [])[:max_rows]
+    for idx, form in enumerate(forms):
+        accession = str(accessions[idx] if idx < len(accessions) else "")
+        if not accession or accession in seen_accessions:
+            continue
+        filed_at = filing_dates[idx] if idx < len(filing_dates) else ""
+        accepted_raw = acceptances[idx] if idx < len(acceptances) else ""
+        accepted_at = (
+            pd.to_datetime(accepted_raw, utc=True, errors="coerce").strftime("%Y-%m-%dT%H:%M:%SZ")
+            if accepted_raw
+            else ""
+        )
+        rows.append(
+            {
+                "provider": provider,
+                "cik": cik,
+                "ticker": symbol.upper(),
+                "accession_no": accession,
+                "form_type": str(form),
+                "filed_at": filed_at,
+                "accepted_at": accepted_at,
+                "period_of_report": reports[idx] if idx < len(reports) else "",
+                "event_type": "filing_index",
+                "source_url": source_url,
+            }
+        )
+        seen_accessions.add(accession)
+    return rows
+
+
+def _sec_company_entries(symbols: tuple[str, ...], mapping: dict[str, Any]) -> dict[str, tuple[dict[str, Any], str]]:
     by_ticker = {str(v.get("ticker") or "").upper(): v for v in mapping.values() if isinstance(v, dict)}
+    entries: dict[str, tuple[dict[str, Any], str]] = {}
     for symbol in symbols:
         entry = by_ticker.get(symbol.upper())
         if not entry:
             continue
         cik = str(entry.get("cik_str") or "").zfill(10)
-        sub_req = Request(
-            f"https://data.sec.gov/submissions/CIK{cik}.json",
-            headers={"User-Agent": user_agent, "Accept": "application/json"},
+        entries[symbol.upper()] = (entry, cik)
+    return entries
+
+
+def _fetch_sec_bulk_baseline(
+    symbols: tuple[str, ...],
+    mapping: dict[str, Any],
+    seen_accessions: set[str],
+) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for symbol, (_entry, cik) in _sec_company_entries(symbols, mapping).items():
+        cached = _load_sec_submission_cache(cik)
+        if cached is None:
+            continue
+        payload, source_url = cached
+        rows.extend(
+            _sec_submission_rows(
+                symbol=symbol,
+                cik=cik,
+                payload=payload,
+                provider="sec_bulk_baseline",
+                source_url=source_url,
+                seen_accessions=seen_accessions,
+            )
         )
+    return rows
+
+
+def _fetch_sec_cache_fallback(
+    symbols: tuple[str, ...],
+    mapping: dict[str, Any],
+    seen_accessions: set[str],
+) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for symbol, (_entry, cik) in _sec_company_entries(symbols, mapping).items():
+        cached = _load_sec_submission_cache(cik)
+        if cached is None:
+            continue
+        payload, source_url = cached
+        rows.extend(
+            _sec_submission_rows(
+                symbol=symbol,
+                cik=cik,
+                payload=payload,
+                provider="sec_submissions_cache",
+                source_url=source_url,
+                seen_accessions=seen_accessions,
+            )
+        )
+    return rows
+
+
+def _fetch_sec_live_delta(
+    symbols: tuple[str, ...],
+    mapping: dict[str, Any],
+    user_agent: str,
+    seen_accessions: set[str],
+) -> list[dict[str, Any]]:
+    if not user_agent or _sec_live_block_active(user_agent):
+        return []
+    rows: list[dict[str, Any]] = []
+    for symbol, (_entry, cik) in _sec_company_entries(symbols, mapping).items():
+        live_url = f"https://data.sec.gov/submissions/CIK{cik}.json"
         try:
-            with urlopen(sub_req, timeout=30) as response:  # noqa: S310
-                payload = json.loads(response.read().decode("utf-8"))
+            if _sec_live_block_active(user_agent, live_url):
+                break
+            payload = _fetch_sec_json_live(live_url, user_agent)
         except Exception:
             continue
-        recent = payload.get("filings", {}).get("recent", {})
-        forms = recent.get("form", [])[:20]
-        accessions = recent.get("accessionNumber", [])[:20]
-        filing_dates = recent.get("filingDate", [])[:20]
-        acceptances = recent.get("acceptanceDateTime", [])[:20]
-        reports = recent.get("reportDate", [])[:20]
-        for idx, form in enumerate(forms):
-            accession = accessions[idx] if idx < len(accessions) else ""
-            filed_at = filing_dates[idx] if idx < len(filing_dates) else ""
-            accepted_raw = acceptances[idx] if idx < len(acceptances) else ""
-            accepted_at = (
-                pd.to_datetime(accepted_raw, utc=True, errors="coerce").strftime("%Y-%m-%dT%H:%M:%SZ")
-                if accepted_raw
-                else ""
+        rows.extend(
+            _sec_submission_rows(
+                symbol=symbol,
+                cik=cik,
+                payload=payload,
+                provider="sec_live_delta",
+                source_url=live_url,
+                seen_accessions=seen_accessions,
             )
-            rows.append(
-                {
-                    "provider": "sec_submissions_api",
-                    "cik": cik,
-                    "ticker": symbol.upper(),
-                    "accession_no": accession,
-                    "form_type": str(form),
-                    "filed_at": filed_at,
-                    "accepted_at": accepted_at,
-                    "period_of_report": reports[idx] if idx < len(reports) else "",
-                    "event_type": "filing_index",
-                    "source_url": f"https://data.sec.gov/submissions/CIK{cik}.json",
-                }
-            )
+        )
+    return rows
+
+
+def _rss_child_text(entry: ElementTree.Element, local_name: str) -> str:
+    for child in list(entry):
+        if child.tag.rsplit("}", 1)[-1] == local_name:
+            return str(child.text or "").strip()
+    return ""
+
+
+def _rss_entry_link(entry: ElementTree.Element) -> str:
+    for child in list(entry):
+        if child.tag.rsplit("}", 1)[-1] == "link":
+            href = child.attrib.get("href")
+            if href:
+                return href
+            if child.text:
+                return child.text.strip()
+    return ""
+
+
+def _parse_sec_rss_entries(xml_text: str, *, symbol: str, cik: str, source_url: str) -> list[dict[str, Any]]:
+    try:
+        root = ElementTree.fromstring(xml_text)
+    except ElementTree.ParseError:
+        return []
+    rows: list[dict[str, Any]] = []
+    for entry in root.iter():
+        if entry.tag.rsplit("}", 1)[-1] not in {"entry", "item"}:
+            continue
+        title = _rss_child_text(entry, "title")
+        updated = _rss_child_text(entry, "updated") or _rss_child_text(entry, "pubDate")
+        filed_at = str(pd.to_datetime(updated, utc=True, errors="coerce").date()) if updated else ""
+        accepted_at = (
+            pd.to_datetime(updated, utc=True, errors="coerce").strftime("%Y-%m-%dT%H:%M:%SZ")
+            if updated
+            else ""
+        )
+        link = _rss_entry_link(entry) or source_url
+        accession_match = re.search(r"([0-9]{10}-[0-9]{2}-[0-9]{6})", f"{title} {link}")
+        accession = accession_match.group(1) if accession_match else _digest_text(f"{symbol}|{title}|{link}")[:16]
+        form_match = re.search(r"\b(10-K|10-Q|8-K|6-K|20-F|40-F|S-1|S-3|424B[0-9]?|DEF 14A|4|3|5)\b", title)
+        rows.append(
+            {
+                "provider": "sec_rss_delta",
+                "cik": cik,
+                "ticker": symbol.upper(),
+                "accession_no": accession,
+                "form_type": form_match.group(1) if form_match else "UNKNOWN",
+                "filed_at": filed_at,
+                "accepted_at": accepted_at,
+                "period_of_report": "",
+                "event_type": "latest_filing_rss_delta",
+                "source_url": link,
+            }
+        )
+    return rows
+
+
+def _fetch_sec_rss_delta(
+    symbols: tuple[str, ...],
+    mapping: dict[str, Any],
+    user_agent: str,
+    seen_accessions: set[str],
+) -> list[dict[str, Any]]:
+    if not user_agent or _sec_live_block_active(user_agent):
+        return []
+    rows: list[dict[str, Any]] = []
+    for symbol, (_entry, cik) in _sec_company_entries(symbols, mapping).items():
+        if _sec_live_block_active(user_agent):
+            break
+        rss_url = (
+            "https://www.sec.gov/cgi-bin/browse-edgar"
+            f"?action=getcompany&CIK={cik}&type=&dateb=&owner=include&count={SEC_RSS_ENTRY_LIMIT}&output=atom"
+        )
+        if _sec_live_block_active(user_agent, rss_url):
+            continue
+        try:
+            xml_text = _fetch_sec_text_live(rss_url, user_agent)
+        except Exception:
+            continue
+        for row in _parse_sec_rss_entries(xml_text, symbol=symbol, cik=cik, source_url=rss_url):
+            accession = str(row.get("accession_no") or "")
+            if not accession or accession in seen_accessions:
+                continue
+            rows.append(row)
+            seen_accessions.add(accession)
+    return rows
+
+
+def _load_sec_ticker_mapping_for_hybrid(user_agent: str, *, allow_network: bool) -> dict[str, Any] | None:
+    mapping = _load_sec_company_tickers_cache()
+    if mapping is not None:
+        return mapping
+    mapping_url = "https://www.sec.gov/files/company_tickers.json"
+    if not allow_network or not user_agent or _sec_live_block_active(user_agent, mapping_url):
+        return None
+    try:
+        return _fetch_sec_json_live(mapping_url, user_agent)
+    except Exception:
+        return None
+
+
+def _fetch_sec_events_hybrid(symbols: tuple[str, ...], *, allow_network: bool) -> tuple[pd.DataFrame, str]:
+    user_agent = os.environ.get("SEC_USER_AGENT", "").strip()
+    if allow_network and user_agent and _sec_live_block_active(user_agent):
+        return pd.DataFrame(), "SEC_LIVE_ACCESS_COOLDOWN_ACTIVE"
+    mapping = _load_sec_ticker_mapping_for_hybrid(user_agent, allow_network=allow_network)
+    if mapping is None:
+        if not allow_network:
+            return pd.DataFrame(), "SEC_BULK_BASELINE_MAPPING_CACHE_MISSING_NETWORK_DISABLED"
+        if not user_agent:
+            return pd.DataFrame(), "SEC_USER_AGENT_MISSING"
+        return pd.DataFrame(), "SEC_TICKER_MAPPING_UNAVAILABLE"
+    seen_accessions: set[str] = set()
+    rows: list[dict[str, Any]] = []
+    rows.extend(_fetch_sec_bulk_baseline(symbols, mapping, seen_accessions))
+    if allow_network and user_agent:
+        rows.extend(_fetch_sec_live_delta(symbols, mapping, user_agent, seen_accessions))
+        rows.extend(_fetch_sec_rss_delta(symbols, mapping, user_agent, seen_accessions))
+    if not rows:
+        rows.extend(_fetch_sec_cache_fallback(symbols, mapping, seen_accessions))
     if not rows:
         return pd.DataFrame(), "PROVIDER_RETURNED_EMPTY"
     return pd.DataFrame(rows), ""
+
+
+def _fetch_sec_events(symbols: tuple[str, ...], *, allow_network: bool) -> tuple[pd.DataFrame, str]:
+    return _fetch_sec_events_hybrid(symbols, allow_network=allow_network)
+
+
+def _highest_priority_sec_provider(providers: list[str]) -> str:
+    if not providers:
+        return "sec_events_provider_unknown"
+    return sorted(providers, key=lambda provider: (SEC_PROVIDER_PRIORITY.get(provider, 99), provider))[0]
 
 
 def _upsert_sec(con: sqlite3.Connection, frame: pd.DataFrame, raw_path: Path, raw_sha: str, capture_ts: str) -> int:
@@ -917,8 +2459,23 @@ def _acquire_family_locked(
     frame = _fixture_frame(fixture_dir, family)
     skipped_reason = ""
     provider = "fixture"
+    providers_seen: list[str] = []
+    provider_call_ledger: list[dict[str, Any]] = []
+    if not frame.empty and family in NEWS_SOURCE_FAMILIES and "provider" in frame.columns:
+        providers_seen = sorted({str(value) for value in frame["provider"].dropna().tolist() if str(value)})
+        provider = providers_seen[0] if providers_seen else FAMILY_DEFAULT_PROVIDER[family]
+    elif not frame.empty and family in NEWS_SOURCE_FAMILIES:
+        provider = FAMILY_DEFAULT_PROVIDER[family]
     if frame.empty:
-        provider = "yfinance" if family in {"market_bars_5m", "market_ticks_intraday", "daily_ohlcv"} else "fred_csv" if family == "macro_rates" else "sec_submissions_api"
+        provider = (
+            "yfinance"
+            if family in {"market_bars_5m", "market_ticks_intraday", "daily_ohlcv"}
+            else "fred_csv"
+            if family == "macro_rates"
+            else FAMILY_DEFAULT_PROVIDER[family]
+            if family in NEWS_SOURCE_FAMILIES
+            else "sec_submissions_api"
+        )
         if family == "market_bars_5m":
             frame, skipped_reason = _fetch_yfinance(symbols, interval="5m", period="5d", allow_network=allow_network)
         elif family == "market_ticks_intraday":
@@ -927,8 +2484,19 @@ def _acquire_family_locked(
             frame, skipped_reason = _fetch_yfinance(symbols, interval="1d", period="10d", allow_network=allow_network)
         elif family == "macro_rates":
             frame, skipped_reason = _fetch_macro(macro_series, allow_network=allow_network)
+        elif family in NEWS_SOURCE_FAMILIES:
+            frame, skipped_reason = _fetch_news_family(family, symbols, allow_network=allow_network)
+            provider_call_ledger = list(frame.attrs.get("provider_call_ledger") or [])
+            if not frame.empty and "provider" in frame.columns:
+                providers_seen = sorted({str(value) for value in frame["provider"].dropna().tolist() if str(value)})
+                provider = providers_seen[0] if providers_seen else FAMILY_DEFAULT_PROVIDER[family]
         elif family == "sec_events":
             frame, skipped_reason = _fetch_sec_events(symbols, allow_network=allow_network)
+            if not frame.empty and "provider" in frame.columns:
+                providers_seen = sorted({str(value) for value in frame["provider"].dropna().tolist() if str(value)})
+                provider = _highest_priority_sec_provider(providers_seen)
+    if family == "official_public_releases" and len(providers_seen) > 1:
+        provider = "official_public_releases_multi_provider"
     if frame.empty:
         reason = skipped_reason or "NO_PROVIDER_ROWS"
         _write_scheduler_ledger(
@@ -937,7 +2505,12 @@ def _acquire_family_locked(
             bucket=bucket,
             status="SKIPPED",
             skipped_reason=reason,
-            validation={"source_family": family, "missing_source_is_negative": 0, "allow_network": int(allow_network)},
+            validation={
+                "source_family": family,
+                "missing_source_is_negative": 0,
+                "allow_network": int(allow_network),
+                "provider_call_ledger": provider_call_ledger,
+            },
         )
         return AcquisitionResult(family, "SKIPPED", reason)
     stable_input_hash = _content_rows_hash(frame)
@@ -977,6 +2550,15 @@ def _acquire_family_locked(
         "capture_ts": capture_ts,
         "available_to_brain_ts": capture_ts,
         "request": {"symbols": list(symbols), "macro_series": list(macro_series), "fixture": bool(fixture_dir)},
+        "providers_seen": providers_seen or [provider],
+        "provider_call_ledger": provider_call_ledger,
+        "provider_selection_rule": (
+            "sec_live_delta > sec_rss_delta > sec_bulk_baseline > sec_submissions_cache"
+            if family == "sec_events"
+            else "official first, discovery providers remain non-authority"
+            if family in NEWS_SOURCE_FAMILIES
+            else "single_provider"
+        ),
         "secrets_excluded": True,
         "diagnostic_only": True,
     }
@@ -1008,6 +2590,33 @@ def _acquire_family_locked(
         target_table = "macro_rates"
         source_ts = f"{str(pd.to_datetime(frame['observation_date'], errors='coerce').max().date())}T21:00:00Z"
         source_time_basis = "provider_current_observation_no_vintage"
+    elif family in NEWS_SOURCE_FAMILIES:
+        provisional_source = pd.Series([capture_ts])
+        for column in ("publication_ts", "published_at", "published", "seendate", "datetime"):
+            if column in frame.columns:
+                provisional_source = frame[column]
+                break
+        max_publication = pd.to_datetime(provisional_source, utc=True, errors="coerce").max()
+        source_ts = capture_ts if pd.isna(max_publication) else max_publication.strftime("%Y-%m-%dT%H:%M:%SZ")
+        receipt_id = _provider_receipt_id(
+            family=family,
+            provider=provider,
+            source_key=f"{provider}:{family}:{bucket}",
+            source_ts=source_ts,
+            stable_input_hash=stable_input_hash,
+        )
+        row_count, source_ts = _upsert_news_events(
+            con,
+            family=family,
+            provider=provider,
+            frame=frame,
+            raw_path=raw_path,
+            raw_sha=raw_sha,
+            capture_ts=capture_ts,
+            raw_receipt_id=receipt_id,
+        )
+        target_table = "news_event_l0"
+        source_time_basis = "news_publication_ts_or_capture_ts_when_missing"
     else:
         row_count = _upsert_sec(con, frame, raw_path, raw_sha, capture_ts)
         target_table = "sec_events"
@@ -1057,7 +2666,9 @@ def _acquire_family_locked(
             "raw_sha256": raw_sha,
             "strict_gate_allowed": 0,
             "proxy_allowed": 0,
+            "missing_source_is_negative": 0,
             "allow_network": int(allow_network),
+            "provider_call_ledger": provider_call_ledger,
         },
     )
     _record_input_fingerprint(
@@ -1107,6 +2718,7 @@ def run_once(
             }
         _create_schema(con)
         _ensure_runtime_market_tables(con)
+        _ensure_news_event_tables(con)
         _ensure_source_scheduler_hardening_tables(con)
         results: list[AcquisitionResult] = []
         for family in families:

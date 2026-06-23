@@ -1,0 +1,2 @@
+run_id,input_count,ready_for_future_controlled_replay_count,blocked_before_replay_count,price_lookup_count,trade_row_count,pnl_metric_count,engine_call_count,strategy_acceptance,deployment_status,real_capital,validation_authority,pass_does_not_mean
+task3883_scope_f_no_execution,1,0,1,0,0,0,0,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,GOVERNANCE_HEALTH,"strategy acceptance, deployment readiness, broker truth, backtest validity, source completeness, or real-capital permission"

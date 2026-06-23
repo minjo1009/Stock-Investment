@@ -1,0 +1,2 @@
+replay_config_id,current_state,split_oos_plan_state,cost_slippage_config_state,validation_authority
+replay-config-scope-f,dry_plan_only,draft_not_owner_approved,draft_not_owner_approved,GOVERNANCE_HEALTH

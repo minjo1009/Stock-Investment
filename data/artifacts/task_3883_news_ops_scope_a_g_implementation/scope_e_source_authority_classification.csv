@@ -1,0 +1,8 @@
+source_family,authority_classification,strict_gate_allowed,proxy_allowed,notes
+market_ticks_intraday,DIAGNOSTIC_SOURCE_EVIDENCE_ONLY,0,0,classification is diagnostic-only and cannot create replay/order eligibility
+market_bars_5m,DIAGNOSTIC_SOURCE_EVIDENCE_ONLY,0,0,classification is diagnostic-only and cannot create replay/order eligibility
+macro_rates,DIAGNOSTIC_SOURCE_EVIDENCE_ONLY,0,0,classification is diagnostic-only and cannot create replay/order eligibility
+sec_events,DIAGNOSTIC_SOURCE_EVIDENCE_ONLY,0,0,classification is diagnostic-only and cannot create replay/order eligibility
+official_public_releases,DIAGNOSTIC_SOURCE_EVIDENCE_ONLY,0,0,classification is diagnostic-only and cannot create replay/order eligibility
+gdelt_news_events,DISCOVERY_OR_ENRICHMENT_ONLY,0,0,classification is diagnostic-only and cannot create replay/order eligibility
+marketaux_news_free,DISCOVERY_OR_ENRICHMENT_ONLY,0,0,classification is diagnostic-only and cannot create replay/order eligibility

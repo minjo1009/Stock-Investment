@@ -1,0 +1,2 @@
+meaning_id,relation_edge_id,thesis_id,action_id,runtime_decision_id,runtime_gate,paper_order_intent_allowed,live_order_allowed
+meaning:scope-d:discovery,edge:scope-d:blocked,thesis:scope-d:blocked,action:scope-d:skip,runtime:scope-d:blocked,BLOCKED,0,0

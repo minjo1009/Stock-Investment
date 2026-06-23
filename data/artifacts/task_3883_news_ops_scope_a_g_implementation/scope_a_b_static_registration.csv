@@ -1,0 +1,8 @@
+source_family,cadence_spec,family_to_job,registered_adapter,provider_spec
+market_ticks_intraday,1,1,1,1
+market_bars_5m,1,1,1,1
+macro_rates,1,1,1,1
+sec_events,1,1,1,1
+official_public_releases,1,1,1,1
+gdelt_news_events,1,1,1,1
+marketaux_news_free,1,1,1,1

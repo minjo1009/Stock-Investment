@@ -1,0 +1,7 @@
+job_name,interval_minutes,enabled,allow_network,families
+intraday_market_sources_5m,5,True,True,"market_bars_5m,market_ticks_intraday"
+heavy_sources_60m,60,True,True,"daily_ohlcv,macro_rates,sec_events"
+official_news_sources_15m,30,False,False,official_public_releases
+gdelt_news_discovery_15m,15,False,False,gdelt_news_events
+marketaux_news_free_30m,60,False,False,marketaux_news_free
+registered_db_loop_5m,5,True,False,

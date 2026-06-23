@@ -27,6 +27,9 @@ ADAPTERS = {
     "macro_rates_refresh": "cached_macro_rates",
     "market_bars_5m_refresh": "cached_market_bars_5m",
     "market_ticks_intraday_refresh": "cached_market_ticks_intraday",
+    "official_public_releases_refresh": "cached_news_event_l0",
+    "gdelt_news_events_refresh": "cached_news_event_l0",
+    "marketaux_news_free_refresh": "cached_news_event_l0",
     "runtime_strategy_decisions_refresh": "derived_runtime_strategy_decisions_from_indicators",
     "sec_events_refresh": "cached_sec_events",
 }
@@ -41,6 +44,9 @@ ADAPTER_SOURCE_FAMILIES = {
     "macro_rates": "cached_macro_rates",
     "market_bars_5m": "cached_market_bars_5m",
     "market_ticks_intraday": "cached_market_ticks_intraday",
+    "official_public_releases": "cached_news_event_l0",
+    "gdelt_news_events": "cached_news_event_l0",
+    "marketaux_news_free": "cached_news_event_l0",
     "runtime_strategy_decisions": "derived_runtime_strategy_decisions_from_indicators",
     "sec_events": "cached_sec_events",
 }
@@ -240,14 +246,25 @@ def _table_columns(con: sqlite3.Connection, table: str) -> list[str]:
     return [row["name"] for row in con.execute(f'PRAGMA table_info("{table}")').fetchall()]
 
 
-def _hash_table_rows(con: sqlite3.Connection, table: str, columns: list[str], order_columns: list[str]) -> str:
+def _hash_table_rows(
+    con: sqlite3.Connection,
+    table: str,
+    columns: list[str],
+    order_columns: list[str],
+    *,
+    where_sql: str = "",
+    where_params: tuple[Any, ...] = (),
+) -> str:
     digest = hashlib.sha256()
-    digest.update((f"table|{table}|columns|" + "|".join(columns) + "\n").encode("utf-8"))
+    digest.update((f"table|{table}|columns|" + "|".join(columns) + f"|where|{where_sql}\n").encode("utf-8"))
     order = ", ".join(f'"{column}"' for column in order_columns if column in columns)
     if not order:
         order = ", ".join(f'"{column}"' for column in columns)
-    query = "SELECT " + ", ".join(f'"{column}"' for column in columns) + f' FROM "{table}" ORDER BY {order}'
-    for row in con.execute(query):
+    query = "SELECT " + ", ".join(f'"{column}"' for column in columns) + f' FROM "{table}"'
+    if where_sql:
+        query += f" WHERE {where_sql}"
+    query += f" ORDER BY {order}"
+    for row in con.execute(query, where_params):
         digest.update(("|".join(_encode_hash_value(value) for value in row) + "\n").encode("utf-8"))
     return digest.hexdigest()
 
@@ -259,6 +276,8 @@ def _cached_table_stats(
     source_ts_column: str,
     capture_ts_column: str | None,
     distinct_column: str | None = None,
+    where_sql: str = "",
+    where_params: tuple[Any, ...] = (),
 ) -> dict[str, Any]:
     expressions = [
         "COUNT(*) AS row_count",
@@ -274,7 +293,10 @@ def _cached_table_stats(
         )
     if distinct_column:
         expressions.append(f'COUNT(DISTINCT "{distinct_column}") AS distinct_count')
-    row = con.execute(f'SELECT {", ".join(expressions)} FROM "{table}"').fetchone()
+    query = f'SELECT {", ".join(expressions)} FROM "{table}"'
+    if where_sql:
+        query += f" WHERE {where_sql}"
+    row = con.execute(query, where_params).fetchone()
     return dict(row)
 
 
@@ -430,13 +452,26 @@ def _run_derived_artifact_lineage(
     edge_id = f"edge:{job['source_family']}:{bucket}"
     con.execute(
         """
-        INSERT OR REPLACE INTO source_receipts(
+        INSERT INTO source_receipts(
             receipt_id, provider, source_family, source_key, source_ts, capture_ts,
             available_to_brain_ts, raw_path, raw_sha256, source_time_basis,
             strict_gate_allowed, proxy_allowed, created_at
         )
         VALUES (?, 'local_readonly_artifact_builder', ?, ?, ?, ?, ?, ?, ?,
                 'derived_artifact_file_mtime', 0, 0, ?)
+        ON CONFLICT(receipt_id) DO UPDATE SET
+            provider=excluded.provider,
+            source_family=excluded.source_family,
+            source_key=excluded.source_key,
+            source_ts=excluded.source_ts,
+            capture_ts=excluded.capture_ts,
+            available_to_brain_ts=excluded.available_to_brain_ts,
+            raw_path=excluded.raw_path,
+            raw_sha256=excluded.raw_sha256,
+            source_time_basis=excluded.source_time_basis,
+            strict_gate_allowed=excluded.strict_gate_allowed,
+            proxy_allowed=excluded.proxy_allowed,
+            created_at=excluded.created_at
         """,
         (
             receipt_id,
@@ -450,23 +485,42 @@ def _run_derived_artifact_lineage(
             now,
         ),
     )
-    con.execute(
+    ref_path_or_key = ";".join(row["path"] for row in files)
+    existing_ref = con.execute(
         """
-        INSERT OR REPLACE INTO reference_hashes(
-            ref_id, ref_type, path_or_key, sha256, size_bytes, source_family, created_at, notes
-        )
-        VALUES (?, 'derived_artifact_hash_set', ?, ?, ?, ?, ?,
-                'read-only derived artifact hash set; not source truth')
+        SELECT ref_id FROM reference_hashes
+        WHERE ref_type='derived_artifact_hash_set' AND path_or_key=? AND sha256=?
         """,
-        (
-            ref_id,
-            ";".join(row["path"] for row in files),
-            aggregate_hash,
-            sum(int(row["size_bytes"]) for row in files),
-            job["source_family"],
-            now,
-        ),
-    )
+        (ref_path_or_key, aggregate_hash),
+    ).fetchone()
+    if existing_ref is not None:
+        ref_id = str(existing_ref["ref_id"])
+    else:
+        con.execute(
+            """
+            INSERT INTO reference_hashes(
+                ref_id, ref_type, path_or_key, sha256, size_bytes, source_family, created_at, notes
+            )
+            VALUES (?, 'derived_artifact_hash_set', ?, ?, ?, ?, ?,
+                    'read-only derived artifact hash set; not source truth')
+            ON CONFLICT(ref_id) DO UPDATE SET
+                ref_type=excluded.ref_type,
+                path_or_key=excluded.path_or_key,
+                sha256=excluded.sha256,
+                size_bytes=excluded.size_bytes,
+                source_family=excluded.source_family,
+                created_at=excluded.created_at,
+                notes=excluded.notes
+            """,
+            (
+                ref_id,
+                ref_path_or_key,
+                aggregate_hash,
+                sum(int(row["size_bytes"]) for row in files),
+                job["source_family"],
+                now,
+            ),
+        )
     con.execute(
         """
         INSERT OR REPLACE INTO data_lineage_edges(
@@ -550,6 +604,8 @@ def _run_cached_table_snapshot(
     source_time_basis: str,
     transform_name: str,
     notes: str,
+    where_sql: str = "",
+    where_params: tuple[Any, ...] = (),
 ) -> JobResult:
     if not _table_exists(con, table):
         _write_scheduler_ledger(
@@ -579,6 +635,8 @@ def _run_cached_table_snapshot(
         source_ts_column=source_ts_column,
         capture_ts_column=capture_ts_column,
         distinct_column=distinct_column if distinct_column in columns else None,
+        where_sql=where_sql,
+        where_params=where_params,
     )
     if int(stats["row_count"] or 0) <= 0:
         _write_scheduler_ledger(
@@ -603,7 +661,14 @@ def _run_cached_table_snapshot(
     if max_source is not None and (datetime.now(UTC) - max_source).total_seconds() <= max_lag_seconds:
         freshness_status = "CURRENT_OR_RECENT"
 
-    table_hash = _hash_table_rows(con, table, columns, order_columns)
+    table_hash = _hash_table_rows(
+        con,
+        table,
+        columns,
+        order_columns,
+        where_sql=where_sql,
+        where_params=where_params,
+    )
     raw_path, payload = _write_cached_table_raw(
         job,
         bucket,
@@ -2038,6 +2103,29 @@ def run_once(
                             source_time_basis="cached_sec_accepted_or_filed_ts",
                             transform_name="cached_sec_events_freshness_update",
                             notes="cached sec_events provider acquisition evidence; missing SEC source remains blocker",
+                        )
+                    )
+                elif adapter == "cached_news_event_l0":
+                    missing_reason = f"NO_CACHED_{str(job['source_family']).upper()}_SOURCE"
+                    results.append(
+                        _run_cached_table_snapshot(
+                            con,
+                            job,
+                            bucket_ts,
+                            RAW_CACHED_TABLE_DIR,
+                            adapter_name=adapter,
+                            table="news_event_l0",
+                            source_ts_column="publication_ts",
+                            capture_ts_column="collection_ts",
+                            order_columns=["source_family", "publication_ts", "provider", "provider_item_id", "raw_item_id"],
+                            distinct_column="raw_item_id",
+                            missing_reason=missing_reason,
+                            provider=f"trading_db_cached_{job['source_family']}",
+                            source_time_basis="cached_news_publication_ts",
+                            transform_name=f"cached_{job['source_family']}_freshness_update",
+                            notes="cached news L0 evidence only; L1 promotion and strict gates remain closed until certification",
+                            where_sql='"source_family"=?',
+                            where_params=(str(job["source_family"]),),
                         )
                     )
                 elif adapter == "derived_indicator_snapshots_from_market_bars":

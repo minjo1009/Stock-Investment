@@ -1,0 +1,16 @@
+{
+  "blocker_errors": [
+    "source_time_blockers:market_bars_5m:66"
+  ],
+  "broker_mutation": "FORBIDDEN",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "fatal_errors": [],
+  "live_order": "FORBIDDEN",
+  "paper_promotion": "FORBIDDEN",
+  "real_capital": "FORBIDDEN",
+  "receipt_sample_limit_per_family": 200,
+  "rule": "source_ts <= capture_ts <= available_to_brain_ts <= node_asof_ts <= edge_asof_ts <= bundle_asof_ts <= adapter_created_ts <= tradable_after_ts",
+  "source_time_blocker_count": 66,
+  "status": "PASS_WITH_BLOCKERS",
+  "strategy": "NOT_ACCEPTED"
+}

@@ -1,0 +1,38 @@
+{
+  "allowed_outputs": [
+    "input_manifest",
+    "source_time_blocker_report",
+    "market_data_gate_report",
+    "split_oos_plan",
+    "cost_slippage_config_draft",
+    "no_execution_dry_harness"
+  ],
+  "broker_mutation": "FORBIDDEN",
+  "controlled_replay_allowed": false,
+  "controlled_replay_blocker": "NO_EXECUTION_HARNESS_ONLY_FOR_SCOPE_F",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "errors": [],
+  "forbidden_until_blockers_clear": [
+    "pnl_replay",
+    "trade_generation",
+    "strategy_acceptance_comparison",
+    "paper_promotion",
+    "live_readiness",
+    "buy_sell_position_size_recommendation"
+  ],
+  "generated_artifacts": [
+    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_f_harness_input_manifest.csv",
+    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_f_market_data_gate_report.csv",
+    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_f_split_oos_cost_slippage_plan.csv",
+    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_f_dry_harness_run_plan.csv",
+    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_f_dry_harness_run_summary.csv",
+    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_f_harness_artifact_audit.csv",
+    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_g_controlled_replay_go_no_go_matrix.csv"
+  ],
+  "harness_mode": "NO_EXECUTION_DIAGNOSTIC_ONLY",
+  "live_order": "FORBIDDEN",
+  "paper_promotion": "FORBIDDEN",
+  "real_capital": "FORBIDDEN",
+  "status": "PASS",
+  "strategy": "NOT_ACCEPTED"
+}

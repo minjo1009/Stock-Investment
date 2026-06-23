@@ -1,6 +1,9 @@
 {
   "owner_id": "operator-db-source-acquisition-scheduler",
   "default_allow_network": false,
+  "sec_live_network_default": true,
+  "sec_live_auto_scheduler_enabled": true,
+  "sec_live_block_state_path": "data/artifacts/sec_live_access_block_state.json",
   "sec_user_agent_env_name": "SEC_USER_AGENT",
   "sec_user_agent_env_file": "configs/local/sec_user_agent.env",
   "artifact_dir": "data/artifacts/task_3761_3800_db_source_scheduler_config_freshness_validator/scheduler_runs",
@@ -22,6 +25,33 @@
       "families": ["daily_ohlcv", "macro_rates", "sec_events"],
       "symbols": ["AAPL", "MSFT", "NVDA", "AMD", "QQQ"],
       "macro_series": ["DFF", "DGS10"]
+    },
+    {
+      "name": "official_news_sources_15m",
+      "enabled": false,
+      "interval_minutes": 30,
+      "allow_network": false,
+      "families": ["official_public_releases"],
+      "symbols": ["AAPL", "MSFT", "NVDA", "AMD", "QQQ"],
+      "macro_series": []
+    },
+    {
+      "name": "gdelt_news_discovery_15m",
+      "enabled": false,
+      "interval_minutes": 15,
+      "allow_network": false,
+      "families": ["gdelt_news_events"],
+      "symbols": ["AAPL", "MSFT", "NVDA", "AMD", "QQQ"],
+      "macro_series": []
+    },
+    {
+      "name": "marketaux_news_free_30m",
+      "enabled": false,
+      "interval_minutes": 60,
+      "allow_network": false,
+      "families": ["marketaux_news_free"],
+      "symbols": ["AAPL", "MSFT", "NVDA", "AMD", "QQQ"],
+      "macro_series": []
     },
     {
       "name": "registered_db_loop_5m",

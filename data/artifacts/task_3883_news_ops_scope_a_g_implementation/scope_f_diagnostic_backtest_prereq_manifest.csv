@@ -1,0 +1,5 @@
+artifact_name,artifact_path,status
+scope_a_b_scheduler_reconciliation,C:\Users\minjo\OneDrive\바탕 화면\외국주식 퀀트트레이딩\data\artifacts\task_3883_news_ops_scope_a_g_implementation\scope_a_b_scheduler_reconciliation.json,PASS
+scope_c_l0_l1_storage_validation,C:\Users\minjo\OneDrive\바탕 화면\외국주식 퀀트트레이딩\data\artifacts\task_3883_news_ops_scope_a_g_implementation\scope_c_l0_l1_storage_validation.json,PASS
+scope_d_l1_l6_consumption_validation,C:\Users\minjo\OneDrive\바탕 화면\외국주식 퀀트트레이딩\data\artifacts\task_3883_news_ops_scope_a_g_implementation\scope_d_l1_l6_consumption_validation.json,PASS
+scope_e_source_time_audit,C:\Users\minjo\OneDrive\바탕 화면\외국주식 퀀트트레이딩\data\artifacts\task_3883_news_ops_scope_a_g_implementation\scope_e_source_time_audit.json,PASS_WITH_BLOCKERS

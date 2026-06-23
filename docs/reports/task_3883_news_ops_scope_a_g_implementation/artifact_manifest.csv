@@ -1,0 +1,36 @@
+artifact_path,artifact_type,description,status
+docs/reports/task_3883_news_ops_scope_a_g_implementation/news_ops_scope_a_g_implementation_report.md,report,Scope A-G implementation report,ACTIVE
+docs/reports/task_3883_news_ops_scope_a_g_implementation/gpt_post_implementation_review_prompt.md,report,GPT post-implementation review prompt,ACTIVE
+docs/reports/task_3883_news_ops_scope_a_g_implementation/gpt_post_implementation_review_response.md,report,GPT post-implementation review response,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_a_b_scheduler_reconciliation.json,artifact,Scope A-B scheduler registration and cadence reconciliation result,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_a_b_config_jobs.csv,artifact,Scope A-B scheduler config job audit,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_a_b_db_registry.csv,artifact,Scope A-B DB scheduler registry audit,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_a_b_static_registration.csv,artifact,Scope A-B static registration map audit,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_c_l0_l1_storage_validation.json,artifact,Scope C L0/L1 storage validation result,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_c_l0_l1_storage_matrix.csv,artifact,Scope C source evidence chain matrix,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_c_bad_receipt_metadata.csv,artifact,Scope C active-evidence bad receipt metadata report,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_d_l1_l6_consumption_validation.json,artifact,Scope D L1-L6 no-trade contract validation result,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_d_contract_chain.csv,artifact,Scope D synthetic blocked contract chain evidence,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_d_discovery_l1_blockers.csv,artifact,Scope D discovery source L1 blocker evidence,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_e_source_time_audit.json,artifact,Scope E source-time audit result,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_e_source_time_chain_schema.csv,artifact,Scope E eight-timestamp chain schema audit,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_e_source_time_blockers.csv,artifact,Scope E source-time blocker report,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_e_source_time_summary.csv,artifact,Scope E source-time family summary,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_e_source_authority_classification.csv,artifact,Scope E authority classification report,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_no_execution_harness_manifest.json,artifact,Scope F no-execution diagnostic harness manifest,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_diagnostic_backtest_prereq_manifest.csv,artifact,Scope F prerequisite manifest,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_diagnostic_backtest_blockers.csv,artifact,Scope F blocker report,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_harness_input_manifest.csv,artifact,Scope F harness input manifest,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_market_data_gate_report.csv,artifact,Scope F market data gate report,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_split_oos_cost_slippage_plan.csv,artifact,Scope F split/OOS cost/slippage draft,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_dry_harness_run_plan.csv,artifact,Scope F dry harness run plan,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_dry_harness_run_summary.csv,artifact,Scope F dry harness run summary,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_harness_artifact_audit.csv,artifact,Scope F harness artifact audit,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_g_controlled_replay_go_no_go_matrix.csv,artifact,Scope G controlled replay go/no-go matrix,ACTIVE
+scripts/validate_news_ops_scope_a_b.py,script,Scope A-B scheduler reconciliation validator,ACTIVE
+scripts/validate_l0_l1_storage.py,script,Scope C L0/L1 storage validator,ACTIVE
+scripts/validate_l1_l6_consumption_contract.py,script,Scope D L1-L6 consumption validator,ACTIVE
+scripts/validate_source_time_audit.py,script,Scope E source-time audit validator,ACTIVE
+scripts/validate_diagnostic_backtest_prereqs.py,script,Scope F-G no-execution harness and replay blocker validator,ACTIVE
+scripts/validate_news_ops_to_backtest_goal.py,script,Scope A-G umbrella validator,ACTIVE
+scripts/news_ops_to_backtest_common.py,script,Shared helper for Task3883 validators,ACTIVE

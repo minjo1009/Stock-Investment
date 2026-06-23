@@ -1,0 +1,10 @@
+{
+  "broker_mutation": "FORBIDDEN",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "errors": [],
+  "live_order": "FORBIDDEN",
+  "paper_promotion": "FORBIDDEN",
+  "real_capital": "FORBIDDEN",
+  "status": "PASS",
+  "strategy": "NOT_ACCEPTED"
+}
