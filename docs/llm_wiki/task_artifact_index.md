@@ -57,6 +57,7 @@ Use this index to find current truth without rereading all historical reports.
 | Task3834 | frontend screenshot QA baseline: target manifest, screenshot target validator, route validator, and scaffold screen-boundary validator | [report](../reports/task_3834_frontend_screenshot_qa_baseline/task_3834_frontend_screenshot_qa_baseline.md) |
 | Task3836 | frontend screenshot capture loop: actual Chrome-headless web-preflight screenshots, GPT visual review, bounded P1 Badge/StatusRow repair, and after2 recapture | [report](../reports/task_3836_frontend_screenshot_capture_loop/task_3836_frontend_screenshot_capture_loop.md) |
 | Task3839 | frontend QA to v1 10-loop run: screenshot-baseline/story-coverage validators, scaffold-only v1 hierarchy, and NOT_AUTHORITY screenshot recapture | [report](../reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_frontend_qa_to_v1_10_loop.md) |
+| Task3841 | frontend product UI v1 10-loop run: detail route v1 hierarchy, detail-v1 validator, expanded story coverage, screenshot target hardening, and NOT_AUTHORITY screenshot recapture | [report](../reports/task_3841_frontend_product_ui_v1_10_loop/task_3841_frontend_product_ui_v1_10_loop.md) |
 
 ## Current Interpretation
 

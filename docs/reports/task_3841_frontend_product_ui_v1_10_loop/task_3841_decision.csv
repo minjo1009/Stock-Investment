@@ -1,0 +1,11 @@
+field,value,authority,notes
+task_id,Task3841,canonical,Registry task id.
+strategy_acceptance,NOT_ACCEPTED,canonical,No strategy acceptance changed.
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,canonical,No deployment readiness changed.
+real_capital,FORBIDDEN,canonical,No real-capital permission changed.
+broker_mutation,false,canonical,No broker mutation path added.
+frontend_scope,scaffold_only_detail_v1_qa,canonical,Existing detail route hierarchy and QA validators only.
+gpt_loop_count,10,canonical,Ten loop artifacts are recorded.
+screenshot_capture,CAPTURED,canonical,Chrome-headless web-preflight screenshots were captured.
+screenshot_authority,NOT_AUTHORITY,canonical,Screenshots are QA artifacts only.
+product_readiness,NOT_GRANTED,canonical,No product readiness granted.

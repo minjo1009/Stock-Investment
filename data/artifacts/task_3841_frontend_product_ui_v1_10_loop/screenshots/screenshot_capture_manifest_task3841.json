@@ -1,0 +1,207 @@
+{
+    "taskId":  "Task3841",
+    "authority":  "NOT_AUTHORITY",
+    "captureStatus":  "CAPTURED",
+    "platform":  "chrome-headless-web-preflight",
+    "generatedAt":  "2026-06-23T02:50:21Z",
+    "captures":  [
+                     {
+                         "routeId":  "home",
+                         "routePath":  "/",
+                         "deviceId":  "iphone-se-width",
+                         "width":  375,
+                         "height":  667,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/home__iphone-se-width__375x667.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  33189
+                     },
+                     {
+                         "routeId":  "home",
+                         "routePath":  "/",
+                         "deviceId":  "iphone-15-width",
+                         "width":  393,
+                         "height":  852,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/home__iphone-15-width__393x852.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  42878
+                     },
+                     {
+                         "routeId":  "brain",
+                         "routePath":  "/brain",
+                         "deviceId":  "iphone-se-width",
+                         "width":  375,
+                         "height":  667,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/brain__iphone-se-width__375x667.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  27965
+                     },
+                     {
+                         "routeId":  "brain",
+                         "routePath":  "/brain",
+                         "deviceId":  "iphone-15-width",
+                         "width":  393,
+                         "height":  852,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/brain__iphone-15-width__393x852.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  37649
+                     },
+                     {
+                         "routeId":  "portfolio",
+                         "routePath":  "/portfolio",
+                         "deviceId":  "iphone-se-width",
+                         "width":  375,
+                         "height":  667,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/portfolio__iphone-se-width__375x667.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  27153
+                     },
+                     {
+                         "routeId":  "portfolio",
+                         "routePath":  "/portfolio",
+                         "deviceId":  "iphone-15-width",
+                         "width":  393,
+                         "height":  852,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/portfolio__iphone-15-width__393x852.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  36335
+                     },
+                     {
+                         "routeId":  "orders",
+                         "routePath":  "/orders",
+                         "deviceId":  "iphone-se-width",
+                         "width":  375,
+                         "height":  667,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/orders__iphone-se-width__375x667.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  29754
+                     },
+                     {
+                         "routeId":  "orders",
+                         "routePath":  "/orders",
+                         "deviceId":  "iphone-15-width",
+                         "width":  393,
+                         "height":  852,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/orders__iphone-15-width__393x852.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  39220
+                     },
+                     {
+                         "routeId":  "system",
+                         "routePath":  "/system",
+                         "deviceId":  "iphone-se-width",
+                         "width":  375,
+                         "height":  667,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/system__iphone-se-width__375x667.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  28583
+                     },
+                     {
+                         "routeId":  "system",
+                         "routePath":  "/system",
+                         "deviceId":  "iphone-15-width",
+                         "width":  393,
+                         "height":  852,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/system__iphone-15-width__393x852.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  36839
+                     },
+                     {
+                         "routeId":  "candidate-detail",
+                         "routePath":  "/brain/candidate/fixture-candidate-review",
+                         "deviceId":  "iphone-se-width",
+                         "width":  375,
+                         "height":  667,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/candidate-detail__iphone-se-width__375x667.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  32561
+                     },
+                     {
+                         "routeId":  "candidate-detail",
+                         "routePath":  "/brain/candidate/fixture-candidate-review",
+                         "deviceId":  "iphone-15-width",
+                         "width":  393,
+                         "height":  852,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/candidate-detail__iphone-15-width__393x852.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  39044
+                     },
+                     {
+                         "routeId":  "chain-detail",
+                         "routePath":  "/brain/chain/fixture-chain",
+                         "deviceId":  "iphone-se-width",
+                         "width":  375,
+                         "height":  667,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/chain-detail__iphone-se-width__375x667.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  26835
+                     },
+                     {
+                         "routeId":  "chain-detail",
+                         "routePath":  "/brain/chain/fixture-chain",
+                         "deviceId":  "iphone-15-width",
+                         "width":  393,
+                         "height":  852,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/chain-detail__iphone-15-width__393x852.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  37185
+                     },
+                     {
+                         "routeId":  "position-detail",
+                         "routePath":  "/portfolio/position/fixture-position-unknown",
+                         "deviceId":  "iphone-se-width",
+                         "width":  375,
+                         "height":  667,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/position-detail__iphone-se-width__375x667.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  31231
+                     },
+                     {
+                         "routeId":  "position-detail",
+                         "routePath":  "/portfolio/position/fixture-position-unknown",
+                         "deviceId":  "iphone-15-width",
+                         "width":  393,
+                         "height":  852,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/position-detail__iphone-15-width__393x852.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  38592
+                     },
+                     {
+                         "routeId":  "order-detail",
+                         "routePath":  "/orders/fixture-order-blocked",
+                         "deviceId":  "iphone-se-width",
+                         "width":  375,
+                         "height":  667,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/order-detail__iphone-se-width__375x667.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  32272
+                     },
+                     {
+                         "routeId":  "order-detail",
+                         "routePath":  "/orders/fixture-order-blocked",
+                         "deviceId":  "iphone-15-width",
+                         "width":  393,
+                         "height":  852,
+                         "artifactPath":  "data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/order-detail__iphone-15-width__393x852.png",
+                         "authority":  "NOT_AUTHORITY",
+                         "captureStatus":  "CAPTURED",
+                         "bytes":  37422
+                     }
+                 ]
+}

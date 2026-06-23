@@ -362,3 +362,13 @@ Task3839 frontend QA to v1 10-loop run:
 - Task3839 Chrome-headless web-preflight screenshots were captured under `data/artifacts/task_3839_frontend_qa_to_v1_10_loop/screenshots/`.
 - Native iOS simulator screenshot capture remains `DEFERRED_WITH_REASON_TASK3839_WINDOWS_ENVIRONMENT`.
 - Product readiness, authoritative read-source integration, Maestro readiness, iOS simulator evidence, broker mutation, paper/live permission, deployment readiness, and real-capital permission remain blocked.
+
+Task3841 frontend product UI v1 10-loop run:
+
+- Ten loop artifacts were recorded for the GPT-guided frontend v1 pass.
+- Existing Chain Detail, Position Detail, and Order Detail routes were aligned to v1 hierarchy without adding read-model fields.
+- `npm run validate:detail-v1` verifies Candidate, Chain, Position, and Order detail routes preserve v1 read-only boundaries.
+- `npm run validate:story-coverage` now checks regression-critical foundation and domain stories.
+- `npm run validate:screenshot-qa` now verifies screenshot target route files preserve read-only and `NOT_AUTHORITY` boundary text.
+- Task3841 Chrome-headless web-preflight screenshots were captured under `data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/`.
+- Product readiness, authoritative read-source integration, Maestro readiness, iOS simulator evidence, broker mutation, paper/live permission, deployment readiness, and real-capital permission remain blocked.

@@ -24,7 +24,7 @@ export default function PositionDetailRoute() {
     <ScreenContainer>
       <View style={{ gap: spacing.sm }}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <Badge label="Position Detail v0" tone="readOnly" />
+          <Badge label="Position Detail v1" tone="readOnly" />
           <Badge label="Read-only" tone="readOnly" />
           <Badge label="NOT_AUTHORITY" tone="blocked" />
         </View>
@@ -33,33 +33,6 @@ export default function PositionDetailRoute() {
           Scaffold-only fixture-backed view. Route params do not select broker truth.
         </AppText>
       </View>
-
-      <SectionContainer title="Scaffold Boundary" description="Position detail is not account truth.">
-        <StatusRow
-          label="Route positionId"
-          value={routePositionId ?? "UNKNOWN"}
-          state={routeMismatch ? "blocked" : "readOnly"}
-        />
-        <StatusRow label="Fixture positionId" value={position.positionId} state="readOnly" />
-        {routeMismatch ? (
-          <AppText variant="caption">
-            Fixture-backed demo only. Route param does not select authoritative data.
-          </AppText>
-        ) : null}
-        <StatusRow
-          label="Strategy"
-          value={`Strategy ${position.governance.strategyAcceptance}`}
-          state="blocked"
-          sourceRef={position.governance.controlStateSource}
-        />
-        <StatusRow
-          label="Real capital"
-          value={`Real capital ${position.governance.realCapital}`}
-          state="blocked"
-          sourceRef={position.governance.controlStateSource}
-        />
-        <BlockerList blockers={position.blockers} />
-      </SectionContainer>
 
       <DecisionHeader decisionSummary={position.sections.decisionSummary} governance={position.governance} />
 
@@ -76,10 +49,12 @@ export default function PositionDetailRoute() {
         </CardContainer>
       </SectionContainer>
 
-      <ValidationReadinessPanel validationReadiness={position.sections.validationReadiness} />
-
       <SectionContainer title="Evidence" description="Broker truth evidence is missing in this fixture.">
         <EvidenceList evidence={position.sections.evidence} />
+      </SectionContainer>
+
+      <SectionContainer title="Validation Status" description="Validation status is not account or broker truth.">
+        <ValidationReadinessPanel validationReadiness={position.sections.validationReadiness} />
       </SectionContainer>
 
       <RiskGate
@@ -107,7 +82,7 @@ export default function PositionDetailRoute() {
         <AppText variant="caption">{position.sections.reconciliation.blockerReason ?? "UNKNOWN"}</AppText>
       </SectionContainer>
 
-      <SectionContainer title="Next Action" description="Read-only actions only; broker sync remains disabled.">
+      <SectionContainer title="Review Actions" description="Read-only actions only; broker sync remains disabled.">
         <CardContainer>
           <Badge label="Review only" tone="readOnly" />
           {position.sections.nextAction.allowedReadOnlyActions.map((action) => (
@@ -119,6 +94,33 @@ export default function PositionDetailRoute() {
         </CardContainer>
         <DisabledActionBar actions={position.sections.nextAction.disabledTradingActions} />
         <DisabledActionBar actions={position.disabledActions} />
+      </SectionContainer>
+
+      <SectionContainer title="Scaffold Boundary" description="Position detail is not account truth.">
+        <StatusRow
+          label="Route positionId"
+          value={routePositionId ?? "UNKNOWN"}
+          state={routeMismatch ? "blocked" : "readOnly"}
+        />
+        <StatusRow label="Fixture positionId" value={position.positionId} state="readOnly" />
+        {routeMismatch ? (
+          <AppText variant="caption">
+            Fixture-backed demo only. Route param does not select authoritative data.
+          </AppText>
+        ) : null}
+        <StatusRow
+          label="Strategy"
+          value={`Strategy ${position.governance.strategyAcceptance}`}
+          state="blocked"
+          sourceRef={position.governance.controlStateSource}
+        />
+        <StatusRow
+          label="Real capital"
+          value={`Real capital ${position.governance.realCapital}`}
+          state="blocked"
+          sourceRef={position.governance.controlStateSource}
+        />
+        <BlockerList blockers={position.blockers} />
       </SectionContainer>
     </ScreenContainer>
   );

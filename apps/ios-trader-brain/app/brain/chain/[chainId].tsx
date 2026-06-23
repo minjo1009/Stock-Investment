@@ -18,7 +18,7 @@ export default function ChainDetailRoute() {
     <ScreenContainer>
       <View style={{ gap: spacing.sm }}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <Badge label="Chain Detail v0" tone="readOnly" />
+          <Badge label="Chain Detail v1" tone="readOnly" />
           <Badge label="Read-only" tone="readOnly" />
           <Badge label="NOT_AUTHORITY" tone="blocked" />
         </View>
@@ -27,6 +27,54 @@ export default function ChainDetailRoute() {
           Scaffold-only fixture-backed chain view. Layer presence is not source authority.
         </AppText>
       </View>
+
+      <SectionContainer title="Chain Summary" description="Layer presence is display evidence, not authority.">
+        <StatusRow label="Chain ID" value={chain.chainId} state="readOnly" />
+        <StatusRow
+          label="Route match"
+          value={routeMismatch ? "ROUTE_MISMATCH" : "FIXTURE_ROUTE"}
+          state={routeMismatch ? "blocked" : "readOnly"}
+        />
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
+          <MetricCard label="Layers" value={chain.layers.length} state="readOnly" />
+          <MetricCard label="Present" value={countStatus("PRESENT")} state="fresh" />
+          <MetricCard label="Blocked" value={countStatus("BLOCKED")} state="blocked" />
+          <MetricCard label="Missing" value={countStatus("MISSING")} state="missing" />
+          <MetricCard label="Unknown" value={countStatus("UNKNOWN")} state="unknown" />
+        </View>
+      </SectionContainer>
+
+      <SectionContainer title="Chain Validation" description="Counts are fixture display only.">
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
+          <MetricCard label="Present" value={countStatus("PRESENT")} state="fresh" />
+          <MetricCard label="Stale" value={countStatus("STALE")} state="stale" />
+          <MetricCard label="Missing" value={countStatus("MISSING")} state="missing" />
+          <MetricCard label="Blocked" value={countStatus("BLOCKED")} state="blocked" />
+          <MetricCard label="Unknown" value={countStatus("UNKNOWN")} state="unknown" />
+        </View>
+      </SectionContainer>
+
+      <SectionContainer title="Evidence Chain" description="This is a review trace, not a trading decision chain.">
+        <View style={{ gap: spacing.sm }}>
+          {chain.layers.map((layer) => (
+            <CardContainer key={layer.layer}>
+              <Badge label={layer.status} tone={toneForLayerStatus(layer.status)} />
+              <AppText variant="title">{layer.layer}</AppText>
+              <AppText variant="caption">{layer.blockerReason ?? "No blocker supplied by fixture."}</AppText>
+              <AppText variant="caption">Artifacts: {joinOrUnknown(layer.artifactRefs)}</AppText>
+              <AppText variant="caption">Provenance: {joinOrUnknown(layer.provenanceRefs)}</AppText>
+            </CardContainer>
+          ))}
+        </View>
+      </SectionContainer>
+
+      <SectionContainer title="Blocked / Missing Evidence" description="Missing layers remain blockers, not negative evidence.">
+        <BlockerList blockers={chain.blockers} />
+      </SectionContainer>
+
+      <SectionContainer title="Disabled Actions" description="Chain review has no mutation authority.">
+        <DisabledActionBar actions={chain.disabledActions} />
+      </SectionContainer>
 
       <SectionContainer title="Scaffold Boundary" description="Route params are display-only.">
         <StatusRow label="Route chainId" value={routeChainId ?? "UNKNOWN"} state={routeMismatch ? "blocked" : "readOnly"} />
@@ -43,40 +91,17 @@ export default function ChainDetailRoute() {
           state="blocked"
           sourceRef={chain.governance.authorityReportPath}
         />
-        <BlockerList blockers={chain.blockers} />
-      </SectionContainer>
-
-      <SectionContainer title="Layer Counts" description="Missing, stale, and unknown layers remain visible.">
-        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <MetricCard label="Layers" value={chain.layers.length} state="readOnly" />
-          <MetricCard label="Present" value={countStatus("PRESENT")} state="fresh" />
-          <MetricCard label="Stale" value={countStatus("STALE")} state="stale" />
-          <MetricCard label="Missing" value={countStatus("MISSING")} state="missing" />
-          <MetricCard label="Unknown" value={countStatus("UNKNOWN")} state="unknown" />
-        </View>
-      </SectionContainer>
-
-      <SectionContainer title="Layer Trace" description="This is a review trace, not a trading decision chain.">
-        <View style={{ gap: spacing.sm }}>
-          {chain.layers.map((layer) => (
-            <CardContainer key={layer.layer}>
-              <Badge label={layer.status} tone={toneForLayerStatus(layer.status)} />
-              <AppText variant="title">{layer.layer}</AppText>
-              <AppText variant="caption">{layer.blockerReason ?? "No blocker supplied by fixture."}</AppText>
-              <AppText variant="caption">Artifacts: {joinOrUnknown(layer.artifactRefs)}</AppText>
-              <AppText variant="caption">Provenance: {joinOrUnknown(layer.provenanceRefs)}</AppText>
-            </CardContainer>
-          ))}
-        </View>
-      </SectionContainer>
-
-      <SectionContainer title="Disabled Actions" description="Chain review has no mutation authority.">
-        <DisabledActionBar actions={chain.disabledActions} />
+        <StatusRow
+          label="Real capital"
+          value={`Real capital ${chain.governance.realCapital}`}
+          state="blocked"
+          sourceRef={chain.governance.controlStateSource}
+        />
       </SectionContainer>
     </ScreenContainer>
   );
 
-  function countStatus(status: (typeof chain.layers)[number]["status"]) {
+  function countStatus(status: "PRESENT" | "MISSING" | "STALE" | "BLOCKED" | "UNKNOWN") {
     return chain.layers.filter((layer) => layer.status === status).length;
   }
 }

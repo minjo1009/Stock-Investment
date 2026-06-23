@@ -10,6 +10,8 @@ Task3836 later captured Chrome-headless web-preflight screenshots under `data/ar
 
 Task3839 later captured another Chrome-headless web-preflight screenshot set under `data/artifacts/task_3839_frontend_qa_to_v1_10_loop/screenshots/` after scaffold-only v1 hierarchy changes. Those screenshots remain `NOT_AUTHORITY` QA artifacts and do not grant visual approval, product readiness, deployment readiness, paper/live permission, or real-capital permission.
 
+Task3841 later captured another Chrome-headless web-preflight screenshot set under `data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/` after detail route v1 hierarchy changes. Those screenshots remain `NOT_AUTHORITY` QA artifacts and do not grant visual approval, product readiness, deployment readiness, paper/live permission, or real-capital permission.
+
 ## Target Manifest
 
 Canonical scaffold target manifest:
@@ -22,7 +24,7 @@ Validator:
 - `cd apps/ios-trader-brain && npm run qa:screenshot`
 - `cd apps/ios-trader-brain && npm run validate:screenshot-baseline`
 
-The first two commands validate target readiness and explicitly report that screenshot capture was not run. The baseline command verifies the captured Task3836 baseline artifacts remain present and `NOT_AUTHORITY`.
+The first two commands validate target readiness and explicitly report that screenshot capture was not run. The baseline command verifies the captured Task3836 baseline artifacts remain present and `NOT_AUTHORITY`. Since Task3841, screenshot QA also verifies that target route files preserve read-only and `NOT_AUTHORITY` boundary text.
 
 ## Required Surfaces
 

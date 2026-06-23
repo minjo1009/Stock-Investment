@@ -24,7 +24,7 @@ export default function OrderDetailRoute() {
     <ScreenContainer>
       <View style={{ gap: spacing.sm }}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <Badge label="Order Detail v0" tone="readOnly" />
+          <Badge label="Order Detail v1" tone="readOnly" />
           <Badge label="Read-only" tone="readOnly" />
           <Badge label="NOT_AUTHORITY" tone="blocked" />
         </View>
@@ -33,29 +33,6 @@ export default function OrderDetailRoute() {
           Scaffold-only fixture-backed view. Route params do not select broker or order truth.
         </AppText>
       </View>
-
-      <SectionContainer title="Scaffold Boundary" description="Order detail has no mutation authority.">
-        <StatusRow label="Route orderId" value={routeOrderId ?? "UNKNOWN"} state={routeMismatch ? "blocked" : "readOnly"} />
-        <StatusRow label="Fixture orderId" value={order.orderId} state="readOnly" />
-        {routeMismatch ? (
-          <AppText variant="caption">
-            Fixture-backed demo only. Route param does not select authoritative data.
-          </AppText>
-        ) : null}
-        <StatusRow
-          label="Broker mutation"
-          value={order.governance.brokerMutationPermitted ? "permitted" : "false"}
-          state="blocked"
-          sourceRef={order.governance.controlStateSource}
-        />
-        <StatusRow
-          label="Real capital"
-          value={`Real capital ${order.governance.realCapital}`}
-          state="blocked"
-          sourceRef={order.governance.controlStateSource}
-        />
-        <BlockerList blockers={order.blockers} />
-      </SectionContainer>
 
       <DecisionHeader decisionSummary={order.sections.decisionSummary} governance={order.governance} />
 
@@ -92,10 +69,12 @@ export default function OrderDetailRoute() {
         </CardContainer>
       </SectionContainer>
 
-      <ValidationReadinessPanel validationReadiness={order.sections.validationReadiness} />
-
       <SectionContainer title="Evidence" description="Stale evidence remains visible.">
         <EvidenceList evidence={order.sections.evidence} />
+      </SectionContainer>
+
+      <SectionContainer title="Validation Status" description="Validation status is not order acceptance.">
+        <ValidationReadinessPanel validationReadiness={order.sections.validationReadiness} />
       </SectionContainer>
 
       <RiskGate
@@ -104,7 +83,7 @@ export default function OrderDetailRoute() {
         chartStates={order.sections.risk.chartStates}
       />
 
-      <SectionContainer title="Next Action" description="Only read-only actions are listed.">
+      <SectionContainer title="Review Actions" description="Only read-only actions are listed.">
         <CardContainer>
           <Badge label="Review only" tone="readOnly" />
           {order.sections.nextAction.allowedReadOnlyActions.map((action) => (
@@ -116,6 +95,29 @@ export default function OrderDetailRoute() {
         </CardContainer>
         <DisabledActionBar actions={order.sections.nextAction.disabledTradingActions} />
         <DisabledActionBar actions={order.disabledActions} />
+      </SectionContainer>
+
+      <SectionContainer title="Scaffold Boundary" description="Order detail has no mutation authority.">
+        <StatusRow label="Route orderId" value={routeOrderId ?? "UNKNOWN"} state={routeMismatch ? "blocked" : "readOnly"} />
+        <StatusRow label="Fixture orderId" value={order.orderId} state="readOnly" />
+        {routeMismatch ? (
+          <AppText variant="caption">
+            Fixture-backed demo only. Route param does not select authoritative data.
+          </AppText>
+        ) : null}
+        <StatusRow
+          label="Broker mutation"
+          value={order.governance.brokerMutationPermitted ? "permitted" : "false"}
+          state="blocked"
+          sourceRef={order.governance.controlStateSource}
+        />
+        <StatusRow
+          label="Real capital"
+          value={`Real capital ${order.governance.realCapital}`}
+          state="blocked"
+          sourceRef={order.governance.controlStateSource}
+        />
+        <BlockerList blockers={order.blockers} />
       </SectionContainer>
     </ScreenContainer>
   );

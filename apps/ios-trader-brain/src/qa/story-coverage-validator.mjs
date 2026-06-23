@@ -14,6 +14,30 @@ const regressionCriticalStories = [
     requiredExports: ["Default", "ReadOnly", "Blocked", "Stale", "Missing", "Unknown", "DisabledAction"],
     requiredTerms: ["Generic/StatusRow", "component: StatusRow"],
   },
+  {
+    component: "DecisionHeader",
+    file: "src/stories/decision-header.stories.tsx",
+    requiredExports: ["FreshSource", "StaleSource", "MissingSource", "UnknownSource", "Blocked", "DisabledAction"],
+    requiredTerms: ["Domain/DecisionHeader", "component: DecisionHeader"],
+  },
+  {
+    component: "EvidenceList",
+    file: "src/stories/evidence-list.stories.tsx",
+    requiredExports: ["FreshSource", "StaleSource", "MissingSource", "UnknownSource", "Blocked", "DisabledAction"],
+    requiredTerms: ["Domain/EvidenceList", "component: EvidenceList"],
+  },
+  {
+    component: "RiskGate",
+    file: "src/stories/risk-gate.stories.tsx",
+    requiredExports: ["FreshSource", "StaleSource", "MissingSource", "UnknownSource", "Blocked", "DisabledAction"],
+    requiredTerms: ["Domain/RiskGate", "component: RiskGate"],
+  },
+  {
+    component: "DisabledActionBar",
+    file: "src/stories/disabled-action-bar.stories.tsx",
+    requiredExports: ["FreshSource", "StaleSource", "MissingSource", "UnknownSource", "Blocked", "DisabledAction"],
+    requiredTerms: ["Domain/DisabledActionBar", "component: DisabledActionBar"],
+  },
 ];
 const findings = [];
 
@@ -43,4 +67,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[STORY_COVERAGE_OK] Badge story found; StatusRow story found");
+console.log("[STORY_COVERAGE_OK] regression-critical foundation and domain stories found");

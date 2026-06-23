@@ -72,6 +72,12 @@ if (manifest) {
       if (!existsSync(join(process.cwd(), target.routeFile))) {
         findings.push(`${target.routeId}: routeFile missing ${target.routeFile}`);
       }
+      const routeContent = existsSync(join(process.cwd(), target.routeFile))
+        ? readFileSync(join(process.cwd(), target.routeFile), "utf8")
+        : "";
+      if (!routeContent.includes("Read-only") || !routeContent.includes("NOT_AUTHORITY")) {
+        findings.push(`${target.routeId}: route file must preserve read-only NOT_AUTHORITY boundary`);
+      }
       if (!["tab", "detail"].includes(target.surfaceType)) {
         findings.push(`${target.routeId}: surfaceType must be tab or detail`);
       }
