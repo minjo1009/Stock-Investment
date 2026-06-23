@@ -8,7 +8,7 @@ import {
   TimelineList,
 } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
-import { MetricCard, StatusRow } from "../../src/components/generic";
+import { StatusRow } from "../../src/components/generic";
 import { ScreenContainer, SectionContainer } from "../../src/components/layout";
 import { systemHealthFixture } from "../../src/read-models/systemHealthFixture";
 import { spacing } from "../../src/theme/tokens";
@@ -69,28 +69,7 @@ export default function SystemRoute() {
         title="Operating state review"
       />
 
-      <TimelineList
-        items={[
-          {
-            label: "Hard state",
-            value: system.controlState.runMode,
-            state: "blocked",
-            helperText: system.controlState.sourcePath,
-          },
-          {
-            label: "Kill switch",
-            value: system.controlState.killSwitchActive ? "active" : "inactive",
-            state: system.controlState.killSwitchActive ? "blocked" : "unknown",
-          },
-          {
-            label: "Authority catalog",
-            value: system.artifactHealth.find((artifact) => artifact.artifactId === "backend-authority-catalog")?.status ?? "UNKNOWN",
-            state: "unknown",
-          },
-        ]}
-      />
-
-      <SectionContainer title="Operating Boundary" description="Diagnostic-only state remains visible.">
+      <SectionContainer title="Operating Boundary" description="Diagnostic-only state remains visible before system metadata.">
         <StatusRow
           label="Run mode"
           value={system.controlState.runMode}
@@ -116,14 +95,26 @@ export default function SystemRoute() {
         />
       </SectionContainer>
 
-      <SectionContainer title="Source State Counts" description="Stale, missing, and unknown are not hidden.">
-        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <MetricCard label="Fresh" value={system.sourceSummary.freshCount} state="fresh" />
-          <MetricCard label="Stale" value={system.sourceSummary.staleCount} state="stale" />
-          <MetricCard label="Missing" value={system.sourceSummary.missingCount} state="missing" />
-          <MetricCard label="Unknown" value={system.sourceSummary.unknownCount} state="unknown" />
-        </View>
-      </SectionContainer>
+      <TimelineList
+        items={[
+          {
+            label: "Hard state",
+            value: system.controlState.runMode,
+            state: "blocked",
+            helperText: system.controlState.sourcePath,
+          },
+          {
+            label: "Kill switch",
+            value: system.controlState.killSwitchActive ? "active" : "inactive",
+            state: system.controlState.killSwitchActive ? "blocked" : "unknown",
+          },
+          {
+            label: "Authority catalog",
+            value: system.artifactHealth.find((artifact) => artifact.artifactId === "backend-authority-catalog")?.status ?? "UNKNOWN",
+            state: "unknown",
+          },
+        ]}
+      />
 
       <SystemHealth system={system} />
 

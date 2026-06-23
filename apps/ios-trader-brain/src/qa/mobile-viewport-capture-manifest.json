@@ -3,6 +3,8 @@
   "captureStatus": "TARGETS_READY_CAPTURE_NOT_RUN",
   "contractVersion": "mobile-viewport-capture-manifest-v1",
   "evidenceScope": "WEB_PREVIEW_EVIDENCE_ONLY",
+  "captureEnvironment": "LOCAL_BROWSER",
+  "mobileInstallEvidence": "HOME_SCREEN_OPTION_DOCUMENTED_ONLY",
   "nativeEvidence": "NO_NATIVE_EVIDENCE",
   "simulatorEvidence": "NO_IOS_SIMULATOR_EVIDENCE",
   "testFlightEvidence": "NO_TESTFLIGHT_EVIDENCE",

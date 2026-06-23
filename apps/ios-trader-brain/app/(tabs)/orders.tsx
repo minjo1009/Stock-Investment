@@ -11,7 +11,6 @@ import {
 import { AppText, Badge } from "../../src/components/foundation";
 import {
   BlockerList,
-  MetricCard,
   SourceFreshnessBadge,
   StatusRow,
 } from "../../src/components/generic";
@@ -78,6 +77,39 @@ export default function OrdersRoute() {
         title="Order lifecycle review"
       />
 
+      <SectionContainer title="Orders Requiring Review" description="Rows are observation-only lifecycle records.">
+        <View style={{ gap: spacing.sm }}>
+          {orders.orderRows.map((order) => (
+            <View key={order.orderId} style={{ gap: spacing.sm }}>
+              <MobileScanListItem
+                badges={[
+                  { label: order.localState, tone: "blocked" },
+                  { label: order.brokerTruthState, tone: "blocked" },
+                  { label: order.mutationPermitted ? "mutation true" : "mutation false", tone: "blocked" },
+                ]}
+                body="Lifecycle row is fixture-backed and cannot mutate local, paper, live, or broker state."
+                href={order.route}
+                hrefLabel="Open read-only order detail"
+                metrics={[
+                  { label: "Local state", value: order.localState, state: "blocked" },
+                  { label: "Broker truth", value: order.brokerTruthState, state: "blocked" },
+                  { label: "Disabled actions", value: order.disabledActions.length, state: "blocked" },
+                ]}
+                sourceRefs={order.sourceStates.flatMap((sourceState) => sourceState.provenanceRefs)}
+                title={order.orderId}
+              />
+              <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
+                {order.sourceStates.map((sourceState) => (
+                  <SourceFreshnessBadge key={sourceState.sourceId} sourceState={sourceState} />
+                ))}
+              </View>
+              <BlockerList blockers={order.blockers} />
+              <DisabledActionBar actions={order.disabledActions} />
+            </View>
+          ))}
+        </View>
+      </SectionContainer>
+
       <TimelineList
         items={[
           {
@@ -98,54 +130,7 @@ export default function OrdersRoute() {
         ]}
       />
 
-      <SectionContainer title="Order State Snapshot" description="Blocked lifecycle states stay visible.">
-        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <MetricCard label="Rows" value={orders.orderRows.length} state="readOnly" />
-          <MetricCard label="Blocked" value={blockedCount} state="blocked" />
-          <MetricCard label="Stale sources" value={orders.sourceSummary.staleCount} state="stale" />
-          <MetricCard label="Missing sources" value={orders.sourceSummary.missingCount} state="missing" />
-          <MetricCard label="Unknown sources" value={orders.sourceSummary.unknownCount} state="unknown" />
-        </View>
-      </SectionContainer>
-
-      <SectionContainer title="Order Rows" description="Routes are read-only scaffold links.">
-        <View style={{ gap: spacing.sm }}>
-          {orders.orderRows.map((order) => (
-            <View key={order.orderId} style={{ gap: spacing.sm }}>
-              <MobileScanListItem
-                badges={[
-                  { label: order.localState, tone: "blocked" },
-                  { label: order.brokerTruthState, tone: "blocked" },
-                  { label: order.mutationPermitted ? "mutation true" : "mutation false", tone: "blocked" },
-                ]}
-                body={`Side: ${order.side}`}
-                href={order.route}
-                hrefLabel="Open read-only order detail"
-                metrics={[
-                  { label: "Symbol", value: order.symbol ?? "UNKNOWN", state: "unknown" },
-                  { label: "Quantity", value: order.quantity ?? "UNKNOWN", state: "unknown" },
-                  { label: "Disabled actions", value: order.disabledActions.length, state: "blocked" },
-                ]}
-                sourceRefs={order.sourceStates.flatMap((sourceState) => sourceState.provenanceRefs)}
-                title={order.orderId}
-              />
-              <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-                {order.sourceStates.map((sourceState) => (
-                  <SourceFreshnessBadge key={sourceState.sourceId} sourceState={sourceState} />
-                ))}
-              </View>
-              <BlockerList blockers={order.blockers} />
-              <DisabledActionBar actions={order.disabledActions} />
-            </View>
-          ))}
-        </View>
-      </SectionContainer>
-
       <OrderStateSummary orders={orders} />
-
-      <SectionContainer title="Disabled Actions" description="Submit remains disabled and has no handler.">
-        <DisabledActionBar actions={orders.disabledActions} />
-      </SectionContainer>
 
       <SectionContainer title="Governance Boundary" description="Order mutation remains blocked.">
         <StatusRow
@@ -167,6 +152,10 @@ export default function OrdersRoute() {
           sourceRef={orders.governance.controlStateSource}
         />
         <BlockerList blockers={orders.blockers} />
+      </SectionContainer>
+
+      <SectionContainer title="Disabled Actions" description="Submit remains disabled and has no handler.">
+        <DisabledActionBar actions={orders.disabledActions} />
       </SectionContainer>
     </ScreenContainer>
   );

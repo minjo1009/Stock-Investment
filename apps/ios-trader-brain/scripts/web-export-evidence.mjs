@@ -1,16 +1,21 @@
-import { execFileSync } from "node:child_process";
+import { execFileSync, execSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 
 const root = process.cwd();
 const distDir = join(root, "dist");
 
-const npxCommand = process.platform === "win32" ? "npx.cmd" : "npx";
-
-execFileSync(npxCommand, ["expo", "export", "--platform", "web", "--output-dir", "dist"], {
-  cwd: root,
-  stdio: "inherit",
-});
+if (process.platform === "win32") {
+  execSync("npx expo export --platform web --output-dir dist", {
+    cwd: root,
+    stdio: "inherit",
+  });
+} else {
+  execFileSync("npx", ["expo", "export", "--platform", "web", "--output-dir", "dist"], {
+    cwd: root,
+    stdio: "inherit",
+  });
+}
 
 if (!existsSync(distDir)) {
   console.error("[WEB_EXPORT_EVIDENCE_FAIL] dist directory missing");

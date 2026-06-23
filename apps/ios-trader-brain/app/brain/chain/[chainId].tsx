@@ -81,14 +81,8 @@ export default function ChainDetailRoute() {
             value={routeMismatch ? "ROUTE_MISMATCH" : "FIXTURE_ROUTE"}
             state={routeMismatch ? "blocked" : "readOnly"}
           />
-          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-            <MetricCard label="Layers" value={chain.layers.length} state="readOnly" />
-            <MetricCard label="Present" value={countStatus("PRESENT")} state="fresh" />
-            <MetricCard label="Blocked" value={countStatus("BLOCKED")} state="blocked" />
-            <MetricCard label="Missing" value={countStatus("MISSING")} state="missing" />
-            <MetricCard label="Unknown" value={countStatus("UNKNOWN")} state="unknown" />
-          </View>
         </SectionContainer>
+
       </ProductDetailSection>
 
       <ProductDetailSection sectionId="evidence" title="Evidence" description="This is a review trace, not a trading decision chain.">
@@ -124,10 +118,6 @@ export default function ChainDetailRoute() {
           </View>
         </SectionContainer>
 
-        <SectionContainer title="Disabled Actions" description="Chain review has no mutation authority.">
-          <DisabledActionBar actions={chain.disabledActions} />
-        </SectionContainer>
-
         <SectionContainer title="Scaffold Boundary" description="Route params are display-only.">
           <StatusRow label="Route chainId" value={routeChainId ?? "UNKNOWN"} state={routeMismatch ? "blocked" : "readOnly"} />
           <StatusRow label="Fixture chainId" value={chain.chainId} state="readOnly" />
@@ -149,6 +139,10 @@ export default function ChainDetailRoute() {
             state="blocked"
             sourceRef={chain.governance.controlStateSource}
           />
+        </SectionContainer>
+
+        <SectionContainer title="Disabled Actions" description="Chain review has no mutation authority.">
+          <DisabledActionBar actions={chain.disabledActions} />
         </SectionContainer>
       </ProductDetailSection>
     </ScreenContainer>

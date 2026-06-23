@@ -80,15 +80,6 @@ export default function BrainRoute() {
         title="Candidate review queue"
       />
 
-      <SectionContainer title="Brain Overview" description="Fresh counts do not open any trading gate.">
-        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <MetricCard label="Candidates" value={brain.candidates.length} state="readOnly" />
-          <MetricCard label="Review-only" value={reviewOnlyCount} state="readOnly" />
-          <MetricCard label="Blocked" value={blockedCount} state="blocked" />
-          <MetricCard label="Strict gate open" value={brain.sourceSummary.strictGateOpenCount} state="blocked" />
-        </View>
-      </SectionContainer>
-
       <SectionContainer title="Review Queue" description="Rows are read-only and fixture-backed.">
         <View style={{ gap: spacing.sm }}>
           {brain.candidates.map((candidate) => (
@@ -125,7 +116,10 @@ export default function BrainRoute() {
             <CardContainer key={`${candidate.candidateId}-source-state`}>
               <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
                 <Badge label={candidate.symbol} tone="readOnly" />
-                <Badge label="source state" tone="unknown" />
+                <Badge
+                  label={candidate.blockers.length > 0 ? "blocked source state" : "source state"}
+                  tone={candidate.blockers.length > 0 ? "blocked" : "unknown"}
+                />
               </View>
               <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
                 {candidate.sourceStates.map((sourceState) => (
@@ -140,10 +134,13 @@ export default function BrainRoute() {
 
       <SectionContainer title="Blocked / Missing Evidence" description="Forbidden filters cannot enter assignment logic.">
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <MetricCard label="Fresh" value={brain.sourceSummary.freshCount} state="fresh" />
-          <MetricCard label="Stale" value={brain.sourceSummary.staleCount} state="stale" />
           <MetricCard label="Missing" value={brain.sourceSummary.missingCount} state="missing" />
           <MetricCard label="Unknown" value={brain.sourceSummary.unknownCount} state="unknown" />
+          <MetricCard label="Strict gate open" value={brain.sourceSummary.strictGateOpenCount} state="blocked" />
+        </View>
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
+          <MetricCard label="Fresh" value={brain.sourceSummary.freshCount} state="fresh" />
+          <MetricCard label="Stale" value={brain.sourceSummary.staleCount} state="stale" />
         </View>
         <CardContainer>
           <Badge label="Forbidden filters" tone="blocked" />

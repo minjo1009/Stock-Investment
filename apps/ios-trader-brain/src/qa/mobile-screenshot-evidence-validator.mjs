@@ -35,7 +35,18 @@ const runbook = readText("../../docs/reports/task_3871_mobile_frontend_v1_gpt_10
 
 expect(packageJson?.scripts?.["validate:mobile-screenshot-evidence"] === "node src/qa/mobile-screenshot-evidence-validator.mjs", "validate:mobile-screenshot-evidence script must exist");
 expect(contract?.evidenceScope === "WEB_PREVIEW_EVIDENCE_ONLY", "contract must remain web-preview-only");
-expect(contract?.captureStatus === "CAPTURE_REQUIRED_NOT_RUN", "contract must not claim screenshot capture");
+expect(
+  ["CAPTURE_REQUIRED_NOT_RUN", "LOCAL_BROWSER_CAPTURE_COMPLETE"].includes(contract?.captureStatus),
+  "contract captureStatus must be capture-required or local-browser-complete only"
+);
+if (contract?.captureStatus === "LOCAL_BROWSER_CAPTURE_COMPLETE") {
+  expect(contract?.actualEvidence?.captureSource === "chrome-local-web-preview", "actualEvidence.captureSource must be chrome-local-web-preview");
+  expect(contract?.actualEvidence?.capturedRouteCount === 6, "actualEvidence must include six captured routes");
+  expect(contract?.actualEvidence?.capturedViewportCount === 3, "actualEvidence must include three captured viewports");
+  expect(contract?.actualEvidence?.capturedScreenshotCount === 18, "actualEvidence must include eighteen screenshots");
+  expect(contract?.actualEvidence?.nativeEvidence === "NO_NATIVE_EVIDENCE", "actualEvidence must not claim native evidence");
+  expect(contract?.actualEvidence?.testFlightEvidence === "NO_TESTFLIGHT_EVIDENCE", "actualEvidence must not claim TestFlight evidence");
+}
 expect(contract?.hardState?.strategyAcceptance === "NOT_ACCEPTED", "strategy acceptance must remain NOT_ACCEPTED");
 expect(contract?.hardState?.deploymentReadiness === "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY", "deployment readiness must remain diagnostic-only");
 expect(contract?.hardState?.realCapital === "FORBIDDEN", "real capital must remain FORBIDDEN");
@@ -61,4 +72,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[MOBILE_SCREENSHOT_EVIDENCE_OK] mobile screenshot evidence remains web-preview-only and capture-not-run");
+console.log("[MOBILE_SCREENSHOT_EVIDENCE_OK] mobile screenshot evidence remains web-preview-only without native, deployment, broker, or capital claims");

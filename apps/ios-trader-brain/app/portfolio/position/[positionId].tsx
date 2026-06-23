@@ -1,7 +1,6 @@
 import { useLocalSearchParams } from "expo-router";
 
 import {
-  DecisionHeader,
   DisabledActionBar,
   EvidenceList,
   MobileV1StatusRail,
@@ -93,8 +92,9 @@ export default function PositionDetailRoute() {
           ]}
         />
 
-        <DecisionHeader decisionSummary={position.sections.decisionSummary} governance={position.governance} />
+      </ProductDetailSection>
 
+      <ProductDetailSection sectionId="evidence" title="Evidence" description="Broker truth evidence is missing in this fixture.">
         <SectionContainer title="Thesis / Logic" description="Missing thesis remains UNKNOWN, not negative evidence.">
           <CardContainer>
             <AppText>{position.sections.thesisLogic.thesis ?? "UNKNOWN"}</AppText>
@@ -107,9 +107,7 @@ export default function PositionDetailRoute() {
             </AppText>
           </CardContainer>
         </SectionContainer>
-      </ProductDetailSection>
 
-      <ProductDetailSection sectionId="evidence" title="Evidence" description="Broker truth evidence is missing in this fixture.">
         <SectionContainer title="Evidence" description="Fixture-backed evidence rows only.">
           <EvidenceList evidence={position.sections.evidence} />
         </SectionContainer>
@@ -147,20 +145,6 @@ export default function PositionDetailRoute() {
           <ValidationReadinessPanel validationReadiness={position.sections.validationReadiness} />
         </SectionContainer>
 
-        <SectionContainer title="Review Actions" description="Read-only actions only; broker sync remains disabled.">
-          <CardContainer>
-            <Badge label="Review only" tone="readOnly" />
-            {position.sections.nextAction.allowedReadOnlyActions.map((action) => (
-              <AppText key={action}>{action}</AppText>
-            ))}
-            <AppText variant="caption">
-              {position.sections.nextAction.nextEngineeringAction ?? "UNKNOWN"}
-            </AppText>
-          </CardContainer>
-          <DisabledActionBar actions={position.sections.nextAction.disabledTradingActions} />
-          <DisabledActionBar actions={position.disabledActions} />
-        </SectionContainer>
-
         <SectionContainer title="Scaffold Boundary" description="Position detail is not account truth.">
           <StatusRow
             label="Route positionId"
@@ -186,6 +170,20 @@ export default function PositionDetailRoute() {
             sourceRef={position.governance.controlStateSource}
           />
           <BlockerList blockers={position.blockers} />
+        </SectionContainer>
+
+        <SectionContainer title="Review Actions" description="Read-only actions only; broker sync remains disabled.">
+          <CardContainer>
+            <Badge label="Review only" tone="readOnly" />
+            {position.sections.nextAction.allowedReadOnlyActions.map((action) => (
+              <AppText key={action}>{action}</AppText>
+            ))}
+            <AppText variant="caption">
+              {position.sections.nextAction.nextEngineeringAction ?? "UNKNOWN"}
+            </AppText>
+          </CardContainer>
+          <DisabledActionBar actions={position.sections.nextAction.disabledTradingActions} />
+          <DisabledActionBar actions={position.disabledActions} />
         </SectionContainer>
       </ProductDetailSection>
     </ScreenContainer>

@@ -1,7 +1,6 @@
 import { useLocalSearchParams } from "expo-router";
 
 import {
-  DecisionHeader,
   DisabledActionBar,
   EvidenceList,
   MobileV1StatusRail,
@@ -92,8 +91,6 @@ export default function OrderDetailRoute() {
           ]}
         />
 
-        <DecisionHeader decisionSummary={order.sections.decisionSummary} governance={order.governance} />
-
         <SectionContainer title="Order State" description="No local or broker state is mutation-ready.">
           <StatusRow label="Local state" value={order.sections.orderState.localState} state="blocked" />
           <StatusRow label="Broker truth" value={order.sections.orderState.brokerTruthState} state="blocked" />
@@ -113,7 +110,9 @@ export default function OrderDetailRoute() {
             state="unknown"
           />
         </SectionContainer>
+      </ProductDetailSection>
 
+      <ProductDetailSection sectionId="evidence" title="Evidence" description="Stale evidence remains visible.">
         <SectionContainer title="Thesis / Logic" description="Order fixture has no execution authority.">
           <CardContainer>
             <AppText>{order.sections.thesisLogic.thesis ?? "UNKNOWN"}</AppText>
@@ -126,9 +125,7 @@ export default function OrderDetailRoute() {
             </AppText>
           </CardContainer>
         </SectionContainer>
-      </ProductDetailSection>
 
-      <ProductDetailSection sectionId="evidence" title="Evidence" description="Stale evidence remains visible.">
         <SectionContainer title="Evidence" description="Fixture-backed evidence rows only.">
           <EvidenceList evidence={order.sections.evidence} />
         </SectionContainer>
@@ -145,20 +142,6 @@ export default function OrderDetailRoute() {
       <ProductDetailSection sectionId="validation" title="Validation" description="Validation status is not order acceptance.">
         <SectionContainer title="Validation Status" description="Validation status is not order acceptance.">
           <ValidationReadinessPanel validationReadiness={order.sections.validationReadiness} />
-        </SectionContainer>
-
-        <SectionContainer title="Review Actions" description="Only read-only actions are listed.">
-          <CardContainer>
-            <Badge label="Review only" tone="readOnly" />
-            {order.sections.nextAction.allowedReadOnlyActions.map((action) => (
-              <AppText key={action}>{action}</AppText>
-            ))}
-            <AppText variant="caption">
-              {order.sections.nextAction.nextEngineeringAction ?? "UNKNOWN"}
-            </AppText>
-          </CardContainer>
-          <DisabledActionBar actions={order.sections.nextAction.disabledTradingActions} />
-          <DisabledActionBar actions={order.disabledActions} />
         </SectionContainer>
 
         <SectionContainer title="Scaffold Boundary" description="Order detail has no mutation authority.">
@@ -182,6 +165,20 @@ export default function OrderDetailRoute() {
             sourceRef={order.governance.controlStateSource}
           />
           <BlockerList blockers={order.blockers} />
+        </SectionContainer>
+
+        <SectionContainer title="Review Actions" description="Only read-only actions are listed.">
+          <CardContainer>
+            <Badge label="Review only" tone="readOnly" />
+            {order.sections.nextAction.allowedReadOnlyActions.map((action) => (
+              <AppText key={action}>{action}</AppText>
+            ))}
+            <AppText variant="caption">
+              {order.sections.nextAction.nextEngineeringAction ?? "UNKNOWN"}
+            </AppText>
+          </CardContainer>
+          <DisabledActionBar actions={order.sections.nextAction.disabledTradingActions} />
+          <DisabledActionBar actions={order.disabledActions} />
         </SectionContainer>
       </ProductDetailSection>
     </ScreenContainer>

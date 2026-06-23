@@ -1,8 +1,24 @@
 {
   "authority": "NOT_AUTHORITY",
-  "captureStatus": "CAPTURE_REQUIRED_NOT_RUN",
+  "captureStatus": "LOCAL_BROWSER_CAPTURE_COMPLETE",
   "contractVersion": "mobile-viewport-evidence-v1",
   "evidenceScope": "WEB_PREVIEW_EVIDENCE_ONLY",
+  "mobileWebInstall": {
+    "homeScreenCapability": "BROWSER_DEPENDENT",
+    "installEvidence": "DOCUMENTED_ONLY",
+    "nativeAppClaim": "NO_NATIVE_APP_CLAIM",
+    "serviceWorkerEvidence": "NOT_VERIFIED",
+    "testFlightEvidence": "NO_TESTFLIGHT_EVIDENCE"
+  },
+  "actualEvidence": {
+    "artifactManifestPath": "../../docs/reports/task_3873_mobile_web_actual_capture/artifact_manifest.csv",
+    "captureSource": "chrome-local-web-preview",
+    "capturedRouteCount": 6,
+    "capturedScreenshotCount": 18,
+    "capturedViewportCount": 3,
+    "nativeEvidence": "NO_NATIVE_EVIDENCE",
+    "testFlightEvidence": "NO_TESTFLIGHT_EVIDENCE"
+  },
   "forbiddenEvidenceClaims": [
     "IOS_DEVICE_EVIDENCE",
     "IOS_SIMULATOR_EVIDENCE",
@@ -15,6 +31,6 @@
     "realCapital": "FORBIDDEN",
     "strategyAcceptance": "NOT_ACCEPTED"
   },
-  "allowedCaptureSources": ["chrome", "playwright", "web-preview"],
+  "allowedCaptureSources": ["chrome", "chrome-local-web-preview", "playwright", "web-preview"],
   "disallowedCaptureSources": ["iphone", "ipad", "testflight", "appstore", "native-ios"]
 }

@@ -9,7 +9,6 @@ import {
 import { AppText, Badge } from "../../src/components/foundation";
 import {
   BlockerList,
-  MetricCard,
   SourceFreshnessBadge,
   StatusRow,
 } from "../../src/components/generic";
@@ -74,17 +73,7 @@ export default function PortfolioRoute() {
         title="Read-only portfolio review"
       />
 
-      <SectionContainer title="Portfolio Summary" description="Null account values render as UNKNOWN, not zero.">
-        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <MetricCard label="Positions" value={portfolio.positions.length} state="readOnly" />
-          <MetricCard label="Fresh" value={portfolio.sourceSummary.freshCount} state="fresh" />
-          <MetricCard label="Stale" value={portfolio.sourceSummary.staleCount} state="stale" />
-          <MetricCard label="Missing" value={portfolio.sourceSummary.missingCount} state="missing" />
-          <MetricCard label="Unknown" value={portfolio.sourceSummary.unknownCount} state="unknown" />
-        </View>
-      </SectionContainer>
-
-      <SectionContainer title="Positions" description="Position detail routes are read-only scaffold links.">
+      <SectionContainer title="Holdings Requiring Review" description="Position rows show inspection blockers, not broker truth or performance.">
         <View style={{ gap: spacing.sm }}>
           {portfolio.positions.map((position) => (
             <View key={position.positionId} style={{ gap: spacing.sm }}>
@@ -97,9 +86,9 @@ export default function PortfolioRoute() {
                 href={position.route}
                 hrefLabel="Open read-only position detail"
                 metrics={[
-                  { label: "Quantity", value: displayUnknown(position.quantity), state: "unknown" },
-                  { label: "Market value", value: displayUnknown(position.marketValue), state: "unknown" },
-                  { label: "Unrealized PnL", value: displayUnknown(position.unrealizedPnl), state: "unknown" },
+                  { label: "Broker truth", value: position.brokerTruthState, state: "blocked" },
+                  { label: "Sources", value: position.sourceStates.length, state: "readOnly" },
+                  { label: "Blockers", value: position.blockers.length, state: "blocked" },
                 ]}
                 sourceRefs={position.sourceStates.flatMap((sourceState) => sourceState.provenanceRefs)}
                 subtitle={position.positionId}
@@ -114,10 +103,6 @@ export default function PortfolioRoute() {
             </View>
           ))}
         </View>
-      </SectionContainer>
-
-      <SectionContainer title="Disabled Actions" description="Broker sync is visible only as disabled.">
-        <DisabledActionBar actions={portfolio.disabledActions} />
       </SectionContainer>
 
       <SectionContainer title="Governance Boundary" description="Broker truth remains blocked.">
@@ -141,10 +126,10 @@ export default function PortfolioRoute() {
         />
         <BlockerList blockers={portfolio.blockers} />
       </SectionContainer>
+
+      <SectionContainer title="Disabled Actions" description="Broker sync is visible only as disabled.">
+        <DisabledActionBar actions={portfolio.disabledActions} />
+      </SectionContainer>
     </ScreenContainer>
   );
-}
-
-function displayUnknown(value: number | null) {
-  return value === null ? "UNKNOWN" : value;
 }

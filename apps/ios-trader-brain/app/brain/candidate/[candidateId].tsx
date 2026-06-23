@@ -2,7 +2,6 @@ import { Link } from "expo-router";
 import { useLocalSearchParams } from "expo-router";
 
 import {
-  DecisionHeader,
   DisabledActionBar,
   EvidenceList,
   MobileV1StatusRail,
@@ -96,11 +95,9 @@ export default function CandidateDetailRoute() {
           ]}
         />
 
-        <DecisionHeader
-          decisionSummary={candidate.sections.decisionSummary}
-          governance={candidate.governance}
-        />
+      </ProductDetailSection>
 
+      <ProductDetailSection sectionId="evidence" title="Evidence" description="Unknown evidence remains unknown, not negative evidence.">
         <SectionContainer title="Thesis / Logic" description="Read-only fixture text for display wiring.">
           <CardContainer>
             <AppText>{candidate.sections.thesisLogic.thesis ?? "UNKNOWN"}</AppText>
@@ -113,9 +110,7 @@ export default function CandidateDetailRoute() {
             </AppText>
           </CardContainer>
         </SectionContainer>
-      </ProductDetailSection>
 
-      <ProductDetailSection sectionId="evidence" title="Evidence" description="Unknown evidence remains unknown, not negative evidence.">
         <SectionContainer title="Evidence" description="Fixture-backed evidence rows only.">
           <EvidenceList evidence={candidate.sections.evidence} />
         </SectionContainer>
@@ -140,20 +135,6 @@ export default function CandidateDetailRoute() {
           <ValidationReadinessPanel
             validationReadiness={candidate.sections.validationReadiness}
           />
-        </SectionContainer>
-
-        <SectionContainer title="Review Actions" description="Read-only actions only; trading mutation remains disabled.">
-          <CardContainer>
-            <Badge label="Review only" tone="readOnly" />
-            {candidate.sections.nextAction.allowedReadOnlyActions.map((action) => (
-              <AppText key={action}>{action}</AppText>
-            ))}
-            <AppText variant="caption">
-              {candidate.sections.nextAction.nextEngineeringAction ?? "UNKNOWN"}
-            </AppText>
-          </CardContainer>
-          <DisabledActionBar actions={candidate.sections.nextAction.disabledTradingActions} />
-          <DisabledActionBar actions={candidate.disabledActions} />
         </SectionContainer>
 
         <SectionContainer title="Scaffold Boundary" description="This detail route is a fixture-backed assembly only.">
@@ -187,6 +168,20 @@ export default function CandidateDetailRoute() {
             sourceRef={candidate.governance.controlStateSource}
           />
           <BlockerList blockers={candidate.blockers} />
+        </SectionContainer>
+
+        <SectionContainer title="Review Actions" description="Read-only actions only; trading mutation remains disabled.">
+          <CardContainer>
+            <Badge label="Review only" tone="readOnly" />
+            {candidate.sections.nextAction.allowedReadOnlyActions.map((action) => (
+              <AppText key={action}>{action}</AppText>
+            ))}
+            <AppText variant="caption">
+              {candidate.sections.nextAction.nextEngineeringAction ?? "UNKNOWN"}
+            </AppText>
+          </CardContainer>
+          <DisabledActionBar actions={candidate.sections.nextAction.disabledTradingActions} />
+          <DisabledActionBar actions={candidate.disabledActions} />
         </SectionContainer>
       </ProductDetailSection>
     </ScreenContainer>

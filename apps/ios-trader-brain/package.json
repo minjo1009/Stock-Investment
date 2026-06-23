@@ -34,6 +34,7 @@
     "web:mobile": "expo start --web --host lan --port 8098",
     "build:web": "expo export --platform web",
     "evidence:web-export": "node scripts/web-export-evidence.mjs",
+    "preview:web-static": "node scripts/web-preview-static-server.mjs 8099",
     "typecheck": "tsc --noEmit",
     "lint": "node src/qa/scaffold-lint.mjs",
     "test": "node src/qa/storybook-smoke-test.mjs && npm run validate:safety && npm run validate:fixtures && npm run validate:routes && npm run validate:screen-boundary && npm run validate:detail-v1 && npm run validate:screenshot-qa && npm run validate:screenshot-baseline && npm run validate:story-coverage && npm run validate:dev-build-readiness && npm run validate:eas-build-contract && npm run validate:ios-operator-runbook && npm run validate:ios-evidence-contract && npm run validate:maestro-contract && npm run validate:visual-regression-contract && npm run validate:navigation-registry && npm run validate:ui-state-coverage && npm run validate:read-model-boundary && npm run validate:frontend-governance && npm run validate:mobile-web-readiness && npm run validate:mobile-product-v1 && npm run validate:mobile-scroll-journey && npm run validate:mobile-detail-header && npm run validate:mobile-scan-list-v1 && npm run validate:mobile-screenshot-evidence && npm run validate:web-preflight",
