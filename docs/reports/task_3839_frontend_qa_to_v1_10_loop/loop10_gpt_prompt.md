@@ -1,0 +1,1 @@
+Task3839 Loop 10/10. Goal: Portfolio/Orders/System v1 bundle or split. Current tabs are v0 scaffold-only, read-only. Need final safe bounded step in this 10-loop run. Options: bundle copy/hierarchy only for all three, or defer/split. Must not add broker sync/order handlers/runtime/DB/new data. What exact patch should Codex do now, if any? Keep concise.

@@ -23,7 +23,7 @@ export default function OrdersRoute() {
     <ScreenContainer>
       <View style={{ gap: spacing.sm }}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <Badge label="ORDERS v0" tone="readOnly" />
+          <Badge label="ORDERS v1" tone="readOnly" />
           <Badge label="Read-only" tone="readOnly" />
           <Badge label="NOT_AUTHORITY" tone="blocked" />
         </View>
@@ -32,28 +32,6 @@ export default function OrdersRoute() {
           Scaffold-only fixture-backed lifecycle monitor. No order mutation path is present.
         </AppText>
       </View>
-
-      <SectionContainer title="Governance Boundary" description="Order mutation remains blocked.">
-        <StatusRow
-          label="Broker mutation"
-          value={orders.governance.brokerMutationPermitted ? "permitted" : "false"}
-          state="blocked"
-          sourceRef={orders.governance.controlStateSource}
-        />
-        <StatusRow
-          label="Deployment"
-          value={`Deployment ${orders.governance.deploymentReadiness}`}
-          state="blocked"
-          sourceRef={orders.governance.authorityReportPath}
-        />
-        <StatusRow
-          label="Real capital"
-          value={`Real capital ${orders.governance.realCapital}`}
-          state="blocked"
-          sourceRef={orders.governance.controlStateSource}
-        />
-        <BlockerList blockers={orders.blockers} />
-      </SectionContainer>
 
       <SectionContainer title="Order State Snapshot" description="Blocked lifecycle states stay visible.">
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
@@ -98,6 +76,28 @@ export default function OrdersRoute() {
 
       <SectionContainer title="Disabled Actions" description="Submit remains disabled and has no handler.">
         <DisabledActionBar actions={orders.disabledActions} />
+      </SectionContainer>
+
+      <SectionContainer title="Governance Boundary" description="Order mutation remains blocked.">
+        <StatusRow
+          label="Broker mutation"
+          value={orders.governance.brokerMutationPermitted ? "permitted" : "false"}
+          state="blocked"
+          sourceRef={orders.governance.controlStateSource}
+        />
+        <StatusRow
+          label="Deployment"
+          value={`Deployment ${orders.governance.deploymentReadiness}`}
+          state="blocked"
+          sourceRef={orders.governance.authorityReportPath}
+        />
+        <StatusRow
+          label="Real capital"
+          value={`Real capital ${orders.governance.realCapital}`}
+          state="blocked"
+          sourceRef={orders.governance.controlStateSource}
+        />
+        <BlockerList blockers={orders.blockers} />
       </SectionContainer>
     </ScreenContainer>
   );

@@ -20,7 +20,7 @@ export default function PortfolioRoute() {
     <ScreenContainer>
       <View style={{ gap: spacing.sm }}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <Badge label="PORTFOLIO v0" tone="readOnly" />
+          <Badge label="PORTFOLIO v1" tone="readOnly" />
           <Badge label="Read-only" tone="readOnly" />
           <Badge label="NOT_AUTHORITY" tone="blocked" />
         </View>
@@ -30,28 +30,6 @@ export default function PortfolioRoute() {
           account truth.
         </AppText>
       </View>
-
-      <SectionContainer title="Governance Boundary" description="Broker truth remains blocked.">
-        <StatusRow
-          label="Strategy"
-          value={`Strategy ${portfolio.governance.strategyAcceptance}`}
-          state="blocked"
-          sourceRef={portfolio.governance.controlStateSource}
-        />
-        <StatusRow
-          label="Deployment"
-          value={`Deployment ${portfolio.governance.deploymentReadiness}`}
-          state="blocked"
-          sourceRef={portfolio.governance.authorityReportPath}
-        />
-        <StatusRow
-          label="Real capital"
-          value={`Real capital ${portfolio.governance.realCapital}`}
-          state="blocked"
-          sourceRef={portfolio.governance.controlStateSource}
-        />
-        <BlockerList blockers={portfolio.blockers} />
-      </SectionContainer>
 
       <SectionContainer title="Portfolio Summary" description="Null account values render as UNKNOWN, not zero.">
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
@@ -94,6 +72,28 @@ export default function PortfolioRoute() {
 
       <SectionContainer title="Disabled Actions" description="Broker sync is visible only as disabled.">
         <DisabledActionBar actions={portfolio.disabledActions} />
+      </SectionContainer>
+
+      <SectionContainer title="Governance Boundary" description="Broker truth remains blocked.">
+        <StatusRow
+          label="Strategy"
+          value={`Strategy ${portfolio.governance.strategyAcceptance}`}
+          state="blocked"
+          sourceRef={portfolio.governance.controlStateSource}
+        />
+        <StatusRow
+          label="Deployment"
+          value={`Deployment ${portfolio.governance.deploymentReadiness}`}
+          state="blocked"
+          sourceRef={portfolio.governance.authorityReportPath}
+        />
+        <StatusRow
+          label="Real capital"
+          value={`Real capital ${portfolio.governance.realCapital}`}
+          state="blocked"
+          sourceRef={portfolio.governance.controlStateSource}
+        />
+        <BlockerList blockers={portfolio.blockers} />
       </SectionContainer>
     </ScreenContainer>
   );

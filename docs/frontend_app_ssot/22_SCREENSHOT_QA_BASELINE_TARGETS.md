@@ -8,6 +8,8 @@ Task3834 did not perform screenshot capture. No screenshot artifact should be tr
 
 Task3836 later captured Chrome-headless web-preflight screenshots under `data/artifacts/task_3836_frontend_actual_screenshot_capture/`. Those screenshots remain `NOT_AUTHORITY` QA artifacts and do not grant visual approval, product readiness, deployment readiness, paper/live permission, or real-capital permission.
 
+Task3839 later captured another Chrome-headless web-preflight screenshot set under `data/artifacts/task_3839_frontend_qa_to_v1_10_loop/screenshots/` after scaffold-only v1 hierarchy changes. Those screenshots remain `NOT_AUTHORITY` QA artifacts and do not grant visual approval, product readiness, deployment readiness, paper/live permission, or real-capital permission.
+
 ## Target Manifest
 
 Canonical scaffold target manifest:
@@ -18,8 +20,9 @@ Validator:
 
 - `cd apps/ios-trader-brain && npm run validate:screenshot-qa`
 - `cd apps/ios-trader-brain && npm run qa:screenshot`
+- `cd apps/ios-trader-brain && npm run validate:screenshot-baseline`
 
-Both commands validate target readiness and explicitly report that screenshot capture was not run.
+The first two commands validate target readiness and explicitly report that screenshot capture was not run. The baseline command verifies the captured Task3836 baseline artifacts remain present and `NOT_AUTHORITY`.
 
 ## Required Surfaces
 

@@ -26,7 +26,7 @@ export default function BrainRoute() {
     <ScreenContainer>
       <View style={{ gap: spacing.sm }}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <Badge label="BRAIN v0" tone="readOnly" />
+          <Badge label="BRAIN v1" tone="readOnly" />
           <Badge label="Read-only" tone="readOnly" />
           <Badge label="NOT_AUTHORITY" tone="blocked" />
         </View>
@@ -37,29 +37,7 @@ export default function BrainRoute() {
         </AppText>
       </View>
 
-      <SectionContainer title="Scaffold Boundary" description="The BRAIN tab uses fixture data only.">
-        <StatusRow
-          label="Strategy"
-          value={`Strategy ${brain.governance.strategyAcceptance}`}
-          state="blocked"
-          sourceRef={brain.governance.controlStateSource}
-        />
-        <StatusRow
-          label="Deployment"
-          value={`Deployment ${brain.governance.deploymentReadiness}`}
-          state="blocked"
-          sourceRef={brain.governance.authorityReportPath}
-        />
-        <StatusRow
-          label="Real capital"
-          value={`Real capital ${brain.governance.realCapital}`}
-          state="blocked"
-          sourceRef={brain.governance.controlStateSource}
-        />
-        <BlockerList blockers={brain.blockers} />
-      </SectionContainer>
-
-      <SectionContainer title="Brain Decision Snapshot" description="Fresh counts do not open any trading gate.">
+      <SectionContainer title="Brain Overview" description="Fresh counts do not open any trading gate.">
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
           <MetricCard label="Candidates" value={brain.candidates.length} state="readOnly" />
           <MetricCard label="Review-only" value={reviewOnlyCount} state="readOnly" />
@@ -68,7 +46,7 @@ export default function BrainRoute() {
         </View>
       </SectionContainer>
 
-      <SectionContainer title="Candidate Ideas" description="Rows are read-only and fixture-backed.">
+      <SectionContainer title="Review Queue" description="Rows are read-only and fixture-backed.">
         <View style={{ gap: spacing.sm }}>
           {brain.candidates.map((candidate) => (
             <CardContainer key={candidate.candidateId}>
@@ -96,7 +74,7 @@ export default function BrainRoute() {
         </View>
       </SectionContainer>
 
-      <SectionContainer title="Risk Gate" description="Forbidden filters cannot enter assignment logic.">
+      <SectionContainer title="Blocked / Missing Evidence" description="Forbidden filters cannot enter assignment logic.">
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
           <MetricCard label="Fresh" value={brain.sourceSummary.freshCount} state="fresh" />
           <MetricCard label="Stale" value={brain.sourceSummary.staleCount} state="stale" />
@@ -111,6 +89,28 @@ export default function BrainRoute() {
             </AppText>
           ))}
         </CardContainer>
+      </SectionContainer>
+
+      <SectionContainer title="Scaffold Boundary" description="The BRAIN tab uses fixture data only.">
+        <StatusRow
+          label="Strategy"
+          value={`Strategy ${brain.governance.strategyAcceptance}`}
+          state="blocked"
+          sourceRef={brain.governance.controlStateSource}
+        />
+        <StatusRow
+          label="Deployment"
+          value={`Deployment ${brain.governance.deploymentReadiness}`}
+          state="blocked"
+          sourceRef={brain.governance.authorityReportPath}
+        />
+        <StatusRow
+          label="Real capital"
+          value={`Real capital ${brain.governance.realCapital}`}
+          state="blocked"
+          sourceRef={brain.governance.controlStateSource}
+        />
+        <BlockerList blockers={brain.blockers} />
       </SectionContainer>
 
       <SectionContainer title="Disabled Actions" description="Review controls do not mutate strategy or broker state.">

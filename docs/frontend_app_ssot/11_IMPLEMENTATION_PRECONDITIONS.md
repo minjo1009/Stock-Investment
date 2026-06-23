@@ -352,3 +352,13 @@ Task3836 screenshot capture loop:
 - Final after2 evidence is recorded under `data/artifacts/task_3836_frontend_actual_screenshot_capture/after2/`.
 - The screenshots remain `NOT_AUTHORITY` QA artifacts.
 - Product readiness, authoritative read-source integration, Maestro readiness, iOS simulator evidence, broker mutation, paper/live permission, deployment readiness, and real-capital permission remain blocked.
+
+Task3839 frontend QA to v1 10-loop run:
+
+- Ten captured GPT-Codex loops were executed as frontend QA and scaffold-only v1 hierarchy work.
+- `npm run validate:screenshot-baseline` verifies Task3836 screenshot baseline artifacts remain present and `NOT_AUTHORITY`.
+- `npm run validate:story-coverage` verifies regression-critical `Badge` and `StatusRow` stories remain present.
+- HOME, BRAIN, Candidate Detail, PORTFOLIO, ORDERS, and SYSTEM were adjusted only as scaffold-only fixture-backed read-only v1 surfaces.
+- Task3839 Chrome-headless web-preflight screenshots were captured under `data/artifacts/task_3839_frontend_qa_to_v1_10_loop/screenshots/`.
+- Native iOS simulator screenshot capture remains `DEFERRED_WITH_REASON_TASK3839_WINDOWS_ENVIRONMENT`.
+- Product readiness, authoritative read-source integration, Maestro readiness, iOS simulator evidence, broker mutation, paper/live permission, deployment readiness, and real-capital permission remain blocked.

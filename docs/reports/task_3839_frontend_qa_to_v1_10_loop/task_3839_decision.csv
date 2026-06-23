@@ -1,0 +1,12 @@
+field,value,authority,notes
+task_id,Task3839,canonical,Registry task id.
+strategy_acceptance,NOT_ACCEPTED,canonical,No strategy acceptance changed.
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,canonical,No deployment readiness changed.
+real_capital,FORBIDDEN,canonical,No real-capital permission changed.
+broker_mutation,false,canonical,No broker mutation path added.
+gpt_loop_count,10,canonical,Ten captured GPT-Codex planning and implementation loops were executed.
+frontend_scope,scaffold_v1_qa_hardening,canonical,Only scaffold-only fixture-backed read-only UI hierarchy and QA baseline hardening changed.
+screenshot_capture,CAPTURED,canonical,Chrome-headless web-preflight screenshots were captured after v1 hierarchy changes.
+screenshot_authority,NOT_AUTHORITY,canonical,Screenshots are QA artifacts only.
+native_ios_capture,DEFERRED_WITH_REASON,canonical,Native iOS simulator capture remains deferred in the current Windows environment.
+product_readiness,NOT_GRANTED,canonical,No product readiness or visual approval granted.

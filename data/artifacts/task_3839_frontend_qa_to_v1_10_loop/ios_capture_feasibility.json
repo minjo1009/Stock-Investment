@@ -1,0 +1,11 @@
+{
+  "authority": "NOT_AUTHORITY",
+  "status": "DEFERRED",
+  "current_environment": "windows_codex_workspace",
+  "ios_simulator_available": false,
+  "xcode_available": false,
+  "native_ios_capture_proven": false,
+  "web_preflight_capture_available": true,
+  "task3836_capture_available": true,
+  "blocker": "macos_xcode_required"
+}

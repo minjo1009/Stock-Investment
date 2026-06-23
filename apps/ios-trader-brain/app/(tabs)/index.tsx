@@ -20,7 +20,7 @@ export default function HomeRoute() {
     <ScreenContainer>
       <View style={{ gap: spacing.sm }}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <Badge label="HOME v0" tone="readOnly" />
+          <Badge label="HOME v1" tone="readOnly" />
           <Badge label="Read-only" tone="readOnly" />
           <Badge label="NOT_AUTHORITY" tone="blocked" />
         </View>
@@ -30,32 +30,6 @@ export default function HomeRoute() {
           source truth, broker truth, or product readiness evidence.
         </AppText>
       </View>
-
-      <SectionContainer title="Governance Boundary" description="Visible hard state for this scaffold screen.">
-        <StatusRow
-          label="Strategy"
-          value={`Strategy ${home.governance.strategyAcceptance}`}
-          state="blocked"
-          sourceRef={home.governance.controlStateSource}
-        />
-        <StatusRow
-          label="Deployment"
-          value={`Deployment ${home.governance.deploymentReadiness}`}
-          state="blocked"
-          sourceRef={home.governance.authorityReportPath}
-        />
-        <StatusRow
-          label="Real capital"
-          value={`Real capital ${home.governance.realCapital}`}
-          state="blocked"
-          sourceRef={home.governance.controlStateSource}
-        />
-        <StatusRow
-          label="Kill switch"
-          value={home.governance.killSwitchActive ? "active" : "inactive"}
-          state={home.governance.killSwitchActive ? "blocked" : "unknown"}
-        />
-      </SectionContainer>
 
       <SectionContainer title="Portfolio Snapshot" description="Fixture values stay unknown until an authority path exists.">
         <View style={{ gap: spacing.sm }}>
@@ -128,6 +102,32 @@ export default function HomeRoute() {
 
       <SectionContainer title="Blocker Summary" description="Fixture blockers are displayed as blockers, not negative evidence.">
         <BlockerList blockers={[...home.blockers, ...home.blockerSummary]} />
+      </SectionContainer>
+
+      <SectionContainer title="Governance Boundary" description="Visible hard state for this scaffold screen.">
+        <StatusRow
+          label="Strategy"
+          value={`Strategy ${home.governance.strategyAcceptance}`}
+          state="blocked"
+          sourceRef={home.governance.controlStateSource}
+        />
+        <StatusRow
+          label="Deployment"
+          value={`Deployment ${home.governance.deploymentReadiness}`}
+          state="blocked"
+          sourceRef={home.governance.authorityReportPath}
+        />
+        <StatusRow
+          label="Real capital"
+          value={`Real capital ${home.governance.realCapital}`}
+          state="blocked"
+          sourceRef={home.governance.controlStateSource}
+        />
+        <StatusRow
+          label="Kill switch"
+          value={home.governance.killSwitchActive ? "active" : "inactive"}
+          state={home.governance.killSwitchActive ? "blocked" : "unknown"}
+        />
       </SectionContainer>
 
       <SectionContainer title="Disabled Actions" description="Trading mutation remains disabled by governance.">

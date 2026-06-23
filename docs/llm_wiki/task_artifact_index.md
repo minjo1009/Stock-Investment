@@ -56,6 +56,7 @@ Use this index to find current truth without rereading all historical reports.
 | Task3831 | frontend 10-loop scaffold implementation: BRAIN, PORTFOLIO, ORDERS, SYSTEM, detail routes, read-only cross-links, and Storybook scaffold overview | [report](../reports/task_3831_frontend_10_loop_scaffold_implementation/task_3831_frontend_10_loop_scaffold_implementation.md) |
 | Task3834 | frontend screenshot QA baseline: target manifest, screenshot target validator, route validator, and scaffold screen-boundary validator | [report](../reports/task_3834_frontend_screenshot_qa_baseline/task_3834_frontend_screenshot_qa_baseline.md) |
 | Task3836 | frontend screenshot capture loop: actual Chrome-headless web-preflight screenshots, GPT visual review, bounded P1 Badge/StatusRow repair, and after2 recapture | [report](../reports/task_3836_frontend_screenshot_capture_loop/task_3836_frontend_screenshot_capture_loop.md) |
+| Task3839 | frontend QA to v1 10-loop run: screenshot-baseline/story-coverage validators, scaffold-only v1 hierarchy, and NOT_AUTHORITY screenshot recapture | [report](../reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_frontend_qa_to_v1_10_loop.md) |
 
 ## Current Interpretation
 

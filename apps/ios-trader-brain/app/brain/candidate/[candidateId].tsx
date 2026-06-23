@@ -28,7 +28,7 @@ export default function CandidateDetailRoute() {
     <ScreenContainer>
       <View style={{ gap: spacing.sm }}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <Badge label="Candidate Detail v0" tone="readOnly" />
+          <Badge label="Candidate Detail v1" tone="readOnly" />
           <Badge label="Read-only" tone="readOnly" />
           <Badge label="NOT_AUTHORITY" tone="blocked" />
         </View>
@@ -37,6 +37,60 @@ export default function CandidateDetailRoute() {
           Scaffold-only fixture-backed view. Route params do not select authoritative data.
         </AppText>
       </View>
+
+      <DecisionHeader
+        decisionSummary={candidate.sections.decisionSummary}
+        governance={candidate.governance}
+      />
+
+      <SectionContainer title="Thesis / Logic" description="Read-only fixture text for display wiring.">
+        <CardContainer>
+          <AppText>{candidate.sections.thesisLogic.thesis ?? "UNKNOWN"}</AppText>
+          <AppText variant="caption">{candidate.sections.thesisLogic.reason ?? "UNKNOWN"}</AppText>
+          <AppText variant="caption">
+            Economic meaning refs: {joinOrUnknown(candidate.sections.thesisLogic.economicMeaningRefs)}
+          </AppText>
+          <AppText variant="caption">
+            Relation refs: {joinOrUnknown(candidate.sections.thesisLogic.relationRefs)}
+          </AppText>
+        </CardContainer>
+      </SectionContainer>
+
+      <SectionContainer title="Evidence" description="Unknown evidence remains unknown, not negative evidence.">
+        <EvidenceList evidence={candidate.sections.evidence} />
+      </SectionContainer>
+
+      <SectionContainer title="Evidence Chain" description="Read-only scaffold link to the fixture chain view.">
+        <Link href="/brain/chain/fixture-chain">
+          <AppText variant="caption">Open read-only chain detail</AppText>
+        </Link>
+      </SectionContainer>
+
+      <SectionContainer title="Validation Status" description="Validation status is not acceptance.">
+        <ValidationReadinessPanel
+          validationReadiness={candidate.sections.validationReadiness}
+        />
+      </SectionContainer>
+
+      <RiskGate
+        blockers={candidate.sections.risk.blockers}
+        sourceStates={candidate.sections.risk.sourceStates}
+        chartStates={candidate.sections.risk.chartStates}
+      />
+
+      <SectionContainer title="Review Actions" description="Read-only actions only; trading mutation remains disabled.">
+        <CardContainer>
+          <Badge label="Review only" tone="readOnly" />
+          {candidate.sections.nextAction.allowedReadOnlyActions.map((action) => (
+            <AppText key={action}>{action}</AppText>
+          ))}
+          <AppText variant="caption">
+            {candidate.sections.nextAction.nextEngineeringAction ?? "UNKNOWN"}
+          </AppText>
+        </CardContainer>
+        <DisabledActionBar actions={candidate.sections.nextAction.disabledTradingActions} />
+        <DisabledActionBar actions={candidate.disabledActions} />
+      </SectionContainer>
 
       <SectionContainer title="Scaffold Boundary" description="This detail route is a fixture-backed assembly only.">
         <StatusRow
@@ -69,58 +123,6 @@ export default function CandidateDetailRoute() {
           sourceRef={candidate.governance.controlStateSource}
         />
         <BlockerList blockers={candidate.blockers} />
-      </SectionContainer>
-
-      <DecisionHeader
-        decisionSummary={candidate.sections.decisionSummary}
-        governance={candidate.governance}
-      />
-
-      <SectionContainer title="Thesis / Logic" description="Read-only fixture text for display wiring.">
-        <CardContainer>
-          <AppText>{candidate.sections.thesisLogic.thesis ?? "UNKNOWN"}</AppText>
-          <AppText variant="caption">{candidate.sections.thesisLogic.reason ?? "UNKNOWN"}</AppText>
-          <AppText variant="caption">
-            Economic meaning refs: {joinOrUnknown(candidate.sections.thesisLogic.economicMeaningRefs)}
-          </AppText>
-          <AppText variant="caption">
-            Relation refs: {joinOrUnknown(candidate.sections.thesisLogic.relationRefs)}
-          </AppText>
-        </CardContainer>
-      </SectionContainer>
-
-      <ValidationReadinessPanel
-        validationReadiness={candidate.sections.validationReadiness}
-      />
-
-      <SectionContainer title="Evidence" description="Unknown evidence remains unknown, not negative evidence.">
-        <EvidenceList evidence={candidate.sections.evidence} />
-      </SectionContainer>
-
-      <SectionContainer title="Chain Trace" description="Read-only scaffold link to the fixture chain view.">
-        <Link href="/brain/chain/fixture-chain">
-          <AppText variant="caption">Open read-only chain detail</AppText>
-        </Link>
-      </SectionContainer>
-
-      <RiskGate
-        blockers={candidate.sections.risk.blockers}
-        sourceStates={candidate.sections.risk.sourceStates}
-        chartStates={candidate.sections.risk.chartStates}
-      />
-
-      <SectionContainer title="Next Action" description="Read-only actions only; trading mutation remains disabled.">
-        <CardContainer>
-          <Badge label="Review only" tone="readOnly" />
-          {candidate.sections.nextAction.allowedReadOnlyActions.map((action) => (
-            <AppText key={action}>{action}</AppText>
-          ))}
-          <AppText variant="caption">
-            {candidate.sections.nextAction.nextEngineeringAction ?? "UNKNOWN"}
-          </AppText>
-        </CardContainer>
-        <DisabledActionBar actions={candidate.sections.nextAction.disabledTradingActions} />
-        <DisabledActionBar actions={candidate.disabledActions} />
       </SectionContainer>
     </ScreenContainer>
   );

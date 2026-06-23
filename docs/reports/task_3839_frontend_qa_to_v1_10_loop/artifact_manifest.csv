@@ -1,0 +1,40 @@
+artifact_path,artifact_type,authority,notes
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_frontend_qa_to_v1_10_loop.md,task_report,canonical,Task3839 closeout report.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/artifact_manifest.csv,artifact_manifest,canonical,Task3839 artifact manifest.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_decision.csv,decision_record,canonical,Task3839 decision record.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop_ledger.csv,loop_ledger,canonical,Task3839 10-loop ledger.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/visual_density_findings.csv,qa_findings,canonical,Visual density findings from loop 1.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop1_gpt_prompt.md,gpt_prompt,review_only,Loop 1 prompt.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop1_gpt_response_summary.md,gpt_response_summary,review_only,Loop 1 GPT response summary.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop2_gpt_prompt.md,gpt_prompt,review_only,Loop 2 prompt.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop2_gpt_response_summary.md,gpt_response_summary,review_only,Loop 2 GPT response summary.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop3_gpt_prompt.md,gpt_prompt,review_only,Loop 3 prompt.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop3_gpt_response_summary.md,gpt_response_summary,review_only,Loop 3 GPT response summary.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop4_gpt_prompt.md,gpt_prompt,review_only,Loop 4 prompt.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop4_gpt_response_summary.md,gpt_response_summary,review_only,Loop 4 GPT response summary.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop5_gpt_prompt.md,gpt_prompt,review_only,Loop 5 prompt.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop5_gpt_response_summary.md,gpt_response_summary,review_only,Loop 5 GPT response summary.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop6_gpt_prompt.md,gpt_prompt,review_only,Loop 6 prompt.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop6_gpt_response_summary.md,gpt_response_summary,review_only,Loop 6 GPT response summary.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop7_gpt_prompt.md,gpt_prompt,review_only,Loop 7 prompt.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop7_gpt_response_summary.md,gpt_response_summary,review_only,Loop 7 GPT response summary.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop8_gpt_prompt.md,gpt_prompt,review_only,Loop 8 prompt.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop8_gpt_response_summary.md,gpt_response_summary,review_only,Loop 8 GPT response summary.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop9_gpt_prompt.md,gpt_prompt,review_only,Loop 9 prompt.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop9_gpt_response_summary.md,gpt_response_summary,review_only,Loop 9 GPT response summary.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop10_gpt_prompt.md,gpt_prompt,review_only,Loop 10 prompt.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/loop10_gpt_response_summary.md,gpt_response_summary,review_only,Loop 10 GPT response summary.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_visual_density_audit.md,qa_report,canonical,Loop 1 visual density audit.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_ios_capture_feasibility.md,qa_report,canonical,Loop 2 native iOS capture feasibility decision.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_screenshot_regression_baseline.md,qa_report,canonical,Loop 3 screenshot baseline validator decision.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_compact_source_ref_presentation.md,qa_report,canonical,Loop 4 compact source/reference presentation decision.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_bottom_tab_typography_decision.md,qa_report,canonical,Loop 5 bottom tab typography deferral decision.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_story_coverage_regression.md,qa_report,canonical,Loop 6 story coverage regression validator decision.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_home_v1_hierarchy.md,qa_report,canonical,Loop 7 HOME v1 hierarchy decision.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_brain_v1_hierarchy.md,qa_report,canonical,Loop 8 BRAIN v1 hierarchy decision.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_candidate_detail_v1_hierarchy.md,qa_report,canonical,Loop 9 Candidate Detail v1 hierarchy decision.
+docs/reports/task_3839_frontend_qa_to_v1_10_loop/task_3839_remaining_tabs_v1_alignment.md,qa_report,canonical,Loop 10 remaining tabs v1 alignment decision.
+data/artifacts/task_3839_frontend_qa_to_v1_10_loop/ios_capture_feasibility.json,qa_artifact,canonical,Native iOS capture feasibility evidence.
+data/artifacts/task_3839_frontend_qa_to_v1_10_loop/screenshots/screenshot_capture_manifest_task3839.json,screenshot_manifest,not_authority,Task3839 web-preflight screenshot manifest.
+data/artifacts/task_3839_frontend_qa_to_v1_10_loop/screenshots/contact_sheet_iphone15_width_task3839.png,screenshot_contact_sheet,not_authority,Task3839 iPhone 15 width contact sheet.
+data/artifacts/task_3839_frontend_qa_to_v1_10_loop/screenshots,screenshot_directory,not_authority,Task3839 route screenshot PNGs across two mobile widths.
