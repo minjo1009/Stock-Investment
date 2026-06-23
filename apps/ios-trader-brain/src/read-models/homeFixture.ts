@@ -30,8 +30,8 @@ export const homeFixture = {
     {
       blockerId: "home-source-stale",
       severity: "P1",
-      label: "Source freshness not complete",
-      reason: "Scaffold fixture includes stale, missing, and unknown source states.",
+      label: "출처 최신성 미완료",
+      reason: "임시 화면 데이터에는 stale, missing, unknown 상태가 포함됩니다.",
       sourceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
       detectedAt: "2026-06-22T00:00:00Z",
     },
@@ -39,9 +39,9 @@ export const homeFixture = {
   disabledActions: [
     {
       actionId: "execute",
-      label: "Review action disabled",
+      label: "검토 작업 비활성",
       actionState: "disabled",
-      disabledReason: "Current governance blocks trading mutation.",
+      disabledReason: "현재 운영 상태에서는 거래 변경 작업이 차단됩니다.",
       requiredGovernanceChange: [
         "strategyAcceptance must change from NOT_ACCEPTED",
         "deploymentReadiness must change from DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
@@ -88,7 +88,7 @@ export const homeFixture = {
     maxDrawdownPct: null,
     sourceState: {
       sourceId: "fixture-portfolio-source",
-      sourceLabel: "Portfolio scaffold source",
+      sourceLabel: "포트폴리오 임시 출처",
       freshnessStatus: "UNKNOWN",
       observedAt: null,
       generatedAt: "2026-06-22T00:00:00Z",
@@ -96,7 +96,7 @@ export const homeFixture = {
       strictGateAllowed: false,
       proxyAllowed: false,
       provenanceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
-      blockerReason: "Portfolio values are scaffold fixtures, not broker truth.",
+      blockerReason: "포트폴리오 값은 임시 화면 데이터이며 브로커 원장이 아닙니다.",
     },
   },
   brainSnapshot: {
@@ -106,7 +106,7 @@ export const homeFixture = {
     latestRuntimeDecisionAt: null,
     sourceState: {
       sourceId: "fixture-brain-source",
-      sourceLabel: "Brain scaffold source",
+      sourceLabel: "브레인 임시 출처",
       freshnessStatus: "STALE",
       observedAt: "2026-06-01T00:00:00Z",
       generatedAt: "2026-06-22T00:00:00Z",
@@ -114,15 +114,15 @@ export const homeFixture = {
       strictGateAllowed: false,
       proxyAllowed: false,
       provenanceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
-      blockerReason: "Runtime source is stale in this scaffold fixture.",
+      blockerReason: "브레인 출처는 이 임시 화면 데이터에서 stale 상태입니다.",
     },
   },
   attentionQueue: [
     {
       itemId: "attention-source-missing",
       kind: "source",
-      label: "Missing source fixture",
-      reason: "Required source must remain visible as missing.",
+      label: "필수 출처 연결 필요",
+      reason: "필수 출처가 없으므로 이 항목은 판단 보류 상태로 남습니다.",
       severity: "P1",
       route: "/system",
       sourceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
@@ -131,7 +131,7 @@ export const homeFixture = {
   freshnessSummary: [
     {
       sourceId: "fixture-source-fresh",
-      sourceLabel: "Fresh fixture source",
+      sourceLabel: "정상 임시 출처",
       freshnessStatus: "FRESH",
       observedAt: "2026-06-22T00:00:00Z",
       generatedAt: "2026-06-22T00:00:00Z",
@@ -143,7 +143,7 @@ export const homeFixture = {
     },
     {
       sourceId: "fixture-source-missing",
-      sourceLabel: "Missing fixture source",
+      sourceLabel: "누락 임시 출처",
       freshnessStatus: "MISSING",
       observedAt: null,
       generatedAt: null,
@@ -151,15 +151,15 @@ export const homeFixture = {
       strictGateAllowed: false,
       proxyAllowed: false,
       provenanceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
-      blockerReason: "Required source missing.",
+      blockerReason: "필수 출처가 없습니다.",
     },
   ],
   blockerSummary: [
     {
       blockerId: "home-fixture-not-authority",
       severity: "P0",
-      label: "Fixture is not authority",
-      reason: "Generated JSON fixture snapshot is scaffold-only and cannot approve trading.",
+      label: "임시 데이터는 권위가 아님",
+      reason: "생성된 JSON 임시 데이터는 화면 스캐폴드 전용이며 거래를 승인할 수 없습니다.",
       sourceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
       detectedAt: "2026-06-22T00:00:00Z",
     },

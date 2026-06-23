@@ -40,6 +40,11 @@ function expectExcludes(source, tokens, context) {
   }
 }
 
+function expectNoMojibake(source, context) {
+  const mojibakeTokens = ["?쎄", "?ㅻ", "?ъ", "怨", "李", "異", "鍮", "沅", "媛"];
+  expectExcludes(source, mojibakeTokens, context);
+}
+
 const homeRoute = readText("app/(tabs)/index.tsx");
 const common = readText("src/read-models/common.ts");
 const homeFixture = readText("src/read-models/homeFixture.ts");
@@ -47,10 +52,37 @@ const homeJson = readJson("src/mocks/fixtures/home.json");
 const chartCard = readText("src/components/domain/home-relative-return-chart-card.tsx");
 const packageJson = readJson("package.json");
 
-expectIncludes(homeRoute, ["오늘의 투자 요약", "HomeRelativeReturnChartCard", "오늘 확인할 것"], "HOME route");
+expectNoMojibake(homeRoute, "HOME route");
+expectNoMojibake(chartCard, "HOME chart card");
+expectNoMojibake(homeFixture, "HOME fixture");
+expectNoMojibake(JSON.stringify(homeJson ?? {}), "HOME fixture JSON");
+
+expectIncludes(
+  homeRoute,
+  [
+    "포트폴리오 운영 대시보드",
+    "계좌 평가액",
+    "투자금",
+    "현금",
+    "수익현황",
+    "승률현황",
+    "MDD",
+    "오늘 확인할 것",
+    "데이터 출처 상태",
+    "읽기 전용",
+  ],
+  "HOME route"
+);
 expectExcludes(
   homeRoute,
-  ["계좌 스냅샷", "운영 제한 상태", "비활성화된 기능", "catalog-manifest", "apps/ios-trader-brain", "src/mocks"],
+  [
+    "계좌 스냅샷",
+    "운영 제한 상태",
+    "비활성화된 기능",
+    "catalog-manifest",
+    "apps/ios-trader-brain",
+    "src/mocks",
+  ],
   "HOME visible source"
 );
 expect(!homeRoute.includes("sourceRefs={item.sourceRefs}"), "HOME attention cards must not render raw source refs");
@@ -58,7 +90,7 @@ expect(!homeRoute.includes("subtitle={item.route}"), "HOME attention cards must 
 
 expectIncludes(
   common,
-  ["HomeRelativeReturnChart", "RelativeReturnChartPoint", "ChartResolution", "relativeReturnChart"],
+  ["HomeRelativeReturnChart", "RelativeReturnChartPoint", "ChartResolution", "relativeReturnChart", 'title: "수익현황"'],
   "read model contract"
 );
 expectIncludes(
@@ -75,6 +107,7 @@ expectExcludes(
 const relativeChart = homeJson?.relativeReturnChart;
 expect(relativeChart?.chartId === "home-relative-return-vs-qqq", "HOME fixture must define relative return chart id");
 expect(relativeChart?.benchmarkSymbol === "QQQ", "HOME fixture chart benchmark must be QQQ");
+expect(relativeChart?.title === "수익현황", "HOME fixture chart title must be Korean paraphrased");
 expect(relativeChart?.chartState?.status !== "READY", "HOME fixture chart must not be READY without authority");
 expect(
   relativeChart?.chartState?.status === "SOURCE_NOT_ATTACHED" ||
@@ -113,4 +146,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[HOME_DESIGN_ALIGNMENT_OK] HOME follows product-first design alignment without fake chart data");
+console.log("[HOME_DESIGN_ALIGNMENT_OK] HOME follows production-first IA without fake chart data");

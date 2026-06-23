@@ -34,7 +34,14 @@ const detailFiles = [
 
 for (const file of tabFiles) {
   const source = read(file);
-  expect(source, "FreshnessBanner", `${file} must render FreshnessBanner`);
+  if (file === "app/(tabs)/index.tsx") {
+    if (!(source.includes("FreshnessBanner") || source.includes("SourceFreshnessBadge"))) {
+      findings.push(`${file} must render freshness evidence`);
+    }
+    expect(source, "데이터 출처 상태", `${file} must render source evidence as a secondary HOME layer`);
+  } else {
+    expect(source, "FreshnessBanner", `${file} must render FreshnessBanner`);
+  }
   expect(source, "sourceSummary", `${file} must bind source summary`);
   expect(source, "NOT_AUTHORITY", `${file} must preserve NOT_AUTHORITY`);
 }

@@ -1,0 +1,4 @@
+artifact_id,path,type,status,notes
+task3885_report,docs/reports/task_3885_home_screen_v1_production_spec/task_3885_home_screen_v1_production_spec.md,report,canonical,Task closeout report
+task3885_manifest,docs/reports/task_3885_home_screen_v1_production_spec/artifact_manifest.csv,manifest,canonical,Artifact manifest
+task3885_mobile_web_screenshot,data/artifacts/task_3885_home_screen_v1_production_spec/home_screen_v1_production_390x844.png,screenshot,diagnostic,Local web-preview screenshot only; not native iOS evidence

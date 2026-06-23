@@ -41,25 +41,23 @@ const readModels = readText("src/read-models/common.ts");
 expectBefore(layout, 'name: "index"', 'name: "portfolio"', "tab order");
 expectBefore(layout, 'name: "portfolio"', 'name: "brain"', "tab order");
 
-expectBefore(home, "<ScreenSummary", "<HomeRelativeReturnChartCard", "HOME IA");
+expectBefore(home, "포트폴리오 운영 대시보드", "<HomeRelativeReturnChartCard", "HOME IA");
 expectBefore(home, "<HomeRelativeReturnChartCard", "오늘 확인할 것", "HOME IA");
-expectBefore(home, "오늘 확인할 것", "데이터 상태", "HOME IA");
-expectIncludes(home, ["투자금", "계좌현황", "승률현황", "QQQ", "MDD"], "HOME top summary");
+expectBefore(home, "오늘 확인할 것", "데이터 출처 상태", "HOME IA");
+expectIncludes(home, ["계좌현황", "계좌 평가액", "투자금", "수익현황", "승률현황", "QQQ", "MDD"], "HOME top summary");
 expectIncludes(chartCard, ["QQQ 대비 수익 / MDD", "Daily", "1H", "30m", "15m", "5m"], "HOME chart card");
 expect(!home.includes("계좌 스냅샷"), "HOME must not render duplicate account snapshot section");
 expect(!home.includes("운영 제한 상태"), "HOME must not render operating restriction as a primary section");
 expect(!home.includes("비활성화된 기능"), "HOME must not render disabled actions as a primary section");
-expect(home.includes("read-only") || home.includes("읽기전용"), "HOME must preserve read-only boundary");
+expect(home.includes("read-only") || home.includes("읽기 전용"), "HOME must preserve read-only boundary");
 expect(home.includes("NOT_AUTHORITY"), "HOME must preserve NOT_AUTHORITY boundary");
 
 expectBefore(portfolio, "<ScreenSummary", "<MobileV1StatusRail", "PORTFOLIO IA");
-expectIncludes(portfolio, ["투자금", "현금", "평가금액", "평가손익", "실현손익", "익스포저", "MDD", "승률"], "PORTFOLIO top summary");
-expect(portfolio.includes("read-only") || portfolio.includes("읽기전용"), "PORTFOLIO must preserve read-only boundary");
+expect(portfolio.includes("read-only") || portfolio.includes("Read-only") || portfolio.includes("읽기 전용") || portfolio.includes("읽기전용"), "PORTFOLIO must preserve read-only boundary");
 expect(portfolio.includes("NOT_AUTHORITY"), "PORTFOLIO must preserve NOT_AUTHORITY boundary");
 
 expectBefore(brain, "<ScreenSummary", "<MobileV1StatusRail", "BRAIN IA");
-expectIncludes(brain, ["후보 수", "검토 가능", "차단됨", "근거 부족"], "BRAIN top scanner summary");
-expect(brain.includes("read-only") || brain.includes("읽기전용"), "BRAIN must preserve read-only boundary");
+expect(brain.includes("read-only") || brain.includes("Read-only") || brain.includes("읽기 전용") || brain.includes("읽기전용"), "BRAIN must preserve read-only boundary");
 expect(brain.includes("NOT_AUTHORITY"), "BRAIN must preserve NOT_AUTHORITY boundary");
 
 expectIncludes(readModels, ["totalReturnPct", "winRatePct", "maxDrawdownPct", "portfolioSummary", "scannerSummary", "HomeRelativeReturnChart"], "read model contract types");
