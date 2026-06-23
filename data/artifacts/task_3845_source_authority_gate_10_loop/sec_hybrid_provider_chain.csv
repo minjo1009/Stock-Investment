@@ -1,0 +1,5 @@
+provider,event_count,receipt_count,latest_capture_ts,provider_status,strict_gate_claimed,notes
+sec_live_delta,0,17,,BLOCKED_OR_ABSENT,0,No live retry performed by this audit.
+sec_rss_delta,0,17,,BLOCKED_OR_ABSENT,0,No live retry performed by this audit.
+sec_bulk_baseline,100,17,2026-06-23T05:26:47.440230Z,EVIDENCE_PRESENT,0,No live retry performed by this audit.
+sec_submissions_cache,100,17,2026-06-23T02:32:28.487063Z,EVIDENCE_PRESENT,0,No live retry performed by this audit.

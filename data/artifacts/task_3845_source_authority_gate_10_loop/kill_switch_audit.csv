@@ -1,0 +1,2 @@
+control_key,run_mode,kill_switch_active,kill_switch_reason,emergency_cancel_allowed,updated_at,clearance_status,notes
+default,DIAGNOSTIC_ONLY,1,TASK3581_DB_GOVERNANCE_NORMALIZATION_REAL_CAPITAL_FORBIDDEN,0,2026-06-20T14:33:10.113616Z,BLOCKED,Audit records state only; it does not clear or toggle kill switch.

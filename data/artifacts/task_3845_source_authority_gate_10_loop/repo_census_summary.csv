@@ -1,0 +1,7 @@
+metric,count,classification,notes
+tracked_files,4505,CENSUS_ONLY,No delete/archive/move performed.
+untracked_files,97,CENSUS_ONLY,No delete/archive/move performed.
+report_dirs,870,CENSUS_ONLY,No delete/archive/move performed.
+artifact_dirs,237,CENSUS_ONLY,No delete/archive/move performed.
+python_scripts,408,CENSUS_ONLY,No delete/archive/move performed.
+frontend_qa_files,26,CENSUS_ONLY,No delete/archive/move performed.

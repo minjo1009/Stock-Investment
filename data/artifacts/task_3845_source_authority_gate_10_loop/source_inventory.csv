@@ -1,0 +1,13 @@
+source_family,job_name,enabled,diagnostic_only,requires_receipt,requires_lineage,policy_present,freshness_status,receipt_count,lineage_count,authority_status,notes
+authority_evidence_ledger,l6_authority_evidence_refresh,1,1,0,1,1,CURRENT_OR_RECENT,11,10,BLOCKED,missing authority evidence is a hard blocker
+broker_truth_reconciliation,broker_truth_reconciliation_refresh,1,1,1,1,1,CURRENT_OR_RECENT,15,14,BLOCKED,broker mutation forbidden; stale/absent blocks broker truth claims
+catalog_report_artifacts,catalog_report_artifacts_refresh,1,1,0,1,1,STALE,11,11,BLOCKED,artifact lineage required before freshness claims
+daily_ohlcv,daily_ohlcv_refresh,1,1,1,1,1,CURRENT_OR_RECENT,22,22,BLOCKED,after-close plus next-morning verification policy
+diagnostic_runtime_heartbeats,diagnostic_runtime_heartbeats_refresh,1,1,0,0,1,CURRENT_OR_RECENT,16,15,BLOCKED,5-minute safety heartbeat and 10-minute brain heartbeat family
+frontend_read_models,frontend_read_models_refresh,1,1,0,1,1,STALE,10,10,BLOCKED,must not present stale upstream as current
+indicator_snapshots,indicator_snapshots_refresh,1,1,1,1,1,STALE,12,11,BLOCKED,hard blocker for runtime read model indicator freshness claims
+macro_rates,macro_rates_refresh,1,1,1,1,1,STALE,18,18,BLOCKED,freshness required for macro regime claims
+market_bars_5m,market_bars_5m_refresh,1,1,1,1,1,STALE,26,25,BLOCKED,hard blocker for 5m read model freshness claims
+market_ticks_intraday,market_ticks_intraday_refresh,1,1,1,1,1,STALE,25,24,BLOCKED,hard blocker for intraday tick freshness claims
+runtime_strategy_decisions,runtime_strategy_decisions_refresh,1,1,1,1,1,CURRENT_OR_RECENT,12,11,BLOCKED,hard blocker for latest L6 decision authority claims
+sec_events,sec_events_refresh,1,1,1,1,1,STALE,17,17,BLOCKED,receipt and lineage required before event-source claims

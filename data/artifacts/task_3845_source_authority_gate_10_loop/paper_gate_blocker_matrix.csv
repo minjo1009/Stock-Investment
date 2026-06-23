@@ -1,0 +1,5 @@
+gate_id,gate,current_value,required_value,status,notes
+paper-001,runtime_authority,BLOCKED,PAPER_ELIGIBLE,BLOCKED,No paper permission granted.
+paper-002,source_freshness,12,0,BLOCKED,Missing/stale remains UNKNOWN/BLOCKER.
+paper-003,execution_permission,0,1,BLOCKED,Execution permission is not granted.
+paper-004,actionable_signal,"{""decision_id"": ""diag-runtime:diag-indicator:ZS:2026-06-22T15:09:59Z"", ""created_at"": ""2026-06-22T23:49:15.600533Z"", ""decision_status"": ""BLOCKED"", ""symbol"": ""ZS"", ""side"": ""NONE"", ""quantity"": 0, ""entry_allowed"": 0, ""reason_code"": ""DIAGNOSTIC_RUNTIME_BLOCKED_STALE_INDICATOR""}",entry_allowed=1 with authorized side/quantity,BLOCKED,Latest decision is audit evidence only.

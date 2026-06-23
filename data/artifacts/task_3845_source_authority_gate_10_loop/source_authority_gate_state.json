@@ -1,0 +1,17 @@
+{
+  "task_id": "task_3845_source_authority_gate_10_loop",
+  "generated_at_utc": "2026-06-23T07:12:45Z",
+  "strategy": "NOT_ACCEPTED",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "real_capital": "FORBIDDEN",
+  "broker_mutation": "FORBIDDEN",
+  "paper_live": "FORBIDDEN",
+  "overall_status": "READ_ONLY_AUDIT_COMPLETE_WITH_BLOCKERS",
+  "blocker_row_count": 37,
+  "broker_mutation_added": false,
+  "paper_live_permission_granted": false,
+  "real_capital_permission_granted": false,
+  "source_acquisition_run": false,
+  "scheduler_run": false,
+  "db_mutation": false
+}

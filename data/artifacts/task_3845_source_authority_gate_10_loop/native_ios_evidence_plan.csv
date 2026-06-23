@@ -1,0 +1,5 @@
+evidence_type,contract_path,contract_exists,contract_status,native_evidence_status,notes
+dev_build,apps/ios-trader-brain/src/qa/dev-build-readiness.json,1,BLOCKED_UNTIL_MAC_OR_OPERATOR,BLOCKED_UNTIL_MAC_OR_OPERATOR,"No native build, simulator, device, Maestro, or screenshot capture performed by this audit."
+ios_evidence,apps/ios-trader-brain/src/qa/ios-evidence-contract.json,1,NOT_RUN_WINDOWS_ENVIRONMENT,BLOCKED_UNTIL_MAC_OR_OPERATOR,"No native build, simulator, device, Maestro, or screenshot capture performed by this audit."
+maestro,apps/ios-trader-brain/.maestro/readonly-smoke.yaml,1,STRUCTURE_ONLY,BLOCKED_UNTIL_MAC_OR_OPERATOR,"No native build, simulator, device, Maestro, or screenshot capture performed by this audit."
+visual_regression,apps/ios-trader-brain/src/qa/visual-regression-contract.json,1,NOT_RUN_NO_NATIVE_BASELINE,BLOCKED_UNTIL_MAC_OR_OPERATOR,"No native build, simulator, device, Maestro, or screenshot capture performed by this audit."

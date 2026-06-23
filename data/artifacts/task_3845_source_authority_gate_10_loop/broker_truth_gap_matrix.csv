@@ -1,0 +1,4 @@
+gap_id,area,current_value,required_value,status,notes
+broker-truth-001,broker_truth_source,not_configured_or_diagnostic,current broker truth evidence,BLOCKED,No broker API call performed; broker truth remains evidence requirement.
+broker-truth-002,broker_mutation_permission,0,1,BLOCKED,Broker mutation is forbidden by governance.
+broker-truth-003,order_rows,54,no new rows from this audit,OBSERVED_READ_ONLY,Read-only count only.

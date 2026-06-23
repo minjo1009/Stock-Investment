@@ -1,0 +1,6 @@
+decision,status,notes
+strategy_acceptance,NOT_ACCEPTED,No strategy acceptance granted.
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,No deployment readiness granted.
+real_capital,FORBIDDEN,No real capital permission granted.
+broker_mutation,FORBIDDEN,No broker mutation performed or permitted.
+paper_live,FORBIDDEN,No paper/live permission granted.
