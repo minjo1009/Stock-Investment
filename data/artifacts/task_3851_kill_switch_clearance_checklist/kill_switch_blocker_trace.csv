@@ -1,0 +1,7 @@
+source,key,area,current_value,status,clearance_allowed_now,notes
+kill_switch_audit,default,kill_switch_active,1,BLOCKED,false,Audit records state only; it does not clear or toggle kill switch.
+kill_switch_audit,default,run_mode,DIAGNOSTIC_ONLY,BLOCKED,false,TASK3581_DB_GOVERNANCE_NORMALIZATION_REAL_CAPITAL_FORBIDDEN
+paper_gate_blocker_matrix,paper-001,runtime_authority,BLOCKED,BLOCKED,false,No paper permission granted.
+paper_gate_blocker_matrix,paper-002,source_freshness,12,BLOCKED,false,Missing/stale remains UNKNOWN/BLOCKER.
+paper_gate_blocker_matrix,paper-003,execution_permission,0,BLOCKED,false,Execution permission is not granted.
+paper_gate_blocker_matrix,paper-004,actionable_signal,"{""decision_id"": ""diag-runtime:diag-indicator:ZS:2026-06-22T15:09:59Z"", ""created_at"": ""2026-06-22T23:49:15.600533Z"", ""decision_status"": ""BLOCKED"", ""symbol"": ""ZS"", ""side"": ""NONE"", ""quantity"": 0, ""entry_allowed"": 0, ""reason_code"": ""DIAGNOSTIC_RUNTIME_BLOCKED_STALE_INDICATOR""}",BLOCKED,false,Latest decision is audit evidence only.

@@ -1,0 +1,73 @@
+source_family,evidence_layer,evidence_count,layer_present,layer_meaning,authority_certification_allowed,blocker_status
+authority_evidence_ledger,source_receipt,11,true,acquisition evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+authority_evidence_ledger,reference_hash,14,true,content fingerprint only,false,BLOCKED_DIAGNOSTIC_ONLY
+authority_evidence_ledger,lineage_edge,10,true,derivation chain evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+authority_evidence_ledger,freshness_gate,1,true,temporal evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+authority_evidence_ledger,strict_gate,0,false,permission gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+authority_evidence_ledger,proxy_gate,0,false,proxy gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+broker_truth_reconciliation,source_receipt,15,true,acquisition evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+broker_truth_reconciliation,reference_hash,18,true,content fingerprint only,false,BLOCKED_DIAGNOSTIC_ONLY
+broker_truth_reconciliation,lineage_edge,14,true,derivation chain evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+broker_truth_reconciliation,freshness_gate,1,true,temporal evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+broker_truth_reconciliation,strict_gate,0,false,permission gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+broker_truth_reconciliation,proxy_gate,0,false,proxy gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+catalog_report_artifacts,source_receipt,11,true,acquisition evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+catalog_report_artifacts,reference_hash,6,true,content fingerprint only,false,BLOCKED_DIAGNOSTIC_ONLY
+catalog_report_artifacts,lineage_edge,11,true,derivation chain evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+catalog_report_artifacts,freshness_gate,0,false,temporal evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+catalog_report_artifacts,strict_gate,0,false,permission gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+catalog_report_artifacts,proxy_gate,0,false,proxy gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+daily_ohlcv,source_receipt,22,true,acquisition evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+daily_ohlcv,reference_hash,19,true,content fingerprint only,false,BLOCKED_DIAGNOSTIC_ONLY
+daily_ohlcv,lineage_edge,22,true,derivation chain evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+daily_ohlcv,freshness_gate,1,true,temporal evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+daily_ohlcv,strict_gate,0,false,permission gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+daily_ohlcv,proxy_gate,0,false,proxy gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+diagnostic_runtime_heartbeats,source_receipt,16,true,acquisition evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+diagnostic_runtime_heartbeats,reference_hash,24,true,content fingerprint only,false,BLOCKED_DIAGNOSTIC_ONLY
+diagnostic_runtime_heartbeats,lineage_edge,15,true,derivation chain evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+diagnostic_runtime_heartbeats,freshness_gate,1,true,temporal evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+diagnostic_runtime_heartbeats,strict_gate,0,false,permission gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+diagnostic_runtime_heartbeats,proxy_gate,0,false,proxy gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+frontend_read_models,source_receipt,10,true,acquisition evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+frontend_read_models,reference_hash,5,true,content fingerprint only,false,BLOCKED_DIAGNOSTIC_ONLY
+frontend_read_models,lineage_edge,10,true,derivation chain evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+frontend_read_models,freshness_gate,0,false,temporal evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+frontend_read_models,strict_gate,0,false,permission gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+frontend_read_models,proxy_gate,0,false,proxy gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+indicator_snapshots,source_receipt,12,true,acquisition evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+indicator_snapshots,reference_hash,3,true,content fingerprint only,false,BLOCKED_DIAGNOSTIC_ONLY
+indicator_snapshots,lineage_edge,11,true,derivation chain evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+indicator_snapshots,freshness_gate,0,false,temporal evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+indicator_snapshots,strict_gate,0,false,permission gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+indicator_snapshots,proxy_gate,0,false,proxy gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+macro_rates,source_receipt,18,true,acquisition evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+macro_rates,reference_hash,12,true,content fingerprint only,false,BLOCKED_DIAGNOSTIC_ONLY
+macro_rates,lineage_edge,18,true,derivation chain evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+macro_rates,freshness_gate,0,false,temporal evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+macro_rates,strict_gate,0,false,permission gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+macro_rates,proxy_gate,0,false,proxy gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+market_bars_5m,source_receipt,26,true,acquisition evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+market_bars_5m,reference_hash,18,true,content fingerprint only,false,BLOCKED_DIAGNOSTIC_ONLY
+market_bars_5m,lineage_edge,25,true,derivation chain evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+market_bars_5m,freshness_gate,0,false,temporal evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+market_bars_5m,strict_gate,0,false,permission gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+market_bars_5m,proxy_gate,0,false,proxy gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+market_ticks_intraday,source_receipt,25,true,acquisition evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+market_ticks_intraday,reference_hash,18,true,content fingerprint only,false,BLOCKED_DIAGNOSTIC_ONLY
+market_ticks_intraday,lineage_edge,24,true,derivation chain evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+market_ticks_intraday,freshness_gate,0,false,temporal evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+market_ticks_intraday,strict_gate,0,false,permission gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+market_ticks_intraday,proxy_gate,0,false,proxy gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+runtime_strategy_decisions,source_receipt,12,true,acquisition evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+runtime_strategy_decisions,reference_hash,3,true,content fingerprint only,false,BLOCKED_DIAGNOSTIC_ONLY
+runtime_strategy_decisions,lineage_edge,11,true,derivation chain evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+runtime_strategy_decisions,freshness_gate,1,true,temporal evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+runtime_strategy_decisions,strict_gate,0,false,permission gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+runtime_strategy_decisions,proxy_gate,0,false,proxy gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+sec_events,source_receipt,17,true,acquisition evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+sec_events,reference_hash,8,true,content fingerprint only,false,BLOCKED_DIAGNOSTIC_ONLY
+sec_events,lineage_edge,17,true,derivation chain evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+sec_events,freshness_gate,0,false,temporal evidence only,false,BLOCKED_DIAGNOSTIC_ONLY
+sec_events,strict_gate,0,false,permission gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY
+sec_events,proxy_gate,0,false,proxy gate remains closed unless independently certified,false,BLOCKED_DIAGNOSTIC_ONLY

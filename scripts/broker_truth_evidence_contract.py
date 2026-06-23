@@ -1,0 +1,247 @@
+"""Build Task3850 read-only broker truth evidence contract artifacts."""
+
+from __future__ import annotations
+
+import csv
+import json
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
+
+
+TASK_ID = "task_3850_broker_truth_evidence_contract"
+PREV_TASK_ID = "task_3845_source_authority_gate_10_loop"
+ARTIFACT_DIR = Path("data/artifacts") / TASK_ID
+REPORT_DIR = Path("docs/reports") / TASK_ID
+PREV_ARTIFACT_DIR = Path("data/artifacts") / PREV_TASK_ID
+
+CONTRACT_PATH = ARTIFACT_DIR / "broker_truth_evidence_contract.csv"
+GAP_TRACE_PATH = ARTIFACT_DIR / "broker_truth_gap_trace.csv"
+STATE_PATH = ARTIFACT_DIR / "broker_truth_evidence_contract_state.json"
+REPORT_PATH = REPORT_DIR / "broker_truth_evidence_contract_report.md"
+MANIFEST_PATH = REPORT_DIR / "artifact_manifest.csv"
+
+HARD_STATE = {
+    "strategy": "NOT_ACCEPTED",
+    "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "real_capital": "FORBIDDEN",
+}
+
+
+def utc_now() -> str:
+    return datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    if not path.exists():
+        return []
+    with path.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+def write_csv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def write_json(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def build_contract() -> list[dict[str, Any]]:
+    rows = [
+        (
+            "broker_truth_source",
+            "Current broker-origin evidence snapshot or explicitly documented absence.",
+            "No broker API call in this task.",
+            "BLOCKED",
+        ),
+        (
+            "internal_order_record",
+            "Read-only local order record count and schema identity.",
+            "Local records alone cannot prove broker truth.",
+            "BLOCKED",
+        ),
+        (
+            "reconciliation_join_key",
+            "Explicit stable join key between local records and broker evidence.",
+            "No symbol/date/price/time proximity fallback.",
+            "BLOCKED",
+        ),
+        (
+            "permission_boundary",
+            "Execution, broker mutation, paper, live, and real-capital permissions remain closed.",
+            "No permission inference from evidence presence.",
+            "BLOCKED",
+        ),
+        (
+            "unknown_order_policy",
+            "UNKNOWN or unmatched broker/local records must fail closed.",
+            "No auto matching or lifecycle inference.",
+            "BLOCKED",
+        ),
+    ]
+    return [
+        {
+            "contract_id": f"broker-contract-{index:02d}",
+            "evidence_domain": domain,
+            "required_evidence": required,
+            "forbidden_inference": forbidden,
+            "current_status": status,
+            "authority_claim_allowed": "false",
+            "broker_call_allowed": "false",
+        }
+        for index, (domain, required, forbidden, status) in enumerate(rows, 1)
+    ]
+
+
+def build_gap_trace(gap_rows: list[dict[str, str]], paper_rows: list[dict[str, str]]) -> list[dict[str, Any]]:
+    output = []
+    for row in gap_rows:
+        output.append(
+            {
+                "source": "broker_truth_gap_matrix",
+                "id": row.get("gap_id", ""),
+                "area": row.get("area", ""),
+                "current_value": row.get("current_value", ""),
+                "required_value": row.get("required_value", ""),
+                "status": row.get("status", "UNKNOWN_BLOCKER"),
+                "blocked_for_paper": "true",
+                "notes": row.get("notes", ""),
+            }
+        )
+    for row in paper_rows:
+        output.append(
+            {
+                "source": "paper_gate_blocker_matrix",
+                "id": row.get("gate_id", ""),
+                "area": row.get("gate", ""),
+                "current_value": row.get("current_value", ""),
+                "required_value": row.get("required_value", ""),
+                "status": row.get("status", "UNKNOWN_BLOCKER"),
+                "blocked_for_paper": "true",
+                "notes": row.get("notes", ""),
+            }
+        )
+    return output
+
+
+def build_manifest() -> list[dict[str, str]]:
+    paths = [CONTRACT_PATH, GAP_TRACE_PATH, STATE_PATH, REPORT_PATH, MANIFEST_PATH]
+    return [
+        {
+            "artifact_path": path.as_posix(),
+            "artifact_type": "report" if path.suffix == ".md" else path.suffix.lstrip("."),
+            "authority": "DIAGNOSTIC_ONLY_NOT_AUTHORITY",
+            "status": "active",
+            "notes": "Generated by Task3850 read-only broker truth evidence contract.",
+        }
+        for path in paths
+    ]
+
+
+def write_report(state: dict[str, Any], contract_rows: list[dict[str, Any]]) -> None:
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    lines = [
+        "# Task3850 Broker Truth Evidence Contract",
+        "",
+        "## Summary",
+        "",
+        "This task defines broker truth evidence requirements without connecting to a broker or mutating order state.",
+        "Broker truth remains unproven and paper/live permission remains forbidden.",
+        "",
+        "## Hard State",
+        "",
+        f"- Strategy: {HARD_STATE['strategy']}",
+        f"- Deployment: {HARD_STATE['deployment']}",
+        f"- Real capital: {HARD_STATE['real_capital']}",
+        "- Broker mutation: FORBIDDEN",
+        "- Paper/live permission: FORBIDDEN",
+        "",
+        "## Contract Domains",
+        "",
+        "| Evidence Domain | Status | Broker Call Allowed | Authority Claim Allowed |",
+        "| --- | --- | --- | --- |",
+    ]
+    for row in contract_rows:
+        lines.append(f"| {row['evidence_domain']} | {row['current_status']} | {row['broker_call_allowed']} | {row['authority_claim_allowed']} |")
+    lines.extend(
+        [
+            "",
+            "## Outputs",
+            "",
+            f"- Broker truth evidence contract: `{CONTRACT_PATH.as_posix()}`",
+            f"- Broker truth gap trace: `{GAP_TRACE_PATH.as_posix()}`",
+            "",
+            "## Safety",
+            "",
+            "- No broker API call was performed.",
+            "- No local order rows were inserted, changed, cancelled, replaced, or submitted.",
+            "- No inferred lifecycle matching, proximity fallback, paper/live permission, deployment readiness, strategy acceptance, broker mutation, or real-capital permission is granted.",
+            "",
+            "## State",
+            "",
+            f"- Contract rows: {state['contract_row_count']}",
+            f"- Broker call rows: {state['broker_call_rows']}",
+            f"- Authority claim rows: {state['authority_claim_rows']}",
+            "",
+        ]
+    )
+    REPORT_PATH.write_text("\n".join(lines), encoding="utf-8")
+
+
+def main() -> int:
+    broker_rows = read_csv(PREV_ARTIFACT_DIR / "broker_truth_gap_matrix.csv")
+    paper_rows = read_csv(PREV_ARTIFACT_DIR / "paper_gate_blocker_matrix.csv")
+    if not broker_rows:
+        raise SystemExit("Task3845 broker truth gap matrix is missing or empty.")
+    contract_rows = build_contract()
+    gap_trace = build_gap_trace(broker_rows, paper_rows)
+    state = {
+        "task_id": TASK_ID,
+        "previous_task_id": PREV_TASK_ID,
+        "generated_at_utc": utc_now(),
+        **HARD_STATE,
+        "overall_status": "READ_ONLY_BROKER_TRUTH_CONTRACT_COMPLETE_WITH_BLOCKERS",
+        "contract_row_count": len(contract_rows),
+        "gap_trace_row_count": len(gap_trace),
+        "broker_call_rows": sum(1 for row in contract_rows if row["broker_call_allowed"] != "false"),
+        "authority_claim_rows": sum(1 for row in contract_rows if row["authority_claim_allowed"] != "false"),
+        "source_acquisition_run": False,
+        "scheduler_run": False,
+        "db_mutation": False,
+        "broker_mutation_added": False,
+        "paper_live_permission_granted": False,
+        "real_capital_permission_granted": False,
+    }
+    write_csv(
+        CONTRACT_PATH,
+        contract_rows,
+        [
+            "contract_id",
+            "evidence_domain",
+            "required_evidence",
+            "forbidden_inference",
+            "current_status",
+            "authority_claim_allowed",
+            "broker_call_allowed",
+        ],
+    )
+    write_csv(
+        GAP_TRACE_PATH,
+        gap_trace,
+        ["source", "id", "area", "current_value", "required_value", "status", "blocked_for_paper", "notes"],
+    )
+    write_json(STATE_PATH, state)
+    write_report(state, contract_rows)
+    write_csv(MANIFEST_PATH, build_manifest(), ["artifact_path", "artifact_type", "authority", "status", "notes"])
+    print(json.dumps(state, indent=2, ensure_ascii=False))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

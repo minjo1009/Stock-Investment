@@ -1,0 +1,17 @@
+{
+  "task_id": "task_3854_repo_cleanup_candidate_classifier_v2",
+  "generated_at_utc": "2026-06-23T08:17:03Z",
+  "strategy": "NOT_ACCEPTED",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "real_capital": "FORBIDDEN",
+  "overall_status": "READ_ONLY_REPO_CLEANUP_CLASSIFIER_COMPLETE_WITH_BLOCKERS",
+  "classified_row_count": 2760,
+  "summary_row_count": 4,
+  "destructive_action_rows": 0,
+  "source_acquisition_run": false,
+  "scheduler_run": false,
+  "db_mutation": false,
+  "broker_mutation_added": false,
+  "paper_live_permission_granted": false,
+  "real_capital_permission_granted": false
+}

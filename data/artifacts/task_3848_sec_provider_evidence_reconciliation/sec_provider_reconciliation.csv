@@ -1,0 +1,5 @@
+provider,event_count,receipt_count,latest_capture_ts,provider_status,evidence_present,freshness_status,strict_gate_claimed,strict_gate_allowed,proxy_allowed,authority_claim_allowed,network_call_performed,notes
+sec_live_delta,0,17,,BLOCKED_OR_ABSENT,false,STALE,0,0,0,false,false,Provider evidence is diagnostic only; no live SEC request performed by Task3848.
+sec_rss_delta,0,17,,BLOCKED_OR_ABSENT,false,STALE,0,0,0,false,false,Provider evidence is diagnostic only; no live SEC request performed by Task3848.
+sec_bulk_baseline,100,17,2026-06-23T05:26:47.440230Z,EVIDENCE_PRESENT,true,STALE,0,0,0,false,false,Provider evidence is diagnostic only; no live SEC request performed by Task3848.
+sec_submissions_cache,100,17,2026-06-23T02:32:28.487063Z,EVIDENCE_PRESENT,true,STALE,0,0,0,false,false,Provider evidence is diagnostic only; no live SEC request performed by Task3848.

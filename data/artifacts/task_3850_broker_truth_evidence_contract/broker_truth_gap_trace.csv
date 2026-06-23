@@ -1,0 +1,8 @@
+source,id,area,current_value,required_value,status,blocked_for_paper,notes
+broker_truth_gap_matrix,broker-truth-001,broker_truth_source,not_configured_or_diagnostic,current broker truth evidence,BLOCKED,true,No broker API call performed; broker truth remains evidence requirement.
+broker_truth_gap_matrix,broker-truth-002,broker_mutation_permission,0,1,BLOCKED,true,Broker mutation is forbidden by governance.
+broker_truth_gap_matrix,broker-truth-003,order_rows,54,no new rows from this audit,OBSERVED_READ_ONLY,true,Read-only count only.
+paper_gate_blocker_matrix,paper-001,runtime_authority,BLOCKED,PAPER_ELIGIBLE,BLOCKED,true,No paper permission granted.
+paper_gate_blocker_matrix,paper-002,source_freshness,12,0,BLOCKED,true,Missing/stale remains UNKNOWN/BLOCKER.
+paper_gate_blocker_matrix,paper-003,execution_permission,0,1,BLOCKED,true,Execution permission is not granted.
+paper_gate_blocker_matrix,paper-004,actionable_signal,"{""decision_id"": ""diag-runtime:diag-indicator:ZS:2026-06-22T15:09:59Z"", ""created_at"": ""2026-06-22T23:49:15.600533Z"", ""decision_status"": ""BLOCKED"", ""symbol"": ""ZS"", ""side"": ""NONE"", ""quantity"": 0, ""entry_allowed"": 0, ""reason_code"": ""DIAGNOSTIC_RUNTIME_BLOCKED_STALE_INDICATOR""}",entry_allowed=1 with authorized side/quantity,BLOCKED,true,Latest decision is audit evidence only.

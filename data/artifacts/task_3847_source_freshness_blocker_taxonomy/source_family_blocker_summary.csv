@@ -1,0 +1,13 @@
+source_family,blocker_count,p0_blocker_count,top_blocker_class,next_evidence_needed,current_decision
+authority_evidence_ledger,1,1,STRICT_AND_PROXY_GATE_CLOSED,"Source-specific proof that freshness, strict gate, proxy gate, and authority evidence are separately satisfied.",BLOCKED_DIAGNOSTIC_ONLY
+broker_truth_reconciliation,1,1,STRICT_AND_PROXY_GATE_CLOSED,"Source-specific proof that freshness, strict gate, proxy gate, and authority evidence are separately satisfied.",BLOCKED_DIAGNOSTIC_ONLY
+catalog_report_artifacts,1,1,STALE_SOURCE_BLOCKER,"Source-specific proof that freshness, strict gate, proxy gate, and authority evidence are separately satisfied.",BLOCKED_DIAGNOSTIC_ONLY
+daily_ohlcv,1,1,STRICT_AND_PROXY_GATE_CLOSED,"Source-specific proof that freshness, strict gate, proxy gate, and authority evidence are separately satisfied.",BLOCKED_DIAGNOSTIC_ONLY
+diagnostic_runtime_heartbeats,1,1,STRICT_AND_PROXY_GATE_CLOSED,"Source-specific proof that freshness, strict gate, proxy gate, and authority evidence are separately satisfied.",BLOCKED_DIAGNOSTIC_ONLY
+frontend_read_models,1,1,STALE_SOURCE_BLOCKER,"Source-specific proof that freshness, strict gate, proxy gate, and authority evidence are separately satisfied.",BLOCKED_DIAGNOSTIC_ONLY
+indicator_snapshots,1,1,STALE_SOURCE_BLOCKER,"Source-specific proof that freshness, strict gate, proxy gate, and authority evidence are separately satisfied.",BLOCKED_DIAGNOSTIC_ONLY
+macro_rates,1,1,STALE_SOURCE_BLOCKER,"Source-specific proof that freshness, strict gate, proxy gate, and authority evidence are separately satisfied.",BLOCKED_DIAGNOSTIC_ONLY
+market_bars_5m,1,1,STALE_SOURCE_BLOCKER,"Source-specific proof that freshness, strict gate, proxy gate, and authority evidence are separately satisfied.",BLOCKED_DIAGNOSTIC_ONLY
+market_ticks_intraday,1,1,STALE_SOURCE_BLOCKER,"Source-specific proof that freshness, strict gate, proxy gate, and authority evidence are separately satisfied.",BLOCKED_DIAGNOSTIC_ONLY
+runtime_strategy_decisions,1,1,STRICT_AND_PROXY_GATE_CLOSED,"Source-specific proof that freshness, strict gate, proxy gate, and authority evidence are separately satisfied.",BLOCKED_DIAGNOSTIC_ONLY
+sec_events,1,1,STALE_SOURCE_BLOCKER,"Source-specific proof that freshness, strict gate, proxy gate, and authority evidence are separately satisfied.",BLOCKED_DIAGNOSTIC_ONLY

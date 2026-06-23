@@ -1,0 +1,4 @@
+observation_id,area,evidence,current_status,recommended_action,notes
+registry_recovery_001,registry_file,exists=true status=M tasks/task_registry.csv,UNKNOWN/BLOCKER,DO_NOT_AUTO_MERGE_DIRTY_REGISTRY,Registry changes require a focused recovery task because unrelated local edits are present.
+registry_recovery_002,registry_tail,tail_line_count=10,DIAGNOSTIC_ONLY,REVIEW_TAIL_BEFORE_CANONICAL_ROWS,Tail was read only to support recovery planning; no row was added.
+registry_recovery_003,new_task_rows,tasks_3846_3855_reports_generated_as_isolated_artifacts,UNKNOWN/BLOCKER,ADD_ROWS_AFTER_REGISTRY_CLEANUP,Current run avoids mutating the registry while it is already dirty.

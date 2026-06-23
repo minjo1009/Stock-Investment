@@ -1,0 +1,25 @@
+source_family,gate_name,gate_value,gate_status,freshness_status,certification_status,permission_inference_allowed,notes
+authority_evidence_ledger,strict_gate_allowed,0,CLOSED_BLOCKER,CURRENT_OR_RECENT,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+authority_evidence_ledger,proxy_allowed,0,CLOSED_BLOCKER,CURRENT_OR_RECENT,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+broker_truth_reconciliation,strict_gate_allowed,0,CLOSED_BLOCKER,CURRENT_OR_RECENT,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+broker_truth_reconciliation,proxy_allowed,0,CLOSED_BLOCKER,CURRENT_OR_RECENT,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+catalog_report_artifacts,strict_gate_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+catalog_report_artifacts,proxy_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+daily_ohlcv,strict_gate_allowed,0,CLOSED_BLOCKER,CURRENT_OR_RECENT,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+daily_ohlcv,proxy_allowed,0,CLOSED_BLOCKER,CURRENT_OR_RECENT,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+diagnostic_runtime_heartbeats,strict_gate_allowed,0,CLOSED_BLOCKER,CURRENT_OR_RECENT,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+diagnostic_runtime_heartbeats,proxy_allowed,0,CLOSED_BLOCKER,CURRENT_OR_RECENT,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+frontend_read_models,strict_gate_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+frontend_read_models,proxy_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+indicator_snapshots,strict_gate_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+indicator_snapshots,proxy_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+macro_rates,strict_gate_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+macro_rates,proxy_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+market_bars_5m,strict_gate_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+market_bars_5m,proxy_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+market_ticks_intraday,strict_gate_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+market_ticks_intraday,proxy_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+runtime_strategy_decisions,strict_gate_allowed,0,CLOSED_BLOCKER,CURRENT_OR_RECENT,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+runtime_strategy_decisions,proxy_allowed,0,CLOSED_BLOCKER,CURRENT_OR_RECENT,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+sec_events,strict_gate_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.
+sec_events,proxy_allowed,0,CLOSED_BLOCKER,STALE,BLOCKED,false,Gate values are copied from Task3845 evidence and do not grant permission.

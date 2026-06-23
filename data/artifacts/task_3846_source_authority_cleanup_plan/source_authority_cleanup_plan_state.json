@@ -1,0 +1,18 @@
+{
+  "task_id": "task_3846_source_authority_cleanup_plan",
+  "previous_task_id": "task_3845_source_authority_gate_10_loop",
+  "generated_at_utc": "2026-06-23T08:04:21Z",
+  "strategy": "NOT_ACCEPTED",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "real_capital": "FORBIDDEN",
+  "overall_status": "READ_ONLY_CLEANUP_PLAN_COMPLETE_WITH_BLOCKERS",
+  "cleanup_candidate_count": 55,
+  "ranked_gap_count": 55,
+  "destructive_action_rows": 0,
+  "source_acquisition_run": false,
+  "scheduler_run": false,
+  "db_mutation": false,
+  "broker_mutation_added": false,
+  "paper_live_permission_granted": false,
+  "real_capital_permission_granted": false
+}

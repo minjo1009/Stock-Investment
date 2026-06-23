@@ -1,0 +1,4 @@
+artifact_path,artifact_type,authority,status,notes
+data\artifacts\task_3855_task_registry_recovery_note\task_registry_recovery_observations.csv,csv,diagnostic,generated,read-only registry recovery observations
+data\artifacts\task_3855_task_registry_recovery_note\task_registry_recovery_note_state.json,json,diagnostic,generated,hard-state guardrail summary
+docs\reports\task_3855_task_registry_recovery_note\task_registry_recovery_note.md,markdown,diagnostic,generated,task recovery note

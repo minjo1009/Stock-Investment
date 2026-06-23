@@ -1,0 +1,4 @@
+source_artifact,source_rows,trace_status,notes
+data\artifacts\task_3845_source_authority_gate_10_loop\native_ios_evidence_plan.csv,4,READ_ONLY_REFERENCED,"Referenced as planning evidence only; no build, install, or device run was executed."
+data\artifacts\task_3845_source_authority_gate_10_loop\native_ios_build_evidence_plan.csv,2,READ_ONLY_REFERENCED,"Referenced as planning evidence only; no build, install, or device run was executed."
+data\artifacts\task_3845_source_authority_gate_10_loop\native_ios_screenshot_evidence_plan.csv,2,READ_ONLY_REFERENCED,"Referenced as planning evidence only; no build, install, or device run was executed."

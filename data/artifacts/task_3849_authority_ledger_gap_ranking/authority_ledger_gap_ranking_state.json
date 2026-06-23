@@ -1,0 +1,18 @@
+{
+  "task_id": "task_3849_authority_ledger_gap_ranking",
+  "previous_task_id": "task_3845_source_authority_gate_10_loop",
+  "generated_at_utc": "2026-06-23T08:08:35Z",
+  "strategy": "NOT_ACCEPTED",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "real_capital": "FORBIDDEN",
+  "overall_status": "READ_ONLY_AUTHORITY_GAP_RANKING_COMPLETE_WITH_BLOCKERS",
+  "ranked_family_count": 12,
+  "layer_row_count": 72,
+  "authority_certification_rows": 0,
+  "source_acquisition_run": false,
+  "scheduler_run": false,
+  "db_mutation": false,
+  "broker_mutation_added": false,
+  "paper_live_permission_granted": false,
+  "real_capital_permission_granted": false
+}

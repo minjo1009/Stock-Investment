@@ -1,0 +1,6 @@
+node_id,node_type,label,status,permission_granted,notes
+paper_gate_root,root_gate,paper/live permission,BLOCKED,false,Paper/live permission is forbidden unless future governance explicitly changes it.
+paper-001,dependency_gate,runtime_authority,BLOCKED,false,No paper permission granted.
+paper-002,dependency_gate,source_freshness,BLOCKED,false,Missing/stale remains UNKNOWN/BLOCKER.
+paper-003,dependency_gate,execution_permission,BLOCKED,false,Execution permission is not granted.
+paper-004,dependency_gate,actionable_signal,BLOCKED,false,Latest decision is audit evidence only.

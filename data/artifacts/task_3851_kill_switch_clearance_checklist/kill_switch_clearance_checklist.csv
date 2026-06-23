@@ -1,0 +1,8 @@
+check_id,check_name,required_evidence,current_status,clearance_allowed_now,control_state_mutation_allowed
+kill-check-01,source_freshness_clear,All source freshness blockers resolved with evidence.,BLOCKED,false,false
+kill-check-02,authority_evidence_clear,Receipt/hash/lineage/freshness authority proof chain reviewed.,BLOCKED,false,false
+kill-check-03,broker_truth_clear,Broker truth reconciliation evidence reviewed without mutation.,BLOCKED,false,false
+kill-check-04,execution_permission_clear,Execution permission explicitly reviewed and still closed unless future governance changes.,BLOCKED,false,false
+kill-check-05,paper_permission_clear,Paper permission explicitly reviewed and still closed unless future governance changes.,BLOCKED,false,false
+kill-check-06,emergency_cancel_clear,Emergency cancel policy reviewed separately without live order implication.,BLOCKED,false,false
+kill-check-07,operator_signoff_clear,Human/operator signoff captured in future authoritative docs.,BLOCKED,false,false

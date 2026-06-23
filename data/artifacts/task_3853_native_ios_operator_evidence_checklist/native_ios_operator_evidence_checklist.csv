@@ -1,0 +1,6 @@
+check_id,area,required_evidence,current_status,permission_granted,notes
+ios_evidence_001,development_build,development build command and environment outcome,UNKNOWN/BLOCKER,false,Diagnostic evidence only; deployment readiness remains forbidden.
+ios_evidence_002,device_runtime,physical iOS device launch proof or simulator substitute explicitly marked,UNKNOWN/BLOCKER,false,No Expo Go assumption; native development client evidence is required.
+ios_evidence_003,visual_evidence,fresh screenshots for HOME/BRAIN/PORTFOLIO/ORDERS/SYSTEM read-only surfaces,UNKNOWN/BLOCKER,false,Screenshots do not validate trading strategy or broker permission.
+ios_evidence_004,governance_affordance,"visible blocked state for broker mutation, paper/live, and real capital",UNKNOWN/BLOCKER,false,Every trading action must remain disabled or absent.
+ios_evidence_005,operator_handoff,read-only operator runbook and non-production caveats,UNKNOWN/BLOCKER,false,Operator evidence is not deployment approval.

@@ -1,0 +1,5 @@
+category,recommended_action,row_count,destructive_action_permitted
+automation_script,KEEP_WITH_VALIDATOR_IF_ACTIVE,37,false
+generated_artifact,MANIFEST_AND_IGNORE_REVIEW,94,false
+repo_file,NO_ACTION_CLASSIFIED,27,false
+task_report,KEEP_IF_TASK_CANONICAL,2602,false

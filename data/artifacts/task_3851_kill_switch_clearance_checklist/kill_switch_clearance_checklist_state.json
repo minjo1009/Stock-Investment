@@ -1,0 +1,19 @@
+{
+  "task_id": "task_3851_kill_switch_clearance_checklist",
+  "previous_task_id": "task_3845_source_authority_gate_10_loop",
+  "generated_at_utc": "2026-06-23T08:11:22Z",
+  "strategy": "NOT_ACCEPTED",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "real_capital": "FORBIDDEN",
+  "overall_status": "READ_ONLY_KILL_SWITCH_CHECKLIST_COMPLETE_WITH_BLOCKERS",
+  "checklist_row_count": 7,
+  "trace_row_count": 6,
+  "clearance_allowed_rows": 0,
+  "control_mutation_rows": 0,
+  "source_acquisition_run": false,
+  "scheduler_run": false,
+  "db_mutation": false,
+  "broker_mutation_added": false,
+  "paper_live_permission_granted": false,
+  "real_capital_permission_granted": false
+}

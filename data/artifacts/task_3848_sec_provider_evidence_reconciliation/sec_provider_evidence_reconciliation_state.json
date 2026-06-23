@@ -1,0 +1,19 @@
+{
+  "task_id": "task_3848_sec_provider_evidence_reconciliation",
+  "previous_task_id": "task_3845_source_authority_gate_10_loop",
+  "generated_at_utc": "2026-06-23T08:07:17Z",
+  "strategy": "NOT_ACCEPTED",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "real_capital": "FORBIDDEN",
+  "overall_status": "READ_ONLY_SEC_PROVIDER_RECONCILIATION_COMPLETE_WITH_BLOCKERS",
+  "provider_row_count": 4,
+  "blocker_row_count": 20,
+  "authority_claim_rows": 0,
+  "network_call_rows": 0,
+  "source_acquisition_run": false,
+  "scheduler_run": false,
+  "db_mutation": false,
+  "broker_mutation_added": false,
+  "paper_live_permission_granted": false,
+  "real_capital_permission_granted": false
+}

@@ -1,0 +1,5 @@
+edge_id,from_node,to_node,dependency_type,current_status,weakest_link_blocks_root,inference_allowed
+edge-paper-001,paper-001,paper_gate_root,must_clear_before_root,BLOCKED,true,false
+edge-paper-002,paper-002,paper_gate_root,must_clear_before_root,BLOCKED,true,false
+edge-paper-003,paper-003,paper_gate_root,must_clear_before_root,BLOCKED,true,false
+edge-paper-004,paper-004,paper_gate_root,must_clear_before_root,BLOCKED,true,false

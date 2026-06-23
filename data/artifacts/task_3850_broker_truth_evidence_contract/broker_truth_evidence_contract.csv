@@ -1,0 +1,6 @@
+contract_id,evidence_domain,required_evidence,forbidden_inference,current_status,authority_claim_allowed,broker_call_allowed
+broker-contract-01,broker_truth_source,Current broker-origin evidence snapshot or explicitly documented absence.,No broker API call in this task.,BLOCKED,false,false
+broker-contract-02,internal_order_record,Read-only local order record count and schema identity.,Local records alone cannot prove broker truth.,BLOCKED,false,false
+broker-contract-03,reconciliation_join_key,Explicit stable join key between local records and broker evidence.,No symbol/date/price/time proximity fallback.,BLOCKED,false,false
+broker-contract-04,permission_boundary,"Execution, broker mutation, paper, live, and real-capital permissions remain closed.",No permission inference from evidence presence.,BLOCKED,false,false
+broker-contract-05,unknown_order_policy,UNKNOWN or unmatched broker/local records must fail closed.,No auto matching or lifecycle inference.,BLOCKED,false,false

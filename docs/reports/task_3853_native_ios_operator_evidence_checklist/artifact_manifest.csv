@@ -1,0 +1,5 @@
+artifact_path,artifact_type,authority,status,notes
+data\artifacts\task_3853_native_ios_operator_evidence_checklist\native_ios_operator_evidence_checklist.csv,csv,diagnostic,generated,read-only iOS operator evidence checklist
+data\artifacts\task_3853_native_ios_operator_evidence_checklist\native_ios_evidence_trace.csv,csv,diagnostic,generated,read-only trace to prior iOS evidence plans
+data\artifacts\task_3853_native_ios_operator_evidence_checklist\native_ios_operator_evidence_checklist_state.json,json,diagnostic,generated,hard-state guardrail summary
+docs\reports\task_3853_native_ios_operator_evidence_checklist\native_ios_operator_evidence_checklist_report.md,markdown,diagnostic,generated,task closeout report

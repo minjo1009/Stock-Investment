@@ -1,0 +1,19 @@
+{
+  "task_id": "task_3847_source_freshness_blocker_taxonomy",
+  "previous_task_id": "task_3845_source_authority_gate_10_loop",
+  "generated_at_utc": "2026-06-23T08:05:51Z",
+  "strategy": "NOT_ACCEPTED",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "real_capital": "FORBIDDEN",
+  "overall_status": "READ_ONLY_FRESHNESS_TAXONOMY_COMPLETE_WITH_BLOCKERS",
+  "taxonomy_row_count": 12,
+  "gate_row_count": 24,
+  "summary_row_count": 12,
+  "permission_inference_rows": 0,
+  "source_acquisition_run": false,
+  "scheduler_run": false,
+  "db_mutation": false,
+  "broker_mutation_added": false,
+  "paper_live_permission_granted": false,
+  "real_capital_permission_granted": false
+}

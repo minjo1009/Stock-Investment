@@ -1,0 +1,19 @@
+{
+  "task_id": "task_3850_broker_truth_evidence_contract",
+  "previous_task_id": "task_3845_source_authority_gate_10_loop",
+  "generated_at_utc": "2026-06-23T08:09:57Z",
+  "strategy": "NOT_ACCEPTED",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "real_capital": "FORBIDDEN",
+  "overall_status": "READ_ONLY_BROKER_TRUTH_CONTRACT_COMPLETE_WITH_BLOCKERS",
+  "contract_row_count": 5,
+  "gap_trace_row_count": 7,
+  "broker_call_rows": 0,
+  "authority_claim_rows": 0,
+  "source_acquisition_run": false,
+  "scheduler_run": false,
+  "db_mutation": false,
+  "broker_mutation_added": false,
+  "paper_live_permission_granted": false,
+  "real_capital_permission_granted": false
+}

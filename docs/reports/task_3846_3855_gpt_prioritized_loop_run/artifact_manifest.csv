@@ -1,0 +1,4 @@
+artifact_path,artifact_type,authority,status,notes
+docs/reports/task_3846_3855_gpt_prioritized_loop_run/gpt_priority_response.md,markdown,diagnostic,generated,"review-only GPT priority snapshot"
+docs/reports/task_3846_3855_gpt_prioritized_loop_run/loop_ledger.csv,csv,diagnostic,generated,"ten-loop implementation ledger"
+docs/reports/task_3846_3855_gpt_prioritized_loop_run/next_scope_summary.md,markdown,diagnostic,generated,"scope and next-work summary"
