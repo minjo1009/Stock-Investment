@@ -10,7 +10,7 @@ Task3836 later captured Chrome-headless web-preflight screenshots under `data/ar
 
 Task3839 later captured another Chrome-headless web-preflight screenshot set under `data/artifacts/task_3839_frontend_qa_to_v1_10_loop/screenshots/` after scaffold-only v1 hierarchy changes. Those screenshots remain `NOT_AUTHORITY` QA artifacts and do not grant visual approval, product readiness, deployment readiness, paper/live permission, or real-capital permission.
 
-Task3841 later captured another Chrome-headless web-preflight screenshot set under `data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/` after detail route v1 hierarchy changes. Those screenshots remain `NOT_AUTHORITY` QA artifacts and do not grant visual approval, product readiness, deployment readiness, paper/live permission, or real-capital permission.
+Task3841 temporarily captured another Chrome-headless web-preflight screenshot set after detail route v1 hierarchy changes. Those Task3841 screenshot artifacts were later removed by user cleanup request. Screenshot QA still verifies that target route files preserve read-only and `NOT_AUTHORITY` boundary text.
 
 ## Target Manifest
 

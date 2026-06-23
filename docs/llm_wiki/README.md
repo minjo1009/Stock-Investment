@@ -56,7 +56,7 @@ The project is moving from repeated source/backtest loops toward governed paper/
 - latest frontend scaffold implementation is Task3831: the 10-loop run added scaffold-only fixture-backed BRAIN, PORTFOLIO, ORDERS, SYSTEM, Position Detail, Order Detail, Chain Detail, read-only cross-links, and Storybook scaffold overview coverage. These are still `NOT_AUTHORITY`, read-only, and not product readiness.
 - latest frontend QA baseline is Task3834: screenshot target validation, route link validation, and scaffold screen-boundary validation are runnable. Screenshot capture and visual approval have not occurred.
 - latest frontend QA/v1 hardening is Task3839: GPT-recommended 10-loop work added screenshot-baseline and story-coverage validators, adjusted scaffold-only v1 hierarchy for HOME/BRAIN/Candidate Detail/PORTFOLIO/ORDERS/SYSTEM, and captured another Chrome-headless web-preflight screenshot set. These screenshots remain `NOT_AUTHORITY`; product readiness, authoritative read source, paper/live, deployment readiness, and real-capital permission are not granted.
-- latest frontend product UI v1 hardening is Task3841: GPT-guided 10-loop work aligned Chain/Position/Order detail routes to v1 hierarchy, added detail-v1 validation, expanded Storybook coverage validation, hardened screenshot target boundary checks, and recaptured Chrome-headless web-preflight screenshots. These surfaces remain `NOT_AUTHORITY`, read-only, and fixture-backed.
+- latest frontend product UI v1 hardening is Task3841: GPT-guided 10-loop work aligned Chain/Position/Order detail routes to v1 hierarchy, added detail-v1 validation, expanded Storybook coverage validation, and hardened screenshot target boundary checks. Task3841 review-only loop artifacts and screenshots were later removed by cleanup request. These surfaces remain `NOT_AUTHORITY`, read-only, and fixture-backed.
 
 Standing status:
 
@@ -94,4 +94,4 @@ Latest frontend screenshot evidence:
 
 - Task3836 captured Chrome-headless web-preflight screenshots for 9 scaffold routes across 2 mobile widths and applied a bounded P1 `Badge`/`StatusRow` repair for screenshot-evidenced governance/status badge clipping. Screenshots remain `NOT_AUTHORITY`; product readiness is not granted.
 - Task3839 captured Chrome-headless web-preflight screenshots after scaffold-only v1 hierarchy changes and added validators for screenshot baseline presence plus story coverage. Screenshots remain `NOT_AUTHORITY`; product readiness is not granted.
-- Task3841 captured Chrome-headless web-preflight screenshots after detail route v1 hierarchy changes and added detail route validation. Screenshots remain `NOT_AUTHORITY`; product readiness is not granted.
+- Task3841 added detail route validation and screenshot target boundary checks after detail route v1 hierarchy changes. Task3841 screenshot artifacts were later removed by cleanup request; product readiness is not granted.

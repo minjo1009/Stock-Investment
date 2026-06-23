@@ -370,5 +370,5 @@ Task3841 frontend product UI v1 10-loop run:
 - `npm run validate:detail-v1` verifies Candidate, Chain, Position, and Order detail routes preserve v1 read-only boundaries.
 - `npm run validate:story-coverage` now checks regression-critical foundation and domain stories.
 - `npm run validate:screenshot-qa` now verifies screenshot target route files preserve read-only and `NOT_AUTHORITY` boundary text.
-- Task3841 Chrome-headless web-preflight screenshots were captured under `data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/`.
+- Task3841 Chrome-headless web-preflight screenshots were captured during the run, then removed by user cleanup request; screenshot QA target-boundary validation remains.
 - Product readiness, authoritative read-source integration, Maestro readiness, iOS simulator evidence, broker mutation, paper/live permission, deployment readiness, and real-capital permission remain blocked.

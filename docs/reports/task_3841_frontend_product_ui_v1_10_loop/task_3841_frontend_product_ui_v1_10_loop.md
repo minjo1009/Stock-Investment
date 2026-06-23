@@ -4,7 +4,9 @@
 
 Task3841 executed the requested GPT-guided 10-loop frontend pass after Task3839.
 
-The run prioritized the next frontend work with GPT Agent Mode/GitHub context, reconciled GPT's initial route-creation proposal with current local repo state, then safely focused on existing detail route v1 hierarchy, QA validator hardening, and Chrome-headless web-preflight screenshot recapture.
+The run prioritized the next frontend work with GPT Agent Mode/GitHub context, reconciled GPT's initial route-creation proposal with current local repo state, then safely focused on existing detail route v1 hierarchy and QA validator hardening.
+
+After closeout, user cleanup removed the review-only loop prompt/response files and Task3841 screenshot artifacts. This report keeps the compact canonical summary only.
 
 This task does not grant product readiness, strategy acceptance, deployment readiness, paper/live permission, broker mutation permission, or real-capital permission.
 
@@ -20,7 +22,7 @@ Strategy remains `NOT_ACCEPTED`, deployment remains `DIAGNOSTIC_ONLY_NOT_DEPLOYM
 6. Detail v1 route validation was added.
 7. Storybook coverage validation was expanded for core domain components.
 8. Screenshot target validation was hardened to inspect route boundary text.
-9. Chrome-headless web-preflight screenshots were recaptured.
+9. Chrome-headless web-preflight screenshot recapture was performed, then the Task3841 screenshot artifacts were removed by cleanup request.
 10. GPT final review returned `PASS` with no P0/P1 findings.
 
 ## What Changed
@@ -30,21 +32,12 @@ Strategy remains `NOT_ACCEPTED`, deployment remains `DIAGNOSTIC_ONLY_NOT_DEPLOYM
 - Added `validate:detail-v1` to `npm test`.
 - Expanded `validate:story-coverage` to cover regression-critical domain stories.
 - Hardened `validate:screenshot-qa` to ensure target route files preserve read-only and `NOT_AUTHORITY` boundary text.
-- Captured Task3841 screenshot artifacts under `data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/`.
 
-## Screenshot Evidence
+## Cleanup Note
 
-Task3841 screenshot artifacts:
+The review-only loop prompt/response files and Task3841 screenshot artifacts were removed after user cleanup request.
 
-- `data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/screenshot_capture_manifest_task3841.json`
-- `data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/contact_sheet_iphone15_width_task3841.png`
-- `data/artifacts/task_3841_frontend_product_ui_v1_10_loop/screenshots/`
-
-Result:
-
-- 18 PNG captures were produced for 9 scaffold routes across 2 mobile viewport widths.
-- The contact sheet is non-empty and was visually inspected.
-- Screenshot evidence remains `NOT_AUTHORITY` QA evidence only.
+The retained canonical evidence is this compact report, the decision record, artifact manifest, inventory reconciliation, source code changes, and validators.
 
 ## Safety Boundary
 
