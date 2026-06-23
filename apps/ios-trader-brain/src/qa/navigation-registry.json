@@ -1,0 +1,15 @@
+{
+  "contractVersion": "navigation-registry-v1",
+  "authority": "NOT_AUTHORITY",
+  "routes": [
+    { "id": "home", "path": "/", "file": "app/(tabs)/index.tsx", "surface": "tab" },
+    { "id": "brain", "path": "/brain", "file": "app/(tabs)/brain.tsx", "surface": "tab" },
+    { "id": "portfolio", "path": "/portfolio", "file": "app/(tabs)/portfolio.tsx", "surface": "tab" },
+    { "id": "orders", "path": "/orders", "file": "app/(tabs)/orders.tsx", "surface": "tab" },
+    { "id": "system", "path": "/system", "file": "app/(tabs)/system.tsx", "surface": "tab" },
+    { "id": "candidate-detail", "path": "/brain/candidate/fixture-candidate-review", "file": "app/brain/candidate/[candidateId].tsx", "surface": "detail" },
+    { "id": "chain-detail", "path": "/brain/chain/fixture-chain", "file": "app/brain/chain/[chainId].tsx", "surface": "detail" },
+    { "id": "position-detail", "path": "/portfolio/position/fixture-position-unknown", "file": "app/portfolio/position/[positionId].tsx", "surface": "detail" },
+    { "id": "order-detail", "path": "/orders/fixture-order-blocked", "file": "app/orders/[orderId].tsx", "surface": "detail" }
+  ]
+}

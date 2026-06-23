@@ -1,0 +1,16 @@
+appId: ios-trader-brain
+name: Read-only scaffold smoke traversal
+tags:
+  - readonly
+  - not-authority
+---
+- assertVisible: "Read-only"
+- assertVisible: "NOT_AUTHORITY"
+- tapOn: "BRAIN"
+- assertVisible: "Read-only"
+- tapOn: "PORTFOLIO"
+- assertVisible: "Read-only"
+- tapOn: "ORDERS"
+- assertVisible: "Read-only"
+- tapOn: "SYSTEM"
+- assertVisible: "Read-only"

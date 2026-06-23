@@ -1,0 +1,29 @@
+{
+  "contractVersion": "ios-dev-build-readiness-v1",
+  "target": "Expo Development Build / iOS-first",
+  "expoGoPermitted": false,
+  "authority": "NOT_AUTHORITY",
+  "executionStatus": "BLOCKED_UNTIL_MAC_OR_OPERATOR",
+  "blockedExternalActions": [
+    "Xcode build",
+    "iOS simulator launch",
+    "physical iPhone install",
+    "EAS cloud build",
+    "TestFlight distribution"
+  ],
+  "requiredEvidenceBeforeUnblock": [
+    "expo-dev-client dependency and config reviewed",
+    "developer build command recorded",
+    "iOS simulator or device launch screenshot captured",
+    "no broker mutation route reachable",
+    "all frontend validators pass"
+  ],
+  "hardState": {
+    "strategyAcceptance": "NOT_ACCEPTED",
+    "deploymentReadiness": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "paperPermission": false,
+    "livePermission": false,
+    "brokerMutationPermitted": false,
+    "realCapital": "FORBIDDEN"
+  }
+}

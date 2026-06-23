@@ -1,0 +1,11 @@
+loop_id,prompt_summary,gpt_result,codex_result
+1,Prioritize next 10 frontend implementation loops after reading repo context,"iOS dev build readiness first; then simulator evidence, Maestro, visual regression, navigation, design/state/boundary/governance",Priority accepted with safety narrowing
+2,Define safe implementation boundary on Windows,"Implement repository config/validators/docs/fixture UI; external execution remains BLOCKED_UNTIL_MAC_OR_OPERATOR",Boundary used for implementation
+3,Review iOS dev-build readiness contract,"PASS; no build/deployment/iOS success claim",Implemented dev-build readiness validator
+4,Review native iOS evidence contract,"PASS; evidence contract only, capture not claimed",Implemented iOS evidence validator
+5,Review Maestro read-only spec,"PASS; structure-only spec, execution not claimed",Implemented Maestro contract validator
+6,Review visual regression contract,"PASS; diff/native baseline not claimed",Implemented visual regression validator
+7,Review navigation registry,"PASS; route registry proof only",Implemented navigation registry validator
+8,Review UI state panel and stories,"PASS; props-only presentation component",Implemented UiStatePanel and story coverage validator
+9,Review read-model boundary,"PASS; static fixture snapshot only; runtime/DB/broker blocked",Implemented read-model boundary validator
+10,Final governance review,"PASS; P0 none; P1 expected external execution blockers only",Implemented frontend governance validator and validated test suite

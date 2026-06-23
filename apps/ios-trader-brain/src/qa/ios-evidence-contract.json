@@ -1,0 +1,25 @@
+{
+  "contractVersion": "ios-evidence-contract-v1",
+  "authority": "NOT_AUTHORITY",
+  "captureStatus": "NOT_RUN_WINDOWS_ENVIRONMENT",
+  "artifactRoot": "data/artifacts/task_3843_frontend_platform_qa_10_loop/ios",
+  "requiredRoutes": [
+    "/",
+    "/brain",
+    "/portfolio",
+    "/orders",
+    "/system",
+    "/brain/candidate/fixture-candidate-review",
+    "/brain/chain/fixture-chain",
+    "/portfolio/position/fixture-position-unknown",
+    "/orders/fixture-order-blocked"
+  ],
+  "requiredPresets": [
+    "iphone-compact",
+    "iphone-current"
+  ],
+  "blockedExternalActions": [
+    "iOS simulator screenshot capture",
+    "physical iPhone screenshot capture"
+  ]
+}

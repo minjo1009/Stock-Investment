@@ -1,0 +1,11 @@
+artifact_path,artifact_type,authority,status,notes
+docs/reports/task_3843_frontend_platform_qa_10_loop/task_3843_frontend_platform_qa_10_loop.md,report,canonical,active,Task3843 closeout report
+docs/reports/task_3843_frontend_platform_qa_10_loop/gpt_loop_ledger.csv,ledger,review_only,active,Captured GPT-Codex 10-loop summary ledger
+apps/ios-trader-brain/src/qa/dev-build-readiness.json,contract,not_authority,active,iOS development build readiness contract
+apps/ios-trader-brain/src/qa/ios-evidence-contract.json,contract,not_authority,active,Native iOS evidence contract; capture not claimed
+apps/ios-trader-brain/.maestro/readonly-smoke.yaml,qa_spec,not_authority,active,Read-only Maestro structure; execution not claimed
+apps/ios-trader-brain/src/qa/visual-regression-contract.json,contract,not_authority,active,Visual regression contract; diff not claimed
+apps/ios-trader-brain/src/qa/navigation-registry.json,contract,not_authority,active,Static route registry
+apps/ios-trader-brain/src/components/generic/ui-state-panel.tsx,source,not_authority,active,Props-only UI state component
+apps/ios-trader-brain/src/stories/ui-state-panel.stories.tsx,storybook,not_authority,active,UI state Storybook coverage
+apps/ios-trader-brain/src/services/read-model-boundary.ts,source,not_authority,active,Static fixture read-model boundary

@@ -1,0 +1,8 @@
+decision,status,notes
+strategy_acceptance,NOT_ACCEPTED,Task3843 does not accept any strategy
+deployment_readiness,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,No deployment readiness was granted
+frontend_authority,NOT_AUTHORITY,Frontend remains fixture-backed and read-only
+broker_mutation,FORBIDDEN,No broker mutation path was added
+paper_live_permission,FORBIDDEN,No paper/live permission was granted
+real_capital,FORBIDDEN,No real-capital permission was granted
+native_ios_execution,BLOCKED_UNTIL_MAC_OR_OPERATOR,Contracts exist but actual Mac/iOS evidence is absent
