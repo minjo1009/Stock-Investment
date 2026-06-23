@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Reporting Rule"
+  short_description: "Keep project responses brief, useful, and cost-aware."
+  default_prompt: "Use $project-reporting-rule to report project status, loop progress, blockers, and token-cost discipline."
