@@ -15,6 +15,9 @@ Use these templates with the `codex-gpt-expert-relay-loop` skill.
   blocker, validation/SSOT/safety blocker, or `PAUSED_RESOURCE_LIMIT`.
 - A selected next-loop item should be promoted to active in the same run; do not
   stop only because unselected queue candidates are not authorization.
+- After a Chrome GPT consult or loop run finishes, close the GPT Chrome tab used
+  for the relay when the prompt/response artifacts and ledger/report are
+  captured. Do not close unrelated user tabs.
 - If Chrome automation is blocked, mark the loop `BLOCKED_AUTOMATION_NO_GPT_CAPTURE` and do not claim GPT reviewed the work.
 
 ## Loop Ledger
@@ -187,6 +190,9 @@ blocked:
 PASS / FAIL / BLOCKED
 
 ## Patch Prompt
+
+## Chrome GPT Tab Cleanup
+closed / skipped_preexisting_user_tab / already_closed / failed / not_applicable
 
 ## Next Loop
 ```

@@ -132,7 +132,8 @@ records the selection.
 In autonomous mode:
 
 1. Load the appropriate browser/Chrome control skill before controlling Chrome.
-2. Open or reuse the project ChatGPT conversation when available.
+2. Open or reuse the project ChatGPT conversation when available and record the
+   relay GPT tab identity as `relay_tab_id`.
 3. Send the expert prompt directly to Chrome GPT.
 4. Capture or summarize GPT's response.
 5. Convert the response into a bounded Codex patch plan.
@@ -177,6 +178,27 @@ If autonomous Chrome relay is blocked, report the blocker and provide the prompt
 as a fallback. Do not pretend GPT reviewed the work if the response was not
 captured.
 
+## Chrome GPT Tab Cleanup
+
+When Codex uses Chrome GPT in `autonomous_chrome_relay` or
+`single_gpt_consult`, close the GPT Chrome tab used for the relay after these
+conditions are met:
+
+1. Prompt and response artifacts are captured or the run is marked blocked.
+2. The loop ledger or consult report records the GPT capture status.
+3. Any requested commit/push or no-commit decision is recorded.
+4. The user-facing report can include the cleanup result.
+
+Close only tabs that Codex opened for the relay or clearly identified as
+dedicated relay GPT tabs. Do not close unrelated user Chrome tabs. If the tab was
+pre-existing and may contain unrelated user work, leave it open and report
+`tab_cleanup_status: skipped_preexisting_user_tab`.
+
+If tab cleanup fails because Chrome automation is unavailable, the tab is already
+closed, or the tab cannot be identified, report the exact status. Tab cleanup
+failure must not change strategy, deployment, broker, paper/live, or
+real-capital state.
+
 ## Single GPT Consult Mode
 
 Use one GPT consult or review pass when GPT is requested but no loop count or
@@ -189,7 +211,8 @@ Required behavior:
 3. Send one prompt to Chrome GPT when tools are available.
 4. Capture the response or mark `BLOCKED_AUTOMATION_NO_GPT_CAPTURE`.
 5. Implement only the bounded scope supported by repo evidence.
-6. Report the consult artifact and validation.
+6. Close the GPT Chrome tab used for the consult when cleanup rules allow it.
+7. Report the consult artifact, validation, and tab cleanup status.
 
 Do not continue into loop 2 without an explicit user loop request.
 
@@ -273,6 +296,7 @@ loop evidence
 - continuation_status: continuing | completed_requested_count | blocked | paused_resource_limit | stopped_by_user
 - next_loop_id:
 - next_loop_action:
+- tab_cleanup_status: closed | skipped_preexisting_user_tab | already_closed | failed | not_applicable
 
 done
 1. ...

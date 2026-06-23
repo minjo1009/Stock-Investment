@@ -1,0 +1,7 @@
+artifact,purpose,status
+skills/codex-gpt-expert-relay-loop/SKILL.md,Chrome GPT tab cleanup contract,updated
+skills/codex-gpt-expert-relay-loop/references/prompt-templates.md,Loop log cleanup status,updated
+skills/codex-gpt-expert-relay-loop/agents/openai.yaml,UI default prompt,updated
+docs/reports/task_3866_gpt_relay_chrome_tab_cleanup/task_3866_gpt_relay_chrome_tab_cleanup.md,Task report,created
+docs/reports/task_3866_gpt_relay_chrome_tab_cleanup/task_3866_decision.csv,Decision record,created
+docs/reports/task_3866_gpt_relay_chrome_tab_cleanup/artifact_manifest.csv,Artifact manifest,created

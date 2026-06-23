@@ -1,4 +1,4 @@
 interface:
   display_name: "Codex GPT Expert Relay"
   short_description: "Route GitHub-backed GPT consults."
-  default_prompt: "Use $codex-gpt-expert-relay-loop to classify this task. For project work, use GPT Agent Mode with GitHub enabled for minjo1009/Stock-Investment by default. Add Deep Research only when current external facts are needed. Run loops only when I explicitly request loops; once requested, continue selected bounded loops until the count, user stop, or a real blocker."
+  default_prompt: "Use $codex-gpt-expert-relay-loop to classify this task. For project work, use GPT Agent Mode with GitHub enabled for minjo1009/Stock-Investment by default. Add Deep Research only when current external facts are needed. Run loops only when I explicitly request loops; once requested, continue selected bounded loops until the count, user stop, or a real blocker. Close the GPT Chrome tab used for the relay after capture/reporting when safe."

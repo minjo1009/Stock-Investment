@@ -1,0 +1,2 @@
+task_id,decision,status,notes
+Task3866,gpt_relay_chrome_tab_cleanup_required,NOT_ACCEPTED,"Codex-GPT relay now closes dedicated GPT Chrome tabs after prompt response ledger or report capture and records tab_cleanup_status while preserving unrelated user Chrome tabs; no strategy deployment broker paper live or real-capital status changed."
