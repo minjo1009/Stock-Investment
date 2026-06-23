@@ -1,0 +1,11 @@
+loop_id,previous_task_id,previous_status,recovery_status,authority,notes
+1,task_3846_source_authority_cleanup_plan,complete,RECOVERED_FROM_LOCAL_PRIOR_LEDGER,diagnostic,Recovery copy only; does not change previous task state.
+2,task_3847_source_freshness_blocker_taxonomy,complete,RECOVERED_FROM_LOCAL_PRIOR_LEDGER,diagnostic,Recovery copy only; does not change previous task state.
+3,task_3848_sec_provider_evidence_reconciliation,complete,RECOVERED_FROM_LOCAL_PRIOR_LEDGER,diagnostic,Recovery copy only; does not change previous task state.
+4,task_3849_authority_ledger_gap_ranking,complete,RECOVERED_FROM_LOCAL_PRIOR_LEDGER,diagnostic,Recovery copy only; does not change previous task state.
+5,task_3850_broker_truth_evidence_contract,complete,RECOVERED_FROM_LOCAL_PRIOR_LEDGER,diagnostic,Recovery copy only; does not change previous task state.
+6,task_3851_kill_switch_clearance_checklist,complete,RECOVERED_FROM_LOCAL_PRIOR_LEDGER,diagnostic,Recovery copy only; does not change previous task state.
+7,task_3852_paper_gate_dependency_dag,complete,RECOVERED_FROM_LOCAL_PRIOR_LEDGER,diagnostic,Recovery copy only; does not change previous task state.
+8,task_3853_native_ios_operator_evidence_checklist,complete,RECOVERED_FROM_LOCAL_PRIOR_LEDGER,diagnostic,Recovery copy only; does not change previous task state.
+9,task_3854_repo_cleanup_candidate_classifier_v2,complete,RECOVERED_FROM_LOCAL_PRIOR_LEDGER,diagnostic,Recovery copy only; does not change previous task state.
+10,task_3855_task_registry_recovery_note,complete,RECOVERED_FROM_LOCAL_PRIOR_LEDGER,diagnostic,Recovery copy only; does not change previous task state.

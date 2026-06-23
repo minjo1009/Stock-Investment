@@ -1,0 +1,5 @@
+artifact_path,artifact_type,authority,status,notes
+data\artifacts\task_3865_next10_closeout_decision_pack\completed_loop_summary.csv,csv,diagnostic,generated,read-only diagnostic artifact
+data\artifacts\task_3865_next10_closeout_decision_pack\next_decision_matrix.csv,csv,diagnostic,generated,read-only diagnostic artifact
+data\artifacts\task_3865_next10_closeout_decision_pack\next10_closeout_decision_pack_state.json,json,diagnostic,generated,read-only diagnostic artifact
+docs\reports\task_3865_next10_closeout_decision_pack\next10_closeout_decision_pack_report.md,md,diagnostic,generated,read-only diagnostic artifact

@@ -1,0 +1,4 @@
+step_id,step,current_status,codex_can_execute_now
+ios_runbook_001,build or open development client on operator Mac,OPERATOR_ONLY,false
+ios_runbook_002,capture HOME/BRAIN/PORTFOLIO/ORDERS/SYSTEM screenshots,OPERATOR_ONLY,false
+ios_runbook_003,record read-only/no broker/no capital evidence,OPERATOR_ONLY,false

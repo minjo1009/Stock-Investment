@@ -1,0 +1,5 @@
+check_id,required_evidence,current_status,network_allowed
+sec_identity_001,SEC_USER_AGENT purpose owner contact recorded by operator,UNKNOWN/BLOCKER,false
+sec_identity_002,From header matches contact identity,UNKNOWN/BLOCKER,false
+sec_identity_003,cooldown window and retry budget documented,UNKNOWN/BLOCKER,false
+sec_identity_004,response fingerprint capture path prepared,UNKNOWN/BLOCKER,false

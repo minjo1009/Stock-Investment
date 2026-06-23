@@ -1,0 +1,5 @@
+gap_type,required_before_authority,current_status
+source_receipt,true,UNKNOWN/BLOCKER
+reference_hash,true,UNKNOWN/BLOCKER
+lineage_edge,true,UNKNOWN/BLOCKER
+freshness_policy,true,UNKNOWN/BLOCKER

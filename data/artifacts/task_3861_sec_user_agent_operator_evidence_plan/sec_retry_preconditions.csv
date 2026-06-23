@@ -1,0 +1,4 @@
+precondition_id,precondition,met_now
+sec_retry_001,operator confirms exact identity string,false
+sec_retry_002,single low-frequency retry window selected,false
+sec_retry_003,no variant testing planned,false

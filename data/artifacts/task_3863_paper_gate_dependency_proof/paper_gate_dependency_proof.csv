@@ -1,0 +1,5 @@
+proof_id,from_node,to_node,current_status,permission_granted,notes
+paper_dependency_001,paper-001,paper_gate_root,BLOCKED,false,weakest dependency blocks root
+paper_dependency_002,paper-002,paper_gate_root,BLOCKED,false,weakest dependency blocks root
+paper_dependency_003,paper-003,paper_gate_root,BLOCKED,false,weakest dependency blocks root
+paper_dependency_004,paper-004,paper_gate_root,BLOCKED,false,weakest dependency blocks root

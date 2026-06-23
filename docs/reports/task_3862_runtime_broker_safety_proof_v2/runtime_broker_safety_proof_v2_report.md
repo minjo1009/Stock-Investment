@@ -1,0 +1,20 @@
+# task_3862_runtime_broker_safety_proof_v2 Runtime Broker Safety Proof v2
+
+## Summary
+- [actual] This task generated read-only diagnostic artifacts.
+- [actual] It does not mutate tasks/task_registry.csv, DBs, brokers, schedulers, source acquisition, cleanup targets, or iOS devices.
+- [actual] Missing or stale evidence remains UNKNOWN/BLOCKER.
+
+## Hard State
+- Strategy: NOT_ACCEPTED
+- Deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+- Real capital: FORBIDDEN
+- Paper/live permission: not granted.
+- Broker mutation permission: not granted.
+
+## Artifact Counts
+- proof rows: 4
+- trace rows: 3
+
+## Notes
+No broker call or broker mutation was executed.

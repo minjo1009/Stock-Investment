@@ -1,0 +1,5 @@
+proof_id,runtime_area,required_evidence,current_status,mutation_allowed
+broker_runtime_001,order_intent,intent creation blocked without explicit permission,UNKNOWN/BLOCKER,false
+broker_runtime_002,broker_submit,submit path unreachable under current governance,UNKNOWN/BLOCKER,false
+broker_runtime_003,local_recording,local record cannot imply broker truth,UNKNOWN/BLOCKER,false
+broker_runtime_004,reconciliation,broker truth reconciliation proof exists,UNKNOWN/BLOCKER,false

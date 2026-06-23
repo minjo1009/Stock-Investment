@@ -1,0 +1,5 @@
+decision_id,area,decision,current_status
+next_scope_001,registry,review proposed rows before applying registry changes,UNKNOWN/BLOCKER
+next_scope_002,cleanup,manual review required before any cleanup action,UNKNOWN/BLOCKER
+next_scope_003,source_authority,prove receipts/hashes/lineage/freshness before certification,UNKNOWN/BLOCKER
+next_scope_004,frontend,continue read-only UI only after governance evidence is surfaced,DIAGNOSTIC_ONLY

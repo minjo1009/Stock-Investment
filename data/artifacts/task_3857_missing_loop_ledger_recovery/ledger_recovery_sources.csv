@@ -1,0 +1,3 @@
+source_path,exists,source_type,notes
+docs\reports\task_3846_3855_gpt_prioritized_loop_run\loop_ledger.csv,true,local_report,local file is available even if remote fetch was reported unavailable
+docs\reports\task_3846_3855_gpt_prioritized_loop_run\artifact_manifest.csv,true,manifest,used as secondary presence evidence

@@ -1,0 +1,3 @@
+gap_id,area,current_status,evidence,required_action,applied_to_registry
+registry_gap_001,registry_application,UNKNOWN/BLOCKER,local registry has unrelated working-tree state,review proposed rows in a focused registry reconciliation task,false
+registry_gap_002,artifact_path_review,UNKNOWN/BLOCKER,generated reports use task-specific paths that need canonical row review,confirm key_report and key_artifacts paths before applying rows,false

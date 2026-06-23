@@ -1,0 +1,3 @@
+metric,value,notes
+source_candidate_rows,2760,from Task3854 classifier
+decision_bucket_rows,4,all buckets require review

@@ -1,0 +1,4 @@
+blocker_id,blocker,blocks
+broker_blocker_001,broker_mutation_permission_missing,broker_submit
+broker_blocker_002,paper_live_permission_missing,order_intent
+broker_blocker_003,broker_truth_unproven,local_recording_as_truth

@@ -1,0 +1,17 @@
+{
+  "task_id": "task_3865_next10_closeout_decision_pack",
+  "generated_at_utc": "2026-06-23T09:08:44Z",
+  "strategy": "NOT_ACCEPTED",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "real_capital": "FORBIDDEN",
+  "overall_status": "READ_ONLY_NEXT10_CLOSEOUT_COMPLETE_WITH_BLOCKERS",
+  "source_acquisition_run": false,
+  "scheduler_run": false,
+  "db_mutation": false,
+  "broker_mutation_added": false,
+  "paper_live_permission_granted": false,
+  "real_capital_permission_granted": false,
+  "destructive_action_run": false,
+  "completed_loop_count": 9,
+  "permission_granted_rows": 0
+}

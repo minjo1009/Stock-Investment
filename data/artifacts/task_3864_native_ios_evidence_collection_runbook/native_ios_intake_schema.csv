@@ -1,0 +1,6 @@
+field,required,allowed_status
+capture_id,true,provided_by_operator
+device_or_simulator,true,provided_by_operator
+route,true,provided_by_operator
+screenshot_path,true,provided_by_operator
+capture_status,true,UNKNOWN/BLOCKER|CAPTURED_BY_OPERATOR

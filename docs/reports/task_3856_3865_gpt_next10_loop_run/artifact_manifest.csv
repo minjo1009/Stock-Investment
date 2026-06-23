@@ -1,0 +1,5 @@
+artifact_path,artifact_type,authority,status,notes
+docs\reports\task_3856_3865_gpt_next10_loop_run\gpt_priority_response.md,md,diagnostic,generated,read-only diagnostic artifact
+docs\reports\task_3856_3865_gpt_next10_loop_run\loop_ledger.csv,csv,diagnostic,generated,read-only diagnostic artifact
+docs\reports\task_3856_3865_gpt_next10_loop_run\scope_summary.md,md,diagnostic,generated,read-only diagnostic artifact
+docs\reports\task_3856_3865_gpt_next10_loop_run\gpt_review_response.md,md,diagnostic,generated,review-only GPT response snapshot

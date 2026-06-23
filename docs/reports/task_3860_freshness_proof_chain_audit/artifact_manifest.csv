@@ -1,0 +1,5 @@
+artifact_path,artifact_type,authority,status,notes
+data\artifacts\task_3860_freshness_proof_chain_audit\freshness_proof_chain.csv,csv,diagnostic,generated,read-only diagnostic artifact
+data\artifacts\task_3860_freshness_proof_chain_audit\blocker_semantics_matrix.csv,csv,diagnostic,generated,read-only diagnostic artifact
+data\artifacts\task_3860_freshness_proof_chain_audit\freshness_proof_chain_audit_state.json,json,diagnostic,generated,read-only diagnostic artifact
+docs\reports\task_3860_freshness_proof_chain_audit\freshness_proof_chain_audit_report.md,md,diagnostic,generated,read-only diagnostic artifact

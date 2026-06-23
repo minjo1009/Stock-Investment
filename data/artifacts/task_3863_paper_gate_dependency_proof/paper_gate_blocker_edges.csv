@@ -1,0 +1,4 @@
+edge_id,from_node,to_node,blocks_paper
+paper_root_001,paper_gate_root,runtime_authority,true
+paper_root_002,paper_gate_root,broker_truth,true
+paper_root_003,paper_gate_root,kill_switch_clearance,true

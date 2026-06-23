@@ -1,0 +1,5 @@
+artifact_path,artifact_type,authority,status,notes
+data\artifacts\task_3856_task_registry_formal_recovery_plan\proposed_task_registry_rows.csv,csv,diagnostic,generated,read-only diagnostic artifact
+data\artifacts\task_3856_task_registry_formal_recovery_plan\registry_recovery_gap_matrix.csv,csv,diagnostic,generated,read-only diagnostic artifact
+data\artifacts\task_3856_task_registry_formal_recovery_plan\task_registry_formal_recovery_state.json,json,diagnostic,generated,read-only diagnostic artifact
+docs\reports\task_3856_task_registry_formal_recovery_plan\task_registry_formal_recovery_plan.md,md,diagnostic,generated,read-only diagnostic artifact

@@ -1,0 +1,5 @@
+state,assignment_semantics,fallback_allowed
+fresh,allowed_only_with_evidence,false
+stale,UNKNOWN/BLOCKER,false
+missing,UNKNOWN/BLOCKER,false
+unknown,UNKNOWN/BLOCKER,false
