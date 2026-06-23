@@ -32,8 +32,13 @@ const forbiddenVisibleTerms = [
 const forbiddenIntegrationPatterns = [
   /\bfrom\s+["'][^"']*(?:kis|alpaca|broker|trading\.db)[^"']*["']/i,
   /\brequire\(["'][^"']*(?:kis|alpaca|broker|trading\.db)[^"']*["']\)/i,
+  /\bfrom\s+["'](?:axios|@tanstack\/react-query|react-query|swr|graphql-request)["']/i,
+  /\brequire\(["'](?:axios|@tanstack\/react-query|react-query|swr|graphql-request)["']\)/i,
+  /\bfetch\s*\(/i,
+  /\bXMLHttpRequest\b/i,
   /\bfetch\([^)]*(?:kis|alpaca|broker|paper|live|order)/i,
   /\bimport\s*\([^)]*(?:kis|alpaca|broker|trading\.db)[^)]*\)/i,
+  /\bimport\s*\(["'](?:axios|@tanstack\/react-query|react-query|swr|graphql-request)["']\)/i,
   /\bexpo-sqlite\b/i,
   /\bsqlite3\b/i,
 ];

@@ -1,0 +1,26 @@
+{
+  "target": "mobile_web_first_phone_optimized",
+  "nativeIosLater": true,
+  "appleDeveloperProgramRequiredNow": false,
+  "macRequiredNow": false,
+  "frontendMode": "read_only_diagnostic",
+  "strategyAcceptance": "NOT_ACCEPTED",
+  "deploymentReadiness": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "realCapital": "FORBIDDEN",
+  "brokerMutationPermitted": false,
+  "paperPermission": false,
+  "livePermission": false,
+  "serviceWorker": "DEFERRED_WITH_REASON_AGGRESSIVE_CACHE_RISK",
+  "installPath": {
+    "localDevelopment": "npm run web:mobile",
+    "phoneSameNetwork": "open the host LAN URL printed by Expo in mobile Safari",
+    "homeScreen": "Safari Share -> Add to Home Screen"
+  },
+  "requiredArtifacts": [
+    "public/index.html",
+    "public/manifest.json",
+    "public/logo192.png",
+    "public/logo512.png",
+    "docs/frontend_web/mobile_web_operator_runbook.md"
+  ]
+}

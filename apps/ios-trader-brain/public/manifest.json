@@ -1,0 +1,25 @@
+{
+  "short_name": "Trader Brain",
+  "name": "Trader Brain Read-only Cockpit",
+  "description": "Read-only diagnostic trading analysis cockpit. No broker mutation, paper/live permission, deployment readiness, or real-capital permission.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#F7F8FA",
+  "background_color": "#F7F8FA",
+  "icons": [
+    {
+      "src": "/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

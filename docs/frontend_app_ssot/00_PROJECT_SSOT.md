@@ -17,6 +17,11 @@ Standing project status:
 
 The active frontend target is an Expo Development Build, iOS-first mobile app.
 
+The near-term operator preview target is mobile-web-first phone preview because
+the project currently has no paid Apple Developer Program and no Mac operator
+path. This does not replace the later native iOS app path; it only defines the
+current phone-visible implementation route.
+
 The app must preserve:
 
 - `decision -> reason/thesis -> evidence -> source`
@@ -33,5 +38,6 @@ It is not the active implementation stack.
 The prior Expo Go 3052 DOM cockpit is retained as historical UI evidence and migration reference only.
 It is not the final route authority.
 
-Backtest, paper, and live are lifecycle states. They are not top-level navigation tabs.
+The mobile web preview path is governed by `23_MOBILE_WEB_PWA_BOUNDARY.md`.
 
+Backtest, paper, and live are lifecycle states. They are not top-level navigation tabs.

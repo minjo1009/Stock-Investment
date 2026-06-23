@@ -1,0 +1,11 @@
+artifact_path,artifact_type,authority_level,description
+apps/ios-trader-brain/public/index.html,web_shell,implementation,Expo web HTML template with manifest and iOS home-screen metadata
+apps/ios-trader-brain/public/manifest.json,pwa_manifest,implementation,Mobile web app manifest for add-to-home-screen behavior
+apps/ios-trader-brain/public/logo192.png,web_icon,derived,Home-screen icon generated from existing app icon
+apps/ios-trader-brain/public/logo512.png,web_icon,derived,Home-screen icon generated from existing app icon
+apps/ios-trader-brain/src/qa/mobile-web-readiness.json,qa_contract,implementation,Mobile-web-first safety and operator readiness contract
+apps/ios-trader-brain/src/qa/mobile-web-viewports.json,qa_contract,implementation,Phone viewport matrix for next screenshot QA
+apps/ios-trader-brain/src/qa/mobile-web-readiness-validator.mjs,validator,implementation,Fail-closed validator for mobile web readiness contract
+docs/frontend_web/mobile_web_operator_runbook.md,runbook,documentation,Phone preview and home-screen install runbook
+docs/frontend_app_ssot/23_MOBILE_WEB_PWA_BOUNDARY.md,ssot,documentation,Mobile-web-first and PWA safety boundary for the near-term phone preview path
+docs/reports/task_3849_mobile_web_appification_10_loop/gpt_task_loop_ledger.csv,ledger,report,GPT/local 10-loop implementation ledger

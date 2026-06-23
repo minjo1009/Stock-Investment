@@ -1,0 +1,11 @@
+loop,source,priority,objective,status,evidence
+1,GPT/local,P0,Define mobile-web-first target and preserve later native iOS path,completed,src/qa/mobile-web-readiness.json
+2,GPT/local,P0,Add installable web app manifest,completed,public/manifest.json
+3,GPT/local,P0,Link manifest and iOS home-screen metadata in web shell,completed,public/index.html
+4,GPT/local,P0,Create phone preview run command,completed,package.json web:mobile
+5,GPT/local,P0,Add mobile web readiness validator,completed,src/qa/mobile-web-readiness-validator.mjs
+6,GPT/local,P0,Keep service worker deferred because of cache risk,completed,src/qa/mobile-web-readiness.json
+7,GPT/local,P1,Define mobile viewport QA matrix,completed,src/qa/mobile-web-viewports.json
+8,GPT/local,P1,Document iPhone Safari home-screen operator path,completed,docs/frontend_web/mobile_web_operator_runbook.md
+9,GPT/local,P1,Attach validator to app test chain,completed,package.json test
+10,GPT/local,P1,Create report and artifact manifest,completed,docs/reports/task_3849_mobile_web_appification_10_loop
