@@ -36,6 +36,10 @@ function expect(condition, message) {
   if (!condition) findings.push(message);
 }
 
+function hasReadOnlyBoundary(source) {
+  return source.includes("Read-only") || source.includes("read-only") || source.includes("읽기전용");
+}
+
 const packageJson = readJson("package.json");
 const manifest = readJson("src/qa/web-preview-manifest.json");
 const rail = readText("src/components/domain/mobile-v1-status-rail.tsx");
@@ -63,7 +67,7 @@ for (const route of manifest?.routes ?? []) {
   expect(route.routePath?.startsWith("/"), `${route.routeId}: routePath must start with /`);
   expect(["tab", "detail"].includes(route.surfaceType), `${route.routeId}: surfaceType must be tab or detail`);
   const source = readText(route.routeFile);
-  expect(source.includes("Read-only") || source.includes("read-only"), `${route.routeId}: route must preserve read-only copy`);
+  expect(hasReadOnlyBoundary(source), `${route.routeId}: route must preserve read-only copy`);
   expect(source.includes("NOT_AUTHORITY"), `${route.routeId}: route must preserve NOT_AUTHORITY copy`);
   expect(!/fetch\s*\(|axios|react-query|swr|graphql-request|expo-sqlite|sqlite3/.test(source), `${route.routeId}: route must not add runtime/API/DB client`);
   expect(!/submitOrder|placeOrder|sendLiveOrder|approveOrder|cancelOrder/.test(source), `${route.routeId}: route must not add order mutation path`);

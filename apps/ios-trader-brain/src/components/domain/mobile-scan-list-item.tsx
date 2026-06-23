@@ -42,10 +42,10 @@ export function MobileScanListItem({
   return (
     <CardContainer {...props} style={[{ minHeight: mobile.touchTarget, padding: spacing.md }, props.style]}>
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-        <Badge label="Read-only" tone="readOnly" />
+        <Badge label="읽기전용" tone="readOnly" />
         <Badge label="NOT_AUTHORITY" tone="blocked" />
-        {badges.map((badge) => (
-          <Badge key={`${badge.label}-${badge.tone ?? "readOnly"}`} label={badge.label} tone={badge.tone ?? "readOnly"} />
+        {badges.map((badge, index) => (
+          <Badge key={`${badge.label}-${badge.tone ?? "readOnly"}-${index}`} label={badge.label} tone={badge.tone ?? "readOnly"} />
         ))}
       </View>
       <View style={{ gap: spacing.xs }}>

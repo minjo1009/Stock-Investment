@@ -29,10 +29,11 @@ for (const file of routeFiles) {
     continue;
   }
   const content = readFileSync(path, "utf8");
-  for (const token of ["Read-only", "NOT_AUTHORITY"]) {
-    if (!content.includes(token)) {
-      findings.push(`${file}: missing visible ${token} boundary`);
-    }
+  if (!(content.includes("Read-only") || content.includes("read-only") || content.includes("읽기전용"))) {
+    findings.push(`${file}: missing visible read-only boundary`);
+  }
+  if (!content.includes("NOT_AUTHORITY")) {
+    findings.push(`${file}: missing visible NOT_AUTHORITY boundary`);
   }
   if (!/Scaffold-only|scaffold-only/.test(content)) {
     findings.push(`${file}: missing scaffold-only copy`);

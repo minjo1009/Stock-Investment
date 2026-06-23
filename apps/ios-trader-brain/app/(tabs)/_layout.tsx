@@ -1,18 +1,18 @@
 import { Tabs } from "expo-router";
 
 const tabs = [
-  { name: "index", title: "HOME" },
-  { name: "brain", title: "BRAIN" },
-  { name: "portfolio", title: "PORTFOLIO" },
-  { name: "orders", title: "ORDERS" },
-  { name: "system", title: "SYSTEM" },
+  { name: "index", title: "홈" },
+  { name: "portfolio", title: "포트폴리오" },
+  { name: "brain", title: "브레인" },
+  { name: "orders", title: "주문" },
+  { name: "system", title: "시스템" },
 ] as const;
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
         tabBarLabelPosition: "below-icon",
       }}
     >

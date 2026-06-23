@@ -21,69 +21,79 @@ import { spacing } from "../../src/theme/tokens";
 
 export default function HomeRoute() {
   const home = homeFixture;
+  const portfolioSnapshot = home.portfolioSnapshot;
 
   return (
     <ScreenContainer>
       <View style={{ gap: spacing.sm }}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <Badge label="HOME v1" tone="readOnly" />
-          <Badge label="Read-only" tone="readOnly" />
+          <Badge label="읽기전용" tone="readOnly" />
+          <Badge label="모바일 우선 v1" tone="readOnly" />
           <Badge label="NOT_AUTHORITY" tone="blocked" />
         </View>
-        <AppText variant="title">HOME</AppText>
+        <AppText variant="title">투자 현황</AppText>
         <AppText variant="caption">
-          Scaffold-only fixture-backed view. Current payload is not backend truth,
-          source truth, broker truth, or product readiness evidence.
+          현재 화면은 scaffold-only 읽기전용 미리보기입니다. 계좌·수익·위험 정보는
+          권한 있는 데이터가 없으면 UNKNOWN으로 표시합니다.
         </AppText>
       </View>
 
-      <MobileV1StatusRail
-        items={[
-          { label: "Mode", value: "mobile web", tone: "readOnly" },
-          { label: "Broker", value: "blocked", tone: "blocked" },
-          { label: "Capital", value: home.governance.realCapital, tone: "blocked" },
-        ]}
-        subtitle="Phone-first v1"
-        title="Read-only cockpit preview"
-      />
-
-      <FreshnessBanner
-        generatedAt={home.generatedAt}
-        sourceSummary={home.sourceSummary}
-        title="Home source state is review-only"
-      />
-
       <ScreenSummary
-        badges={[
-          { label: "fixture-backed", tone: "readOnly" },
-          { label: home.governance.strategyAcceptance, tone: "blocked" },
-          { label: "kill switch active", tone: "blocked" },
-        ]}
-        description="Read-only overview for operator scanning. Values are display fixtures until an authority source is selected."
-        footer="Missing and stale inputs stay visible and never become negative evidence."
+        description="계좌·수익·위험을 먼저 확인합니다. 값이 없으면 0으로 바꾸지 않고 UNKNOWN으로 둡니다."
+        footer="UNKNOWN은 손실이나 실패가 아니라 아직 권한 있는 근거가 없다는 뜻입니다."
         links={[
           {
-            href: "/brain",
-            label: "Review candidate queue",
-            helperText: "Open the read-only BRAIN queue.",
+            href: "/portfolio",
+            label: "포트폴리오 보기",
+            helperText: "보유·현금·위험 상태를 읽기전용으로 확인합니다.",
           },
           {
-            href: "/system",
-            label: "Check operating state",
-            helperText: "Open source, validator, and hard-state status.",
+            href: "/brain",
+            label: "후보 흐름 보기",
+            helperText: "오늘 검토할 후보와 차단 사유를 확인합니다.",
           },
         ]}
         metrics={[
-          { label: "Candidates", value: home.brainSnapshot.candidateCount, state: "readOnly" },
-          { label: "Blocked items", value: home.brainSnapshot.blockedCount, state: "blocked" },
-          { label: "Stale sources", value: home.sourceSummary.staleCount, state: "stale" },
-          { label: "Unknown sources", value: home.sourceSummary.unknownCount, state: "unknown" },
+          { label: "투자금", value: displayMoney(portfolioSnapshot.investedCash), state: "unknown" },
+          { label: "계좌현황", value: displayMoney(portfolioSnapshot.accountValue), state: "unknown" },
+          { label: "수익현황", value: displayPercent(portfolioSnapshot.totalReturnPct), state: "unknown" },
+          { label: "승률현황", value: displayPercent(portfolioSnapshot.winRatePct), state: "unknown" },
+          { label: "MDD", value: displayPercent(portfolioSnapshot.maxDrawdownPct), state: "unknown" },
         ]}
-        title="Morning review surface"
+        title="오늘의 투자 요약"
       />
 
-      <SectionContainer title="Attention Required" description="Blocked and unknown items stay visible before any summary comfort.">
+      <MobileV1StatusRail
+        items={[
+          { label: "화면", value: "읽기전용", tone: "readOnly" },
+          { label: "계좌", value: "UNKNOWN", tone: "unknown" },
+          { label: "실자본", value: home.governance.realCapital, tone: "blocked" },
+        ]}
+        subtitle="Phone-first v1 / 모바일 우선 v1"
+        title="읽기전용 투자 대시보드"
+      />
+
+      <SectionContainer title="오늘 확인할 항목" description="후보·포지션·주문·시스템 중 먼저 볼 항목입니다.">
         <View style={{ gap: spacing.sm }}>
+          {[
+            { href: "/portfolio", label: "계좌와 보유 확인", subtitle: "현금·투자금·손익·위험을 확인합니다." },
+            { href: "/brain", label: "후보 흐름 확인", subtitle: "검토 후보와 차단 사유를 확인합니다." },
+            { href: "/orders", label: "주문 상태 확인", subtitle: "실행이 아니라 차단된 주문 상태를 봅니다." },
+            { href: "/system", label: "데이터 상태 확인", subtitle: "출처·신선도·운영 제한을 확인합니다." },
+          ].map((surface) => (
+            <ReviewCard
+              key={surface.href}
+              badges={[
+                { label: "읽기전용", tone: "readOnly" },
+                { label: "확인", tone: "unknown" },
+              ]}
+              body="이동해도 주문·브로커·실자본 동작은 발생하지 않습니다."
+              href={surface.href}
+              hrefLabel="열기"
+              subtitle={surface.subtitle}
+              title={surface.label}
+            />
+          ))}
           {home.attentionQueue.map((item) => (
             <ReviewCard
               key={item.itemId}
@@ -93,7 +103,7 @@ export default function HomeRoute() {
               ]}
               body={item.reason}
               href={item.route}
-              hrefLabel="Open read-only destination"
+              hrefLabel="읽기전용으로 열기"
               sourceRefs={item.sourceRefs}
               subtitle={item.route}
               title={item.label}
@@ -102,53 +112,33 @@ export default function HomeRoute() {
         </View>
       </SectionContainer>
 
-      <SectionContainer title="Next Review Surfaces" description="Inspection routes only; no trading permission is implied.">
-        <View style={{ gap: spacing.sm }}>
-          {[
-            { href: "/brain", label: "BRAIN", subtitle: "Candidate and source review queue" },
-            { href: "/portfolio", label: "PORTFOLIO", subtitle: "Fixture-backed holdings and risk review" },
-            { href: "/orders", label: "ORDERS", subtitle: "Blocked order lifecycle inspection" },
-            { href: "/system", label: "SYSTEM", subtitle: "Governance and source state review" },
-          ].map((surface) => (
-            <ReviewCard
-              key={surface.href}
-              badges={[
-                { label: "read-only", tone: "readOnly" },
-                { label: "NOT_AUTHORITY", tone: "blocked" },
-              ]}
-              body="Open the review surface. This is not a signal, recommendation, or execution path."
-              href={surface.href}
-              hrefLabel="Open review surface"
-              subtitle={surface.subtitle}
-              title={surface.label}
-            />
-          ))}
-        </View>
-      </SectionContainer>
-
-      <SectionContainer title="Portfolio Snapshot" description="Fixture values stay unknown until an authority path exists.">
+      <SectionContainer title="계좌 스냅샷" description="권한 있는 계좌 데이터가 없으면 UNKNOWN으로 표시합니다.">
         <View style={{ gap: spacing.sm }}>
           <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-            <MetricCard label="Account value" value={displayMoney(home.portfolioSnapshot.accountValue)} state="unknown" />
-            <MetricCard label="Cash" value={displayMoney(home.portfolioSnapshot.cash)} state="unknown" />
-            <MetricCard label="Invested cash" value={displayMoney(home.portfolioSnapshot.investedCash)} state="unknown" />
-            <MetricCard label="Open PnL" value={displayMoney(home.portfolioSnapshot.openPnl)} state="unknown" />
-            <MetricCard label="Realized PnL" value={displayMoney(home.portfolioSnapshot.realizedPnl)} state="unknown" />
+            <MetricCard label="현금" value={displayMoney(portfolioSnapshot.cash)} state="unknown" />
+            <MetricCard label="투자금" value={displayMoney(portfolioSnapshot.investedCash)} state="unknown" />
+            <MetricCard label="평가손익" value={displayMoney(portfolioSnapshot.openPnl)} state="unknown" />
+            <MetricCard label="실현손익" value={displayMoney(portfolioSnapshot.realizedPnl)} state="unknown" />
           </View>
-          <SourceFreshnessBadge sourceState={home.portfolioSnapshot.sourceState} />
-          {home.portfolioSnapshot.sourceState.blockerReason ? (
-            <AppText variant="caption">{home.portfolioSnapshot.sourceState.blockerReason}</AppText>
+          <SourceFreshnessBadge sourceState={portfolioSnapshot.sourceState} />
+          {portfolioSnapshot.sourceState.blockerReason ? (
+            <AppText variant="caption">{portfolioSnapshot.sourceState.blockerReason}</AppText>
           ) : null}
         </View>
       </SectionContainer>
 
-      <SectionContainer title="Freshness Summary" description="Fresh does not imply permission; stale or missing remains visible.">
+      <SectionContainer title="데이터 상태" description="보조 정보입니다. 신선도는 권한이나 매매 가능 상태가 아닙니다.">
+        <FreshnessBanner
+          generatedAt={home.generatedAt}
+          sourceSummary={home.sourceSummary}
+          title="홈 데이터 상태"
+        />
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <MetricCard label="Fresh" value={home.sourceSummary.freshCount} state="fresh" />
-          <MetricCard label="Stale" value={home.sourceSummary.staleCount} state="stale" />
-          <MetricCard label="Missing" value={home.sourceSummary.missingCount} state="missing" />
-          <MetricCard label="Unknown" value={home.sourceSummary.unknownCount} state="unknown" />
-          <MetricCard label="Strict gate open" value={home.sourceSummary.strictGateOpenCount} state="blocked" />
+          <MetricCard label="정상" value={home.sourceSummary.freshCount} state="fresh" />
+          <MetricCard label="오래됨" value={home.sourceSummary.staleCount} state="stale" />
+          <MetricCard label="누락" value={home.sourceSummary.missingCount} state="missing" />
+          <MetricCard label="UNKNOWN" value={home.sourceSummary.unknownCount} state="unknown" />
+          <MetricCard label="엄격 게이트 열림" value={home.sourceSummary.strictGateOpenCount} state="blocked" />
         </View>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
           {home.freshnessSummary.map((sourceState) => (
@@ -157,42 +147,42 @@ export default function HomeRoute() {
         </View>
       </SectionContainer>
 
-      <SectionContainer title="Blocker Summary" description="Fixture blockers are displayed as blockers, not negative evidence.">
+      <SectionContainer title="확인 필요 상태" description="차단과 UNKNOWN은 부정 판단이 아니라 해석 보류 조건입니다.">
         <UiStatePanel
-          message="Missing, stale, and unknown source states stay visible. They are blockers for interpretation, not negative trading evidence."
+          message="누락, 오래됨, UNKNOWN은 화면에서 계속 보입니다. 이것은 투자 실패 신호가 아니라 해석 차단 조건입니다."
           state="blocked"
-          title="Unknown is not a failed investment view"
+          title="UNKNOWN은 손실 판단이 아닙니다"
         />
         <BlockerList blockers={[...home.blockers, ...home.blockerSummary]} />
       </SectionContainer>
 
-      <SectionContainer title="Governance Boundary" description="Visible hard state for this scaffold screen.">
+      <SectionContainer title="운영 제한 상태" description="보조 안전 정보입니다. 화면 권한을 열지 않습니다.">
         <StatusRow
-          label="Strategy"
+          label="전략 상태"
           value={`Strategy ${home.governance.strategyAcceptance}`}
           state="blocked"
           sourceRef={home.governance.controlStateSource}
         />
         <StatusRow
-          label="Deployment"
+          label="배포 상태"
           value={`Deployment ${home.governance.deploymentReadiness}`}
           state="blocked"
           sourceRef={home.governance.authorityReportPath}
         />
         <StatusRow
-          label="Real capital"
+          label="실자본"
           value={`Real capital ${home.governance.realCapital}`}
           state="blocked"
           sourceRef={home.governance.controlStateSource}
         />
         <StatusRow
-          label="Kill switch"
+          label="킬스위치"
           value={home.governance.killSwitchActive ? "active" : "inactive"}
           state={home.governance.killSwitchActive ? "blocked" : "unknown"}
         />
       </SectionContainer>
 
-      <SectionContainer title="Disabled Actions" description="Trading mutation remains disabled by governance.">
+      <SectionContainer title="비활성화된 기능" description="거래 변경 기능은 계속 비활성 상태입니다.">
         <DisabledActionBar actions={home.disabledActions} />
       </SectionContainer>
     </ScreenContainer>
@@ -200,9 +190,17 @@ export default function HomeRoute() {
 }
 
 function displayMoney(value: number | null) {
-  if (value === null) {
+  if (value === null || Number.isNaN(value)) {
     return "UNKNOWN";
   }
 
   return value;
+}
+
+function displayPercent(value: number | null) {
+  if (value === null || Number.isNaN(value)) {
+    return "UNKNOWN";
+  }
+
+  return `${value}%`;
 }

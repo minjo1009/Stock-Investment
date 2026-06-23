@@ -55,6 +55,9 @@ export const homeFixture = {
     investedCash: null,
     openPnl: null,
     realizedPnl: null,
+    totalReturnPct: null,
+    winRatePct: null,
+    maxDrawdownPct: null,
     sourceState: {
       sourceId: "fixture-portfolio-source",
       sourceLabel: "Portfolio scaffold source",

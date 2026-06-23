@@ -43,15 +43,22 @@
       ]
     }
   ],
+  "scannerSummary": {
+    "candidateCount": 2,
+    "reviewOnlyCount": 1,
+    "blockedCount": 1,
+    "weakEvidenceCount": 1,
+    "latestReviewAt": null
+  },
   "candidates": [
     {
       "candidateId": "fixture-candidate-review",
       "symbol": "FIXA",
-      "displayName": "Fixture Candidate A",
+      "displayName": "검토 후보 A",
       "lifecycleState": "REVIEW_ONLY",
       "decisionState": "REVIEW_ONLY",
-      "thesisSummary": "Scaffold-only thesis summary from contract fixture.",
-      "reasonSummary": "Used to verify read-only candidate row props.",
+      "thesisSummary": "읽기전용 후보 표시를 확인하기 위한 fixture 논리입니다.",
+      "reasonSummary": "후보 행의 검토 흐름과 근거 표시를 확인합니다.",
       "validationState": "PARTIAL",
       "evidenceStrength": "PARTIAL",
       "sourceStates": [
@@ -76,11 +83,11 @@
     {
       "candidateId": "fixture-candidate-blocked",
       "symbol": "FIXB",
-      "displayName": "Fixture Candidate B",
+      "displayName": "차단 후보 B",
       "lifecycleState": "BLOCKED",
       "decisionState": "BLOCKED",
       "thesisSummary": null,
-      "reasonSummary": "Missing source blocks interpretation.",
+      "reasonSummary": "출처 상태를 증명할 수 없어 해석이 차단됩니다.",
       "validationState": "BLOCKED",
       "evidenceStrength": "NONE",
       "sourceStates": [

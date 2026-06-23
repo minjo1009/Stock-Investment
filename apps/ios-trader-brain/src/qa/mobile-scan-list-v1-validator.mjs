@@ -22,12 +22,16 @@ function expect(condition, message) {
   if (!condition) findings.push(message);
 }
 
+function hasReadOnlyBoundary(source) {
+  return source.includes("Read-only") || source.includes("read-only") || source.includes("읽기전용");
+}
+
 const packageJson = JSON.parse(readText("package.json") || "{}");
 const component = readText("src/components/domain/mobile-scan-list-item.tsx");
 
 expect(component.includes("MobileScanListItem"), "MobileScanListItem component must exist");
 expect(component.includes("minHeight: mobile.touchTarget"), "MobileScanListItem must preserve 44px touch-target minimum");
-expect(component.includes("Read-only"), "MobileScanListItem must show Read-only boundary");
+expect(hasReadOnlyBoundary(component), "MobileScanListItem must show Read-only boundary");
 expect(component.includes("NOT_AUTHORITY"), "MobileScanListItem must show NOT_AUTHORITY boundary");
 expect(component.includes("flexWrap: \"wrap\""), "MobileScanListItem must wrap content on phone widths");
 expect(!/overflow:\s*["']hidden["']/.test(component), "MobileScanListItem must not hide overflow");
@@ -39,7 +43,7 @@ for (const route of tabRoutes) {
   const source = readText(route);
   expect(source.includes("MobileScanListItem"), `${route}: must use MobileScanListItem`);
   expect(source.includes("MobileV1StatusRail"), `${route}: must preserve phone-first rail`);
-  expect(source.includes("Read-only"), `${route}: must preserve Read-only boundary`);
+  expect(hasReadOnlyBoundary(source), `${route}: must preserve Read-only boundary`);
   expect(source.includes("NOT_AUTHORITY"), `${route}: must preserve NOT_AUTHORITY boundary`);
   expect(!/sort\s*\(|filter\s*\([^=]*(score|rank|confidence|outcome)|fetch\s*\(|axios|react-query|swr|graphql-request/.test(source), `${route}: must not add sorting/filtering logic or integration clients`);
   expect(!/submitOrder|placeOrder|sendLiveOrder|approveOrder|cancelOrder/.test(source), `${route}: must not add order mutation language or handlers`);

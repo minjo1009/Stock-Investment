@@ -70,7 +70,7 @@ export function ScreenSummary({
 
       {links.length > 0 ? (
         <View style={{ gap: spacing.sm }}>
-          <AppText>Read-only paths</AppText>
+          <AppText>읽기전용 이동</AppText>
           {links.map((link) => (
             <View key={link.href} style={{ gap: spacing.xs }}>
               <Link href={link.href as Href}>

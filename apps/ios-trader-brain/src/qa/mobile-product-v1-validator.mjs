@@ -63,8 +63,8 @@ expect(rail.includes("minHeight: mobile.touchTarget"), "MobileV1StatusRail must 
 for (const [tabId, file] of Object.entries(tabFiles)) {
   const source = readText(file);
   expect(source.includes("MobileV1StatusRail"), `${tabId} must render MobileV1StatusRail`);
-  expect(source.includes("Phone-first v1"), `${tabId} must visibly mark Phone-first v1`);
-  expect(source.includes("Read-only") || source.includes("read-only"), `${tabId} must preserve read-only copy`);
+  expect(source.includes("Phone-first v1") || source.includes("모바일 우선 v1"), `${tabId} must visibly mark phone-first v1`);
+  expect(source.includes("Read-only") || source.includes("read-only") || source.includes("읽기전용"), `${tabId} must preserve read-only copy`);
   expect(source.includes("NOT_AUTHORITY"), `${tabId} must preserve NOT_AUTHORITY copy`);
   expect(!/onPress=\{|onSubmit=\{|onExecute=\{|fetch\s*\(|axios|react-query|swr|graphql-request/.test(source), `${tabId} must not add handlers or frontend API clients`);
 }

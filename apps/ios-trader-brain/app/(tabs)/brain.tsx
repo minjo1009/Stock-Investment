@@ -11,7 +11,6 @@ import { AppText, Badge, CardContainer } from "../../src/components/foundation";
 import {
   BlockerList,
   MetricCard,
-  SourceFreshnessBadge,
   StatusRow,
 } from "../../src/components/generic";
 import { ScreenContainer, SectionContainer } from "../../src/components/layout";
@@ -20,135 +19,107 @@ import { spacing } from "../../src/theme/tokens";
 
 export default function BrainRoute() {
   const brain = brainFixture;
-  const reviewOnlyCount = brain.candidates.filter(
-    (candidate) => candidate.lifecycleState === "REVIEW_ONLY"
-  ).length;
-  const blockedCount = brain.candidates.filter(
-    (candidate) => candidate.lifecycleState === "BLOCKED"
-  ).length;
+  const scanner = brain.scannerSummary;
 
   return (
     <ScreenContainer>
       <View style={{ gap: spacing.sm }}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <Badge label="BRAIN v1" tone="readOnly" />
-          <Badge label="Read-only" tone="readOnly" />
+          <Badge label="읽기전용" tone="readOnly" />
+          <Badge label="모바일 우선 v1" tone="readOnly" />
           <Badge label="NOT_AUTHORITY" tone="blocked" />
         </View>
-        <AppText variant="title">BRAIN</AppText>
+        <AppText variant="title">후보 탐색</AppText>
         <AppText variant="caption">
-          Scaffold-only fixture-backed view. Candidate rows are review surfaces,
-          not source truth or trading permission.
+          현재 화면은 scaffold-only 후보 검토 미리보기입니다. 점수·순위·확신도는 만들지 않고,
+          후보 상태와 차단 사유만 읽기전용으로 보여줍니다.
         </AppText>
       </View>
 
-      <MobileV1StatusRail
-        items={[
-          { label: "Queue", value: brain.candidates.length, tone: "readOnly" },
-          { label: "Blocked", value: blockedCount, tone: "blocked" },
-          { label: "Gate", value: "closed", tone: "blocked" },
-        ]}
-        subtitle="Phone-first v1"
-        title="Candidate queue is review-only"
-      />
-
-      <FreshnessBanner
-        generatedAt={brain.generatedAt}
-        sourceSummary={brain.sourceSummary}
-        title="Brain source gate is closed"
-      />
-
       <ScreenSummary
-        badges={[
-          { label: "fixture-backed", tone: "readOnly" },
-          { label: brain.governance.strategyAcceptance, tone: "blocked" },
-          { label: "review queue", tone: "readOnly" },
-        ]}
-        description="Candidate scanning surface for read-only review. Candidate rows are not assignment, acceptance, or trading instructions."
-        footer="Future outcomes, realized labels, and post-event returns remain excluded from filtering."
+        description="오늘 볼 후보를 먼저 확인합니다. 검토 가능과 차단 상태는 매매 지시가 아닙니다."
+        footer="미래 수익률, 실현 라벨, 사후 결과는 후보 정렬에 쓰지 않습니다."
         links={[
           {
             href: "/brain/candidate/fixture-candidate-review",
-            label: "Open sample candidate detail",
-            helperText: "Review the current detail hierarchy with fixture evidence.",
+            label: "검토 후보 상세",
+            helperText: "후보의 논리와 근거 상태를 읽기전용으로 봅니다.",
           },
           {
             href: "/brain/chain/fixture-chain",
-            label: "Open evidence chain",
-            helperText: "Inspect read-only source and provenance layers.",
+            label: "근거 체인 보기",
+            helperText: "출처와 판단 흐름을 계층별로 확인합니다.",
           },
         ]}
         metrics={[
-          { label: "Candidates", value: brain.candidates.length, state: "readOnly" },
-          { label: "Review-only", value: reviewOnlyCount, state: "readOnly" },
-          { label: "Blocked", value: blockedCount, state: "blocked" },
-          { label: "Strict gate open", value: brain.sourceSummary.strictGateOpenCount, state: "blocked" },
+          { label: "후보 수", value: displayCount(scanner.candidateCount), state: "readOnly" },
+          { label: "검토 가능", value: displayCount(scanner.reviewOnlyCount), state: "readOnly" },
+          { label: "차단됨", value: displayCount(scanner.blockedCount), state: "blocked" },
+          { label: "근거 부족", value: displayCount(scanner.weakEvidenceCount), state: "unknown" },
         ]}
-        title="Candidate review queue"
+        title="오늘의 후보 검토"
       />
 
-      <SectionContainer title="Review Queue" description="Rows are read-only and fixture-backed.">
+      <MobileV1StatusRail
+        items={[
+          { label: "후보", value: displayCount(scanner.candidateCount), tone: "readOnly" },
+          { label: "차단", value: displayCount(scanner.blockedCount), tone: "blocked" },
+          { label: "상태", value: "읽기전용", tone: "readOnly" },
+        ]}
+        subtitle="Phone-first v1 / 모바일 우선 v1"
+        title="후보 검토 대기열"
+      />
+
+      <SectionContainer title="검토 대기열" description="후보 행은 매매 지시가 아니라 검토 대상입니다.">
         <View style={{ gap: spacing.sm }}>
           {brain.candidates.map((candidate) => (
             <MobileScanListItem
               key={candidate.candidateId}
               badges={[
                 {
-                  label: candidate.lifecycleState,
+                  label: lifecycleLabel(candidate.lifecycleState),
                   tone: candidate.lifecycleState === "BLOCKED" ? "blocked" : "readOnly",
                 },
                 {
-                  label: candidate.decisionState,
+                  label: decisionLabel(candidate.decisionState),
                   tone: candidate.decisionState === "BLOCKED" ? "blocked" : "readOnly",
                 },
                 {
-                  label: candidate.validationState,
+                  label: validationLabel(candidate.validationState),
                   tone: candidate.validationState === "BLOCKED" ? "blocked" : "unknown",
                 },
               ]}
               body={candidate.reasonSummary ?? "UNKNOWN"}
               href={candidate.route}
-              hrefLabel="Open read-only candidate detail"
+              hrefLabel="읽기전용 상세 열기"
               metrics={[
-                { label: "Evidence", value: candidate.evidenceStrength, state: "unknown" },
-                { label: "Sources", value: candidate.sourceStates.length, state: "readOnly" },
-                { label: "Blockers", value: candidate.blockers.length, state: candidate.blockers.length > 0 ? "blocked" : "readOnly" },
+                { label: "근거 수준", value: evidenceLabel(candidate.evidenceStrength), state: "unknown" },
+                { label: "출처 수", value: candidate.sourceStates.length, state: "readOnly" },
+                { label: "확인 필요", value: candidate.blockers.length, state: candidate.blockers.length > 0 ? "blocked" : "readOnly" },
               ]}
               sourceRefs={candidate.sourceStates.flatMap((sourceState) => sourceState.provenanceRefs)}
               subtitle={candidate.displayName}
               title={candidate.symbol}
             />
           ))}
-          {brain.candidates.map((candidate) => (
-            <CardContainer key={`${candidate.candidateId}-source-state`}>
-              <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-                <Badge label={candidate.symbol} tone="readOnly" />
-                <Badge
-                  label={candidate.blockers.length > 0 ? "blocked source state" : "source state"}
-                  tone={candidate.blockers.length > 0 ? "blocked" : "unknown"}
-                />
-              </View>
-              <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-                {candidate.sourceStates.map((sourceState) => (
-                  <SourceFreshnessBadge key={sourceState.sourceId} sourceState={sourceState} />
-                ))}
-              </View>
-              <BlockerList blockers={candidate.blockers} emptyLabel="No blocker rows supplied for this fixture candidate" />
-            </CardContainer>
-          ))}
         </View>
       </SectionContainer>
 
-      <SectionContainer title="Blocked / Missing Evidence" description="Forbidden filters cannot enter assignment logic.">
+      <SectionContainer title="근거 상태" description="근거 상태는 보조 정보입니다. UNKNOWN은 부정 판단이 아닙니다.">
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <MetricCard label="Missing" value={brain.sourceSummary.missingCount} state="missing" />
-          <MetricCard label="Unknown" value={brain.sourceSummary.unknownCount} state="unknown" />
-          <MetricCard label="Strict gate open" value={brain.sourceSummary.strictGateOpenCount} state="blocked" />
+          <MetricCard label="누락" value={brain.sourceSummary.missingCount} state="missing" />
+          <MetricCard label="확인 불가" value={brain.sourceSummary.unknownCount} state="unknown" />
+          <MetricCard label="엄격 게이트 열림" value={brain.sourceSummary.strictGateOpenCount} state="blocked" />
         </View>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
-          <MetricCard label="Fresh" value={brain.sourceSummary.freshCount} state="fresh" />
-          <MetricCard label="Stale" value={brain.sourceSummary.staleCount} state="stale" />
+          <MetricCard label="최신" value={brain.sourceSummary.freshCount} state="fresh" />
+          <MetricCard label="오래됨" value={brain.sourceSummary.staleCount} state="stale" />
         </View>
+        <FreshnessBanner
+          generatedAt={brain.generatedAt}
+          sourceSummary={brain.sourceSummary}
+          title="브레인 데이터 상태"
+        />
         <CardContainer>
           <Badge label="Forbidden filters" tone="blocked" />
           {brain.filters.forbiddenFilterKeys.map((filterKey) => (
@@ -159,21 +130,21 @@ export default function BrainRoute() {
         </CardContainer>
       </SectionContainer>
 
-      <SectionContainer title="Scaffold Boundary" description="The BRAIN tab uses fixture data only.">
+      <SectionContainer title="운영 제한 상태" description="읽기전용 경계와 권한 상태는 하단에서 확인합니다.">
         <StatusRow
-          label="Strategy"
+          label="전략 상태"
           value={`Strategy ${brain.governance.strategyAcceptance}`}
           state="blocked"
           sourceRef={brain.governance.controlStateSource}
         />
         <StatusRow
-          label="Deployment"
+          label="배포 상태"
           value={`Deployment ${brain.governance.deploymentReadiness}`}
           state="blocked"
           sourceRef={brain.governance.authorityReportPath}
         />
         <StatusRow
-          label="Real capital"
+          label="실자본"
           value={`Real capital ${brain.governance.realCapital}`}
           state="blocked"
           sourceRef={brain.governance.controlStateSource}
@@ -181,9 +152,45 @@ export default function BrainRoute() {
         <BlockerList blockers={brain.blockers} />
       </SectionContainer>
 
-      <SectionContainer title="Disabled Actions" description="Review controls do not mutate strategy or broker state.">
+      <SectionContainer title="비활성화된 기능" description="후보 검토는 전략·브로커 상태를 변경하지 않습니다.">
         <DisabledActionBar actions={brain.disabledActions} />
       </SectionContainer>
     </ScreenContainer>
   );
+}
+
+function displayCount(value: number | null) {
+  if (value === null || Number.isNaN(value)) {
+    return "UNKNOWN";
+  }
+
+  return value;
+}
+
+function lifecycleLabel(value: string) {
+  if (value === "REVIEW_ONLY") return "검토 가능";
+  if (value === "BLOCKED") return "차단됨";
+  return "UNKNOWN";
+}
+
+function decisionLabel(value: string) {
+  if (value === "REVIEW_ONLY") return "검토";
+  if (value === "BLOCKED") return "차단";
+  if (value === "NO_TRADE") return "대기";
+  return "UNKNOWN";
+}
+
+function validationLabel(value: string) {
+  if (value === "PARTIAL") return "부분";
+  if (value === "BLOCKED") return "차단";
+  if (value === "NOT_VALIDATED") return "미검증";
+  return "UNKNOWN";
+}
+
+function evidenceLabel(value: string) {
+  if (value === "PARTIAL") return "부분";
+  if (value === "NONE") return "부족";
+  if (value === "SOURCE_BACKED") return "출처 있음";
+  if (value === "WEAK") return "약함";
+  return "UNKNOWN";
 }

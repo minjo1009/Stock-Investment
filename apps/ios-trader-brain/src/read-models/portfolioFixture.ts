@@ -47,6 +47,17 @@ export const portfolioFixture = {
       ],
     },
   ],
+  portfolioSummary: {
+    investedCash: null,
+    cash: null,
+    totalMarketValue: null,
+    unrealizedPnl: null,
+    realizedPnl: null,
+    positionCount: 1,
+    exposurePct: null,
+    winRatePct: null,
+    maxDrawdownPct: null,
+  },
   positions: [
     {
       positionId: "fixture-position-unknown",

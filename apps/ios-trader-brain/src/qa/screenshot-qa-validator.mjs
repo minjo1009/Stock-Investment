@@ -75,7 +75,9 @@ if (manifest) {
       const routeContent = existsSync(join(process.cwd(), target.routeFile))
         ? readFileSync(join(process.cwd(), target.routeFile), "utf8")
         : "";
-      if (!routeContent.includes("Read-only") || !routeContent.includes("NOT_AUTHORITY")) {
+      const hasReadOnlyBoundary =
+        routeContent.includes("Read-only") || routeContent.includes("read-only") || routeContent.includes("읽기전용");
+      if (!hasReadOnlyBoundary || !routeContent.includes("NOT_AUTHORITY")) {
         findings.push(`${target.routeId}: route file must preserve read-only NOT_AUTHORITY boundary`);
       }
       if (!["tab", "detail"].includes(target.surfaceType)) {

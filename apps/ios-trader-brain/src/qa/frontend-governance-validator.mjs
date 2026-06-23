@@ -21,7 +21,9 @@ for (const file of requiredFiles) {
     continue;
   }
   const source = readFileSync(path, "utf8");
-  if (!source.includes("Read-only")) findings.push(`${file}: missing Read-only boundary`);
+  if (!source.includes("Read-only") && !source.includes("read-only") && !source.includes("읽기전용")) {
+    findings.push(`${file}: missing Read-only boundary`);
+  }
   if (!source.includes("NOT_AUTHORITY")) findings.push(`${file}: missing NOT_AUTHORITY boundary`);
   if (/onPress=\{|onSubmit=\{|onExecute=\{|placeOrder|submitOrder|brokerSubmit/.test(source)) {
     findings.push(`${file}: must not expose enabled mutation handlers`);

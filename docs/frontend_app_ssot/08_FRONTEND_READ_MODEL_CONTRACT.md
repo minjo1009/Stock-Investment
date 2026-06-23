@@ -144,6 +144,9 @@ type HomeReadModel = AppShellReadModel & {
     investedCash: number | null;
     openPnl: number | null;
     realizedPnl: number | null;
+    totalReturnPct: number | null;
+    winRatePct: number | null;
+    maxDrawdownPct: number | null;
     sourceState: SourceState;
   };
   brainSnapshot: {
@@ -167,12 +170,19 @@ type HomeReadModel = AppShellReadModel & {
 };
 ```
 
-HOME must not hide stale DB/source state behind a green portfolio summary.
+HOME first-screen priority is product/account comprehension: invested cash, account state, return state, win-rate state, and MDD must appear before governance/source detail. HOME must not hide stale DB/source state behind a green portfolio summary; source freshness and disabled permissions remain visible as secondary context.
 
 ## BRAIN Read Model
 
 ```ts
 type BrainReadModel = AppShellReadModel & {
+  scannerSummary: {
+    candidateCount: number | null;
+    reviewOnlyCount: number | null;
+    blockedCount: number | null;
+    weakEvidenceCount: number | null;
+    latestReviewAt: string | null;
+  };
   candidates: Array<{
     candidateId: string;
     symbol: string;
@@ -194,7 +204,7 @@ type BrainReadModel = AppShellReadModel & {
 };
 ```
 
-Forbidden rule: no `candidate_score`, `candidate_rank`, or `confidence_score` may be invented unless a backend authority explicitly provides and documents the field.
+Forbidden rule: no `candidate_score`, `candidate_rank`, or `confidence_score` may be invented unless a backend authority explicitly provides and documents the field. BRAIN first-screen priority is candidate review comprehension: candidate count, review-only count, blocked count, and weak-evidence count must appear before governance/source detail.
 
 ## Candidate Detail Read Model
 
@@ -260,6 +270,17 @@ Missing layers must be shown as blockers or unknowns. They must not be silently 
 
 ```ts
 type PortfolioReadModel = AppShellReadModel & {
+  portfolioSummary: {
+    investedCash: number | null;
+    cash: number | null;
+    totalMarketValue: number | null;
+    unrealizedPnl: number | null;
+    realizedPnl: number | null;
+    positionCount: number | null;
+    exposurePct: number | null;
+    winRatePct: number | null;
+    maxDrawdownPct: number | null;
+  };
   positions: Array<{
     positionId: string;
     symbol: string;
@@ -275,7 +296,7 @@ type PortfolioReadModel = AppShellReadModel & {
 };
 ```
 
-Broker truth and local runtime records must be visibly separated.
+PORTFOLIO first-screen priority is account/position comprehension: invested cash, cash, market value, unrealized PnL, realized PnL, exposure, MDD, and win-rate state must appear before governance/source detail. Broker truth and local runtime records must be visibly separated.
 
 ## Position Detail Read Model
 

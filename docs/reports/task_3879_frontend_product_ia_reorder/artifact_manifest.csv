@@ -1,0 +1,7 @@
+artifact_id,path,artifact_type,authority,status,notes
+task3879_report,docs/reports/task_3879_frontend_product_ia_reorder/task_3879_frontend_product_ia_reorder.md,report,NOT_AUTHORITY,created,Product-first HOME PORTFOLIO BRAIN IA reorder report.
+task3879_manifest,docs/reports/task_3879_frontend_product_ia_reorder/artifact_manifest.csv,manifest,NOT_AUTHORITY,created,Artifact manifest for Task3879.
+task3879_home_screenshot,data/artifacts/task_3879_frontend_product_ia_reorder/home_after_ia_reorder_final_390x844.png,screenshot,NOT_AUTHORITY,created,Mobile web-preflight screenshot for HOME product-first IA.
+task3879_portfolio_screenshot,data/artifacts/task_3879_frontend_product_ia_reorder/portfolio_after_ia_reorder_final_390x844.png,screenshot,NOT_AUTHORITY,created,Mobile web-preflight screenshot for PORTFOLIO product-first IA.
+task3879_brain_screenshot,data/artifacts/task_3879_frontend_product_ia_reorder/brain_after_ia_reorder_final_390x844.png,screenshot,NOT_AUTHORITY,created,Mobile web-preflight screenshot for BRAIN product-first IA.
+task3879_product_ia_validator,apps/ios-trader-brain/src/qa/product-ia-reorder-validator.mjs,validator,NOT_AUTHORITY,created,Validator requiring product-first Korean IA while preserving read-only safety boundaries.

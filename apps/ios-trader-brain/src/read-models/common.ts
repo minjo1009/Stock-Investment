@@ -141,6 +141,9 @@ export type HomeReadModel = AppShellReadModel & {
     investedCash: number | null;
     openPnl: number | null;
     realizedPnl: number | null;
+    totalReturnPct: number | null;
+    winRatePct: number | null;
+    maxDrawdownPct: number | null;
     sourceState: SourceState;
   };
   brainSnapshot: {
@@ -164,6 +167,13 @@ export type HomeReadModel = AppShellReadModel & {
 };
 
 export type BrainReadModel = AppShellReadModel & {
+  scannerSummary: {
+    candidateCount: number | null;
+    reviewOnlyCount: number | null;
+    blockedCount: number | null;
+    weakEvidenceCount: number | null;
+    latestReviewAt: string | null;
+  };
   candidates: Array<{
     candidateId: string;
     symbol: string;
@@ -210,6 +220,17 @@ export type ChainDetailReadModel = AppShellReadModel & {
 };
 
 export type PortfolioReadModel = AppShellReadModel & {
+  portfolioSummary: {
+    investedCash: number | null;
+    cash: number | null;
+    totalMarketValue: number | null;
+    unrealizedPnl: number | null;
+    realizedPnl: number | null;
+    positionCount: number | null;
+    exposurePct: number | null;
+    winRatePct: number | null;
+    maxDrawdownPct: number | null;
+  };
   positions: Array<{
     positionId: string;
     symbol: string;
