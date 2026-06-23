@@ -1,0 +1,38 @@
+{
+  "authority": "NOT_AUTHORITY",
+  "contractVersion": "mobile-product-v1-contract",
+  "gptCaptureStatus": "CAPTURED_LOOP_1",
+  "selectedLoopCount": 10,
+  "requiredTabs": [
+    "home",
+    "brain",
+    "portfolio",
+    "orders",
+    "system"
+  ],
+  "representativeProductScreen": "brain",
+  "requiredComponent": "MobileV1StatusRail",
+  "requiredViewports": [
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 393,
+      "height": 852
+    },
+    {
+      "width": 430,
+      "height": 932
+    }
+  ],
+  "hardState": {
+    "strategyAcceptance": "NOT_ACCEPTED",
+    "deploymentReadiness": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "realCapital": "FORBIDDEN",
+    "brokerMutationPermitted": false,
+    "paperPermission": false,
+    "livePermission": false
+  },
+  "nextRequiredEvidence": "ACTUAL_PHONE_SCREENSHOT_QA"
+}

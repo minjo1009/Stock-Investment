@@ -1,6 +1,11 @@
 import { View } from "react-native";
 
-import { DisabledActionBar, ReviewCard, ScreenSummary } from "../../src/components/domain";
+import {
+  DisabledActionBar,
+  MobileScanListItem,
+  MobileV1StatusRail,
+  ScreenSummary,
+} from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
 import {
   BlockerList,
@@ -35,6 +40,16 @@ export default function BrainRoute() {
           not source truth or trading permission.
         </AppText>
       </View>
+
+      <MobileV1StatusRail
+        items={[
+          { label: "Queue", value: brain.candidates.length, tone: "readOnly" },
+          { label: "Blocked", value: blockedCount, tone: "blocked" },
+          { label: "Gate", value: "closed", tone: "blocked" },
+        ]}
+        subtitle="Phone-first v1"
+        title="Candidate queue is review-only"
+      />
 
       <ScreenSummary
         badges={[
@@ -77,7 +92,7 @@ export default function BrainRoute() {
       <SectionContainer title="Review Queue" description="Rows are read-only and fixture-backed.">
         <View style={{ gap: spacing.sm }}>
           {brain.candidates.map((candidate) => (
-            <ReviewCard
+            <MobileScanListItem
               key={candidate.candidateId}
               badges={[
                 {

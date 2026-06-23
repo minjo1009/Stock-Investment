@@ -1,6 +1,6 @@
 import { ScrollView, type ScrollViewProps } from "react-native";
 
-import { colors, spacing } from "../../theme/tokens";
+import { colors, mobile, spacing } from "../../theme/tokens";
 
 type ScreenContainerProps = ScrollViewProps & {
   padded?: boolean;
@@ -20,7 +20,11 @@ export function ScreenContainer({
       contentContainerStyle={[
         {
           gap: spacing.lg,
+          marginHorizontal: "auto",
+          maxWidth: mobile.contentMaxWidth,
           padding: padded ? spacing.lg : 0,
+          paddingBottom: spacing.xl,
+          width: "100%",
         },
         contentContainerStyle,
       ]}

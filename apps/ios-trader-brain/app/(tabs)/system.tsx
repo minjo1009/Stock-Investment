@@ -1,6 +1,12 @@
 import { View } from "react-native";
 
-import { DisabledActionBar, ScreenSummary, SystemHealth, TimelineList } from "../../src/components/domain";
+import {
+  DisabledActionBar,
+  MobileV1StatusRail,
+  ScreenSummary,
+  SystemHealth,
+  TimelineList,
+} from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
 import { MetricCard, StatusRow } from "../../src/components/generic";
 import { ScreenContainer, SectionContainer } from "../../src/components/layout";
@@ -23,6 +29,16 @@ export default function SystemRoute() {
           Scaffold-only fixture-backed monitor. Fresh fixture rows do not imply deployment readiness.
         </AppText>
       </View>
+
+      <MobileV1StatusRail
+        items={[
+          { label: "Run mode", value: system.controlState.runMode, tone: "blocked" },
+          { label: "Kill", value: system.controlState.killSwitchActive ? "active" : "unknown", tone: "blocked" },
+          { label: "Deploy", value: "not ready", tone: "blocked" },
+        ]}
+        subtitle="Phone-first v1"
+        title="Operating state is diagnostic-only"
+      />
 
       <ScreenSummary
         badges={[

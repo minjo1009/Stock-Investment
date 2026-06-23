@@ -1,0 +1,20 @@
+artifact_path,artifact_type,authority,status,notes
+apps/ios-trader-brain/src/components/domain/mobile-v1-status-rail.tsx,component,NOT_AUTHORITY,created,Phone-first status rail.
+apps/ios-trader-brain/src/components/domain/mobile-scan-list-item.tsx,component,NOT_AUTHORITY,created,Read-only mobile scan row.
+apps/ios-trader-brain/src/components/layout/product-detail-header.tsx,component,NOT_AUTHORITY,created,Compact detail header.
+apps/ios-trader-brain/src/components/layout/product-detail-section.tsx,component,NOT_AUTHORITY,created,Non-card detail section wrapper.
+apps/ios-trader-brain/src/qa/mobile-product-v1-validator.mjs,validator,NOT_AUTHORITY,created,Phone-first tab boundary validator.
+apps/ios-trader-brain/src/qa/mobile-scroll-journey-validator.mjs,validator,NOT_AUTHORITY,created,Detail section reachability validator.
+apps/ios-trader-brain/src/qa/mobile-detail-header-validator.mjs,validator,NOT_AUTHORITY,created,Detail header validator.
+apps/ios-trader-brain/src/qa/mobile-scan-list-v1-validator.mjs,validator,NOT_AUTHORITY,created,Mobile scan list validator.
+apps/ios-trader-brain/src/qa/web-preflight-validator.mjs,validator,NOT_AUTHORITY,created,Mobile web preview preflight validator.
+apps/ios-trader-brain/src/qa/web-export-boundary-validator.mjs,validator,NOT_AUTHORITY,created,Local web export boundary validator.
+apps/ios-trader-brain/src/qa/mobile-screenshot-evidence-validator.mjs,validator,NOT_AUTHORITY,created,Web-preview-only screenshot evidence validator.
+apps/ios-trader-brain/scripts/web-export-evidence.mjs,script,NOT_AUTHORITY,created,Local static export evidence script.
+apps/ios-trader-brain/src/qa/web-preview-manifest.json,contract,NOT_AUTHORITY,created,Route and viewport manifest.
+apps/ios-trader-brain/src/qa/mobile-viewport-evidence-contract.json,contract,NOT_AUTHORITY,created,Web-preview-only evidence contract.
+apps/ios-trader-brain/src/qa/mobile-viewport-capture-manifest.json,contract,NOT_AUTHORITY,created,Capture target manifest; capture not run.
+docs/reports/task_3871_mobile_frontend_v1_gpt_10_loop/task_3871_mobile_frontend_v1_gpt_10_loop.md,report,NOT_AUTHORITY,created,Closeout report.
+docs/reports/task_3871_mobile_frontend_v1_gpt_10_loop/validator_results.md,report,NOT_AUTHORITY,created,Validation summary.
+docs/reports/task_3871_mobile_frontend_v1_gpt_10_loop/scope_summary.md,report,NOT_AUTHORITY,created,Scope summary.
+docs/reports/task_3871_mobile_frontend_v1_gpt_10_loop/visual_qa_runbook.md,runbook,NOT_AUTHORITY,created,Web-only visual QA runbook.

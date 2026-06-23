@@ -2,8 +2,9 @@ import { View } from "react-native";
 
 import {
   DisabledActionBar,
+  MobileV1StatusRail,
+  MobileScanListItem,
   OrderStateSummary,
-  ReviewCard,
   ScreenSummary,
   TimelineList,
 } from "../../src/components/domain";
@@ -37,6 +38,16 @@ export default function OrdersRoute() {
           Scaffold-only fixture-backed lifecycle monitor. No order mutation path is present.
         </AppText>
       </View>
+
+      <MobileV1StatusRail
+        items={[
+          { label: "Rows", value: orders.orderRows.length, tone: "readOnly" },
+          { label: "Blocked", value: blockedCount, tone: "blocked" },
+          { label: "Mutation", value: "false", tone: "blocked" },
+        ]}
+        subtitle="Phone-first v1"
+        title="Order lifecycle is observation-only"
+      />
 
       <ScreenSummary
         badges={[
@@ -101,7 +112,7 @@ export default function OrdersRoute() {
         <View style={{ gap: spacing.sm }}>
           {orders.orderRows.map((order) => (
             <View key={order.orderId} style={{ gap: spacing.sm }}>
-              <ReviewCard
+              <MobileScanListItem
                 badges={[
                   { label: order.localState, tone: "blocked" },
                   { label: order.brokerTruthState, tone: "blocked" },

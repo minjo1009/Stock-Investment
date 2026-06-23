@@ -1,0 +1,11 @@
+loop_id,user_goal,task_candidate,expert_role,gpt_mode,codex_action,validation_result,status,stop_reason
+1,mobile frontend v1,Mobile product status rail,Frontend/Mobile QA/Safety,Agent Mode GitHub,Implemented phone-first rail and validator,Targeted validators pass,completed,
+2,mobile frontend v1,Product Detail IA,Frontend/Mobile QA/Safety,Agent Mode GitHub,Standardized detail hierarchy,Targeted validators pass,completed,
+3,mobile frontend v1,Mobile scroll journey QA,Frontend/Mobile QA/Safety,Agent Mode GitHub,Added section metadata and validator,Targeted validators pass,completed,
+4,mobile frontend v1,Compact detail header,Frontend/Mobile QA/Safety,Agent Mode GitHub,Added compact props-only header and validator,Targeted validators pass,completed,
+5,mobile frontend v1,Mobile scan list rows,Frontend/Mobile QA/Safety,Agent Mode GitHub,Added scan list row and validator,Targeted validators pass,completed,
+6,mobile frontend v1,Storybook coverage,Frontend/Storybook/Safety,Agent Mode GitHub,Added stories and coverage validation,Targeted validators pass,completed,
+7,mobile frontend v1,Web preflight,Expo Web/QA/Safety,Agent Mode GitHub,Added preview manifest and validator,Targeted validators pass,completed,
+8,mobile frontend v1,Static export evidence,Expo Web/Build QA/Safety,Agent Mode GitHub,Added export evidence script and boundary validator,Targeted validators pass,completed,
+9,mobile frontend v1,Viewport evidence contract,Visual QA/Safety,Agent Mode GitHub,Added web-only capture contract and validator,Targeted validators pass,completed,
+10,mobile frontend v1,Closeout package,Frontend Governance/Safety,Agent Mode GitHub,Added closeout report artifacts and registry row,Pending final validation,completed,

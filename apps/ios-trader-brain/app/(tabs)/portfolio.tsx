@@ -1,6 +1,11 @@
 import { View } from "react-native";
 
-import { DisabledActionBar, ReviewCard, ScreenSummary } from "../../src/components/domain";
+import {
+  DisabledActionBar,
+  MobileScanListItem,
+  MobileV1StatusRail,
+  ScreenSummary,
+} from "../../src/components/domain";
 import { AppText, Badge } from "../../src/components/foundation";
 import {
   BlockerList,
@@ -29,6 +34,16 @@ export default function PortfolioRoute() {
           account truth.
         </AppText>
       </View>
+
+      <MobileV1StatusRail
+        items={[
+          { label: "Positions", value: portfolio.positions.length, tone: "readOnly" },
+          { label: "Broker", value: "not truth", tone: "blocked" },
+          { label: "Unknown", value: portfolio.sourceSummary.unknownCount, tone: "unknown" },
+        ]}
+        subtitle="Phone-first v1"
+        title="Portfolio values remain non-authority"
+      />
 
       <ScreenSummary
         badges={[
@@ -73,7 +88,7 @@ export default function PortfolioRoute() {
         <View style={{ gap: spacing.sm }}>
           {portfolio.positions.map((position) => (
             <View key={position.positionId} style={{ gap: spacing.sm }}>
-              <ReviewCard
+              <MobileScanListItem
                 badges={[
                   { label: position.thesisState, tone: "unknown" },
                   { label: position.brokerTruthState, tone: "blocked" },

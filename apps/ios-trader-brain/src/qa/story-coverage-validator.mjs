@@ -38,6 +38,30 @@ const regressionCriticalStories = [
     requiredExports: ["FreshSource", "StaleSource", "MissingSource", "UnknownSource", "Blocked", "DisabledAction"],
     requiredTerms: ["Domain/DisabledActionBar", "component: DisabledActionBar"],
   },
+  {
+    component: "MobileV1StatusRail",
+    file: "src/stories/mobile-v1-status-rail.stories.tsx",
+    requiredExports: ["NotAccepted", "DiagnosticOnly", "Forbidden"],
+    requiredTerms: ["Domain/MobileV1StatusRail", "component: MobileV1StatusRail"],
+  },
+  {
+    component: "ProductDetailHeader",
+    file: "src/stories/product-detail-header.stories.tsx",
+    requiredExports: ["Default", "BlockedState", "UnknownState"],
+    requiredTerms: ["Layout/ProductDetailHeader", "component: ProductDetailHeader"],
+  },
+  {
+    component: "ProductDetailSection",
+    file: "src/stories/product-detail-section.stories.tsx",
+    requiredExports: ["Overview", "Evidence", "Risk", "Validation"],
+    requiredTerms: ["Layout/ProductDetailSection", "component: ProductDetailSection"],
+  },
+  {
+    component: "MobileScanListItem",
+    file: "src/stories/mobile-scan-list-item.stories.tsx",
+    requiredExports: ["BrainCandidate", "PortfolioPosition", "OrderRow"],
+    requiredTerms: ["Domain/MobileScanListItem", "component: MobileScanListItem"],
+  },
 ];
 const findings = [];
 

@@ -1,0 +1,20 @@
+{
+  "authority": "NOT_AUTHORITY",
+  "captureStatus": "CAPTURE_REQUIRED_NOT_RUN",
+  "contractVersion": "mobile-viewport-evidence-v1",
+  "evidenceScope": "WEB_PREVIEW_EVIDENCE_ONLY",
+  "forbiddenEvidenceClaims": [
+    "IOS_DEVICE_EVIDENCE",
+    "IOS_SIMULATOR_EVIDENCE",
+    "TESTFLIGHT_EVIDENCE",
+    "APP_STORE_EVIDENCE",
+    "DEPLOYMENT_EVIDENCE"
+  ],
+  "hardState": {
+    "deploymentReadiness": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "realCapital": "FORBIDDEN",
+    "strategyAcceptance": "NOT_ACCEPTED"
+  },
+  "allowedCaptureSources": ["chrome", "playwright", "web-preview"],
+  "disallowedCaptureSources": ["iphone", "ipad", "testflight", "appstore", "native-ios"]
+}

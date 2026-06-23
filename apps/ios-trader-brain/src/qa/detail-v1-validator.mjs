@@ -19,6 +19,7 @@ const detailRoutes = [
     requiredTerms: ["Order Detail v1", "Validation Status", "Review Actions", "Scaffold Boundary"],
   },
 ];
+const productDetailSections = ["Overview", "Evidence", "Risk", "Validation"];
 const forbiddenTerms = [
   "confidenceScore",
   "candidateScore",
@@ -47,6 +48,22 @@ for (const route of detailRoutes) {
     if (!content.includes(term)) {
       findings.push(`${route.file}: missing boundary term ${term}`);
     }
+  }
+  if (!content.includes("MobileV1StatusRail")) {
+    findings.push(`${route.file}: missing mobile v1 status rail`);
+  }
+  let previousSectionIndex = -1;
+  for (const section of productDetailSections) {
+    const sectionMarker = `title="${section}"`;
+    const sectionIndex = content.indexOf(sectionMarker);
+    if (sectionIndex === -1) {
+      findings.push(`${route.file}: missing Product Detail section ${section}`);
+      continue;
+    }
+    if (sectionIndex < previousSectionIndex) {
+      findings.push(`${route.file}: Product Detail section order is not Overview > Evidence > Risk > Validation`);
+    }
+    previousSectionIndex = sectionIndex;
   }
   for (const term of forbiddenTerms) {
     if (content.includes(term)) {

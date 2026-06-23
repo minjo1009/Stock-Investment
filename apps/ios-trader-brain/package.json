@@ -33,9 +33,10 @@
     "web": "expo start --web",
     "web:mobile": "expo start --web --host lan --port 8098",
     "build:web": "expo export --platform web",
+    "evidence:web-export": "node scripts/web-export-evidence.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "node src/qa/scaffold-lint.mjs",
-    "test": "node src/qa/storybook-smoke-test.mjs && npm run validate:safety && npm run validate:fixtures && npm run validate:routes && npm run validate:screen-boundary && npm run validate:detail-v1 && npm run validate:screenshot-qa && npm run validate:screenshot-baseline && npm run validate:story-coverage && npm run validate:dev-build-readiness && npm run validate:eas-build-contract && npm run validate:ios-operator-runbook && npm run validate:ios-evidence-contract && npm run validate:maestro-contract && npm run validate:visual-regression-contract && npm run validate:navigation-registry && npm run validate:ui-state-coverage && npm run validate:read-model-boundary && npm run validate:frontend-governance && npm run validate:mobile-web-readiness",
+    "test": "node src/qa/storybook-smoke-test.mjs && npm run validate:safety && npm run validate:fixtures && npm run validate:routes && npm run validate:screen-boundary && npm run validate:detail-v1 && npm run validate:screenshot-qa && npm run validate:screenshot-baseline && npm run validate:story-coverage && npm run validate:dev-build-readiness && npm run validate:eas-build-contract && npm run validate:ios-operator-runbook && npm run validate:ios-evidence-contract && npm run validate:maestro-contract && npm run validate:visual-regression-contract && npm run validate:navigation-registry && npm run validate:ui-state-coverage && npm run validate:read-model-boundary && npm run validate:frontend-governance && npm run validate:mobile-web-readiness && npm run validate:mobile-product-v1 && npm run validate:mobile-scroll-journey && npm run validate:mobile-detail-header && npm run validate:mobile-scan-list-v1 && npm run validate:mobile-screenshot-evidence && npm run validate:web-preflight",
     "storybook": "storybook dev -p 6006 --ci --no-open",
     "storybook:smoke": "storybook dev -p 6006 --ci --no-open --smoke-test",
     "qa:screenshot": "node src/qa/screenshot-qa-validator.mjs",
@@ -48,7 +49,12 @@
     "validate:ios-evidence-contract": "node src/qa/ios-evidence-contract-validator.mjs",
     "validate:ios-operator-runbook": "node src/qa/ios-operator-runbook-validator.mjs",
     "validate:maestro-contract": "node src/qa/maestro-contract-validator.mjs",
+    "validate:mobile-detail-header": "node src/qa/mobile-detail-header-validator.mjs",
+    "validate:mobile-scan-list-v1": "node src/qa/mobile-scan-list-v1-validator.mjs",
+    "validate:mobile-screenshot-evidence": "node src/qa/mobile-screenshot-evidence-validator.mjs",
+    "validate:mobile-scroll-journey": "node src/qa/mobile-scroll-journey-validator.mjs",
     "validate:mobile-web-readiness": "node src/qa/mobile-web-readiness-validator.mjs",
+    "validate:mobile-product-v1": "node src/qa/mobile-product-v1-validator.mjs",
     "validate:navigation-registry": "node src/qa/navigation-registry-validator.mjs",
     "validate:read-model-boundary": "node src/qa/read-model-boundary-validator.mjs",
     "validate:routes": "node src/qa/route-link-validator.mjs",
@@ -57,7 +63,9 @@
     "validate:screenshot-qa": "node src/qa/screenshot-qa-validator.mjs",
     "validate:story-coverage": "node src/qa/story-coverage-validator.mjs",
     "validate:ui-state-coverage": "node src/qa/ui-state-coverage-validator.mjs",
-    "validate:visual-regression-contract": "node src/qa/visual-regression-contract-validator.mjs"
+    "validate:visual-regression-contract": "node src/qa/visual-regression-contract-validator.mjs",
+    "validate:web-export-boundary": "node src/qa/web-export-boundary-validator.mjs",
+    "validate:web-preflight": "node src/qa/web-preflight-validator.mjs"
   },
   "private": true
 }

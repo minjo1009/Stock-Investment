@@ -1,0 +1,25 @@
+{
+  "authority": "NOT_AUTHORITY",
+  "captureStatus": "TARGETS_READY_CAPTURE_NOT_RUN",
+  "contractVersion": "mobile-viewport-capture-manifest-v1",
+  "evidenceScope": "WEB_PREVIEW_EVIDENCE_ONLY",
+  "nativeEvidence": "NO_NATIVE_EVIDENCE",
+  "simulatorEvidence": "NO_IOS_SIMULATOR_EVIDENCE",
+  "testFlightEvidence": "NO_TESTFLIGHT_EVIDENCE",
+  "routes": [
+    { "routeId": "home", "routePath": "/", "surfaceType": "tab" },
+    { "routeId": "brain", "routePath": "/brain", "surfaceType": "tab" },
+    { "routeId": "portfolio", "routePath": "/portfolio", "surfaceType": "tab" },
+    { "routeId": "orders", "routePath": "/orders", "surfaceType": "tab" },
+    { "routeId": "system", "routePath": "/system", "surfaceType": "tab" },
+    { "routeId": "candidate-detail", "routePath": "/brain/candidate/fixture-candidate-review", "surfaceType": "detail" },
+    { "routeId": "chain-detail", "routePath": "/brain/chain/fixture-chain", "surfaceType": "detail" },
+    { "routeId": "position-detail", "routePath": "/portfolio/position/fixture-position-unknown", "surfaceType": "detail" },
+    { "routeId": "order-detail", "routePath": "/orders/fixture-order-blocked", "surfaceType": "detail" }
+  ],
+  "viewports": [
+    { "height": 844, "name": "iPhone 13/14 width", "width": 390 },
+    { "height": 852, "name": "iPhone 14 Pro width", "width": 393 },
+    { "height": 932, "name": "iPhone 15 Pro Max width", "width": 430 }
+  ]
+}

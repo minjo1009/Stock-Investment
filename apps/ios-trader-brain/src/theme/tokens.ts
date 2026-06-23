@@ -31,6 +31,12 @@ export const spacing = {
   xl: 24,
 };
 
+export const mobile = {
+  compactWidth: 375,
+  contentMaxWidth: 430,
+  touchTarget: 44,
+};
+
 export const radii = {
   badge: 999,
   card: 8,

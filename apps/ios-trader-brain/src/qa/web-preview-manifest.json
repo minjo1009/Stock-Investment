@@ -1,0 +1,74 @@
+{
+  "authority": "NOT_AUTHORITY",
+  "captureStatus": "TARGETS_READY_CAPTURE_NOT_RUN",
+  "contractVersion": "mobile-web-preview-preflight-v1",
+  "hardState": {
+    "brokerMutationPermitted": false,
+    "deploymentReadiness": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "livePermission": false,
+    "paperPermission": false,
+    "realCapital": "FORBIDDEN",
+    "strategyAcceptance": "NOT_ACCEPTED"
+  },
+  "routes": [
+    {
+      "routeId": "home",
+      "routePath": "/",
+      "routeFile": "app/(tabs)/index.tsx",
+      "surfaceType": "tab"
+    },
+    {
+      "routeId": "brain",
+      "routePath": "/brain",
+      "routeFile": "app/(tabs)/brain.tsx",
+      "surfaceType": "tab"
+    },
+    {
+      "routeId": "portfolio",
+      "routePath": "/portfolio",
+      "routeFile": "app/(tabs)/portfolio.tsx",
+      "surfaceType": "tab"
+    },
+    {
+      "routeId": "orders",
+      "routePath": "/orders",
+      "routeFile": "app/(tabs)/orders.tsx",
+      "surfaceType": "tab"
+    },
+    {
+      "routeId": "system",
+      "routePath": "/system",
+      "routeFile": "app/(tabs)/system.tsx",
+      "surfaceType": "tab"
+    },
+    {
+      "routeId": "candidate-detail",
+      "routePath": "/brain/candidate/fixture-candidate-review",
+      "routeFile": "app/brain/candidate/[candidateId].tsx",
+      "surfaceType": "detail"
+    },
+    {
+      "routeId": "chain-detail",
+      "routePath": "/brain/chain/fixture-chain",
+      "routeFile": "app/brain/chain/[chainId].tsx",
+      "surfaceType": "detail"
+    },
+    {
+      "routeId": "position-detail",
+      "routePath": "/portfolio/position/fixture-position-unknown",
+      "routeFile": "app/portfolio/position/[positionId].tsx",
+      "surfaceType": "detail"
+    },
+    {
+      "routeId": "order-detail",
+      "routePath": "/orders/fixture-order-blocked",
+      "routeFile": "app/orders/[orderId].tsx",
+      "surfaceType": "detail"
+    }
+  ],
+  "viewports": [
+    { "height": 844, "name": "iPhone 13/14", "width": 390 },
+    { "height": 852, "name": "iPhone 14 Pro", "width": 393 },
+    { "height": 932, "name": "iPhone 15 Pro Max", "width": 430 }
+  ]
+}

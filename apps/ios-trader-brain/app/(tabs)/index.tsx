@@ -1,6 +1,11 @@
 import { View } from "react-native";
 
-import { DisabledActionBar, ReviewCard, ScreenSummary } from "../../src/components/domain";
+import {
+  DisabledActionBar,
+  MobileV1StatusRail,
+  ReviewCard,
+  ScreenSummary,
+} from "../../src/components/domain";
 import { AppText, Badge } from "../../src/components/foundation";
 import {
   BlockerList,
@@ -29,6 +34,16 @@ export default function HomeRoute() {
           source truth, broker truth, or product readiness evidence.
         </AppText>
       </View>
+
+      <MobileV1StatusRail
+        items={[
+          { label: "Mode", value: "mobile web", tone: "readOnly" },
+          { label: "Broker", value: "blocked", tone: "blocked" },
+          { label: "Capital", value: home.governance.realCapital, tone: "blocked" },
+        ]}
+        subtitle="Phone-first v1"
+        title="Read-only cockpit preview"
+      />
 
       <ScreenSummary
         badges={[
