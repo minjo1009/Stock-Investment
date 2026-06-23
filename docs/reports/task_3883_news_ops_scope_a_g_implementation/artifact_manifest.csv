@@ -2,6 +2,8 @@ artifact_path,artifact_type,description,status
 docs/reports/task_3883_news_ops_scope_a_g_implementation/news_ops_scope_a_g_implementation_report.md,report,Scope A-G implementation report,ACTIVE
 docs/reports/task_3883_news_ops_scope_a_g_implementation/gpt_post_implementation_review_prompt.md,report,GPT post-implementation review prompt,ACTIVE
 docs/reports/task_3883_news_ops_scope_a_g_implementation/gpt_post_implementation_review_response.md,report,GPT post-implementation review response,ACTIVE
+docs/reports/task_3883_news_ops_scope_a_g_implementation/gpt_github_visible_rereview_prompt.md,report,GPT GitHub-visible rereview prompt after main publication,ACTIVE
+docs/reports/task_3883_news_ops_scope_a_g_implementation/gpt_github_visible_rereview_response.md,report,GPT GitHub-visible rereview response after main publication,ACTIVE
 data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_a_b_scheduler_reconciliation.json,artifact,Scope A-B scheduler registration and cadence reconciliation result,ACTIVE
 data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_a_b_config_jobs.csv,artifact,Scope A-B scheduler config job audit,ACTIVE
 data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_a_b_db_registry.csv,artifact,Scope A-B DB scheduler registry audit,ACTIVE

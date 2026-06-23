@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from news_ops_to_backtest_common import ARTIFACT_DIR, ensure_dirs, fail_if_errors, safety_payload, write_csv, write_json
+from news_ops_to_backtest_common import ARTIFACT_DIR, ROOT, ensure_dirs, fail_if_errors, safety_payload, write_csv, write_json
 from trader_brain_backtest_dry_replay_harness import build_run_plan, write_csv as write_harness_csv, PLAN_FIELDS, SUMMARY_FIELDS
 from trader_brain_backtest_harness_artifact_audit import audit_artifacts, FIELDS as AUDIT_FIELDS
 
@@ -21,6 +21,10 @@ def _load(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _repo_rel(path) -> str:
+    return path.resolve().relative_to(ROOT).as_posix()
+
+
 def main() -> None:
     ensure_dirs()
     errors: list[str] = []
@@ -29,7 +33,7 @@ def main() -> None:
     for name, path in REQUIRED_SCOPE_ARTIFACTS.items():
         payload = _load(path)
         status = "MISSING" if payload is None else str(payload.get("status", "UNKNOWN"))
-        manifest_rows.append({"artifact_name": name, "artifact_path": str(path), "status": status})
+        manifest_rows.append({"artifact_name": name, "artifact_path": _repo_rel(path), "status": status})
         if payload is None:
             errors.append(f"missing_prereq_artifact:{name}")
             blockers.append({"blocker_code": "MISSING_PREREQ_ARTIFACT", "artifact_name": name, "status": status})
@@ -133,13 +137,13 @@ def main() -> None:
         "controlled_replay_allowed": False,
         "controlled_replay_blocker": "NO_EXECUTION_HARNESS_ONLY_FOR_SCOPE_F",
         "generated_artifacts": [
-            str(harness_input_manifest),
-            str(market_data_gate),
-            str(split_oos_cost_slippage),
-            str(run_plan),
-            str(run_summary),
-            str(artifact_audit),
-            str(go_no_go),
+            _repo_rel(harness_input_manifest),
+            _repo_rel(market_data_gate),
+            _repo_rel(split_oos_cost_slippage),
+            _repo_rel(run_plan),
+            _repo_rel(run_summary),
+            _repo_rel(artifact_audit),
+            _repo_rel(go_no_go),
         ],
         "status": "PASS" if not errors else "BLOCKED",
         "errors": errors,

@@ -1,8 +1,8 @@
 source_family,sampled_receipts,audited_chain_rows,source_time_blockers,audit_status
 market_ticks_intraday,200,200,0,PASS
-market_bars_5m,200,134,66,BLOCKED
+market_bars_5m,200,136,64,BLOCKED
 macro_rates,200,200,0,PASS
 sec_events,200,200,0,PASS
-official_public_releases,93,93,0,PASS
-gdelt_news_events,14,14,0,PASS
+official_public_releases,95,95,0,PASS
+gdelt_news_events,15,15,0,PASS
 marketaux_news_free,88,88,0,PASS

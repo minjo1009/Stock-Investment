@@ -21,13 +21,13 @@
     "buy_sell_position_size_recommendation"
   ],
   "generated_artifacts": [
-    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_f_harness_input_manifest.csv",
-    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_f_market_data_gate_report.csv",
-    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_f_split_oos_cost_slippage_plan.csv",
-    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_f_dry_harness_run_plan.csv",
-    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_f_dry_harness_run_summary.csv",
-    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_f_harness_artifact_audit.csv",
-    "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_3883_news_ops_scope_a_g_implementation\\scope_g_controlled_replay_go_no_go_matrix.csv"
+    "data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_harness_input_manifest.csv",
+    "data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_market_data_gate_report.csv",
+    "data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_split_oos_cost_slippage_plan.csv",
+    "data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_dry_harness_run_plan.csv",
+    "data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_dry_harness_run_summary.csv",
+    "data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_f_harness_artifact_audit.csv",
+    "data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_g_controlled_replay_go_no_go_matrix.csv"
   ],
   "harness_mode": "NO_EXECUTION_DIAGNOSTIC_ONLY",
   "live_order": "FORBIDDEN",
