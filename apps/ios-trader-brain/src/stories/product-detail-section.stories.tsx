@@ -14,8 +14,8 @@ type Story = StoryObj<typeof meta>;
 
 const renderSection = (args: {
   description?: string;
-  sectionId: "overview" | "evidence" | "risk" | "validation";
-  title: "Overview" | "Evidence" | "Risk" | "Validation";
+  sectionId: "overview" | "evidence" | "source" | "risk" | "validation";
+  title: "Overview" | "Evidence" | "Source" | "Risk" | "Validation";
 }) => (
   <ProductDetailSection {...args}>
     <AppText>Fixture-backed story content. No authority or trading action.</AppText>
@@ -28,6 +28,10 @@ export const Overview: Story = {
 };
 export const Evidence: Story = {
   args: { description: "Read-only source rows.", sectionId: "evidence", title: "Evidence" },
+  render: renderSection,
+};
+export const Source: Story = {
+  args: { description: "Source and freshness attribution.", sectionId: "source", title: "Source" },
   render: renderSection,
 };
 export const Risk: Story = {

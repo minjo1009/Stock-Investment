@@ -2,6 +2,7 @@ import { View } from "react-native";
 
 import {
   DisabledActionBar,
+  FreshnessBanner,
   MobileV1StatusRail,
   ReviewCard,
   ScreenSummary,
@@ -12,6 +13,7 @@ import {
   MetricCard,
   SourceFreshnessBadge,
   StatusRow,
+  UiStatePanel,
 } from "../../src/components/generic";
 import { ScreenContainer, SectionContainer } from "../../src/components/layout";
 import { homeFixture } from "../../src/read-models/homeFixture";
@@ -43,6 +45,12 @@ export default function HomeRoute() {
         ]}
         subtitle="Phone-first v1"
         title="Read-only cockpit preview"
+      />
+
+      <FreshnessBanner
+        generatedAt={home.generatedAt}
+        sourceSummary={home.sourceSummary}
+        title="Home source state is review-only"
       />
 
       <ScreenSummary
@@ -150,6 +158,11 @@ export default function HomeRoute() {
       </SectionContainer>
 
       <SectionContainer title="Blocker Summary" description="Fixture blockers are displayed as blockers, not negative evidence.">
+        <UiStatePanel
+          message="Missing, stale, and unknown source states stay visible. They are blockers for interpretation, not negative trading evidence."
+          state="blocked"
+          title="Unknown is not a failed investment view"
+        />
         <BlockerList blockers={[...home.blockers, ...home.blockerSummary]} />
       </SectionContainer>
 

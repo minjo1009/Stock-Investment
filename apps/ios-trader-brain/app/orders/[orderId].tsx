@@ -6,12 +6,13 @@ import {
   MobileV1StatusRail,
   RiskGate,
   ScreenSummary,
+  SourceAttributionCard,
   TimelineList,
   ValidationReadinessPanel,
 } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
 import { BlockerList, StatusRow } from "../../src/components/generic";
-import { ProductDetailHeader, ProductDetailSection, ScreenContainer, SectionContainer } from "../../src/components/layout";
+import { NavigationContextBar, ProductDetailHeader, ProductDetailSection, ScreenContainer, SectionContainer } from "../../src/components/layout";
 import { orderDetailFixture } from "../../src/read-models/orderDetailFixture";
 
 export default function OrderDetailRoute() {
@@ -30,6 +31,15 @@ export default function OrderDetailRoute() {
         ]}
         description="Scaffold-only fixture-backed view. Route params do not select broker or order truth."
         title={order.orderId}
+      />
+
+      <NavigationContextBar
+        crumbs={[
+          { href: "/", label: "HOME" },
+          { href: "/orders", label: "ORDERS" },
+          { label: "Order Detail" },
+        ]}
+        note="Order context is observation-only and has no submit, cancel, or broker mutation handler."
       />
 
       <ProductDetailSection sectionId="overview" title="Overview" description="Read local and broker truth state before evidence.">
@@ -129,6 +139,16 @@ export default function OrderDetailRoute() {
         <SectionContainer title="Evidence" description="Fixture-backed evidence rows only.">
           <EvidenceList evidence={order.sections.evidence} />
         </SectionContainer>
+      </ProductDetailSection>
+
+      <ProductDetailSection sectionId="source" title="Source" description="Order state source is separate from broker truth.">
+        <SourceAttributionCard
+          authority="Fixture order lifecycle review; broker truth not attached"
+          sourceStates={order.sections.risk.sourceStates}
+          status={order.sections.orderState.brokerTruthState === "BLOCKED" ? "BLOCKER" : "UNKNOWN"}
+          timestamp={order.generatedAt}
+          title="Order source attribution"
+        />
       </ProductDetailSection>
 
       <ProductDetailSection sectionId="risk" title="Risk" description="Order risk blockers stay visible before validation.">

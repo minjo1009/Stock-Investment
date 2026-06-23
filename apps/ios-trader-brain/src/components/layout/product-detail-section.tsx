@@ -5,8 +5,8 @@ import { spacing } from "../../theme/tokens";
 
 type ProductDetailSectionProps = ViewProps & {
   description?: string;
-  sectionId: "overview" | "evidence" | "risk" | "validation";
-  title: "Overview" | "Evidence" | "Risk" | "Validation";
+  sectionId: "overview" | "evidence" | "source" | "risk" | "validation";
+  title: "Overview" | "Evidence" | "Source" | "Risk" | "Validation";
 };
 
 export function ProductDetailSection({

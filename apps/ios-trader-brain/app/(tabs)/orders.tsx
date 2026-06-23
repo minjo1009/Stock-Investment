@@ -2,6 +2,7 @@ import { View } from "react-native";
 
 import {
   DisabledActionBar,
+  FreshnessBanner,
   MobileV1StatusRail,
   MobileScanListItem,
   OrderStateSummary,
@@ -46,6 +47,12 @@ export default function OrdersRoute() {
         ]}
         subtitle="Phone-first v1"
         title="Order lifecycle is observation-only"
+      />
+
+      <FreshnessBanner
+        generatedAt={orders.generatedAt}
+        sourceSummary={orders.sourceSummary}
+        title="Order state source is observation-only"
       />
 
       <ScreenSummary

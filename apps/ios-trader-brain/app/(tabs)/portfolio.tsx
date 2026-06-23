@@ -2,6 +2,7 @@ import { View } from "react-native";
 
 import {
   DisabledActionBar,
+  FreshnessBanner,
   MobileScanListItem,
   MobileV1StatusRail,
   ScreenSummary,
@@ -42,6 +43,12 @@ export default function PortfolioRoute() {
         ]}
         subtitle="Phone-first v1"
         title="Portfolio values remain non-authority"
+      />
+
+      <FreshnessBanner
+        generatedAt={portfolio.generatedAt}
+        sourceSummary={portfolio.sourceSummary}
+        title="Portfolio source and broker truth remain non-authority"
       />
 
       <ScreenSummary

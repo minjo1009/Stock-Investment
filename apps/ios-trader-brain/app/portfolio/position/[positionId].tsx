@@ -6,12 +6,13 @@ import {
   MobileV1StatusRail,
   RiskGate,
   ScreenSummary,
+  SourceAttributionCard,
   TimelineList,
   ValidationReadinessPanel,
 } from "../../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../../src/components/foundation";
 import { BlockerList, StatusRow } from "../../../src/components/generic";
-import { ProductDetailHeader, ProductDetailSection, ScreenContainer, SectionContainer } from "../../../src/components/layout";
+import { NavigationContextBar, ProductDetailHeader, ProductDetailSection, ScreenContainer, SectionContainer } from "../../../src/components/layout";
 import { positionDetailFixture } from "../../../src/read-models/positionDetailFixture";
 
 export default function PositionDetailRoute() {
@@ -30,6 +31,15 @@ export default function PositionDetailRoute() {
         ]}
         description="Scaffold-only fixture-backed view. Route params do not select broker truth."
         title={position.symbol}
+      />
+
+      <NavigationContextBar
+        crumbs={[
+          { href: "/", label: "HOME" },
+          { href: "/portfolio", label: "PORTFOLIO" },
+          { label: "Position Detail" },
+        ]}
+        note="Position context separates local display records from broker truth."
       />
 
       <ProductDetailSection sectionId="overview" title="Overview" description="Read local record state before source and broker blockers.">
@@ -111,6 +121,16 @@ export default function PositionDetailRoute() {
         <SectionContainer title="Evidence" description="Fixture-backed evidence rows only.">
           <EvidenceList evidence={position.sections.evidence} />
         </SectionContainer>
+      </ProductDetailSection>
+
+      <ProductDetailSection sectionId="source" title="Source" description="Broker and local source attribution must stay separate.">
+        <SourceAttributionCard
+          authority="Fixture position review; broker truth not attached"
+          sourceStates={position.sections.risk.sourceStates}
+          status={position.sections.reconciliation.brokerTruthState === "BLOCKED" ? "BLOCKER" : "UNKNOWN"}
+          timestamp={position.generatedAt}
+          title="Position source attribution"
+        />
       </ProductDetailSection>
 
       <ProductDetailSection sectionId="risk" title="Risk" description="Risk and reconciliation blockers stay ahead of validation.">

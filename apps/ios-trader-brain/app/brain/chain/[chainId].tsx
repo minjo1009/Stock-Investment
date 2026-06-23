@@ -1,10 +1,10 @@
 import { useLocalSearchParams } from "expo-router";
 import { View } from "react-native";
 
-import { DisabledActionBar, MobileV1StatusRail, ScreenSummary, TimelineList } from "../../../src/components/domain";
+import { DisabledActionBar, MobileV1StatusRail, ScreenSummary, SourceAttributionCard, TimelineList } from "../../../src/components/domain";
 import { AppText, Badge, CardContainer, type BadgeTone } from "../../../src/components/foundation";
 import { BlockerList, MetricCard, StatusRow } from "../../../src/components/generic";
-import { ProductDetailHeader, ProductDetailSection, ScreenContainer, SectionContainer } from "../../../src/components/layout";
+import { NavigationContextBar, ProductDetailHeader, ProductDetailSection, ScreenContainer, SectionContainer } from "../../../src/components/layout";
 import { chainDetailFixture } from "../../../src/read-models/chainDetailFixture";
 import { spacing } from "../../../src/theme/tokens";
 
@@ -24,6 +24,15 @@ export default function ChainDetailRoute() {
         ]}
         description="Scaffold-only fixture-backed chain view. Layer presence is not source authority."
         title={chain.chainId}
+      />
+
+      <NavigationContextBar
+        crumbs={[
+          { href: "/", label: "HOME" },
+          { href: "/brain", label: "BRAIN" },
+          { label: "Chain Detail" },
+        ]}
+        note="Layer presence is read-only review context, not source authority."
       />
 
       <ProductDetailSection sectionId="overview" title="Overview" description="Read chain identity and layer counts before evidence detail.">
@@ -99,6 +108,16 @@ export default function ChainDetailRoute() {
             ))}
           </View>
         </SectionContainer>
+      </ProductDetailSection>
+
+      <ProductDetailSection sectionId="source" title="Source" description="Provenance refs are display evidence only.">
+        <SourceAttributionCard
+          authority="Fixture chain review; not source authority"
+          sourceRefs={chain.layers.flatMap((layer) => layer.provenanceRefs)}
+          status={countStatus("BLOCKED") > 0 || countStatus("UNKNOWN") > 0 ? "BLOCKER" : "DERIVED"}
+          timestamp={chain.generatedAt}
+          title="Chain provenance attribution"
+        />
       </ProductDetailSection>
 
       <ProductDetailSection sectionId="risk" title="Risk" description="Missing layers remain blockers, not negative evidence.">

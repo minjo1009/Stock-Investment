@@ -53,7 +53,7 @@ const regressionCriticalStories = [
   {
     component: "ProductDetailSection",
     file: "src/stories/product-detail-section.stories.tsx",
-    requiredExports: ["Overview", "Evidence", "Risk", "Validation"],
+    requiredExports: ["Overview", "Evidence", "Source", "Risk", "Validation"],
     requiredTerms: ["Layout/ProductDetailSection", "component: ProductDetailSection"],
   },
   {
@@ -61,6 +61,30 @@ const regressionCriticalStories = [
     file: "src/stories/mobile-scan-list-item.stories.tsx",
     requiredExports: ["BrainCandidate", "PortfolioPosition", "OrderRow"],
     requiredTerms: ["Domain/MobileScanListItem", "component: MobileScanListItem"],
+  },
+  {
+    component: "EvidenceStatusChip",
+    file: "src/stories/evidence-status-chip.stories.tsx",
+    requiredExports: ["Actual", "Derived", "Estimate", "Assumption", "Inference", "Unknown", "Blocker"],
+    requiredTerms: ["Generic/EvidenceStatusChip", "component: EvidenceStatusChip"],
+  },
+  {
+    component: "FreshnessBanner",
+    file: "src/stories/freshness-banner.stories.tsx",
+    requiredExports: ["Default", "Blocked"],
+    requiredTerms: ["Domain/FreshnessBanner", "component: FreshnessBanner"],
+  },
+  {
+    component: "SourceAttributionCard",
+    file: "src/stories/source-attribution-card.stories.tsx",
+    requiredExports: ["Default", "Blocked"],
+    requiredTerms: ["Domain/SourceAttributionCard", "component: SourceAttributionCard"],
+  },
+  {
+    component: "NavigationContextBar",
+    file: "src/stories/navigation-context-bar.stories.tsx",
+    requiredExports: ["CandidatePath", "OrderPath"],
+    requiredTerms: ["Layout/NavigationContextBar", "component: NavigationContextBar"],
   },
 ];
 const findings = [];

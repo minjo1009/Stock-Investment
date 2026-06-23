@@ -2,6 +2,7 @@ import { View } from "react-native";
 
 import {
   DisabledActionBar,
+  FreshnessBanner,
   MobileScanListItem,
   MobileV1StatusRail,
   ScreenSummary,
@@ -49,6 +50,12 @@ export default function BrainRoute() {
         ]}
         subtitle="Phone-first v1"
         title="Candidate queue is review-only"
+      />
+
+      <FreshnessBanner
+        generatedAt={brain.generatedAt}
+        sourceSummary={brain.sourceSummary}
+        title="Brain source gate is closed"
       />
 
       <ScreenSummary

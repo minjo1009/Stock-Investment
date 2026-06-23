@@ -2,13 +2,14 @@ import { View } from "react-native";
 
 import {
   DisabledActionBar,
+  FreshnessBanner,
   MobileV1StatusRail,
   ScreenSummary,
   SystemHealth,
   TimelineList,
 } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
-import { StatusRow } from "../../src/components/generic";
+import { StatusRow, UiStatePanel } from "../../src/components/generic";
 import { ScreenContainer, SectionContainer } from "../../src/components/layout";
 import { systemHealthFixture } from "../../src/read-models/systemHealthFixture";
 import { spacing } from "../../src/theme/tokens";
@@ -38,6 +39,12 @@ export default function SystemRoute() {
         ]}
         subtitle="Phone-first v1"
         title="Operating state is diagnostic-only"
+      />
+
+      <FreshnessBanner
+        generatedAt={system.generatedAt}
+        sourceSummary={system.sourceSummary}
+        title="System evidence remains diagnostic-only"
       />
 
       <ScreenSummary
@@ -70,6 +77,11 @@ export default function SystemRoute() {
       />
 
       <SectionContainer title="Operating Boundary" description="Diagnostic-only state remains visible before system metadata.">
+        <UiStatePanel
+          message="Strategy acceptance, deployment readiness, real capital, paper/live permission, and broker mutation remain blocked until authoritative operating documents change."
+          state="blocked"
+          title="Governance remains fail-closed"
+        />
         <StatusRow
           label="Run mode"
           value={system.controlState.runMode}

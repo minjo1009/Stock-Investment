@@ -7,12 +7,13 @@ import {
   MobileV1StatusRail,
   RiskGate,
   ScreenSummary,
+  SourceAttributionCard,
   TimelineList,
   ValidationReadinessPanel,
 } from "../../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../../src/components/foundation";
 import { BlockerList, StatusRow } from "../../../src/components/generic";
-import { ProductDetailHeader, ProductDetailSection, ScreenContainer, SectionContainer } from "../../../src/components/layout";
+import { NavigationContextBar, ProductDetailHeader, ProductDetailSection, ScreenContainer, SectionContainer } from "../../../src/components/layout";
 import { candidateDetailFixture } from "../../../src/read-models/candidateDetailFixture";
 
 export default function CandidateDetailRoute() {
@@ -34,6 +35,15 @@ export default function CandidateDetailRoute() {
         ]}
         description="Scaffold-only fixture-backed view. Route params do not select authoritative data."
         title={candidate.symbol}
+      />
+
+      <NavigationContextBar
+        crumbs={[
+          { href: "/", label: "HOME" },
+          { href: "/brain", label: "BRAIN" },
+          { label: "Candidate Detail" },
+        ]}
+        note="Route context is read-only and does not select authoritative backend rows."
       />
 
       <ProductDetailSection sectionId="overview" title="Overview" description="Read the status first, then scan evidence, risk, and validation.">
@@ -120,6 +130,16 @@ export default function CandidateDetailRoute() {
             <AppText variant="caption">Open read-only chain detail</AppText>
           </Link>
         </SectionContainer>
+      </ProductDetailSection>
+
+      <ProductDetailSection sectionId="source" title="Source" description="Source state remains visible before risk interpretation.">
+        <SourceAttributionCard
+          authority={candidate.sections.decisionSummary.authority}
+          sourceStates={candidate.sections.risk.sourceStates}
+          status={candidate.sections.risk.blockers.length > 0 ? "BLOCKER" : "UNKNOWN"}
+          timestamp={candidate.generatedAt}
+          title="Candidate source attribution"
+        />
       </ProductDetailSection>
 
       <ProductDetailSection sectionId="risk" title="Risk" description="Blockers and source states stay visible before validation.">

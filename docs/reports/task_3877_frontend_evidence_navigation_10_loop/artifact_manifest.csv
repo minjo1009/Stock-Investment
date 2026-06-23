@@ -1,0 +1,8 @@
+artifact_id,path,kind,authority,notes
+task3877_report,docs/reports/task_3877_frontend_evidence_navigation_10_loop/task_3877_frontend_evidence_navigation_10_loop.md,report,canonical,Task closeout report
+task3877_manifest,docs/reports/task_3877_frontend_evidence_navigation_10_loop/artifact_manifest.csv,manifest,canonical,Artifact manifest
+frontend_evidence_visibility_validator,apps/ios-trader-brain/src/qa/frontend-evidence-visibility-validator.mjs,validator,diagnostic,Checks source freshness unknown blocker and navigation visibility
+evidence_status_chip,apps/ios-trader-brain/src/components/generic/evidence-status-chip.tsx,frontend_component,diagnostic,Read-only evidence status chip
+freshness_banner,apps/ios-trader-brain/src/components/domain/freshness-banner.tsx,frontend_component,diagnostic,Read-only source freshness boundary
+source_attribution_card,apps/ios-trader-brain/src/components/domain/source-attribution-card.tsx,frontend_component,diagnostic,Read-only source attribution card
+navigation_context_bar,apps/ios-trader-brain/src/components/layout/navigation-context-bar.tsx,frontend_component,diagnostic,Read-only navigation context display

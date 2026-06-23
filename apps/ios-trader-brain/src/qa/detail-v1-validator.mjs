@@ -19,7 +19,7 @@ const detailRoutes = [
     requiredTerms: ["Order Detail v1", "Validation Status", "Review Actions", "Scaffold Boundary"],
   },
 ];
-const productDetailSections = ["Overview", "Evidence", "Risk", "Validation"];
+const productDetailSections = ["Overview", "Evidence", "Source", "Risk", "Validation"];
 const forbiddenTerms = [
   "confidenceScore",
   "candidateScore",
@@ -61,7 +61,7 @@ for (const route of detailRoutes) {
       continue;
     }
     if (sectionIndex < previousSectionIndex) {
-      findings.push(`${route.file}: Product Detail section order is not Overview > Evidence > Risk > Validation`);
+      findings.push(`${route.file}: Product Detail section order is not Overview > Evidence > Source > Risk > Validation`);
     }
     previousSectionIndex = sectionIndex;
   }
