@@ -93,6 +93,12 @@ for (const [tabId, file] of Object.entries(tabFiles)) {
     expect(source.includes('"3D"') && source.includes('"5D"'), "portfolio chart must expose 3D and 5D range buttons");
     expect(source.includes("chartWindowOffset"), "portfolio chart must track slider offset state");
     expect(source.includes("chartSource.status"), "portfolio chart must preserve source-status gating");
+    expect(source.includes("chartPlotSize"), "portfolio chart must measure the rendered plot size before drawing");
+    expect(source.includes("updateChartPlotSize"), "portfolio chart must update geometry from the actual chart container");
+    expect(source.includes("selectChartPoint"), "portfolio chart must support tap/crosshair-style point selection");
+    expect(source.includes("chartGuideLine"), "portfolio chart must render value guide lines");
+    expect(source.includes("chartSelectedValueBubble"), "portfolio chart must render selected point readout");
+    expect(source.includes("buildChartGeometry(points, chartSize)"), "portfolio chart geometry must use actual chart size");
     expect(source.includes("setSelectedHoldingId"), "portfolio must support local row selection");
     expect(source.includes("toggleIndicator"), "portfolio must support local indicator toggles");
     expect(source.includes("출처 연결 대기"), "portfolio data must remain source-not-attached until authority is connected");

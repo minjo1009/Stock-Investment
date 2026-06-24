@@ -1,0 +1,11 @@
+artifact_path,artifact_type,authority,status,notes
+docs/reports/task_3913_portfolio_chart_skill_alignment/task_3913_portfolio_chart_skill_alignment.md,report,task_report,complete,Portfolio chart skill-alignment implementation report
+docs/reports/task_3913_portfolio_chart_skill_alignment/artifact_manifest.csv,manifest,task_manifest,complete,Task3913 artifact manifest
+docs/reports/task_3913_portfolio_chart_skill_alignment/gpt_loop_1_prompt.md,gpt_prompt,review_only,blocked,Prompt prepared but GPT capture path unavailable
+docs/reports/task_3913_portfolio_chart_skill_alignment/gpt_loop_1_response_blocked.md,gpt_response_blocked,review_only,blocked,No GPT response captured
+docs/reports/task_3913_portfolio_chart_skill_alignment/gpt_loop_2_review_prompt.md,gpt_prompt,review_only,blocked,Review prompt prepared but GPT capture path unavailable
+docs/reports/task_3913_portfolio_chart_skill_alignment/gpt_loop_2_response_blocked.md,gpt_response_blocked,review_only,blocked,No GPT response captured
+docs/reports/task_3913_portfolio_chart_skill_alignment/loop_ledger.csv,loop_ledger,task_record,complete,Requested GPT loop status ledger
+data/artifacts/portfolio_tab_capture_task3913_chart_5d_guides.png,screenshot,qa_artifact,local_only,Chart guide line screenshot not force-added to git
+data/artifacts/portfolio_tab_capture_task3913_chart_3d_slider.png,screenshot,qa_artifact,local_only,3D slider window screenshot not force-added to git
+data/artifacts/portfolio_tab_capture_task3913_chart_selected_default.png,screenshot,qa_artifact,local_only,Default selected readout screenshot not force-added to git

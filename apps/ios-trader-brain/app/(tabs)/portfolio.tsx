@@ -1,5 +1,12 @@
 import { useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, View } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  View,
+  type GestureResponderEvent,
+  type LayoutChangeEvent,
+} from "react-native";
 
 import { FreshnessBanner, MobileV1StatusRail } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
@@ -177,12 +184,18 @@ export default function PortfolioRoute() {
   const [selectedRange, setSelectedRange] = useState<ChartRange>("5D");
   const [chartWindowOffset, setChartWindowOffset] = useState(0);
   const [activeIndicators, setActiveIndicators] = useState(["성과선", "MDD"]);
+  const [selectedChartPointIndex, setSelectedChartPointIndex] = useState<number | null>(null);
+  const [chartPlotSize, setChartPlotSize] = useState({ height: 164, width: 282 });
 
   const selectedHolding = displayHoldings.find((holding) => holding.id === selectedHoldingId) ?? displayHoldings[0] ?? holdings[0];
   const chartWindow = useMemo(
     () => buildEquityCurveWindow(backtest.equityCurve, selectedRange, chartWindowOffset),
     [backtest.equityCurve, chartWindowOffset, selectedRange]
   );
+  const selectedChartPoint =
+    chartWindow.points.length > 0 && selectedChartPointIndex !== null
+      ? chartWindow.points[Math.min(selectedChartPointIndex, chartWindow.points.length - 1)]
+      : chartWindow.points[chartWindow.points.length - 1] ?? null;
 
   function toggleIndicator(indicator: string) {
     setActiveIndicators((current) =>
@@ -195,9 +208,11 @@ export default function PortfolioRoute() {
   function selectRange(range: ChartRange) {
     setSelectedRange(range);
     setChartWindowOffset(0);
+    setSelectedChartPointIndex(null);
   }
 
   function slideChartWindow(direction: "earlier" | "latest") {
+    setSelectedChartPointIndex(null);
     setChartWindowOffset((current) => {
       if (direction === "latest") {
         return Math.max(0, current - 1);
@@ -205,6 +220,28 @@ export default function PortfolioRoute() {
 
       return Math.min(chartWindow.maxOffset, current + 1);
     });
+  }
+
+  function updateChartPlotSize(event: LayoutChangeEvent) {
+    const { height, width } = event.nativeEvent.layout;
+    setChartPlotSize({
+      height: Math.max(120, Math.round(height)),
+      width: Math.max(220, Math.round(width)),
+    });
+  }
+
+  function selectChartPoint(event: GestureResponderEvent) {
+    if (chartWindow.points.length === 0) {
+      setSelectedChartPointIndex(null);
+      return;
+    }
+
+    const relativeX = Math.max(0, Math.min(chartPlotSize.width, event.nativeEvent.locationX));
+    const pointIndex =
+      chartWindow.points.length === 1
+        ? 0
+        : Math.round((relativeX / Math.max(1, chartPlotSize.width)) * (chartWindow.points.length - 1));
+    setSelectedChartPointIndex(Math.max(0, Math.min(chartWindow.points.length - 1, pointIndex)));
   }
 
   return (
@@ -361,8 +398,13 @@ export default function PortfolioRoute() {
 
         <DiagnosticPortfolioChart
           activeIndicators={activeIndicators}
+          chartSize={chartPlotSize}
           maxWindowOffset={chartWindow.maxOffset}
+          onPlotLayout={updateChartPlotSize}
+          onSelectPoint={selectChartPoint}
           points={chartWindow.points}
+          selectedPoint={selectedChartPoint}
+          selectedPointIndex={selectedChartPointIndex}
           selectedHolding={selectedHolding}
           selectedRange={selectedRange}
           sourceStatus={backtest.chartSource.status}
@@ -541,31 +583,46 @@ function formatChartDate(timestamp?: string) {
 
 function DiagnosticPortfolioChart({
   activeIndicators,
+  chartSize,
   maxWindowOffset,
+  onPlotLayout,
+  onSelectPoint,
   points,
+  selectedPoint,
+  selectedPointIndex,
   selectedHolding,
   selectedRange,
   sourceStatus,
   windowOffset,
 }: {
   activeIndicators: string[];
+  chartSize: { height: number; width: number };
   maxWindowOffset: number;
+  onPlotLayout: (event: LayoutChangeEvent) => void;
+  onSelectPoint: (event: GestureResponderEvent) => void;
   points: EquityCurvePoint[];
+  selectedPoint: EquityCurvePoint | null;
+  selectedPointIndex: number | null;
   selectedHolding: HoldingTableRow;
   selectedRange: ChartRange;
   sourceStatus: "READY" | "SOURCE_NOT_ATTACHED";
   windowOffset: number;
 }) {
-  const chartGeometry = buildChartGeometry(points);
+  const chartGeometry = buildChartGeometry(points, chartSize);
   const latestPoint = points[points.length - 1];
   const firstPoint = points[0];
   const latestReturn = latestPoint ? displayBacktestPercent(latestPoint.portfolioReturnPct) : "연결 대기";
   const latestDrawdown = latestPoint ? displayBacktestPercent(latestPoint.drawdownPct) : "연결 대기";
+  const selectedGeometryPoint =
+    selectedPointIndex !== null
+      ? chartGeometry.points[Math.min(selectedPointIndex, chartGeometry.points.length - 1)]
+      : chartGeometry.latest;
+  const selectedValue = selectedPoint ?? latestPoint ?? null;
   const sourceReady = sourceStatus === "READY" && points.length > 0;
   const showPerformanceLine = activeIndicators.includes("성과선");
   const showDrawdown = activeIndicators.includes("MDD");
   const showPeakLine = activeIndicators.includes("고점선");
-  const showSelectedPoint = activeIndicators.includes("선택값");
+  const showSelectedPoint = sourceReady && (activeIndicators.includes("선택값") || selectedPointIndex !== null || points.length > 0);
 
   return (
     <View style={styles.chartFrame}>
@@ -589,13 +646,23 @@ function DiagnosticPortfolioChart({
         <Badge label={`MDD ${latestDrawdown}`} tone="missing" />
         <Badge label={`구간 ${points.length}개`} tone="neutral" />
         <Badge label={`슬라이드 ${windowOffset}/${maxWindowOffset}`} tone="readOnly" />
+        <Badge label={`최저 ${displayBacktestDecimal(chartGeometry.minValue)}`} tone="neutral" />
+        <Badge label={`최고 ${displayBacktestDecimal(chartGeometry.maxValue)}`} tone="neutral" />
       </View>
 
-      <View style={styles.chartPlot}>
+      <Pressable
+        accessibilityRole="button"
+        onLayout={onPlotLayout}
+        onPress={onSelectPoint}
+        onPressIn={onSelectPoint}
+        style={styles.chartPlot}
+      >
         <View style={styles.chartGrid}>
-          <View style={styles.gridLine} />
-          <View style={styles.gridLine} />
-          <View style={styles.gridLine} />
+          {chartGeometry.guideLines.map((line) => (
+            <View key={`guide-${line.label}`} style={[styles.chartGuideLine, { top: line.y }]}>
+              <AppText style={styles.chartGuideText}>{line.label}</AppText>
+            </View>
+          ))}
         </View>
 
         {sourceReady && showPeakLine ? <View style={[styles.highWaterLine, { top: chartGeometry.peakTop }]} /> : null}
@@ -632,16 +699,32 @@ function DiagnosticPortfolioChart({
             ))
           : null}
 
-        {sourceReady && showSelectedPoint && chartGeometry.latest ? (
-          <View
-            style={[
-              styles.chartPointMarker,
-              {
-                left: chartGeometry.latest.x - 5,
-                top: chartGeometry.latest.y - 5,
-              },
-            ]}
-          />
+        {sourceReady && showSelectedPoint && selectedGeometryPoint && selectedValue ? (
+          <>
+            <View style={[styles.chartCrosshair, { left: selectedGeometryPoint.x }]} />
+            <View
+              style={[
+                styles.chartPointMarker,
+                {
+                  left: selectedGeometryPoint.x - 5,
+                  top: selectedGeometryPoint.y - 5,
+                },
+              ]}
+            />
+            <View
+              style={[
+                styles.chartSelectedValueBubble,
+                {
+                  left: Math.min(Math.max(0, selectedGeometryPoint.x - 46), Math.max(0, chartSize.width - 112)),
+                  top: Math.max(6, selectedGeometryPoint.y - 42),
+                },
+              ]}
+            >
+              <AppText style={styles.chartSelectedValueText}>
+                {formatChartDate(selectedValue.timestamp)} · {displayBacktestDecimal(selectedValue.equity)}
+              </AppText>
+            </View>
+          </>
         ) : null}
 
         {!sourceReady ? (
@@ -653,22 +736,29 @@ function DiagnosticPortfolioChart({
             </AppText>
           </View>
         ) : null}
-      </View>
+      </Pressable>
 
       <View style={styles.chartAxisRow}>
         <AppText variant="caption">{formatChartDate(firstPoint?.timestamp)}</AppText>
-        <AppText variant="caption">{formatChartDate(latestPoint?.timestamp)}</AppText>
+        <AppText variant="caption">
+          {selectedValue ? `${formatChartDate(selectedValue.timestamp)} · ${displayBacktestPercent(selectedValue.portfolioReturnPct)}` : formatChartDate(latestPoint?.timestamp)}
+        </AppText>
       </View>
     </View>
   );
 }
 
-function buildChartGeometry(points: EquityCurvePoint[]) {
-  const width = 282;
-  const height = 148;
+function buildChartGeometry(points: EquityCurvePoint[], chartSize: { height: number; width: number }) {
+  const rightAxisWidth = 54;
+  const width = Math.max(120, chartSize.width - rightAxisWidth);
+  const height = Math.max(96, chartSize.height - 18);
+  const verticalPadding = 12;
   if (points.length === 0) {
     return {
+      guideLines: [],
       latest: null,
+      maxValue: null,
+      minValue: null,
       peakTop: 0,
       points: [],
       segments: [],
@@ -682,8 +772,8 @@ function buildChartGeometry(points: EquityCurvePoint[]) {
   const xStep = points.length > 1 ? width / (points.length - 1) : width;
   const normalizedPoints = points.map((point, index) => {
     const x = index * xStep;
-    const y = height - ((point.equity - minValue) / valueRange) * height;
-    const drawdownHeight = Math.min(44, Math.abs(point.drawdownPct) * 1.4);
+    const y = verticalPadding + (height - verticalPadding * 2) - ((point.equity - minValue) / valueRange) * (height - verticalPadding * 2);
+    const drawdownHeight = Math.min(height * 0.32, Math.abs(point.drawdownPct) * 1.4);
 
     return {
       drawdownHeight,
@@ -708,9 +798,18 @@ function buildChartGeometry(points: EquityCurvePoint[]) {
     };
   });
   const peakIndex = values.indexOf(maxValue);
+  const guideValues = [maxValue, minValue + valueRange / 2, minValue];
+  const guideLines = guideValues.map((value) => ({
+    label: displayBacktestDecimal(value),
+    value,
+    y: verticalPadding + (height - verticalPadding * 2) - ((value - minValue) / valueRange) * (height - verticalPadding * 2),
+  }));
 
   return {
+    guideLines,
     latest: normalizedPoints[normalizedPoints.length - 1],
+    maxValue,
+    minValue,
     peakTop: normalizedPoints[peakIndex]?.y ?? 0,
     points: normalizedPoints,
     segments,
@@ -1360,12 +1459,26 @@ const styles = StyleSheet.create({
   },
   chartGrid: {
     bottom: 0,
-    justifyContent: "space-evenly",
     left: 0,
-    padding: spacing.lg,
     position: "absolute",
     right: 0,
     top: 0,
+  },
+  chartGuideLine: {
+    backgroundColor: "#273449",
+    height: 1,
+    left: 0,
+    position: "absolute",
+    right: 0,
+  },
+  chartGuideText: {
+    color: "#8E8E93",
+    fontSize: 10,
+    fontWeight: "800",
+    lineHeight: 12,
+    position: "absolute",
+    right: 0,
+    top: -7,
   },
   gridLine: {
     backgroundColor: "#273449",
@@ -1385,6 +1498,28 @@ const styles = StyleSheet.create({
     height: 10,
     position: "absolute",
     width: 10,
+  },
+  chartCrosshair: {
+    backgroundColor: "#FFFFFF",
+    bottom: 0,
+    opacity: 0.28,
+    position: "absolute",
+    top: 0,
+    width: 1,
+  },
+  chartSelectedValueBubble: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: 8,
+    minWidth: 96,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 4,
+    position: "absolute",
+  },
+  chartSelectedValueText: {
+    color: "#101827",
+    fontSize: 10,
+    fontWeight: "900",
+    lineHeight: 14,
   },
   drawdownBar: {
     backgroundColor: "#F45C8D",
