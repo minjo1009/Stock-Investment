@@ -19,7 +19,7 @@ the source timestamp is not replay-eligible.
 | Loop | Result |
 | --- | --- |
 | 1 | GPT approved the diagnosis and fix direction: exclude open bars, quarantine invalid receipts, keep Scope G diagnostic-only. |
-| 2 | Pending after GitHub-visible commit. |
+| 2 | GPT reviewed GitHub-visible commit `0cd5c99` and approved Scope E resolved with active blockers cleared while Scope G remains diagnostic-only `NO-GO`. |
 
 ## Source-Time Blocker Detail
 
