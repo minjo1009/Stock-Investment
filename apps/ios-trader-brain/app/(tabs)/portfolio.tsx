@@ -226,71 +226,26 @@ export default function PortfolioRoute() {
         </ScrollView>
 
         <View style={styles.tableShell}>
-          <View style={styles.tableHeader}>
-            <View style={styles.stickyHeaderCell}>
-              <AppText style={styles.tableHeaderText}>종목</AppText>
-            </View>
-            <ScrollView
-              bounces
-              horizontal
-              nestedScrollEnabled
-              showsHorizontalScrollIndicator
-              style={styles.metricsScroller}
-            >
-              <View style={styles.metricHeaderRow}>
-                {["진단손익", "거래수", "진단투입", "보유기간", "최악수익"].map((label) => (
-                  <View key={label} style={styles.metricHeaderCell}>
-                    <AppText style={styles.tableHeaderText}>{label}</AppText>
-                  </View>
-                ))}
-              </View>
-            </ScrollView>
+          <View style={styles.readableTableHeader}>
+            <AppText style={styles.tableHeaderText}>종목별 진단 요약</AppText>
+            <AppText variant="caption" style={styles.tableHeaderHint}>세로 스크롤</AppText>
           </View>
 
           <ScrollView
             bounces
             nestedScrollEnabled
             showsVerticalScrollIndicator
-            style={styles.tableBodyScroller}
+            style={styles.readableRowsScroller}
           >
-            <View style={styles.tableScrollableBody}>
-              <View style={styles.fixedNameColumn}>
-                {displayHoldings.map((holding) => (
-                  <HoldingNameCell
-                    holding={holding}
-                    isSelected={selectedHoldingId === holding.id}
-                    key={holding.id}
-                    onSelect={() => setSelectedHoldingId(holding.id)}
-                  />
-                ))}
-              </View>
-              <ScrollView
-                bounces
-                horizontal
-                nestedScrollEnabled
-                showsHorizontalScrollIndicator
-                style={styles.metricsScroller}
-              >
-                <View>
-                  {displayHoldings.map((holding) => (
-                    <Pressable
-                      accessibilityRole="button"
-                      key={holding.id}
-                      onPress={() => setSelectedHoldingId(holding.id)}
-                      style={[
-                        styles.metricRow,
-                        selectedHoldingId === holding.id ? styles.selectedMetricRow : null,
-                      ]}
-                    >
-                      <MetricCell primary={holding.pnl} secondary={holding.yieldValue} tone="neutral" />
-                      <MetricCell primary={holding.quantity} secondary={holding.sellableQuantity} />
-                      <MetricCell primary={holding.evaluation} secondary={holding.purchaseAmount} />
-                      <MetricCell primary={holding.holdingPeriod} secondary="평균" />
-                      <MetricCell primary={holding.mdd} secondary="최악" tone="negative" />
-                    </Pressable>
-                  ))}
-                </View>
-              </ScrollView>
+            <View style={styles.readableRows}>
+              {displayHoldings.map((holding) => (
+                <PortfolioHoldingSummaryRow
+                  holding={holding}
+                  isSelected={selectedHoldingId === holding.id}
+                  key={holding.id}
+                  onSelect={() => setSelectedHoldingId(holding.id)}
+                />
+              ))}
             </View>
           </ScrollView>
         </View>
@@ -446,6 +401,59 @@ export default function PortfolioRoute() {
   );
 }
 
+function PortfolioHoldingSummaryRow({
+  holding,
+  isSelected,
+  onSelect,
+}: {
+  holding: HoldingTableRow;
+  isSelected: boolean;
+  onSelect: () => void;
+}) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ selected: isSelected }}
+      onPress={onSelect}
+      style={[styles.readableHoldingRow, isSelected ? styles.selectedReadableHoldingRow : null]}
+    >
+      <View style={styles.readableHoldingTop}>
+        <View style={styles.smallAssetIcon}>
+          <AppText style={styles.smallAssetIconText}>{holding.ticker.slice(0, 1)}</AppText>
+        </View>
+        <View style={styles.readableHoldingIdentity}>
+          <AppText style={styles.holdingName}>{holding.name}</AppText>
+          <AppText variant="caption">{holding.ticker} · {holding.region}</AppText>
+        </View>
+        <View style={styles.readableHoldingPnl}>
+          <AppText style={[styles.readablePnlValue, holding.pnl.startsWith("-") ? styles.negativeValue : styles.positiveValue]}>
+            {holding.pnl}
+          </AppText>
+          <AppText variant="caption">{holding.yieldValue}</AppText>
+        </View>
+      </View>
+
+      <View style={styles.readableMetricChips}>
+        <ReadableMetricChip label="거래" value={holding.quantity} />
+        <ReadableMetricChip label="투입" value={holding.evaluation} />
+        <ReadableMetricChip label="평균" value={holding.holdingPeriod} />
+        <ReadableMetricChip label="최악" value={holding.mdd} tone="negative" />
+      </View>
+    </Pressable>
+  );
+}
+
+function ReadableMetricChip({ label, tone, value }: { label: string; tone?: "negative"; value: string }) {
+  return (
+    <View style={styles.readableMetricChip}>
+      <AppText variant="caption" style={styles.readableMetricLabel}>{label}</AppText>
+      <AppText style={[styles.readableMetricValue, tone === "negative" ? styles.negativeValue : null]}>
+        {value}
+      </AppText>
+    </View>
+  );
+}
+
 function HoldingNameCell({
   holding,
   isSelected,
@@ -575,7 +583,6 @@ function BacktestMetric({
     <View style={styles.backtestMetricCell}>
       <AppText style={styles.backtestMetricLabel}>{label}</AppText>
       <AppText
-        numberOfLines={1}
         style={[
           styles.backtestMetricValue,
           tone === "positive" ? styles.positiveValue : null,
@@ -619,7 +626,7 @@ function buildBacktestHoldingRows(snapshot: typeof backtestSnapshotFixture): Hol
     id: `backtest-position-${position.symbol}`,
     name: position.symbol,
     ticker: position.symbol,
-    region: "백테스트 진단",
+    region: "진단",
     pnl: displayBacktestMoney(position.totalPnl),
     yieldValue: displayBacktestPercent(position.weightedReturnPct),
     quantity: `${position.tradeCount}회`,
@@ -729,6 +736,7 @@ const styles = StyleSheet.create({
   },
   backtestMetricGrid: {
     flexDirection: "row",
+    flexWrap: "wrap",
     gap: spacing.sm,
   },
   backtestMetricCell: {
@@ -736,8 +744,10 @@ const styles = StyleSheet.create({
     borderColor: "#E0E0E0",
     borderRadius: 10,
     borderWidth: 1,
-    flex: 1,
+    flexBasis: "48%",
+    flexGrow: 1,
     gap: spacing.xs,
+    minHeight: 76,
     minWidth: 0,
     padding: spacing.sm,
   },
@@ -749,9 +759,9 @@ const styles = StyleSheet.create({
   },
   backtestMetricValue: {
     color: "#1A1A1A",
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: "900",
-    lineHeight: 18,
+    lineHeight: 22,
   },
   backtestMetaBox: {
     backgroundColor: "#F6F7F9",
@@ -763,7 +773,7 @@ const styles = StyleSheet.create({
     ...elevatedCard,
     borderRadius: 16,
     gap: spacing.md,
-    height: 360,
+    height: 430,
     overflow: "hidden",
     padding: spacing.lg,
     width: "100%",
@@ -834,6 +844,82 @@ const styles = StyleSheet.create({
     minWidth: 0,
     overflow: "hidden",
   },
+  readableTableHeader: {
+    alignItems: "center",
+    backgroundColor: "#F6F7F9",
+    borderBottomColor: "#E0E0E0",
+    borderBottomWidth: 1,
+    flexDirection: "row",
+    height: 48,
+    justifyContent: "space-between",
+    paddingHorizontal: spacing.md,
+  },
+  tableHeaderHint: {
+    color: "#6C6C6C",
+    fontWeight: "700",
+  },
+  readableRowsScroller: {
+    height: 276,
+  },
+  readableRows: {
+    backgroundColor: "#FFFFFF",
+  },
+  readableHoldingRow: {
+    borderBottomColor: "#E0E0E0",
+    borderBottomWidth: 1,
+    gap: spacing.sm,
+    minHeight: 92,
+    padding: spacing.md,
+  },
+  selectedReadableHoldingRow: {
+    backgroundColor: "#F0F8F7",
+  },
+  readableHoldingTop: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: spacing.sm,
+  },
+  readableHoldingIdentity: {
+    flex: 1,
+    minWidth: 0,
+  },
+  readableHoldingPnl: {
+    alignItems: "flex-end",
+    minWidth: 84,
+  },
+  readablePnlValue: {
+    color: "#1A1A1A",
+    fontSize: 18,
+    fontWeight: "900",
+    lineHeight: 22,
+  },
+  readableMetricChips: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: spacing.sm,
+  },
+  readableMetricChip: {
+    backgroundColor: "#F6F7F9",
+    borderColor: "#E0E0E0",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexBasis: "47%",
+    flexGrow: 1,
+    gap: 2,
+    minHeight: 44,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xs,
+  },
+  readableMetricLabel: {
+    color: "#6C6C6C",
+    fontWeight: "700",
+  },
+  readableMetricValue: {
+    color: "#1A1A1A",
+    fontSize: 14,
+    fontWeight: "900",
+    lineHeight: 18,
+  },
   tableHeader: {
     flexDirection: "row",
     height: 48,
@@ -845,7 +931,7 @@ const styles = StyleSheet.create({
     height: 48,
     justifyContent: "center",
     paddingHorizontal: spacing.md,
-    width: 148,
+    width: 164,
   },
   metricsScroller: {
     flex: 1,
@@ -858,7 +944,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   fixedNameColumn: {
-    width: 148,
+    width: 164,
   },
   tableHeaderText: {
     color: "#1A1A1A",
@@ -874,7 +960,7 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
     height: 76,
     paddingHorizontal: spacing.sm,
-    width: 148,
+    width: 164,
   },
   selectedNameCell: {
     backgroundColor: "#F0F8F7",
