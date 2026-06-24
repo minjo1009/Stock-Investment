@@ -73,7 +73,7 @@ export default function CandidateDetailRoute() {
             <AppText style={styles.symbol}>{candidate.symbol}</AppText>
             <AppText variant="caption">AI 인프라 · 전력 장비 테마</AppText>
           </View>
-          <Badge label="승격 예정 아님" tone="blocked" />
+          <Badge label="검토 유지" tone="readOnly" />
         </View>
         <View style={styles.decisionBand}>
           <AppText style={styles.decisionText}>검토 유지</AppText>
@@ -148,7 +148,7 @@ export default function CandidateDetailRoute() {
           {responses.map((response) => (
             <View key={response} style={styles.responsePill}>
               <AppText style={styles.responseText}>{response}</AppText>
-              <AppText variant="caption">disabled · read-only</AppText>
+              <AppText variant="caption">읽기 전용 · 기록 안 됨 · 실행 안 됨</AppText>
             </View>
           ))}
         </View>

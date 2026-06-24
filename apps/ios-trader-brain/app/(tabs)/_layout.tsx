@@ -14,6 +14,18 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarLabelPosition: "below-icon",
+        tabBarActiveTintColor: "#007AFF",
+        tabBarInactiveTintColor: "#8E8E93",
+        tabBarLabelStyle: {
+          fontSize: 10,
+          fontWeight: "600",
+          marginTop: 2,
+        },
+        tabBarStyle: {
+          minHeight: 64,
+          paddingBottom: 8,
+          paddingTop: 6,
+        },
       }}
     >
       {tabs.map((tab) => (

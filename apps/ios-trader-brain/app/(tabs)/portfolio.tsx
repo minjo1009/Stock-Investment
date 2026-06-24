@@ -33,14 +33,14 @@ const holdings: HoldingTableRow[] = [
     name: "권위 데이터 대기",
     ticker: "FIXA",
     region: "브로커 검증 전",
-    pnl: "UNKNOWN",
-    yieldValue: "UNKNOWN",
-    quantity: "UNKNOWN",
-    sellableQuantity: "UNKNOWN",
-    evaluation: "UNKNOWN",
-    purchaseAmount: "UNKNOWN",
-    holdingPeriod: "UNKNOWN",
-    mdd: "UNKNOWN",
+    pnl: "확인 대기",
+    yieldValue: "연결 대기",
+    quantity: "확인 대기",
+    sellableQuantity: "확인 대기",
+    evaluation: "확인 대기",
+    purchaseAmount: "확인 대기",
+    holdingPeriod: "확인 대기",
+    mdd: "확인 대기",
     reasonTitle: "매수 근거 대기",
     reasonBody: "권위 있는 주문·보유·체결 근거가 연결되기 전에는 매수 근거를 확정하지 않습니다.",
     newsTitle: "뉴스 연결 대기",
@@ -50,15 +50,15 @@ const holdings: HoldingTableRow[] = [
     id: "broker-truth-blocked",
     name: "계좌 검증 대기",
     ticker: "AUTH",
-    region: "NOT_AUTHORITY",
-    pnl: "UNKNOWN",
-    yieldValue: "UNKNOWN",
-    quantity: "UNKNOWN",
-    sellableQuantity: "UNKNOWN",
-    evaluation: "UNKNOWN",
-    purchaseAmount: "UNKNOWN",
-    holdingPeriod: "UNKNOWN",
-    mdd: "UNKNOWN",
+    region: "검증 전 데이터",
+    pnl: "확인 대기",
+    yieldValue: "연결 대기",
+    quantity: "확인 대기",
+    sellableQuantity: "확인 대기",
+    evaluation: "확인 대기",
+    purchaseAmount: "확인 대기",
+    holdingPeriod: "확인 대기",
+    mdd: "확인 대기",
     reasonTitle: "브로커 truth 차단",
     reasonBody: "현재 표의 값은 실제 계좌 truth가 아니며, 표시용 read-only 슬롯입니다.",
     newsTitle: "관련 뉴스 없음",
@@ -68,15 +68,15 @@ const holdings: HoldingTableRow[] = [
     id: "source-not-attached",
     name: "출처 연결 대기",
     ticker: "SRC",
-    region: "SOURCE_NOT_ATTACHED",
-    pnl: "UNKNOWN",
-    yieldValue: "UNKNOWN",
-    quantity: "UNKNOWN",
-    sellableQuantity: "UNKNOWN",
-    evaluation: "UNKNOWN",
-    purchaseAmount: "UNKNOWN",
-    holdingPeriod: "UNKNOWN",
-    mdd: "UNKNOWN",
+    region: "출처 대기",
+    pnl: "확인 대기",
+    yieldValue: "연결 대기",
+    quantity: "확인 대기",
+    sellableQuantity: "확인 대기",
+    evaluation: "확인 대기",
+    purchaseAmount: "확인 대기",
+    holdingPeriod: "확인 대기",
+    mdd: "확인 대기",
     reasonTitle: "데이터 계약 대기",
     reasonBody: "보유종목 표와 상세 차트는 권위 데이터 계약이 붙으면 같은 UI에서 값을 갱신합니다.",
     newsTitle: "뉴스 요약 대기",
@@ -125,9 +125,9 @@ export default function PortfolioRoute() {
               <AppText style={styles.cardTitle}>보유종목</AppText>
               <Badge label={`${holdings.length}개`} tone="readOnly" />
               <Badge label="i" tone="neutral" />
-              <Badge label="NOT_AUTHORITY" tone="blocked" />
+              <Badge label="검증 전 데이터" tone="blocked" />
             </View>
-            <AppText variant="caption">가로 스크롤 표 · 3개 행 기본 표시 · read-only</AppText>
+            <AppText variant="caption">가로 스크롤 표 · 3개 행 기본 표시 · 읽기 전용</AppText>
           </View>
         </View>
 
@@ -167,7 +167,7 @@ export default function PortfolioRoute() {
             ))}
           </View>
 
-          <ScrollView horizontal showsHorizontalScrollIndicator>
+          <ScrollView horizontal showsHorizontalScrollIndicator style={styles.metricsScroller}>
             <View>
               <View style={styles.metricHeaderRow}>
                 {["평가손익", "보유수량", "평가금액", "보유기간", "MDD"].map((label) => (
@@ -201,9 +201,9 @@ export default function PortfolioRoute() {
       <CardContainer style={styles.detailCard}>
         <View style={styles.detailCardMarker}>
           <AppText variant="caption" style={styles.detailCardMarkerText}>
-            Stock Detail · 종목 상세
+            선택 종목
           </AppText>
-          <Badge label="read-only" tone="readOnly" />
+          <Badge label="읽기 전용" tone="readOnly" />
         </View>
         <View style={styles.detailHeader}>
           <View style={styles.assetIcon}>
@@ -215,7 +215,7 @@ export default function PortfolioRoute() {
               <Badge label="보유" tone="readOnly" />
             </View>
             <AppText variant="caption">
-              {selectedHolding.ticker} · 현재가 UNKNOWN · 일간변동 UNKNOWN
+              {selectedHolding.ticker} · 현재가 확인 대기 · 일간 변동 확인 대기
             </AppText>
           </View>
         </View>
@@ -246,10 +246,10 @@ export default function PortfolioRoute() {
             <View style={styles.gridLine} />
           </View>
           <View style={styles.chartEmptyState}>
-            <Badge label="SOURCE_NOT_ATTACHED" tone="missing" />
+            <Badge label="출처 연결 대기" tone="missing" />
             <AppText style={styles.chartTitle}>차트 데이터 연결 대기</AppText>
             <AppText variant="caption" style={styles.chartBody}>
-              권위 있는 가격, 평가금액, 거래량, VWAP 소스가 붙기 전에는 캔들·라인을 그리지 않습니다.
+              권위 있는 가격·거래량 출처가 연결되면 차트가 표시됩니다. 현재는 값을 추정하지 않습니다.
             </AppText>
           </View>
         </View>
@@ -283,10 +283,10 @@ export default function PortfolioRoute() {
         </View>
 
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.metricsStrip}>
-          <MiniMetric label="평단가" value="UNKNOWN" />
+          <MiniMetric label="평단가" value="확인 대기" />
           <MiniMetric label="평가금액" value={selectedHolding.evaluation} />
           <MiniMetric label="평가손익" value={selectedHolding.pnl} />
-          <MiniMetric label="비중" value="UNKNOWN" />
+          <MiniMetric label="비중" value="확인 대기" />
           <MiniMetric label="보유기간" value={selectedHolding.holdingPeriod} />
           <MiniMetric label="MDD" value={selectedHolding.mdd} tone="negative" />
         </ScrollView>
@@ -298,7 +298,7 @@ export default function PortfolioRoute() {
             {
               title: selectedHolding.reasonTitle,
               body: selectedHolding.reasonBody,
-              meta: "작성시각 UNKNOWN · read-only",
+              meta: "작성시각 확인 대기 · 읽기 전용",
             },
           ]}
         />
@@ -310,7 +310,7 @@ export default function PortfolioRoute() {
             {
               title: selectedHolding.newsTitle,
               body: selectedHolding.newsSummary,
-              meta: "출처 SOURCE_NOT_ATTACHED",
+              meta: "출처 연결 대기",
             },
             {
               title: "관련 뉴스 없음",
@@ -332,7 +332,7 @@ export default function PortfolioRoute() {
               { label: "브로커 검증", value: "BLOCKED", tone: "blocked" },
               { label: "실행 권한", value: "FORBIDDEN", tone: "blocked" },
             ]}
-            subtitle="Phone-first v2 / read-only"
+            subtitle="Phone-first v2 / read-only / NOT_AUTHORITY"
             title="보조 안전 상태"
           />
           {firstSource ? <SourceFreshnessBadge sourceState={firstSource} /> : null}
@@ -446,7 +446,7 @@ const elevatedCard = {
 
 const styles = StyleSheet.create({
   screen: {
-    gap: 32,
+    gap: 24,
   },
   header: {
     alignItems: "center",
@@ -485,7 +485,7 @@ const styles = StyleSheet.create({
     ...elevatedCard,
     borderRadius: 16,
     gap: spacing.md,
-    height: 288,
+    height: 272,
     overflow: "hidden",
     padding: spacing.lg,
   },
@@ -553,11 +553,16 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 1,
     flexDirection: "row",
+    minWidth: 0,
     overflow: "hidden",
   },
   stickyColumn: {
     backgroundColor: "#FFFFFF",
-    width: 160,
+    width: 148,
+  },
+  metricsScroller: {
+    flex: 1,
+    minWidth: 0,
   },
   stickyHeaderCell: {
     backgroundColor: "#F6F7F9",
@@ -579,7 +584,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     flexDirection: "row",
     gap: spacing.sm,
-    height: 48,
+    height: 56,
     paddingHorizontal: spacing.sm,
   },
   selectedNameCell: {
@@ -624,13 +629,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     justifyContent: "center",
     paddingHorizontal: spacing.md,
-    width: 116,
+    width: 104,
   },
   metricRow: {
     borderBottomColor: "#E0E0E0",
     borderBottomWidth: 1,
     flexDirection: "row",
-    height: 48,
+    height: 56,
   },
   selectedMetricRow: {
     backgroundColor: "#F0F8F7",
@@ -639,12 +644,12 @@ const styles = StyleSheet.create({
     borderLeftColor: "#E0E0E0",
     borderLeftWidth: 1,
     justifyContent: "center",
-    paddingHorizontal: spacing.md,
-    width: 116,
+    paddingHorizontal: spacing.sm,
+    width: 104,
   },
   metricPrimary: {
     color: "#1A1A1A",
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "900",
     lineHeight: 20,
   },
@@ -654,7 +659,7 @@ const styles = StyleSheet.create({
   detailCard: {
     ...elevatedCard,
     borderRadius: 24,
-    gap: spacing.lg,
+    gap: spacing.md,
     padding: 20,
   },
   detailCardMarker: {
@@ -731,7 +736,7 @@ const styles = StyleSheet.create({
   chartFrame: {
     backgroundColor: "#101827",
     borderRadius: 16,
-    minHeight: 248,
+    minHeight: 196,
     overflow: "hidden",
     padding: spacing.lg,
   },
@@ -753,7 +758,7 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: spacing.sm,
     justifyContent: "center",
-    minHeight: 216,
+    minHeight: 164,
   },
   chartTitle: {
     color: "#FFFFFF",

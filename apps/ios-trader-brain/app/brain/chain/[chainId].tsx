@@ -94,7 +94,7 @@ export default function ChainDetailRoute() {
             <AppText style={styles.sourceText}>{sourceText}</AppText>
           </ScrollView>
           <View style={styles.copyHint}>
-            <Badge label="텍스트 복사 disabled" tone="disabled" />
+            <Badge label="텍스트 복사 준비 중" tone="disabled" />
             <Badge label="외부 링크 대기" tone="unknown" />
           </View>
         </CardContainer>

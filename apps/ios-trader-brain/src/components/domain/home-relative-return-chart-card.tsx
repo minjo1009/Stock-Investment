@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Pressable, StyleSheet, View, type ViewProps } from "react-native";
 
-import { AppText, Badge } from "../foundation";
+import { AppText, Badge, CardContainer } from "../foundation";
 import type { HomeRelativeReturnChart } from "../../read-models";
 import { colors, mobile, spacing } from "../../theme/tokens";
-import { ChartWithSourceState } from "./chart-with-source-state";
 
 type HomeRelativeReturnChartCardProps = ViewProps & {
   chart: HomeRelativeReturnChart;
@@ -30,17 +29,11 @@ export function HomeRelativeReturnChartCard({
   const hasSourceBackedSeries = chart.chartState.status === "READY" && chart.points.length > 0;
 
   return (
-    <ChartWithSourceState
-      chartState={chart.chartState}
-      description="평가금, 원금, QQQ 기준선이 같은 시간축으로 연결되기 전에는 가짜 선을 그리지 않습니다."
-      showTechnicalDetails={false}
-      style={[styles.card, style]}
-      title="Performance"
-      {...props}
-    >
+    <CardContainer style={[styles.card, style]} {...props}>
       <View style={styles.content}>
         <View style={styles.header}>
           <View style={styles.headerText}>
+            <AppText style={styles.sectionTitle}>수익현황</AppText>
             <AppText style={styles.cardTitle}>평가금 vs 원금 vs QQQ</AppText>
             <View style={styles.legendRow}>
               <LegendDot color="#2E7D32" label="평가금" />
@@ -79,8 +72,8 @@ export function HomeRelativeReturnChartCard({
         </View>
 
         <View style={styles.kpiOverlay}>
-          <Badge label="승률 UNKNOWN" tone="unknown" />
-          <Badge label="MDD UNKNOWN" tone="missing" />
+          <Badge label="승률 연결 대기" tone="unknown" />
+          <Badge label="MDD 연결 대기" tone="missing" />
           <Badge label="QQQ 기준 대기" tone="unknown" />
         </View>
 
@@ -92,10 +85,9 @@ export function HomeRelativeReturnChartCard({
           </View>
           {hasSourceBackedSeries ? null : (
             <View style={styles.emptyState}>
-              <AppText style={styles.emptyTitle}>차트 데이터 연결 대기</AppText>
+              <AppText style={styles.emptyTitle}>차트 연결 대기</AppText>
               <AppText variant="caption" style={styles.emptyBody}>
-                선택 기간은 바뀌지만, 권위 있는 평가금 곡선, 원금 시계열, QQQ 벤치마크가 붙기 전에는
-                선을 표시하지 않습니다.
+                권위 있는 평가금 곡선, 원금 시계열, QQQ 벤치마크가 붙기 전에는 선을 표시하지 않습니다.
               </AppText>
             </View>
           )}
@@ -103,11 +95,10 @@ export function HomeRelativeReturnChartCard({
 
         <View style={styles.statusLine}>
           <AppText variant="caption">선택 기간: {selectedTimeframe}</AppText>
-          <AppText variant="caption">현재 상태: {chart.sourceState.freshnessStatus}</AppText>
-          <AppText variant="caption">차트 포인트: {chart.points.length}</AppText>
+          <AppText variant="caption">데이터 상태: 연결 대기</AppText>
         </View>
       </View>
-    </ChartWithSourceState>
+    </CardContainer>
   );
 }
 
@@ -136,8 +127,9 @@ const elevatedCard = {
 const styles = StyleSheet.create({
   card: {
     ...elevatedCard,
+    borderRadius: 20,
     gap: spacing.md,
-    minHeight: 280,
+    minHeight: 244,
     padding: spacing.lg,
   },
   content: {
@@ -148,6 +140,12 @@ const styles = StyleSheet.create({
   },
   headerText: {
     gap: spacing.xs,
+  },
+  sectionTitle: {
+    color: colors.ink,
+    fontSize: 22,
+    fontWeight: "800",
+    lineHeight: 28,
   },
   cardTitle: {
     color: colors.ink,
@@ -205,9 +203,9 @@ const styles = StyleSheet.create({
   chartFrame: {
     backgroundColor: colors.surfaceMuted,
     borderColor: colors.border,
-    borderRadius: 8,
+    borderRadius: 12,
     borderWidth: 1,
-    minHeight: 132,
+    minHeight: 112,
     overflow: "hidden",
     padding: spacing.md,
   },
@@ -230,14 +228,14 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: spacing.sm,
     justifyContent: "center",
-    minHeight: 104,
+    minHeight: 92,
     paddingHorizontal: spacing.sm,
   },
   emptyTitle: {
     color: colors.ink,
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "800",
-    lineHeight: 24,
+    lineHeight: 22,
     textAlign: "center",
   },
   emptyBody: {

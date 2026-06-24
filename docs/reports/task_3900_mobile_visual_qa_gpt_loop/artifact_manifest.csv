@@ -1,0 +1,13 @@
+artifact_path,artifact_type,description,authority
+docs/reports/task_3900_mobile_visual_qa_gpt_loop/task_3900_mobile_visual_qa_gpt_loop.md,report,Task3900 closeout report,NOT_AUTHORITY
+docs/reports/task_3900_mobile_visual_qa_gpt_loop/home_visual_qa_spec.md,spec,HOME screenshot-driven revision spec,NOT_AUTHORITY
+docs/reports/task_3900_mobile_visual_qa_gpt_loop/portfolio_visual_qa_spec.md,spec,PORTFOLIO screenshot-driven revision spec,NOT_AUTHORITY
+docs/reports/task_3900_mobile_visual_qa_gpt_loop/brain_visual_qa_spec.md,spec,BRAIN screenshot-driven revision spec,NOT_AUTHORITY
+docs/reports/task_3900_mobile_visual_qa_gpt_loop/gpt_loop_ledger.csv,ledger,Three-loop GPT expert-agent visual QA ledger,NOT_AUTHORITY
+docs/frontend_app_ssot/24_PRE_DATA_CONNECTION_CONTRACT.md,contract,Pre-data connection contract for HOME PORTFOLIO BRAIN,NOT_AUTHORITY
+data/artifacts/task_3900_mobile_visual_qa_gpt_loop/screenshots/home_390x844.png,screenshot,Before screenshot for HOME 390x844,NOT_AUTHORITY
+data/artifacts/task_3900_mobile_visual_qa_gpt_loop/screenshots/portfolio_390x844.png,screenshot,Before screenshot for PORTFOLIO 390x844,NOT_AUTHORITY
+data/artifacts/task_3900_mobile_visual_qa_gpt_loop/screenshots/brain_390x844.png,screenshot,Before screenshot for BRAIN 390x844,NOT_AUTHORITY
+data/artifacts/task_3900_mobile_visual_qa_gpt_loop/screenshots/home_after_390x844.png,screenshot,After screenshot for HOME 390x844,NOT_AUTHORITY
+data/artifacts/task_3900_mobile_visual_qa_gpt_loop/screenshots/portfolio_after_390x844.png,screenshot,After screenshot for PORTFOLIO 390x844,NOT_AUTHORITY
+data/artifacts/task_3900_mobile_visual_qa_gpt_loop/screenshots/brain_after_390x844.png,screenshot,After screenshot for BRAIN 390x844,NOT_AUTHORITY

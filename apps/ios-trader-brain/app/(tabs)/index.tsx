@@ -7,8 +7,7 @@ import { ScreenContainer } from "../../src/components/layout";
 import { homeFixture } from "../../src/read-models/homeFixture";
 import { colors, mobile, spacing } from "../../src/theme/tokens";
 
-const MONEY_UNKNOWN = "UNKNOWN";
-const PERCENT_UNKNOWN = "UNKNOWN";
+const VALUE_PENDING = "연결 대기";
 
 export default function HomeRoute() {
   const home = homeFixture;
@@ -27,15 +26,36 @@ export default function HomeRoute() {
         winRatePct={portfolio.winRatePct}
       />
 
+      <CardContainer style={styles.attentionCard}>
+        <View style={styles.sectionHeader}>
+          <AppText style={styles.sectionTitle}>오늘 확인할 것</AppText>
+          <AppText variant="caption">
+            실제 계좌와 브레인 출처가 붙기 전까지 먼저 확인해야 할 항목입니다.
+          </AppText>
+        </View>
+        <View style={styles.attentionList}>
+          <AttentionItem
+            eyebrow="수익 차트"
+            title="평가금·원금·QQQ 기준선 연결 필요"
+            body="성과 흐름은 권위 있는 평가금, 원금, QQQ 시계열이 연결되면 표시됩니다."
+            meta="현재는 값을 추정하지 않습니다."
+          />
+          <AttentionItem
+            eyebrow="브레인"
+            title="후보와 차단 사유 확인 필요"
+            body={brain.sourceState.blockerReason}
+            meta={`후보 ${brain.candidateCount}개 · 차단 ${brain.blockedCount}개 · 검토 ${brain.reviewOnlyCount}개`}
+          />
+        </View>
+      </CardContainer>
+
       <HomeRelativeReturnChartCard chart={home.relativeReturnChart} />
 
       <CardContainer style={styles.sectionCard}>
         <View style={styles.sectionHeader}>
-          <AppText variant="title" style={styles.sectionTitle}>
-            보유 포트폴리오
-          </AppText>
+          <AppText style={styles.sectionTitle}>보유 포트폴리오</AppText>
           <AppText variant="caption">
-            수익 금액이 큰 순서로 최대 5개까지 보여주는 영역입니다.
+            수익 금액이 큰 순서로 최대 5개까지 보여줄 영역입니다.
           </AppText>
         </View>
         <EmptyStateCard
@@ -46,9 +66,7 @@ export default function HomeRoute() {
 
       <CardContainer style={styles.sectionCard}>
         <View style={styles.sectionHeader}>
-          <AppText variant="title" style={styles.sectionTitle}>
-            투자 일지
-          </AppText>
+          <AppText style={styles.sectionTitle}>투자 일지</AppText>
           <AppText variant="caption">
             월별 거래 기록과 메모가 연결되면 이곳에서 확인합니다.
           </AppText>
@@ -72,47 +90,20 @@ export default function HomeRoute() {
         </ScrollView>
 
         <EmptyStateCard
-          body="거래내역이 붙기 전까지 매수·매도 기록, 수량, 손익, 메모를 추정하지 않습니다."
+          body="거래내역을 붙이기 전까지 매수·매도 기록, 수량, 손익, 메모를 추정하지 않습니다."
           title="해당 월의 거래내역이 없습니다."
         />
       </CardContainer>
 
-      <CardContainer style={styles.attentionCard}>
-        <View style={styles.sectionHeader}>
-          <AppText variant="title" style={styles.sectionTitle}>
-            오늘 확인할 것
-          </AppText>
-          <AppText variant="caption">
-            시스템 상태가 아니라 투자 화면을 완성하기 위해 필요한 데이터 연결 항목입니다.
-          </AppText>
-        </View>
-        <View style={styles.attentionList}>
-          <AttentionItem
-            eyebrow="성과 차트"
-            title="평가금·원금 시계열 연결 필요"
-            body={home.relativeReturnChart.sourceState.blockerReason}
-            meta="가짜 차트는 표시하지 않습니다"
-          />
-          <AttentionItem
-            eyebrow="브레인"
-            title="후보 상태와 차단 사유 확인"
-            body={brain.sourceState.blockerReason}
-            meta={`후보 ${brain.candidateCount}개 · 차단 ${brain.blockedCount}개 · 검토 전용 ${brain.reviewOnlyCount}개`}
-          />
-        </View>
-      </CardContainer>
-
       <CardContainer style={styles.safetyCard}>
         <View style={styles.sectionHeader}>
-          <AppText variant="title" style={styles.secondaryTitle}>
-            데이터 출처 상태
-          </AppText>
+          <AppText style={styles.secondaryTitle}>데이터 출처 상태</AppText>
           <AppText variant="caption">
-            Fresh {home.sourceSummary.freshCount} · Stale {home.sourceSummary.staleCount} · Missing {home.sourceSummary.missingCount} · Unknown {home.sourceSummary.unknownCount}
+            읽기 전용 상태와 출처 연결 상태입니다. NOT_AUTHORITY.
           </AppText>
         </View>
         <View style={styles.sourceBadgeRow}>
-          <Badge label="읽기 전용 · read-only" tone="readOnly" />
+          <Badge label="읽기 전용" tone="readOnly" />
           <Badge label="NOT_AUTHORITY" tone="blocked" />
           <Badge label="모바일 우선" tone="readOnly" />
           <SourceFreshnessBadge compact sourceState={portfolio.sourceState} />
@@ -143,16 +134,20 @@ function PortfolioHeroCard({
   totalReturnPct,
   winRatePct,
 }: PortfolioHeroCardProps) {
+  const hasAccountValue = typeof accountValue === "number" && !Number.isNaN(accountValue);
+
   return (
     <CardContainer style={styles.heroCard}>
       <View style={styles.heroAmountBlock}>
         <AppText style={styles.heroLabel}>평가금</AppText>
         <View style={styles.evaluationRow}>
-          <AppText style={styles.evaluationValue}>{displayMoney(accountValue)}</AppText>
-          <AppText style={styles.evaluationUnit}>원</AppText>
+          <AppText style={hasAccountValue ? styles.evaluationValue : styles.evaluationPending}>
+            {displayMoney(accountValue)}
+          </AppText>
+          {hasAccountValue ? <AppText style={styles.evaluationUnit}>원</AppText> : null}
         </View>
         <AppText style={styles.changeText}>
-          전월 대비 {displayCompactMoney(openPnl)} ({displayCompactPercent(totalReturnPct)})
+          계좌 평가금이 아직 연결되지 않았습니다.
         </AppText>
       </View>
 
@@ -160,7 +155,7 @@ function PortfolioHeroCard({
 
       <View style={styles.principalRow}>
         <AppText style={styles.heroLabel}>원금</AppText>
-        <AppText style={styles.principalValue}>{displayMoney(investedCash)} 원</AppText>
+        <AppText style={styles.principalValue}>{displayMoney(investedCash)}</AppText>
       </View>
 
       <View style={styles.kpiRow}>
@@ -240,7 +235,7 @@ function EmptyStateCard({ body, title }: EmptyStateCardProps) {
 
 function displayMoney(value: number | null) {
   if (value === null || Number.isNaN(value)) {
-    return MONEY_UNKNOWN;
+    return VALUE_PENDING;
   }
 
   return value.toLocaleString("ko-KR");
@@ -248,7 +243,7 @@ function displayMoney(value: number | null) {
 
 function displaySignedMoney(value: number | null) {
   if (value === null || Number.isNaN(value)) {
-    return MONEY_UNKNOWN;
+    return VALUE_PENDING;
   }
 
   const prefix = value > 0 ? "+" : "";
@@ -257,23 +252,15 @@ function displaySignedMoney(value: number | null) {
 
 function displayCompactMoney(value: number | null) {
   if (value === null || Number.isNaN(value)) {
-    return "-";
+    return VALUE_PENDING;
   }
 
   return displaySignedMoney(value);
 }
 
-function displayPercent(value: number | null) {
-  if (value === null || Number.isNaN(value)) {
-    return PERCENT_UNKNOWN;
-  }
-
-  return `${value.toFixed(1)}%`;
-}
-
 function displaySignedPercent(value: number | null) {
   if (value === null || Number.isNaN(value)) {
-    return PERCENT_UNKNOWN;
+    return VALUE_PENDING;
   }
 
   const prefix = value > 0 ? "+" : "";
@@ -282,7 +269,7 @@ function displaySignedPercent(value: number | null) {
 
 function displayCompactPercent(value: number | null) {
   if (value === null || Number.isNaN(value)) {
-    return "-";
+    return VALUE_PENDING;
   }
 
   return displaySignedPercent(value);
@@ -324,7 +311,7 @@ const elevatedCard = {
 const styles = StyleSheet.create({
   screen: {
     backgroundColor: "#F6F7F9",
-    gap: 32,
+    gap: 24,
     marginHorizontal: 0,
     maxWidth: 390,
     paddingBottom: 32,
@@ -334,6 +321,7 @@ const styles = StyleSheet.create({
   },
   heroCard: {
     ...elevatedCard,
+    borderRadius: 24,
     gap: spacing.md,
     marginTop: 24,
     minHeight: 220,
@@ -353,6 +341,7 @@ const styles = StyleSheet.create({
   evaluationRow: {
     alignItems: "baseline",
     flexDirection: "row",
+    flexWrap: "wrap",
     gap: spacing.sm,
   },
   evaluationValue: {
@@ -360,6 +349,12 @@ const styles = StyleSheet.create({
     fontSize: 38,
     fontWeight: "800",
     lineHeight: 42,
+  },
+  evaluationPending: {
+    color: colors.ink,
+    fontSize: 30,
+    fontWeight: "800",
+    lineHeight: 36,
   },
   evaluationUnit: {
     color: colors.mutedInk,
@@ -397,6 +392,7 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: spacing.xs,
     justifyContent: "space-between",
+    minWidth: 0,
   },
   kpiLabel: {
     color: colors.mutedInk,
@@ -406,7 +402,7 @@ const styles = StyleSheet.create({
   },
   kpiValue: {
     color: colors.ink,
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "700",
     lineHeight: 22,
   },
@@ -418,6 +414,7 @@ const styles = StyleSheet.create({
   },
   sectionCard: {
     ...elevatedCard,
+    borderRadius: 16,
     gap: spacing.md,
     padding: spacing.lg,
   },
@@ -425,11 +422,13 @@ const styles = StyleSheet.create({
     gap: spacing.xs,
   },
   sectionTitle: {
-    fontSize: 24,
-    fontWeight: "700",
-    lineHeight: 32,
+    color: colors.ink,
+    fontSize: 22,
+    fontWeight: "800",
+    lineHeight: 28,
   },
   secondaryTitle: {
+    color: colors.ink,
     fontSize: 18,
     fontWeight: "700",
     lineHeight: 24,
@@ -438,7 +437,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: colors.surfaceMuted,
     borderColor: colors.border,
-    borderRadius: 8,
+    borderRadius: 12,
     borderStyle: "dashed",
     borderWidth: 1,
     flexDirection: "row",
@@ -465,6 +464,7 @@ const styles = StyleSheet.create({
   emptyCopy: {
     flex: 1,
     gap: spacing.xs,
+    minWidth: 0,
   },
   emptyTitle: {
     color: colors.ink,
@@ -481,7 +481,7 @@ const styles = StyleSheet.create({
   monthPill: {
     alignItems: "center",
     borderColor: colors.border,
-    borderRadius: 8,
+    borderRadius: 16,
     borderWidth: 1,
     height: 56,
     justifyContent: "center",
@@ -504,17 +504,17 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
   attentionCard: {
-    backgroundColor: colors.surfaceMuted,
-    borderStyle: "dashed",
+    ...elevatedCard,
+    borderRadius: 16,
     gap: spacing.md,
   },
   attentionList: {
     gap: spacing.md,
   },
   attentionItem: {
-    backgroundColor: colors.surface,
+    backgroundColor: colors.surfaceMuted,
     borderColor: colors.border,
-    borderRadius: 8,
+    borderRadius: 12,
     borderWidth: 1,
     flexDirection: "row",
     gap: spacing.md,
@@ -522,12 +522,12 @@ const styles = StyleSheet.create({
   },
   attentionEyebrow: {
     alignItems: "center",
-    backgroundColor: colors.surfaceMuted,
+    backgroundColor: colors.surface,
     borderColor: colors.border,
     borderRadius: 8,
     borderWidth: 1,
     minHeight: mobile.touchTarget,
-    minWidth: 56,
+    minWidth: 64,
     paddingHorizontal: spacing.sm,
     paddingVertical: spacing.sm,
   },
@@ -538,6 +538,7 @@ const styles = StyleSheet.create({
   attentionCopy: {
     flex: 1,
     gap: spacing.xs,
+    minWidth: 0,
   },
   attentionTitle: {
     color: colors.ink,
@@ -551,6 +552,7 @@ const styles = StyleSheet.create({
   },
   safetyCard: {
     backgroundColor: colors.surfaceMuted,
+    borderRadius: 16,
     borderStyle: "dashed",
     gap: spacing.md,
   },

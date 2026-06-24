@@ -67,11 +67,11 @@ for (const [tabId, file] of Object.entries(tabFiles)) {
     expect(source.includes("tableCard"), "portfolio must render fixed-height holdings table card");
     expect(source.includes("detailCard"), "portfolio must render stock detail card");
     expect(source.includes("보유종목"), "portfolio must render holdings table title");
-    expect(source.includes("Stock Detail"), "portfolio must preserve stock detail marker");
+    expect(source.includes("선택 종목"), "portfolio must preserve stock detail marker as Korean product copy");
     expect(source.includes("차트 데이터 연결 대기"), "portfolio chart must fail closed until authority is connected");
     expect(source.includes("setSelectedHoldingId"), "portfolio must support local row selection");
     expect(source.includes("toggleIndicator"), "portfolio must support local indicator toggles");
-    expect(source.includes("SOURCE_NOT_ATTACHED"), "portfolio data must remain source-not-attached until authority is connected");
+    expect(source.includes("출처 연결 대기"), "portfolio data must remain source-not-attached until authority is connected");
     expect(source.includes("MobileV1StatusRail"), `${tabId} must render MobileV1StatusRail`);
     expect(source.includes("Phone-first v2"), `${tabId} must visibly mark phone-first v2`);
   } else {

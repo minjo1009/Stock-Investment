@@ -47,9 +47,9 @@ const newsItems = [
 ];
 
 const relationChains = [
-  "전력망 투자 -> 데이터센터 증설 -> 냉각·전력 장비 관심",
-  "금리 안정 -> 장기 CAPEX 재개 -> 반도체 장비 심리 개선",
-  "규제 논의 -> 허가 지연 가능성 -> 과열 종목 변동성 확대",
+  "전력망 투자 → 데이터센터 증설 → 냉각·전력 장비 관심",
+  "금리 안정 → 장기 CAPEX 재개 → 반도체 장비 심리 개선",
+  "규제 논의 → 허가 지연 가능성 → 과열 종목 변동성 확대",
 ];
 
 const candidates = [
@@ -58,7 +58,7 @@ const candidates = [
     symbol: "FIXA",
     name: "인프라 후보 A",
     description: "전력·냉각 장비",
-    state: "승격 가능",
+    state: "검토 유지",
     conviction: 72,
     risk: "공식 출처 연결 전",
     next: "근거 확인",
@@ -111,7 +111,7 @@ export default function BrainRoute() {
   const updatedAt = "최근 업데이트: 오전 9:32";
 
   return (
-    <ScreenContainer contentContainerStyle={styles.screen}>
+    <ScreenContainer contentContainerStyle={styles.screen} padded={false}>
       <View style={styles.header}>
         <View>
           <AppText variant="title" style={styles.headerTitle}>
@@ -121,16 +121,13 @@ export default function BrainRoute() {
         </View>
         <View style={styles.headerIcons}>
           <AppText style={styles.iconText}>⌕</AppText>
-          <AppText style={styles.iconText}>⚙</AppText>
         </View>
       </View>
 
       <CardContainer style={styles.issueCard}>
         <View style={styles.issueHeader}>
-          <View>
-            <AppText variant="caption">오늘의 이슈</AppText>
-            <AppText style={styles.issueTheme}>{issue.theme}</AppText>
-          </View>
+          <AppText variant="caption">오늘의 이슈</AppText>
+          <AppText style={styles.issueTheme}>{issue.theme}</AppText>
           <Badge label={issue.state} tone="stale" />
         </View>
         <AppText style={styles.issueBody}>{issue.interpretation}</AppText>
@@ -159,8 +156,11 @@ export default function BrainRoute() {
               {item.summary}
             </AppText>
             <View style={styles.interpretationBox}>
-              <AppText variant="caption" style={styles.interpretationText} numberOfLines={2}>
-                브레인 해석: {item.interpretation}
+              <AppText variant="caption" style={styles.interpretationLabel}>
+                브레인 해석
+              </AppText>
+              <AppText variant="caption" style={styles.interpretationText}>
+                {item.interpretation}
               </AppText>
             </View>
             <Link href={item.route}>
@@ -172,12 +172,12 @@ export default function BrainRoute() {
         ))}
       </View>
 
-      <SectionHeader title="관계 맵" caption="원인에서 종목·테마까지 이어지는 흐름입니다." />
+      <SectionHeader title="관계 맵" caption="사건이 어떤 종목과 테마로 이어지는지 봅니다." />
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.horizontalRail}>
         {relationChains.map((chain) => (
           <Link key={chain} href="/brain/chain/fixture-chain" style={styles.relationLink}>
             <CardContainer style={styles.relationCard}>
-              <AppText style={styles.relationText}>{chain}</AppText>
+              <AppText numberOfLines={2} style={styles.relationText}>{chain}</AppText>
             </CardContainer>
           </Link>
         ))}
@@ -190,8 +190,8 @@ export default function BrainRoute() {
             <CardContainer style={styles.candidateCard}>
               <View>
                 <AppText style={styles.candidateSymbol}>{candidate.symbol}</AppText>
-                <AppText variant="caption">{candidate.name}</AppText>
-                <AppText variant="caption">{candidate.description}</AppText>
+                <AppText variant="caption" numberOfLines={1}>{candidate.name}</AppText>
+                <AppText variant="caption" numberOfLines={1}>{candidate.description}</AppText>
               </View>
               <View style={styles.candidateCenter}>
                 <Badge label={candidate.state} tone={candidate.state === "주의" ? "blocked" : "readOnly"} />
@@ -201,8 +201,8 @@ export default function BrainRoute() {
                 </View>
               </View>
               <View>
-                <AppText variant="caption">주요 위험: {candidate.risk}</AppText>
-                <AppText variant="caption">다음 대응: {candidate.next}</AppText>
+                <AppText variant="caption">위험: {candidate.risk}</AppText>
+                <AppText variant="caption">다음: {candidate.next}</AppText>
               </View>
             </CardContainer>
           </Link>
@@ -271,12 +271,19 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: "#F9FAFB",
     gap: spacing.lg,
+    marginHorizontal: 0,
+    maxWidth: 390,
+    paddingBottom: 32,
+    paddingHorizontal: 20,
+    paddingTop: 24,
+    width: "100%",
   },
   header: {
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
     minHeight: 56,
+    paddingHorizontal: 16,
   },
   headerTitle: {
     color: "#1F2937",
@@ -299,9 +306,8 @@ const styles = StyleSheet.create({
     padding: spacing.lg,
   },
   issueHeader: {
-    alignItems: "flex-start",
-    flexDirection: "row",
-    justifyContent: "space-between",
+    alignItems: "stretch",
+    flexDirection: "column",
     gap: spacing.md,
   },
   issueTheme: {
@@ -324,6 +330,7 @@ const styles = StyleSheet.create({
     color: "#6B7280",
     fontSize: 13,
     fontWeight: "600",
+    minWidth: 56,
   },
   convictionTrack: {
     backgroundColor: "#E5E7EB",
@@ -341,9 +348,12 @@ const styles = StyleSheet.create({
     color: "#1F2937",
     fontSize: 16,
     fontWeight: "700",
+    minWidth: 36,
+    textAlign: "right",
   },
   sectionHeader: {
     gap: spacing.xs,
+    paddingHorizontal: 16,
   },
   sectionTitle: {
     color: "#1F2937",
@@ -358,12 +368,16 @@ const styles = StyleSheet.create({
     borderColor: "#E5E7EB",
     borderRadius: 12,
     minHeight: 140,
+    maxWidth: "100%",
+    overflow: "hidden",
   },
   newsMetaRow: {
     gap: spacing.xs,
+    minWidth: 0,
   },
   newsTitle: {
     color: "#1F2937",
+    flexShrink: 1,
     fontSize: 16,
     fontWeight: "700",
     lineHeight: 22,
@@ -376,10 +390,18 @@ const styles = StyleSheet.create({
   interpretationBox: {
     backgroundColor: "#F3F4F6",
     borderRadius: 12,
-    padding: spacing.md,
+    gap: spacing.xs,
+    paddingHorizontal: spacing.md,
+    paddingVertical: 10,
+  },
+  interpretationLabel: {
+    color: "#374151",
+    fontWeight: "800",
   },
   interpretationText: {
     color: "#374151",
+    flexShrink: 1,
+    lineHeight: 18,
   },
   linkText: {
     color: "#007C99",
@@ -417,7 +439,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     height: 200,
     justifyContent: "space-between",
-    width: 160,
+    width: 152,
   },
   candidateSymbol: {
     color: "#1F2937",
@@ -426,6 +448,7 @@ const styles = StyleSheet.create({
   },
   candidateCenter: {
     gap: spacing.sm,
+    alignItems: "flex-start",
   },
   candidateConviction: {
     color: "#1F2937",

@@ -66,9 +66,10 @@ expectNoMojibake(homeFixture, "HOME fixture");
 expectNoMojibake(JSON.stringify(homeJson ?? {}), "HOME fixture JSON");
 
 expectBefore(homeRoute, "<PortfolioHeroCard", "<HomeRelativeReturnChartCard", "HOME production IA");
+expectBefore(homeRoute, "오늘 확인할 것", "<HomeRelativeReturnChartCard", "HOME production IA");
 expectBefore(homeRoute, "<HomeRelativeReturnChartCard", "보유 포트폴리오", "HOME production IA");
 expectBefore(homeRoute, "보유 포트폴리오", "투자 일지", "HOME production IA");
-expectBefore(homeRoute, "투자 일지", "오늘 확인할 것", "HOME production IA");
+expectBefore(homeRoute, "투자 일지", "데이터 출처 상태", "HOME production IA");
 
 expectIncludes(
   homeRoute,
@@ -87,6 +88,7 @@ expectIncludes(
     "startYear = 2022",
     "ScrollView",
     "해당 월의 거래내역이 없습니다.",
+    "오늘 확인할 것",
     "읽기 전용",
   ],
   "HOME route"
@@ -95,9 +97,9 @@ expectIncludes(
 expectIncludes(
   chartCard,
   [
-    "Performance",
+    "수익현황",
     "평가금 vs 원금 vs QQQ",
-    "평가금, 원금, QQQ 기준선",
+    "권위 있는 평가금 곡선",
     "QQQ 기준 대기",
     "Pressable",
     "useState<TimeframeLabel>",
@@ -110,10 +112,10 @@ expectIncludes(
     "1Y",
     "ALL",
     "선택 기간: {selectedTimeframe}",
-    "승률 UNKNOWN",
-    "MDD UNKNOWN",
-    "차트 데이터 연결 대기",
-    "showTechnicalDetails={false}",
+    "승률 연결 대기",
+    "MDD 연결 대기",
+    "차트 연결 대기",
+    "데이터 상태: 연결 대기",
   ],
   "HOME performance timeline chart card"
 );
@@ -136,6 +138,10 @@ expectExcludes(
     "DB 상태",
     "scheduler",
     "kill switch",
+    "UNKNOWN 원",
+    "현재 상태:",
+    "차트 포인트:",
+    "SOURCE_NOT_ATTACHED",
   ],
   "HOME visible source"
 );
