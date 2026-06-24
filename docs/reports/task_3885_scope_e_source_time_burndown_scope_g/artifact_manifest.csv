@@ -1,0 +1,10 @@
+path,artifact_type,description,status
+docs/reports/task_3885_scope_e_source_time_burndown_scope_g/scope_e_source_time_burndown_scope_g_report.md,report,Task3885 Scope E source-time blocker burn-down and Scope G diagnostic report,ACTIVE
+docs/reports/task_3885_scope_e_source_time_burndown_scope_g/gpt_loop_1_prompt.md,gpt_prompt,GPT loop 1 review prompt,ACTIVE
+docs/reports/task_3885_scope_e_source_time_burndown_scope_g/gpt_loop_1_response.md,gpt_response,GPT loop 1 review response,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_e_source_time_audit.json,artifact,Scope E source-time audit result after burn-down,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_e_source_time_summary.csv,artifact,Scope E source-time family summary after burn-down,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_e_source_time_blockers.csv,artifact,Scope E active blocker report after burn-down,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_e_source_time_quarantine.csv,artifact,Scope E quarantined source-time violation report,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/market_bars_source_time_repair_run.json,artifact,Diagnostic market bars repair run result,ACTIVE
+data/artifacts/task_3883_news_ops_scope_a_g_implementation/scope_g_controlled_replay_go_no_go_matrix.csv,artifact,Scope G controlled replay go no-go matrix,ACTIVE

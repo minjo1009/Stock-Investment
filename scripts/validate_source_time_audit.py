@@ -10,6 +10,7 @@ from news_ops_to_backtest_common import (
     fail_if_errors,
     parse_ts,
     safety_payload,
+    table_exists,
     write_csv,
     write_json,
 )
@@ -44,21 +45,52 @@ def main() -> None:
     summary_rows: list[dict[str, object]] = []
     chain_rows: list[dict[str, object]] = []
     authority_rows: list[dict[str, object]] = []
+    quarantine_rows: list[dict[str, object]] = []
     con = connect_readonly()
     try:
+        quarantine_exists = table_exists(con, "source_receipt_quarantine")
         for family in REQUIRED_SOURCE_FAMILIES:
-            rows = con.execute(
-                """
-                SELECT receipt_id, source_family, source_ts, capture_ts,
-                       available_to_brain_ts, source_time_basis, strict_gate_allowed,
-                       proxy_allowed
-                FROM source_receipts
-                WHERE source_family=?
-                ORDER BY created_at DESC
-                LIMIT 200
-                """,
-                (family,),
-            ).fetchall()
+            if quarantine_exists:
+                rows = con.execute(
+                    """
+                    SELECT receipt_id, source_family, source_ts, capture_ts,
+                           available_to_brain_ts, source_time_basis, strict_gate_allowed,
+                           proxy_allowed
+                    FROM source_receipts
+                    WHERE source_family=?
+                      AND receipt_id NOT IN (
+                          SELECT receipt_id FROM source_receipt_quarantine
+                      )
+                    ORDER BY created_at DESC
+                    LIMIT 200
+                    """,
+                    (family,),
+                ).fetchall()
+                quarantined = con.execute(
+                    """
+                    SELECT receipt_id, source_family, quarantine_reason,
+                           source_ts, capture_ts, quarantined_at, notes
+                    FROM source_receipt_quarantine
+                    WHERE source_family=?
+                    ORDER BY quarantined_at DESC, receipt_id
+                    """,
+                    (family,),
+                ).fetchall()
+            else:
+                rows = con.execute(
+                    """
+                    SELECT receipt_id, source_family, source_ts, capture_ts,
+                           available_to_brain_ts, source_time_basis, strict_gate_allowed,
+                           proxy_allowed
+                    FROM source_receipts
+                    WHERE source_family=?
+                    ORDER BY created_at DESC
+                    LIMIT 200
+                    """,
+                    (family,),
+                ).fetchall()
+                quarantined = []
+            quarantine_rows.extend(dict(row) for row in quarantined)
             bad_count = 0
             chain_count = 0
             for row in rows:
@@ -129,6 +161,7 @@ def main() -> None:
                     "sampled_receipts": len(rows),
                     "audited_chain_rows": chain_count,
                     "source_time_blockers": bad_count,
+                    "quarantined_receipts": len(quarantined),
                     "audit_status": "PASS" if bad_count == 0 and rows else "BLOCKED",
                 }
             )
@@ -167,6 +200,19 @@ def main() -> None:
             "source_time_basis",
         ],
     )
+    write_csv(
+        ARTIFACT_DIR / "scope_e_source_time_quarantine.csv",
+        quarantine_rows,
+        fieldnames=[
+            "receipt_id",
+            "source_family",
+            "quarantine_reason",
+            "source_ts",
+            "capture_ts",
+            "quarantined_at",
+            "notes",
+        ],
+    )
     write_json(
         ARTIFACT_DIR / "scope_e_source_time_audit.json",
         {
@@ -174,6 +220,7 @@ def main() -> None:
             "fatal_errors": fatal_errors,
             "blocker_errors": blocker_errors,
             "source_time_blocker_count": len(blockers),
+            "quarantined_receipt_count": len(quarantine_rows),
             "receipt_sample_limit_per_family": 200,
             "rule": "source_ts <= capture_ts <= available_to_brain_ts <= node_asof_ts <= edge_asof_ts <= bundle_asof_ts <= adapter_created_ts <= tradable_after_ts",
             **safety_payload(),

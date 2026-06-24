@@ -75,6 +75,10 @@ def _bucket_ts() -> str:
     return now.replace(minute=minute, second=0, microsecond=0).isoformat().replace("+00:00", "Z")
 
 
+def _utc_now_seconds() -> str:
+    return datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
 def _digest_text(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
@@ -141,7 +145,7 @@ def _write_scheduler_ledger(
     skipped_reason: str,
     validation: dict[str, Any],
 ) -> None:
-    now = utc_now()
+    now = _utc_now_seconds()
     con.execute(
         """
         INSERT OR REPLACE INTO scheduler_run_ledger(
@@ -168,7 +172,7 @@ def _write_scheduler_ledger(
 
 def _write_heartbeat_raw(job: sqlite3.Row, bucket: str, raw_dir: Path) -> tuple[Path, dict[str, Any]]:
     raw_dir.mkdir(parents=True, exist_ok=True)
-    now = utc_now()
+    now = _utc_now_seconds()
     payload = {
         "source_family": job["source_family"],
         "job_name": job["job_name"],
@@ -229,15 +233,25 @@ def _encode_hash_value(value: Any) -> str:
     return str(value)
 
 
-def _hash_market_bars_table(con: sqlite3.Connection, columns: list[str]) -> str:
+def _hash_market_bars_table(
+    con: sqlite3.Connection,
+    columns: list[str],
+    *,
+    closed_before_ts: str | None = None,
+) -> str:
     digest = hashlib.sha256()
     digest.update(("columns|" + "|".join(columns) + "\n").encode("utf-8"))
     query = (
         "SELECT "
         + ", ".join(f'"{column}"' for column in columns)
-        + " FROM market_bars_5m ORDER BY symbol, bar_start_ts, bar_end_ts"
+        + " FROM market_bars_5m"
     )
-    for row in con.execute(query):
+    params: tuple[Any, ...] = ()
+    if closed_before_ts is not None:
+        query += " WHERE bar_end_ts <= ?"
+        params = (closed_before_ts,)
+    query += " ORDER BY symbol, bar_start_ts, bar_end_ts"
+    for row in con.execute(query, params):
         digest.update(("|".join(_encode_hash_value(value) for value in row) + "\n").encode("utf-8"))
     return digest.hexdigest()
 
@@ -312,7 +326,7 @@ def _write_cached_table_raw(
     freshness_status: str,
 ) -> tuple[Path, dict[str, Any]]:
     raw_dir.mkdir(parents=True, exist_ok=True)
-    now = utc_now()
+    now = _utc_now_seconds()
     payload = {
         "source_family": job["source_family"],
         "job_name": job["job_name"],
@@ -350,7 +364,7 @@ def _write_derived_artifact_raw(
 ) -> tuple[Path, dict[str, Any]]:
     family_dir = raw_dir / str(job["source_family"])
     family_dir.mkdir(parents=True, exist_ok=True)
-    now = utc_now()
+    now = _utc_now_seconds()
     payload = {
         "source_family": job["source_family"],
         "job_name": job["job_name"],
@@ -795,9 +809,8 @@ def _run_cached_table_snapshot(
     return JobResult(job["job_name"], job["source_family"], "SUCCESS", "", receipt_id, ref_id, edge_id)
 
 
-def _market_bars_stats(con: sqlite3.Connection) -> dict[str, Any]:
-    row = con.execute(
-        """
+def _market_bars_stats(con: sqlite3.Connection, *, closed_before_ts: str | None = None) -> dict[str, Any]:
+    query = """
         SELECT COUNT(*) AS row_count,
                COUNT(DISTINCT symbol) AS symbol_count,
                MIN(bar_start_ts) AS min_bar_start_ts,
@@ -807,8 +820,12 @@ def _market_bars_stats(con: sqlite3.Connection) -> dict[str, Any]:
                MIN(last_updated_at) AS min_last_updated_at,
                MAX(last_updated_at) AS max_last_updated_at
         FROM market_bars_5m
-        """
-    ).fetchone()
+    """
+    params: tuple[Any, ...] = ()
+    if closed_before_ts is not None:
+        query += " WHERE bar_end_ts <= ?"
+        params = (closed_before_ts,)
+    row = con.execute(query, params).fetchone()
     return dict(row)
 
 
@@ -819,15 +836,19 @@ def _write_market_bars_raw(
     stats: dict[str, Any],
     table_hash: str,
     freshness_status: str,
+    *,
+    captured_at: str,
+    closed_bar_cutoff_ts: str,
 ) -> tuple[Path, dict[str, Any]]:
     raw_dir.mkdir(parents=True, exist_ok=True)
-    now = utc_now()
     payload = {
         "source_family": job["source_family"],
         "job_name": job["job_name"],
         "adapter_name": "cached_market_bars_5m",
         "bucket_ts": bucket,
-        "captured_at": now,
+        "captured_at": captured_at,
+        "closed_bar_cutoff_ts": closed_bar_cutoff_ts,
+        "open_bar_policy": "exclude_rows_with_bar_end_ts_after_captured_at",
         "cached_table": "market_bars_5m",
         "live_fetch": False,
         "diagnostic_only": True,
@@ -844,6 +865,50 @@ def _write_market_bars_raw(
     path = raw_dir / f"market_bars_5m_cached_{bucket.replace(':', '').replace('-', '')}.json"
     path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return path, payload
+
+
+def _ensure_source_receipt_quarantine(con: sqlite3.Connection) -> None:
+    con.execute(
+        """
+        CREATE TABLE IF NOT EXISTS source_receipt_quarantine (
+            receipt_id TEXT PRIMARY KEY,
+            source_family TEXT NOT NULL,
+            quarantine_reason TEXT NOT NULL,
+            source_ts TEXT,
+            capture_ts TEXT,
+            quarantined_at TEXT NOT NULL,
+            notes TEXT NOT NULL
+        )
+        """
+    )
+
+
+def _quarantine_source_time_violations(
+    con: sqlite3.Connection,
+    *,
+    source_family: str,
+    quarantined_at: str,
+) -> int:
+    _ensure_source_receipt_quarantine(con)
+    before = con.total_changes
+    con.execute(
+        """
+        INSERT OR REPLACE INTO source_receipt_quarantine(
+            receipt_id, source_family, quarantine_reason, source_ts, capture_ts,
+            quarantined_at, notes
+        )
+        SELECT receipt_id, source_family, 'SOURCE_TS_AFTER_CAPTURE_TS',
+               source_ts, capture_ts, ?,
+               'receipt preserved for audit but excluded from active source-time chain'
+        FROM source_receipts
+        WHERE source_family=?
+          AND source_ts IS NOT NULL
+          AND capture_ts IS NOT NULL
+          AND source_ts > capture_ts
+        """,
+        (quarantined_at, source_family),
+    )
+    return con.total_changes - before
 
 
 def _run_heartbeat(con: sqlite3.Connection, job: sqlite3.Row, bucket: str, raw_dir: Path) -> JobResult:
@@ -1371,13 +1436,17 @@ def _run_indicator_snapshot_refresh(
             validation={"missing_source_is_negative": 0, "freshness_recovered": 0},
         )
         return JobResult(job["job_name"], job["source_family"], "SKIPPED", reason)
+    now = _utc_now_seconds()
     rows = con.execute(
         """
         SELECT symbol, bar_end_ts, close, high
         FROM market_bars_5m
-        WHERE close IS NOT NULL AND high IS NOT NULL
+        WHERE close IS NOT NULL
+          AND high IS NOT NULL
+          AND bar_end_ts <= ?
         ORDER BY symbol, bar_end_ts
-        """
+        """,
+        (now,),
     ).fetchall()
     if not rows:
         reason = "NO_MARKET_BARS_5M_SOURCE_FOR_INDICATORS"
@@ -1394,7 +1463,6 @@ def _run_indicator_snapshot_refresh(
     by_symbol: dict[str, list[sqlite3.Row]] = {}
     for row in rows:
         by_symbol.setdefault(str(row["symbol"]).upper(), []).append(row)
-    now = utc_now()
     inserts = []
     input_digest = hashlib.sha256()
     latest_source_ts = ""
@@ -1808,9 +1876,15 @@ def _run_cached_market_bars(
         return JobResult(job["job_name"], job["source_family"], "SKIPPED", reason)
 
     columns = _market_bars_columns(con)
-    stats = _market_bars_stats(con)
+    now = _utc_now_seconds()
+    quarantined_count = _quarantine_source_time_violations(
+        con,
+        source_family=str(job["source_family"]),
+        quarantined_at=now,
+    )
+    stats = _market_bars_stats(con, closed_before_ts=now)
     if int(stats["row_count"] or 0) <= 0:
-        reason = "NO_CACHED_MARKET_BARS_5M_SOURCE"
+        reason = "NO_CLOSED_CACHED_MARKET_BARS_5M_SOURCE"
         _write_scheduler_ledger(
             con,
             job_name=job["job_name"],
@@ -1822,6 +1896,8 @@ def _run_cached_market_bars(
                 "missing_source_is_negative": 0,
                 "freshness_recovered": 0,
                 "cached_source_only": 1,
+                "source_receipts_quarantined": quarantined_count,
+                "open_bar_policy": "exclude_rows_with_bar_end_ts_after_captured_at",
             },
         )
         return JobResult(job["job_name"], job["source_family"], "SKIPPED", reason)
@@ -1834,8 +1910,17 @@ def _run_cached_market_bars(
         if lag_seconds <= max_lag_seconds:
             freshness_status = "CURRENT_OR_RECENT"
 
-    table_hash = _hash_market_bars_table(con, columns)
-    raw_path, payload = _write_market_bars_raw(job, bucket, raw_dir, stats, table_hash, freshness_status)
+    table_hash = _hash_market_bars_table(con, columns, closed_before_ts=now)
+    raw_path, payload = _write_market_bars_raw(
+        job,
+        bucket,
+        raw_dir,
+        stats,
+        table_hash,
+        freshness_status,
+        captured_at=now,
+        closed_bar_cutoff_ts=now,
+    )
     raw_sha = sha256_file(raw_path)
     now = payload["captured_at"]
     receipt_id = f"receipt:{job['source_family']}:{bucket}"
@@ -1938,6 +2023,8 @@ def _run_cached_market_bars(
             "live_fetch": 0,
             "strict_gate_allowed": 0,
             "proxy_allowed": 0,
+            "source_receipts_quarantined": quarantined_count,
+            "open_bar_policy": "exclude_rows_with_bar_end_ts_after_captured_at",
         },
     )
     return JobResult(job["job_name"], job["source_family"], "SUCCESS", "", receipt_id, ref_id, edge_id)

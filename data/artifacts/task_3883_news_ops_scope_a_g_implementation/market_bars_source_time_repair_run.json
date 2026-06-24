@@ -1,0 +1,21 @@
+{
+  "status": "APPLIED_DIAGNOSTIC_ONLY",
+  "bucket_ts": "2026-06-24T00:45:00Z",
+  "jobs_seen": 1,
+  "success_count": 1,
+  "skipped_count": 0,
+  "results": [
+    {
+      "job_name": "market_bars_5m_refresh",
+      "source_family": "market_bars_5m",
+      "status": "SUCCESS",
+      "skipped_reason": "",
+      "receipt_id": "receipt:market_bars_5m:2026-06-24T00:45:00Z",
+      "ref_id": "ref:market_bars_5m:672b8e2baeedeafc",
+      "edge_id": "edge:market_bars_5m:2026-06-24T00:45:00Z"
+    }
+  ],
+  "strategy": "NOT_ACCEPTED",
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "real_capital": "FORBIDDEN"
+}

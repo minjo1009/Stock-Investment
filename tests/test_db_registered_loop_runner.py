@@ -5,7 +5,7 @@ import tempfile
 import unittest
 import os
 import json
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from tools.db import run_source_acquisition_once as source_runner
@@ -418,6 +418,84 @@ class DbRegisteredLoopRunnerTests(unittest.TestCase):
             ).fetchone()[0]
             self.assertIn('"freshness_recovered": 1', ledger)
             self.assertIn('"strict_gate_allowed": 0', ledger)
+        finally:
+            con.close()
+
+    def test_market_bars_adapter_excludes_open_bars_and_quarantines_prior_violations(self) -> None:
+        path = self._db()
+        raw_dir = path.parent / "raw"
+        market_raw_dir = path.parent / "market_raw"
+        now_dt = datetime.now(UTC).replace(microsecond=0)
+        closed_start = (now_dt - timedelta(minutes=15)).isoformat().replace("+00:00", "Z")
+        closed_end = (now_dt - timedelta(minutes=10)).isoformat().replace("+00:00", "Z")
+        open_start = now_dt.isoformat().replace("+00:00", "Z")
+        open_end = (now_dt + timedelta(minutes=3)).isoformat().replace("+00:00", "Z")
+        con = sqlite3.connect(path)
+        try:
+            con.executescript(
+                f"""
+                CREATE TABLE market_bars_5m(
+                    bar_id TEXT PRIMARY KEY,
+                    symbol TEXT NOT NULL,
+                    bar_start_ts TEXT NOT NULL,
+                    bar_end_ts TEXT NOT NULL,
+                    open REAL NOT NULL,
+                    high REAL NOT NULL,
+                    low REAL NOT NULL,
+                    close REAL NOT NULL,
+                    volume REAL NOT NULL,
+                    tick_count INTEGER NOT NULL,
+                    source TEXT NOT NULL,
+                    last_updated_at TEXT NOT NULL
+                );
+                INSERT INTO market_bars_5m VALUES
+                ('AAPL:{closed_start}','AAPL','{closed_start}','{closed_end}',10,11,9,10.5,1000,12,'fixture','{closed_end}'),
+                ('AAPL:{open_start}','AAPL','{open_start}','{open_end}',11,12,10,11.5,500,6,'fixture','{open_start}');
+                INSERT INTO source_receipts VALUES
+                ('receipt:market_bars_5m:prior-open','fixture','market_bars_5m','trading.db:market_bars_5m',
+                 '{open_end}','{open_start}','{open_start}','raw/open.json','abc','cached_table_bar_end_ts',0,0,'{open_start}');
+                """
+            )
+            con.commit()
+        finally:
+            con.close()
+
+        result = run_once(
+            db_path=path,
+            apply=True,
+            only_job="market_bars_5m_refresh",
+            bucket="2026-06-20T00:20:00Z",
+            raw_dir=raw_dir,
+            market_bars_raw_dir=market_raw_dir,
+        )
+        self.assertEqual(result["success_count"], 1)
+        con = sqlite3.connect(path)
+        try:
+            receipt = con.execute(
+                """
+                SELECT source_ts, capture_ts
+                FROM source_receipts
+                WHERE receipt_id='receipt:market_bars_5m:2026-06-20T00:20:00Z'
+                """
+            ).fetchone()
+            self.assertEqual(receipt[0], closed_end)
+            self.assertLessEqual(receipt[0], receipt[1])
+            quarantined = con.execute(
+                """
+                SELECT quarantine_reason
+                FROM source_receipt_quarantine
+                WHERE receipt_id='receipt:market_bars_5m:prior-open'
+                """
+            ).fetchone()
+            self.assertEqual(quarantined[0], "SOURCE_TS_AFTER_CAPTURE_TS")
+            validation = con.execute(
+                """
+                SELECT validation_refs_json FROM scheduler_run_ledger
+                WHERE cadence='market_bars_5m_refresh' AND status='SUCCESS'
+                """
+            ).fetchone()[0]
+            self.assertIn('"source_receipts_quarantined": 1', validation)
+            self.assertIn('"open_bar_policy": "exclude_rows_with_bar_end_ts_after_captured_at"', validation)
         finally:
             con.close()
 

@@ -16,7 +16,10 @@ F. No-execution diagnostic backtest harness
 G. Controlled replay NO-GO matrix
 ```
 
-This remains diagnostic-only. Controlled replay is explicitly `NO-GO` because the source-time audit found blockers.
+This remains diagnostic-only. The source-time blocker burn-down has cleared active
+Scope E blockers, but controlled replay is still `NO-GO` because market-data
+manifest, split/OOS, cost/slippage, and owner-approved replay scope are not
+cleared.
 
 ## Scope Results
 
@@ -26,7 +29,7 @@ This remains diagnostic-only. Controlled replay is explicitly `NO-GO` because th
 | B | PASS | `scope_a_b_config_jobs.csv`, `scope_a_b_db_registry.csv` |
 | C | PASS | `scope_c_l0_l1_storage_validation.json` |
 | D | PASS | `scope_d_l1_l6_consumption_validation.json` |
-| E | PASS_WITH_BLOCKERS | `scope_e_source_time_audit.json`, `scope_e_source_time_blockers.csv` |
+| E | PASS | `scope_e_source_time_audit.json`, `scope_e_source_time_blockers.csv`, `scope_e_source_time_quarantine.csv` |
 | F | PASS | `scope_f_no_execution_harness_manifest.json` |
 | G | NO-GO | `scope_g_controlled_replay_go_no_go_matrix.csv` |
 
@@ -51,17 +54,34 @@ The active DB scheduler registry was reseeded through the guarded management sch
 
 ## Source-Time Audit Finding
 
-The latest local source-time audit observed non-zero blocker rows. The exact
-count can move as active DB receipts change, but any non-zero count keeps
-controlled replay blocked. The current count is recorded in
-`scope_e_source_time_audit.json`.
+The latest local source-time audit now reports active blocker count zero.
 
-Observed blocker classes:
+Resolved blocker class:
 
-- Historical active-database summary row with an authority-gate flag.
-- Cached `market_ticks_intraday` and `market_bars_5m` receipts where the source timestamp is later than the capture timestamp.
+- Cached `market_bars_5m` receipts where the source timestamp was later than
+  the capture timestamp.
 
-These blockers are not converted into negative evidence. They block controlled replay eligibility and are carried into the no-execution harness.
+Root cause:
+
+- The cached 5-minute market bar evidence path used `MAX(bar_end_ts)` from the
+  table. When the table contained an in-progress bar, the recorded source
+  timestamp could be later than the diagnostic capture timestamp.
+
+Repair:
+
+- The cached market bars evidence path now excludes rows whose `bar_end_ts` is
+  after the capture timestamp.
+- Derived diagnostic indicators also exclude open bars.
+- Existing invalid receipts are preserved in a quarantine table and exported to
+  `scope_e_source_time_quarantine.csv`; they are not deleted and are not treated
+  as active replay-eligible source-time evidence.
+
+Current audit:
+
+```text
+source_time_blocker_count = 0
+quarantined_receipt_count = 79
+```
 
 ## No-Execution Harness
 
@@ -133,6 +153,10 @@ GPT confirmed that Task3883 is GitHub-visible, Scope E remains
 nonzero. GPT's remaining recommendation is source-time blocker burn-down before
 any replay eligibility work.
 
+After the source-time blocker burn-down, Scope E was revalidated as `PASS` with
+zero active blockers. Scope G remains diagnostic-only and controlled replay
+remains `NO-GO`.
+
 ## Safety Boundary
 
 ```text
@@ -143,9 +167,13 @@ No broker mutation added
 No live order path added
 No paper promotion added
 Controlled replay remains NO-GO
-Missing/stale/source-time-blocked data remains UNKNOWN/BLOCKER
+Missing/stale/non-approved replay data remains UNKNOWN/BLOCKER
 ```
 
 ## Next Required Work
 
-Repair or supersede the source-time blockers before any controlled diagnostic replay. The first concrete target is the cached `market_bars_5m` capture/source timestamp basis, because it produced most blocker rows.
+Define and approve the next Scope G controlled replay prerequisites: certified
+market-data manifest, split/OOS plan, cost/slippage config, and explicit
+owner-approved diagnostic replay scope. This source-time repair does not grant
+strategy acceptance, deployment readiness, paper/live permission, broker
+mutation permission, or real-capital permission.
