@@ -4,6 +4,7 @@ import { HomeRelativeReturnChartCard } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
 import { SourceFreshnessBadge } from "../../src/components/generic";
 import { MainTabHeader, ScreenContainer } from "../../src/components/layout";
+import { backtestSnapshotFixture } from "../../src/read-models/backtestSnapshotFixture";
 import { homeFixture } from "../../src/read-models/homeFixture";
 import { colors, mobile, spacing } from "../../src/theme/tokens";
 
@@ -14,6 +15,7 @@ export default function HomeRoute() {
   const home = homeFixture;
   const portfolio = home.portfolioSnapshot;
   const brain = home.brainSnapshot;
+  const backtest = backtestSnapshotFixture;
   const sourceSummary = home.sourceSummary;
   const journalMonths = buildJournalMonths();
 
@@ -54,6 +56,8 @@ export default function HomeRoute() {
       </CardContainer>
 
       <HomeRelativeReturnChartCard chart={home.relativeReturnChart} />
+
+      <BacktestDiagnosticCard snapshot={backtest} />
 
       <CardContainer style={styles.sectionCard}>
         <View style={styles.sectionHeader}>
@@ -118,6 +122,61 @@ export default function HomeRoute() {
         </AppText>
       </CardContainer>
     </ScreenContainer>
+  );
+}
+
+type BacktestDiagnosticCardProps = {
+  snapshot: typeof backtestSnapshotFixture;
+};
+
+function BacktestDiagnosticCard({ snapshot }: BacktestDiagnosticCardProps) {
+  const qqqReturnPct = (snapshot.metrics.qqqBenchmarkFinal / snapshot.metrics.initialCapital - 1) * 100;
+  const latestPoint = snapshot.equityCurve[snapshot.equityCurve.length - 1];
+
+  return (
+    <CardContainer style={styles.backtestCard}>
+      <View style={styles.sectionHeader}>
+        <View style={styles.backtestTitleRow}>
+          <AppText style={styles.sectionTitle}>백테스트 진단</AppText>
+          <Badge label="진단 전용" tone="readOnly" />
+        </View>
+        <AppText variant="caption">
+          검증된 현재 스냅샷만 읽습니다. 전략 승인이나 실제 계좌 성과가 아닙니다.
+        </AppText>
+      </View>
+
+      <View style={styles.backtestHeroRow}>
+        <View style={styles.backtestHeroMetric}>
+          <AppText style={styles.heroLabel}>최종 자산</AppText>
+          <AppText style={styles.backtestHeroValue}>{displayDecimal(snapshot.metrics.finalEquity)}</AppText>
+        </View>
+        <View style={styles.backtestHeroMetricRight}>
+          <AppText style={styles.heroLabel}>총 수익률</AppText>
+          <AppText style={[styles.backtestHeroValue, styles.positive]}>
+            {displaySignedPercent(snapshot.metrics.totalReturnPct)}
+          </AppText>
+        </View>
+      </View>
+
+      <View style={styles.backtestMetricGrid}>
+        <HeroKpi label="CAGR" tone="positive" value={displaySignedPercent(snapshot.metrics.cagr * 100)} />
+        <HeroKpi label="MDD" tone="negative" value={displaySignedPercent(snapshot.metrics.maxDrawdown * 100)} />
+        <HeroKpi label="거래 수" tone="neutral" value={`${snapshot.metrics.trades}`} />
+        <HeroKpi label="QQQ 대비" tone={snapshot.metrics.beatsQqq ? "positive" : "neutral"} value={displaySignedPercent(qqqReturnPct)} />
+      </View>
+
+      <View style={styles.backtestMetaBox}>
+        <AppText variant="caption">
+          정책: {snapshot.selectedPolicy.policyId}
+        </AppText>
+        <AppText variant="caption">
+          최신 지점: {latestPoint?.timestamp ?? VALUE_PENDING} / equity curve {snapshot.equityCurve.length}개
+        </AppText>
+        <AppText variant="caption">
+          상태: {snapshot.chartSource.status === "READY" ? "백테스트 곡선 연결됨" : "차트 출처 미연결"}
+        </AppText>
+      </View>
+    </CardContainer>
   );
 }
 
@@ -279,6 +338,14 @@ function displayCompactPercent(value: number | null) {
   return displaySignedPercent(value);
 }
 
+function displayDecimal(value: number | null) {
+  if (value === null || Number.isNaN(value)) {
+    return VALUE_PENDING;
+  }
+
+  return value.toLocaleString("ko-KR", { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+}
+
 function buildJournalMonths(now = new Date()) {
   const months: Array<{ key: string; label: string }> = [];
   const startYear = 2022;
@@ -424,6 +491,50 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     gap: spacing.md,
     padding: spacing.lg,
+  },
+  backtestCard: {
+    ...elevatedCard,
+    borderRadius: 16,
+    gap: spacing.md,
+    padding: spacing.lg,
+  },
+  backtestTitleRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: spacing.sm,
+    justifyContent: "space-between",
+  },
+  backtestHeroRow: {
+    flexDirection: "row",
+    gap: spacing.md,
+  },
+  backtestHeroMetric: {
+    flex: 1,
+    gap: spacing.xs,
+    minWidth: 0,
+  },
+  backtestHeroMetricRight: {
+    flex: 1,
+    gap: spacing.xs,
+    minWidth: 0,
+  },
+  backtestHeroValue: {
+    color: colors.ink,
+    fontSize: 24,
+    fontWeight: "800",
+    lineHeight: 30,
+  },
+  backtestMetricGrid: {
+    flexDirection: "row",
+    gap: spacing.sm,
+  },
+  backtestMetaBox: {
+    backgroundColor: colors.surfaceMuted,
+    borderColor: colors.border,
+    borderRadius: 12,
+    borderWidth: 1,
+    gap: spacing.xs,
+    padding: spacing.md,
   },
   sectionHeader: {
     gap: spacing.xs,

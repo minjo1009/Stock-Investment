@@ -1,0 +1,7 @@
+artifact_id,path,artifact_type,authority,notes
+task3906_builder,scripts/build_frontend_backtest_snapshot.py,builder,canonical,Builds current frontend backtest snapshot from selected validated backtest outputs.
+task3906_snapshot,data/frontend_snapshots/current_backtest_snapshot.json,frontend_snapshot,NOT_AUTHORITY,Current selected diagnostic backtest snapshot for frontend display.
+task3906_fixture,apps/ios-trader-brain/src/read-models/backtestSnapshotFixture.ts,frontend_read_model,NOT_AUTHORITY,Generated typed fixture consumed by the Expo app.
+task3906_home,apps/ios-trader-brain/app/(tabs)/index.tsx,frontend_ui,NOT_AUTHORITY,HOME diagnostic backtest summary display.
+task3906_validator,scripts/validate_frontend_backtest_snapshot.py,validator,canonical,Validates current snapshot, generated fixture, HOME display, and Task3903 auto-refresh hook.
+task3906_report,docs/reports/task_3906_frontend_backtest_auto_refresh/task_3906_frontend_backtest_auto_refresh.md,report,canonical,Task closeout report.

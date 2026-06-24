@@ -67,3 +67,21 @@ order system.
 The HOME, PORTFOLIO, and BRAIN product screens may later consume this snapshot
 only through a typed read-model adapter that preserves provenance and shows it
 as diagnostic-only.
+
+## Task3906 Implementation
+
+Task3906 adds the first automatic update path:
+
+- `scripts/build_frontend_backtest_snapshot.py` reads the selected backtest
+  outputs and writes `data/frontend_snapshots/current_backtest_snapshot.json`.
+- The same builder regenerates the app-side typed fixture so the Expo frontend
+  can display the selected diagnostic result without scanning raw folders.
+- `scripts/run_task3903_stage1_sec_neutral_attach_same_experiment_replay.py`
+  calls the builder after its normal backtest report, decision, registry, and
+  operating-state outputs are written.
+- HOME displays a diagnostic-only backtest summary card from that fixture.
+- `scripts/validate_frontend_backtest_snapshot.py` and
+  `npm run validate:backtest-snapshot` enforce the snapshot boundary.
+
+This implementation still does not connect the frontend to active DB, broker,
+paper, live, runtime API, KIS, Alpaca, or real-capital systems.
