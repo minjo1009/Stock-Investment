@@ -1,0 +1,4 @@
+artifact_id,path,type,status,notes
+task3888_report,docs/reports/task_3888_home_performance_timeframe_interaction/task_3888_home_performance_timeframe_interaction.md,report,canonical,Task closeout report
+task3888_manifest,docs/reports/task_3888_home_performance_timeframe_interaction/artifact_manifest.csv,manifest,canonical,Artifact manifest
+task3888_mobile_web_screenshot,data/artifacts/task_3888_home_performance_timeframe_interaction/home_performance_timeframe_interaction_390x844.png,screenshot,diagnostic,Local LAN web-preview screenshot only; not native iOS evidence

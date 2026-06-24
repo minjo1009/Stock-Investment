@@ -1,4 +1,5 @@
-import { StyleSheet, View, type ViewProps } from "react-native";
+import { useState } from "react";
+import { Pressable, StyleSheet, View, type ViewProps } from "react-native";
 
 import { AppText, Badge } from "../foundation";
 import type { HomeRelativeReturnChart } from "../../read-models";
@@ -9,13 +10,23 @@ type HomeRelativeReturnChartCardProps = ViewProps & {
   chart: HomeRelativeReturnChart;
 };
 
-const timeframeLabels = ["1M", "3M", "6M", "1Y", "ALL"];
+const timeframeOptions = [
+  { label: "1D", description: "하루" },
+  { label: "1M", description: "1개월" },
+  { label: "3M", description: "3개월" },
+  { label: "6M", description: "6개월" },
+  { label: "1Y", description: "1년" },
+  { label: "ALL", description: "전체" },
+] as const;
+
+type TimeframeLabel = (typeof timeframeOptions)[number]["label"];
 
 export function HomeRelativeReturnChartCard({
   chart,
   style,
   ...props
 }: HomeRelativeReturnChartCardProps) {
+  const [selectedTimeframe, setSelectedTimeframe] = useState<TimeframeLabel>("1M");
   const hasSourceBackedSeries = chart.chartState.status === "READY" && chart.points.length > 0;
 
   return (
@@ -39,16 +50,31 @@ export function HomeRelativeReturnChartCard({
           </View>
 
           <View style={styles.timeframeRow}>
-            {timeframeLabels.map((label, index) => (
-              <View key={label} style={[styles.timeframeChip, index === 0 ? styles.timeframeChipSelected : null]}>
-                <AppText
-                  variant="caption"
-                  style={index === 0 ? styles.timeframeTextSelected : styles.timeframeText}
+            {timeframeOptions.map((option) => {
+              const isSelected = selectedTimeframe === option.label;
+
+              return (
+                <Pressable
+                  accessibilityLabel={`성과 기간 ${option.description}`}
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: isSelected }}
+                  key={option.label}
+                  onPress={() => setSelectedTimeframe(option.label)}
+                  style={({ pressed }) => [
+                    styles.timeframeChip,
+                    isSelected ? styles.timeframeChipSelected : null,
+                    pressed ? styles.timeframeChipPressed : null,
+                  ]}
                 >
-                  {label}
-                </AppText>
-              </View>
-            ))}
+                  <AppText
+                    variant="caption"
+                    style={isSelected ? styles.timeframeTextSelected : styles.timeframeText}
+                  >
+                    {option.label}
+                  </AppText>
+                </Pressable>
+              );
+            })}
           </View>
         </View>
 
@@ -68,14 +94,15 @@ export function HomeRelativeReturnChartCard({
             <View style={styles.emptyState}>
               <AppText style={styles.emptyTitle}>차트 데이터 연결 대기</AppText>
               <AppText variant="caption" style={styles.emptyBody}>
-                권위 있는 포트폴리오 평가금 곡선, 원금 시계열, QQQ 벤치마크가 붙으면
-                이 영역에 세 개의 선이 표시됩니다.
+                선택 기간은 바뀌지만, 권위 있는 평가금 곡선, 원금 시계열, QQQ 벤치마크가 붙기 전에는
+                선을 표시하지 않습니다.
               </AppText>
             </View>
           )}
         </View>
 
         <View style={styles.statusLine}>
+          <AppText variant="caption">선택 기간: {selectedTimeframe}</AppText>
           <AppText variant="caption">현재 상태: {chart.sourceState.freshnessStatus}</AppText>
           <AppText variant="caption">차트 포인트: {chart.points.length}</AppText>
         </View>
@@ -155,6 +182,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     minHeight: mobile.touchTarget,
+  },
+  timeframeChipPressed: {
+    opacity: 0.72,
   },
   timeframeChipSelected: {
     backgroundColor: "#E0E0E0",

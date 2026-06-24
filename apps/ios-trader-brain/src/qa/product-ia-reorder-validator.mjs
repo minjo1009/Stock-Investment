@@ -47,7 +47,23 @@ expectBefore(home, "보유 포트폴리오", "투자 일지", "HOME IA");
 expectBefore(home, "투자 일지", "오늘 확인할 것", "HOME IA");
 expectBefore(home, "오늘 확인할 것", "데이터 출처 상태", "HOME IA");
 expectIncludes(home, ["평가금", "원금", "총 손익", "수익률", "승률", "MDD", "buildJournalMonths", "startYear = 2022", "보유 중인 포트폴리오가 없습니다.", "해당 월의 거래내역이 없습니다."], "HOME top summary");
-expectIncludes(chartCard, ["Performance", "평가금 vs 원금 vs QQQ", "QQQ", "1M", "3M", "6M", "1Y", "ALL"], "HOME chart card");
+expectIncludes(
+  chartCard,
+  [
+    "Performance",
+    "평가금 vs 원금 vs QQQ",
+    "QQQ",
+    "Pressable",
+    "onPress={() => setSelectedTimeframe(option.label)}",
+    "1D",
+    "1M",
+    "3M",
+    "6M",
+    "1Y",
+    "ALL",
+  ],
+  "HOME chart card"
+);
 expect(!home.includes("계좌 스냅샷"), "HOME must not render duplicate account snapshot section");
 expect(!home.includes("운영 제한 상태"), "HOME must not render operating restriction as a primary section");
 expect(!home.includes("비활성화된 기능"), "HOME must not render disabled actions as a primary section");
@@ -72,4 +88,6 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[PRODUCT_IA_REORDER_OK] HOME/PORTFOLIO/BRAIN keep product-first Korean IA with QQQ comparison and dynamic journal months");
+console.log(
+  "[PRODUCT_IA_REORDER_OK] HOME/PORTFOLIO/BRAIN keep product-first Korean IA with QQQ comparison, clickable timeframe chips, and dynamic journal months"
+);

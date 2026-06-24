@@ -99,11 +99,17 @@ expectIncludes(
     "평가금 vs 원금 vs QQQ",
     "평가금, 원금, QQQ 기준선",
     "QQQ 기준 대기",
+    "Pressable",
+    "useState<TimeframeLabel>",
+    "onPress={() => setSelectedTimeframe(option.label)}",
+    "accessibilityState={{ selected: isSelected }}",
+    "1D",
     "1M",
     "3M",
     "6M",
     "1Y",
     "ALL",
+    "선택 기간: {selectedTimeframe}",
     "승률 UNKNOWN",
     "MDD UNKNOWN",
     "차트 데이터 연결 대기",
@@ -178,4 +184,6 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[HOME_DESIGN_ALIGNMENT_OK] HOME follows production spec sections with QQQ comparison and dynamic journal months");
+console.log(
+  "[HOME_DESIGN_ALIGNMENT_OK] HOME follows production spec sections with QQQ comparison, clickable timeframe chips, and dynamic journal months"
+);
