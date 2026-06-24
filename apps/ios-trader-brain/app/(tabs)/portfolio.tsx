@@ -788,12 +788,15 @@ function buildChartGeometry(points: EquityCurvePoint[], chartSize: { height: num
     const dy = point.y - previous.y;
     const width = Math.sqrt(dx * dx + dy * dy);
     const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+    const segmentThickness = 3;
+    const midpointX = (previous.x + point.x) / 2;
+    const midpointY = (previous.y + point.y) / 2;
 
     return {
       angle,
       key: `${previous.key}-${point.key}`,
-      left: previous.x,
-      top: previous.y,
+      left: midpointX - width / 2,
+      top: midpointY - segmentThickness / 2,
       width,
     };
   });

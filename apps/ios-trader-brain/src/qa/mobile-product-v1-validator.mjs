@@ -99,6 +99,8 @@ for (const [tabId, file] of Object.entries(tabFiles)) {
     expect(source.includes("chartGuideLine"), "portfolio chart must render value guide lines");
     expect(source.includes("chartSelectedValueBubble"), "portfolio chart must render selected point readout");
     expect(source.includes("buildChartGeometry(points, chartSize)"), "portfolio chart geometry must use actual chart size");
+    expect(source.includes("midpointX") && source.includes("midpointY"), "portfolio chart segments must be midpoint-positioned inside the measured plot box");
+    expect(source.includes("segmentThickness"), "portfolio chart segment placement must account for rendered line thickness");
     expect(source.includes("setSelectedHoldingId"), "portfolio must support local row selection");
     expect(source.includes("toggleIndicator"), "portfolio must support local indicator toggles");
     expect(source.includes("출처 연결 대기"), "portfolio data must remain source-not-attached until authority is connected");

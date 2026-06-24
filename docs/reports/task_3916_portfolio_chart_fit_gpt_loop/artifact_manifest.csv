@@ -1,0 +1,11 @@
+artifact_path,artifact_type,status,description
+docs/reports/task_3916_portfolio_chart_fit_gpt_loop/task_3916_portfolio_chart_fit_gpt_loop.md,report,canonical,Task3916 Portfolio chart fit repair report
+docs/reports/task_3916_portfolio_chart_fit_gpt_loop/artifact_manifest.csv,manifest,canonical,Task3916 artifact manifest
+docs/reports/task_3916_portfolio_chart_fit_gpt_loop/gpt_loop_1_prompt.md,gpt_prompt,blocked,Prompt prepared for GPT visual chart fit review
+docs/reports/task_3916_portfolio_chart_fit_gpt_loop/gpt_loop_1_response_blocked.md,gpt_response_blocked,blocked,GPT response capture was unavailable
+docs/reports/task_3916_portfolio_chart_fit_gpt_loop/gpt_loop_2_review_prompt.md,gpt_prompt,blocked,Prompt prepared for GPT post-patch review
+docs/reports/task_3916_portfolio_chart_fit_gpt_loop/gpt_loop_2_response_blocked.md,gpt_response_blocked,blocked,GPT response capture was unavailable
+docs/reports/task_3916_portfolio_chart_fit_gpt_loop/loop_ledger.csv,loop_ledger,canonical,Task3916 loop ledger with GPT capture blocker
+data/artifacts/portfolio_tab_capture_task3914_chart_before.png,screenshot,local_qa,Before screenshot showing disconnected chart line segments
+data/artifacts/portfolio_tab_capture_task3914_chart_after_fit.png,screenshot,local_qa,After screenshot showing fitted continuous chart line
+data/artifacts/portfolio_tab_capture_task3914_chart_after_3d.png,screenshot,local_qa,After screenshot showing fitted 3D range chart
