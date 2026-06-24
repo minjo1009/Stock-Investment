@@ -321,7 +321,6 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
     paddingHorizontal: 20,
     paddingTop: 0,
-    width: "100%",
   },
   heroCard: {
     ...elevatedCard,
@@ -381,10 +380,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   principalValue: {
+    alignSelf: "auto",
     color: colors.ink,
+    flexShrink: 1,
     fontSize: 24,
     fontWeight: "700",
     lineHeight: 30,
+    minWidth: 0,
+    textAlign: "right",
   },
   kpiRow: {
     flexDirection: "row",

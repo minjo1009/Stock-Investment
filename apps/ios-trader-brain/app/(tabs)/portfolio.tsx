@@ -546,7 +546,6 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
     paddingHorizontal: 20,
     paddingTop: 0,
-    width: "100%",
   },
   tableCard: {
     ...elevatedCard,

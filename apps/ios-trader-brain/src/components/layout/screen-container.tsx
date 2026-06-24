@@ -1,4 +1,4 @@
-import { Platform, ScrollView, type ScrollViewProps } from "react-native";
+import { Platform, ScrollView, View, type ScrollViewProps } from "react-native";
 
 import { colors, mobile, spacing } from "../../theme/tokens";
 
@@ -7,6 +7,7 @@ type ScreenContainerProps = ScrollViewProps & {
 };
 
 export function ScreenContainer({
+  children,
   contentContainerStyle,
   padded = true,
   style,
@@ -17,20 +18,33 @@ export function ScreenContainer({
       contentInsetAdjustmentBehavior="automatic"
       {...props}
       style={[{ backgroundColor: colors.background, flex: 1 }, style]}
-      contentContainerStyle={[
-        {
-          boxSizing: "border-box",
-          gap: spacing.lg,
-          marginHorizontal: "auto",
-          maxWidth: mobile.contentMaxWidth,
-          padding: padded ? spacing.lg : 0,
-          paddingBottom: spacing.xl,
-          width: (padded && Platform.OS === "web"
-            ? `calc(100% - ${spacing.lg * 2}px)`
-            : "100%") as "100%",
-        },
-        contentContainerStyle,
-      ]}
-    />
+      contentContainerStyle={styles.scrollContent}
+    >
+      <View
+        style={[
+          {
+            gap: spacing.lg,
+            maxWidth: mobile.contentMaxWidth,
+            padding: padded ? spacing.lg : 0,
+            paddingBottom: spacing.xl,
+            width: (Platform.OS === "web"
+              ? `calc(100% - ${padded ? spacing.lg * 2 : 40}px)`
+              : "100%") as "100%",
+          },
+          contentContainerStyle,
+        ]}
+      >
+        {children}
+      </View>
+    </ScrollView>
   );
 }
+
+const styles = {
+  scrollContent: {
+    alignItems: "center",
+    backgroundColor: colors.background,
+    flexGrow: 1,
+    width: "100%",
+  },
+} as const;

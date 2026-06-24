@@ -1,0 +1,6 @@
+artifact_path,artifact_type,description,authority
+docs/reports/task_3904_mobile_center_column_fix/task_3904_mobile_center_column_fix.md,report,Task3904 mobile center column fix closeout report,NOT_AUTHORITY
+docs/reports/task_3904_mobile_center_column_fix/artifact_manifest.csv,manifest,Task3904 artifact manifest,NOT_AUTHORITY
+data/artifacts/task_3904_mobile_center_column_fix/screenshots/home_final_390x844.png,screenshot,HOME mobile screenshot after center column fix,NOT_AUTHORITY
+data/artifacts/task_3904_mobile_center_column_fix/screenshots/portfolio_final_390x844.png,screenshot,PORTFOLIO mobile screenshot after center column fix,NOT_AUTHORITY
+data/artifacts/task_3904_mobile_center_column_fix/screenshots/brain_final_390x844.png,screenshot,BRAIN mobile screenshot after center column fix,NOT_AUTHORITY

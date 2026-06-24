@@ -270,7 +270,6 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
     paddingHorizontal: 20,
     paddingTop: 0,
-    width: "100%",
   },
   updatedAt: {
     marginTop: -12,
@@ -304,7 +303,9 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
   },
   convictionLabel: {
+    alignSelf: "auto",
     color: "#6B7280",
+    flexShrink: 0,
     fontSize: 13,
     fontWeight: "600",
     minWidth: 56,
@@ -322,7 +323,9 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   convictionValue: {
+    alignSelf: "auto",
     color: "#1F2937",
+    flexShrink: 0,
     fontSize: 16,
     fontWeight: "700",
     minWidth: 36,

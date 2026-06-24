@@ -19,7 +19,11 @@ export function AppText({ style, variant = "body", ...props }: AppTextProps) {
     <Text
       selectable
       {...props}
-      style={[{ color: colors.ink }, variantStyles[variant], style]}
+      style={[
+        { alignSelf: "stretch", color: colors.ink, flexShrink: 1, maxWidth: "100%", minWidth: 0 },
+        variantStyles[variant],
+        style,
+      ]}
     />
   );
 }
