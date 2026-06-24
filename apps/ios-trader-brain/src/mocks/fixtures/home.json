@@ -24,7 +24,7 @@
     {
       "blockerId": "home-source-stale",
       "severity": "P1",
-      "label": "출처 최신성 미완료",
+      "label": "출처 최신화 미완료",
       "reason": "임시 화면 데이터에는 stale, missing, unknown 상태가 포함됩니다.",
       "sourceRefs": [
         "docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"
@@ -35,9 +35,9 @@
   "disabledActions": [
     {
       "actionId": "execute",
-      "label": "검토 작업 비활성",
+      "label": "거래 작업 비활성화",
       "actionState": "disabled",
-      "disabledReason": "현재 운영 상태에서는 거래 변경 작업이 차단됩니다.",
+      "disabledReason": "현재 운영 상태에서는 거래 변경 작업을 차단합니다.",
       "requiredGovernanceChange": [
         "strategyAcceptance must change from NOT_ACCEPTED",
         "deploymentReadiness must change from DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
@@ -61,7 +61,7 @@
       "chartId": "home-relative-return-vs-qqq",
       "status": "SOURCE_NOT_ATTACHED",
       "sourceIds": [],
-      "blockerReason": "평가금, 원금, QQQ 시계열 차트에는 권위 있는 포트폴리오 평가금 곡선, 원금 기준선, QQQ 벤치마크가 필요합니다."
+      "blockerReason": "실계좌 평가금, 원금, QQQ 점별 벤치마크는 아직 연결되지 않았습니다. 홈 차트는 선택된 진단 백테스트 스냅샷만 읽습니다."
     },
     "points": [],
     "sourceState": {
@@ -76,7 +76,7 @@
       "provenanceRefs": [
         "docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"
       ],
-      "blockerReason": "권위 있는 포트폴리오 평가금 곡선, 원금 시계열, QQQ 벤치마크가 아직 연결되지 않았습니다."
+      "blockerReason": "실계좌 평가금, 원금, QQQ 점별 벤치마크는 아직 연결되지 않았습니다."
     }
   },
   "portfolioSnapshot": {
@@ -100,7 +100,7 @@
       "provenanceRefs": [
         "docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"
       ],
-      "blockerReason": "포트폴리오 값은 임시 화면 데이터이며 브로커 원장이 아닙니다."
+      "blockerReason": "포트폴리오 값은 임시 화면 데이터이며 브로커 저장소가 아닙니다."
     }
   },
   "brainSnapshot": {
@@ -120,7 +120,7 @@
       "provenanceRefs": [
         "docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"
       ],
-      "blockerReason": "브레인 출처는 이 임시 화면 데이터에서 stale 상태입니다."
+      "blockerReason": "브레인 출처는 임시 화면 데이터에서 stale 상태입니다."
     }
   },
   "attentionQueue": [
@@ -128,7 +128,7 @@
       "itemId": "attention-source-missing",
       "kind": "source",
       "label": "필수 출처 연결 필요",
-      "reason": "필수 출처가 없으므로 이 항목은 판단 보류 상태로 남습니다.",
+      "reason": "필수 출처가 없으므로 판단 항목은 보류 상태로 둡니다.",
       "severity": "P1",
       "route": "/system",
       "sourceRefs": [

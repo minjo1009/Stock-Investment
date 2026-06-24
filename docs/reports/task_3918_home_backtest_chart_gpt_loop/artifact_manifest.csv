@@ -1,0 +1,9 @@
+artifact_path,artifact_type,status,description
+docs/reports/task_3918_home_backtest_chart_gpt_loop/task_3918_home_backtest_chart_gpt_loop.md,report,canonical,Task3918 HOME backtest chart report
+docs/reports/task_3918_home_backtest_chart_gpt_loop/artifact_manifest.csv,manifest,canonical,Task3918 artifact manifest
+docs/reports/task_3918_home_backtest_chart_gpt_loop/gpt_loop_1_prompt.md,gpt_prompt,blocked,Prompt prepared for GPT HOME backtest chart implementation review
+docs/reports/task_3918_home_backtest_chart_gpt_loop/gpt_loop_1_response_blocked.md,gpt_response_blocked,blocked,GPT response capture was unavailable
+docs/reports/task_3918_home_backtest_chart_gpt_loop/loop_ledger.csv,loop_ledger,canonical,Task3918 loop ledger with GPT capture blocker
+data/artifacts/home_tab_capture_task3918_backtest_chart.png,screenshot,local_qa,Initial HOME screenshot after first implementation pass
+data/artifacts/home_tab_capture_task3918_backtest_chart_after.png,screenshot,local_qa,HOME screenshot after chart reorder
+data/artifacts/home_tab_capture_task3918_backtest_chart_after_fit.png,screenshot,local_qa,HOME screenshot after chart tooltip fit repair

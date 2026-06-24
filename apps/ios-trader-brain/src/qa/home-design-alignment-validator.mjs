@@ -49,13 +49,14 @@ function expectBefore(source, first, second, context) {
 }
 
 function expectNoMojibake(source, context) {
-  const mojibakeTokens = ["?쎄", "?ㅻ", "?ъ", "怨", "李", "異", "鍮", "沅", "媛"];
+  const mojibakeTokens = ["�", "筌", "亦", "揶", "?섏", "?됯", "?먭", "諛깊", "吏", "沅뚯", "釉뚮"];
   expectExcludes(source, mojibakeTokens, context);
 }
 
 const homeRoute = readText("app/(tabs)/index.tsx");
 const common = readText("src/read-models/common.ts");
 const homeFixture = readText("src/read-models/homeFixture.ts");
+const backtestFixture = readText("src/read-models/backtestSnapshotFixture.ts");
 const homeJson = readJson("src/mocks/fixtures/home.json");
 const chartCard = readText("src/components/domain/home-relative-return-chart-card.tsx");
 const packageJson = readJson("package.json");
@@ -66,30 +67,33 @@ expectNoMojibake(homeFixture, "HOME fixture");
 expectNoMojibake(JSON.stringify(homeJson ?? {}), "HOME fixture JSON");
 
 expectBefore(homeRoute, "<PortfolioHeroCard", "<HomeRelativeReturnChartCard", "HOME production IA");
-expectBefore(homeRoute, "오늘 확인할 것", "<HomeRelativeReturnChartCard", "HOME production IA");
-expectBefore(homeRoute, "<HomeRelativeReturnChartCard", "보유 포트폴리오", "HOME production IA");
+expectBefore(homeRoute, "<HomeRelativeReturnChartCard", "오늘 확인할 것", "HOME production IA");
+expectBefore(homeRoute, "오늘 확인할 것", "<BacktestDiagnosticCard", "HOME production IA");
+expectBefore(homeRoute, "<BacktestDiagnosticCard", "보유 포트폴리오", "HOME production IA");
 expectBefore(homeRoute, "보유 포트폴리오", "투자 일지", "HOME production IA");
 expectBefore(homeRoute, "투자 일지", "데이터 출처 상태", "HOME production IA");
 
 expectIncludes(
   homeRoute,
   [
-    "PortfolioHeroCard",
-    "평가금",
-    "원금",
-    "총 손익",
+    "backtestSnapshotFixture",
+    "buildDiagnosticPortfolioSnapshot",
+    "진단 평가금",
+    "진단 원금",
+    "진단 손익",
     "수익률",
     "승률",
     "MDD",
+    "오늘 확인할 것",
+    "백테스트 곡선이 홈 차트에 연결됨",
+    "HomeRelativeReturnChartCard",
+    "backtestSnapshot={backtest}",
+    "백테스트 진단 요약",
     "보유 포트폴리오",
-    "보유 중인 포트폴리오가 없습니다.",
     "투자 일지",
     "buildJournalMonths",
     "startYear = 2022",
-    "ScrollView",
-    "해당 월의 거래내역이 없습니다.",
-    "오늘 확인할 것",
-    "읽기 전용",
+    "실거래 금지",
   ],
   "HOME route"
 );
@@ -97,39 +101,48 @@ expectIncludes(
 expectIncludes(
   chartCard,
   [
+    "BacktestSnapshotReadModel",
+    "backtestSnapshot",
+    "buildHomeBacktestChart",
+    "buildChartGeometry",
     "수익현황",
-    "평가금 vs 원금 vs QQQ",
-    "권위 있는 평가금 곡선",
-    "QQQ 기준 대기",
-    "Pressable",
-    "useState<TimeframeLabel>",
-    "onPress={() => setSelectedTimeframe(option.label)}",
-    "accessibilityState={{ selected: isSelected }}",
-    "1D",
-    "1M",
-    "3M",
-    "6M",
-    "1Y",
-    "ALL",
-    "선택 기간: {selectedTimeframe}",
-    "승률 연결 대기",
-    "MDD 연결 대기",
-    "차트 연결 대기",
-    "데이터 상태: 연결 대기",
-  ],
+    "백테스트 평가금 vs 원금 vs QQQ",
+    "QQQ 최종 기준",
+    "rangeOptions",
+    "최근 5",
+    "1년",
+    "3년",
+    "전체",
+    "onPress={() =>",
+    "setSelectedRange",
+    "chartModel.points",
+    "snapshot.equityCurve",
+    "qqqBenchmarkFinal",
+    "principalY",
+    "qqqY",
+    "midpointX",
+    "midpointY",
+    "segmentThickness",
+    "QOO"
+  ].filter((token) => token !== "QOO"),
   "HOME performance timeline chart card"
 );
 
 expectIncludes(
   homeFixture,
-  ["평가금/원금/QQQ 성과 차트 출처", "QQQ 벤치마크"],
+  ["수익현황", "평가금/원금/QQQ 성과 차트 출처", "실계좌 평가금, 원금, QQQ 점별 벤치마크는 아직 연결되지 않았습니다."],
   "HOME fixture"
+);
+
+expectIncludes(
+  backtestFixture,
+  ["equityCurve", "qqqBenchmarkFinal", "READ_ONLY_SELECTED_BACKTEST_SNAPSHOT", "NOT_AUTHORITY"],
+  "backtest fixture"
 );
 
 expectExcludes(
   homeRoute,
   [
-    "계좌 스냅샷",
     "운영 제한 상태",
     "비활성화된 기능",
     "catalog-manifest",
@@ -138,9 +151,7 @@ expectExcludes(
     "DB 상태",
     "scheduler",
     "kill switch",
-    "UNKNOWN 원",
-    "현재 상태:",
-    "차트 포인트:",
+    "UNKNOWN ",
     "SOURCE_NOT_ATTACHED",
   ],
   "HOME visible source"
@@ -155,13 +166,8 @@ expectExcludes(
 const relativeChart = homeJson?.relativeReturnChart;
 expect(relativeChart?.chartId === "home-relative-return-vs-qqq", "HOME fixture must define chart id");
 expect(relativeChart?.benchmarkSymbol === "QQQ", "HOME fixture benchmark must remain QQQ");
-expect(relativeChart?.chartState?.status !== "READY", "HOME fixture chart must not be READY without authority");
-expect(
-  relativeChart?.chartState?.status === "SOURCE_NOT_ATTACHED" ||
-    relativeChart?.chartState?.status === "CHART_MISSING",
-  "HOME fixture chart must be SOURCE_NOT_ATTACHED or CHART_MISSING"
-);
-expect(Array.isArray(relativeChart?.points) && relativeChart.points.length === 0, "HOME fixture chart points must be empty");
+expect(relativeChart?.chartState?.status === "SOURCE_NOT_ATTACHED", "HOME fixture chart must keep account/QQQ point series unattached");
+expect(Array.isArray(relativeChart?.points) && relativeChart.points.length === 0, "HOME fixture account chart points must remain empty");
 
 expect(homeJson?.governance?.strategyAcceptance === "NOT_ACCEPTED", "strategy acceptance must remain NOT_ACCEPTED");
 expect(
@@ -191,5 +197,5 @@ if (findings.length > 0) {
 }
 
 console.log(
-  "[HOME_DESIGN_ALIGNMENT_OK] HOME follows production spec sections with QQQ comparison, clickable timeframe chips, and dynamic journal months"
+  "[HOME_DESIGN_ALIGNMENT_OK] HOME reads the selected diagnostic backtest snapshot and renders a bounded performance chart"
 );
