@@ -21,7 +21,7 @@ export function HomeRelativeReturnChartCard({
   return (
     <ChartWithSourceState
       chartState={chart.chartState}
-      description="평가금과 원금 시계열이 같은 시간축으로 연결되기 전에는 가짜 선을 그리지 않습니다."
+      description="평가금, 원금, QQQ 기준선이 같은 시간축으로 연결되기 전에는 가짜 선을 그리지 않습니다."
       showTechnicalDetails={false}
       style={[styles.card, style]}
       title="Performance"
@@ -30,10 +30,11 @@ export function HomeRelativeReturnChartCard({
       <View style={styles.content}>
         <View style={styles.header}>
           <View style={styles.headerText}>
-            <AppText style={styles.cardTitle}>평가금 vs 원금</AppText>
+            <AppText style={styles.cardTitle}>평가금 vs 원금 vs QQQ</AppText>
             <View style={styles.legendRow}>
               <LegendDot color="#2E7D32" label="평가금" />
               <LegendDot color="#8E8E93" label="원금" />
+              <LegendDot color="#2563EB" label="QQQ" />
             </View>
           </View>
 
@@ -54,6 +55,7 @@ export function HomeRelativeReturnChartCard({
         <View style={styles.kpiOverlay}>
           <Badge label="승률 UNKNOWN" tone="unknown" />
           <Badge label="MDD UNKNOWN" tone="missing" />
+          <Badge label="QQQ 기준 대기" tone="unknown" />
         </View>
 
         <View style={styles.chartFrame}>
@@ -66,8 +68,8 @@ export function HomeRelativeReturnChartCard({
             <View style={styles.emptyState}>
               <AppText style={styles.emptyTitle}>차트 데이터 연결 대기</AppText>
               <AppText variant="caption" style={styles.emptyBody}>
-                권위 있는 포트폴리오 평가금 곡선과 원금 시계열이 붙으면 이 영역에 두
-                개의 선이 표시됩니다.
+                권위 있는 포트폴리오 평가금 곡선, 원금 시계열, QQQ 벤치마크가 붙으면
+                이 영역에 세 개의 선이 표시됩니다.
               </AppText>
             </View>
           )}
@@ -128,6 +130,7 @@ const styles = StyleSheet.create({
   },
   legendRow: {
     flexDirection: "row",
+    flexWrap: "wrap",
     gap: spacing.md,
   },
   legendItem: {

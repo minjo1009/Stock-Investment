@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 
 import { HomeRelativeReturnChartCard } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
@@ -14,6 +14,7 @@ export default function HomeRoute() {
   const home = homeFixture;
   const portfolio = home.portfolioSnapshot;
   const brain = home.brainSnapshot;
+  const journalMonths = buildJournalMonths();
 
   return (
     <ScreenContainer contentContainerStyle={styles.screen} padded={false}>
@@ -53,15 +54,22 @@ export default function HomeRoute() {
           </AppText>
         </View>
 
-        <View style={styles.monthRail}>
-          {["6월", "5월", "4월", "3월"].map((month, index) => (
-            <View key={month} style={[styles.monthPill, index === 0 ? styles.monthPillSelected : null]}>
-              <AppText style={index === 0 ? styles.monthTextSelected : styles.monthText}>
-                {month}
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.monthRail}
+        >
+          {journalMonths.map((month, index) => (
+            <View
+              key={month.key}
+              style={[styles.monthPill, index === journalMonths.length - 1 ? styles.monthPillSelected : null]}
+            >
+              <AppText style={index === journalMonths.length - 1 ? styles.monthTextSelected : styles.monthText}>
+                {month.label}
               </AppText>
             </View>
           ))}
-        </View>
+        </ScrollView>
 
         <EmptyStateCard
           body="거래내역이 붙기 전까지 매수·매도 기록, 수량, 손익, 메모를 추정하지 않습니다."
@@ -280,6 +288,31 @@ function displayCompactPercent(value: number | null) {
   return displaySignedPercent(value);
 }
 
+function buildJournalMonths(now = new Date()) {
+  const months: Array<{ key: string; label: string }> = [];
+  const startYear = 2022;
+  const startMonth = 0;
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth();
+
+  for (let year = startYear; year <= currentYear; year += 1) {
+    const fromMonth = year === startYear ? startMonth : 0;
+    const toMonth = year === currentYear ? currentMonth : 11;
+
+    for (let month = fromMonth; month <= toMonth; month += 1) {
+      const key = `${year}-${String(month + 1).padStart(2, "0")}`;
+      const shortYear = String(year).slice(2);
+      const monthNumber = String(month + 1).padStart(2, "0");
+      const isJanuary = month === 0;
+      const isCurrentMonth = year === currentYear && month === currentMonth;
+      const label = isJanuary || isCurrentMonth ? `${shortYear}.${monthNumber}` : `${month + 1}월`;
+      months.push({ key, label });
+    }
+  }
+
+  return months;
+}
+
 const elevatedCard = {
   shadowColor: "#111827",
   shadowOffset: { height: 8, width: 0 },
@@ -443,6 +476,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: spacing.sm,
     minHeight: 72,
+    paddingRight: spacing.lg,
   },
   monthPill: {
     alignItems: "center",

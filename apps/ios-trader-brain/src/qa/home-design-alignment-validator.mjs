@@ -83,7 +83,9 @@ expectIncludes(
     "보유 포트폴리오",
     "보유 중인 포트폴리오가 없습니다.",
     "투자 일지",
-    "6월",
+    "buildJournalMonths",
+    "startYear = 2022",
+    "ScrollView",
     "해당 월의 거래내역이 없습니다.",
     "읽기 전용",
   ],
@@ -94,7 +96,9 @@ expectIncludes(
   chartCard,
   [
     "Performance",
-    "평가금 vs 원금",
+    "평가금 vs 원금 vs QQQ",
+    "평가금, 원금, QQQ 기준선",
+    "QQQ 기준 대기",
     "1M",
     "3M",
     "6M",
@@ -106,6 +110,12 @@ expectIncludes(
     "showTechnicalDetails={false}",
   ],
   "HOME performance timeline chart card"
+);
+
+expectIncludes(
+  homeFixture,
+  ["평가금/원금/QQQ 성과 차트 출처", "QQQ 벤치마크"],
+  "HOME fixture"
 );
 
 expectExcludes(
@@ -132,6 +142,7 @@ expectExcludes(
 
 const relativeChart = homeJson?.relativeReturnChart;
 expect(relativeChart?.chartId === "home-relative-return-vs-qqq", "HOME fixture must define chart id");
+expect(relativeChart?.benchmarkSymbol === "QQQ", "HOME fixture benchmark must remain QQQ");
 expect(relativeChart?.chartState?.status !== "READY", "HOME fixture chart must not be READY without authority");
 expect(
   relativeChart?.chartState?.status === "SOURCE_NOT_ATTACHED" ||
@@ -167,4 +178,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[HOME_DESIGN_ALIGNMENT_OK] HOME follows production spec sections without fake chart data");
+console.log("[HOME_DESIGN_ALIGNMENT_OK] HOME follows production spec sections with QQQ comparison and dynamic journal months");

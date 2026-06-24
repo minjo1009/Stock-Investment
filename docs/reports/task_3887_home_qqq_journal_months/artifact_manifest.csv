@@ -1,0 +1,4 @@
+artifact_id,path,type,status,notes
+task3887_report,docs/reports/task_3887_home_qqq_journal_months/task_3887_home_qqq_journal_months.md,report,canonical,Task closeout report
+task3887_manifest,docs/reports/task_3887_home_qqq_journal_months/artifact_manifest.csv,manifest,canonical,Artifact manifest
+task3887_mobile_web_screenshot,data/artifacts/task_3887_home_qqq_journal_months/home_qqq_journal_months_390x844.png,screenshot,diagnostic,Local LAN web-preview screenshot only; not native iOS evidence
