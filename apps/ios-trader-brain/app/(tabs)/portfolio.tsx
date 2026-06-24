@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 
 import { FreshnessBanner, MobileV1StatusRail } from "../../src/components/domain";
@@ -161,8 +161,10 @@ const holdings: HoldingTableRow[] = [
 
 const sortOptions = ["수익률순", "평가금액순", "보유기간순"];
 const filterOptions = ["국가 전체", "자산 전체", "통화 전체"];
-const indicatorOptions = ["VWAP", "거래량", "이동평균", "시스템선"];
-const rangeOptions = ["1D", "1M", "3M", "1Y", "ALL"];
+const indicatorOptions = ["성과선", "MDD", "고점선", "선택값"];
+const rangeOptions = ["1D", "3D", "5D", "1M", "3M", "ALL"] as const;
+
+type ChartRange = (typeof rangeOptions)[number];
 
 export default function PortfolioRoute() {
   const portfolio = portfolioFixture;
@@ -172,10 +174,15 @@ export default function PortfolioRoute() {
   const firstSource = portfolio.positions[0]?.sourceStates[0];
   const [selectedHoldingId, setSelectedHoldingId] = useState(displayHoldings[0]?.id ?? holdings[0].id);
   const [selectedSort, setSelectedSort] = useState(sortOptions[0]);
-  const [selectedRange, setSelectedRange] = useState("3M");
-  const [activeIndicators, setActiveIndicators] = useState(["VWAP"]);
+  const [selectedRange, setSelectedRange] = useState<ChartRange>("5D");
+  const [chartWindowOffset, setChartWindowOffset] = useState(0);
+  const [activeIndicators, setActiveIndicators] = useState(["성과선", "MDD"]);
 
   const selectedHolding = displayHoldings.find((holding) => holding.id === selectedHoldingId) ?? displayHoldings[0] ?? holdings[0];
+  const chartWindow = useMemo(
+    () => buildEquityCurveWindow(backtest.equityCurve, selectedRange, chartWindowOffset),
+    [backtest.equityCurve, chartWindowOffset, selectedRange]
+  );
 
   function toggleIndicator(indicator: string) {
     setActiveIndicators((current) =>
@@ -183,6 +190,21 @@ export default function PortfolioRoute() {
         ? current.filter((item) => item !== indicator)
         : [...current, indicator]
     );
+  }
+
+  function selectRange(range: ChartRange) {
+    setSelectedRange(range);
+    setChartWindowOffset(0);
+  }
+
+  function slideChartWindow(direction: "earlier" | "latest") {
+    setChartWindowOffset((current) => {
+      if (direction === "latest") {
+        return Math.max(0, current - 1);
+      }
+
+      return Math.min(chartWindow.maxOffset, current + 1);
+    });
   }
 
   return (
@@ -337,20 +359,15 @@ export default function PortfolioRoute() {
           })}
         </View>
 
-        <View style={styles.chartFrame}>
-          <View style={styles.chartGrid}>
-            <View style={styles.gridLine} />
-            <View style={styles.gridLine} />
-            <View style={styles.gridLine} />
-          </View>
-          <View style={styles.chartEmptyState}>
-            <Badge label="출처 연결 대기" tone="missing" />
-            <AppText style={styles.chartTitle}>차트 데이터 연결 대기</AppText>
-            <AppText variant="caption" style={styles.chartBody}>
-              권위 있는 가격·거래량 출처가 연결되면 차트가 표시됩니다. 현재는 값을 추정하지 않습니다.
-            </AppText>
-          </View>
-        </View>
+        <DiagnosticPortfolioChart
+          activeIndicators={activeIndicators}
+          maxWindowOffset={chartWindow.maxOffset}
+          points={chartWindow.points}
+          selectedHolding={selectedHolding}
+          selectedRange={selectedRange}
+          sourceStatus={backtest.chartSource.status}
+          windowOffset={chartWindowOffset}
+        />
 
         <View style={styles.rangeRow}>
           {rangeOptions.map((range) => (
@@ -358,7 +375,7 @@ export default function PortfolioRoute() {
               accessibilityRole="button"
               accessibilityState={{ selected: selectedRange === range }}
               key={range}
-              onPress={() => setSelectedRange(range)}
+              onPress={() => selectRange(range)}
               style={[styles.rangeChip, selectedRange === range ? styles.rangeChipActive : null]}
             >
               <AppText variant="caption" style={selectedRange === range ? styles.rangeTextActive : styles.rangeText}>
@@ -369,14 +386,38 @@ export default function PortfolioRoute() {
         </View>
 
         <View style={styles.timeSlider}>
+          <View style={styles.sliderControlRow}>
+            <Pressable
+              accessibilityRole="button"
+              disabled={chartWindowOffset >= chartWindow.maxOffset}
+              onPress={() => slideChartWindow("earlier")}
+              style={[
+                styles.sliderButton,
+                chartWindowOffset >= chartWindow.maxOffset ? styles.sliderButtonDisabled : null,
+              ]}
+            >
+              <AppText variant="caption" style={styles.sliderButtonText}>이전</AppText>
+            </Pressable>
+            <Pressable
+              accessibilityRole="button"
+              disabled={chartWindowOffset === 0}
+              onPress={() => slideChartWindow("latest")}
+              style={[
+                styles.sliderButton,
+                chartWindowOffset === 0 ? styles.sliderButtonDisabled : null,
+              ]}
+            >
+              <AppText variant="caption" style={styles.sliderButtonText}>최근</AppText>
+            </Pressable>
+          </View>
           <View style={styles.sliderTrack}>
-            <View style={styles.sliderSelection} />
-            <View style={styles.leftHandle} />
+            <View style={[styles.sliderSelection, { width: chartWindow.sliderSelectionWidth, marginLeft: chartWindow.sliderSelectionLeft }]} />
+            <View style={[styles.leftHandle, { left: chartWindow.sliderHandleLeft }]} />
             <View style={styles.rightHandle} />
           </View>
           <View style={styles.sliderLabels}>
-            <AppText variant="caption">시작 조정</AppText>
-            <AppText variant="caption">오른쪽 핸들: NOW 고정</AppText>
+            <AppText variant="caption">표시 구간: {chartWindow.windowLabel}</AppText>
+            <AppText variant="caption">{chartWindowOffset === 0 ? "최근 구간 표시" : "과거 구간 표시"}</AppText>
           </View>
         </View>
 
@@ -444,6 +485,236 @@ export default function PortfolioRoute() {
       </CardContainer>
     </ScreenContainer>
   );
+}
+
+type EquityCurvePoint = (typeof backtestSnapshotFixture.equityCurve)[number];
+
+type ChartWindow = {
+  points: EquityCurvePoint[];
+  maxOffset: number;
+  sliderHandleLeft: `${number}%`;
+  sliderSelectionLeft: `${number}%`;
+  sliderSelectionWidth: `${number}%`;
+  windowLabel: string;
+};
+
+const chartWindowSizeByRange: Record<ChartRange, number> = {
+  "1D": 2,
+  "3D": 3,
+  "5D": 5,
+  "1M": 12,
+  "3M": 24,
+  ALL: Number.MAX_SAFE_INTEGER,
+};
+
+function buildEquityCurveWindow(
+  curve: EquityCurvePoint[],
+  selectedRange: ChartRange,
+  requestedOffset: number
+): ChartWindow {
+  const windowSize = Math.min(chartWindowSizeByRange[selectedRange], curve.length);
+  const maxOffset = Math.max(0, curve.length - windowSize);
+  const offset = Math.min(requestedOffset, maxOffset);
+  const endIndex = curve.length - offset;
+  const startIndex = Math.max(0, endIndex - windowSize);
+  const points = curve.slice(startIndex, endIndex);
+  const selectionWidth = curve.length > 0 ? Math.max(10, Math.round((points.length / curve.length) * 100)) : 100;
+  const selectionLeft = curve.length > 0 ? Math.round((startIndex / curve.length) * 100) : 0;
+  const leftHandle = Math.min(96, Math.max(0, selectionLeft));
+  const firstDate = formatChartDate(points[0]?.timestamp);
+  const lastDate = formatChartDate(points[points.length - 1]?.timestamp);
+
+  return {
+    maxOffset,
+    points,
+    sliderHandleLeft: `${leftHandle}%`,
+    sliderSelectionLeft: `${selectionLeft}%`,
+    sliderSelectionWidth: `${selectionWidth}%`,
+    windowLabel: firstDate && lastDate ? `${firstDate} - ${lastDate}` : "데이터 대기",
+  };
+}
+
+function formatChartDate(timestamp?: string) {
+  if (!timestamp) return "";
+  return timestamp.slice(2, 10).replaceAll("-", ".");
+}
+
+function DiagnosticPortfolioChart({
+  activeIndicators,
+  maxWindowOffset,
+  points,
+  selectedHolding,
+  selectedRange,
+  sourceStatus,
+  windowOffset,
+}: {
+  activeIndicators: string[];
+  maxWindowOffset: number;
+  points: EquityCurvePoint[];
+  selectedHolding: HoldingTableRow;
+  selectedRange: ChartRange;
+  sourceStatus: "READY" | "SOURCE_NOT_ATTACHED";
+  windowOffset: number;
+}) {
+  const chartGeometry = buildChartGeometry(points);
+  const latestPoint = points[points.length - 1];
+  const firstPoint = points[0];
+  const latestReturn = latestPoint ? displayBacktestPercent(latestPoint.portfolioReturnPct) : "연결 대기";
+  const latestDrawdown = latestPoint ? displayBacktestPercent(latestPoint.drawdownPct) : "연결 대기";
+  const sourceReady = sourceStatus === "READY" && points.length > 0;
+  const showPerformanceLine = activeIndicators.includes("성과선");
+  const showDrawdown = activeIndicators.includes("MDD");
+  const showPeakLine = activeIndicators.includes("고점선");
+  const showSelectedPoint = activeIndicators.includes("선택값");
+
+  return (
+    <View style={styles.chartFrame}>
+      <View style={styles.chartHeader}>
+        <View style={styles.chartTitleBlock}>
+          <View style={styles.chartTitleRow}>
+            <AppText style={styles.chartTitle}>진단 성과 차트</AppText>
+            <Badge label={sourceReady ? "곡선 연결" : "연결 대기"} tone={sourceReady ? "readOnly" : "missing"} />
+          </View>
+          <AppText variant="caption">
+            {selectedHolding.ticker} 선택 / {selectedRange} / 월말 스냅샷 기반
+          </AppText>
+        </View>
+        <View style={styles.chartKpiBox}>
+          <AppText variant="caption">수익률</AppText>
+          <AppText style={[styles.chartKpiValue, styles.positiveValue]}>{latestReturn}</AppText>
+        </View>
+      </View>
+
+      <View style={styles.chartReadoutRow}>
+        <Badge label={`MDD ${latestDrawdown}`} tone="missing" />
+        <Badge label={`구간 ${points.length}개`} tone="neutral" />
+        <Badge label={`슬라이드 ${windowOffset}/${maxWindowOffset}`} tone="readOnly" />
+      </View>
+
+      <View style={styles.chartPlot}>
+        <View style={styles.chartGrid}>
+          <View style={styles.gridLine} />
+          <View style={styles.gridLine} />
+          <View style={styles.gridLine} />
+        </View>
+
+        {sourceReady && showPeakLine ? <View style={[styles.highWaterLine, { top: chartGeometry.peakTop }]} /> : null}
+
+        {sourceReady && showDrawdown
+          ? chartGeometry.points.map((point) => (
+              <View
+                key={`drawdown-${point.key}`}
+                style={[
+                  styles.drawdownBar,
+                  {
+                    height: point.drawdownHeight,
+                    left: point.x - 2,
+                  },
+                ]}
+              />
+            ))
+          : null}
+
+        {sourceReady && showPerformanceLine
+          ? chartGeometry.segments.map((segment) => (
+              <View
+                key={segment.key}
+                style={[
+                  styles.chartLineSegment,
+                  {
+                    left: segment.left,
+                    top: segment.top,
+                    transform: [{ rotateZ: `${segment.angle}deg` }],
+                    width: segment.width,
+                  },
+                ]}
+              />
+            ))
+          : null}
+
+        {sourceReady && showSelectedPoint && chartGeometry.latest ? (
+          <View
+            style={[
+              styles.chartPointMarker,
+              {
+                left: chartGeometry.latest.x - 5,
+                top: chartGeometry.latest.y - 5,
+              },
+            ]}
+          />
+        ) : null}
+
+        {!sourceReady ? (
+          <View style={styles.chartEmptyState}>
+            <Badge label="출처 연결 대기" tone="missing" />
+            <AppText style={styles.chartEmptyTitle}>차트 데이터 연결 대기</AppText>
+            <AppText variant="caption" style={styles.chartBody}>
+              권위 있는 가격·거래량 출처가 연결되면 차트가 표시됩니다. 현재는 값을 추정하지 않습니다.
+            </AppText>
+          </View>
+        ) : null}
+      </View>
+
+      <View style={styles.chartAxisRow}>
+        <AppText variant="caption">{formatChartDate(firstPoint?.timestamp)}</AppText>
+        <AppText variant="caption">{formatChartDate(latestPoint?.timestamp)}</AppText>
+      </View>
+    </View>
+  );
+}
+
+function buildChartGeometry(points: EquityCurvePoint[]) {
+  const width = 282;
+  const height = 148;
+  if (points.length === 0) {
+    return {
+      latest: null,
+      peakTop: 0,
+      points: [],
+      segments: [],
+    };
+  }
+
+  const values = points.map((point) => point.equity);
+  const minValue = Math.min(...values);
+  const maxValue = Math.max(...values);
+  const valueRange = Math.max(1, maxValue - minValue);
+  const xStep = points.length > 1 ? width / (points.length - 1) : width;
+  const normalizedPoints = points.map((point, index) => {
+    const x = index * xStep;
+    const y = height - ((point.equity - minValue) / valueRange) * height;
+    const drawdownHeight = Math.min(44, Math.abs(point.drawdownPct) * 1.4);
+
+    return {
+      drawdownHeight,
+      key: `${point.timestamp}-${index}`,
+      x,
+      y,
+    };
+  });
+  const segments = normalizedPoints.slice(1).map((point, index) => {
+    const previous = normalizedPoints[index];
+    const dx = point.x - previous.x;
+    const dy = point.y - previous.y;
+    const width = Math.sqrt(dx * dx + dy * dy);
+    const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+    return {
+      angle,
+      key: `${previous.key}-${point.key}`,
+      left: previous.x,
+      top: previous.y,
+      width,
+    };
+  });
+  const peakIndex = values.indexOf(maxValue);
+
+  return {
+    latest: normalizedPoints[normalizedPoints.length - 1],
+    peakTop: normalizedPoints[peakIndex]?.y ?? 0,
+    points: normalizedPoints,
+    segments,
+  };
 }
 
 function HoldingNameCell({
@@ -1046,9 +1317,46 @@ const styles = StyleSheet.create({
   chartFrame: {
     backgroundColor: "#101827",
     borderRadius: 16,
-    minHeight: 196,
+    gap: spacing.md,
+    minHeight: 272,
     overflow: "hidden",
     padding: spacing.lg,
+  },
+  chartHeader: {
+    alignItems: "flex-start",
+    flexDirection: "row",
+    gap: spacing.md,
+    justifyContent: "space-between",
+  },
+  chartTitleBlock: {
+    flex: 1,
+    gap: spacing.xs,
+  },
+  chartTitleRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: spacing.sm,
+  },
+  chartKpiBox: {
+    alignItems: "flex-end",
+    gap: 2,
+  },
+  chartKpiValue: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "900",
+    lineHeight: 20,
+  },
+  chartReadoutRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: spacing.sm,
+  },
+  chartPlot: {
+    height: 164,
+    overflow: "hidden",
+    position: "relative",
   },
   chartGrid: {
     bottom: 0,
@@ -1063,6 +1371,38 @@ const styles = StyleSheet.create({
     backgroundColor: "#273449",
     height: 1,
   },
+  chartLineSegment: {
+    backgroundColor: "#34C759",
+    borderRadius: 999,
+    height: 3,
+    position: "absolute",
+  },
+  chartPointMarker: {
+    backgroundColor: "#FFFFFF",
+    borderColor: "#34C759",
+    borderRadius: 5,
+    borderWidth: 2,
+    height: 10,
+    position: "absolute",
+    width: 10,
+  },
+  drawdownBar: {
+    backgroundColor: "#F45C8D",
+    borderTopLeftRadius: 2,
+    borderTopRightRadius: 2,
+    bottom: 0,
+    opacity: 0.55,
+    position: "absolute",
+    width: 4,
+  },
+  highWaterLine: {
+    backgroundColor: "#8E8E93",
+    height: 1,
+    left: 0,
+    opacity: 0.7,
+    position: "absolute",
+    right: 0,
+  },
   chartEmptyState: {
     alignItems: "center",
     flex: 1,
@@ -1075,12 +1415,22 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "900",
     lineHeight: 24,
+  },
+  chartEmptyTitle: {
+    color: "#FFFFFF",
+    fontSize: 18,
+    fontWeight: "900",
+    lineHeight: 24,
     textAlign: "center",
   },
   chartBody: {
     color: "#AFAFAF",
     maxWidth: 280,
     textAlign: "center",
+  },
+  chartAxisRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   rangeRow: {
     flexDirection: "row",
@@ -1110,18 +1460,38 @@ const styles = StyleSheet.create({
   timeSlider: {
     gap: spacing.sm,
   },
+  sliderControlRow: {
+    flexDirection: "row",
+    gap: spacing.sm,
+  },
+  sliderButton: {
+    alignItems: "center",
+    backgroundColor: "#DFF8F5",
+    borderColor: "#00C4B3",
+    borderRadius: 8,
+    borderWidth: 1,
+    flex: 1,
+    minHeight: mobile.touchTarget,
+    justifyContent: "center",
+  },
+  sliderButtonDisabled: {
+    backgroundColor: "#F6F7F9",
+    borderColor: "#E0E0E0",
+    opacity: 0.58,
+  },
+  sliderButtonText: {
+    color: "#008A80",
+    fontWeight: "900",
+  },
   sliderTrack: {
     backgroundColor: "#E0E0E0",
     borderRadius: 999,
     height: 18,
-    justifyContent: "center",
     overflow: "hidden",
   },
   sliderSelection: {
-    alignSelf: "flex-end",
     backgroundColor: "#BDEDE8",
     height: 18,
-    width: "68%",
   },
   leftHandle: {
     backgroundColor: "#00C4B3",

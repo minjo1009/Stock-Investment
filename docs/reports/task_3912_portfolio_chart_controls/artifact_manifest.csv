@@ -1,0 +1,12 @@
+artifact_path,artifact_type,authority,status,notes
+docs/reports/task_3912_portfolio_chart_controls/task_3912_portfolio_chart_controls.md,report,task_report,complete,Portfolio chart controls implementation report
+docs/reports/task_3912_portfolio_chart_controls/artifact_manifest.csv,manifest,task_manifest,complete,Task3912 artifact manifest
+docs/reports/task_3912_portfolio_chart_controls/gpt_loop_1_prompt.md,gpt_prompt,review_only,blocked,Prompt prepared but GPT capture path unavailable
+docs/reports/task_3912_portfolio_chart_controls/gpt_loop_1_response_blocked.md,gpt_response_blocked,review_only,blocked,No GPT response captured
+docs/reports/task_3912_portfolio_chart_controls/gpt_loop_2_review_prompt.md,gpt_prompt,review_only,blocked,Review prompt prepared but GPT capture path unavailable
+docs/reports/task_3912_portfolio_chart_controls/gpt_loop_2_response_blocked.md,gpt_response_blocked,review_only,blocked,No GPT response captured
+docs/reports/task_3912_portfolio_chart_controls/loop_ledger.csv,loop_ledger,task_record,complete,Requested GPT loop status ledger
+data/artifacts/portfolio_tab_capture_task3912_chart_default.png,screenshot,qa_artifact,local_only,Default chart state capture not force-added to git
+data/artifacts/portfolio_tab_capture_task3912_chart_3d_earlier.png,screenshot,qa_artifact,local_only,3D prior-window chart state capture not force-added to git
+data/artifacts/portfolio_tab_capture_task3912_chart_5d_latest.png,screenshot,qa_artifact,local_only,5D latest-window chart state capture not force-added to git
+data/artifacts/portfolio_tab_capture_task3912_chart_1d_latest.png,screenshot,qa_artifact,local_only,1D latest-window chart state capture not force-added to git

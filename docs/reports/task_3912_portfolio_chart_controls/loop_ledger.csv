@@ -1,0 +1,3 @@
+loop_id,requested_role,requested_mode,status,result
+1,senior mobile trading chart engineer,implementation planning,BLOCKED_AUTOMATION_NO_GPT_CAPTURE,Prompt prepared; no GPT response captured
+2,senior mobile trading chart engineer,post-implementation review,BLOCKED_AUTOMATION_NO_GPT_CAPTURE,Prompt prepared; no GPT response captured
