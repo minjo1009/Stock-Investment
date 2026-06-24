@@ -50,8 +50,16 @@ for (const file of detailFiles) {
   const source = read(file);
   expect(source, "NavigationContextBar", `${file} must render NavigationContextBar`);
   expect(source, "SourceAttributionCard", `${file} must render SourceAttributionCard`);
-  expect(source, "sectionId=\"source\"", `${file} must include a Source detail section`);
-  expect(source, "Read-only", `${file} must preserve read-only copy`);
+  if (file.startsWith("app/brain/")) {
+    if (!(source.includes("보조 확인") || source.includes("원문 출처 상태") || source.includes("후보 출처 상태"))) {
+      findings.push(`${file} must include a Brain v5 source/support detail section`);
+    }
+  } else {
+    expect(source, "sectionId=\"source\"", `${file} must include a Source detail section`);
+  }
+  if (!(source.includes("Read-only") || source.includes("read-only") || source.includes("읽기 전용"))) {
+    findings.push(`${file} must preserve read-only copy`);
+  }
 }
 
 for (const file of [

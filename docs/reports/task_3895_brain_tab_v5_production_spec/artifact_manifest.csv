@@ -1,0 +1,3 @@
+artifact_id,path,type,status,notes
+task3895_report,docs/reports/task_3895_brain_tab_v5_production_spec/task_3895_brain_tab_v5_production_spec.md,report,canonical,Task closeout report
+task3895_manifest,docs/reports/task_3895_brain_tab_v5_production_spec/artifact_manifest.csv,manifest,canonical,Artifact manifest

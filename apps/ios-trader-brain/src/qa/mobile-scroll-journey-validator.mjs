@@ -15,6 +15,10 @@ const requiredSections = [
   { id: "risk", title: "Risk" },
   { id: "validation", title: "Validation" },
 ];
+const brainV5Sections = {
+  "app/brain/candidate/[candidateId].tsx": ["지금의 생각", "해석", "근거", "위험 요인", "대응", "보조 확인"],
+  "app/brain/chain/[chainId].tsx": ["근거 상세", "요약", "핵심 포인트", "브레인 해석과 예측", "원문 전문", "보조 확인"],
+};
 
 function readText(relativePath) {
   const path = join(root, relativePath);
@@ -43,6 +47,22 @@ expect(packageJson?.scripts?.test?.includes("validate:mobile-scroll-journey"), "
 for (const route of detailRoutes) {
   const source = readText(route);
   let previousIndex = -1;
+
+  if (brainV5Sections[route]) {
+    const renderSource = source.slice(Math.max(0, source.indexOf("return (")));
+    for (const marker of brainV5Sections[route]) {
+      const sectionIndex = renderSource.indexOf(marker);
+      expect(sectionIndex !== -1, `${route}: missing Brain v5 section marker ${marker}`);
+      if (sectionIndex !== -1 && previousIndex !== -1) {
+        expect(sectionIndex > previousIndex, `${route}: Brain v5 sections must stay in requested order`);
+      }
+      if (sectionIndex !== -1) previousIndex = sectionIndex;
+    }
+    expect(source.includes("MobileV1StatusRail"), `${route}: support section must include MobileV1StatusRail`);
+    expect(!/\bscrollTo\b|\buseRef\b|\buseState\b|\buseEffect\b|\brouter\.push\b/.test(source), `${route}: must not add scroll control, state, effects, or navigation changes`);
+    expect(!/onPress=\{|onSubmit=\{|onExecute=\{|fetch\s*\(/.test(source), `${route}: must not add handlers or integration calls`);
+    continue;
+  }
 
   expect(source.includes("ProductDetailSection"), `${route}: must use ProductDetailSection`);
   expect(source.includes("MobileV1StatusRail"), `${route}: Overview must include MobileV1StatusRail`);

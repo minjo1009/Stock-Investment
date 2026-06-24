@@ -97,7 +97,27 @@ expect(portfolio.includes("setSelectedHoldingId"), "PORTFOLIO V2 must support lo
 expect(portfolio.includes("setSelectedRange"), "PORTFOLIO V2 must support local range selection");
 expect(portfolio.includes("toggleIndicator"), "PORTFOLIO V2 must support local indicator toggles");
 
-expectBefore(brain, "<ScreenSummary", "<MobileV1StatusRail", "BRAIN IA");
+expectBefore(brain, "오늘의 이슈", "최신 뉴스와 해석", "BRAIN v5 IA");
+expectBefore(brain, "최신 뉴스와 해석", "관계 맵", "BRAIN v5 IA");
+expectBefore(brain, "관계 맵", "후보 종목", "BRAIN v5 IA");
+expectBefore(brain, "후보 종목", "위험 요약", "BRAIN v5 IA");
+expectBefore(brain, "위험 요약", "보조 확인", "BRAIN v5 IA");
+expectIncludes(
+  brain,
+  [
+    "브레인",
+    "최근 업데이트",
+    "확신 수준",
+    "브레인 해석",
+    "원문 보기",
+    "전력망 투자 -> 데이터센터 증설",
+    "승격 가능",
+    "검토 필요",
+    "주의",
+    "Phone-first v1 / read-only / NOT_AUTHORITY",
+  ],
+  "BRAIN production v5"
+);
 expect(
   brain.includes("read-only") || brain.includes("Read-only") || brain.includes("읽기 전용") || brain.includes("읽기전용"),
   "BRAIN must preserve read-only boundary"

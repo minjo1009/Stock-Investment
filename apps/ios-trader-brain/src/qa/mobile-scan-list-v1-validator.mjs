@@ -50,6 +50,13 @@ for (const route of tabRoutes) {
     expect(source.includes("HoldingNameCell"), `${route}: must use Portfolio V2 table name cells`);
     expect(source.includes("MetricCell"), `${route}: must use Portfolio V2 metric cells`);
     expect(source.includes("보유종목"), `${route}: must preserve holdings table header`);
+  } else if (route.includes("brain")) {
+    expect(source.includes("오늘의 이슈"), `${route}: must render Brain v5 issue card`);
+    expect(source.includes("최신 뉴스와 해석"), `${route}: must render Brain v5 news interpretation list`);
+    expect(source.includes("관계 맵"), `${route}: must render Brain v5 cause-effect map`);
+    expect(source.includes("후보 종목"), `${route}: must render Brain v5 candidate slider`);
+    expect(source.includes("위험 요약"), `${route}: must render Brain v5 risk summary`);
+    expect(source.includes("원문 보기"), `${route}: must link to evidence detail`);
   } else {
     expect(source.includes("MobileScanListItem"), `${route}: must use MobileScanListItem`);
   }
@@ -66,4 +73,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[MOBILE_SCAN_LIST_V1_OK] tab list rows preserve mobile scan, Portfolio V2 table, and read-only boundaries");
+console.log("[MOBILE_SCAN_LIST_V1_OK] tab rows preserve mobile scan, Brain v5 cards, Portfolio V2 table, and read-only boundaries");

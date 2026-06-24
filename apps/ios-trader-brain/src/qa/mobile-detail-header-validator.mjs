@@ -35,9 +35,17 @@ expect(packageJson?.scripts?.test?.includes("validate:mobile-detail-header"), "n
 
 for (const route of detailRoutes) {
   const source = readText(route);
-  expect(source.includes("ProductDetailHeader"), `${route}: must use ProductDetailHeader`);
-  expect(source.indexOf("ProductDetailHeader") < source.indexOf("sectionId=\"overview\""), `${route}: compact header must appear before Overview section`);
-  expect(source.includes("Read-only"), `${route}: header must preserve Read-only badge`);
+  if (route.startsWith("app/brain/")) {
+    const headerMarker = route.includes("candidate") ? "지금의 생각" : "근거 상세";
+    const firstSection = route.includes("candidate") ? "해석" : "요약";
+    expect(source.includes(headerMarker), `${route}: must use Brain v5 card header`);
+    expect(source.indexOf(headerMarker) < source.indexOf(firstSection), `${route}: Brain v5 header must appear before first detail section`);
+    expect(source.includes("read-only") || source.includes("Read-only"), `${route}: header/support copy must preserve read-only posture`);
+  } else {
+    expect(source.includes("ProductDetailHeader"), `${route}: must use ProductDetailHeader`);
+    expect(source.indexOf("ProductDetailHeader") < source.indexOf("sectionId=\"overview\""), `${route}: compact header must appear before Overview section`);
+    expect(source.includes("Read-only"), `${route}: header must preserve Read-only badge`);
+  }
   expect(source.includes("NOT_AUTHORITY"), `${route}: header must preserve NOT_AUTHORITY badge`);
   expect(source.includes("MobileV1StatusRail"), `${route}: overview rail must remain after compact header`);
   expect(!/position:\s*["']fixed["']|position:\s*["']sticky["']/.test(source), `${route}: route must not introduce sticky/fixed header`);
