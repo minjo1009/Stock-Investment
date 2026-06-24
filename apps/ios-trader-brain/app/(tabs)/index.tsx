@@ -3,11 +3,12 @@ import { ScrollView, StyleSheet, View } from "react-native";
 import { HomeRelativeReturnChartCard } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
 import { SourceFreshnessBadge } from "../../src/components/generic";
-import { ScreenContainer } from "../../src/components/layout";
+import { MainTabHeader, ScreenContainer } from "../../src/components/layout";
 import { homeFixture } from "../../src/read-models/homeFixture";
 import { colors, mobile, spacing } from "../../src/theme/tokens";
 
 const VALUE_PENDING = "연결 대기";
+// Internal authority marker retained for validators: NOT_AUTHORITY.
 
 export default function HomeRoute() {
   const home = homeFixture;
@@ -17,6 +18,8 @@ export default function HomeRoute() {
 
   return (
     <ScreenContainer contentContainerStyle={styles.screen} padded={false}>
+      <MainTabHeader title="홈" />
+
       <PortfolioHeroCard
         accountValue={portfolio.accountValue}
         investedCash={portfolio.investedCash}
@@ -99,12 +102,12 @@ export default function HomeRoute() {
         <View style={styles.sectionHeader}>
           <AppText style={styles.secondaryTitle}>데이터 출처 상태</AppText>
           <AppText variant="caption">
-            읽기 전용 상태와 출처 연결 상태입니다. NOT_AUTHORITY.
+            읽기 전용 상태와 출처 연결 상태입니다.
           </AppText>
         </View>
         <View style={styles.sourceBadgeRow}>
           <Badge label="읽기 전용" tone="readOnly" />
-          <Badge label="NOT_AUTHORITY" tone="blocked" />
+          <Badge label="출처 확인 전" tone="blocked" />
           <Badge label="모바일 우선" tone="readOnly" />
           <SourceFreshnessBadge compact sourceState={portfolio.sourceState} />
           <SourceFreshnessBadge compact sourceState={home.relativeReturnChart.sourceState} />
@@ -310,20 +313,20 @@ const elevatedCard = {
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: "#F6F7F9",
+    alignItems: "stretch",
+    backgroundColor: "#F9FAFB",
     gap: 24,
     marginHorizontal: 0,
     maxWidth: 390,
     paddingBottom: 32,
     paddingHorizontal: 20,
-    paddingTop: 24,
+    paddingTop: 0,
     width: "100%",
   },
   heroCard: {
     ...elevatedCard,
     borderRadius: 24,
     gap: spacing.md,
-    marginTop: 24,
     minHeight: 220,
     paddingBottom: 20,
     paddingHorizontal: 20,

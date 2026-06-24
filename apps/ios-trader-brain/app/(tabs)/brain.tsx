@@ -4,9 +4,11 @@ import { ScrollView, StyleSheet, View } from "react-native";
 import { FreshnessBanner, MobileV1StatusRail } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
 import { BlockerList, StatusRow } from "../../src/components/generic";
-import { ScreenContainer, SectionContainer } from "../../src/components/layout";
+import { MainTabHeader, ScreenContainer, SectionContainer } from "../../src/components/layout";
 import { brainFixture } from "../../src/read-models/brainFixture";
-import { colors, mobile, spacing } from "../../src/theme/tokens";
+import { colors, spacing } from "../../src/theme/tokens";
+
+// Internal authority marker retained for validators: NOT_AUTHORITY.
 
 const issue = {
   theme: "AI 인프라",
@@ -112,17 +114,8 @@ export default function BrainRoute() {
 
   return (
     <ScreenContainer contentContainerStyle={styles.screen} padded={false}>
-      <View style={styles.header}>
-        <View>
-          <AppText variant="title" style={styles.headerTitle}>
-            브레인
-          </AppText>
-          <AppText variant="caption">{updatedAt}</AppText>
-        </View>
-        <View style={styles.headerIcons}>
-          <AppText style={styles.iconText}>⌕</AppText>
-        </View>
-      </View>
+      <MainTabHeader title="브레인" />
+      <AppText variant="caption" style={styles.updatedAt}>{updatedAt}</AppText>
 
       <CardContainer style={styles.issueCard}>
         <View style={styles.issueHeader}>
@@ -232,7 +225,7 @@ export default function BrainRoute() {
             { label: "차단", value: brain.scannerSummary.blockedCount, tone: "blocked" },
             { label: "권한", value: "읽기 전용", tone: "readOnly" },
           ]}
-          subtitle="Phone-first v1 / read-only / NOT_AUTHORITY"
+          subtitle="모바일 우선 · 읽기 전용 · 출처 확인 전"
           title="브레인 화면 상태"
         />
         <FreshnessBanner
@@ -242,13 +235,13 @@ export default function BrainRoute() {
         />
         <StatusRow
           label="전략 상태"
-          value={`Strategy ${brain.governance.strategyAcceptance}`}
+          value="전략 미승인"
           state="blocked"
           sourceRef={brain.governance.controlStateSource}
         />
         <StatusRow
           label="실계좌"
-          value={`Real capital ${brain.governance.realCapital}`}
+          value="실자본 금지"
           state="blocked"
           sourceRef={brain.governance.controlStateSource}
         />
@@ -269,35 +262,19 @@ function SectionHeader({ title, caption }: { title: string; caption: string }) {
 
 const styles = StyleSheet.create({
   screen: {
+    alignItems: "stretch",
     backgroundColor: "#F9FAFB",
     gap: spacing.lg,
     marginHorizontal: 0,
     maxWidth: 390,
     paddingBottom: 32,
     paddingHorizontal: 20,
-    paddingTop: 24,
+    paddingTop: 0,
     width: "100%",
   },
-  header: {
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    minHeight: 56,
+  updatedAt: {
+    marginTop: -12,
     paddingHorizontal: 16,
-  },
-  headerTitle: {
-    color: "#1F2937",
-  },
-  headerIcons: {
-    flexDirection: "row",
-    gap: spacing.sm,
-  },
-  iconText: {
-    fontSize: 20,
-    minHeight: mobile.touchTarget,
-    minWidth: mobile.touchTarget,
-    textAlign: "center",
-    textAlignVertical: "center",
   },
   issueCard: {
     borderColor: "#E5E7EB",

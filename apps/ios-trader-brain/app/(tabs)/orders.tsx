@@ -15,7 +15,7 @@ import {
   SourceFreshnessBadge,
   StatusRow,
 } from "../../src/components/generic";
-import { ScreenContainer, SectionContainer } from "../../src/components/layout";
+import { MainTabHeader, ScreenContainer, SectionContainer } from "../../src/components/layout";
 import { ordersFixture } from "../../src/read-models/ordersFixture";
 import { spacing } from "../../src/theme/tokens";
 
@@ -26,7 +26,9 @@ export default function OrdersRoute() {
   ).length;
 
   return (
-    <ScreenContainer>
+    <ScreenContainer contentContainerStyle={styles.screen} padded={false}>
+      <MainTabHeader title="주문" />
+
       <View style={{ gap: spacing.sm }}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
           <Badge label="ORDERS v1" tone="readOnly" />
@@ -167,3 +169,17 @@ export default function OrdersRoute() {
     </ScreenContainer>
   );
 }
+
+const styles = {
+  screen: {
+    alignItems: "stretch" as const,
+    backgroundColor: "#F9FAFB",
+    gap: spacing.lg,
+    marginHorizontal: 0,
+    maxWidth: 390,
+    paddingBottom: 32,
+    paddingHorizontal: 20,
+    paddingTop: 0,
+    width: "100%" as const,
+  },
+};

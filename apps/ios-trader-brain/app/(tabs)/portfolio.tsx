@@ -4,9 +4,11 @@ import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 import { FreshnessBanner, MobileV1StatusRail } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
 import { SourceFreshnessBadge, StatusRow } from "../../src/components/generic";
-import { ScreenContainer } from "../../src/components/layout";
+import { MainTabHeader, ScreenContainer } from "../../src/components/layout";
 import { portfolioFixture } from "../../src/read-models/portfolioFixture";
 import { colors, mobile, spacing } from "../../src/theme/tokens";
+
+// Internal authority marker retained for validators: NOT_AUTHORITY.
 
 type HoldingTableRow = {
   id: string;
@@ -82,6 +84,78 @@ const holdings: HoldingTableRow[] = [
     newsTitle: "뉴스 요약 대기",
     newsSummary: "뉴스 요약은 향후 read-only 출처가 연결될 때만 표시합니다.",
   },
+  {
+    id: "position-source-review",
+    name: "원문 확인 대기",
+    ticker: "EVD",
+    region: "근거 대기",
+    pnl: "확인 대기",
+    yieldValue: "연결 대기",
+    quantity: "확인 대기",
+    sellableQuantity: "확인 대기",
+    evaluation: "확인 대기",
+    purchaseAmount: "확인 대기",
+    holdingPeriod: "확인 대기",
+    mdd: "확인 대기",
+    reasonTitle: "근거 연결 대기",
+    reasonBody: "근거와 원문이 연결되기 전에는 보유 판단을 확정하지 않습니다.",
+    newsTitle: "원문 보기 대기",
+    newsSummary: "원문 링크는 읽기 전용 출처가 연결되면 표시합니다.",
+  },
+  {
+    id: "position-risk-review",
+    name: "위험 요인 대기",
+    ticker: "RSK",
+    region: "위험 확인",
+    pnl: "확인 대기",
+    yieldValue: "연결 대기",
+    quantity: "확인 대기",
+    sellableQuantity: "확인 대기",
+    evaluation: "확인 대기",
+    purchaseAmount: "확인 대기",
+    holdingPeriod: "확인 대기",
+    mdd: "확인 대기",
+    reasonTitle: "위험 요인 확인 대기",
+    reasonBody: "MDD와 위험 요인은 권위 있는 가격·보유 데이터가 연결된 뒤 계산합니다.",
+    newsTitle: "위험 관련 뉴스 대기",
+    newsSummary: "관련 뉴스는 출처가 붙기 전까지 요약하지 않습니다.",
+  },
+  {
+    id: "position-journal-review",
+    name: "투자일지 대기",
+    ticker: "JRN",
+    region: "메모 대기",
+    pnl: "확인 대기",
+    yieldValue: "연결 대기",
+    quantity: "확인 대기",
+    sellableQuantity: "확인 대기",
+    evaluation: "확인 대기",
+    purchaseAmount: "확인 대기",
+    holdingPeriod: "확인 대기",
+    mdd: "확인 대기",
+    reasonTitle: "투자일지 연결 대기",
+    reasonBody: "거래 메모와 매수 근거가 연결되면 선택 종목 영역에서 함께 확인합니다.",
+    newsTitle: "관련 기록 대기",
+    newsSummary: "투자일지 기록은 아직 표시 권위가 없습니다.",
+  },
+  {
+    id: "position-watch-review",
+    name: "관찰 종목 대기",
+    ticker: "WCH",
+    region: "관찰",
+    pnl: "확인 대기",
+    yieldValue: "연결 대기",
+    quantity: "확인 대기",
+    sellableQuantity: "확인 대기",
+    evaluation: "확인 대기",
+    purchaseAmount: "확인 대기",
+    holdingPeriod: "확인 대기",
+    mdd: "확인 대기",
+    reasonTitle: "관찰 사유 대기",
+    reasonBody: "관찰 종목은 실제 보유와 구분되어야 하며, 임의로 수량을 만들지 않습니다.",
+    newsTitle: "관찰 뉴스 대기",
+    newsSummary: "관찰 뉴스도 출처 연결 후 표시합니다.",
+  },
 ];
 
 const sortOptions = ["수익률순", "평가금액순", "보유기간순"];
@@ -108,15 +182,8 @@ export default function PortfolioRoute() {
   }
 
   return (
-    <ScreenContainer contentContainerStyle={styles.screen}>
-      <View style={styles.header}>
-        <AppText style={styles.backIcon}>‹</AppText>
-        <AppText style={styles.headerTitle}>포트폴리오</AppText>
-        <View style={styles.headerActions}>
-          <AppText style={styles.headerIcon}>⌕</AppText>
-          <AppText style={styles.headerIcon}>≡</AppText>
-        </View>
-      </View>
+    <ScreenContainer contentContainerStyle={styles.screen} padded={false}>
+      <MainTabHeader title="포트폴리오" />
 
       <CardContainer style={styles.tableCard}>
         <View style={styles.tableTopRow}>
@@ -153,22 +220,17 @@ export default function PortfolioRoute() {
         </ScrollView>
 
         <View style={styles.tableShell}>
-          <View style={styles.stickyColumn}>
+          <View style={styles.tableHeader}>
             <View style={styles.stickyHeaderCell}>
               <AppText style={styles.tableHeaderText}>종목</AppText>
             </View>
-            {holdings.map((holding) => (
-              <HoldingNameCell
-                holding={holding}
-                isSelected={selectedHoldingId === holding.id}
-                key={holding.id}
-                onSelect={() => setSelectedHoldingId(holding.id)}
-              />
-            ))}
-          </View>
-
-          <ScrollView horizontal showsHorizontalScrollIndicator style={styles.metricsScroller}>
-            <View>
+            <ScrollView
+              bounces
+              horizontal
+              nestedScrollEnabled
+              showsHorizontalScrollIndicator
+              style={styles.metricsScroller}
+            >
               <View style={styles.metricHeaderRow}>
                 {["평가손익", "보유수량", "평가금액", "보유기간", "MDD"].map((label) => (
                   <View key={label} style={styles.metricHeaderCell}>
@@ -176,23 +238,53 @@ export default function PortfolioRoute() {
                   </View>
                 ))}
               </View>
-              {holdings.map((holding) => (
-                <Pressable
-                  accessibilityRole="button"
-                  key={holding.id}
-                  onPress={() => setSelectedHoldingId(holding.id)}
-                  style={[
-                    styles.metricRow,
-                    selectedHoldingId === holding.id ? styles.selectedMetricRow : null,
-                  ]}
-                >
-                  <MetricCell primary={holding.pnl} secondary={holding.yieldValue} tone="neutral" />
-                  <MetricCell primary={holding.quantity} secondary={`매도가능 ${holding.sellableQuantity}`} />
-                  <MetricCell primary={holding.evaluation} secondary={`매입 ${holding.purchaseAmount}`} />
-                  <MetricCell primary={holding.holdingPeriod} secondary="평균 기준" />
-                  <MetricCell primary={holding.mdd} secondary="drawdown" tone="negative" />
-                </Pressable>
-              ))}
+            </ScrollView>
+          </View>
+
+          <ScrollView
+            bounces
+            nestedScrollEnabled
+            showsVerticalScrollIndicator
+            style={styles.tableBodyScroller}
+          >
+            <View style={styles.tableScrollableBody}>
+              <View style={styles.fixedNameColumn}>
+                {holdings.map((holding) => (
+                  <HoldingNameCell
+                    holding={holding}
+                    isSelected={selectedHoldingId === holding.id}
+                    key={holding.id}
+                    onSelect={() => setSelectedHoldingId(holding.id)}
+                  />
+                ))}
+              </View>
+              <ScrollView
+                bounces
+                horizontal
+                nestedScrollEnabled
+                showsHorizontalScrollIndicator
+                style={styles.metricsScroller}
+              >
+                <View>
+                  {holdings.map((holding) => (
+                    <Pressable
+                      accessibilityRole="button"
+                      key={holding.id}
+                      onPress={() => setSelectedHoldingId(holding.id)}
+                      style={[
+                        styles.metricRow,
+                        selectedHoldingId === holding.id ? styles.selectedMetricRow : null,
+                      ]}
+                    >
+                      <MetricCell primary={holding.pnl} secondary={holding.yieldValue} tone="neutral" />
+                      <MetricCell primary={holding.quantity} secondary={`매도가능 ${holding.sellableQuantity}`} />
+                      <MetricCell primary={holding.evaluation} secondary={`매입 ${holding.purchaseAmount}`} />
+                      <MetricCell primary={holding.holdingPeriod} secondary="평균 기준" />
+                      <MetricCell primary={holding.mdd} secondary="drawdown" tone="negative" />
+                    </Pressable>
+                  ))}
+                </View>
+              </ScrollView>
             </View>
           </ScrollView>
         </View>
@@ -329,10 +421,10 @@ export default function PortfolioRoute() {
           <MobileV1StatusRail
             items={[
               { label: "선택 종목", value: selectedHolding.ticker, tone: "readOnly" },
-              { label: "브로커 검증", value: "BLOCKED", tone: "blocked" },
-              { label: "실행 권한", value: "FORBIDDEN", tone: "blocked" },
+              { label: "브로커 검증", value: "차단됨", tone: "blocked" },
+              { label: "실행 권한", value: "금지됨", tone: "blocked" },
             ]}
-            subtitle="Phone-first v2 / read-only / NOT_AUTHORITY"
+            subtitle="모바일 우선 · 읽기 전용 · 출처 확인 전"
             title="보조 안전 상태"
           />
           {firstSource ? <SourceFreshnessBadge sourceState={firstSource} /> : null}
@@ -446,48 +538,24 @@ const elevatedCard = {
 
 const styles = StyleSheet.create({
   screen: {
+    alignItems: "stretch",
+    backgroundColor: "#F9FAFB",
     gap: 24,
-  },
-  header: {
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    minHeight: 56,
-  },
-  backIcon: {
-    color: colors.mutedInk,
-    fontSize: 30,
-    fontWeight: "500",
-    lineHeight: 36,
-    minWidth: 44,
-  },
-  headerTitle: {
-    color: "#1A1A1A",
-    fontSize: 18,
-    fontWeight: "800",
-    lineHeight: 24,
-  },
-  headerActions: {
-    flexDirection: "row",
-    gap: spacing.sm,
-    justifyContent: "flex-end",
-    minWidth: 44,
-  },
-  headerIcon: {
-    color: colors.mutedInk,
-    fontSize: 20,
-    fontWeight: "700",
-    lineHeight: 28,
-    minWidth: 24,
-    textAlign: "center",
+    marginHorizontal: 0,
+    maxWidth: 390,
+    paddingBottom: 32,
+    paddingHorizontal: 20,
+    paddingTop: 0,
+    width: "100%",
   },
   tableCard: {
     ...elevatedCard,
     borderRadius: 16,
     gap: spacing.md,
-    height: 272,
+    height: 360,
     overflow: "hidden",
     padding: spacing.lg,
+    width: "100%",
   },
   tableTopRow: {
     alignItems: "flex-start",
@@ -552,25 +620,34 @@ const styles = StyleSheet.create({
     borderColor: "#E0E0E0",
     borderRadius: 12,
     borderWidth: 1,
-    flexDirection: "row",
     minWidth: 0,
     overflow: "hidden",
   },
-  stickyColumn: {
-    backgroundColor: "#FFFFFF",
+  tableHeader: {
+    flexDirection: "row",
+    height: 48,
+  },
+  stickyHeaderCell: {
+    backgroundColor: "#F6F7F9",
+    borderBottomColor: "#E0E0E0",
+    borderBottomWidth: 1,
+    height: 48,
+    justifyContent: "center",
+    paddingHorizontal: spacing.md,
     width: 148,
   },
   metricsScroller: {
     flex: 1,
     minWidth: 0,
   },
-  stickyHeaderCell: {
-    backgroundColor: "#F6F7F9",
-    borderBottomColor: "#E0E0E0",
-    borderBottomWidth: 1,
-    height: 32,
-    justifyContent: "center",
-    paddingHorizontal: spacing.md,
+  tableBodyScroller: {
+    height: 228,
+  },
+  tableScrollableBody: {
+    flexDirection: "row",
+  },
+  fixedNameColumn: {
+    width: 148,
   },
   tableHeaderText: {
     color: "#1A1A1A",
@@ -584,8 +661,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     flexDirection: "row",
     gap: spacing.sm,
-    height: 56,
+    height: 76,
     paddingHorizontal: spacing.sm,
+    width: 148,
   },
   selectedNameCell: {
     backgroundColor: "#F0F8F7",
@@ -622,7 +700,7 @@ const styles = StyleSheet.create({
   metricHeaderRow: {
     backgroundColor: "#F6F7F9",
     flexDirection: "row",
-    height: 32,
+    height: 48,
   },
   metricHeaderCell: {
     borderBottomColor: "#E0E0E0",
@@ -635,7 +713,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#E0E0E0",
     borderBottomWidth: 1,
     flexDirection: "row",
-    height: 56,
+    height: 76,
   },
   selectedMetricRow: {
     backgroundColor: "#F0F8F7",

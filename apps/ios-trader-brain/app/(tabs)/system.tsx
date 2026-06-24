@@ -10,7 +10,7 @@ import {
 } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
 import { StatusRow, UiStatePanel } from "../../src/components/generic";
-import { ScreenContainer, SectionContainer } from "../../src/components/layout";
+import { MainTabHeader, ScreenContainer, SectionContainer } from "../../src/components/layout";
 import { systemHealthFixture } from "../../src/read-models/systemHealthFixture";
 import { spacing } from "../../src/theme/tokens";
 
@@ -18,7 +18,9 @@ export default function SystemRoute() {
   const system = systemHealthFixture;
 
   return (
-    <ScreenContainer>
+    <ScreenContainer contentContainerStyle={styles.screen} padded={false}>
+      <MainTabHeader title="시스템" />
+
       <View style={{ gap: spacing.sm }}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
           <Badge label="SYSTEM v1" tone="readOnly" />
@@ -148,3 +150,17 @@ export default function SystemRoute() {
     </ScreenContainer>
   );
 }
+
+const styles = {
+  screen: {
+    alignItems: "stretch" as const,
+    backgroundColor: "#F9FAFB",
+    gap: spacing.lg,
+    marginHorizontal: 0,
+    maxWidth: 390,
+    paddingBottom: 32,
+    paddingHorizontal: 20,
+    paddingTop: 0,
+    width: "100%" as const,
+  },
+};

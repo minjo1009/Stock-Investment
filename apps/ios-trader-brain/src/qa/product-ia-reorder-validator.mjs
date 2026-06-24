@@ -114,7 +114,7 @@ expectIncludes(
     "검토 유지",
     "검토 필요",
     "주의",
-    "Phone-first v1 / read-only / NOT_AUTHORITY",
+    "모바일 우선 · 읽기 전용 · 출처 확인 전",
   ],
   "BRAIN production v5"
 );

@@ -1,0 +1,6 @@
+artifact_path,artifact_type,description,authority
+docs/reports/task_3903_ui_alignment_scroll_fix/task_3903_ui_alignment_scroll_fix.md,report,Task3903 UI alignment and scroll fix closeout report,NOT_AUTHORITY
+docs/reports/task_3903_ui_alignment_scroll_fix/artifact_manifest.csv,manifest,Task3903 artifact manifest,NOT_AUTHORITY
+data/artifacts/task_3903_ui_alignment_scroll_fix/screenshots/home_390x844.png,screenshot,HOME mobile screenshot after shared header and spacing repair,NOT_AUTHORITY
+data/artifacts/task_3903_ui_alignment_scroll_fix/screenshots/portfolio_390x844.png,screenshot,PORTFOLIO mobile screenshot after fixed-height holdings table repair,NOT_AUTHORITY
+data/artifacts/task_3903_ui_alignment_scroll_fix/screenshots/brain_390x844.png,screenshot,BRAIN mobile screenshot after shared header and Korean user-language repair,NOT_AUTHORITY
