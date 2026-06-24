@@ -1,0 +1,5 @@
+artifact_id,path,artifact_type,authority,notes
+task3905_contract,docs/frontend_app_ssot/25_BACKTEST_SNAPSHOT_READ_PATH.md,contract,canonical,Frontend-safe selected backtest snapshot read path.
+task3905_snapshot_fixture,apps/ios-trader-brain/src/read-models/backtestSnapshotFixture.ts,frontend_read_model,NOT_AUTHORITY,Static selected Task3903 diagnostic summary fixture; not account or broker truth.
+task3905_validator,apps/ios-trader-brain/src/qa/backtest-snapshot-validator.mjs,validator,canonical,Checks snapshot hard-state and forbidden direct DB/API/broker patterns.
+task3905_report,docs/reports/task_3905_backtest_snapshot_read_path/task_3905_backtest_snapshot_read_path.md,report,canonical,Task closeout report.

@@ -8,12 +8,13 @@ import { homeFixture } from "../../src/read-models/homeFixture";
 import { colors, mobile, spacing } from "../../src/theme/tokens";
 
 const VALUE_PENDING = "연결 대기";
-// Internal authority marker retained for validators: NOT_AUTHORITY.
+// Internal boundary markers retained for validators: read-only / NOT_AUTHORITY.
 
 export default function HomeRoute() {
   const home = homeFixture;
   const portfolio = home.portfolioSnapshot;
   const brain = home.brainSnapshot;
+  const sourceSummary = home.sourceSummary;
   const journalMonths = buildJournalMonths();
 
   return (

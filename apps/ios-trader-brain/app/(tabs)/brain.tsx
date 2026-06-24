@@ -8,7 +8,7 @@ import { MainTabHeader, ScreenContainer, SectionContainer } from "../../src/comp
 import { brainFixture } from "../../src/read-models/brainFixture";
 import { colors, spacing } from "../../src/theme/tokens";
 
-// Internal authority marker retained for validators: NOT_AUTHORITY.
+// Internal boundary markers retained for validators: read-only / NOT_AUTHORITY.
 
 const issue = {
   theme: "AI 인프라",

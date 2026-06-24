@@ -24,3 +24,5 @@ export type {
   SystemReadModel,
   ValidationReadiness,
 } from "./common";
+
+export type { BacktestSnapshotReadModel } from "./backtestSnapshotFixture";
