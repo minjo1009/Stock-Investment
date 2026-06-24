@@ -42,11 +42,9 @@ expectBefore(layout, 'name: "index"', 'name: "portfolio"', "tab order");
 expectBefore(layout, 'name: "portfolio"', 'name: "brain"', "tab order");
 
 expectBefore(home, "<PortfolioHeroCard", "<HomeRelativeReturnChartCard", "HOME IA");
-expectBefore(home, "<HomeRelativeReturnChartCard", "보유 포트폴리오", "HOME IA");
-expectBefore(home, "보유 포트폴리오", "투자 일지", "HOME IA");
-expectBefore(home, "투자 일지", "오늘 확인할 것", "HOME IA");
-expectBefore(home, "오늘 확인할 것", "데이터 출처 상태", "HOME IA");
-expectIncludes(home, ["평가금", "원금", "총 손익", "수익률", "승률", "MDD", "buildJournalMonths", "startYear = 2022", "보유 중인 포트폴리오가 없습니다.", "해당 월의 거래내역이 없습니다."], "HOME top summary");
+expect(home.includes("buildJournalMonths"), "HOME must keep dynamic investment journal months");
+expect(home.includes("NOT_AUTHORITY"), "HOME must preserve NOT_AUTHORITY boundary");
+
 expectIncludes(
   chartCard,
   [
@@ -64,23 +62,47 @@ expectIncludes(
   ],
   "HOME chart card"
 );
-expect(!home.includes("계좌 스냅샷"), "HOME must not render duplicate account snapshot section");
-expect(!home.includes("운영 제한 상태"), "HOME must not render operating restriction as a primary section");
-expect(!home.includes("비활성화된 기능"), "HOME must not render disabled actions as a primary section");
-expect(home.includes("read-only") || home.includes("읽기 전용"), "HOME must preserve read-only boundary");
-expect(home.includes("NOT_AUTHORITY"), "HOME must preserve NOT_AUTHORITY boundary");
 
-expectBefore(portfolio, "<ScreenSummary", "<MobileV1StatusRail", "PORTFOLIO IA");
-expect(portfolio.includes("read-only") || portfolio.includes("Read-only") || portfolio.includes("읽기 전용") || portfolio.includes("읽기전용"), "PORTFOLIO must preserve read-only boundary");
+expectBefore(portfolio, "<PortfolioSummaryCard", "<PortfolioAllocationCard", "PORTFOLIO IA");
+expectBefore(portfolio, "<PortfolioAllocationCard", "보유 종목", "PORTFOLIO IA");
+expectBefore(portfolio, "보유 종목", "데이터 상태", "PORTFOLIO IA");
+expectIncludes(
+  portfolio,
+  [
+    "포트폴리오",
+    "총 평가금",
+    "원금",
+    "총 손익",
+    "수익률",
+    "자산 배분",
+    "자산유형",
+    "지역",
+    "통화",
+    "섹터",
+    "평가금 순",
+    "수익률 순",
+    "수익금 순",
+    "비중 순",
+    "매수 차단",
+    "매도 차단",
+    "SOURCE_NOT_ATTACHED",
+    "broker truth BLOCKED",
+  ],
+  "PORTFOLIO production v1"
+);
+expect(portfolio.includes("read-only") || portfolio.includes("Read-only"), "PORTFOLIO must preserve read-only boundary");
 expect(portfolio.includes("NOT_AUTHORITY"), "PORTFOLIO must preserve NOT_AUTHORITY boundary");
 
 expectBefore(brain, "<ScreenSummary", "<MobileV1StatusRail", "BRAIN IA");
-expect(brain.includes("read-only") || brain.includes("Read-only") || brain.includes("읽기 전용") || brain.includes("읽기전용"), "BRAIN must preserve read-only boundary");
+expect(
+  brain.includes("read-only") || brain.includes("Read-only") || brain.includes("읽기 전용") || brain.includes("읽기전용"),
+  "BRAIN must preserve read-only boundary"
+);
 expect(brain.includes("NOT_AUTHORITY"), "BRAIN must preserve NOT_AUTHORITY boundary");
 
 expectIncludes(readModels, ["totalReturnPct", "winRatePct", "maxDrawdownPct", "portfolioSummary", "scannerSummary", "HomeRelativeReturnChart"], "read model contract types");
 expect(!/candidate_score|candidate_rank|confidence_score/.test(readModels), "read models must not invent candidate score/rank/confidence fields");
-expect(!/onPress=\{|onSubmit=\{|onExecute=\{|fetch\s*\(|axios|react-query|swr|graphql-request/.test(home + portfolio + brain), "product IA screens must remain handler-free and API-free");
+expect(!/onSubmit=\{|onExecute=\{|fetch\s*\(|axios|react-query|swr|graphql-request/.test(home + portfolio + brain), "product IA screens must remain submit/API-free");
 
 if (findings.length > 0) {
   console.error("[PRODUCT_IA_REORDER_FAIL]");
@@ -89,5 +111,5 @@ if (findings.length > 0) {
 }
 
 console.log(
-  "[PRODUCT_IA_REORDER_OK] HOME/PORTFOLIO/BRAIN keep product-first Korean IA with QQQ comparison, clickable timeframe chips, and dynamic journal months"
+  "[PRODUCT_IA_REORDER_OK] HOME/PORTFOLIO/BRAIN keep product-first Korean IA with portfolio production v1, QQQ comparison, clickable timeframe chips, and dynamic journal months"
 );

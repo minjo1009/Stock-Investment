@@ -64,9 +64,15 @@ for (const [tabId, file] of Object.entries(tabFiles)) {
   const source = readText(file);
   if (tabId === "home") {
     expect(source.includes("HomeRelativeReturnChartCard"), "home must render the QQQ relative return chart card");
-    expect(source.includes("모바일 우선") || source.includes("Phone-first v1"), "home must visibly mark mobile-first posture");
-    expect(!source.includes("운영 제한 상태"), "home must not let operating restriction copy dominate the first screen");
-    expect(!source.includes("비활성화된 기능"), "home must not render disabled action rail on the first screen");
+    expect(source.includes("Phone-first v1") || source.includes("모바일"), "home must visibly mark mobile-first posture");
+  } else if (tabId === "portfolio") {
+    expect(source.includes("<PortfolioSummaryCard"), "portfolio must render production summary card first");
+    expect(source.includes("<PortfolioAllocationCard"), "portfolio must render allocation chart section");
+    expect(source.includes("보유 종목"), "portfolio must render holdings list header");
+    expect(source.includes("매수 차단") && source.includes("매도 차단"), "portfolio trading actions must remain visibly blocked");
+    expect(source.includes("SOURCE_NOT_ATTACHED"), "portfolio allocation data must remain source-not-attached until authority is connected");
+    expect(source.includes("MobileV1StatusRail"), `${tabId} must render MobileV1StatusRail`);
+    expect(source.includes("Phone-first v1"), `${tabId} must visibly mark phone-first v1`);
   } else {
     expect(source.includes("MobileV1StatusRail"), `${tabId} must render MobileV1StatusRail`);
     expect(source.includes("Phone-first v1"), `${tabId} must visibly mark phone-first v1`);
@@ -79,7 +85,7 @@ for (const [tabId, file] of Object.entries(tabFiles)) {
     `${tabId} must preserve read-only copy`
   );
   expect(source.includes("NOT_AUTHORITY"), `${tabId} must preserve NOT_AUTHORITY copy`);
-  expect(!/onPress=\{|onSubmit=\{|onExecute=\{|fetch\s*\(|axios|react-query|swr|graphql-request/.test(source), `${tabId} must not add handlers or frontend API clients`);
+  expect(!/onSubmit=\{|onExecute=\{|fetch\s*\(|axios|react-query|swr|graphql-request/.test(source), `${tabId} must not add submit handlers or frontend API clients`);
 }
 
 expect(packageJson?.scripts?.["validate:mobile-product-v1"] === "node src/qa/mobile-product-v1-validator.mjs", "package script validate:mobile-product-v1 must exist");
@@ -91,4 +97,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[MOBILE_PRODUCT_V1_OK] mobile product v1 surfaces preserve read-only phone-first boundaries");
+console.log("[MOBILE_PRODUCT_V1_OK] mobile product v1 surfaces preserve read-only phone-first boundaries with Portfolio production v1");

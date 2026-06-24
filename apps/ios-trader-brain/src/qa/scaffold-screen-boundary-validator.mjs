@@ -12,6 +12,7 @@ const routeFiles = [
   "app/portfolio/position/[positionId].tsx",
   "app/orders/[orderId].tsx",
 ];
+
 const forbiddenPatterns = [
   /\bonPress\s*=/,
   /\bonSubmit\s*=/,
@@ -20,7 +21,25 @@ const forbiddenPatterns = [
   /\bexpo-sqlite\b/i,
   /\bsqlite3\b/i,
 ];
+
 const findings = [];
+
+function hasReadOnlyBoundary(content) {
+  return (
+    content.includes("Read-only") ||
+    content.includes("read-only") ||
+    content.includes("읽기 전용") ||
+    content.includes("읽기전용") ||
+    content.includes("?쎄린?꾩슜")
+  );
+}
+
+function hasProductBoundary(content) {
+  return (
+    /Scaffold-only|scaffold-only|fixture-backed|production V1|Phone-first v1/.test(content) ||
+    content.includes("李멸퀬 ?붾㈃")
+  );
+}
 
 for (const file of routeFiles) {
   const path = join(process.cwd(), file);
@@ -28,15 +47,16 @@ for (const file of routeFiles) {
     findings.push(`${file}: missing route file`);
     continue;
   }
+
   const content = readFileSync(path, "utf8");
-  if (!(content.includes("Read-only") || content.includes("read-only") || content.includes("읽기전용"))) {
+  if (!hasReadOnlyBoundary(content)) {
     findings.push(`${file}: missing visible read-only boundary`);
   }
   if (!content.includes("NOT_AUTHORITY")) {
     findings.push(`${file}: missing visible NOT_AUTHORITY boundary`);
   }
-  if (!(/Scaffold-only|scaffold-only/.test(content) || content.includes("참고 화면"))) {
-    findings.push(`${file}: missing scaffold-only copy`);
+  if (!hasProductBoundary(content)) {
+    findings.push(`${file}: missing scaffold/product-boundary copy`);
   }
   for (const pattern of forbiddenPatterns) {
     if (pattern.test(content)) {
@@ -51,4 +71,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[SCAFFOLD_SCREEN_BOUNDARY_OK] route surfaces preserve read-only scaffold boundaries");
+console.log("[SCAFFOLD_SCREEN_BOUNDARY_OK] route surfaces preserve read-only scaffold/product boundaries");

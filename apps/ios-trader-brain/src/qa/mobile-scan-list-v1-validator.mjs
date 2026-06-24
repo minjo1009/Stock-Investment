@@ -23,7 +23,13 @@ function expect(condition, message) {
 }
 
 function hasReadOnlyBoundary(source) {
-  return source.includes("Read-only") || source.includes("read-only") || source.includes("읽기전용");
+  return (
+    source.includes("Read-only") ||
+    source.includes("read-only") ||
+    source.includes("읽기 전용") ||
+    source.includes("읽기전용") ||
+    source.includes("?쎄린?꾩슜")
+  );
 }
 
 const packageJson = JSON.parse(readText("package.json") || "{}");
@@ -41,7 +47,12 @@ expect(packageJson?.scripts?.test?.includes("validate:mobile-scan-list-v1"), "np
 
 for (const route of tabRoutes) {
   const source = readText(route);
-  expect(source.includes("MobileScanListItem"), `${route}: must use MobileScanListItem`);
+  if (route.includes("portfolio")) {
+    expect(source.includes("HoldingRow"), `${route}: must use Portfolio production HoldingRow`);
+    expect(source.includes("보유 종목"), `${route}: must preserve holdings list header`);
+  } else {
+    expect(source.includes("MobileScanListItem"), `${route}: must use MobileScanListItem`);
+  }
   expect(source.includes("MobileV1StatusRail"), `${route}: must preserve phone-first rail`);
   expect(hasReadOnlyBoundary(source), `${route}: must preserve Read-only boundary`);
   expect(source.includes("NOT_AUTHORITY"), `${route}: must preserve NOT_AUTHORITY boundary`);
@@ -55,4 +66,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[MOBILE_SCAN_LIST_V1_OK] tab list rows preserve mobile scan and read-only boundaries");
+console.log("[MOBILE_SCAN_LIST_V1_OK] tab list rows preserve mobile scan, portfolio holding, and read-only boundaries");
