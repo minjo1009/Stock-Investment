@@ -1,0 +1,9 @@
+artifact_path,artifact_type,description,authority
+scripts/build_frontend_backtest_snapshot.py,snapshot_builder,Aggregates selected diagnostic trades into frontend position summaries,DIAGNOSTIC_NOT_AUTHORITY
+scripts/validate_frontend_backtest_snapshot.py,validator,Validates diagnostic positions exist in the frontend snapshot,VALIDATOR
+data/frontend_snapshots/current_backtest_snapshot.json,frontend_snapshot,Selected diagnostic backtest snapshot with symbol-level summaries,NOT_AUTHORITY
+apps/ios-trader-brain/src/read-models/backtestSnapshotFixture.ts,frontend_fixture,Generated typed read model with diagnosticPositions,NOT_AUTHORITY
+apps/ios-trader-brain/app/(tabs)/portfolio.tsx,frontend_route,Portfolio table uses diagnosticPositions before placeholder rows,NOT_AUTHORITY
+apps/ios-trader-brain/src/qa/backtest-snapshot-validator.mjs,validator,Backtest snapshot and Portfolio binding checks,VALIDATOR
+apps/ios-trader-brain/src/qa/mobile-product-v1-validator.mjs,validator,Mobile Portfolio binding regression check,VALIDATOR
+docs/reports/task_3908_portfolio_backtest_positions_display/task_3908_portfolio_backtest_positions_display.md,task_report,Task3908 implementation report,REPORT

@@ -167,13 +167,15 @@ const rangeOptions = ["1D", "1M", "3M", "1Y", "ALL"];
 export default function PortfolioRoute() {
   const portfolio = portfolioFixture;
   const backtest = backtestSnapshotFixture;
+  const backtestHoldings = buildBacktestHoldingRows(backtest);
+  const displayHoldings = backtestHoldings.length > 0 ? backtestHoldings : holdings;
   const firstSource = portfolio.positions[0]?.sourceStates[0];
-  const [selectedHoldingId, setSelectedHoldingId] = useState(holdings[0].id);
+  const [selectedHoldingId, setSelectedHoldingId] = useState(displayHoldings[0]?.id ?? holdings[0].id);
   const [selectedSort, setSelectedSort] = useState(sortOptions[0]);
   const [selectedRange, setSelectedRange] = useState("3M");
   const [activeIndicators, setActiveIndicators] = useState(["VWAP"]);
 
-  const selectedHolding = holdings.find((holding) => holding.id === selectedHoldingId) ?? holdings[0];
+  const selectedHolding = displayHoldings.find((holding) => holding.id === selectedHoldingId) ?? displayHoldings[0] ?? holdings[0];
 
   function toggleIndicator(indicator: string) {
     setActiveIndicators((current) =>
@@ -194,7 +196,7 @@ export default function PortfolioRoute() {
           <View style={styles.titleCluster}>
             <View style={styles.titleRow}>
               <AppText style={styles.cardTitle}>보유종목</AppText>
-              <Badge label={`${holdings.length}개`} tone="readOnly" />
+              <Badge label={`${displayHoldings.length}개`} tone="readOnly" />
               <Badge label="i" tone="neutral" />
               <Badge label="검증 전 데이터" tone="blocked" />
             </View>
@@ -253,7 +255,7 @@ export default function PortfolioRoute() {
           >
             <View style={styles.tableScrollableBody}>
               <View style={styles.fixedNameColumn}>
-                {holdings.map((holding) => (
+                {displayHoldings.map((holding) => (
                   <HoldingNameCell
                     holding={holding}
                     isSelected={selectedHoldingId === holding.id}
@@ -270,7 +272,7 @@ export default function PortfolioRoute() {
                 style={styles.metricsScroller}
               >
                 <View>
-                  {holdings.map((holding) => (
+                  {displayHoldings.map((holding) => (
                     <Pressable
                       accessibilityRole="button"
                       key={holding.id}
@@ -601,6 +603,36 @@ function displayBacktestPercent(value: number | null) {
 
   const prefix = value > 0 ? "+" : "";
   return `${prefix}${value.toFixed(2)}%`;
+}
+
+function displayBacktestMoney(value: number | null) {
+  if (value === null || Number.isNaN(value)) {
+    return "연결 대기";
+  }
+
+  const prefix = value > 0 ? "+" : "";
+  return `${prefix}${value.toLocaleString("ko-KR", { maximumFractionDigits: 0 })}`;
+}
+
+function buildBacktestHoldingRows(snapshot: typeof backtestSnapshotFixture): HoldingTableRow[] {
+  return snapshot.diagnosticPositions.slice(0, 12).map((position) => ({
+    id: `backtest-position-${position.symbol}`,
+    name: position.symbol,
+    ticker: position.symbol,
+    region: "백테스트 진단",
+    pnl: displayBacktestMoney(position.totalPnl),
+    yieldValue: displayBacktestPercent(position.weightedReturnPct),
+    quantity: `${position.tradeCount}회`,
+    sellableQuantity: "실계좌 아님",
+    evaluation: displayBacktestDecimal(position.totalCapitalAllocated),
+    purchaseAmount: displayBacktestDecimal(position.totalCapitalAllocated),
+    holdingPeriod: `평균 ${position.averageHoldingDays.toFixed(1)}일`,
+    mdd: displayBacktestPercent(position.worstTradeReturnPct),
+    reasonTitle: `${position.symbol} 진단 거래 요약`,
+    reasonBody: `${position.firstEntryDate}부터 ${position.lastExitDate}까지 ${position.tradeCount}회 진단 거래가 기록됐고, 승률은 ${displayBacktestPercent(position.winRatePct)}입니다.`,
+    newsTitle: "백테스트 원천",
+    newsSummary: `선택된 Task3903 거래 아티팩트에서 집계한 읽기 전용 진단 요약입니다. 실제 보유 수량이나 매도 가능 수량이 아닙니다.`,
+  }));
 }
 
 function ContextSection({

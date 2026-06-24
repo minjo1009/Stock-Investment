@@ -83,6 +83,8 @@ for (const [tabId, file] of Object.entries(tabFiles)) {
     expect(source.includes("backtestSnapshotFixture"), "portfolio must read the selected backtest snapshot fixture");
     expect(source.includes("백테스트 진단"), "portfolio must render the backtest diagnostic summary");
     expect(source.includes("진단 전용"), "portfolio backtest summary must remain diagnostic-only");
+    expect(source.includes("buildBacktestHoldingRows"), "portfolio must map backtest position summaries into the holdings table");
+    expect(source.includes("diagnosticPositions"), "portfolio must use selected diagnostic positions before placeholder holdings");
     expect(source.includes("보유종목"), "portfolio must render holdings table title");
     expect(source.includes("선택 종목"), "portfolio must preserve stock detail marker as Korean product copy");
     expect(source.includes("차트 데이터 연결 대기"), "portfolio chart must fail closed until authority is connected");

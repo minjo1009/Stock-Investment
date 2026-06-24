@@ -73,6 +73,13 @@ if (snapshot) {
   if (!Array.isArray(snapshot.equityCurve) || snapshot.equityCurve.length === 0) {
     findings.push("snapshot equityCurve must include selected diagnostic equity points");
   }
+  if (!Array.isArray(snapshot.diagnosticPositions) || snapshot.diagnosticPositions.length === 0) {
+    findings.push("snapshot diagnosticPositions must include selected diagnostic position summaries");
+  }
+  const firstPosition = snapshot.diagnosticPositions?.[0];
+  if (firstPosition && typeof firstPosition.totalPnl !== "number") {
+    findings.push("snapshot diagnosticPositions must expose numeric totalPnl");
+  }
   if (snapshot.chartSource?.status !== "READY") {
     findings.push("snapshot chartSource.status must be READY once equityCurve is attached");
   }
@@ -115,6 +122,8 @@ for (const required of [
   "backtestSnapshotFixture",
   "백테스트 진단",
   "진단 전용",
+  "buildBacktestHoldingRows",
+  "diagnosticPositions",
 ]) {
   expectIncludes(portfolioRoute, required, "portfolio.tsx");
 }

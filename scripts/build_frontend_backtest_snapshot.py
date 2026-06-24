@@ -58,12 +58,85 @@ def build_equity_curve(equity_rows: list[dict[str, str]], initial_capital: float
     return points
 
 
+def parse_date(value: str) -> datetime:
+    return datetime.fromisoformat(value.replace("Z", "+00:00"))
+
+
+def build_diagnostic_positions(trade_rows: list[dict[str, str]], best_policy: str) -> list[dict[str, Any]]:
+    by_symbol: dict[str, dict[str, Any]] = {}
+    for row in trade_rows:
+        if row["policy_variant_id"] != best_policy:
+            continue
+        if row.get("assignment_uses_future_outcome") != "0" or row.get("outcome_used_for_assignment") != "0":
+            raise ValueError("trade row leaks outcome into assignment")
+        if row.get("strategy_acceptance") != "NOT_ACCEPTED":
+            raise ValueError("trade row strategy acceptance changed")
+        if row.get("deployment_readiness") != "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY":
+            raise ValueError("trade row deployment readiness changed")
+        if row.get("real_capital") != "FORBIDDEN":
+            raise ValueError("trade row real capital changed")
+
+        symbol = row["symbol"]
+        entry = parse_date(row["entry_date"])
+        exit_date = parse_date(row["actual_exit_date"])
+        holding_days = max((exit_date - entry).days, 0)
+        bucket = by_symbol.setdefault(
+            symbol,
+            {
+                "symbol": symbol,
+                "tradeCount": 0,
+                "winningTrades": 0,
+                "totalCapitalAllocated": 0.0,
+                "totalPnl": 0.0,
+                "totalHoldingDays": 0,
+                "worstTradeReturnPct": 0.0,
+                "firstEntryDate": row["entry_date"],
+                "lastExitDate": row["actual_exit_date"],
+                "sourceTradeIds": [],
+            },
+        )
+        net_return_pct = f(row["net_return"]) * 100.0
+        bucket["tradeCount"] += 1
+        bucket["winningTrades"] += 1 if f(row["pnl"]) > 0 else 0
+        bucket["totalCapitalAllocated"] += f(row["capital_allocated"])
+        bucket["totalPnl"] += f(row["pnl"])
+        bucket["totalHoldingDays"] += holding_days
+        bucket["worstTradeReturnPct"] = min(bucket["worstTradeReturnPct"], net_return_pct)
+        bucket["firstEntryDate"] = min(bucket["firstEntryDate"], row["entry_date"])
+        bucket["lastExitDate"] = max(bucket["lastExitDate"], row["actual_exit_date"])
+        bucket["sourceTradeIds"].append(row["trade_row_id"])
+
+    positions: list[dict[str, Any]] = []
+    for bucket in by_symbol.values():
+        capital = bucket["totalCapitalAllocated"]
+        trade_count = bucket["tradeCount"]
+        positions.append(
+            {
+                "symbol": bucket["symbol"],
+                "tradeCount": trade_count,
+                "winningTrades": bucket["winningTrades"],
+                "winRatePct": round((bucket["winningTrades"] / trade_count) * 100.0, 6) if trade_count else 0.0,
+                "totalCapitalAllocated": round(capital, 6),
+                "totalPnl": round(bucket["totalPnl"], 6),
+                "weightedReturnPct": round((bucket["totalPnl"] / capital) * 100.0, 6) if capital else 0.0,
+                "averageHoldingDays": round(bucket["totalHoldingDays"] / trade_count, 2) if trade_count else 0.0,
+                "worstTradeReturnPct": round(bucket["worstTradeReturnPct"], 6),
+                "firstEntryDate": bucket["firstEntryDate"],
+                "lastExitDate": bucket["lastExitDate"],
+                "sourceTradeIds": bucket["sourceTradeIds"][:5],
+            }
+        )
+
+    return sorted(positions, key=lambda item: item["totalCapitalAllocated"], reverse=True)
+
+
 def build_snapshot(task_id: str = DEFAULT_TASK_ID, task_label: str = DEFAULT_TASK_LABEL) -> dict[str, Any]:
     artifact_dir = ROOT / "data" / "artifacts" / task_id
     report_dir = ROOT / "docs" / "reports" / task_id
     summary_path = artifact_dir / "stage1_sec_same_experiment_replay_summary.json"
     metrics_path = artifact_dir / "stage1_sec_same_experiment_replay_metrics.csv"
     equity_path = artifact_dir / "stage1_sec_same_experiment_replay_equity.csv"
+    trades_path = artifact_dir / "stage1_sec_same_experiment_replay_trades.csv"
     decision_path = report_dir / "task_3903_decision.csv"
     report_path = report_dir / "stage1_sec_neutral_attach_same_experiment_replay_report.md"
     manifest_path = report_dir / "artifact_manifest.csv"
@@ -74,8 +147,10 @@ def build_snapshot(task_id: str = DEFAULT_TASK_ID, task_label: str = DEFAULT_TAS
     best_policy = str(summary["best_policy_variant_id"])
     selected_metrics = next(row for row in metrics_rows if row["policy_variant_id"] == best_policy)
     equity_rows = [row for row in read_csv(equity_path) if row["policy_variant_id"] == best_policy]
+    trade_rows = read_csv(trades_path)
     initial_capital = f(selected_metrics["initial_capital"])
     equity_curve = build_equity_curve(equity_rows, initial_capital)
+    diagnostic_positions = build_diagnostic_positions(trade_rows, best_policy)
 
     hard_state = {
         "strategyAcceptance": "NOT_ACCEPTED",
@@ -102,7 +177,7 @@ def build_snapshot(task_id: str = DEFAULT_TASK_ID, task_label: str = DEFAULT_TAS
         "selectedTaskId": task_label,
         "selectedReportPath": relative(report_path),
         "currentSnapshotPath": relative(SNAPSHOT_PATH),
-        "sourceArtifacts": [relative(manifest_path), relative(decision_path), relative(summary_path), relative(metrics_path), relative(equity_path)],
+        "sourceArtifacts": [relative(manifest_path), relative(decision_path), relative(summary_path), relative(metrics_path), relative(equity_path), relative(trades_path)],
         "generatedAt": utc_now(),
         "governance": hard_state,
         "selectedPolicy": {
@@ -129,6 +204,7 @@ def build_snapshot(task_id: str = DEFAULT_TASK_ID, task_label: str = DEFAULT_TAS
             else "Frontend display has selected summary metrics only; equity curve and benchmark chart sources are not attached yet.",
         },
         "equityCurve": equity_curve,
+        "diagnosticPositions": diagnostic_positions,
         "forbiddenInterpretations": [
             "strategy acceptance",
             "deployment readiness",
@@ -195,6 +271,20 @@ export type BacktestSnapshotReadModel = {{
     equity: number;
     portfolioReturnPct: number;
     drawdownPct: number;
+  }}>;
+  diagnosticPositions: Array<{{
+    symbol: string;
+    tradeCount: number;
+    winningTrades: number;
+    winRatePct: number;
+    totalCapitalAllocated: number;
+    totalPnl: number;
+    weightedReturnPct: number;
+    averageHoldingDays: number;
+    worstTradeReturnPct: number;
+    firstEntryDate: string;
+    lastExitDate: string;
+    sourceTradeIds: string[];
   }}>;
   forbiddenInterpretations: string[];
 }};

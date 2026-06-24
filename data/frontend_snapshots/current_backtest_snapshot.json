@@ -6,6 +6,842 @@
   },
   "contractVersion": "frontend-backtest-snapshot-v1",
   "currentSnapshotPath": "data/frontend_snapshots/current_backtest_snapshot.json",
+  "diagnosticPositions": [
+    {
+      "averageHoldingDays": 35.24,
+      "firstEntryDate": "2021-06-30",
+      "lastExitDate": "2026-03-04",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000011",
+        "APIDDTRADE-2194-0000030",
+        "APIDDTRADE-2194-0000038",
+        "APIDDTRADE-2194-0000042",
+        "APIDDTRADE-2194-0000047"
+      ],
+      "symbol": "AVGO",
+      "totalCapitalAllocated": 32005.0909,
+      "totalPnl": -100.1462,
+      "tradeCount": 21,
+      "weightedReturnPct": -0.312907,
+      "winRatePct": 57.142857,
+      "winningTrades": 12,
+      "worstTradeReturnPct": -17.754127
+    },
+    {
+      "averageHoldingDays": 38.14,
+      "firstEntryDate": "2022-11-30",
+      "lastExitDate": "2025-09-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000045",
+        "APIDDTRADE-2194-0000053",
+        "APIDDTRADE-2194-0000055",
+        "APIDDTRADE-2194-0000067",
+        "APIDDTRADE-2194-0000069"
+      ],
+      "symbol": "ANET",
+      "totalCapitalAllocated": 21444.8454,
+      "totalPnl": 547.6039,
+      "tradeCount": 14,
+      "weightedReturnPct": 2.553546,
+      "winRatePct": 64.285714,
+      "winningTrades": 9,
+      "worstTradeReturnPct": -19.448459
+    },
+    {
+      "averageHoldingDays": 35.0,
+      "firstEntryDate": "2025-10-31",
+      "lastExitDate": "2026-03-31",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000116",
+        "APIDDTRADE-2194-0000117",
+        "APIDDTRADE-2194-0000119",
+        "APIDDTRADE-2194-0000122",
+        "APIDDTRADE-2194-0000124"
+      ],
+      "symbol": "CIEN",
+      "totalCapitalAllocated": 17287.1507,
+      "totalPnl": 2142.571,
+      "tradeCount": 5,
+      "weightedReturnPct": 12.394009,
+      "winRatePct": 80.0,
+      "winningTrades": 4,
+      "worstTradeReturnPct": -3.017124
+    },
+    {
+      "averageHoldingDays": 24.75,
+      "firstEntryDate": "2025-09-30",
+      "lastExitDate": "2026-03-31",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000113",
+        "APIDDTRADE-2194-0000115",
+        "APIDDTRADE-2194-0000121",
+        "APIDDTRADE-2194-0000123"
+      ],
+      "symbol": "AEIS",
+      "totalCapitalAllocated": 13840.789,
+      "totalPnl": 1065.7936,
+      "tradeCount": 4,
+      "weightedReturnPct": 7.700382,
+      "winRatePct": 75.0,
+      "winningTrades": 3,
+      "worstTradeReturnPct": -5.402405
+    },
+    {
+      "averageHoldingDays": 39.67,
+      "firstEntryDate": "2024-12-02",
+      "lastExitDate": "2025-03-31",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000093",
+        "APIDDTRADE-2194-0000096",
+        "APIDDTRADE-2194-0000097"
+      ],
+      "symbol": "AMZN",
+      "totalCapitalAllocated": 6146.6021,
+      "totalPnl": 29.7276,
+      "tradeCount": 3,
+      "weightedReturnPct": 0.483643,
+      "winRatePct": 66.666667,
+      "winningTrades": 2,
+      "worstTradeReturnPct": -9.933674
+    },
+    {
+      "averageHoldingDays": 29.5,
+      "firstEntryDate": "2023-10-02",
+      "lastExitDate": "2025-07-31",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000065",
+        "APIDDTRADE-2194-0000068",
+        "APIDDTRADE-2194-0000105",
+        "APIDDTRADE-2194-0000108"
+      ],
+      "symbol": "CEG",
+      "totalCapitalAllocated": 5232.9763,
+      "totalPnl": 311.6053,
+      "tradeCount": 4,
+      "weightedReturnPct": 5.954648,
+      "winRatePct": 100.0,
+      "winningTrades": 4,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 40.33,
+      "firstEntryDate": "2025-07-31",
+      "lastExitDate": "2025-10-31",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000109",
+        "APIDDTRADE-2194-0000112",
+        "APIDDTRADE-2194-0000114"
+      ],
+      "symbol": "BLK",
+      "totalCapitalAllocated": 5117.2995,
+      "totalPnl": 6.1361,
+      "tradeCount": 3,
+      "weightedReturnPct": 0.119909,
+      "winRatePct": 66.666667,
+      "winningTrades": 2,
+      "worstTradeReturnPct": -7.324289
+    },
+    {
+      "averageHoldingDays": 35.6,
+      "firstEntryDate": "2021-06-01",
+      "lastExitDate": "2024-06-28",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000009",
+        "APIDDTRADE-2194-0000052",
+        "APIDDTRADE-2194-0000062",
+        "APIDDTRADE-2194-0000064",
+        "APIDDTRADE-2194-0000082"
+      ],
+      "symbol": "ADI",
+      "totalCapitalAllocated": 4786.9628,
+      "totalPnl": -5.778,
+      "tradeCount": 5,
+      "weightedReturnPct": -0.120703,
+      "winRatePct": 40.0,
+      "winningTrades": 2,
+      "worstTradeReturnPct": -9.884009
+    },
+    {
+      "averageHoldingDays": 27.5,
+      "firstEntryDate": "2024-01-31",
+      "lastExitDate": "2024-11-26",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000074",
+        "APIDDTRADE-2194-0000092"
+      ],
+      "symbol": "AYI",
+      "totalCapitalAllocated": 3385.6061,
+      "totalPnl": 219.2403,
+      "tradeCount": 2,
+      "weightedReturnPct": 6.475659,
+      "winRatePct": 100.0,
+      "winningTrades": 2,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 52.25,
+      "firstEntryDate": "2021-03-31",
+      "lastExitDate": "2022-03-29",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000006",
+        "APIDDTRADE-2194-0000007",
+        "APIDDTRADE-2194-0000023",
+        "APIDDTRADE-2194-0000026"
+      ],
+      "symbol": "AA",
+      "totalCapitalAllocated": 3145.7183,
+      "totalPnl": 818.9137,
+      "tradeCount": 4,
+      "weightedReturnPct": 26.032646,
+      "winRatePct": 75.0,
+      "winningTrades": 3,
+      "worstTradeReturnPct": -2.90198
+    },
+    {
+      "averageHoldingDays": 30.5,
+      "firstEntryDate": "2025-02-28",
+      "lastExitDate": "2025-04-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000100",
+        "APIDDTRADE-2194-0000101"
+      ],
+      "symbol": "ALHC",
+      "totalCapitalAllocated": 2819.2151,
+      "totalPnl": 151.3714,
+      "tradeCount": 2,
+      "weightedReturnPct": 5.369275,
+      "winRatePct": 50.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": -5.03352
+    },
+    {
+      "averageHoldingDays": 23.25,
+      "firstEntryDate": "2022-06-30",
+      "lastExitDate": "2022-11-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000035",
+        "APIDDTRADE-2194-0000037",
+        "APIDDTRADE-2194-0000041",
+        "APIDDTRADE-2194-0000044"
+      ],
+      "symbol": "ALSN",
+      "totalCapitalAllocated": 2707.3031,
+      "totalPnl": 191.4329,
+      "tradeCount": 4,
+      "weightedReturnPct": 7.070981,
+      "winRatePct": 75.0,
+      "winningTrades": 3,
+      "worstTradeReturnPct": -9.596138
+    },
+    {
+      "averageHoldingDays": 28.0,
+      "firstEntryDate": "2021-02-01",
+      "lastExitDate": "2025-12-31",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000001",
+        "APIDDTRADE-2194-0000003",
+        "APIDDTRADE-2194-0000118"
+      ],
+      "symbol": "AMAT",
+      "totalCapitalAllocated": 2688.7942,
+      "totalPnl": 132.4955,
+      "tradeCount": 3,
+      "weightedReturnPct": 4.927692,
+      "winRatePct": 100.0,
+      "winningTrades": 3,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 36.5,
+      "firstEntryDate": "2021-09-30",
+      "lastExitDate": "2022-07-29",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000018",
+        "APIDDTRADE-2194-0000020",
+        "APIDDTRADE-2194-0000031",
+        "APIDDTRADE-2194-0000036"
+      ],
+      "symbol": "AFG",
+      "totalCapitalAllocated": 2444.1935,
+      "totalPnl": 102.0472,
+      "tradeCount": 4,
+      "weightedReturnPct": 4.175087,
+      "winRatePct": 75.0,
+      "winningTrades": 3,
+      "worstTradeReturnPct": -3.500801
+    },
+    {
+      "averageHoldingDays": 45.0,
+      "firstEntryDate": "2025-03-31",
+      "lastExitDate": "2025-05-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000102",
+        "APIDDTRADE-2194-0000104"
+      ],
+      "symbol": "AZO",
+      "totalCapitalAllocated": 2376.2541,
+      "totalPnl": -51.8043,
+      "tradeCount": 2,
+      "weightedReturnPct": -2.180083,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -2.976714
+    },
+    {
+      "averageHoldingDays": 46.5,
+      "firstEntryDate": "2022-02-28",
+      "lastExitDate": "2022-08-01",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000027",
+        "APIDDTRADE-2194-0000034"
+      ],
+      "symbol": "CBT",
+      "totalCapitalAllocated": 2357.7913,
+      "totalPnl": -93.3232,
+      "tradeCount": 2,
+      "weightedReturnPct": -3.958077,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -6.69262
+    },
+    {
+      "averageHoldingDays": 30.33,
+      "firstEntryDate": "2023-06-30",
+      "lastExitDate": "2023-09-29",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000060",
+        "APIDDTRADE-2194-0000061",
+        "APIDDTRADE-2194-0000063"
+      ],
+      "symbol": "ACN",
+      "totalCapitalAllocated": 2296.4968,
+      "totalPnl": -11.474,
+      "tradeCount": 3,
+      "weightedReturnPct": -0.499631,
+      "winRatePct": 66.666667,
+      "winningTrades": 2,
+      "worstTradeReturnPct": -5.345626
+    },
+    {
+      "averageHoldingDays": 46.5,
+      "firstEntryDate": "2022-02-28",
+      "lastExitDate": "2022-06-01",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000028",
+        "APIDDTRADE-2194-0000029"
+      ],
+      "symbol": "CB",
+      "totalCapitalAllocated": 2274.1719,
+      "totalPnl": 24.0743,
+      "tradeCount": 2,
+      "weightedReturnPct": 1.058596,
+      "winRatePct": 50.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": -3.171012
+    },
+    {
+      "averageHoldingDays": 29.0,
+      "firstEntryDate": "2025-07-31",
+      "lastExitDate": "2025-08-29",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000110"
+      ],
+      "symbol": "AGX",
+      "totalCapitalAllocated": 2178.3502,
+      "totalPnl": -159.9436,
+      "tradeCount": 1,
+      "weightedReturnPct": -7.342419,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -7.342417
+    },
+    {
+      "averageHoldingDays": 46.0,
+      "firstEntryDate": "2023-10-02",
+      "lastExitDate": "2024-02-01",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000066",
+        "APIDDTRADE-2194-0000070"
+      ],
+      "symbol": "BRZE",
+      "totalCapitalAllocated": 2086.6402,
+      "totalPnl": -157.9051,
+      "tradeCount": 2,
+      "weightedReturnPct": -7.567433,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -9.39172
+    },
+    {
+      "averageHoldingDays": 29.0,
+      "firstEntryDate": "2021-08-02",
+      "lastExitDate": "2021-09-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000013",
+        "APIDDTRADE-2194-0000015"
+      ],
+      "symbol": "BILL",
+      "totalCapitalAllocated": 1924.2745,
+      "totalPnl": 274.3235,
+      "tradeCount": 2,
+      "weightedReturnPct": 14.255944,
+      "winRatePct": 50.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": -2.91147
+    },
+    {
+      "averageHoldingDays": 29.5,
+      "firstEntryDate": "2021-08-02",
+      "lastExitDate": "2021-09-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000014",
+        "APIDDTRADE-2194-0000016"
+      ],
+      "symbol": "AOS",
+      "totalCapitalAllocated": 1924.2745,
+      "totalPnl": -131.0238,
+      "tradeCount": 2,
+      "weightedReturnPct": -6.808997,
+      "winRatePct": 50.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": -15.268085
+    },
+    {
+      "averageHoldingDays": 59.0,
+      "firstEntryDate": "2022-10-31",
+      "lastExitDate": "2023-03-02",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000043",
+        "APIDDTRADE-2194-0000048"
+      ],
+      "symbol": "CAT",
+      "totalCapitalAllocated": 1587.5681,
+      "totalPnl": 125.3273,
+      "tradeCount": 2,
+      "weightedReturnPct": 7.894294,
+      "winRatePct": 100.0,
+      "winningTrades": 2,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 30.0,
+      "firstEntryDate": "2024-07-31",
+      "lastExitDate": "2024-08-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000086"
+      ],
+      "symbol": "AXS",
+      "totalCapitalAllocated": 1468.0648,
+      "totalPnl": 77.105,
+      "tradeCount": 1,
+      "weightedReturnPct": 5.252152,
+      "winRatePct": 100.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 28.5,
+      "firstEntryDate": "2021-04-30",
+      "lastExitDate": "2021-06-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000008",
+        "APIDDTRADE-2194-0000010"
+      ],
+      "symbol": "CE",
+      "totalCapitalAllocated": 1406.1294,
+      "totalPnl": -36.032,
+      "tradeCount": 2,
+      "weightedReturnPct": -2.562495,
+      "winRatePct": 50.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": -10.192259
+    },
+    {
+      "averageHoldingDays": 28.0,
+      "firstEntryDate": "2024-01-02",
+      "lastExitDate": "2024-01-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000071"
+      ],
+      "symbol": "AMD",
+      "totalCapitalAllocated": 1403.3046,
+      "totalPnl": 336.2223,
+      "tradeCount": 1,
+      "weightedReturnPct": 23.959324,
+      "winRatePct": 100.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 29.5,
+      "firstEntryDate": "2021-11-01",
+      "lastExitDate": "2022-12-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000019",
+        "APIDDTRADE-2194-0000046"
+      ],
+      "symbol": "APH",
+      "totalCapitalAllocated": 1385.4621,
+      "totalPnl": -22.1679,
+      "tradeCount": 2,
+      "weightedReturnPct": -1.600037,
+      "winRatePct": 50.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": -5.277171
+    },
+    {
+      "averageHoldingDays": 31.0,
+      "firstEntryDate": "2024-04-30",
+      "lastExitDate": "2024-05-31",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000080"
+      ],
+      "symbol": "BRO",
+      "totalCapitalAllocated": 1291.0043,
+      "totalPnl": 125.8323,
+      "tradeCount": 1,
+      "weightedReturnPct": 9.746854,
+      "winRatePct": 100.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 31.0,
+      "firstEntryDate": "2025-02-28",
+      "lastExitDate": "2025-03-31",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000099"
+      ],
+      "symbol": "AEP",
+      "totalCapitalAllocated": 1247.5717,
+      "totalPnl": 35.3848,
+      "tradeCount": 1,
+      "weightedReturnPct": 2.836294,
+      "winRatePct": 100.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 9.0,
+      "firstEntryDate": "2024-09-03",
+      "lastExitDate": "2024-09-12",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000088"
+      ],
+      "symbol": "CDNA",
+      "totalCapitalAllocated": 1245.6987,
+      "totalPnl": -1.6442,
+      "tradeCount": 1,
+      "weightedReturnPct": -0.13199,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -0.131994
+    },
+    {
+      "averageHoldingDays": 29.0,
+      "firstEntryDate": "2024-12-02",
+      "lastExitDate": "2024-12-31",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000094"
+      ],
+      "symbol": "ALKT",
+      "totalCapitalAllocated": 1221.9119,
+      "totalPnl": -46.7486,
+      "tradeCount": 1,
+      "weightedReturnPct": -3.825857,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -3.825857
+    },
+    {
+      "averageHoldingDays": 30.0,
+      "firstEntryDate": "2022-05-31",
+      "lastExitDate": "2022-06-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000033"
+      ],
+      "symbol": "CC",
+      "totalCapitalAllocated": 1179.5659,
+      "totalPnl": -275.6931,
+      "tradeCount": 1,
+      "weightedReturnPct": -23.37242,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -23.372418
+    },
+    {
+      "averageHoldingDays": 30.0,
+      "firstEntryDate": "2023-05-31",
+      "lastExitDate": "2023-06-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000058"
+      ],
+      "symbol": "ACVA",
+      "totalCapitalAllocated": 1137.3707,
+      "totalPnl": 13.0771,
+      "tradeCount": 1,
+      "weightedReturnPct": 1.149766,
+      "winRatePct": 100.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 58.0,
+      "firstEntryDate": "2025-06-02",
+      "lastExitDate": "2025-07-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000106"
+      ],
+      "symbol": "ALNY",
+      "totalCapitalAllocated": 1135.7413,
+      "totalPnl": 122.8088,
+      "tradeCount": 1,
+      "weightedReturnPct": 10.813096,
+      "winRatePct": 100.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 57.0,
+      "firstEntryDate": "2023-01-31",
+      "lastExitDate": "2023-03-29",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000049"
+      ],
+      "symbol": "ALGM",
+      "totalCapitalAllocated": 1116.6897,
+      "totalPnl": 144.0451,
+      "tradeCount": 1,
+      "weightedReturnPct": 12.899295,
+      "winRatePct": 100.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 61.0,
+      "firstEntryDate": "2021-12-31",
+      "lastExitDate": "2022-03-02",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000024"
+      ],
+      "symbol": "CALX",
+      "totalCapitalAllocated": 956.5756,
+      "totalPnl": -260.2256,
+      "tradeCount": 1,
+      "weightedReturnPct": -27.203872,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -27.203876
+    },
+    {
+      "averageHoldingDays": 31.0,
+      "firstEntryDate": "2021-11-30",
+      "lastExitDate": "2021-12-31",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000022"
+      ],
+      "symbol": "ARCB",
+      "totalCapitalAllocated": 930.4173,
+      "totalPnl": 149.5079,
+      "tradeCount": 1,
+      "weightedReturnPct": 16.068908,
+      "winRatePct": 100.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 59.0,
+      "firstEntryDate": "2022-05-02",
+      "lastExitDate": "2022-06-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000032"
+      ],
+      "symbol": "AME",
+      "totalCapitalAllocated": 929.5049,
+      "totalPnl": -68.971,
+      "tradeCount": 1,
+      "weightedReturnPct": -7.420187,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -7.420186
+    },
+    {
+      "averageHoldingDays": 25.0,
+      "firstEntryDate": "2022-01-31",
+      "lastExitDate": "2022-02-25",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000025"
+      ],
+      "symbol": "AMP",
+      "totalCapitalAllocated": 918.5864,
+      "totalPnl": -3.2383,
+      "tradeCount": 1,
+      "weightedReturnPct": -0.352531,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -0.35253
+    },
+    {
+      "averageHoldingDays": 31.0,
+      "firstEntryDate": "2021-11-30",
+      "lastExitDate": "2021-12-31",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000021"
+      ],
+      "symbol": "AZTA",
+      "totalCapitalAllocated": 906.336,
+      "totalPnl": -106.0413,
+      "tradeCount": 1,
+      "weightedReturnPct": -11.699999,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -11.699999
+    },
+    {
+      "averageHoldingDays": 30.0,
+      "firstEntryDate": "2025-04-30",
+      "lastExitDate": "2025-05-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000103"
+      ],
+      "symbol": "AWK",
+      "totalCapitalAllocated": 860.5387,
+      "totalPnl": -20.3413,
+      "tradeCount": 1,
+      "weightedReturnPct": -2.363787,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -2.363784
+    },
+    {
+      "averageHoldingDays": 30.0,
+      "firstEntryDate": "2023-05-01",
+      "lastExitDate": "2023-05-31",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000056"
+      ],
+      "symbol": "ASO",
+      "totalCapitalAllocated": 779.8382,
+      "totalPnl": -155.4818,
+      "tradeCount": 1,
+      "weightedReturnPct": -19.9377,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -19.937705
+    },
+    {
+      "averageHoldingDays": 30.0,
+      "firstEntryDate": "2021-03-31",
+      "lastExitDate": "2021-04-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000005"
+      ],
+      "symbol": "BFH",
+      "totalCapitalAllocated": 680.8094,
+      "totalPnl": 33.6235,
+      "tradeCount": 1,
+      "weightedReturnPct": 4.938754,
+      "winRatePct": 100.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 30.0,
+      "firstEntryDate": "2022-08-31",
+      "lastExitDate": "2022-09-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000040"
+      ],
+      "symbol": "ADM",
+      "totalCapitalAllocated": 655.7446,
+      "totalPnl": -56.8211,
+      "tradeCount": 1,
+      "weightedReturnPct": -8.665127,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -8.665132
+    },
+    {
+      "averageHoldingDays": 30.0,
+      "firstEntryDate": "2021-03-01",
+      "lastExitDate": "2021-03-31",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000004"
+      ],
+      "symbol": "AIG",
+      "totalCapitalAllocated": 599.0851,
+      "totalPnl": 27.4755,
+      "tradeCount": 1,
+      "weightedReturnPct": 4.586243,
+      "winRatePct": 100.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 30.0,
+      "firstEntryDate": "2022-08-31",
+      "lastExitDate": "2022-09-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000039"
+      ],
+      "symbol": "BMRN",
+      "totalCapitalAllocated": 575.296,
+      "totalPnl": -29.7219,
+      "tradeCount": 1,
+      "weightedReturnPct": -5.166367,
+      "winRatePct": 0.0,
+      "winningTrades": 0,
+      "worstTradeReturnPct": -5.166368
+    },
+    {
+      "averageHoldingDays": 25.0,
+      "firstEntryDate": "2021-02-01",
+      "lastExitDate": "2021-02-26",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000002"
+      ],
+      "symbol": "AMBA",
+      "totalCapitalAllocated": 520.148,
+      "totalPnl": 35.2157,
+      "tradeCount": 1,
+      "weightedReturnPct": 6.770323,
+      "winRatePct": 100.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 29.0,
+      "firstEntryDate": "2021-09-30",
+      "lastExitDate": "2021-10-29",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000017"
+      ],
+      "symbol": "BNY",
+      "totalCapitalAllocated": 439.2556,
+      "totalPnl": 64.3707,
+      "tradeCount": 1,
+      "weightedReturnPct": 14.654497,
+      "winRatePct": 100.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": 0.0
+    },
+    {
+      "averageHoldingDays": 30.0,
+      "firstEntryDate": "2021-06-30",
+      "lastExitDate": "2021-07-30",
+      "sourceTradeIds": [
+        "APIDDTRADE-2194-0000012"
+      ],
+      "symbol": "ADBE",
+      "totalCapitalAllocated": 416.6903,
+      "totalPnl": 24.774,
+      "tradeCount": 1,
+      "weightedReturnPct": 5.945423,
+      "winRatePct": 100.0,
+      "winningTrades": 1,
+      "worstTradeReturnPct": 0.0
+    }
+  ],
   "displayState": "DIAGNOSTIC_ONLY",
   "equityCurve": [
     {
@@ -390,7 +1226,7 @@
     "real-capital permission",
     "account valuation"
   ],
-  "generatedAt": "2026-06-24T10:19:58Z",
+  "generatedAt": "2026-06-24T10:42:39Z",
   "governance": {
     "brokerMutationPermitted": false,
     "deploymentReadiness": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
@@ -424,6 +1260,7 @@
     "docs/reports/task_3903_stage1_sec_neutral_attach_same_experiment_replay/task_3903_decision.csv",
     "data/artifacts/task_3903_stage1_sec_neutral_attach_same_experiment_replay/stage1_sec_same_experiment_replay_summary.json",
     "data/artifacts/task_3903_stage1_sec_neutral_attach_same_experiment_replay/stage1_sec_same_experiment_replay_metrics.csv",
-    "data/artifacts/task_3903_stage1_sec_neutral_attach_same_experiment_replay/stage1_sec_same_experiment_replay_equity.csv"
+    "data/artifacts/task_3903_stage1_sec_neutral_attach_same_experiment_replay/stage1_sec_same_experiment_replay_equity.csv",
+    "data/artifacts/task_3903_stage1_sec_neutral_attach_same_experiment_replay/stage1_sec_same_experiment_replay_trades.csv"
   ]
 }
