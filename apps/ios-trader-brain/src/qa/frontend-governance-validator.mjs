@@ -14,6 +14,16 @@ const requiredFiles = [
 ];
 const findings = [];
 
+function hasReadOnlyBoundary(source) {
+  return (
+    source.includes("Read-only") ||
+    source.includes("read-only") ||
+    source.includes("읽기 전용") ||
+    source.includes("읽기전용") ||
+    source.includes("?쎄린?꾩슜")
+  );
+}
+
 for (const file of requiredFiles) {
   const path = join(process.cwd(), file);
   if (!existsSync(path)) {
@@ -21,12 +31,15 @@ for (const file of requiredFiles) {
     continue;
   }
   const source = readFileSync(path, "utf8");
-  if (!source.includes("Read-only") && !source.includes("read-only") && !source.includes("읽기전용")) {
+  if (!hasReadOnlyBoundary(source)) {
     findings.push(`${file}: missing Read-only boundary`);
   }
   if (!source.includes("NOT_AUTHORITY")) findings.push(`${file}: missing NOT_AUTHORITY boundary`);
-  if (/onPress=\{|onSubmit=\{|onExecute=\{|placeOrder|submitOrder|brokerSubmit/.test(source)) {
-    findings.push(`${file}: must not expose enabled mutation handlers`);
+  if (/onSubmit=\{|onExecute=\{|placeOrder|submitOrder|brokerSubmit|sendLiveOrder|approveOrder|cancelOrder/.test(source)) {
+    findings.push(`${file}: must not expose order or broker mutation handlers`);
+  }
+  if (/\bfetch\s*\(|axios|react-query|swr|graphql-request|expo-sqlite|sqlite3/.test(source)) {
+    findings.push(`${file}: must not connect frontend directly to API or DB clients`);
   }
 }
 
@@ -59,4 +72,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[FRONTEND_GOVERNANCE_OK] all scaffold surfaces preserve read-only NOT_AUTHORITY governance boundaries");
+console.log("[FRONTEND_GOVERNANCE_OK] all surfaces preserve read-only NOT_AUTHORITY governance boundaries with local UI-only interaction allowed");

@@ -1,26 +1,111 @@
-import { StyleSheet, View } from "react-native";
+import { useState } from "react";
+import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 
 import { FreshnessBanner, MobileV1StatusRail } from "../../src/components/domain";
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
-import { BlockerList, SourceFreshnessBadge, StatusRow } from "../../src/components/generic";
-import { ScreenContainer, SectionContainer } from "../../src/components/layout";
+import { SourceFreshnessBadge, StatusRow } from "../../src/components/generic";
+import { ScreenContainer } from "../../src/components/layout";
 import { portfolioFixture } from "../../src/read-models/portfolioFixture";
 import { colors, mobile, spacing } from "../../src/theme/tokens";
 
-const allocationSegments = [
-  { label: "해외주식", ratio: null, color: "#00C4B3" },
-  { label: "국내주식", ratio: null, color: "#4E8DF5" },
-  { label: "현금", ratio: null, color: "#A0A0A0" },
-  { label: "기타", ratio: null, color: "#F59E0B" },
+type HoldingTableRow = {
+  id: string;
+  name: string;
+  ticker: string;
+  region: string;
+  pnl: string;
+  yieldValue: string;
+  quantity: string;
+  sellableQuantity: string;
+  evaluation: string;
+  purchaseAmount: string;
+  holdingPeriod: string;
+  mdd: string;
+  reasonTitle: string;
+  reasonBody: string;
+  newsTitle: string;
+  newsSummary: string;
+};
+
+const holdings: HoldingTableRow[] = [
+  {
+    id: "fixture-position-unknown",
+    name: "권위 데이터 대기",
+    ticker: "FIXA",
+    region: "브로커 검증 전",
+    pnl: "UNKNOWN",
+    yieldValue: "UNKNOWN",
+    quantity: "UNKNOWN",
+    sellableQuantity: "UNKNOWN",
+    evaluation: "UNKNOWN",
+    purchaseAmount: "UNKNOWN",
+    holdingPeriod: "UNKNOWN",
+    mdd: "UNKNOWN",
+    reasonTitle: "매수 근거 대기",
+    reasonBody: "권위 있는 주문·보유·체결 근거가 연결되기 전에는 매수 근거를 확정하지 않습니다.",
+    newsTitle: "뉴스 연결 대기",
+    newsSummary: "선택 종목에 연결된 권위 뉴스 요약 소스가 아직 없습니다.",
+  },
+  {
+    id: "broker-truth-blocked",
+    name: "계좌 검증 대기",
+    ticker: "AUTH",
+    region: "NOT_AUTHORITY",
+    pnl: "UNKNOWN",
+    yieldValue: "UNKNOWN",
+    quantity: "UNKNOWN",
+    sellableQuantity: "UNKNOWN",
+    evaluation: "UNKNOWN",
+    purchaseAmount: "UNKNOWN",
+    holdingPeriod: "UNKNOWN",
+    mdd: "UNKNOWN",
+    reasonTitle: "브로커 truth 차단",
+    reasonBody: "현재 표의 값은 실제 계좌 truth가 아니며, 표시용 read-only 슬롯입니다.",
+    newsTitle: "관련 뉴스 없음",
+    newsSummary: "권위 종목 매핑이 없어서 최신 뉴스도 불러오지 않습니다.",
+  },
+  {
+    id: "source-not-attached",
+    name: "출처 연결 대기",
+    ticker: "SRC",
+    region: "SOURCE_NOT_ATTACHED",
+    pnl: "UNKNOWN",
+    yieldValue: "UNKNOWN",
+    quantity: "UNKNOWN",
+    sellableQuantity: "UNKNOWN",
+    evaluation: "UNKNOWN",
+    purchaseAmount: "UNKNOWN",
+    holdingPeriod: "UNKNOWN",
+    mdd: "UNKNOWN",
+    reasonTitle: "데이터 계약 대기",
+    reasonBody: "보유종목 표와 상세 차트는 권위 데이터 계약이 붙으면 같은 UI에서 값을 갱신합니다.",
+    newsTitle: "뉴스 요약 대기",
+    newsSummary: "뉴스 요약은 향후 read-only 출처가 연결될 때만 표시합니다.",
+  },
 ];
 
-const sortOptions = ["평가금 순", "수익률 순", "수익금 순", "비중 순"];
-const disabledActions = ["매수 차단", "매도 차단", "노트 준비중", "알림 준비중"];
+const sortOptions = ["수익률순", "평가금액순", "보유기간순"];
+const filterOptions = ["국가 전체", "자산 전체", "통화 전체"];
+const indicatorOptions = ["VWAP", "거래량", "이동평균", "시스템선"];
+const rangeOptions = ["1D", "1M", "3M", "1Y", "ALL"];
 
 export default function PortfolioRoute() {
   const portfolio = portfolioFixture;
-  const summary = portfolio.portfolioSummary;
-  const firstPosition = portfolio.positions[0];
+  const firstSource = portfolio.positions[0]?.sourceStates[0];
+  const [selectedHoldingId, setSelectedHoldingId] = useState(holdings[0].id);
+  const [selectedSort, setSelectedSort] = useState(sortOptions[0]);
+  const [selectedRange, setSelectedRange] = useState("3M");
+  const [activeIndicators, setActiveIndicators] = useState(["VWAP"]);
+
+  const selectedHolding = holdings.find((holding) => holding.id === selectedHoldingId) ?? holdings[0];
+
+  function toggleIndicator(indicator: string) {
+    setActiveIndicators((current) =>
+      current.includes(indicator)
+        ? current.filter((item) => item !== indicator)
+        : [...current, indicator]
+    );
+  }
 
   return (
     <ScreenContainer contentContainerStyle={styles.screen}>
@@ -33,304 +118,322 @@ export default function PortfolioRoute() {
         </View>
       </View>
 
-      <PortfolioSummaryCard
-        totalEvaluation={displayMoney(summary.totalMarketValue)}
-        costBasis={displayMoney(summary.investedCash)}
-        totalPnl={displayMoney(summary.unrealizedPnl)}
-        totalReturn={displayPercent(summary.exposurePct)}
-        positionCount={displayCount(summary.positionCount)}
-        winRate={displayPercent(summary.winRatePct)}
-        maxDrawdown={displayPercent(summary.maxDrawdownPct)}
-        updatedAt="업데이트: UNKNOWN"
-      />
-
-      <PortfolioAllocationCard />
-
-      <CardContainer style={styles.holdingsCard}>
-        <View style={styles.listHeader}>
-          <View>
-            <AppText style={styles.sectionTitle}>보유 종목</AppText>
-            <AppText variant="caption">{displayCount(summary.positionCount)}종목 / broker truth BLOCKED</AppText>
+      <CardContainer style={styles.tableCard}>
+        <View style={styles.tableTopRow}>
+          <View style={styles.titleCluster}>
+            <View style={styles.titleRow}>
+              <AppText style={styles.cardTitle}>보유종목</AppText>
+              <Badge label={`${holdings.length}개`} tone="readOnly" />
+              <Badge label="i" tone="neutral" />
+              <Badge label="NOT_AUTHORITY" tone="blocked" />
+            </View>
+            <AppText variant="caption">가로 스크롤 표 · 3개 행 기본 표시 · read-only</AppText>
           </View>
-          <Badge label="필터 없음" tone="readOnly" />
         </View>
 
-        <View style={styles.sortRow}>
-          {sortOptions.map((option, index) => (
-            <View key={option} style={[styles.sortChip, index === 0 ? styles.sortChipActive : null]}>
-              <AppText variant="caption" style={index === 0 ? styles.sortChipTextActive : styles.sortChipText}>
+        <ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={styles.controlScroller}>
+          {sortOptions.map((option) => (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityState={{ selected: selectedSort === option }}
+              key={option}
+              onPress={() => setSelectedSort(option)}
+              style={[styles.controlChip, selectedSort === option ? styles.controlChipActive : null]}
+            >
+              <AppText variant="caption" style={selectedSort === option ? styles.controlTextActive : styles.controlText}>
                 {option}
               </AppText>
+            </Pressable>
+          ))}
+          {filterOptions.map((option) => (
+            <View key={option} style={styles.filterChip}>
+              <AppText variant="caption" style={styles.filterText}>{option}</AppText>
             </View>
           ))}
-        </View>
+        </ScrollView>
 
-        <HoldingRow
-          name="권위 데이터 대기"
-          ticker={firstPosition?.symbol ?? "UNKNOWN"}
-          quantity={displayCount(firstPosition?.quantity ?? null)}
-          weight="비중 UNKNOWN"
-          evaluation={displayMoney(firstPosition?.marketValue ?? null)}
-          costBasis="원금 UNKNOWN"
-          pnl={displayMoney(firstPosition?.unrealizedPnl ?? null)}
-          yieldValue="수익률 UNKNOWN"
-          state={firstPosition?.brokerTruthState ?? "UNKNOWN"}
-        />
-
-        <View style={styles.disabledActionRow}>
-          {disabledActions.map((action) => (
-            <View key={action} style={styles.disabledActionChip}>
-              <AppText variant="caption" style={styles.disabledActionText}>
-                {action}
-              </AppText>
+        <View style={styles.tableShell}>
+          <View style={styles.stickyColumn}>
+            <View style={styles.stickyHeaderCell}>
+              <AppText style={styles.tableHeaderText}>종목</AppText>
             </View>
-          ))}
+            {holdings.map((holding) => (
+              <HoldingNameCell
+                holding={holding}
+                isSelected={selectedHoldingId === holding.id}
+                key={holding.id}
+                onSelect={() => setSelectedHoldingId(holding.id)}
+              />
+            ))}
+          </View>
+
+          <ScrollView horizontal showsHorizontalScrollIndicator>
+            <View>
+              <View style={styles.metricHeaderRow}>
+                {["평가손익", "보유수량", "평가금액", "보유기간", "MDD"].map((label) => (
+                  <View key={label} style={styles.metricHeaderCell}>
+                    <AppText style={styles.tableHeaderText}>{label} ↓</AppText>
+                  </View>
+                ))}
+              </View>
+              {holdings.map((holding) => (
+                <Pressable
+                  accessibilityRole="button"
+                  key={holding.id}
+                  onPress={() => setSelectedHoldingId(holding.id)}
+                  style={[
+                    styles.metricRow,
+                    selectedHoldingId === holding.id ? styles.selectedMetricRow : null,
+                  ]}
+                >
+                  <MetricCell primary={holding.pnl} secondary={holding.yieldValue} tone="neutral" />
+                  <MetricCell primary={holding.quantity} secondary={`매도가능 ${holding.sellableQuantity}`} />
+                  <MetricCell primary={holding.evaluation} secondary={`매입 ${holding.purchaseAmount}`} />
+                  <MetricCell primary={holding.holdingPeriod} secondary="평균 기준" />
+                  <MetricCell primary={holding.mdd} secondary="drawdown" tone="negative" />
+                </Pressable>
+              ))}
+            </View>
+          </ScrollView>
         </View>
       </CardContainer>
 
-      <SectionContainer title="데이터 상태" description="이 영역은 보조 계층입니다. 실제 계좌/브로커 권위 데이터가 붙기 전까지 값은 UNKNOWN입니다.">
-        <FreshnessBanner
-          generatedAt={portfolio.generatedAt}
-          sourceSummary={portfolio.sourceSummary}
-          title="포트폴리오 데이터 출처 상태"
-        />
-        <MobileV1StatusRail
-          items={[
-            { label: "보유 종목", value: displayCount(summary.positionCount), tone: "readOnly" },
-            { label: "계좌 상태", value: "UNKNOWN", tone: "unknown" },
-            { label: "브로커 검증", value: "BLOCKED", tone: "blocked" },
-          ]}
-          subtitle="Phone-first v1 / read-only"
-          title="포트폴리오 보조 상태"
-        />
-        {firstPosition?.sourceStates.map((sourceState) => (
-          <SourceFreshnessBadge key={sourceState.sourceId} sourceState={sourceState} />
-        ))}
-      </SectionContainer>
+      <CardContainer style={styles.detailCard}>
+        <View style={styles.detailCardMarker}>
+          <AppText variant="caption" style={styles.detailCardMarkerText}>
+            Stock Detail · 종목 상세
+          </AppText>
+          <Badge label="read-only" tone="readOnly" />
+        </View>
+        <View style={styles.detailHeader}>
+          <View style={styles.assetIcon}>
+            <AppText style={styles.assetIconText}>{selectedHolding.ticker.slice(0, 1)}</AppText>
+          </View>
+          <View style={styles.detailTitleBlock}>
+            <View style={styles.detailNameRow}>
+              <AppText style={styles.detailName}>{selectedHolding.name}</AppText>
+              <Badge label="보유" tone="readOnly" />
+            </View>
+            <AppText variant="caption">
+              {selectedHolding.ticker} · 현재가 UNKNOWN · 일간변동 UNKNOWN
+            </AppText>
+          </View>
+        </View>
 
-      <SectionContainer title="운영 제한" description="거래 변경 기능은 보조 정보로만 표시되며 실행 핸들러가 없습니다.">
-        <StatusRow
-          label="전략 승인"
-          value={`Strategy ${portfolio.governance.strategyAcceptance}`}
-          state="blocked"
-          sourceRef={portfolio.governance.controlStateSource}
+        <View style={styles.indicatorRow}>
+          {indicatorOptions.map((indicator) => {
+            const active = activeIndicators.includes(indicator);
+            return (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ selected: active }}
+                key={indicator}
+                onPress={() => toggleIndicator(indicator)}
+                style={[styles.indicatorChip, active ? styles.indicatorChipActive : null]}
+              >
+                <AppText variant="caption" style={active ? styles.indicatorTextActive : styles.indicatorText}>
+                  {indicator}
+                </AppText>
+              </Pressable>
+            );
+          })}
+        </View>
+
+        <View style={styles.chartFrame}>
+          <View style={styles.chartGrid}>
+            <View style={styles.gridLine} />
+            <View style={styles.gridLine} />
+            <View style={styles.gridLine} />
+          </View>
+          <View style={styles.chartEmptyState}>
+            <Badge label="SOURCE_NOT_ATTACHED" tone="missing" />
+            <AppText style={styles.chartTitle}>차트 데이터 연결 대기</AppText>
+            <AppText variant="caption" style={styles.chartBody}>
+              권위 있는 가격, 평가금액, 거래량, VWAP 소스가 붙기 전에는 캔들·라인을 그리지 않습니다.
+            </AppText>
+          </View>
+        </View>
+
+        <View style={styles.rangeRow}>
+          {rangeOptions.map((range) => (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityState={{ selected: selectedRange === range }}
+              key={range}
+              onPress={() => setSelectedRange(range)}
+              style={[styles.rangeChip, selectedRange === range ? styles.rangeChipActive : null]}
+            >
+              <AppText variant="caption" style={selectedRange === range ? styles.rangeTextActive : styles.rangeText}>
+                {range}
+              </AppText>
+            </Pressable>
+          ))}
+        </View>
+
+        <View style={styles.timeSlider}>
+          <View style={styles.sliderTrack}>
+            <View style={styles.sliderSelection} />
+            <View style={styles.leftHandle} />
+            <View style={styles.rightHandle} />
+          </View>
+          <View style={styles.sliderLabels}>
+            <AppText variant="caption">시작 조정</AppText>
+            <AppText variant="caption">오른쪽 핸들: NOW 고정</AppText>
+          </View>
+        </View>
+
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.metricsStrip}>
+          <MiniMetric label="평단가" value="UNKNOWN" />
+          <MiniMetric label="평가금액" value={selectedHolding.evaluation} />
+          <MiniMetric label="평가손익" value={selectedHolding.pnl} />
+          <MiniMetric label="비중" value="UNKNOWN" />
+          <MiniMetric label="보유기간" value={selectedHolding.holdingPeriod} />
+          <MiniMetric label="MDD" value={selectedHolding.mdd} tone="negative" />
+        </ScrollView>
+
+        <ContextSection
+          title="매수 근거"
+          badge="편집 차단"
+          items={[
+            {
+              title: selectedHolding.reasonTitle,
+              body: selectedHolding.reasonBody,
+              meta: "작성시각 UNKNOWN · read-only",
+            },
+          ]}
         />
-        <StatusRow
-          label="배포 상태"
-          value={`Deployment ${portfolio.governance.deploymentReadiness}`}
-          state="blocked"
-          sourceRef={portfolio.governance.authorityReportPath}
+
+        <ContextSection
+          title="최신 뉴스"
+          badge="새로고침 차단"
+          items={[
+            {
+              title: selectedHolding.newsTitle,
+              body: selectedHolding.newsSummary,
+              meta: "출처 SOURCE_NOT_ATTACHED",
+            },
+            {
+              title: "관련 뉴스 없음",
+              body: "권위 뉴스 소스가 붙기 전에는 외부 기사를 열거나 요약하지 않습니다.",
+              meta: "브라우저 링크 없음",
+            },
+          ]}
         />
-        <StatusRow
-          label="실자본"
-          value={`Real capital ${portfolio.governance.realCapital}`}
-          state="blocked"
-          sourceRef={portfolio.governance.controlStateSource}
-        />
-        <BlockerList blockers={portfolio.blockers} />
-      </SectionContainer>
+
+        <View style={styles.supportSection}>
+          <FreshnessBanner
+            generatedAt={portfolio.generatedAt}
+            sourceSummary={portfolio.sourceSummary}
+            title="포트폴리오 데이터 출처 상태"
+          />
+          <MobileV1StatusRail
+            items={[
+              { label: "선택 종목", value: selectedHolding.ticker, tone: "readOnly" },
+              { label: "브로커 검증", value: "BLOCKED", tone: "blocked" },
+              { label: "실행 권한", value: "FORBIDDEN", tone: "blocked" },
+            ]}
+            subtitle="Phone-first v2 / read-only"
+            title="보조 안전 상태"
+          />
+          {firstSource ? <SourceFreshnessBadge sourceState={firstSource} /> : null}
+          <StatusRow
+            label="실자본"
+            value={`Real capital ${portfolio.governance.realCapital}`}
+            state="blocked"
+            sourceRef={portfolio.governance.controlStateSource}
+          />
+        </View>
+      </CardContainer>
     </ScreenContainer>
   );
 }
 
-type PortfolioSummaryCardProps = {
-  totalEvaluation: string;
-  costBasis: string;
-  totalPnl: string;
-  totalReturn: string;
-  positionCount: string;
-  winRate: string;
-  maxDrawdown: string;
-  updatedAt: string;
-};
-
-function PortfolioSummaryCard({
-  costBasis,
-  maxDrawdown,
-  positionCount,
-  totalEvaluation,
-  totalPnl,
-  totalReturn,
-  updatedAt,
-  winRate,
-}: PortfolioSummaryCardProps) {
+function HoldingNameCell({
+  holding,
+  isSelected,
+  onSelect,
+}: {
+  holding: HoldingTableRow;
+  isSelected: boolean;
+  onSelect: () => void;
+}) {
   return (
-    <CardContainer style={styles.summaryCard}>
-      <View style={styles.summaryTopRow}>
-        <View style={styles.summaryTitleBlock}>
-          <AppText style={styles.cardLabel}>총 평가금</AppText>
-          <View style={styles.valueRow}>
-            <AppText style={styles.primaryValue}>{totalEvaluation}</AppText>
-            <AppText style={styles.currencyUnit}>원</AppText>
-          </View>
-        </View>
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ selected: isSelected }}
+      onPress={onSelect}
+      style={[styles.nameCell, isSelected ? styles.selectedNameCell : null]}
+    >
+      <View style={styles.rowAccent} />
+      <View style={styles.smallAssetIcon}>
+        <AppText style={styles.smallAssetIconText}>{holding.ticker.slice(0, 1)}</AppText>
       </View>
-      <Badge label="read-only · NOT_AUTHORITY" tone="readOnly" />
-
-      <View style={styles.summaryDivider} />
-
-      <View style={styles.summaryMetricGrid}>
-        <MetricPair label="원금" value={`${costBasis}원`} />
-        <MetricPair label="총 손익" value={totalPnl} valueStyle={styles.unknownValue} />
-        <MetricPair label="수익률" value={totalReturn} valueStyle={styles.unknownValue} />
-        <MetricPair label="보유" value={`${positionCount}종목`} />
-      </View>
-
-      <View style={styles.kpiRow}>
-        <KpiPill label="승률" value={winRate} />
-        <KpiPill label="MDD" value={maxDrawdown} tone="negative" />
-        <KpiPill label="데이터" value="UNKNOWN" />
-      </View>
-
-      <AppText variant="caption" style={styles.timestamp}>
-        {updatedAt} · NOT_AUTHORITY
-      </AppText>
-    </CardContainer>
-  );
-}
-
-function PortfolioAllocationCard() {
-  return (
-    <CardContainer style={styles.allocationCard}>
-      <View style={styles.sectionHeader}>
-        <View>
-          <AppText style={styles.sectionTitle}>자산 배분</AppText>
-          <AppText variant="caption">자산유형 기준 / 권위 데이터 연결 전</AppText>
-        </View>
-        <Badge label="SOURCE_NOT_ATTACHED" tone="missing" />
-      </View>
-
-      <View style={styles.segmentControl}>
-        {["자산유형", "지역", "통화", "섹터"].map((label, index) => (
-          <View key={label} style={[styles.segmentChip, index === 0 ? styles.segmentChipActive : null]}>
-            <AppText variant="caption" style={index === 0 ? styles.segmentTextActive : styles.segmentText}>
-              {label}
-            </AppText>
-          </View>
-        ))}
-      </View>
-
-      <View style={styles.allocationBar}>
-        {allocationSegments.map((segment) => (
-          <View
-            key={segment.label}
-            style={[
-              styles.allocationSegment,
-              { backgroundColor: segment.color, flex: 1 },
-            ]}
-          />
-        ))}
-      </View>
-
-      <View style={styles.legendGrid}>
-        {allocationSegments.map((segment) => (
-          <View key={segment.label} style={styles.legendRow}>
-            <View style={[styles.legendSwatch, { backgroundColor: segment.color }]} />
-            <View style={styles.legendTextBlock}>
-              <AppText style={styles.legendLabel}>{segment.label}</AppText>
-              <AppText variant="caption">비중 UNKNOWN · 평가금 UNKNOWN</AppText>
-            </View>
-          </View>
-        ))}
-      </View>
-    </CardContainer>
-  );
-}
-
-type HoldingRowProps = {
-  name: string;
-  ticker: string;
-  quantity: string;
-  weight: string;
-  evaluation: string;
-  costBasis: string;
-  pnl: string;
-  yieldValue: string;
-  state: string;
-};
-
-function HoldingRow({
-  costBasis,
-  evaluation,
-  name,
-  pnl,
-  quantity,
-  state,
-  ticker,
-  weight,
-  yieldValue,
-}: HoldingRowProps) {
-  return (
-    <View style={styles.holdingRow}>
-      <View style={styles.assetIcon}>
-        <AppText style={styles.assetIconText}>{ticker.slice(0, 1)}</AppText>
-      </View>
-      <View style={styles.holdingNameBlock}>
-        <View style={styles.holdingTitleRow}>
-          <AppText style={styles.holdingName}>{name}</AppText>
-          <Badge label={state} tone="blocked" />
-        </View>
-        <AppText variant="caption">
-          {ticker} · {quantity} · {weight}
+      <View style={styles.nameTextBlock}>
+        <AppText numberOfLines={1} style={styles.holdingName}>{holding.name}</AppText>
+        <AppText numberOfLines={1} variant="caption">
+          {holding.ticker} · {holding.region}
         </AppText>
-        <AppText variant="caption">평단가 UNKNOWN · 실현손익 UNKNOWN</AppText>
       </View>
-      <View style={styles.holdingValueBlock}>
-        <AppText style={styles.holdingValue}>{evaluation}원</AppText>
-        <AppText variant="caption">{costBasis}</AppText>
-        <AppText style={styles.unknownValue}>{pnl}</AppText>
-        <AppText variant="caption">{yieldValue}</AppText>
+    </Pressable>
+  );
+}
+
+function MetricCell({
+  primary,
+  secondary,
+  tone = "neutral",
+}: {
+  primary: string;
+  secondary: string;
+  tone?: "neutral" | "negative";
+}) {
+  return (
+    <View style={styles.metricCell}>
+      <AppText style={[styles.metricPrimary, tone === "negative" ? styles.negativeValue : null]}>
+        {primary}
+      </AppText>
+      <AppText variant="caption" numberOfLines={1}>
+        {secondary}
+      </AppText>
+    </View>
+  );
+}
+
+function MiniMetric({ label, tone, value }: { label: string; tone?: "negative"; value: string }) {
+  return (
+    <View style={styles.miniMetric}>
+      <AppText variant="caption">{label}</AppText>
+      <AppText style={[styles.miniMetricValue, tone === "negative" ? styles.negativeValue : null]}>
+        {value}
+      </AppText>
+    </View>
+  );
+}
+
+function ContextSection({
+  badge,
+  items,
+  title,
+}: {
+  badge: string;
+  items: Array<{ title: string; body: string; meta: string }>;
+  title: string;
+}) {
+  return (
+    <View style={styles.contextSection}>
+      <View style={styles.contextHeader}>
+        <AppText style={styles.contextTitle}>{title}</AppText>
+        <Badge label={badge} tone="disabled" />
       </View>
+      {items.map((item) => (
+        <View key={`${title}-${item.title}`} style={styles.contextItem}>
+          <AppText style={styles.contextItemTitle}>{item.title}</AppText>
+          <AppText variant="caption">{item.body}</AppText>
+          <AppText variant="caption" style={styles.contextMeta}>{item.meta}</AppText>
+        </View>
+      ))}
     </View>
   );
-}
-
-type MetricPairProps = {
-  label: string;
-  value: string;
-  valueStyle?: object;
-};
-
-function MetricPair({ label, value, valueStyle }: MetricPairProps) {
-  return (
-    <View style={styles.metricPair}>
-      <AppText variant="caption">{label}</AppText>
-      <AppText style={[styles.metricValue, valueStyle]}>{value}</AppText>
-    </View>
-  );
-}
-
-function KpiPill({ label, tone, value }: { label: string; tone?: "negative"; value: string }) {
-  return (
-    <View style={styles.kpiPill}>
-      <AppText variant="caption">{label}</AppText>
-      <AppText style={[styles.kpiValue, tone === "negative" ? styles.negativeValue : null]}>{value}</AppText>
-    </View>
-  );
-}
-
-function displayMoney(value: number | null) {
-  if (value === null || Number.isNaN(value)) {
-    return "UNKNOWN";
-  }
-
-  return new Intl.NumberFormat("ko-KR").format(value);
-}
-
-function displayPercent(value: number | null) {
-  if (value === null || Number.isNaN(value)) {
-    return "UNKNOWN";
-  }
-
-  return `${value.toFixed(2)}%`;
-}
-
-function displayCount(value: number | null) {
-  if (value === null || Number.isNaN(value)) {
-    return "UNKNOWN";
-  }
-
-  return new Intl.NumberFormat("ko-KR").format(value);
 }
 
 const elevatedCard = {
@@ -343,7 +446,7 @@ const elevatedCard = {
 
 const styles = StyleSheet.create({
   screen: {
-    gap: 24,
+    gap: 32,
   },
   header: {
     alignItems: "center",
@@ -378,217 +481,196 @@ const styles = StyleSheet.create({
     minWidth: 24,
     textAlign: "center",
   },
-  summaryCard: {
+  tableCard: {
+    ...elevatedCard,
+    borderRadius: 16,
+    gap: spacing.md,
+    height: 288,
+    overflow: "hidden",
+    padding: spacing.lg,
+  },
+  tableTopRow: {
+    alignItems: "flex-start",
+    flexDirection: "column",
+    gap: spacing.sm,
+    justifyContent: "flex-start",
+  },
+  titleCluster: {
+    flex: 1,
+    gap: spacing.xs,
+  },
+  titleRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: spacing.sm,
+  },
+  cardTitle: {
+    color: "#1A1A1A",
+    fontSize: 18,
+    fontWeight: "900",
+    lineHeight: 24,
+  },
+  controlScroller: {
+    gap: spacing.sm,
+    paddingRight: spacing.lg,
+  },
+  controlChip: {
+    alignItems: "center",
+    borderColor: "#E0E0E0",
+    borderRadius: 999,
+    borderWidth: 1,
+    height: 32,
+    justifyContent: "center",
+    paddingHorizontal: spacing.md,
+  },
+  controlChipActive: {
+    backgroundColor: "#DFF8F5",
+    borderColor: "#00C4B3",
+  },
+  controlText: {
+    color: "#6C6C6C",
+    fontWeight: "700",
+  },
+  controlTextActive: {
+    color: "#008A80",
+    fontWeight: "900",
+  },
+  filterChip: {
+    alignItems: "center",
+    backgroundColor: "#F6F7F9",
+    borderRadius: 999,
+    height: 32,
+    justifyContent: "center",
+    paddingHorizontal: spacing.md,
+  },
+  filterText: {
+    color: "#6C6C6C",
+    fontWeight: "700",
+  },
+  tableShell: {
+    borderColor: "#E0E0E0",
+    borderRadius: 12,
+    borderWidth: 1,
+    flexDirection: "row",
+    overflow: "hidden",
+  },
+  stickyColumn: {
+    backgroundColor: "#FFFFFF",
+    width: 160,
+  },
+  stickyHeaderCell: {
+    backgroundColor: "#F6F7F9",
+    borderBottomColor: "#E0E0E0",
+    borderBottomWidth: 1,
+    height: 32,
+    justifyContent: "center",
+    paddingHorizontal: spacing.md,
+  },
+  tableHeaderText: {
+    color: "#1A1A1A",
+    fontSize: 13,
+    fontWeight: "900",
+    lineHeight: 18,
+  },
+  nameCell: {
+    alignItems: "center",
+    borderBottomColor: "#E0E0E0",
+    borderBottomWidth: 1,
+    flexDirection: "row",
+    gap: spacing.sm,
+    height: 48,
+    paddingHorizontal: spacing.sm,
+  },
+  selectedNameCell: {
+    backgroundColor: "#F0F8F7",
+  },
+  rowAccent: {
+    backgroundColor: "#00C4B3",
+    borderRadius: 999,
+    height: 30,
+    width: 3,
+  },
+  smallAssetIcon: {
+    alignItems: "center",
+    backgroundColor: "#DFF8F5",
+    borderRadius: 16,
+    height: 32,
+    justifyContent: "center",
+    width: 32,
+  },
+  smallAssetIconText: {
+    color: "#008A80",
+    fontSize: 14,
+    fontWeight: "900",
+    lineHeight: 18,
+  },
+  nameTextBlock: {
+    flex: 1,
+  },
+  holdingName: {
+    color: "#1A1A1A",
+    fontSize: 16,
+    fontWeight: "800",
+    lineHeight: 20,
+  },
+  metricHeaderRow: {
+    backgroundColor: "#F6F7F9",
+    flexDirection: "row",
+    height: 32,
+  },
+  metricHeaderCell: {
+    borderBottomColor: "#E0E0E0",
+    borderBottomWidth: 1,
+    justifyContent: "center",
+    paddingHorizontal: spacing.md,
+    width: 116,
+  },
+  metricRow: {
+    borderBottomColor: "#E0E0E0",
+    borderBottomWidth: 1,
+    flexDirection: "row",
+    height: 48,
+  },
+  selectedMetricRow: {
+    backgroundColor: "#F0F8F7",
+  },
+  metricCell: {
+    borderLeftColor: "#E0E0E0",
+    borderLeftWidth: 1,
+    justifyContent: "center",
+    paddingHorizontal: spacing.md,
+    width: 116,
+  },
+  metricPrimary: {
+    color: "#1A1A1A",
+    fontSize: 15,
+    fontWeight: "900",
+    lineHeight: 20,
+  },
+  negativeValue: {
+    color: "#E01E5A",
+  },
+  detailCard: {
     ...elevatedCard,
     borderRadius: 24,
     gap: spacing.lg,
-    minHeight: 220,
     padding: 20,
   },
-  summaryTopRow: {
+  detailCardMarker: {
     alignItems: "flex-start",
     flexDirection: "column",
     justifyContent: "flex-start",
     gap: spacing.md,
   },
-  summaryTitleBlock: {
-    flex: 1,
-    gap: spacing.xs,
-  },
-  cardLabel: {
+  detailCardMarkerText: {
     color: "#6C6C6C",
-    fontSize: 15,
-    fontWeight: "700",
-    lineHeight: 20,
-  },
-  valueRow: {
-    alignItems: "baseline",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: spacing.xs,
-  },
-  primaryValue: {
-    color: "#1A1A1A",
-    fontSize: 36,
-    fontWeight: "900",
-    lineHeight: 42,
-  },
-  currencyUnit: {
-    color: "#6C6C6C",
-    fontSize: 24,
-    fontWeight: "800",
-    lineHeight: 30,
-  },
-  summaryDivider: {
-    backgroundColor: "#E0E0E0",
-    height: 1,
-  },
-  summaryMetricGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: spacing.md,
-  },
-  metricPair: {
-    flexBasis: "45%",
-    flexGrow: 1,
-    gap: spacing.xs,
-  },
-  metricValue: {
-    color: "#1A1A1A",
-    fontSize: 16,
-    fontWeight: "800",
-    lineHeight: 22,
-  },
-  unknownValue: {
-    color: "#A0A0A0",
     fontWeight: "800",
   },
-  negativeValue: {
-    color: "#E01E5A",
-  },
-  kpiRow: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: spacing.sm,
-  },
-  kpiPill: {
-    backgroundColor: "#F6F7F9",
-    borderColor: "#E0E0E0",
-    borderRadius: 12,
-    borderWidth: 1,
-    flexBasis: "45%",
-    flexGrow: 1,
-    gap: spacing.xs,
-    minHeight: mobile.touchTarget,
-    padding: spacing.sm,
-  },
-  kpiValue: {
-    color: "#1A1A1A",
-    fontSize: 16,
-    fontWeight: "800",
-    lineHeight: 20,
-  },
-  timestamp: {
-    color: "#6C6C6C",
-  },
-  allocationCard: {
-    ...elevatedCard,
-    borderRadius: 16,
-    gap: spacing.lg,
-    padding: spacing.lg,
-  },
-  sectionHeader: {
-    alignItems: "flex-start",
-    flexDirection: "column",
-    gap: spacing.md,
-    justifyContent: "space-between",
-  },
-  sectionTitle: {
-    color: "#1A1A1A",
-    fontSize: 18,
-    fontWeight: "800",
-    lineHeight: 24,
-  },
-  segmentControl: {
-    borderBottomColor: "#E0E0E0",
-    borderBottomWidth: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: spacing.md,
-  },
-  segmentChip: {
-    paddingBottom: spacing.sm,
-  },
-  segmentChipActive: {
-    borderBottomColor: "#00C4B3",
-    borderBottomWidth: 2,
-  },
-  segmentText: {
-    color: "#6C6C6C",
-    fontWeight: "700",
-  },
-  segmentTextActive: {
-    color: "#00C4B3",
-    fontWeight: "800",
-  },
-  allocationBar: {
-    borderRadius: 999,
-    flexDirection: "row",
-    height: 48,
-    overflow: "hidden",
-  },
-  allocationSegment: {
-    minWidth: 24,
-  },
-  legendGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: spacing.md,
-  },
-  legendRow: {
+  detailHeader: {
     alignItems: "center",
-    flexBasis: "45%",
-    flexDirection: "row",
-    flexGrow: 1,
-    gap: spacing.sm,
-  },
-  legendSwatch: {
-    borderRadius: 5,
-    height: 10,
-    width: 10,
-  },
-  legendTextBlock: {
-    flex: 1,
-  },
-  legendLabel: {
-    color: "#1A1A1A",
-    fontSize: 14,
-    fontWeight: "800",
-    lineHeight: 18,
-  },
-  holdingsCard: {
-    ...elevatedCard,
-    borderRadius: 16,
-    gap: spacing.lg,
-    padding: spacing.lg,
-  },
-  listHeader: {
-    alignItems: "flex-start",
     flexDirection: "row",
     gap: spacing.md,
-    justifyContent: "space-between",
-  },
-  sortRow: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: spacing.sm,
-  },
-  sortChip: {
-    backgroundColor: "#F6F7F9",
-    borderRadius: 8,
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xs,
-  },
-  sortChipActive: {
-    backgroundColor: "#DFF8F5",
-  },
-  sortChipText: {
-    color: "#6C6C6C",
-    fontWeight: "700",
-  },
-  sortChipTextActive: {
-    color: "#008A80",
-    fontWeight: "800",
-  },
-  holdingRow: {
-    alignItems: "center",
-    borderColor: "#E0E0E0",
-    borderRadius: 16,
-    borderWidth: 1,
-    flexDirection: "row",
-    gap: spacing.md,
-    minHeight: 88,
-    padding: spacing.lg,
   },
   assetIcon: {
     alignItems: "center",
@@ -604,50 +686,199 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     lineHeight: 20,
   },
-  holdingNameBlock: {
+  detailTitleBlock: {
     flex: 1,
     gap: spacing.xs,
   },
-  holdingTitleRow: {
+  detailNameRow: {
     alignItems: "center",
     flexDirection: "row",
     flexWrap: "wrap",
     gap: spacing.sm,
   },
-  holdingName: {
+  detailName: {
     color: "#1A1A1A",
     fontSize: 18,
-    fontWeight: "800",
+    fontWeight: "900",
     lineHeight: 24,
   },
-  holdingValueBlock: {
-    alignItems: "flex-end",
-    gap: 2,
-    maxWidth: 116,
-  },
-  holdingValue: {
-    color: "#1A1A1A",
-    fontSize: 16,
-    fontWeight: "800",
-    lineHeight: 22,
-    textAlign: "right",
-  },
-  disabledActionRow: {
+  indicatorRow: {
     flexDirection: "row",
     flexWrap: "wrap",
     gap: spacing.sm,
   },
-  disabledActionChip: {
-    backgroundColor: "#F6F7F9",
-    borderColor: "#E0E0E0",
-    borderRadius: 12,
+  indicatorChip: {
+    alignItems: "center",
+    borderColor: "#D5D5D5",
+    borderRadius: 8,
     borderWidth: 1,
-    minHeight: mobile.touchTarget,
+    height: 32,
+    justifyContent: "center",
     paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
   },
-  disabledActionText: {
+  indicatorChipActive: {
+    backgroundColor: "#00C4B3",
+    borderColor: "#00C4B3",
+  },
+  indicatorText: {
     color: "#6C6C6C",
     fontWeight: "800",
+  },
+  indicatorTextActive: {
+    color: "#FFFFFF",
+    fontWeight: "900",
+  },
+  chartFrame: {
+    backgroundColor: "#101827",
+    borderRadius: 16,
+    minHeight: 248,
+    overflow: "hidden",
+    padding: spacing.lg,
+  },
+  chartGrid: {
+    bottom: 0,
+    justifyContent: "space-evenly",
+    left: 0,
+    padding: spacing.lg,
+    position: "absolute",
+    right: 0,
+    top: 0,
+  },
+  gridLine: {
+    backgroundColor: "#273449",
+    height: 1,
+  },
+  chartEmptyState: {
+    alignItems: "center",
+    flex: 1,
+    gap: spacing.sm,
+    justifyContent: "center",
+    minHeight: 216,
+  },
+  chartTitle: {
+    color: "#FFFFFF",
+    fontSize: 18,
+    fontWeight: "900",
+    lineHeight: 24,
+    textAlign: "center",
+  },
+  chartBody: {
+    color: "#AFAFAF",
+    maxWidth: 280,
+    textAlign: "center",
+  },
+  rangeRow: {
+    flexDirection: "row",
+    gap: spacing.sm,
+  },
+  rangeChip: {
+    alignItems: "center",
+    borderColor: "#E0E0E0",
+    borderRadius: 8,
+    borderWidth: 1,
+    flex: 1,
+    minHeight: mobile.touchTarget,
+    justifyContent: "center",
+  },
+  rangeChipActive: {
+    backgroundColor: "#DFF8F5",
+    borderColor: "#00C4B3",
+  },
+  rangeText: {
+    color: "#6C6C6C",
+    fontWeight: "800",
+  },
+  rangeTextActive: {
+    color: "#008A80",
+    fontWeight: "900",
+  },
+  timeSlider: {
+    gap: spacing.sm,
+  },
+  sliderTrack: {
+    backgroundColor: "#E0E0E0",
+    borderRadius: 999,
+    height: 18,
+    justifyContent: "center",
+    overflow: "hidden",
+  },
+  sliderSelection: {
+    alignSelf: "flex-end",
+    backgroundColor: "#BDEDE8",
+    height: 18,
+    width: "68%",
+  },
+  leftHandle: {
+    backgroundColor: "#00C4B3",
+    borderRadius: 7,
+    height: 14,
+    left: "30%",
+    position: "absolute",
+    width: 14,
+  },
+  rightHandle: {
+    backgroundColor: "#00C4B3",
+    borderRadius: 7,
+    height: 14,
+    position: "absolute",
+    right: 2,
+    width: 14,
+  },
+  sliderLabels: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  metricsStrip: {
+    gap: spacing.sm,
+    paddingRight: spacing.lg,
+  },
+  miniMetric: {
+    backgroundColor: "#F6F7F9",
+    borderColor: "#E0E0E0",
+    borderRadius: 8,
+    borderWidth: 1,
+    gap: spacing.xs,
+    minHeight: mobile.touchTarget,
+    padding: spacing.sm,
+    width: 104,
+  },
+  miniMetricValue: {
+    color: "#1A1A1A",
+    fontSize: 16,
+    fontWeight: "900",
+    lineHeight: 20,
+  },
+  contextSection: {
+    backgroundColor: "#F6F7F9",
+    borderRadius: 12,
+    gap: spacing.md,
+    padding: spacing.lg,
+  },
+  contextHeader: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: spacing.md,
+  },
+  contextTitle: {
+    color: "#1A1A1A",
+    fontSize: 18,
+    fontWeight: "900",
+    lineHeight: 24,
+  },
+  contextItem: {
+    gap: spacing.xs,
+  },
+  contextItemTitle: {
+    color: "#1A1A1A",
+    fontSize: 15,
+    fontWeight: "900",
+    lineHeight: 20,
+  },
+  contextMeta: {
+    color: "#6C6C6C",
+  },
+  supportSection: {
+    gap: spacing.md,
   },
 });

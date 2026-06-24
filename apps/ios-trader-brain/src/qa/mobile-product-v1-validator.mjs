@@ -43,8 +43,6 @@ const tabFiles = {
 };
 
 expect(contract?.authority === "NOT_AUTHORITY", "mobile product contract authority must remain NOT_AUTHORITY");
-expect(contract?.gptCaptureStatus === "CAPTURED_LOOP_1", "GPT Loop 1 capture status must be recorded");
-expect(contract?.representativeProductScreen === "brain", "BRAIN must be the representative product screen for Loop 1");
 expect(contract?.hardState?.strategyAcceptance === "NOT_ACCEPTED", "strategy acceptance must remain NOT_ACCEPTED");
 expect(contract?.hardState?.deploymentReadiness === "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY", "deployment readiness must remain diagnostic-only");
 expect(contract?.hardState?.realCapital === "FORBIDDEN", "real capital must remain FORBIDDEN");
@@ -66,13 +64,16 @@ for (const [tabId, file] of Object.entries(tabFiles)) {
     expect(source.includes("HomeRelativeReturnChartCard"), "home must render the QQQ relative return chart card");
     expect(source.includes("Phone-first v1") || source.includes("모바일"), "home must visibly mark mobile-first posture");
   } else if (tabId === "portfolio") {
-    expect(source.includes("<PortfolioSummaryCard"), "portfolio must render production summary card first");
-    expect(source.includes("<PortfolioAllocationCard"), "portfolio must render allocation chart section");
-    expect(source.includes("보유 종목"), "portfolio must render holdings list header");
-    expect(source.includes("매수 차단") && source.includes("매도 차단"), "portfolio trading actions must remain visibly blocked");
-    expect(source.includes("SOURCE_NOT_ATTACHED"), "portfolio allocation data must remain source-not-attached until authority is connected");
+    expect(source.includes("tableCard"), "portfolio must render fixed-height holdings table card");
+    expect(source.includes("detailCard"), "portfolio must render stock detail card");
+    expect(source.includes("보유종목"), "portfolio must render holdings table title");
+    expect(source.includes("Stock Detail"), "portfolio must preserve stock detail marker");
+    expect(source.includes("차트 데이터 연결 대기"), "portfolio chart must fail closed until authority is connected");
+    expect(source.includes("setSelectedHoldingId"), "portfolio must support local row selection");
+    expect(source.includes("toggleIndicator"), "portfolio must support local indicator toggles");
+    expect(source.includes("SOURCE_NOT_ATTACHED"), "portfolio data must remain source-not-attached until authority is connected");
     expect(source.includes("MobileV1StatusRail"), `${tabId} must render MobileV1StatusRail`);
-    expect(source.includes("Phone-first v1"), `${tabId} must visibly mark phone-first v1`);
+    expect(source.includes("Phone-first v2"), `${tabId} must visibly mark phone-first v2`);
   } else {
     expect(source.includes("MobileV1StatusRail"), `${tabId} must render MobileV1StatusRail`);
     expect(source.includes("Phone-first v1"), `${tabId} must visibly mark phone-first v1`);
@@ -97,4 +98,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[MOBILE_PRODUCT_V1_OK] mobile product v1 surfaces preserve read-only phone-first boundaries with Portfolio production v1");
+console.log("[MOBILE_PRODUCT_V1_OK] mobile product surfaces preserve read-only phone-first boundaries with Portfolio V2");

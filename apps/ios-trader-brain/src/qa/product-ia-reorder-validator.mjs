@@ -63,35 +63,39 @@ expectIncludes(
   "HOME chart card"
 );
 
-expectBefore(portfolio, "<PortfolioSummaryCard", "<PortfolioAllocationCard", "PORTFOLIO IA");
-expectBefore(portfolio, "<PortfolioAllocationCard", "보유 종목", "PORTFOLIO IA");
-expectBefore(portfolio, "보유 종목", "데이터 상태", "PORTFOLIO IA");
+expectBefore(portfolio, "tableCard", "detailCard", "PORTFOLIO V2 IA");
 expectIncludes(
   portfolio,
   [
-    "포트폴리오",
-    "총 평가금",
-    "원금",
-    "총 손익",
-    "수익률",
-    "자산 배분",
-    "자산유형",
-    "지역",
-    "통화",
-    "섹터",
-    "평가금 순",
-    "수익률 순",
-    "수익금 순",
-    "비중 순",
-    "매수 차단",
-    "매도 차단",
+    "보유종목",
+    "가로 스크롤 표",
+    "3개 행 기본 표시",
+    "수익률순",
+    "평가금액순",
+    "보유기간순",
+    "평가손익",
+    "보유수량",
+    "평가금액",
+    "보유기간",
+    "MDD",
+    "Stock Detail",
+    "차트 데이터 연결 대기",
+    "VWAP",
+    "거래량",
+    "이동평균",
+    "시스템선",
+    "오른쪽 핸들: NOW 고정",
+    "매수 근거",
+    "최신 뉴스",
     "SOURCE_NOT_ATTACHED",
-    "broker truth BLOCKED",
+    "NOT_AUTHORITY",
+    "read-only",
   ],
-  "PORTFOLIO production v1"
+  "PORTFOLIO production v2"
 );
-expect(portfolio.includes("read-only") || portfolio.includes("Read-only"), "PORTFOLIO must preserve read-only boundary");
-expect(portfolio.includes("NOT_AUTHORITY"), "PORTFOLIO must preserve NOT_AUTHORITY boundary");
+expect(portfolio.includes("setSelectedHoldingId"), "PORTFOLIO V2 must support local row selection");
+expect(portfolio.includes("setSelectedRange"), "PORTFOLIO V2 must support local range selection");
+expect(portfolio.includes("toggleIndicator"), "PORTFOLIO V2 must support local indicator toggles");
 
 expectBefore(brain, "<ScreenSummary", "<MobileV1StatusRail", "BRAIN IA");
 expect(
@@ -111,5 +115,5 @@ if (findings.length > 0) {
 }
 
 console.log(
-  "[PRODUCT_IA_REORDER_OK] HOME/PORTFOLIO/BRAIN keep product-first Korean IA with portfolio production v1, QQQ comparison, clickable timeframe chips, and dynamic journal months"
+  "[PRODUCT_IA_REORDER_OK] HOME/PORTFOLIO/BRAIN keep product-first Korean IA with Portfolio V2 table-detail structure, QQQ comparison, clickable timeframe chips, and dynamic journal months"
 );

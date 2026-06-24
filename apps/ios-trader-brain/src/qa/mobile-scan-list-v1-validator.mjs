@@ -27,8 +27,7 @@ function hasReadOnlyBoundary(source) {
     source.includes("Read-only") ||
     source.includes("read-only") ||
     source.includes("읽기 전용") ||
-    source.includes("읽기전용") ||
-    source.includes("?쎄린?꾩슜")
+    source.includes("읽기전용")
   );
 }
 
@@ -48,15 +47,16 @@ expect(packageJson?.scripts?.test?.includes("validate:mobile-scan-list-v1"), "np
 for (const route of tabRoutes) {
   const source = readText(route);
   if (route.includes("portfolio")) {
-    expect(source.includes("HoldingRow"), `${route}: must use Portfolio production HoldingRow`);
-    expect(source.includes("보유 종목"), `${route}: must preserve holdings list header`);
+    expect(source.includes("HoldingNameCell"), `${route}: must use Portfolio V2 table name cells`);
+    expect(source.includes("MetricCell"), `${route}: must use Portfolio V2 metric cells`);
+    expect(source.includes("보유종목"), `${route}: must preserve holdings table header`);
   } else {
     expect(source.includes("MobileScanListItem"), `${route}: must use MobileScanListItem`);
   }
   expect(source.includes("MobileV1StatusRail"), `${route}: must preserve phone-first rail`);
   expect(hasReadOnlyBoundary(source), `${route}: must preserve Read-only boundary`);
   expect(source.includes("NOT_AUTHORITY"), `${route}: must preserve NOT_AUTHORITY boundary`);
-  expect(!/sort\s*\(|filter\s*\([^=]*(score|rank|confidence|outcome)|fetch\s*\(|axios|react-query|swr|graphql-request/.test(source), `${route}: must not add sorting/filtering logic or integration clients`);
+  expect(!/sort\s*\(|filter\s*\([^=]*(score|rank|confidence|outcome)|fetch\s*\(|axios|react-query|swr|graphql-request/.test(source), `${route}: must not add assignment sorting/filtering logic or integration clients`);
   expect(!/submitOrder|placeOrder|sendLiveOrder|approveOrder|cancelOrder/.test(source), `${route}: must not add order mutation language or handlers`);
 }
 
@@ -66,4 +66,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[MOBILE_SCAN_LIST_V1_OK] tab list rows preserve mobile scan, portfolio holding, and read-only boundaries");
+console.log("[MOBILE_SCAN_LIST_V1_OK] tab list rows preserve mobile scan, Portfolio V2 table, and read-only boundaries");

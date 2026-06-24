@@ -1,0 +1,4 @@
+artifact_id,path,type,status,notes
+task3891_report,docs/reports/task_3891_portfolio_tab_v2_production_spec/task_3891_portfolio_tab_v2_production_spec.md,report,canonical,Task closeout report
+task3891_manifest,docs/reports/task_3891_portfolio_tab_v2_production_spec/artifact_manifest.csv,manifest,canonical,Artifact manifest
+task3891_mobile_web_screenshot,data/artifacts/task_3891_portfolio_tab_v2_production_spec/portfolio_tab_v2_final2_390x844.png,screenshot,diagnostic,Local LAN web-preview screenshot only; not native iOS evidence

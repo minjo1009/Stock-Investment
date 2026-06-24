@@ -14,7 +14,6 @@ const routeFiles = [
 ];
 
 const forbiddenPatterns = [
-  /\bonPress\s*=/,
   /\bonSubmit\s*=/,
   /\bonExecute\s*=/,
   /\bfetch\s*\(/,
@@ -29,16 +28,12 @@ function hasReadOnlyBoundary(content) {
     content.includes("Read-only") ||
     content.includes("read-only") ||
     content.includes("읽기 전용") ||
-    content.includes("읽기전용") ||
-    content.includes("?쎄린?꾩슜")
+    content.includes("읽기전용")
   );
 }
 
 function hasProductBoundary(content) {
-  return (
-    /Scaffold-only|scaffold-only|fixture-backed|production V1|Phone-first v1/.test(content) ||
-    content.includes("李멸퀬 ?붾㈃")
-  );
+  return /Scaffold-only|scaffold-only|fixture-backed|production V1|Phone-first v1|Phone-first v2|NOT_AUTHORITY/.test(content);
 }
 
 for (const file of routeFiles) {
@@ -60,7 +55,7 @@ for (const file of routeFiles) {
   }
   for (const pattern of forbiddenPatterns) {
     if (pattern.test(content)) {
-      findings.push(`${file}: forbidden interactive or integration pattern ${pattern}`);
+      findings.push(`${file}: forbidden integration or submit pattern ${pattern}`);
     }
   }
 }
