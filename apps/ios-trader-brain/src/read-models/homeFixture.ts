@@ -60,12 +60,12 @@ export const homeFixture = {
       status: "SOURCE_NOT_ATTACHED",
       sourceIds: [],
       blockerReason:
-        "QQQ 대비 수익률과 MDD 차트에는 권위 있는 포트폴리오 수익 곡선과 QQQ 벤치마크 시계열이 필요합니다.",
+        "평가금과 원금 시계열 차트에는 권위 있는 포트폴리오 평가금 곡선과 원금 기준선이 필요합니다.",
     },
     points: [],
     sourceState: {
-      sourceId: "home-relative-return-chart-source",
-      sourceLabel: "QQQ 대비 수익/MDD 차트 출처",
+      sourceId: "home-performance-timeline-source",
+      sourceLabel: "평가금/원금 성과 차트 출처",
       freshnessStatus: "MISSING",
       observedAt: null,
       generatedAt: null,
@@ -74,7 +74,7 @@ export const homeFixture = {
       proxyAllowed: false,
       provenanceRefs: ["docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md"],
       blockerReason:
-        "권위 있는 포트폴리오 수익 곡선과 QQQ 벤치마크 시계열이 아직 연결되지 않았습니다.",
+        "권위 있는 포트폴리오 평가금 곡선과 원금 시계열이 아직 연결되지 않았습니다.",
     },
   },
   portfolioSnapshot: {

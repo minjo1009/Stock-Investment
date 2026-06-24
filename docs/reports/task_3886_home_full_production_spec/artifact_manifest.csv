@@ -1,0 +1,4 @@
+artifact_id,path,type,status,notes
+task3886_report,docs/reports/task_3886_home_full_production_spec/task_3886_home_full_production_spec.md,report,canonical,Task closeout report
+task3886_manifest,docs/reports/task_3886_home_full_production_spec/artifact_manifest.csv,manifest,canonical,Artifact manifest
+task3886_mobile_web_screenshot,data/artifacts/task_3886_home_full_production_spec/home_full_production_spec_390x844.png,screenshot,diagnostic,Local LAN web-preview screenshot only; not native iOS evidence

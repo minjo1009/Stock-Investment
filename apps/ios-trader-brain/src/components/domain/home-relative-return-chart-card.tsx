@@ -1,7 +1,7 @@
 import { StyleSheet, View, type ViewProps } from "react-native";
 
 import { AppText, Badge } from "../foundation";
-import type { ChartResolution, HomeRelativeReturnChart } from "../../read-models";
+import type { HomeRelativeReturnChart } from "../../read-models";
 import { colors, mobile, spacing } from "../../theme/tokens";
 import { ChartWithSourceState } from "./chart-with-source-state";
 
@@ -9,13 +9,7 @@ type HomeRelativeReturnChartCardProps = ViewProps & {
   chart: HomeRelativeReturnChart;
 };
 
-const resolutionLabels: Record<ChartResolution, string> = {
-  "1D": "Daily",
-  "1H": "1H",
-  "30M": "30m",
-  "15M": "15m",
-  "5M": "5m",
-};
+const timeframeLabels = ["1M", "3M", "6M", "1Y", "ALL"];
 
 export function HomeRelativeReturnChartCard({
   chart,
@@ -27,36 +21,39 @@ export function HomeRelativeReturnChartCard({
   return (
     <ChartWithSourceState
       chartState={chart.chartState}
-      description="포트폴리오 수익률, QQQ 벤치마크, MDD가 같은 시간축으로 연결되기 전에는 가짜 선을 그리지 않습니다."
+      description="평가금과 원금 시계열이 같은 시간축으로 연결되기 전에는 가짜 선을 그리지 않습니다."
       showTechnicalDetails={false}
       style={[styles.card, style]}
-      title="QQQ 대비 수익 / MDD"
+      title="Performance"
       {...props}
     >
       <View style={styles.content}>
-        <View style={styles.legendRow}>
-          <Badge label="포트폴리오" tone={hasSourceBackedSeries ? "fresh" : "unknown"} />
-          <Badge label="QQQ 기준" tone={hasSourceBackedSeries ? "fresh" : "unknown"} />
-          <Badge label="MDD" tone={hasSourceBackedSeries ? "fresh" : "missing"} />
-        </View>
+        <View style={styles.header}>
+          <View style={styles.headerText}>
+            <AppText style={styles.cardTitle}>평가금 vs 원금</AppText>
+            <View style={styles.legendRow}>
+              <LegendDot color="#2E7D32" label="평가금" />
+              <LegendDot color="#8E8E93" label="원금" />
+            </View>
+          </View>
 
-        <View style={styles.resolutionRow}>
-          {chart.allowedResolutions.map((resolution) => {
-            const selected = resolution === chart.selectedResolution;
-            return (
-              <View
-                key={resolution}
-                style={[styles.resolutionChip, selected ? styles.resolutionChipSelected : null]}
-              >
+          <View style={styles.timeframeRow}>
+            {timeframeLabels.map((label, index) => (
+              <View key={label} style={[styles.timeframeChip, index === 0 ? styles.timeframeChipSelected : null]}>
                 <AppText
                   variant="caption"
-                  style={selected ? styles.resolutionChipTextSelected : styles.resolutionChipText}
+                  style={index === 0 ? styles.timeframeTextSelected : styles.timeframeText}
                 >
-                  {resolutionLabels[resolution]}
+                  {label}
                 </AppText>
               </View>
-            );
-          })}
+            ))}
+          </View>
+        </View>
+
+        <View style={styles.kpiOverlay}>
+          <Badge label="승률 UNKNOWN" tone="unknown" />
+          <Badge label="MDD UNKNOWN" tone="missing" />
         </View>
 
         <View style={styles.chartFrame}>
@@ -65,23 +62,37 @@ export function HomeRelativeReturnChartCard({
             <View style={styles.gridLine} />
             <View style={styles.gridLine} />
           </View>
-          <View style={styles.emptyState}>
-            <AppText style={styles.emptyTitle}>차트 데이터 연결 대기</AppText>
-            <AppText variant="caption" style={styles.emptyBody}>
-              권위 있는 포트폴리오 수익 곡선과 QQQ 벤치마크 시계열이 붙으면 이 영역에
-              수익률과 MDD가 함께 표시됩니다.
-            </AppText>
-          </View>
+          {hasSourceBackedSeries ? null : (
+            <View style={styles.emptyState}>
+              <AppText style={styles.emptyTitle}>차트 데이터 연결 대기</AppText>
+              <AppText variant="caption" style={styles.emptyBody}>
+                권위 있는 포트폴리오 평가금 곡선과 원금 시계열이 붙으면 이 영역에 두
+                개의 선이 표시됩니다.
+              </AppText>
+            </View>
+          )}
         </View>
 
         <View style={styles.statusLine}>
-          <AppText variant="caption">
-            현재 상태: {chart.sourceState.freshnessStatus}
-          </AppText>
+          <AppText variant="caption">현재 상태: {chart.sourceState.freshnessStatus}</AppText>
           <AppText variant="caption">차트 포인트: {chart.points.length}</AppText>
         </View>
       </View>
     </ChartWithSourceState>
+  );
+}
+
+type LegendDotProps = {
+  color: string;
+  label: string;
+};
+
+function LegendDot({ color, label }: LegendDotProps) {
+  return (
+    <View style={styles.legendItem}>
+      <View style={[styles.legendDot, { backgroundColor: color }]} />
+      <AppText variant="caption">{label}</AppText>
+    </View>
   );
 }
 
@@ -96,49 +107,74 @@ const elevatedCard = {
 const styles = StyleSheet.create({
   card: {
     ...elevatedCard,
+    gap: spacing.md,
+    minHeight: 280,
+    padding: spacing.lg,
   },
   content: {
     gap: spacing.md,
   },
+  header: {
+    gap: spacing.md,
+  },
+  headerText: {
+    gap: spacing.xs,
+  },
+  cardTitle: {
+    color: colors.ink,
+    fontSize: 18,
+    fontWeight: "700",
+    lineHeight: 24,
+  },
   legendRow: {
     flexDirection: "row",
-    flexWrap: "wrap",
-    gap: spacing.sm,
+    gap: spacing.md,
   },
-  resolutionRow: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: spacing.sm,
-  },
-  resolutionChip: {
+  legendItem: {
     alignItems: "center",
-    backgroundColor: colors.surfaceMuted,
+    flexDirection: "row",
+    gap: spacing.xs,
+  },
+  legendDot: {
+    borderRadius: 4,
+    height: 8,
+    width: 8,
+  },
+  timeframeRow: {
+    flexDirection: "row",
+    gap: spacing.xs,
+  },
+  timeframeChip: {
+    alignItems: "center",
     borderColor: colors.border,
     borderRadius: 8,
     borderWidth: 1,
+    flex: 1,
     justifyContent: "center",
     minHeight: mobile.touchTarget,
-    minWidth: 52,
-    paddingHorizontal: spacing.sm,
   },
-  resolutionChipSelected: {
-    backgroundColor: colors.ink,
-    borderColor: colors.ink,
+  timeframeChipSelected: {
+    backgroundColor: "#E0E0E0",
   },
-  resolutionChipText: {
+  timeframeText: {
     color: colors.mutedInk,
     fontWeight: "700",
   },
-  resolutionChipTextSelected: {
-    color: colors.surface,
-    fontWeight: "700",
+  timeframeTextSelected: {
+    color: colors.ink,
+    fontWeight: "800",
+  },
+  kpiOverlay: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: spacing.sm,
   },
   chartFrame: {
     backgroundColor: colors.surfaceMuted,
     borderColor: colors.border,
     borderRadius: 8,
     borderWidth: 1,
-    minHeight: 184,
+    minHeight: 132,
     overflow: "hidden",
     padding: spacing.md,
   },
@@ -161,8 +197,8 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: spacing.sm,
     justifyContent: "center",
-    minHeight: 156,
-    paddingHorizontal: spacing.md,
+    minHeight: 104,
+    paddingHorizontal: spacing.sm,
   },
   emptyTitle: {
     color: colors.ink,

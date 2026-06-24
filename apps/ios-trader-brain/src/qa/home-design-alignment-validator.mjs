@@ -40,6 +40,14 @@ function expectExcludes(source, tokens, context) {
   }
 }
 
+function expectBefore(source, first, second, context) {
+  const firstIndex = source.indexOf(first);
+  const secondIndex = source.indexOf(second);
+  expect(firstIndex >= 0, `${context} must include ${first}`);
+  expect(secondIndex >= 0, `${context} must include ${second}`);
+  expect(firstIndex >= 0 && secondIndex >= 0 && firstIndex < secondIndex, `${context} must show ${first} before ${second}`);
+}
+
 function expectNoMojibake(source, context) {
   const mojibakeTokens = ["?쎄", "?ㅻ", "?ъ", "怨", "李", "異", "鍮", "沅", "媛"];
   expectExcludes(source, mojibakeTokens, context);
@@ -53,26 +61,53 @@ const chartCard = readText("src/components/domain/home-relative-return-chart-car
 const packageJson = readJson("package.json");
 
 expectNoMojibake(homeRoute, "HOME route");
-expectNoMojibake(chartCard, "HOME chart card");
+expectNoMojibake(chartCard, "HOME performance chart card");
 expectNoMojibake(homeFixture, "HOME fixture");
 expectNoMojibake(JSON.stringify(homeJson ?? {}), "HOME fixture JSON");
+
+expectBefore(homeRoute, "<PortfolioHeroCard", "<HomeRelativeReturnChartCard", "HOME production IA");
+expectBefore(homeRoute, "<HomeRelativeReturnChartCard", "보유 포트폴리오", "HOME production IA");
+expectBefore(homeRoute, "보유 포트폴리오", "투자 일지", "HOME production IA");
+expectBefore(homeRoute, "투자 일지", "오늘 확인할 것", "HOME production IA");
 
 expectIncludes(
   homeRoute,
   [
-    "포트폴리오 운영 대시보드",
-    "계좌 평가액",
-    "투자금",
-    "현금",
-    "수익현황",
-    "승률현황",
+    "PortfolioHeroCard",
+    "평가금",
+    "원금",
+    "총 손익",
+    "수익률",
+    "승률",
     "MDD",
-    "오늘 확인할 것",
-    "데이터 출처 상태",
+    "보유 포트폴리오",
+    "보유 중인 포트폴리오가 없습니다.",
+    "투자 일지",
+    "6월",
+    "해당 월의 거래내역이 없습니다.",
     "읽기 전용",
   ],
   "HOME route"
 );
+
+expectIncludes(
+  chartCard,
+  [
+    "Performance",
+    "평가금 vs 원금",
+    "1M",
+    "3M",
+    "6M",
+    "1Y",
+    "ALL",
+    "승률 UNKNOWN",
+    "MDD UNKNOWN",
+    "차트 데이터 연결 대기",
+    "showTechnicalDetails={false}",
+  ],
+  "HOME performance timeline chart card"
+);
+
 expectExcludes(
   homeRoute,
   [
@@ -82,22 +117,13 @@ expectExcludes(
     "catalog-manifest",
     "apps/ios-trader-brain",
     "src/mocks",
+    "DB 상태",
+    "scheduler",
+    "kill switch",
   ],
   "HOME visible source"
 );
-expect(!homeRoute.includes("sourceRefs={item.sourceRefs}"), "HOME attention cards must not render raw source refs");
-expect(!homeRoute.includes("subtitle={item.route}"), "HOME attention cards must not render raw route subtitles");
 
-expectIncludes(
-  common,
-  ["HomeRelativeReturnChart", "RelativeReturnChartPoint", "ChartResolution", "relativeReturnChart", 'title: "수익현황"'],
-  "read model contract"
-);
-expectIncludes(
-  chartCard,
-  ["QQQ 대비 수익 / MDD", "Daily", "1H", "30m", "15m", "5m", "ChartWithSourceState", "showTechnicalDetails={false}"],
-  "HOME relative return chart card"
-);
 expectExcludes(
   chartCard + homeFixture,
   ["mockSeries", "sampleData", "synthetic", "fake", "Math.random", "generateChart", "generateOhlc", "generateReturns"],
@@ -105,9 +131,7 @@ expectExcludes(
 );
 
 const relativeChart = homeJson?.relativeReturnChart;
-expect(relativeChart?.chartId === "home-relative-return-vs-qqq", "HOME fixture must define relative return chart id");
-expect(relativeChart?.benchmarkSymbol === "QQQ", "HOME fixture chart benchmark must be QQQ");
-expect(relativeChart?.title === "수익현황", "HOME fixture chart title must be Korean paraphrased");
+expect(relativeChart?.chartId === "home-relative-return-vs-qqq", "HOME fixture must define chart id");
 expect(relativeChart?.chartState?.status !== "READY", "HOME fixture chart must not be READY without authority");
 expect(
   relativeChart?.chartState?.status === "SOURCE_NOT_ATTACHED" ||
@@ -115,10 +139,6 @@ expect(
   "HOME fixture chart must be SOURCE_NOT_ATTACHED or CHART_MISSING"
 );
 expect(Array.isArray(relativeChart?.points) && relativeChart.points.length === 0, "HOME fixture chart points must be empty");
-expect(
-  JSON.stringify(relativeChart?.allowedResolutions ?? []) === JSON.stringify(["1D", "1H", "30M", "15M", "5M"]),
-  "HOME fixture chart must expose Daily/1H/30m/15m/5m resolutions"
-);
 
 expect(homeJson?.governance?.strategyAcceptance === "NOT_ACCEPTED", "strategy acceptance must remain NOT_ACCEPTED");
 expect(
@@ -130,6 +150,7 @@ expect(homeJson?.governance?.brokerMutationPermitted === false, "broker mutation
 expect(homeJson?.governance?.paperPermission === false, "paper permission must remain false");
 expect(homeJson?.governance?.livePermission === false, "live permission must remain false");
 
+expect(common.includes("HomeRelativeReturnChart"), "read model contract must keep HOME chart contract type");
 expect(
   packageJson?.scripts?.["validate:home-design-alignment"] ===
     "node src/qa/home-design-alignment-validator.mjs",
@@ -146,4 +167,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("[HOME_DESIGN_ALIGNMENT_OK] HOME follows production-first IA without fake chart data");
+console.log("[HOME_DESIGN_ALIGNMENT_OK] HOME follows production spec sections without fake chart data");

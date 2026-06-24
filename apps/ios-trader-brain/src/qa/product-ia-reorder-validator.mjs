@@ -41,11 +41,13 @@ const readModels = readText("src/read-models/common.ts");
 expectBefore(layout, 'name: "index"', 'name: "portfolio"', "tab order");
 expectBefore(layout, 'name: "portfolio"', 'name: "brain"', "tab order");
 
-expectBefore(home, "포트폴리오 운영 대시보드", "<HomeRelativeReturnChartCard", "HOME IA");
-expectBefore(home, "<HomeRelativeReturnChartCard", "오늘 확인할 것", "HOME IA");
+expectBefore(home, "<PortfolioHeroCard", "<HomeRelativeReturnChartCard", "HOME IA");
+expectBefore(home, "<HomeRelativeReturnChartCard", "보유 포트폴리오", "HOME IA");
+expectBefore(home, "보유 포트폴리오", "투자 일지", "HOME IA");
+expectBefore(home, "투자 일지", "오늘 확인할 것", "HOME IA");
 expectBefore(home, "오늘 확인할 것", "데이터 출처 상태", "HOME IA");
-expectIncludes(home, ["계좌현황", "계좌 평가액", "투자금", "수익현황", "승률현황", "QQQ", "MDD"], "HOME top summary");
-expectIncludes(chartCard, ["QQQ 대비 수익 / MDD", "Daily", "1H", "30m", "15m", "5m"], "HOME chart card");
+expectIncludes(home, ["평가금", "원금", "총 손익", "수익률", "승률", "MDD", "보유 중인 포트폴리오가 없습니다.", "해당 월의 거래내역이 없습니다."], "HOME top summary");
+expectIncludes(chartCard, ["Performance", "평가금 vs 원금", "1M", "3M", "6M", "1Y", "ALL"], "HOME chart card");
 expect(!home.includes("계좌 스냅샷"), "HOME must not render duplicate account snapshot section");
 expect(!home.includes("운영 제한 상태"), "HOME must not render operating restriction as a primary section");
 expect(!home.includes("비활성화된 기능"), "HOME must not render disabled actions as a primary section");
