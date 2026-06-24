@@ -5,6 +5,7 @@ import { FreshnessBanner, MobileV1StatusRail } from "../../src/components/domain
 import { AppText, Badge, CardContainer } from "../../src/components/foundation";
 import { SourceFreshnessBadge, StatusRow } from "../../src/components/generic";
 import { MainTabHeader, ScreenContainer } from "../../src/components/layout";
+import { backtestSnapshotFixture } from "../../src/read-models/backtestSnapshotFixture";
 import { portfolioFixture } from "../../src/read-models/portfolioFixture";
 import { colors, mobile, spacing } from "../../src/theme/tokens";
 
@@ -165,6 +166,7 @@ const rangeOptions = ["1D", "1M", "3M", "1Y", "ALL"];
 
 export default function PortfolioRoute() {
   const portfolio = portfolioFixture;
+  const backtest = backtestSnapshotFixture;
   const firstSource = portfolio.positions[0]?.sourceStates[0];
   const [selectedHoldingId, setSelectedHoldingId] = useState(holdings[0].id);
   const [selectedSort, setSelectedSort] = useState(sortOptions[0]);
@@ -184,6 +186,8 @@ export default function PortfolioRoute() {
   return (
     <ScreenContainer contentContainerStyle={styles.screen} padded={false}>
       <MainTabHeader title="포트폴리오" />
+
+      <PortfolioBacktestSnapshotCard snapshot={backtest} />
 
       <CardContainer style={styles.tableCard}>
         <View style={styles.tableTopRow}>
@@ -502,6 +506,103 @@ function MiniMetric({ label, tone, value }: { label: string; tone?: "negative"; 
   );
 }
 
+type PortfolioBacktestSnapshotCardProps = {
+  snapshot: typeof backtestSnapshotFixture;
+};
+
+function PortfolioBacktestSnapshotCard({ snapshot }: PortfolioBacktestSnapshotCardProps) {
+  const latestPoint = snapshot.equityCurve[snapshot.equityCurve.length - 1];
+  const qqqReturnPct = (snapshot.metrics.qqqBenchmarkFinal / snapshot.metrics.initialCapital - 1) * 100;
+
+  return (
+    <CardContainer style={styles.backtestCard}>
+      <View style={styles.backtestHeader}>
+        <View style={styles.backtestTitleRow}>
+          <AppText style={styles.backtestTitle}>백테스트 진단</AppText>
+          <Badge label="진단 전용" tone="readOnly" />
+        </View>
+        <AppText variant="caption">
+          최신 선택 결과를 읽기 전용으로 보여줍니다. 실제 계좌, 주문, paper/live 권한이 아닙니다.
+        </AppText>
+      </View>
+
+      <View style={styles.backtestHeroRow}>
+        <View style={styles.backtestHeroMetric}>
+          <AppText style={styles.backtestLabel}>최종 자산</AppText>
+          <AppText style={styles.backtestHeroValue}>{displayBacktestDecimal(snapshot.metrics.finalEquity)}</AppText>
+        </View>
+        <View style={styles.backtestHeroMetricRight}>
+          <AppText style={styles.backtestLabel}>총 수익률</AppText>
+          <AppText style={[styles.backtestHeroValue, styles.positiveValue]}>
+            {displayBacktestPercent(snapshot.metrics.totalReturnPct)}
+          </AppText>
+        </View>
+      </View>
+
+      <View style={styles.backtestMetricGrid}>
+        <BacktestMetric label="CAGR" tone="positive" value={displayBacktestPercent(snapshot.metrics.cagr * 100)} />
+        <BacktestMetric label="MDD" tone="negative" value={displayBacktestPercent(snapshot.metrics.maxDrawdown * 100)} />
+        <BacktestMetric label="거래 수" tone="neutral" value={`${snapshot.metrics.trades}`} />
+        <BacktestMetric
+          label="QQQ 대비"
+          tone={snapshot.metrics.beatsQqq ? "positive" : "neutral"}
+          value={displayBacktestPercent(qqqReturnPct)}
+        />
+      </View>
+
+      <View style={styles.backtestMetaBox}>
+        <AppText variant="caption">정책: {snapshot.selectedPolicy.policyId}</AppText>
+        <AppText variant="caption">
+          최신 지점: {latestPoint?.timestamp ?? "연결 대기"} / 곡선 {snapshot.equityCurve.length}개
+        </AppText>
+      </View>
+    </CardContainer>
+  );
+}
+
+function BacktestMetric({
+  label,
+  tone,
+  value,
+}: {
+  label: string;
+  tone: "positive" | "negative" | "neutral";
+  value: string;
+}) {
+  return (
+    <View style={styles.backtestMetricCell}>
+      <AppText style={styles.backtestMetricLabel}>{label}</AppText>
+      <AppText
+        numberOfLines={1}
+        style={[
+          styles.backtestMetricValue,
+          tone === "positive" ? styles.positiveValue : null,
+          tone === "negative" ? styles.negativeValue : null,
+        ]}
+      >
+        {value}
+      </AppText>
+    </View>
+  );
+}
+
+function displayBacktestDecimal(value: number | null) {
+  if (value === null || Number.isNaN(value)) {
+    return "연결 대기";
+  }
+
+  return value.toLocaleString("ko-KR", { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+}
+
+function displayBacktestPercent(value: number | null) {
+  if (value === null || Number.isNaN(value)) {
+    return "연결 대기";
+  }
+
+  const prefix = value > 0 ? "+" : "";
+  return `${prefix}${value.toFixed(2)}%`;
+}
+
 function ContextSection({
   badge,
   items,
@@ -546,6 +647,85 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
     paddingHorizontal: 20,
     paddingTop: 0,
+  },
+  backtestCard: {
+    ...elevatedCard,
+    borderRadius: 16,
+    gap: spacing.md,
+    padding: spacing.lg,
+    width: "100%",
+  },
+  backtestHeader: {
+    gap: spacing.xs,
+  },
+  backtestTitleRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: spacing.sm,
+  },
+  backtestTitle: {
+    color: "#1A1A1A",
+    fontSize: 18,
+    fontWeight: "900",
+    lineHeight: 24,
+  },
+  backtestHeroRow: {
+    flexDirection: "row",
+    gap: spacing.md,
+  },
+  backtestHeroMetric: {
+    flex: 1,
+    gap: spacing.xs,
+  },
+  backtestHeroMetricRight: {
+    alignItems: "flex-end",
+    flex: 1,
+    gap: spacing.xs,
+  },
+  backtestLabel: {
+    color: "#6C6C6C",
+    fontSize: 13,
+    fontWeight: "700",
+    lineHeight: 18,
+  },
+  backtestHeroValue: {
+    color: "#1A1A1A",
+    fontSize: 24,
+    fontWeight: "900",
+    lineHeight: 30,
+  },
+  backtestMetricGrid: {
+    flexDirection: "row",
+    gap: spacing.sm,
+  },
+  backtestMetricCell: {
+    backgroundColor: "#F6F7F9",
+    borderColor: "#E0E0E0",
+    borderRadius: 10,
+    borderWidth: 1,
+    flex: 1,
+    gap: spacing.xs,
+    minWidth: 0,
+    padding: spacing.sm,
+  },
+  backtestMetricLabel: {
+    color: "#6C6C6C",
+    fontSize: 12,
+    fontWeight: "700",
+    lineHeight: 16,
+  },
+  backtestMetricValue: {
+    color: "#1A1A1A",
+    fontSize: 14,
+    fontWeight: "900",
+    lineHeight: 18,
+  },
+  backtestMetaBox: {
+    backgroundColor: "#F6F7F9",
+    borderRadius: 12,
+    gap: spacing.xs,
+    padding: spacing.md,
   },
   tableCard: {
     ...elevatedCard,
@@ -732,6 +912,9 @@ const styles = StyleSheet.create({
   },
   negativeValue: {
     color: "#E01E5A",
+  },
+  positiveValue: {
+    color: "#008A00",
   },
   detailCard: {
     ...elevatedCard,

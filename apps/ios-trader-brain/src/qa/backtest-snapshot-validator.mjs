@@ -18,6 +18,7 @@ function expectIncludes(source, needle, label) {
 }
 
 const fixture = readText("src/read-models/backtestSnapshotFixture.ts");
+const portfolioRoute = readText("app/(tabs)/portfolio.tsx");
 const currentSnapshot = readText("../../data/frontend_snapshots/current_backtest_snapshot.json");
 const contract = readText("../../docs/frontend_app_ssot/25_BACKTEST_SNAPSHOT_READ_PATH.md");
 const pkg = JSON.parse(readText("package.json"));
@@ -108,6 +109,14 @@ for (const required of [
   "Automatic update is allowed only for the selected snapshot pointer",
 ]) {
   expectIncludes(contract, required, "25_BACKTEST_SNAPSHOT_READ_PATH.md");
+}
+
+for (const required of [
+  "backtestSnapshotFixture",
+  "백테스트 진단",
+  "진단 전용",
+]) {
+  expectIncludes(portfolioRoute, required, "portfolio.tsx");
 }
 
 if (pkg.scripts?.["validate:backtest-snapshot"] !== "node src/qa/backtest-snapshot-validator.mjs") {

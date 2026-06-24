@@ -80,6 +80,9 @@ for (const [tabId, file] of Object.entries(tabFiles)) {
   } else if (tabId === "portfolio") {
     expect(source.includes("tableCard"), "portfolio must render fixed-height holdings table card");
     expect(source.includes("detailCard"), "portfolio must render stock detail card");
+    expect(source.includes("backtestSnapshotFixture"), "portfolio must read the selected backtest snapshot fixture");
+    expect(source.includes("백테스트 진단"), "portfolio must render the backtest diagnostic summary");
+    expect(source.includes("진단 전용"), "portfolio backtest summary must remain diagnostic-only");
     expect(source.includes("보유종목"), "portfolio must render holdings table title");
     expect(source.includes("선택 종목"), "portfolio must preserve stock detail marker as Korean product copy");
     expect(source.includes("차트 데이터 연결 대기"), "portfolio chart must fail closed until authority is connected");

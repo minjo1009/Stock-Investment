@@ -1,0 +1,5 @@
+artifact_path,artifact_type,description,authority
+apps/ios-trader-brain/app/(tabs)/portfolio.tsx,frontend_route,Portfolio tab read-only diagnostic backtest snapshot display,NOT_AUTHORITY
+apps/ios-trader-brain/src/qa/mobile-product-v1-validator.mjs,validator,Portfolio visible binding regression check,VALIDATOR
+apps/ios-trader-brain/src/qa/backtest-snapshot-validator.mjs,validator,Backtest snapshot route binding regression check,VALIDATOR
+docs/reports/task_3907_portfolio_backtest_snapshot_display/task_3907_portfolio_backtest_snapshot_display.md,task_report,Task3907 implementation report,REPORT
