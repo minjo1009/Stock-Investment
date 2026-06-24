@@ -1,0 +1,4 @@
+artifact_path,artifact_type,description,authority
+apps/ios-trader-brain/app/(tabs)/portfolio.tsx,frontend_route,Portfolio diagnostic table label width and number formatting repair,NOT_AUTHORITY
+apps/ios-trader-brain/src/qa/mobile-product-v1-validator.mjs,validator,Regression checks for readable Portfolio diagnostic metric columns,VALIDATOR
+docs/reports/task_3909_portfolio_table_readability_fix/task_3909_portfolio_table_readability_fix.md,task_report,Task3909 implementation report,REPORT

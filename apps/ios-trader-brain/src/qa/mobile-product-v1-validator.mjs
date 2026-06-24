@@ -95,6 +95,9 @@ for (const [tabId, file] of Object.entries(tabFiles)) {
     expect(source.includes("height: 360"), "portfolio holdings table card must use fixed card height");
     expect(source.includes("height: 228"), "portfolio table body must show three 76px rows by default");
     expect(source.includes("height: 76"), "portfolio table rows must use 76px row height");
+    expect(source.includes("width: 132"), "portfolio metric columns must be wide enough for diagnostic numbers");
+    expect(source.includes("진단손익"), "portfolio table headers must use short readable labels");
+    expect(!source.includes("매도가능 ${holding.sellableQuantity}"), "portfolio table must not use long secondary labels that force ellipsis");
     expect(source.includes("nestedScrollEnabled"), "portfolio table must enable nested ScrollView behavior");
     expect(source.includes("showsVerticalScrollIndicator"), "portfolio table must expose vertical scroll indicator");
     expect(source.includes("showsHorizontalScrollIndicator"), "portfolio table must expose horizontal scroll indicator");

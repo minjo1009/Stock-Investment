@@ -238,9 +238,9 @@ export default function PortfolioRoute() {
               style={styles.metricsScroller}
             >
               <View style={styles.metricHeaderRow}>
-                {["평가손익", "보유수량", "평가금액", "보유기간", "MDD"].map((label) => (
+                {["진단손익", "거래수", "진단투입", "보유기간", "최악수익"].map((label) => (
                   <View key={label} style={styles.metricHeaderCell}>
-                    <AppText style={styles.tableHeaderText}>{label} ↓</AppText>
+                    <AppText style={styles.tableHeaderText}>{label}</AppText>
                   </View>
                 ))}
               </View>
@@ -283,10 +283,10 @@ export default function PortfolioRoute() {
                       ]}
                     >
                       <MetricCell primary={holding.pnl} secondary={holding.yieldValue} tone="neutral" />
-                      <MetricCell primary={holding.quantity} secondary={`매도가능 ${holding.sellableQuantity}`} />
-                      <MetricCell primary={holding.evaluation} secondary={`매입 ${holding.purchaseAmount}`} />
-                      <MetricCell primary={holding.holdingPeriod} secondary="평균 기준" />
-                      <MetricCell primary={holding.mdd} secondary="drawdown" tone="negative" />
+                      <MetricCell primary={holding.quantity} secondary={holding.sellableQuantity} />
+                      <MetricCell primary={holding.evaluation} secondary={holding.purchaseAmount} />
+                      <MetricCell primary={holding.holdingPeriod} secondary="평균" />
+                      <MetricCell primary={holding.mdd} secondary="최악" tone="negative" />
                     </Pressable>
                   ))}
                 </View>
@@ -593,7 +593,7 @@ function displayBacktestDecimal(value: number | null) {
     return "연결 대기";
   }
 
-  return value.toLocaleString("ko-KR", { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+  return value.toLocaleString("ko-KR", { maximumFractionDigits: 0 });
 }
 
 function displayBacktestPercent(value: number | null) {
@@ -623,10 +623,10 @@ function buildBacktestHoldingRows(snapshot: typeof backtestSnapshotFixture): Hol
     pnl: displayBacktestMoney(position.totalPnl),
     yieldValue: displayBacktestPercent(position.weightedReturnPct),
     quantity: `${position.tradeCount}회`,
-    sellableQuantity: "실계좌 아님",
+    sellableQuantity: "진단",
     evaluation: displayBacktestDecimal(position.totalCapitalAllocated),
-    purchaseAmount: displayBacktestDecimal(position.totalCapitalAllocated),
-    holdingPeriod: `평균 ${position.averageHoldingDays.toFixed(1)}일`,
+    purchaseAmount: "투입",
+    holdingPeriod: `${position.averageHoldingDays.toFixed(1)}일`,
     mdd: displayBacktestPercent(position.worstTradeReturnPct),
     reasonTitle: `${position.symbol} 진단 거래 요약`,
     reasonBody: `${position.firstEntryDate}부터 ${position.lastExitDate}까지 ${position.tradeCount}회 진단 거래가 기록됐고, 승률은 ${displayBacktestPercent(position.winRatePct)}입니다.`,
@@ -917,8 +917,8 @@ const styles = StyleSheet.create({
     borderBottomColor: "#E0E0E0",
     borderBottomWidth: 1,
     justifyContent: "center",
-    paddingHorizontal: spacing.md,
-    width: 104,
+    paddingHorizontal: spacing.sm,
+    width: 132,
   },
   metricRow: {
     borderBottomColor: "#E0E0E0",
@@ -934,13 +934,13 @@ const styles = StyleSheet.create({
     borderLeftWidth: 1,
     justifyContent: "center",
     paddingHorizontal: spacing.sm,
-    width: 104,
+    width: 132,
   },
   metricPrimary: {
     color: "#1A1A1A",
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: "900",
-    lineHeight: 20,
+    lineHeight: 18,
   },
   negativeValue: {
     color: "#E01E5A",
