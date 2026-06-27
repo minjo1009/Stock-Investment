@@ -1,0 +1,8 @@
+﻿"path","result","size_bytes","note"
+"__pycache__/validate_readiness_registry.cpython-313.pyc","DELETED_POST_VALIDATION_CACHE","6885","Cache file recreated by validation and deleted after validation."
+"__pycache__","DELETED_POST_VALIDATION_EMPTY_DIR","","Empty cache directory after post-validation file cleanup."
+"scripts/__pycache__/active_task_registry_validate.cpython-313.pyc","DELETED_POST_VALIDATION_CACHE","4549","Cache file recreated by validation and deleted after validation."
+"scripts/__pycache__/codeowners_coverage_validate.cpython-313.pyc","DELETED_POST_VALIDATION_CACHE","1947","Cache file recreated by validation and deleted after validation."
+"scripts/__pycache__/operating_closeout_validate.cpython-313.pyc","DELETED_POST_VALIDATION_CACHE","4696","Cache file recreated by validation and deleted after validation."
+"scripts/__pycache__/task_registry_validate.cpython-313.pyc","DELETED_POST_VALIDATION_CACHE","3915","Cache file recreated by validation and deleted after validation."
+"scripts/__pycache__","DELETED_POST_VALIDATION_EMPTY_DIR","","Empty cache directory after post-validation file cleanup."

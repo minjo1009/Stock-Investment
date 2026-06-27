@@ -32,6 +32,8 @@ Last updated: 2026-06-27
 
 `A005 Full File Inventory Audit` scanned the repository excluding only `.git` and produced full classification/candidate manifests under `docs/reports/A005_full_file_inventory_audit/`.
 
+`A006 Generated Cache Delete Pass` removed 853 generated cache files and 34 empty generated-cache directories using the A005 `DELETE_SAFE` manifest.
+
 Current cleanup blocker: archive relocation needs a dependency-aware migration plan before any referenced historical reports or navigation folders move. Owner review is also required for derived/runtime data, duplicate-looking catalog outputs, downloads, logs, tmp/checkpoint files, and unknown context files.
 
 ## Non-Changes
