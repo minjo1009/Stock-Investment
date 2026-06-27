@@ -25,7 +25,10 @@ This index separates current source-of-truth files from navigation and historica
 | `tasks/active_task_registry.csv` | `ACTIVE` | Lightweight active task registry. |
 | `scripts/active_task_registry_validate.py` | `ACTIVE` | Validator for active task registry shape, statuses, and report links. |
 | `scripts/project_file_inventory_audit.py` | `ACTIVE` | Full file inventory classifier for cleanup and retention decisions. |
+| `scripts/project_artifact_guard_validate.py` | `ACTIVE` | Guardrail against unmanaged large payloads. |
 | `docs/reports/A005_full_file_inventory_audit/` | `ACTIVE` | Current full-file inventory audit and cleanup candidate manifests. |
+| `docs/reports/A007_dvc_lfs_artifact_management/` | `ACTIVE` | DVC artifact tracking plan, move log, and post-cleanup inventory. |
+| `docs/reports/A008_path_by_path_owner_review/` | `ACTIVE` | Path-by-path owner review matrix for A005 `NEEDS_REVIEW` rows. |
 | `docs/ownership/current_operating_model.md` | `CANONICAL` | Paper-trading governance and acceptance-board truth. |
 | `docs/ownership/readiness_registry.yaml` | `CANONICAL` | Machine-readable readiness and blocker state. |
 | `tasks/task_registry.csv` | `CANONICAL` | Historical/canonical task registry evidence. |

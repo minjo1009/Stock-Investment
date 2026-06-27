@@ -1,0 +1,5 @@
+outs:
+- md5: db71aaa6b48cd561f2f4092a1259b40c
+  size: 96359035
+  hash: md5
+  path: symbol_structure_snapshot_log.csv

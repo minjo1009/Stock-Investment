@@ -1,0 +1,5 @@
+outs:
+- md5: 8676fdb133ea286ae503c26f5679ad80
+  size: 37579809
+  hash: md5
+  path: vwap_acceptance_ontology_v3_panel.csv

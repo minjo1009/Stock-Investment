@@ -1,0 +1,10 @@
+metric,value
+large_payload_rows,33
+large_payload_bytes,7114126969
+large_payload_move_log_rows,9
+dvc_target_rows,67
+dvc_tracked_rows,67
+dvc_missing_rows,0
+needs_review_rows,1262
+owner_missing_source_rows,1161
+post_cleanup_inventory_files,13048

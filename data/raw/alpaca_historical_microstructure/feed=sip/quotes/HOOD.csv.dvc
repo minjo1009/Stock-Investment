@@ -1,0 +1,5 @@
+outs:
+- md5: 2bd9eea4e4dda4baf3ff6fab7dd8ecef
+  size: 91610755
+  hash: md5
+  path: HOOD.csv

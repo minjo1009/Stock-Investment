@@ -1,0 +1,5 @@
+outs:
+- md5: 9686f1607e15170feca6857978b4b8c1
+  size: 25178744
+  hash: md5
+  path: intraday_canonical_event_log.csv

@@ -1,0 +1,5 @@
+outs:
+- md5: 00cd7c762a4fa3f3eff0aee0e1c23da1
+  size: 116939669
+  hash: md5
+  path: trader_terminal_catalog.json

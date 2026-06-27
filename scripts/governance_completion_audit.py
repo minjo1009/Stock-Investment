@@ -9,6 +9,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 from scripts.codeowners_coverage_validate import validate as validate_codeowners
 from scripts.active_task_registry_validate import validate_active_registry
 from scripts.operating_closeout_validate import validate as validate_operating_closeout
+from scripts.project_artifact_guard_validate import validate as validate_artifact_guard
 from scripts.task_registry_validate import validate_registry
 from validate_readiness_registry import validate as validate_readiness_registry
 
@@ -40,6 +41,7 @@ REQUIRED_FILES = [
     "tasks/task_registry.csv",
     "tasks/active_task_registry.csv",
     "tasks/archive_candidate_registry.csv",
+    "scripts/project_artifact_guard_validate.py",
     "validate_readiness_registry.py",
 ]
 
@@ -58,6 +60,7 @@ def audit(root: Path) -> list[str]:
     errors.extend(validate_active_registry(root / "tasks" / "active_task_registry.csv", root=root))
     errors.extend(validate_codeowners(root / ".github" / "CODEOWNERS"))
     errors.extend(validate_operating_closeout(root))
+    errors.extend(validate_artifact_guard(root))
     errors.extend(validate_readiness_registry(root / "docs" / "ownership" / "readiness_registry.yaml"))
     for task in CANONICAL_MANIFEST_TASKS:
         manifest = root / "docs" / "reports" / task / "artifact_manifest.csv"

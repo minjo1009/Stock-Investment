@@ -1,0 +1,5 @@
+outs:
+- md5: 58c95af60020ee0217c0abd54e1f640b
+  size: 3629
+  hash: md5
+  path: task384_offline_canonical_smoke_continuation_capture.jsonl

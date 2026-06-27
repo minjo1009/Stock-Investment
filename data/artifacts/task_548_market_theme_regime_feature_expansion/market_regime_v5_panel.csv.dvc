@@ -1,0 +1,5 @@
+outs:
+- md5: f1107b686c54c4ce481fc49d31ec8ec6
+  size: 31689112
+  hash: md5
+  path: market_regime_v5_panel.csv

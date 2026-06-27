@@ -1,0 +1,5 @@
+outs:
+- md5: 62e2ce4575305240aa36ca0e63376789
+  size: 592378205
+  hash: md5
+  path: multifactor_decision_snapshot_log.csv

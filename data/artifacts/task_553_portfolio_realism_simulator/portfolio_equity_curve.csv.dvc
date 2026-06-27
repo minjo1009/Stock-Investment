@@ -1,0 +1,5 @@
+outs:
+- md5: 97e72840062393121884bb0c927c6f21
+  size: 2905006
+  hash: md5
+  path: portfolio_equity_curve.csv

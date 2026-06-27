@@ -1,0 +1,5 @@
+outs:
+- md5: cb313f3006e4d004f0115e890897949f
+  size: 30847977
+  hash: md5
+  path: daily_regime_source_ohlcv_panel.csv

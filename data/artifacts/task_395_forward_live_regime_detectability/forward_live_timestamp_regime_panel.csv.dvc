@@ -1,0 +1,5 @@
+outs:
+- md5: 0b3b854bd8b58ae36a52c4ab0c563a96
+  size: 19558110
+  hash: md5
+  path: forward_live_timestamp_regime_panel.csv

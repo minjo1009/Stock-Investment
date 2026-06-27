@@ -21,6 +21,14 @@ Thumbs.db
 
 # Logs
 *.log
+logs/
+
+# Frontend generated staging output
+frontend_data/catalog/
+
+# Local installers / temporary working files
+downloads/
+docs/tmp/
 
 # KIS token cache
 .kis_token_cache.json

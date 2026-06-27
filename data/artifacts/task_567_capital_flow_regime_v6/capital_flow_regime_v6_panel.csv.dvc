@@ -1,0 +1,5 @@
+outs:
+- md5: ba4b2c5c246d20ab4983e8f948d72111
+  size: 40436892
+  hash: md5
+  path: capital_flow_regime_v6_panel.csv

@@ -1,0 +1,5 @@
+outs:
+- md5: 09050b7cb4973ab3b733e77b45add2d0
+  size: 156255105
+  hash: md5
+  path: PLTR.csv

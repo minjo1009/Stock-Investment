@@ -1,0 +1,5 @@
+outs:
+- md5: ca77921c3961fd33bd5ad45a010c59b2
+  size: 54630262
+  hash: md5
+  path: ASML.csv

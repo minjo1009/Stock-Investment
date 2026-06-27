@@ -1,0 +1,5 @@
+outs:
+- md5: 0fa0c0650df21be51f6773cdab886235
+  size: 159012197
+  hash: md5
+  path: vwap_bandwalk_assignment_panel.csv

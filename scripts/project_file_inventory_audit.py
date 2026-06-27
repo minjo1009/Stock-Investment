@@ -9,6 +9,7 @@ from pathlib import Path
 
 DEFAULT_OUT_DIR = Path("docs/reports/A005_full_file_inventory_audit")
 EXCLUDED_DIRS = {".git"}
+EXCLUDED_PREFIXES = {".dvc/cache", ".dvc/tmp"}
 TEXTUAL_SUFFIXES = {
     ".csv",
     ".json",
@@ -131,6 +132,8 @@ def iter_files(root: Path) -> list[dict[str, object]]:
             continue
         if any(part in EXCLUDED_DIRS for part in rel.split("/")):
             continue
+        if any(rel == prefix or rel.startswith(prefix + "/") for prefix in EXCLUDED_PREFIXES):
+            continue
         if not path.is_file():
             continue
         try:
@@ -199,4 +202,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

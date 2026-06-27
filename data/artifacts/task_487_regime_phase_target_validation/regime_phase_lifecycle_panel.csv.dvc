@@ -1,0 +1,5 @@
+outs:
+- md5: 0977edaafad6dd499c3a7b2168da1cf3
+  size: 102928266
+  hash: md5
+  path: regime_phase_lifecycle_panel.csv
