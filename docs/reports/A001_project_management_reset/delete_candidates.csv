@@ -1,0 +1,12 @@
+path,category,reason,evidence,referenced_by,delete_risk,recommendation,requires_user_approval
+.pytest_cache,generated_cache,Pytest cache can be regenerated,Top-level generated cache directory,None observed in active sources,LOW,DELETE_SAFE,TRUE
+__pycache__,generated_cache,Python bytecode cache can be regenerated,Top-level generated cache directory,None observed in active sources,LOW,DELETE_SAFE,TRUE
+graphify-out/needs_update,generated_marker,Graphify stale marker can be regenerated,Graphify outputs are stale and current model says regenerate before current-state use,graphify-out,LOW,DELETE_SAFE,TRUE
+docs/tmp/tmp_pre_068c_validation.json,stale_intermediate_validation,Temporary validation checkpoint may be historical evidence,Path is under docs/tmp and tied to old Task068C context,unknown,MEDIUM,NEEDS_REVIEW,TRUE
+docs/tmp/tmp_post_068c_validation.json,stale_intermediate_validation,Temporary validation checkpoint may be historical evidence,Path is under docs/tmp and tied to old Task068C context,unknown,MEDIUM,NEEDS_REVIEW,TRUE
+docs/tmp/task_068B_risk_grid.checkpoint.json,stale_intermediate_checkpoint,Checkpoint may be reproducibility evidence for old risk grid,Path is under docs/tmp and tied to old Task068B context,unknown,MEDIUM,NEEDS_REVIEW,TRUE
+downloads/tailscale-setup-1.98.2-amd64.msi,downloaded_installer,Installer may be re-downloadable but could support workstation setup,Top-level downloads installer,docs/reports/task_593_mobile_remote_ops likely related,MEDIUM,NEEDS_REVIEW,TRUE
+logs/task374_full_rerun_status.txt,stale_run_log,Old run log may be summarized elsewhere but needs owner confirmation,Task374 historical run status log,unknown,MEDIUM,NEEDS_REVIEW,TRUE
+frontend_data/catalog/readiness_registry.json,possible_duplicate_generated_catalog,Possible duplicate of frontend/trader-terminal/public/catalog/readiness_registry.json,Same filename exists under frontend public catalog,frontend/catalog consumers need review,HIGH,NEEDS_REVIEW,TRUE
+frontend_data/catalog/acceptance_status_catalog.json,possible_duplicate_generated_catalog,Possible duplicate of frontend/trader-terminal/public/catalog/acceptance_status_catalog.json,Same filename exists under frontend public catalog,frontend/catalog consumers need review,HIGH,NEEDS_REVIEW,TRUE
+

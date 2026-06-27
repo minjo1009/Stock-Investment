@@ -1,0 +1,9 @@
+artifact_path,artifact_type,role,status,row_count,validation,notes
+docs/reports/A001_project_management_reset/archive_candidates.csv,input,archive_candidate_source,read,10,manual_read,A002 source manifest.
+docs/reports/A001_project_management_reset/delete_candidates.csv,input,delete_candidate_source,read,10,manual_read,A003 source manifest.
+docs/reports/A002_A003_safe_archive_delete_pass/archive_relocation_log.csv,output,archive_relocation_log,created,10,validation_passed,No physical archive moves were performed because all candidates were reference_required.
+docs/reports/A002_A003_safe_archive_delete_pass/deletion_log.csv,output,deletion_log,created,4,validation_passed,DELETE_SAFE generated cache/marker cleanup only including post-validation recreated cache cleanup.
+docs/reports/A002_A003_safe_archive_delete_pass/skipped_delete_candidates.csv,output,skipped_delete_log,created,7,validation_passed,NEEDS_REVIEW candidates preserved.
+docs/reports/A002_A003_safe_archive_delete_pass/safe_archive_delete_report.md,output,task_report,created,not_applicable,validation_passed,A002/A003 closeout report.
+tasks/active_task_registry.csv,output,active_registry_update,updated,3,validation_passed,A001 completed and A002/A003 rows added.
+docs/active/CURRENT_TASKS.md,output,active_task_summary,updated,not_applicable,validation_passed,Current blocker updated.
