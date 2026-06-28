@@ -1,0 +1,24 @@
+sec_form_4_open_market_buy:
+  base_prior_score: 0.55
+  calibration_status: NOT_CALIBRATED
+  min_sample_size: 100
+
+guidance_raise_with_margin_language:
+  base_prior_score: 0.65
+  calibration_status: NOT_CALIBRATED
+  min_sample_size: 100
+
+financing_dilution_overhang:
+  base_prior_score: 0.40
+  calibration_status: NOT_CALIBRATED
+  min_sample_size: 100
+
+form4_open_market_buy_economic_hint:
+  base_prior_score: 0.55
+  calibration_status: NOT_CALIBRATED
+  min_sample_size: 100
+
+financing_dilution_overhang_size_known:
+  base_prior_score: 0.40
+  calibration_status: NOT_CALIBRATED
+  min_sample_size: 100

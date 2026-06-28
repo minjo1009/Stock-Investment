@@ -1,0 +1,2 @@
+coverage_threshold: 0.50
+dominance_ratio: 1.25

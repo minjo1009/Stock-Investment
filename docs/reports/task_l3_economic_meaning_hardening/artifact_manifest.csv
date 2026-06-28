@@ -1,0 +1,10 @@
+relative_path,artifact_class,size_bytes,sha256,notes
+docs/architecture/l3_economic_meaning_engine_architecture.md,architecture_doc,not_computed,not_computed,L3 SSOT
+docs/reports/task_l3_economic_meaning_hardening/l3_code_complexity_audit.md,report,not_computed,not_computed,Responsibility audit
+docs/reports/task_l3_economic_meaning_hardening/l3_economic_meaning_hardening_report.md,report,not_computed,not_computed,Final report
+docs/reports/task_l3_economic_meaning_hardening/task_l3_economic_meaning_hardening_decision.csv,decision_csv,not_computed,not_computed,Diagnostic decision
+src/brain/l3,code_package,not_computed,not_computed,L3 v2 diagnostic package
+configs/brain/l3_source_reliability.yaml,config,not_computed,not_computed,Source reliability config
+configs/brain/l3_event_type_priors.yaml,config,not_computed,not_computed,Event priors config
+configs/brain/l3_freshness_decay.yaml,config,not_computed,not_computed,Freshness decay config
+configs/brain/l3_relation_graph_thresholds.yaml,config,not_computed,not_computed,Graph thresholds config

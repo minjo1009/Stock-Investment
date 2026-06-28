@@ -1,0 +1,97 @@
+metric,value,status,notes
+decision_status,PRIMARY_PASS,PRIMARY_PASS,Market macro public news collector implemented and real smoke succeeded.
+strategy_acceptance,NOT_ACCEPTED,PRIMARY_PASS,Data infrastructure only; no trading signal or deployment claim.
+live_sources,22,PRIMARY_PASS,CNBC NPR PBS ABC CBS Census Yahoo Finance NYT Fox Business Investing BBC FT MarketWatch Nasdaq Trader plus promoted crypto energy commodity cyber and semiconductor RSS sources.
+live_sources_v017,37,PRIMARY_PASS,Collector v0.1.7 default live watcher adds Axios The Verge WIRED SiliconANGLE SecurityWeek Utility Dive Supply Chain Dive BioPharma Dive FierceBiotech STAT Breaking Defense Defense News SpaceNews FreightWaves and The Loadstar.
+live_smoke_rows,120,PRIMARY_PASS,Real smoke produced 120 rows with 0 L1 blocked.
+expansion_smoke_rows_v2,403,PRIMARY_PASS,Expanded real smoke produced 403 rows from 14 sources with 0 L1 blocked.
+expansion_smoke_l1_context_ready_v2,403,PRIMARY_PASS,All expanded smoke rows were context-ready and ticker mapping was not required.
+production_first_cycle_rows,250,PRIMARY_PASS,Background watcher first cycle produced 250 L1-ready context rows.
+production_latest_rows,2338,PRIMARY_PASS,Latest status after 14-source watcher restart reports 2338 L1-ready context rows and 0 blocked.
+guardian_smoke_rows,50,PRIMARY_PASS,2016 Guardian API smoke produced 50 historical rows.
+guardian_first_batch_rows,400,PRIMARY_PASS,Background Guardian backfill first batch produced 400 rows.
+guardian_latest_rows,2800,PRIMARY_PASS,Latest Guardian backfill status reports 2800 L1-ready context rows and 0 blocked.
+cnbc_backfill_smoke_rows_v4,3,PRIMARY_PASS,CNBC 2016 sitemap/article-meta smoke produced 3 filtered context-ready rows and 0 blocked.
+cnbc_backfill_source_time_certified,0,PRIMARY_PASS,CNBC historical rows are diagnostic context only and keep source_time_certified_flag=0.
+cnbc_backfill_usable_for_historical_backtest,0,PRIMARY_PASS,CNBC historical rows are not marked backtest-ready without full source-time certification.
+combined_backfill_latest_rows,4501,PRIMARY_PASS,Latest market/macro backfill status after Guardian+CNBC restart reports 4501 context-ready rows and 0 blocked.
+wikimedia_backfill_smoke_rows_v3,20,PRIMARY_PASS,Wikimedia Current Events 2016 monthly HTML smoke produced 20 filtered context-ready rows and 0 blocked.
+wikimedia_backfill_source_time_certified,0,PRIMARY_PASS,Wikimedia historical rows are diagnostic context only and keep source_time_certified_flag=0.
+wikimedia_backfill_usable_for_historical_backtest,0,PRIMARY_PASS,Wikimedia historical rows are not marked backtest-ready without full source-time certification.
+combined_backfill_latest_rows_after_wikimedia,6342,PRIMARY_PASS,Latest market/macro backfill status after Guardian+CNBC+Wikimedia restart reported 6342 context-ready rows and 0 blocked.
+combined_backfill_latest_rows_before_common_crawl_restart,7265,PRIMARY_PASS,Market/macro backfill status before Common Crawl restart reported 7265 context-ready rows and 0 blocked.
+combined_backfill_latest_rows_after_common_crawl_restart,10769,PRIMARY_PASS,Latest market/macro backfill status after Guardian+CNBC+Wikimedia+Common-Crawl restart reports 10769 context-ready rows and 0 blocked.
+production_latest_rows_after_cnn_common_crawl_update,3564,PRIMARY_PASS,Latest status after CNN Money Common Crawl update reports 3564 market/macro live context-ready rows and 0 blocked.
+combined_backfill_latest_rows_after_cnn_common_crawl_update,18448,PRIMARY_PASS,Latest status after CNN Money Common Crawl update reports 18448 market/macro backfill context-ready rows and 0 blocked.
+wordpress_backfill_smoke_rows_v2,80,PRIMARY_PASS,The Hill and TechCrunch WordPress REST 2016 archive smoke produced 80 context-ready rows and 0 blocked.
+thehill_production_rows_after_restart,222,PRIMARY_PASS,Production market/macro backfill worker reported 222 The Hill WordPress REST rows after restart.
+techcrunch_production_rows_after_restart,221,PRIMARY_PASS,Production market/macro backfill worker reported 221 TechCrunch WordPress REST rows after restart.
+combined_backfill_latest_rows_after_wordpress_update,22035,PRIMARY_PASS,Latest status after WordPress REST update reports 22035 market/macro backfill context-ready rows and 0 blocked across 40/721 units.
+ev_wordpress_backfill_smoke_rows_v1,80,PRIMARY_PASS,Electrek and Teslarati WordPress REST 2016 archive smoke produced 80 context-ready rows and 0 blocked.
+ev_wordpress_sources_in_worker,2,PRIMARY_PASS,Electrek and Teslarati are included in the 8-source production market/macro backfill worker.
+combined_backfill_latest_rows_after_ev_wordpress_update,22555,PRIMARY_PASS,Latest status after EV WordPress update reports 22555 market/macro backfill context-ready rows and 0 blocked before EV sources reached production cycle.
+external_rss_smoke_sources_v1,10,PRIMARY_PASS,External RSS smoke tested 10 candidates; 8 exported rows and 2 were not promoted after robots blocking.
+external_rss_promoted_sources_v1,8,PRIMARY_PASS,Cointelegraph Decrypt CryptoSlate OilPrice Mining.com copper BleepingComputer KrebsOnSecurity and Semiconductor Engineering RSS are promoted to default live collection.
+external_rss_smoke_rows_v1,122,PRIMARY_PASS,Promoted external RSS sources produced 122 context-ready rows with 0 L1 blocked.
+external_rss_not_promoted_v1,eia_today_energy_rss;theregister_public_atom,PRIMARY_PASS,EIA Today in Energy and The Register were excluded from default live collection after collector robots gate blocked their feed URLs.
+external_wordpress_backfill_smoke_sources_v1,5,PRIMARY_PASS,Semiconductor Engineering Bitcoin Magazine 9to5Mac 9to5Google and PV Magazine USA WordPress REST sources exported rows in 2016-01 smoke.
+external_wordpress_backfill_smoke_rows_v1,138,PRIMARY_PASS,External WordPress REST 2016-01 smoke produced 138 context-ready rows and 0 blocked.
+external_wordpress_backfill_promoted_sources_v1,5,PRIMARY_PASS,Five external WordPress REST sources are promoted to default historical backfill.
+default_backfill_sources_after_external_update,13,PRIMARY_PASS,Backfill launcher default now includes Guardian CNBC Wikimedia Common Crawl The Hill TechCrunch Electrek Teslarati Semiconductor Engineering Bitcoin Magazine 9to5Mac 9to5Google and PV Magazine USA.
+default_backfill_sources_v017,17,PRIMARY_PASS,Collector v0.1.7 default backfill adds AP monthly sitemap SpaceNews WordPress Carbon Brief WordPress and Robot Report WordPress; CleanTechnica is excluded after date-filter-unsafe smoke.
+non_newswire_v2_rss_smoke_sources,15,PRIMARY_PASS,All 15 v2 RSS candidates exported rows in governed smoke.
+non_newswire_v2_rss_smoke_rows,75,PRIMARY_PASS,V2 RSS smoke produced 75 context-ready rows and 0 blocked.
+non_newswire_v2_backfill_smoke_sources,4,PRIMARY_PASS,AP monthly sitemap SpaceNews WordPress Carbon Brief WordPress and Robot Report WordPress exported rows in January 2016 smoke.
+non_newswire_v2_backfill_smoke_rows,17,PRIMARY_PASS,V2 backfill smoke produced 17 context-ready rows and 0 blocked.
+non_newswire_v2_l2_smoke_facts,92,PRIMARY_PASS,V2 RSS and backfill smokes ingested to isolated L2 DB as 92 news facts.
+production_latest_rows_after_external_restart,5562,PRIMARY_PASS,Latest status after expanded worker restart reports 5562 market/macro live context-ready rows and 0 blocked across 22/22 sources.
+combined_backfill_latest_rows_after_external_restart,31264,PRIMARY_PASS,Latest status after expanded worker restart reports 31264 market/macro backfill context-ready rows and 0 blocked while running the 13-source plan.
+common_crawl_backfill_smoke_rows_v3,2,PRIMARY_PASS,Common Crawl CDX/WARC 2016 archive smoke produced 2 filtered context-ready rows and 0 blocked.
+common_crawl_backfill_source_time_certified,0,PRIMARY_PASS,Common Crawl archive rows are diagnostic context only and keep source_time_certified_flag=0.
+common_crawl_backfill_usable_for_historical_backtest,0,PRIMARY_PASS,Common Crawl archive rows are not marked backtest-ready without full source-time certification.
+common_crawl_backfill_smoke_rows_v8,11,PRIMARY_PASS,CNN Money Common Crawl 2016 archive smoke produced 11 filtered context-ready rows and 0 blocked.
+common_crawl_backfill_l1_context_ready_v8,11,PRIMARY_PASS,All CNN Money Common Crawl v8 rows were context-ready and ticker mapping was not required.
+common_crawl_removed_stale_patterns,finance.yahoo.com/news/*;www.investing.com/news/*,PRIMARY_PASS,Removed from Common Crawl historical defaults after out-of-window 2013-2014 article metadata appeared inside 2016 crawl collections; both sources remain live RSS sources.
+l2_smoke_facts,170,PRIMARY_PASS,Real smoke plus Guardian smoke ingested to isolated L2 DB as 170 news facts.
+expansion_l2_smoke_facts_v2,403,PRIMARY_PASS,Expanded 14-source smoke ingested to isolated L2 DB as 403 news facts.
+cnbc_l2_smoke_facts_v4,3,PRIMARY_PASS,CNBC historical smoke ingested to isolated L2 DB as 3 news facts.
+wikimedia_l2_smoke_facts_v3,20,PRIMARY_PASS,Wikimedia historical smoke ingested to isolated L2 DB as 20 news facts.
+common_crawl_l2_smoke_facts_v3,2,PRIMARY_PASS,Common Crawl historical smoke ingested to isolated L2 DB as 2 news facts.
+common_crawl_l2_smoke_facts_v8,11,PRIMARY_PASS,CNN Money Common Crawl historical smoke ingested to isolated L2 DB as 11 news facts.
+wordpress_l2_smoke_facts_v2,80,PRIMARY_PASS,The Hill and TechCrunch WordPress REST historical smoke ingested to isolated L2 DB as 80 news facts.
+ev_wordpress_l2_smoke_facts_v1,80,PRIMARY_PASS,Electrek and Teslarati WordPress REST historical smoke ingested to isolated L2 DB as 80 news facts.
+external_rss_l2_smoke_facts_v1,122,PRIMARY_PASS,Promoted external RSS smoke ingested to isolated L2 DB as 122 news facts.
+external_wordpress_l2_smoke_facts_v1,138,PRIMARY_PASS,External WordPress REST historical smoke ingested to isolated L2 DB as 138 news facts.
+l2_no_trade_outputs,0,PRIMARY_PASS,L2 no-trade validator passed.
+background_workers_pre_v017_restart,2,PRIMARY_PASS,Pre-v0.1.7 22-source live watcher and 13-source historical backfill workers were running before the default expansion; restart is required for 37/17 defaults.
+background_workers_v017_restart,2,PRIMARY_PASS,Market macro live watcher restarted as PID 25144 with 37 sources and backfill restarted as PID 24508 with 17 sources.
+collector_version_v018,public_market_macro_news_collector.v0.1.8,PRIMARY_PASS,Adds Finviz public HTML headline parser requests fallback for urllib 403 monthly sitemap article-meta backfill source-specific backfill windows and date-only UTC normalization.
+live_sources_v018,48,PRIMARY_PASS,Live watcher default now includes Seeking Alpha Market Currents Finviz public news HTML and 9 Industry Dive RSS sources.
+industry_dive_backfill_sources_v018,9,PRIMARY_PASS,Separate Industry Dive backfill worker covers Banking Retail CIO Cybersecurity Payments Manufacturing Food Healthcare and PharmaVoice monthly sitemap archives.
+industry_dive_live_smoke_rows_v018,117,PRIMARY_PASS,Real v0.1.8 live smoke produced 117 context-ready rows and 0 blocked from Seeking Alpha Finviz and 9 Industry Dive sources.
+industry_dive_backfill_smoke_rows_v018,9,PRIMARY_PASS,Real v0.1.8 all-source monthly sitemap smoke produced 9 context-ready rows from 9/9 Industry Dive sources and 0 blocked.
+industry_dive_l2_smoke_facts_v018,126,PRIMARY_PASS,V0.1.8 live plus Industry Dive archive smoke ingested to isolated L2 DB as 126 news facts with no trade outputs.
+background_workers_v018_restart,3,PRIMARY_PASS,Market macro live watcher restarted as PID 21088 with 48 sources existing market macro backfill remains PID 24508 and separate Industry Dive backfill started as PID 12188.
+collector_version_v019,public_market_macro_news_collector.v0.1.9,PRIMARY_PASS,Expands sector-Dive source defaults and upgrades Utility SupplyChain BioPharma Dive to monthly sitemap backfill without changing trade authority.
+live_sources_v019,58,PRIMARY_PASS,Live watcher default now includes 58 public RSS/HTML sources after adding 10 sector-Dive sources.
+industry_sector_backfill_sources_v019,22,PRIMARY_PASS,Separate Industry sector backfill worker now covers 22 monthly sitemap archive sources with source-specific start dates and 5-second crawl delay.
+industry_sector_live_smoke_rows_v019,130,PRIMARY_PASS,Real v0.1.9 sector-Dive live smoke produced 130 context-ready rows from 13/13 sources and 0 blocked.
+industry_sector_backfill_smoke_rows_v019,13,PRIMARY_PASS,Real v0.1.9 sector-Dive monthly sitemap smoke produced 13 context-ready rows from 13/13 sources and 0 blocked.
+industry_sector_l2_smoke_facts_v019,143,PRIMARY_PASS,V0.1.9 live plus sector-Dive archive smoke ingested to isolated L2 DB as 143 news facts with no trade outputs.
+stocktitan_candidate_v019,not_promoted,PRIMARY_PASS,StockTitan public RSS and date pages were identified as ticker-rich candidates but require a dedicated parser and crawl budget before promotion.
+background_workers_v019_restart,3,PRIMARY_PASS,Market macro live watcher restarted as PID 24144 with 58 sources existing market macro backfill remains PID 24508 and separate Industry sector backfill restarted as PID 22692 with 22 sources.
+collector_version_v0110,public_market_macro_news_collector.v0.1.10,PRIMARY_PASS,Adds StockTitan public RSS explicit source URL ticker mapping without GPT inference or symbol-token fallback.
+live_sources_v0110,59,PRIMARY_PASS,Live watcher default now includes 59 public RSS/HTML sources after adding StockTitan public RSS.
+stocktitan_live_smoke_rows_v0110,100,PRIMARY_PASS,Real StockTitan RSS smoke produced 100 rows and 0 blocked.
+stocktitan_live_smoke_mapped_v0110,100,PRIMARY_PASS,StockTitan smoke mapped 100/100 rows using explicit source URL ticker path evidence.
+stocktitan_l2_smoke_facts_v0110,100,PRIMARY_PASS,StockTitan live smoke ingested to isolated L2 DB as 100 news facts with no trade outputs.
+stocktitan_archive_backfill_v0110,not_promoted,PRIMARY_PASS,StockTitan date archives are not promoted because 2025/2024/2022 probes returned 403 and 2016/2018/2020 probes returned 410.
+background_workers_v0110_restart,1,PRIMARY_PASS,Market macro live watcher restarted as PID 20004 with 59 sources; existing market macro backfill and Industry sector backfill workers remain running.
+remaining_history_gap,non_guardian_non_cnbc_non_wikimedia_non_common_crawl_non_wordpress_archives,PRIMARY_PASS,Historical full backfill for other publishers remains source-specific and not claimed.
+collector_version_v0111,public_market_macro_news_collector.v0.1.11,PRIMARY_PASS,Adds non-newswire market source RSS and WordPress REST expansion without changing trade authority.
+live_sources_v0111,68,PRIMARY_PASS,Live watcher default now includes 68 public RSS/HTML sources after adding IBD InvestorPlace FXStreet Defense One Nareit ETF Trends HousingWire American Banker and Techmeme.
+market_macro_backfill_sources_v0111,21,PRIMARY_PASS,Market macro backfill default now includes 21 sources after adding IBD InvestorPlace ETF Trends and HousingWire WordPress REST archives.
+non_newswire_market_live_smoke_rows_v0111,289,PRIMARY_PASS,Real v0.1.11 live RSS smoke produced 289 context-ready rows from 9/9 sources with 0 blocked.
+non_newswire_market_wp_backfill_rows_v0111,310,PRIMARY_PASS,Real v0.1.11 January 2016 WordPress backfill smoke produced 310 context-ready rows from 4/4 sources with 0 blocked.
+non_newswire_market_l2_smoke_facts_v0111,599,PRIMARY_PASS,V0.1.11 live plus WordPress backfill smoke ingested to isolated L2 DB as 599 news facts with no trade outputs.
+background_workers_v0111_restart,2,PRIMARY_PASS,Market macro live watcher restarted as PID 8052 with 68 sources and market macro backfill restarted as PID 3504 with 21 sources while Industry sector backfill remains PID 22692.

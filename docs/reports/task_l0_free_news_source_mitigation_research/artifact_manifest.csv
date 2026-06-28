@@ -1,0 +1,14 @@
+artifact_type,path,row_count_or_count,file_size_bytes,validation_command,notes
+report,docs/reports/task_l0_free_news_source_mitigation_research/task_l0_free_news_source_mitigation_research_report.md,1 report,,python scripts/operating_closeout_validate.py,Research report for mitigating Chrome crawler weaknesses and reframing free news L0 architecture.
+decision,docs/reports/task_l0_free_news_source_mitigation_research/task_l0_free_news_source_mitigation_research_decision.csv,10 decision rows,,python scripts/task_registry_validate.py,Machine-readable decision summary.
+reference,https://playwright.dev/docs/locators,official docs,,manual review,Playwright locator guidance for resilient selector strategy.
+reference,https://www.sitemaps.org/protocol.html,official protocol,,manual review,Sitemaps protocol for URL discovery and lastmod metadata.
+reference,https://www.rfc-editor.org/rfc/rfc9309,official RFC,,manual review,robots.txt standard for source governance.
+reference,https://developers.google.com/search/docs/appearance/structured-data/article,official docs,,manual review,Google article structured data guidance.
+reference,https://schema.org/NewsArticle,official schema,,manual review,NewsArticle fields for JSON-LD extraction.
+reference,https://www.sec.gov/search-filings/edgar-application-programming-interfaces,official docs,,manual review,SEC EDGAR API documentation.
+reference,https://www.sec.gov/Archives/edgar/daily-index/,official archive,,manual review,SEC daily index historical backfill source.
+reference,https://www.prnewswire.com/rss/,official page,,manual review,PRNewswire RSS source candidate.
+reference,https://www.businesswire.com/help/feed-options,official page,,manual review,Business Wire feed options source candidate.
+reference,https://www.reutersconnect.com/general-terms,terms page,,manual review,Terms risk reference for direct Reuters collection.
+reference,https://www.bloombergindustry.com/terms-of-service-subscription-products/,terms page,,manual review,Terms risk reference for direct Bloomberg collection.

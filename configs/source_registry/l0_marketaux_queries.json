@@ -1,0 +1,18 @@
+{
+  "registry_name": "l0_marketaux_queries",
+  "provider": "marketaux",
+  "authority_class": "licensed_news_metadata_proxy",
+  "metadata_discovery_only": true,
+  "daily_request_cap": 95,
+  "articles_per_request": 3,
+  "preferred_operator_interval_minutes": 15,
+  "token_sources": ["environment:MARKETAUX_API_KEY", "configs/local/marketaux.env"],
+  "queries": [
+    {
+      "query_id": "batch_core_operator_universe",
+      "enabled": true,
+      "symbols": ["AAPL", "MSFT", "NVDA", "AMD", "QQQ"],
+      "role": "batch_metadata_discovery"
+    }
+  ]
+}

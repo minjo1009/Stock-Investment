@@ -1,0 +1,62 @@
+artifact_type,path,description,validation_status
+code,tools/db/source_acquisition/public_newswire_collector.py,Public newswire RSS/sitemap/static collector with deterministic ticker/entity mapper expanded v0.1.3 context-candidate classification gzip sitemap support historical backfill mode and BusinessWire unavailable-archive handling,validated
+code,scripts/run_l0_public_newswire_collector.py,CLI runner for smoke/background/backfill public newswire collection,validated
+code,scripts/start_l0_public_newswire_collector.ps1,Background starter for public newswire collector,validated
+code,scripts/start_l0_public_newswire_backfill.ps1,Background starter for separate public newswire historical backfill lane,validated
+config,configs/source_registry/l0_public_news_capability_sources.json,Updated newswire source routes including PRNewswire and GlobeNewswire news sitemaps plus BusinessWire public feed,validated
+config,configs/db_source_acquisition_scheduler.json,Added public_newswire_feeds source family and regular diagnostic job entry,validated
+code,tools/db/news_l0_l1.py,Added L1 provider spec for public_newswire_feeds,validated
+code,src/l2/news_runtime.py,Added L2 parser/default path for public_newswire_feeds events with mapping metadata preservation,validated
+code,src/brain/l3/source_reliability.py,Maps public_newswire_feeds to news_discovery_proxy authority,validated
+code,tools/db/source_acquisition/l0_collection_status.py,Adds Newswire watcher and historical backfill progress lines to L0 status report including unavailable archive counts,validated
+test,tests/test_l0_public_newswire_collector.py,Unit tests for feed sitemap filters gzip support smoke harness deterministic entity mapping expanded context-candidate classification exclusions and BusinessWire 403 archive skip behavior,validated
+test,tests/test_l0_collection_status.py,Extended status tests for Newswire progress,validated
+test,tests/test_l2_news_canonical_path.py,Extended L2 tests for public_newswire mapping metadata preservation,validated
+smoke,data/artifacts/l0_public_newswire_smoke_v2/collector_events.jsonl,Real-network v2 smoke with 75 rows,validated
+smoke_raw,data/raw/l0_public_newswire_smoke_v2,Real-network v2 smoke raw responses; 49 files and 1696913 bytes,validated
+mapping_smoke,data/artifacts/l0_public_newswire_mapping_smoke_v3/collector_events.jsonl,Real-network mapping smoke with 75 rows and 23 mapped discovery-ready rows,validated
+mapping_smoke_raw,data/raw/l0_public_newswire_mapping_smoke_v3,Real-network mapping smoke raw responses,validated
+backfill_smoke,data/artifacts/l0_public_newswire_backfill_smoke_v2/collector_events.jsonl,Real-network bounded historical backfill smoke with 15 rows across three sources,validated
+backfill_smoke_raw,data/raw/l0_public_newswire_backfill_smoke_v2,Real-network bounded historical backfill raw responses,validated
+backfill_l2_smoke,data/artifacts/l0_public_newswire_backfill_l2_smoke/news_l2_smoke.db,L2 backfill smoke DB with 15 public_newswire_feeds facts and no trade/score outputs,validated
+background,data/artifacts/l0_public_newswire/collector_events.jsonl,Regular background event ledger; 1500 cumulative rows and 234 L1-ready-discovery rows at snapshot,validated
+backfill_background,data/artifacts/l0_public_newswire_backfill/collector_events.jsonl,Historical backfill event ledger; 1600 cumulative rows and 275 L1-ready-discovery rows at snapshot,validated
+backfill_background_state,data/artifacts/l0_public_newswire_backfill/collector_progress.json,Historical backfill progress state with 257/4099 archives and 249 BusinessWire unavailable archives at snapshot,validated
+background_raw,data/raw/l0_public_newswire,Regular background raw responses with mapper-aware cycle,validated
+l2_smoke,data/artifacts/l0_public_newswire_mapping_l2_smoke_v3/news_l2_smoke.db,L2 mapping smoke DB with 75 public_newswire_feeds facts mapping metadata and no trade/score outputs,validated
+context_refine_smoke,data/artifacts/l0_public_newswire_context_refine_smoke_v6/collector_events.jsonl,Real-network context refinement smoke v6 with 100 rows 28 ticker-mapped 27 context-ready and 45 blocked rows,validated
+context_refine_raw,data/raw/l0_public_newswire_context_refine_smoke_v6,Raw responses for context refinement smoke v6,validated
+context_refine_l2_smoke,data/artifacts/l0_public_newswire_context_refine_l2_smoke_v6/news_l2_smoke.db,L2 context refinement smoke DB with 101 facts and no trade/score outputs,validated
+context_refine_smoke,data/artifacts/l0_public_newswire_context_refine_smoke_v8/collector_events.jsonl,Real-network context refinement smoke v8 with 100 rows 37 ticker-mapped 35 context-ready 27 blocked and 1 ambiguous row,validated
+context_refine_raw,data/raw/l0_public_newswire_context_refine_smoke_v8,Raw responses for context refinement smoke v8,validated
+context_refine_l2_smoke,data/artifacts/l0_public_newswire_context_refine_l2_smoke_v8/news_l2_smoke.db,L2 context refinement smoke v8 DB with 101 facts and no trade/score outputs,validated
+context_refine_smoke,data/artifacts/l0_public_newswire_context_refine_smoke_v9/collector_events.jsonl,Real-network context refinement smoke v9 with 100 rows 35 ticker-mapped 35 context-ready 29 blocked and 1 ambiguous row,validated
+context_refine_raw,data/raw/l0_public_newswire_context_refine_smoke_v9,Raw responses for context refinement smoke v9,validated
+context_refine_l2_smoke,data/artifacts/l0_public_newswire_context_refine_l2_smoke_v9/news_l2_smoke.db,L2 context refinement smoke v9 DB with 101 facts and no trade/score outputs,validated
+backfill_context_refine_smoke,data/artifacts/l0_public_newswire_backfill_context_refine_smoke_v3/collector_events.jsonl,Bounded historical context refinement smoke v3 with 60 rows from the responding source,validated
+backfill_context_refine_raw,data/raw/l0_public_newswire_backfill_context_refine_smoke_v3,Raw responses for bounded historical context refinement smoke v3,validated
+backfill_context_refine_l2_smoke,data/artifacts/l0_public_newswire_backfill_context_refine_l2_smoke_v3/news_l2_smoke.db,L2 backfill context refinement smoke v3 DB with 62 facts and no trade/score outputs,validated
+status,data/artifacts/l0_collection_status/current_status.md,L0 status snapshot with Newswire mapped vs blocked counts,validated
+report,docs/reports/task_l0_public_newswire_collector/task_l0_public_newswire_collector_report.md,Human-readable task report,validated
+code,tools/db/source_acquisition/public_newswire_collector.py,Public newswire collector v0.1.4 with HTML entity unescape and Common Shares exact-alias normalization,validated
+test,tests/test_l0_public_newswire_collector.py,Regression tests for v0.1.4 exact-alias normalization while preserving symbol-token fallback block,validated
+mapping_smoke,data/artifacts/l0_public_newswire_mapping_v014_smoke_v2/collector_events.jsonl,Real-network v0.1.4 mapping smoke with 100 rows 74 L1-ready rows and 26 blocked or ambiguous rows across currently responding sources,validated
+mapping_smoke_raw,data/raw/l0_public_newswire_mapping_v014_smoke_v2,Real-network v0.1.4 mapping smoke raw responses,validated
+l2_smoke,data/artifacts/l0_public_newswire_mapping_v014_l2_smoke/news_l2_smoke.db,L2 v0.1.4 mapping smoke DB with 101 facts and no trade or score outputs,validated
+background_status,data/artifacts/l0_public_newswire/background_process.json,Live newswire watcher restarted with PID 11152 after v0.1.4 mapper deployment,validated
+backfill_background_status,data/artifacts/l0_public_newswire_backfill/background_process.json,Historical newswire backfill restarted with PID 22532 after v0.1.4 mapper deployment,validated
+code,tools/db/source_acquisition/public_newswire_collector.py,Public newswire collector v0.1.6 with article metadata description evidence and source-declared exchange-tag preservation for historical symbols outside active universe,validated
+test,tests/test_l0_public_newswire_collector.py,Regression tests for v0.1.6 article description evidence and source-declared exchange-tag mapping without symbol-token fallback,validated
+backfill_mapping_smoke,data/artifacts/l0_public_newswire_v016_prn_bf_smoke/collector_events.jsonl,Real-network v0.1.6 PRNewswire January 2016 backfill smoke with 80 rows 16 mapped 4 context-ready and source-declared exchange-tag evidence,validated
+backfill_mapping_raw,data/raw/l0_public_newswire_v016_prn_bf_smoke,Raw responses for v0.1.6 PRNewswire source-declared exchange-tag smoke,validated
+l2_smoke,data/artifacts/l0_public_newswire_v016_prn_bf_l2_smoke/news_l2_smoke.db,L2 v0.1.6 PRNewswire backfill smoke DB with 80 facts and no trade or score outputs,validated
+background_status,data/artifacts/l0_public_newswire/background_process.json,Live newswire watcher restarted with PID 9916 after v0.1.6 mapper deployment,validated
+backfill_background_status,data/artifacts/l0_public_newswire_backfill/background_process.json,Historical newswire backfill restarted with PID 24392 after v0.1.6 mapper deployment,validated
+code,tools/db/source_acquisition/public_newswire_collector.py,Public newswire collector v0.1.7 with RSS description evidence and PRNewswire/GlobeNewswire article metadata enrichment for sitemap rows,validated
+config,configs/source_registry/l0_public_news_capability_sources.json,Enables fetch_article_metadata_for_mapping for PRNewswire and GlobeNewswire,validated
+test,tests/test_l0_public_newswire_collector.py,Regression tests for v0.1.7 sitemap-title article metadata enrichment producing source-declared exchange-tag mapping,validated
+backfill_mapping_smoke,data/artifacts/l0_public_newswire_v017_gnw_bf_smoke/collector_events.jsonl,Real-network v0.1.7 GlobeNewswire January 2016 backfill smoke with 80 rows 11 mapped 11 context-ready 4 source-declared exchange-tag rows and 58 blocked,validated
+backfill_mapping_raw,data/raw/l0_public_newswire_v017_gnw_bf_smoke,Raw responses for v0.1.7 GlobeNewswire metadata enrichment smoke,validated
+l2_smoke,data/artifacts/l0_public_newswire_v017_gnw_bf_l2_smoke/news_l2_smoke.db,L2 v0.1.7 GlobeNewswire backfill smoke DB with 80 facts and no trade or score outputs,validated
+background_status,data/artifacts/l0_public_newswire/background_process.json,Live newswire watcher restarted with PID 9456 after v0.1.7 mapper deployment,validated
+backfill_background_status,data/artifacts/l0_public_newswire_backfill/background_process.json,Historical newswire backfill restarted with PID 16756 after v0.1.7 mapper deployment,validated

@@ -1,0 +1,96 @@
+artifact_type,path,description,validation_status
+code,tools/db/source_acquisition/public_market_macro_news_collector.py,RSS/API/sitemap/HTML/Common-Crawl/WordPress REST collector for public market macro context news with expanded 37-source live watcher defaults Guardian API backfill AP monthly sitemap backfill CNBC sitemap article-meta backfill Wikimedia Current Events monthly backfill CNN Money Common Crawl archive backfill and 12-source WordPress REST archive backfill,validated
+code,scripts/run_l0_public_market_macro_news_collector.py,CLI wrapper for smoke/background/backfill modes,validated
+code,scripts/start_l0_public_market_macro_news_collector.ps1,Background live watcher launcher with expanded 37-source default set,validated
+code,scripts/start_l0_public_market_macro_news_backfill.ps1,Background Guardian AP CNBC Wikimedia Common Crawl The Hill TechCrunch Electrek Teslarati Semiconductor Engineering Bitcoin Magazine 9to5Mac 9to5Google PV Magazine USA SpaceNews Carbon Brief and Robot Report historical backfill launcher,validated
+code,tools/db/news_l0_l1.py,L1 provider registration and ticker-mapping-not-required handling,validated
+code,src/l2/news_runtime.py,L2 raw event loader for public_market_macro_news_feeds,validated
+code,src/l2/builders/news_event_primitives.py,L2 news payload columns for section and summary fields,validated
+code,src/brain/l3/source_reliability.py,L3 reliability classification for new provider,validated
+code,tools/db/source_acquisition/l0_collection_status.py,Status reporting for live and backfill lanes including Guardian page offsets and CNBC sitemap entry offsets,validated
+config,configs/source_registry/l0_public_news_capability_sources.json,External source context_scope/source_class annotations including NPR PBS ABC CBS Census Yahoo Finance NYT Fox Business RSS additions crypto energy commodity cyber semiconductor policy tech AI supply-chain biotech defense space logistics RSS additions AP CNBC Wikimedia Common Crawl backfill modes and WordPress REST archive sources,validated
+config,configs/db_source_acquisition_scheduler.json,Source family and disabled scheduler job registration,validated
+test,tests/test_l0_public_market_macro_news_collector.py,Collector unit tests for RSS Guardian backfill CNBC sitemap backfill Wikimedia Current Events backfill Common Crawl archive backfill WordPress REST backfill EV and external title gates and default source registry alignment,validated
+test,tests/test_l2_news_canonical_path.py,L2 provider ingestion no-trade coverage,validated
+test,tests/test_l0_collection_status.py,Status reporter aggregation coverage,validated
+raw,data/raw/l0_public_market_macro_news_smoke,Real live RSS smoke raw responses and headline payloads,validated
+raw,data/raw/l0_public_market_macro_news_backfill_smoke,Real Guardian 2016 smoke raw responses and headline payloads,validated
+event_log,data/artifacts/l0_public_market_macro_news_smoke/collector_events.jsonl,Live RSS smoke event ledger with 120 rows,validated
+event_log,data/artifacts/l0_public_market_macro_news_backfill_smoke/collector_events.jsonl,Guardian 2016 smoke event ledger with 50 rows,validated
+event_log,data/artifacts/l0_public_market_macro_news/collector_events.jsonl,Production live watcher event ledger first cycle 250 rows,validated
+event_log,data/artifacts/l0_public_market_macro_news_backfill/collector_events.jsonl,Production Guardian backfill event ledger first batch 400 rows,validated
+db,data/artifacts/l0_public_market_macro_news_smoke/news_l2_smoke.db,Isolated L2 smoke DB with 170 news facts and no trade outputs,validated
+raw,data/raw/l0_public_market_macro_news_expansion_smoke_v2,Real expanded live RSS smoke raw responses and headline payloads from 14 sources,validated
+event_log,data/artifacts/l0_public_market_macro_news_expansion_smoke_v2/collector_events.jsonl,Expanded live RSS smoke event ledger with 403 rows 403 L1-ready context rows and 0 blocked,validated
+db,data/artifacts/l0_public_market_macro_news_expansion_l2_smoke_v2/news_l2_smoke.db,Expanded 14-source L2 smoke DB with 403 news facts and no trade outputs,validated
+raw,data/raw/l0_public_market_macro_news_cnbc_backfill_smoke_v4,Real CNBC 2016 sitemap/article-meta backfill smoke raw responses,validated
+event_log,data/artifacts/l0_public_market_macro_news_cnbc_backfill_smoke_v4/collector_events.jsonl,CNBC 2016 historical smoke event ledger with 3 filtered context-ready rows and 0 blocked,validated
+db,data/artifacts/l0_public_market_macro_news_cnbc_backfill_l2_smoke_v4/news_l2_smoke.db,CNBC historical L2 smoke DB with 3 news facts and no trade outputs,validated
+raw,data/raw/l0_pm_wiki_bf_smoke_v3,Real Wikimedia Current Events 2016 monthly backfill smoke raw response,validated
+event_log,data/artifacts/l0_pm_wiki_bf_smoke_v3/collector_events.jsonl,Wikimedia Current Events 2016 historical smoke event ledger with 20 filtered context-ready rows and 0 blocked,validated
+db,data/artifacts/l0_pm_wiki_bf_l2_smoke_v3/news_l2_smoke.db,Wikimedia historical L2 smoke DB with 20 news facts and no trade outputs,validated
+raw,data/raw/l0_pm_common_crawl_bf_smoke_v3,Real Common Crawl CDX/WARC 2016 archive backfill smoke raw responses,validated
+event_log,data/artifacts/l0_pm_common_crawl_bf_smoke_v3/collector_events.jsonl,Common Crawl archive 2016 historical smoke event ledger with 2 filtered context-ready rows and 0 blocked,validated
+db,data/artifacts/l0_pm_common_crawl_bf_l2_smoke_v3/news_l2_smoke.db,Common Crawl historical L2 smoke DB with 2 news facts and no trade outputs,validated
+raw,data/raw/l0_pm_common_crawl_bf_smoke_v8,Real CNN Money Common Crawl CDX/WARC 2016 archive backfill smoke raw responses,validated
+event_log,data/artifacts/l0_pm_common_crawl_bf_smoke_v8/collector_events.jsonl,CNN Money Common Crawl archive 2016 historical smoke event ledger with 11 filtered context-ready rows and 0 blocked,validated
+db,data/artifacts/l0_pm_common_crawl_bf_l2_smoke_v8/news_l2_smoke.db,CNN Money Common Crawl historical L2 smoke DB with 11 news facts and no trade outputs,validated
+raw,data/raw/l0_pm_wordpress_bf_smoke_v2,Real The Hill and TechCrunch WordPress REST 2016 archive backfill smoke raw responses,validated
+event_log,data/artifacts/l0_pm_wordpress_bf_smoke_v2/collector_events.jsonl,The Hill and TechCrunch WordPress REST 2016 historical smoke event ledger with 80 context-ready rows and 0 blocked,validated
+db,data/artifacts/l0_pm_wordpress_bf_l2_smoke_v2/news_l2_smoke.db,The Hill and TechCrunch WordPress REST historical L2 smoke DB with 80 news facts and no trade outputs,validated
+raw,data/raw/l0_pm_ev_wp_bf_smoke_v1,Real Electrek and Teslarati WordPress REST 2016 archive backfill smoke raw responses,validated
+event_log,data/artifacts/l0_pm_ev_wp_bf_smoke_v1/collector_events.jsonl,Electrek and Teslarati WordPress REST 2016 historical smoke event ledger with 80 context-ready rows and 0 blocked,validated
+db,data/artifacts/l0_pm_ev_wp_bf_l2_smoke_v1/news_l2_smoke.db,Electrek and Teslarati WordPress REST historical L2 smoke DB with 80 news facts and no trade outputs,validated
+raw,data/raw/l0_pm_external_rss_smoke_v1,Real external RSS smoke raw responses and headline payloads from crypto energy commodity cyber and semiconductor candidates,validated
+event_log,data/artifacts/l0_pm_external_rss_smoke_v1/collector_events.jsonl,External RSS smoke event ledger with 122 promoted-source context-ready rows plus robots-block evidence for EIA and The Register,validated
+db,data/artifacts/l0_pm_external_rss_l2_smoke_v1/news_l2_smoke.db,External RSS L2 smoke DB with 122 news facts and no trade outputs,validated
+raw,data/raw/l0_pm_external_wp_bf_smoke_v1,Real external WordPress REST 2016-01 archive backfill smoke raw responses,validated
+event_log,data/artifacts/l0_pm_external_wp_bf_smoke_v1/collector_events.jsonl,External WordPress REST 2016-01 historical smoke event ledger with 138 context-ready rows and 0 blocked,validated
+db,data/artifacts/l0_pm_external_wp_bf_l2_smoke_v1/news_l2_smoke.db,External WordPress REST historical L2 smoke DB with 138 news facts and no trade outputs,validated
+raw,data/raw/l0_pm_non_newswire_v2_rss_smoke_v2,Real v0.1.7 non-newswire RSS smoke raw responses and headline payloads from 15 promoted sources,validated
+event_log,data/artifacts/l0_pm_non_newswire_v2_rss_smoke_v2/collector_events.jsonl,V0.1.7 non-newswire RSS smoke event ledger with 75 context-ready rows and 0 blocked,validated
+raw,data/raw/l0_pm_non_newswire_v2_backfill_smoke_v2,Real v0.1.7 AP sitemap and WordPress REST 2016-01 backfill smoke raw responses,validated
+event_log,data/artifacts/l0_pm_non_newswire_v2_backfill_smoke_v2/collector_events.jsonl,V0.1.7 AP and WordPress historical smoke event ledger with 17 context-ready rows and 0 blocked,validated
+db,data/artifacts/l0_pm_non_newswire_v2_l2_smoke/news_l2_smoke.db,V0.1.7 RSS plus AP/WordPress backfill L2 smoke DB with 92 news facts and no trade outputs,validated
+status,data/artifacts/l0_collection_status/current_status.md,Consolidated L0 status includes market macro news live and backfill lanes,validated
+code,scripts/start_l0_public_industry_dive_news_backfill.ps1,Separate Industry Dive monthly sitemap historical backfill launcher with 5-second crawl-delay posture,validated
+raw,data/raw/l0_public_market_macro_news_v3_smoke_live,Real v0.1.8 live smoke raw responses from Seeking Alpha Finviz and 9 Industry Dive sources,validated
+event_log,data/artifacts/l0_public_market_macro_news_v3_smoke_live/collector_events.jsonl,V0.1.8 live smoke event ledger with 117 context-ready rows and 0 blocked,validated
+raw,data/raw/ind_dive_smoke_v6,Real v0.1.8 Industry Dive all-source monthly sitemap backfill smoke raw responses,validated
+event_log,data/artifacts/ind_dive_smoke_v6/collector_events.jsonl,V0.1.8 Industry Dive monthly sitemap smoke ledger with 9 context-ready rows from 9 sources and 0 blocked,validated
+db,data/artifacts/l0_public_market_macro_news_v3_l2_smoke_all/news_l2_smoke.db,V0.1.8 live plus Industry Dive archive L2 smoke DB with 126 news facts and no trade outputs,validated
+status,data/artifacts/l0_public_industry_dive_news_backfill/background_process.json,Background process status for separate Industry Dive monthly sitemap historical backfill worker,validated
+code,tools/db/source_acquisition/public_market_macro_news_collector.py,V0.1.9 expands Industry sector source defaults while reusing governed monthly sitemap article-meta mode,validated
+config,configs/source_registry/l0_public_news_capability_sources.json,V0.1.9 adds Construction CFO Restaurant Grocery Marketing HR MedTech HigherEd K12 SmartCities and archive metadata for Utility SupplyChain BioPharma Dive,validated
+code,scripts/start_l0_public_market_macro_news_collector.ps1,V0.1.9 live watcher launcher default expanded to 58 public RSS/HTML sources,validated
+code,scripts/start_l0_public_industry_dive_news_backfill.ps1,V0.1.9 Industry sector backfill launcher default expanded to 22 monthly sitemap sources,validated
+test,tests/test_l0_public_market_macro_news_collector.py,V0.1.9 unit tests assert promoted sector-Dive RSS and monthly sitemap backfill source wiring,validated
+raw,data/raw/l0_industry_dive_expansion_v019_smoke_live,Real v0.1.9 sector-Dive live RSS smoke raw responses,validated
+event_log,data/artifacts/l0_industry_dive_expansion_v019_smoke_live/collector_events.jsonl,V0.1.9 sector-Dive live smoke ledger with 130 context-ready rows from 13 sources and 0 blocked,validated
+raw,data/raw/ind_dive_exp_v019_bf_smoke,Real v0.1.9 sector-Dive monthly sitemap backfill smoke raw responses,validated
+event_log,data/artifacts/ind_dive_exp_v019_bf_smoke/collector_events.jsonl,V0.1.9 sector-Dive monthly sitemap smoke ledger with 13 context-ready rows from 13 sources and 0 blocked,validated
+db,data/artifacts/l0_industry_dive_expansion_v019_l2_smoke/news_l2_smoke.db,V0.1.9 live plus sector-Dive archive L2 smoke DB with 143 news facts and no trade outputs,validated
+status,data/artifacts/l0_public_market_macro_news/background_process.json,Background process status for restarted v0.1.9 58-source live watcher,validated
+status,data/artifacts/l0_public_industry_dive_news_backfill/background_process.json,Background process status for restarted v0.1.9 22-source Industry sector backfill worker,validated
+code,tools/db/source_acquisition/public_market_macro_news_collector.py,V0.1.10 adds StockTitan explicit source URL ticker mapping for live RSS rows,validated
+config,configs/source_registry/l0_public_news_capability_sources.json,V0.1.10 adds StockTitan public RSS as live-only ticker-rich source after archive 403/410 probe,validated
+code,scripts/start_l0_public_market_macro_news_collector.ps1,V0.1.10 live watcher launcher default expanded to 59 public RSS/HTML sources including StockTitan,validated
+test,tests/test_l0_public_market_macro_news_collector.py,V0.1.10 unit tests assert explicit StockTitan URL ticker mapping and no fallback row without ticker path,validated
+raw,data/raw/l0_stocktitan_public_rss_v0110_smoke_live,Real v0.1.10 StockTitan public RSS smoke raw responses,validated
+event_log,data/artifacts/l0_stocktitan_public_rss_v0110_smoke_live/collector_events.jsonl,V0.1.10 StockTitan live smoke ledger with 100 rows 100 explicit source-URL ticker mappings and 0 blocked,validated
+db,data/artifacts/l0_stocktitan_public_rss_v0110_l2_smoke/news_l2_smoke.db,V0.1.10 StockTitan L2 smoke DB with 100 news facts and no trade outputs,validated
+status,data/artifacts/l0_public_market_macro_news/background_process.json,Background process status for restarted v0.1.10 59-source live watcher,validated
+report,docs/reports/task_l0_public_market_macro_news_collector/task_l0_public_market_macro_news_collector_report.md,Human-readable report following repository report discipline,validated
+decision,docs/reports/task_l0_public_market_macro_news_collector/task_l0_public_market_macro_news_collector_decision.csv,Machine-readable decision summary,validated
+code,tools/db/source_acquisition/public_market_macro_news_collector.py,V0.1.11 expands default live and market macro backfill source lists for additional non-newswire market sources,validated
+config,configs/source_registry/l0_public_news_capability_sources.json,V0.1.11 adds IBD InvestorPlace FXStreet Defense One Nareit ETF Trends HousingWire American Banker Techmeme RSS and IBD InvestorPlace ETF Trends HousingWire WordPress REST sources,validated
+code,scripts/start_l0_public_market_macro_news_collector.ps1,V0.1.11 live watcher launcher default expanded to 68 public RSS/HTML sources,validated
+code,scripts/start_l0_public_market_macro_news_backfill.ps1,V0.1.11 market macro backfill launcher default expanded to 21 sources,validated
+test,tests/test_l0_public_market_macro_news_collector.py,V0.1.11 unit tests assert promoted non-newswire market RSS and WordPress source wiring,validated
+raw,data/raw/l0_public_market_macro_news_v0111_smoke_live,Real v0.1.11 non-newswire market live RSS smoke raw responses,validated
+event_log,data/artifacts/l0_public_market_macro_news_v0111_smoke_live/collector_events.jsonl,V0.1.11 live smoke ledger with 289 context-ready rows from 9 sources and 0 blocked,validated
+raw,data/raw/l0_public_market_macro_news_v0111_wp_bf_smoke2,Real v0.1.11 non-newswire WordPress January 2016 backfill smoke raw responses,validated
+event_log,data/artifacts/l0_public_market_macro_news_v0111_wp_bf_smoke2/collector_events.jsonl,V0.1.11 WordPress backfill smoke ledger with 310 context-ready rows from 4 sources and 0 blocked,validated
+db,data/artifacts/l0_public_market_macro_news_v0111_l2_smoke/news_l2_smoke.db,V0.1.11 live plus WordPress backfill L2 smoke DB with 599 news facts and no trade outputs,validated
+status,data/artifacts/l0_public_market_macro_news/background_process.json,Background process status for restarted v0.1.11 68-source live watcher,validated
+status,data/artifacts/l0_public_market_macro_news_backfill/background_process.json,Background process status for restarted v0.1.11 21-source market macro backfill worker,validated

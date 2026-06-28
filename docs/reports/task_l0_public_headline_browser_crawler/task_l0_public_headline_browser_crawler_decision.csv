@@ -1,0 +1,11 @@
+metric,value,status,notes
+decision_status,PRIMARY_PASS,PRIMARY_PASS,Chrome/Playwright public headline crawler smoke succeeded.
+strategy_acceptance,NOT_ACCEPTED,PRIMARY_PASS,No strategy or deployment claim; data infrastructure only.
+public_headline_browser_watch,ADD_IN_PARALLEL,PRIMARY_PASS,Use as source-first public headline ledger beside existing Marketaux GDELT official lanes.
+existing_marketaux_gdelt_official,KEEP,PRIMARY_PASS,Keep as governed API/RSS/archive baseline and corroboration path despite speed limits.
+smoke_sources,2,PRIMARY_PASS,PRNewswire and GlobeNewswire latest public listing pages.
+smoke_headline_rows,26,PRIMARY_PASS,PRNewswire 16 and GlobeNewswire 10 after selector correction.
+l2_news_ingest,26,PRIMARY_PASS,Diagnostic-only news_event facts written with trade score order flags all 0.
+hallucination_harness,RAW_EVIDENCE_REQUIRED,PRIMARY_PASS,Rows require Chrome DOM evidence raw HTML screenshot JSON payload and hashes.
+entity_mapping,NOT_IMPLEMENTED_BLOCKED,PRIMARY_PASS,Ticker mapping intentionally absent; rows remain blocked until a strict mapper exists.
+businesswire_candidate,NOT_PASSED_SMOKE,SECONDARY_PASS,Initial headless Chrome navigation hit HTTP2 protocol error; keep as future candidate.

@@ -1,0 +1,14 @@
+metric,value,status,notes
+decision_status,PRIMARY_PASS,PRIMARY_PASS,Deep review packet created and sent to read-only reviewer.
+strategy_acceptance,NOT_ACCEPTED,PRIMARY_PASS,Data infrastructure review only; no trading or deployment claim.
+chrome_role,FALLBACK_AND_VERIFICATION_ONLY,PRIMARY_PASS,Chrome should not be primary while RSS API sitemap and JSON-LD routes exist.
+chrome_smoke_rows,26,PRIMARY_PASS,PRNewswire 16 and GlobeNewswire 10 rows captured with raw evidence.
+background_enabled,0,PRIMARY_PASS,Chrome is not currently a running background lane.
+rss_first_sources,3,PRIMARY_PASS,PRNewswire GlobeNewswire and BusinessWire have feed or sitemap routes.
+direct_reuters_bloomberg,BLOCKED,PRIMARY_PASS,Direct browser collection is blocked without explicit license or permission.
+entity_mapping_gate,BLOCKING,PRIMARY_PASS,No trade/L3 promotion before deterministic entity mapping.
+historical_backfill_role,LIMITED_VALIDATION_ONLY,PRIMARY_PASS,Chrome is unsuitable as bulk 2016+ historical engine without source-date and source-time certification.
+next_build,extractor_cascade_before_chrome_lane,PRIMARY_PASS,Build RSS/sitemap/API extractor cascade then add Chrome fallback queue.
+reviewer_verdict,FALLBACK_AND_VERIFICATION_ONLY,PRIMARY_PASS,Read-only reviewer agreed Chrome should not be primary or always-on parallel.
+event_time_gate,SPLIT_REQUIRED,PRIMARY_PASS,Separate detected_at captured_at published_at_text source_time_certified_flag and historical usability.
+chrome_scheduler,KEEP_DISABLED,PRIMARY_PASS,Enable only through diagnostic fallback override when capability evidence requires Chrome.

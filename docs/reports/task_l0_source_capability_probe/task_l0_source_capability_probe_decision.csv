@@ -1,0 +1,12 @@
+metric,value,status,notes
+decision_status,PRIMARY_PASS,PRIMARY_PASS,Source capability probe implemented and external market macro news candidate smoke succeeded.
+strategy_acceptance,NOT_ACCEPTED,PRIMARY_PASS,Data infrastructure only; no strategy or deployment claim.
+registry_source_count,12,PRIMARY_PASS,SEC newswire and external market macro candidates are listed in the capability registry.
+original_source_count,4,PRIMARY_PASS,SEC PRNewswire GlobeNewswire and BusinessWire probed.
+external_candidate_count,8,PRIMARY_PASS,CNBC MarketWatch Investing BBC FT Google News Nasdaq Trader and Guardian probed.
+external_candidate_viable_count,7,PRIMARY_PASS,Six RSS routes and one official API route are viable under current guardrails.
+external_candidate_rss_or_atom,6,PRIMARY_PASS,CNBC MarketWatch Investing BBC FT and Nasdaq Trader returned public feeds.
+external_candidate_api_or_official_index,1,PRIMARY_PASS,Guardian Open Platform historical query returned 2016 rows.
+external_candidate_blocked_or_manual_review,1,PRIMARY_PASS,Google News RSS routes were skipped by same-origin robots guard.
+chrome_first_required,0,PRIMARY_PASS,No promoted source requires Chrome as first route in smoke.
+next_build,external_rss_api_collector,PRIMARY_PASS,Promote CNBC Investing Nasdaq Trader and Guardian first then add BBC FT MarketWatch with staleness and paywall safeguards.

@@ -1,0 +1,68 @@
+metric,value,status,notes
+decision_status,PRIMARY_PASS,PRIMARY_PASS,Public newswire collector implemented and smoke succeeded.
+strategy_acceptance,NOT_ACCEPTED,PRIMARY_PASS,Data infrastructure only; no trading or deployment claim.
+sec_api_key_present,0,PRIMARY_PASS,No SEC/EDGAR key in .env; SEC route does not require an API key.
+sec_user_agent_required,1,PRIMARY_PASS,SEC access should use fair-access User-Agent posture.
+smoke_sources,3,PRIMARY_PASS,PRNewswire GlobeNewswire BusinessWire tested.
+smoke_rows_v3,75,PRIMARY_PASS,25 rows per source after deterministic mapping and gzip sitemap support.
+smoke_mapped_rows_v3,23,PRIMARY_PASS,PRNewswire 4 GlobeNewswire 13 BusinessWire 6 mapped on exchange-tag or exact-alias evidence.
+context_refine_smoke_rows_v6,100,PRIMARY_PASS,Real-network context refinement smoke exported 100 rows across currently responding sources.
+context_refine_smoke_ticker_mapped_v6,28,PRIMARY_PASS,Rows with exchange-tag or exact-alias deterministic ticker evidence.
+context_refine_smoke_context_ready_v6,27,PRIMARY_PASS,Unmapped but market/industry/macro thematic rows moved to NOT_REQUIRED_CONTEXT_NEWSWIRE without symbols.
+context_refine_smoke_blocked_v6,45,PRIMARY_PASS,Low-signal or unmapped rows remain blocked.
+context_refine_l2_smoke_facts_v6,101,PRIMARY_PASS,L2 context refinement smoke DB materialized 101 facts and no trade or score outputs.
+context_refine_smoke_rows_v8,100,PRIMARY_PASS,Real-network v0.1.2 context refinement smoke exported 100 rows across currently responding sources.
+context_refine_smoke_ticker_mapped_v8,37,PRIMARY_PASS,Rows with exchange-tag or exact-alias deterministic ticker evidence improved from 28 to 37.
+context_refine_smoke_context_ready_v8,35,PRIMARY_PASS,Unmapped but high-signal thematic rows moved to NOT_REQUIRED_CONTEXT_NEWSWIRE without symbols improved from 27 to 35.
+context_refine_smoke_blocked_v8,27,PRIMARY_PASS,Low-signal ambiguous or unmapped rows remain blocked reduced from 45 to 27.
+context_refine_l2_smoke_facts_v8,101,PRIMARY_PASS,L2 context refinement v8 smoke DB materialized 101 facts and no trade or score outputs.
+context_refine_smoke_rows_v9,100,PRIMARY_PASS,Real-network v0.1.3 context refinement smoke exported 100 rows across currently responding sources.
+context_refine_smoke_ticker_mapped_v9,35,PRIMARY_PASS,Rows with exchange-tag or exact-alias deterministic ticker evidence.
+context_refine_smoke_context_ready_v9,35,PRIMARY_PASS,Unmapped high-signal thematic rows moved to NOT_REQUIRED_CONTEXT_NEWSWIRE without symbols.
+context_refine_smoke_blocked_v9,29,PRIMARY_PASS,Low-signal ambiguous or unmapped rows remain blocked.
+context_refine_l2_smoke_facts_v9,101,PRIMARY_PASS,L2 context refinement v9 smoke DB materialized 101 facts and no trade or score outputs.
+offline_replay_live_blocked_converted_v013,89/374,PRIMARY_PASS,v0.1.3 context rules converted 89 of 374 latest live BLOCKED_UNMAPPED rows to context-only without symbols.
+offline_replay_backfill_blocked_converted_v013,33/1000,PRIMARY_PASS,v0.1.3 context rules converted 33 of 1000 latest backfill BLOCKED_UNMAPPED rows to context-only without symbols.
+regular_background_pid,7196,PRIMARY_PASS,public_newswire_feeds background collector restarted with v0.1.3 context-aware mapper.
+regular_rows_snapshot,3250,PRIMARY_PASS,Status report shows 3250 cumulative watcher rows across three sources after v0.1.3 restart.
+regular_l1_ready_discovery_snapshot,1117,PRIMARY_PASS,Current status report includes mapped discovery-ready rows from the mapper-aware background cycle.
+regular_l1_context_ready_snapshot,343,PRIMARY_PASS,Current status report includes newswire context-ready rows.
+l2_smoke_facts,75,PRIMARY_PASS,L2 mapping smoke DB materialized 75 public_newswire_feeds facts.
+backfill_smoke_rows_v2,15,PRIMARY_PASS,Bounded historical backfill smoke exported 5 rows per source for 2026-06-26.
+backfill_smoke_mapped_rows_v2,5,PRIMARY_PASS,BusinessWire mapped 5 rows; PRNewswire and GlobeNewswire rows were captured but unmapped by strict evidence policy.
+backfill_l2_smoke_facts,15,PRIMARY_PASS,L2 backfill smoke DB materialized 15 public_newswire_feeds facts with no trade or score outputs.
+backfill_context_refine_smoke_rows_v3,60,PRIMARY_PASS,Bounded January 2016 backfill context-refinement smoke exported 60 rows from the responding source.
+backfill_context_refine_l2_smoke_facts_v3,62,PRIMARY_PASS,L2 backfill context-refinement smoke DB materialized 62 facts and no trade or score outputs.
+backfill_background_pid,4332,PRIMARY_PASS,Separate historical backfill worker restarted with 2016-01-01 start date and v0.1.3 mapper.
+backfill_archives_snapshot,1755/4099,PRIMARY_PASS,Status report shows historical backfill progress including unavailable archives at 2026-06-28T18:34:47Z.
+backfill_rows_snapshot,7570,PRIMARY_PASS,Historical backfill status reports 7570 rows captured across public newswire sources.
+backfill_l1_ready_discovery_snapshot,1411,PRIMARY_PASS,Historical backfill mapped rows are discovery-only and preserved for L1/L2.
+backfill_l1_context_ready_snapshot,229,PRIMARY_PASS,Historical backfill context-ready rows are preserved for L1/L2 without ticker inference.
+businesswire_unavailable_archives_snapshot,1740,PRIMARY_PASS,BusinessWire S3 daily 403 unavailable archives are recorded and skipped rather than retried.
+trade_score_flags,0,PRIMARY_PASS,L2 smoke had sum trade_output_flag=0 and score_output_flag=0.
+entity_mapping_gate,IMPLEMENTED_DISCOVERY_AND_CONTEXT_ONLY,PRIMARY_PASS,Deterministic exchange-tag and exact-alias mapper implemented; thematic unmapped rows can become context-only; other unmapped or ambiguous rows remain blocked.
+mapper_version_v014,public_newswire_entity_mapper.v0.1.4,PRIMARY_PASS,Unescapes HTML entities before alias matching and strips Common Shares descriptor without symbol-token fallback.
+mapping_v014_smoke_rows,100,PRIMARY_PASS,Real-network v0.1.4 smoke exported 100 rows from currently responding GlobeNewswire and BusinessWire; PRNewswire was empty in the smoke window.
+mapping_v014_globenewswire_ready_blocked,34/16,PRIMARY_PASS,GlobeNewswire v0.1.4 smoke had 34 L1-ready rows and 16 blocked rows.
+mapping_v014_businesswire_ready_blocked,40/10,PRIMARY_PASS,BusinessWire v0.1.4 smoke had 40 L1-ready rows and 10 blocked rows.
+mapping_v014_l2_smoke_facts,101,PRIMARY_PASS,L2 v0.1.4 smoke DB materialized 101 facts and passed canonical no-trade and L3 input validators.
+regular_background_pid_v014,11152,PRIMARY_PASS,public_newswire_feeds live watcher restarted with v0.1.4 mapper loaded.
+backfill_background_pid_v014,22532,PRIMARY_PASS,public_newswire_feeds historical backfill worker restarted with v0.1.4 mapper loaded.
+mapper_version_v016,public_newswire_entity_mapper.v0.1.6,PRIMARY_PASS,Includes article HTML metadata description evidence and preserves explicit source-declared exchange tags for symbols outside the current active universe.
+backfill_prn_v016_smoke_rows,80,PRIMARY_PASS,Real-network PRNewswire January 2016 smoke exported 80 rows.
+backfill_prn_v016_mapped_rows,16,PRIMARY_PASS,PRNewswire v0.1.6 smoke produced 16 mapped rows including source-declared exchange tag evidence.
+backfill_prn_v016_context_rows,4,PRIMARY_PASS,PRNewswire v0.1.6 smoke produced 4 context-ready unmapped rows without ticker inference.
+backfill_prn_v016_source_declared_exchange_rows,1,PRIMARY_PASS,PRNewswire v0.1.6 smoke captured at least one mapped source-declared exchange tag outside active-universe entity records.
+aksteel_raw_replay_v016,AKS,PRIMARY_PASS,Existing AK Steel 2016 PRNewswire raw article metadata replays to MAPPED_EXCHANGE_TAG from explicit text AK Steel (NYSE: AKS) with active_universe_match_flag=0.
+backfill_prn_v016_l2_smoke_facts,80,PRIMARY_PASS,L2 v0.1.6 PRNewswire backfill smoke DB materialized 80 facts and passed canonical no-trade and L3 input validators.
+regular_background_pid_v016,9916,PRIMARY_PASS,public_newswire_feeds live watcher restarted with v0.1.6 mapper loaded.
+backfill_background_pid_v016,24392,PRIMARY_PASS,public_newswire_feeds historical backfill worker restarted with v0.1.6 mapper loaded.
+mapper_version_v017,public_newswire_entity_mapper.v0.1.7,PRIMARY_PASS,Adds RSS description evidence and controlled PRNewswire/GlobeNewswire article metadata enrichment for sitemap rows.
+backfill_gnw_v017_smoke_rows,80,PRIMARY_PASS,Real-network GlobeNewswire January 2016 smoke exported 80 rows.
+backfill_gnw_v017_mapped_rows,11,PRIMARY_PASS,GlobeNewswire v0.1.7 smoke produced 11 mapped rows after metadata enrichment.
+backfill_gnw_v017_context_rows,11,PRIMARY_PASS,GlobeNewswire v0.1.7 smoke produced 11 context-ready unmapped rows without ticker inference.
+backfill_gnw_v017_source_declared_exchange_rows,4,PRIMARY_PASS,GlobeNewswire v0.1.7 smoke captured 4 source-declared exchange tag rows from metadata descriptions.
+backfill_gnw_v017_metadata_enrichment_fetches,79,PRIMARY_PASS,GlobeNewswire v0.1.7 smoke recorded 79 metadata enrichment fetches for 80 rows within bounded smoke.
+backfill_gnw_v017_l2_smoke_facts,80,PRIMARY_PASS,L2 v0.1.7 GlobeNewswire backfill smoke DB materialized 80 facts and passed canonical no-trade and L3 input validators.
+regular_background_pid_v017,9456,PRIMARY_PASS,public_newswire_feeds live watcher restarted with v0.1.7 mapper loaded.
+backfill_background_pid_v017,16756,PRIMARY_PASS,public_newswire_feeds historical backfill worker restarted with v0.1.7 mapper loaded.

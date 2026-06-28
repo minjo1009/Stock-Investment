@@ -18,12 +18,18 @@ htmlcov/
 .idea/
 .DS_Store
 Thumbs.db
+.obsidian/workspace*.json
+.obsidian/cache/
+.obsidian/plugins/
 
 # Logs
 *.log
+.env
 logs/
 
-# Frontend generated staging output
+# Frontend dependencies / build output
+node_modules/
+dist/
 frontend_data/catalog/
 
 # Local installers / temporary working files
@@ -35,3 +41,6 @@ docs/tmp/
 
 # Local runtime DB
 trading.db
+
+# Local operator overrides and secrets
+configs/local/

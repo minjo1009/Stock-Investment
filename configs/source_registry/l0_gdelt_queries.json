@@ -1,0 +1,19 @@
+{
+  "registry_name": "l0_gdelt_queries",
+  "provider": "gdelt",
+  "authority_class": "news_discovery_proxy",
+  "discovery_only": true,
+  "max_records": 25,
+  "timespan_minutes": 15,
+  "min_request_interval_seconds": 900,
+  "cooldown_minutes": 15,
+  "queries": [
+    {
+      "query_id": "single_symbol_discovery_aapl",
+      "enabled": true,
+      "symbols": ["AAPL"],
+      "query_template": "\"{symbol}\"",
+      "role": "bounded_symbol_discovery"
+    }
+  ]
+}

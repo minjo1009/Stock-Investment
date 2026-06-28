@@ -1,0 +1,13 @@
+artifact_type,path,description,validation_status
+code,tools/db/source_acquisition/source_capability_probe.py,Machine-readable-first public news source capability probe with robots-blocked route guard,validated
+code,scripts/run_l0_source_capability_probe.py,CLI wrapper for governed source capability smoke,validated
+config,configs/source_registry/l0_public_news_capability_sources.json,Source registry for SEC newswire and external market macro news capability checks,validated
+config,configs/db_source_acquisition_scheduler.json,Disabled diagnostic scheduler job and source-family registration for capability probe,validated
+test,tests/test_l0_source_capability_probe.py,Unit tests for parser mode priority robots-blocked route handling and registry loading,validated
+raw,data/raw/l0_source_capability_probe,Raw fetched evidence bytes and metadata from real-network smoke; 630 files and 35291552 bytes,validated
+event_log,data/artifacts/l0_source_capability_probe/capability_events.jsonl,Capability probe event ledger with 24 exported source events across repeated smokes,validated
+summary,data/artifacts/l0_source_capability_probe/capability_summary.json,Source-level recommended capture-mode summary for all 12 registry sources,validated
+event_log,data/artifacts/l0_source_capability_probe/external_news_candidate_events.jsonl,External market macro candidate probe event ledger with 24 exported source events across repeated smokes,validated
+summary,data/artifacts/l0_source_capability_probe/external_news_candidate_summary.json,External candidate source-level recommended capture-mode summary with 8 sources and 7 viable candidates,validated
+decision,data/artifacts/task_l0_source_capability_probe/source_capability_decision.json,Machine-readable decision summary for downstream collector planning,validated
+report,docs/reports/task_l0_source_capability_probe/task_l0_source_capability_probe_report.md,Human-readable report following repository report discipline,validated

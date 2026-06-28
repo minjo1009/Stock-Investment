@@ -1,0 +1,58 @@
+{
+  "posture": "operator_news_enabled_diagnostic",
+  "permissions": {
+    "diagnostic_only": true,
+    "execution_permitted": 0,
+    "broker_mutation_permitted": 0,
+    "paper_promotion_permitted": 0,
+    "real_capital_permitted": 0,
+    "live_order_enabled": 0,
+    "replay_permission_granted": 0,
+    "buy_sell_signal_generation_permitted": 0
+  },
+  "jobs": [
+    {
+      "name": "official_news_sources_15m",
+      "enabled": true,
+      "allow_network": true,
+      "interval_minutes": 15,
+      "symbols": ["AAPL", "MSFT", "NVDA", "AMD", "QQQ"],
+      "macro_series": ["FED_PRESS", "BEA_RELEASES", "BLS_LATEST", "TREASURY_FISCALDATA"],
+      "diagnostic_only": true
+    },
+    {
+      "name": "gdelt_news_discovery_15m",
+      "enabled": true,
+      "allow_network": true,
+      "interval_minutes": 15,
+      "symbols": ["AAPL"],
+      "diagnostic_only": true
+    },
+    {
+      "name": "marketaux_news_free_30m",
+      "enabled": true,
+      "allow_network": true,
+      "interval_minutes": 15,
+      "symbols": ["AAPL", "MSFT", "NVDA", "AMD", "QQQ"],
+      "articles_per_request": 3,
+      "daily_request_cap": 95,
+      "diagnostic_only": true
+    },
+    {
+      "name": "microstructure_backfill_batch",
+      "enabled": true,
+      "allow_network": true,
+      "interval_minutes": 60,
+      "mode": "smoke",
+      "feed": "iex",
+      "symbols": ["AAPL"],
+      "max_symbols": 1,
+      "max_dates": 1,
+      "max_chunks": 2,
+      "chunk_minutes": 15,
+      "max_requests_per_minute": 60,
+      "diagnostic_only": true,
+      "feature_builder_enabled": false
+    }
+  ]
+}

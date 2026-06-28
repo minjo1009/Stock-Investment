@@ -1,0 +1,14 @@
+metric,value
+input_events,59
+l2_news_event_facts,142
+l2_source_receipts,1
+l2_primitive_batches,1
+provider_counts,official_public_releases=90;gdelt_news_events=51;marketaux_news_free=1
+freshness_counts,CURRENT_OR_RECENT=138;BLOCKED=4
+l3_default_canonical_news_inputs,88
+l3_default_canonical_news_providers,official_public_releases
+blocked_missing_source_is_negative_sum,0
+blocked_trade_output_sum,0
+blocked_score_output_sum,0
+blocked_order_intent_sum,0
+smoke_db,data/artifacts/task_l2_news_canonical_path/news_l2_smoke.db

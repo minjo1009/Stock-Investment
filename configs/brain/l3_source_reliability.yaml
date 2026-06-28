@@ -1,0 +1,7 @@
+official_primary: 0.95
+sec_primary: 0.98
+company_ir_primary: 0.95
+licensed_metadata_proxy: 0.55
+news_discovery_proxy: 0.35
+uncertified_source: 0.0
+missing_source: 0.0

@@ -1,0 +1,14 @@
+decision_item,status,metric,value,evidence_path,notes
+strategy_acceptance,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,capital_or_deployment_ready,0,docs/reports/task_l0_microstructure_full_universe_background_refresh/l0_microstructure_full_universe_background_refresh_report.md,Raw collection only and no strategy claim.
+universe_scope,accepted,active_tradable_rows,12041,data/raw/alpaca_active_us_equity_universe.csv,Full active/tradable universe source selected.
+universe_scope,accepted,unique_collection_symbols,12040,data/raw/alpaca_active_us_equity_universe.csv,Collector dedupes repeated symbols before collection.
+period_scope,accepted,target_start_date,2016-01-01,docs/reports/task_l0_microstructure_full_universe_background_refresh/l0_microstructure_full_universe_background_refresh_report.md,Collector walks toward latest complete US market session.
+latest_complete_session,accepted,target_end_date,2026-06-26,docs/reports/task_l0_microstructure_full_universe_background_refresh/l0_microstructure_full_universe_background_refresh_report.md,Initialized after successful smoke collection.
+existing_raw_policy,accepted,legacy_symbol_file_skip_flag,1,tools/db/source_acquisition/microstructure_background_collector.py,Legacy held symbol files are not recollected by default.
+existing_raw_policy,accepted,chunk_exact_path_skip_flag,1,tools/db/source_acquisition/microstructure_background_collector.py,Partial chunked backfill does not mark an entire symbol as held.
+raw_write_policy,accepted,overwrite_symbol_file_flag,0,tools/db/source_acquisition/microstructure_background_collector.py,Chunk path includes source type symbol date and UTC window.
+runtime_policy,accepted,background_resume_supported,1,scripts/start_l0_microstructure_background_collector.ps1,Hidden process launcher writes process metadata and uses cursor state.
+runtime_policy,accepted,accelerated_chunk_minutes,15,data/artifacts/microstructure_backfill_queue_15m/background_process.json,Active collector uses 15-minute windows to reduce request count versus the original 1-minute plan.
+stop_policy,accepted,stop_file_supported,1,data/artifacts/microstructure_backfill_queue/STOP,Collector exits when stop file exists.
+forbidden_actions,accepted,broker_mutation_permitted_flag,0,tools/db/source_acquisition/microstructure_background_collector.py,No broker or order code is called.
+forbidden_actions,accepted,feature_builder_allowed_flag,0,tools/db/source_acquisition/microstructure_background_collector.py,Collection artifacts stay source-only.

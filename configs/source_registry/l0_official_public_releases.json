@@ -1,0 +1,117 @@
+{
+  "registry_name": "l0_official_public_releases",
+  "authority_class": "official_primary",
+  "notes": "Official or official-candidate L0 public release sources. Disabled placeholders require endpoint verification before production use.",
+  "sources": [
+    {
+      "source_id": "apple_newsroom_rss",
+      "name": "Apple Newsroom RSS",
+      "symbol_scope": ["AAPL"],
+      "enabled": true,
+      "verification_status": "VERIFIED_OFFICIAL_PUBLIC_PAGE",
+      "authority_class": "official_primary",
+      "source_type": "rss",
+      "url": "https://www.apple.com/newsroom/rss-feed.rss"
+    },
+    {
+      "source_id": "apple_investor_relations",
+      "name": "Apple Investor Relations page",
+      "symbol_scope": ["AAPL"],
+      "enabled": true,
+      "verification_status": "VERIFIED_OFFICIAL_PUBLIC_PAGE",
+      "authority_class": "official_primary",
+      "source_type": "html",
+      "url": "https://investor.apple.com/investor-relations/default.aspx"
+    },
+    {
+      "source_id": "federal_reserve_press_all",
+      "name": "Federal Reserve all press releases RSS",
+      "symbol_scope": [],
+      "enabled": true,
+      "verification_status": "VERIFIED_OFFICIAL_PUBLIC_PAGE",
+      "authority_class": "official_primary",
+      "source_type": "rss",
+      "url": "https://www.federalreserve.gov/feeds/press_all.xml"
+    },
+    {
+      "source_id": "bea_news_release_feed",
+      "name": "BEA News Release Feed",
+      "symbol_scope": [],
+      "enabled": true,
+      "verification_status": "VERIFIED_OFFICIAL_PUBLIC_PAGE",
+      "authority_class": "official_primary",
+      "source_type": "rss",
+      "url": "https://apps.bea.gov/rss/rss.xml"
+    },
+    {
+      "source_id": "bls_principal_federal_economic_indicators",
+      "name": "BLS Principal Federal Economic Indicators latest numbers RSS",
+      "symbol_scope": [],
+      "enabled": true,
+      "verification_status": "VERIFIED_OFFICIAL_PUBLIC_PAGE",
+      "authority_class": "official_primary",
+      "source_type": "rss",
+      "url": "https://www.bls.gov/feed/bls_latest.rss"
+    },
+    {
+      "source_id": "bls_cpi_latest_numbers",
+      "name": "BLS CPI latest numbers RSS",
+      "symbol_scope": [],
+      "enabled": true,
+      "verification_status": "VERIFIED_OFFICIAL_PUBLIC_PAGE",
+      "authority_class": "official_primary",
+      "source_type": "rss",
+      "url": "https://www.bls.gov/feed/cpi.rss"
+    },
+    {
+      "source_id": "treasury_fiscaldata_debt_to_penny",
+      "name": "Treasury FiscalData Debt to the Penny endpoint",
+      "symbol_scope": [],
+      "enabled": true,
+      "verification_status": "VERIFIED_OFFICIAL_PUBLIC_PAGE",
+      "authority_class": "official_primary",
+      "source_type": "api",
+      "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny"
+    },
+    {
+      "source_id": "msft_official_ir_news_candidate",
+      "name": "MSFT official IR/news source candidate",
+      "symbol_scope": ["MSFT"],
+      "enabled": false,
+      "verification_status": "TODO_VERIFY_ENDPOINT",
+      "authority_class": "official_primary_candidate",
+      "source_type": "candidate",
+      "url": ""
+    },
+    {
+      "source_id": "nvda_official_ir_newsroom_candidate",
+      "name": "NVDA official IR/newsroom source candidate",
+      "symbol_scope": ["NVDA"],
+      "enabled": false,
+      "verification_status": "TODO_VERIFY_ENDPOINT",
+      "authority_class": "official_primary_candidate",
+      "source_type": "candidate",
+      "url": ""
+    },
+    {
+      "source_id": "amd_official_press_ir_candidate",
+      "name": "AMD official press / IR source candidate",
+      "symbol_scope": ["AMD"],
+      "enabled": false,
+      "verification_status": "TODO_VERIFY_ENDPOINT",
+      "authority_class": "official_primary_candidate",
+      "source_type": "candidate",
+      "url": ""
+    },
+    {
+      "source_id": "qqq_invesco_official_etf_candidate",
+      "name": "QQQ / Invesco official ETF source candidate",
+      "symbol_scope": ["QQQ"],
+      "enabled": false,
+      "verification_status": "TODO_VERIFY_ENDPOINT",
+      "authority_class": "official_primary_candidate",
+      "source_type": "candidate",
+      "url": ""
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+artifact_type,path,description,validation_status
+input,docs/reports/task_l0_public_headline_browser_crawler/task_l0_public_headline_browser_crawler_report.md,Prior Chrome/Playwright smoke report,reviewed
+input,docs/reports/task_l0_free_news_source_mitigation_research/task_l0_free_news_source_mitigation_research_report.md,Prior mitigation plan that downgraded Chrome to fallback,reviewed
+input,docs/reports/task_l0_source_capability_probe/task_l0_source_capability_probe_report.md,Capability probe proving machine-readable routes for target sources,reviewed
+input,tools/db/source_acquisition/public_headline_browser_crawler.js,Current Chrome crawler implementation,reviewed
+input,data/artifacts/l0_public_headline_browser_smoke/smoke_summary_v2.json,Smoke result with 26 headline rows,reviewed
+packet,docs/reports/task_l0_chrome_news_crawler_deep_review/chrome_news_crawler_deep_research_packet.md,Packet sent to read-only deep review agent,created
+decision,docs/reports/task_l0_chrome_news_crawler_deep_review/task_l0_chrome_news_crawler_deep_review_decision.csv,Machine-readable decision table,created
+report,docs/reports/task_l0_chrome_news_crawler_deep_review/task_l0_chrome_news_crawler_deep_review_report.md,Human-readable review report,created
+reviewer_result,agent:019f0d22-2a62-79b3-aca2-6710287d427d,Read-only reviewer output confirming fallback/verification-only Chrome posture,reviewed

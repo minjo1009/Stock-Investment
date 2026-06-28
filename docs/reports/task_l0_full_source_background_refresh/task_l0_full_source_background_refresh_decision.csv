@@ -1,0 +1,9 @@
+decision_item,status,metric,value,evidence_path,notes
+strategy_acceptance,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,capital_or_deployment_ready,0,docs/reports/task_l0_full_source_background_refresh/l0_full_source_background_refresh_report.md,Raw source collection only.
+source_scope,accepted,official_public_releases_enabled,1,data/artifacts/l0_news_background_queue/collector_events.jsonl,Official source collector started and exported reachable sources.
+source_scope,accepted,gdelt_news_events_enabled,1,data/artifacts/l0_news_background_queue/collector_events.jsonl,GDELT remains discovery-only and cooldown-bound.
+source_scope,accepted,marketaux_news_free_enabled,1,data/artifacts/l0_news_full_backfill/background_process.json,Token-backed full-backfill worker running under local cap 95/day.
+source_scope,accepted,microstructure_alpaca_enabled,1,data/artifacts/microstructure_backfill_queue_15m/collector_progress.json,Alpaca remains the quote/trade microstructure provider lane with 15-minute accelerated windows.
+forbidden_actions,accepted,broker_mutation_permitted_flag,0,data/artifacts/l0_news_background_queue/collector_progress.json,No broker mutation path added.
+forbidden_actions,accepted,real_capital_permitted_flag,0,data/artifacts/l0_news_background_queue/collector_progress.json,Real capital remains forbidden.
+forbidden_actions,accepted,trade_authority_flag_for_discovery_sources,0,tools/db/source_acquisition/news_background_collector.py,GDELT and Marketaux are not authority.
