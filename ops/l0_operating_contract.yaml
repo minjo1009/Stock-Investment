@@ -60,6 +60,12 @@ active_lanes:
     role: historical_backfill_and_realtime_continuity
     provider: market_bar_5m_proxy
     background_process: data/artifacts/l0_bar_full_backfill/background_process_5m.json
+    current_operating_mode:
+      updated_by_task: TASK-4201
+      requests_per_minute_cap: 120
+      request_pacing_mode: request_start_interval_cap
+      restart_guard: TASK-4195 restarts old 5m processes that do not expose request_pacing_mode.
+      note: The collector subtracts request/DB elapsed time from throttle sleep; observed rpm may stay below 120 when provider latency or sqlite upsert time exceeds the request-start interval.
   realtime_hardening_loop:
     role: realtime_incremental_collection_and_l1_l2_refresh
     config: configs/l0_realtime_operational_safe_config_4147.json
