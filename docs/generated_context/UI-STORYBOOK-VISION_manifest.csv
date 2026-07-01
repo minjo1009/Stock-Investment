@@ -1,0 +1,14 @@
+path,bytes,tokens,reason
+AGENTS.md,1380,345,must_include
+docs/frontend_app_ssot/00_PROJECT_SSOT.md,1604,401,must_include
+docs/frontend_app_ssot/01_ACTIVE_FRONTEND_TARGET_AND_STACK_DECISION.md,1121,280,must_include
+docs/frontend_app_ssot/02_INFORMATION_ARCHITECTURE.md,966,241,must_include
+docs/frontend_app_ssot/05_ROUTE_MAP_AND_SCREEN_REGISTRY.md,1217,304,must_include
+docs/frontend_app_ssot/06_DESIGN_SYSTEM.md,1024,256,must_include
+docs/frontend_app_ssot/07_COMPONENT_CATALOG.md,986,246,must_include
+docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md,14688,3670,must_include
+docs/frontend_app_ssot/11_STORYBOOK_AND_QA_PLAN.md,788,197,must_include
+docs/frontend_app_ssot/12_SCREENSHOT_QA_PREFLIGHT_PLAN.md,5160,1290,must_include
+docs/frontend_app_ssot/21_SCAFFOLD_ONLY_SCREEN_ASSEMBLY_BOUNDARY.md,8927,2231,must_include
+ops/profile_validation_rules.yaml,2054,513,must_include
+ops/task_profiles.yaml,4379,1094,must_include

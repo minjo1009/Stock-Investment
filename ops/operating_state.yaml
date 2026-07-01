@@ -1,0 +1,20 @@
+project:
+  name: Stock-Investment
+  identity: Trading Operating System
+  updated_at: "2026-06-29"
+
+hard_boundaries:
+  strategy_status: NOT_ACCEPTED
+  deployment_status: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN_UNLESS_EXPLICITLY_ACCEPTED
+  missing_or_stale_data: UNKNOWN_OR_BLOCKER
+
+codex_governance:
+  task_registry: ops/task_registry.yaml
+  doc_registry: ops/doc_registry.yaml
+  task_profiles: ops/task_profiles.yaml
+  context_bundles: ops/context_bundles.yaml
+  dashboard: ops/dashboard/index.html

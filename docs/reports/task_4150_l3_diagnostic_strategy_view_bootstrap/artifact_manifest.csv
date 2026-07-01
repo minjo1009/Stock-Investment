@@ -1,0 +1,26 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4150 task registration and closeout,modified,TASK-4150
+ops/doc_registry.yaml,registry,TASK-4150 document registration,modified,TASK-4150
+configs/l3_diagnostic_strategy_view_bootstrap_4150.json,config,L3 bootstrap config,created,TASK-4150
+src/brain/l3_diagnostic_strategy_view_bootstrap/__init__.py,package,L3 bootstrap package marker,created,TASK-4150
+src/brain/l3_diagnostic_strategy_view_bootstrap/contracts.py,code,L3 bootstrap contracts,created,TASK-4150
+src/brain/l3_diagnostic_strategy_view_bootstrap/l2_read_view_bridge.py,code,L2 artifact bridge,created,TASK-4150
+src/brain/l3_diagnostic_strategy_view_bootstrap/coverage_policy.py,code,L0 coverage gap policy,created,TASK-4150
+src/brain/l3_diagnostic_strategy_view_bootstrap/economic_meaning_classifier.py,code,Rule-based economic meaning classifier,created,TASK-4150
+src/brain/l3_diagnostic_strategy_view_bootstrap/evidence_edge_builder.py,code,Evidence edge builder,created,TASK-4150
+src/brain/l3_diagnostic_strategy_view_bootstrap/relation_graph_aggregator.py,code,Relation graph aggregator,created,TASK-4150
+src/brain/l3_diagnostic_strategy_view_bootstrap/artifact_writer.py,code,Artifact writer helpers,created,TASK-4150
+scripts/build_l3_diagnostic_strategy_view_4150.py,script,Build L3 diagnostic strategy view artifacts,created,TASK-4150
+scripts/validate_l3_diagnostic_strategy_view_4150.py,validator,Validate L3 diagnostic strategy view artifacts,created,TASK-4150
+tests/test_l3_diagnostic_strategy_view_bootstrap_4150.py,test,Unit tests for L3 bootstrap behavior,created,TASK-4150
+data/artifacts/task_4150_l3_diagnostic_strategy_view_bootstrap/l3_input_manifest.json,artifact,Input manifest and row reconciliation,created,TASK-4150
+data/artifacts/task_4150_l3_diagnostic_strategy_view_bootstrap/l3_meanings.jsonl,artifact,L3 economic meanings,created,TASK-4150
+data/artifacts/task_4150_l3_diagnostic_strategy_view_bootstrap/l3_evidence_edges.jsonl,artifact,L3 evidence edges,created,TASK-4150
+data/artifacts/task_4150_l3_diagnostic_strategy_view_bootstrap/l3_relation_graph.json,artifact,L3 relation graph,created,TASK-4150
+data/artifacts/task_4150_l3_diagnostic_strategy_view_bootstrap/l3_blocker_gap_ledger.csv,artifact,L3 blocker and gap ledger,created,TASK-4150
+data/artifacts/task_4150_l3_diagnostic_strategy_view_bootstrap/l3_review_summary.csv,artifact,L3 review summary,created,TASK-4150
+data/artifacts/task_4150_l3_diagnostic_strategy_view_bootstrap/l3_rejected_or_review_queue.csv,artifact,L3 rejected or review queue,created,TASK-4150
+data/artifacts/task_4150_l3_diagnostic_strategy_view_bootstrap/l3_validator_report.json,artifact,L3 validator report,created,TASK-4150
+docs/reports/task_4150_l3_diagnostic_strategy_view_bootstrap/report.md,report,TASK-4150 report,created,TASK-4150
+docs/reports/task_4150_l3_diagnostic_strategy_view_bootstrap/artifact_manifest.csv,manifest,TASK-4150 artifact manifest,created,TASK-4150
+docs/reports/task_4150_l3_diagnostic_strategy_view_bootstrap/validation_results.md,validation,TASK-4150 validation results,created,TASK-4150

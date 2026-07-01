@@ -1,0 +1,5 @@
+left_path,right_path,issue,left_exists,right_exists,decision,recommendation
+config,configs,config/configs duplicate root axis,true,true,REVIEW_MERGE_OR_ARCHIVE,configs should remain canonical until imports prove otherwise
+apps,frontend,apps/frontend duplicate app root axis,true,true,REVIEW_MERGE_OR_ARCHIVE,apps likely canonical for mobile; frontend needs owner review
+.obsidian,docs/obsidian,obsidian local/app cockpit split,true,true,REVIEW_MERGE_OR_ARCHIVE,.obsidian is local app state; docs/obsidian is repo cockpit
+tasks,ops/task_registry.yaml,legacy tasks directory vs registry,true,true,REVIEW_MERGE_OR_ARCHIVE,ops/task_registry.yaml is canonical

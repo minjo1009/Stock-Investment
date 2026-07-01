@@ -1,0 +1,25 @@
+{
+  "task_id": "TASK-4142",
+  "generated_at": "2026-06-30T01:49:03Z",
+  "input_rows": 3,
+  "admitted_rows": 2,
+  "review_rows": 1,
+  "blocked_rows": 0,
+  "mapping_issue_rows": 1,
+  "dedup_clusters": 3,
+  "feature_materialization_allowed_rows": 0,
+  "trading_authority_opened_rows": 0,
+  "paper_live_broker_order_opened_rows": 0,
+  "target_families": [
+    "public_context_news_feeds",
+    "public_market_macro_news_feeds",
+    "public_newswire_feeds"
+  ],
+  "primary_effect_window": "20D",
+  "secondary_effect_windows": [
+    "1D",
+    "5D",
+    "60D"
+  ],
+  "view_path": "data/artifacts/task_4142_l2_swing_event_admission/l2_swing_event_admission_view.csv"
+}

@@ -1,0 +1,104 @@
+task_id: "TASK-4191"
+task_type: "RECLASSIFY"
+domain: "OPS_GOVERNANCE"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "docs/reports/task_4191_known_debt_root_burn_down_pass_1/**"
+    - "ops/project_hygiene_policy.yaml"
+    - "ops/project_structure_policy.yaml"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+    - "scripts/ops/validate_project_structure_policy.py"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "ops/project_hygiene_policy.yaml"
+    - "ops/project_structure_policy.yaml"
+    - "scripts/ops/validate_project_structure_policy.py"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+    - "docs/reports/task_4191_known_debt_root_burn_down_pass_1/task_result_contract.yaml"
+    - "docs/reports/task_4191_known_debt_root_burn_down_pass_1/report.md"
+    - "docs/reports/task_4191_known_debt_root_burn_down_pass_1/artifact_manifest.csv"
+    - "docs/reports/task_4191_known_debt_root_burn_down_pass_1/validation_results.md"
+    - "docs/reports/task_4191_known_debt_root_burn_down_pass_1/root_debt_decision_matrix.csv"
+outcome_unit:
+  name: "root_cleanup_policy_corrections"
+  type: "governance_classification"
+  direction: "increase"
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: true
+intended_change:
+  description: "Reclassify root entries that were incorrectly treated as cleanup debt but are still active or sensitive surfaces."
+  target:
+    value: 3
+after:
+  reclassified_count: 2
+  policy_correction_count: 3
+  active_root_reclassified_count: 2
+  absent_optional_alias_count: 1
+measurement_method:
+  commands:
+    - "python scripts/ops/validate_project_structure_policy.py"
+    - "python scripts/ops/validate_project_hygiene.py"
+    - "python scripts/ops/validate_prime_task_contracts.py --task TASK-4191"
+  comparison_rule: "config must be absent optional alias debt; frontend and tasks must be legacy-active migration surfaces; remaining actual known_debt warnings must be root DB files only"
+  same_method_before_after_required: false
+allowed_actions:
+  - "edit OPS governance policy"
+  - "write task-scoped audit artifacts"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "docs/reports/task_4191_known_debt_root_burn_down_pass_1/task_result_contract.yaml"
+    - "docs/reports/task_4191_known_debt_root_burn_down_pass_1/root_debt_decision_matrix.csv"
+    - "ops/project_hygiene_policy.yaml"
+    - "ops/project_structure_policy.yaml"
+validators:
+  required:
+    - "project_hygiene_validator"
+    - "project_structure_policy_validator"
+    - "prime_task_contract_validator"
+    - "outcome_contract_validator"
+progress_claim_policy:
+  progress_class: "GOVERNANCE_RECLASSIFICATION"
+  actual_underlying_progress: false
+  allowed_claims:
+    - "Three root entries were reclassified from known debt to active/sensitive migration surfaces."
+    - "Remaining root known debt is limited to root DB files."
+  forbidden_claims:
+    - "All root debt is resolved."
+    - "It is safe to delete tasks, config, frontend, or DB files."
+closeout_verdict:
+  selected: "VALID_RECLASSIFICATION"
+report:
+  actual_underlying_progress: false
+  progress_class: "GOVERNANCE_RECLASSIFICATION"
+  summary: "Reclassified frontend and tasks from immediate root cleanup debt into active migration-required surfaces, and corrected absent config/ into optional legacy alias debt. No physical delete or move was performed."
+  claims:
+    - "Actual root known-debt warnings now identify only root DB files."
+    - "config/ is absent and should stay absent unless a future task deliberately reintroduces it."
+next_target:
+  required: true
+  task_type: "ROOT_DB_STORAGE_DECISION"
+  outcome_unit: "root_db_known_debt_entries"
+  required_baseline: "2 root DB known debt entries"
+  required_validator: "python scripts/ops/validate_project_hygiene.py --strict-known-debt"

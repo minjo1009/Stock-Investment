@@ -1,0 +1,27 @@
+{
+  "base_config_path": "configs\\db_source_acquisition_scheduler.json",
+  "families_enabled": [
+    "gdelt_news_events",
+    "marketaux_news_free",
+    "microstructure_quotes",
+    "microstructure_trades",
+    "official_public_releases"
+  ],
+  "jobs_enabled": [
+    "official_news_sources_15m",
+    "gdelt_news_discovery_15m",
+    "marketaux_news_free_30m",
+    "microstructure_backfill_batch"
+  ],
+  "jobs_network_allowed": [
+    "official_news_sources_15m",
+    "gdelt_news_discovery_15m",
+    "marketaux_news_free_30m",
+    "microstructure_backfill_batch"
+  ],
+  "override_config_path": "configs\\local\\db_source_acquisition_scheduler.override.json",
+  "override_present": true,
+  "permissions_closed": true,
+  "secrets_detected_false": true,
+  "status_preserved": true
+}

@@ -1,0 +1,6 @@
+task_id,check,value,expected,pass,plain_language_result
+TASK-4129,registered_loop_enabled,0,0,1,base scheduler remains off
+TASK-4129,all_jobs_disabled,12/12,12/12,1,no base scheduler job is active
+TASK-4129,all_jobs_allow_network_false,12/12,12/12,1,no base scheduler job may call providers by default
+TASK-4129,stage3_scheduler_proof,REALTIME_SCHEDULER_PROOF_EXECUTED,REALTIME_SCHEDULER_PROOF_EXECUTED,1,scheduler recurrence was proven in task-local forced-due audit mode
+TASK-4129,runtime_activation_status,PROOF_VALIDATED_NOT_ACTIVATED,PROOF_VALIDATED_NOT_ACTIVATED,1,"proof exists, persistent live collection is not enabled"

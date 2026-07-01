@@ -1,0 +1,7 @@
+task_id,priority,lane,status,started,already_running,status_path,reason
+TASK-4131,1,daily_bars_remaining,START_REQUESTED,1,0,data/artifacts/l0_bar_daily_full_backfill/background_process.json,daily bars are 99% complete; finish remaining request units first
+TASK-4131,2,public_context_news_backfill,START_REQUESTED,1,0,data/artifacts/l0_public_context_news_backfill/background_process.json,context backfill is over halfway complete and has zero L1 blockers
+TASK-4131,3,public_newswire_backfill,START_REQUESTED,1,0,data/artifacts/l0_public_newswire_backfill/background_process.json,newswire backfill carries PRNewswire/GlobeNewswire/BusinessWire coverage
+TASK-4131,4,public_market_macro_news_backfill,START_REQUESTED,1,0,data/artifacts/l0_public_market_macro_news_backfill/background_process.json,market/macro backfill has the largest remaining public context surface
+TASK-4131,5,five_min_bars_long_backfill,START_REQUESTED,1,0,data/artifacts/l0_bar_full_backfill/background_process_5m.json,5m bars are the long-running low-completion lane and should keep moving in background
+TASK-4131,0,hourly_status_reporter,ALREADY_RUNNING,0,1,data/artifacts/l0_backfill_orchestration/hourly_reporter_process.json,write progress snapshots and alert rows every hour

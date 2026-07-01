@@ -37,7 +37,9 @@ param(
     [string]$PlanPath = "data/artifacts/l0_public_market_macro_news_backfill/collection_plan.json",
     [string]$StopPath = "data/artifacts/l0_public_market_macro_news_backfill/STOP",
     [string]$LogPath = "logs/l0_public_market_macro_news_backfill.log",
-    [string]$StatusPath = "data/artifacts/l0_public_market_macro_news_backfill/background_process.json"
+    [string]$StatusPath = "data/artifacts/l0_public_market_macro_news_backfill/background_process.json",
+    [string]$StdoutPath = "",
+    [string]$StderrPath = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -73,7 +75,28 @@ if ($BackfillEndDate -ne "") {
     $arguments += @("--backfill-end-date", $BackfillEndDate)
 }
 
-$process = Start-Process -FilePath "python" -ArgumentList $arguments -WorkingDirectory $Root -WindowStyle Hidden -PassThru
+if ($StdoutPath -ne "") {
+    New-Item -ItemType Directory -Force -Path (Split-Path -Parent $StdoutPath) | Out-Null
+}
+if ($StderrPath -ne "") {
+    New-Item -ItemType Directory -Force -Path (Split-Path -Parent $StderrPath) | Out-Null
+}
+
+$startParams = @{
+    FilePath = "python"
+    ArgumentList = $arguments
+    WorkingDirectory = $Root
+    WindowStyle = "Hidden"
+    PassThru = $true
+}
+if ($StdoutPath -ne "") {
+    $startParams.RedirectStandardOutput = $StdoutPath
+}
+if ($StderrPath -ne "") {
+    $startParams.RedirectStandardError = $StderrPath
+}
+
+$process = Start-Process @startParams
 $status = @{
     started_at = [DateTimeOffset]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ")
     pid = $process.Id
@@ -94,6 +117,8 @@ $status = @{
     plan_path = $PlanPath
     stop_path = $StopPath
     log_path = $LogPath
+    stdout_path = $StdoutPath
+    stderr_path = $StderrPath
     diagnostic_only_flag = 1
     trade_authority_flag = 0
     broker_mutation_permitted_flag = 0

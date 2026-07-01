@@ -1,0 +1,27 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4147 task definition and closeout state,modified,TASK-4147
+ops/doc_registry.yaml,registry,TASK-4147 document registry entries,modified,TASK-4147
+configs/l0_realtime_operational_safe_config_4147.json,config,separated safe L0 realtime config,created,TASK-4147
+docs/active/ACTIVE_SSOT_INDEX.md,active_doc,TASK-4147 active report pointer,modified,TASK-4147
+docs/active/CURRENT_TASKS.md,active_doc,TASK-4147 completed task pointer,modified,TASK-4147
+docs/active/PROJECT_STATUS.md,active_doc,TASK-4147 current status note,modified,TASK-4147
+scripts/run_l0_l2_hardening_4147.py,script,"build article packets, mapping proof, feature schema rows, backfill proof",created,TASK-4147
+scripts/validate_l0_l2_hardening_4147.py,validator,validate TASK-4147 outputs,created,TASK-4147
+scripts/run_l0_l2_hardening_once_4147.ps1,script,one-shot 15 minute scheduler target,created,TASK-4147
+scripts/install_l0_l2_hardening_scheduler_4147.ps1,script,register Windows Scheduled Task,created,TASK-4147
+docs/reports/task_4147_l0_l2_hardening_gpt_review_and_implementation/gpt_prompt.md,gpt_evidence,GPT Pro prompt,created,TASK-4147
+docs/reports/task_4147_l0_l2_hardening_gpt_review_and_implementation/gpt_response.md,gpt_evidence,GPT Pro response,created,TASK-4147
+docs/reports/task_4147_l0_l2_hardening_gpt_review_and_implementation/gpt_review_digest_ko.md,gpt_evidence,Korean digest of GPT review and Codex cut,created,TASK-4147
+docs/reports/task_4147_l0_l2_hardening_gpt_review_and_implementation/report.md,task_report,TASK-4147 report,created,TASK-4147
+docs/reports/task_4147_l0_l2_hardening_gpt_review_and_implementation/artifact_manifest.csv,artifact_manifest,TASK-4147 artifact manifest,created,TASK-4147
+docs/reports/task_4147_l0_l2_hardening_gpt_review_and_implementation/validation_results.md,validation_report,TASK-4147 validation results,created,TASK-4147
+docs/reports/task_4147_l0_l2_hardening_gpt_review_and_implementation/l0_l2_hardening_summary.json,summary,machine-readable summary,created,TASK-4147
+data/artifacts/task_4147_l0_l2_hardening_gpt_review_and_implementation/l1_article_packets.csv,artifact,row/article-level L1 packets,created,TASK-4147
+data/artifacts/task_4147_l0_l2_hardening_gpt_review_and_implementation/raw_article_packet_blockers.csv,artifact,raw files not expanded and why,created,TASK-4147
+data/artifacts/task_4147_l0_l2_hardening_gpt_review_and_implementation/newswire_mapping_review_queue.csv,artifact,newswire mapping coverage/review queue,created,TASK-4147
+data/artifacts/task_4147_l0_l2_hardening_gpt_review_and_implementation/newswire_ticker_entity_mapping_rules.json,artifact,mapping rule contract,created,TASK-4147
+data/artifacts/task_4147_l0_l2_hardening_gpt_review_and_implementation/l2_diagnostic_feature_schema.json,artifact,diagnostic feature schema,created,TASK-4147
+data/artifacts/task_4147_l0_l2_hardening_gpt_review_and_implementation/l2_diagnostic_feature_rows.csv,artifact,durable diagnostic feature rows,created,TASK-4147
+data/artifacts/task_4147_l0_l2_hardening_gpt_review_and_implementation/backfill_completion_proof.csv,artifact,backfill proof by lane,created,TASK-4147
+data/artifacts/task_4147_l0_l2_hardening_gpt_review_and_implementation/windows_task_scheduler_registration.json,runtime_evidence,Windows Task Scheduler proof,created,TASK-4147
+data/artifacts/task_4147_l0_l2_hardening_gpt_review_and_implementation/validator_report.json,artifact,machine-readable validation report,created,TASK-4147

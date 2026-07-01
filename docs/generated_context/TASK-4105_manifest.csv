@@ -1,0 +1,8 @@
+path,bytes,tokens,reason
+.codex/skills/l5-policy-action/SKILL.md,644,161,must_include
+.codex/skills/task-closeout/SKILL.md,758,189,must_include
+.codex/skills/ui-storybook-vision/SKILL.md,708,177,must_include
+AGENTS.md,1380,345,must_include
+docs/reports/task_4105_prompt_regression_eval/report.md,1130,282,optional_include
+ops/prompt_regression_cases.yaml,1076,269,must_include
+scripts/ops/validate_prompt_regression.py,1481,370,must_include

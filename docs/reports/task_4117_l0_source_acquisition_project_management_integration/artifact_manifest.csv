@@ -1,0 +1,23 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,TASK-4117 scope validators and closeout tracking,modified,TASK-4117
+ops/doc_registry.yaml,REGISTRY,TASK-4117 docs and artifacts registered,modified,TASK-4117
+configs/db_source_acquisition_scheduler.json,CONFIG,Scheduler baseline embeds active six-stage management plan,modified,TASK-4117
+docs/active/ACTIVE_SSOT_INDEX.md,SSOT,Active SSOT now points to L0 source acquisition roadmap and TASK-4116/4117 evidence,modified,TASK-4117
+docs/active/CURRENT_TASKS.md,SSOT,TASK-4117 active and TASK-4118 next source smoke task recorded,modified,TASK-4117
+docs/active/PROJECT_STATUS.md,SSOT,L0/L1 source acquisition status recorded,modified,TASK-4117
+docs/active/WORKSTREAM_MAP.md,SSOT,Data DB Scheduler workstream points to active L0 roadmap,modified,TASK-4117
+docs/architecture/l0_source_acquisition_project_management_plan.md,GOVERNANCE,Canonical six-stage L0/L1 source acquisition project-management plan,created,TASK-4117
+docs/architecture/l0_source_acquisition_operator_override_policy.md,GOVERNANCE,Operator override policy aligned to staged roadmap,modified,TASK-4117
+docs/architecture/l0_news_enablement_policy.md,GOVERNANCE,News and mapping policy aligned to staged roadmap,modified,TASK-4117
+docs/architecture/l0_microstructure_collection_policy.md,GOVERNANCE,Microstructure backfill and coverage policy aligned to staged roadmap,modified,TASK-4117
+scripts/report_l0_collection_status.py,SCRIPT,CLI output reports active management task and next stage,modified,TASK-4117
+scripts/validate_l0_source_acquisition_project_management.py,VALIDATOR,Validates scheduler docs policies active docs closed permissions and conflict cleanup,created,TASK-4117
+tools/db/source_acquisition/l0_collection_status.py,SOURCE,Status snapshot exposes scheduler management plan and implementation modes,modified,TASK-4117
+docs/reports/task_4117_l0_source_acquisition_project_management_integration/report.md,TASK_REPORT,TASK-4117 closeout report,modified,TASK-4117
+docs/reports/task_4117_l0_source_acquisition_project_management_integration/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4117 artifact manifest,modified,TASK-4117
+docs/reports/task_4117_l0_source_acquisition_project_management_integration/validation_results.md,VALIDATION_REPORT,TASK-4117 validator results,modified,TASK-4117
+docs/reports/task_4117_l0_source_acquisition_project_management_integration/l0_collection_status.json,REFERENCE,Generated L0 status snapshot with management plan,created,TASK-4117
+docs/reports/task_4117_l0_source_acquisition_project_management_integration/l0_collection_status.md,TASK_REPORT,Generated L0 status markdown with management plan,created,TASK-4117
+scripts/start_l0_public_market_macro_news_backfill-DESKTOP-2R00TB4.ps1,CLEANUP,Removed OneDrive conflict-copy L0 script,deleted,TASK-4117
+scripts/start_l0_public_market_macro_news_collector-DESKTOP-2R00TB4.ps1,CLEANUP,Removed OneDrive conflict-copy L0 script,deleted,TASK-4117
+src/data/alpaca_historical_microstructure_export-DESKTOP-2R00TB4.py,CLEANUP,Removed OneDrive conflict-copy microstructure source file,deleted,TASK-4117

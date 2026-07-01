@@ -134,7 +134,9 @@ def write_progress(path: Path, state: dict[str, Any], extra: dict[str, Any]) -> 
     payload["real_capital_permitted_flag"] = 0
     payload["updated_at"] = now_z()
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+    tmp_path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+    tmp_path.replace(path)
 
 
 def log_line(path: Path, message: str) -> None:
@@ -418,6 +420,8 @@ def source_event(
             for row in l1_rows
             if row.get("macro_context_candidate_flag") in (1, "1", True) or row.get("ticker_mapping_required_flag") in (0, "0", False)
         ),
+        "newswire_recall_review_rows": sum(1 for row in l1_rows if row.get("newswire_recall_review_flag") in (1, "1", True)),
+        "entity_candidate_review_rows": sum(1 for row in l1_rows if row.get("entity_mapping_status") == "ENTITY_CANDIDATE_REVIEW"),
         "l1_blocked_count": sum(1 for row in l1_evals if row.get("promotion_status") == "BLOCKED"),
         "error_category": error_category,
         "error_message_redacted": redact_text(error_message),

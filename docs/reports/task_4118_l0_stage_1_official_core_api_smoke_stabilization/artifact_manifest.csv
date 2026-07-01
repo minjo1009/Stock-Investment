@@ -1,0 +1,24 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,TASK-4118 task scope validators and closeout tracking,modified,TASK-4118
+ops/doc_registry.yaml,REGISTRY,TASK-4118 docs and artifacts registered,modified,TASK-4118
+configs/db_source_acquisition_scheduler.json,CONFIG,Stage 1 preflight status embedded in management plan,modified,TASK-4118
+docs/active/ACTIVE_SSOT_INDEX.md,SSOT,TASK-4118 evidence added to active SSOT index,modified,TASK-4118
+docs/active/CURRENT_TASKS.md,SSOT,TASK-4118 preflight complete and TASK-4119 next network smoke recorded,modified,TASK-4118
+docs/active/PROJECT_STATUS.md,SSOT,Stage 1 preflight status recorded,modified,TASK-4118
+docs/architecture/l0_source_acquisition_project_management_plan.md,GOVERNANCE,Stage 1 current state updated,modified,TASK-4118
+tools/db/source_acquisition/l0_collection_status.py,SOURCE,Management status line includes Stage 1 preflight status,modified,TASK-4118
+scripts/run_l0_stage1_core_api_smoke.py,SCRIPT,No-network Stage 1 official/core API smoke preflight runner,created,TASK-4118
+scripts/validate_l0_stage1_core_api_smoke.py,VALIDATOR,Validates Stage 1 smoke preflight artifacts and safety gates,created,TASK-4118
+docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/report.md,TASK_REPORT,TASK-4118 closeout report,modified,TASK-4118
+docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4118 artifact manifest,modified,TASK-4118
+docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/validation_results.md,VALIDATION_REPORT,TASK-4118 validation report,modified,TASK-4118
+docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/stage1_smoke_summary.json,REFERENCE,Stage 1 smoke preflight summary,created,TASK-4118
+docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/task_4118_scope_freeze.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 scope freeze,created,TASK-4118
+docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/task_4118_source_family_plan.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 source family plan,created,TASK-4118
+docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/task_4118_api_or_raw_call_ledger.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 preflight API/raw call ledger,created,TASK-4118
+docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/task_4118_raw_response_classification.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 raw response classification,created,TASK-4118
+docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/task_4118_normalized_source_packets.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 normalized source packet contract rows,created,TASK-4118
+docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/task_4118_decision_asof_coverage.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 decision-asof coverage decision,created,TASK-4118
+docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/task_4118_feature_admission_gate.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 feature admission gate,created,TASK-4118
+docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/task_4118_source_gap_ledger.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 source gap ledger,created,TASK-4118
+docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/task_4118_materialization_audit.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 local file materialization audit,created,TASK-4118

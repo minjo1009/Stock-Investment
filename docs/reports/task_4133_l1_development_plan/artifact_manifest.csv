@@ -1,0 +1,26 @@
+path,type,purpose,created_or_modified,task_id
+configs/l1_source_family_contracts.yaml,config,L1 source family contract and legacy surface boundary.,created,TASK-4133
+tools/db/source_acquisition/l1_bootstrap.py,code,"Builds bounded L1 normalized packet, gate, gap, and handoff candidate artifacts.",created,TASK-4133
+scripts/build_l1_source_packet_bootstrap.py,script,Runs the TASK-4133 L1 bootstrap builder.,created,TASK-4133
+scripts/validate_l1_source_packet_bootstrap.py,validator,Validates TASK-4133 L1 packet and gate safety invariants.,created,TASK-4133
+ops/task_registry.yaml,registry,"Registers TASK-4133 scope, artifacts, validators, and closeout.",modified,TASK-4133
+ops/doc_registry.yaml,registry,Registers TASK-4133 documents and artifacts.,modified,TASK-4133
+docs/active/ACTIVE_SSOT_INDEX.md,docs,Adds TASK-4133 to active L0/L1 SSOT index.,modified,TASK-4133
+docs/active/CURRENT_TASKS.md,docs,Moves TASK-4133 into completed task ledger.,modified,TASK-4133
+docs/active/PROJECT_STATUS.md,docs,Records L1 bootstrap status and non-change boundaries.,modified,TASK-4133
+docs/architecture/l0_source_acquisition_project_management_plan.md,docs,Extends staged L0/L1 roadmap with L1 gate bootstrap boundary.,modified,TASK-4133
+docs/reports/task_4133_l1_development_plan/report.md,task_report,TASK-4133 closeout report.,created,TASK-4133
+docs/reports/task_4133_l1_development_plan/artifact_manifest.csv,artifact_manifest,TASK-4133 changed/output file manifest.,created,TASK-4133
+docs/reports/task_4133_l1_development_plan/validation_results.md,validation_report,TASK-4133 validator results.,created,TASK-4133
+docs/reports/task_4133_l1_development_plan/l1_scope_and_safety_boundaries.md,reference,Human-readable L1 scope and safety boundary.,created,TASK-4133
+docs/reports/task_4133_l1_development_plan/l1_bootstrap_summary.json,reference,TASK-4133 machine-readable summary.,created,TASK-4133
+data/artifacts/task_4133_l1_development_plan/l1_packet_schema.json,data_artifact,Machine-readable L1 packet schema.,created,TASK-4133
+data/artifacts/task_4133_l1_development_plan/l1_normalized_source_packets_sample.csv,data_artifact,Bounded normalized packet sample from rebuilt L0 outputs.,created,TASK-4133
+data/artifacts/task_4133_l1_development_plan/l1_source_time_gate.csv,data_artifact,Source-time gate result rows.,created,TASK-4133
+data/artifacts/task_4133_l1_development_plan/l1_raw_integrity_gate.csv,data_artifact,Raw/file/DB integrity gate result rows.,created,TASK-4133
+data/artifacts/task_4133_l1_development_plan/l1_mapping_gate.csv,data_artifact,Mapping gate result rows.,created,TASK-4133
+data/artifacts/task_4133_l1_development_plan/l1_authority_gate.csv,data_artifact,Authority/no-trading gate result rows.,created,TASK-4133
+data/artifacts/task_4133_l1_development_plan/l1_source_gap_ledger.csv,data_artifact,Known source gaps that remain UNKNOWN/BLOCKER.,created,TASK-4133
+data/artifacts/task_4133_l1_development_plan/l1_l2_handoff_candidates_sample.csv,data_artifact,Diagnostic-only L2 candidate handoff sample; no writes.,created,TASK-4133
+data/artifacts/task_4133_l1_development_plan/l1_gate_summary.csv,data_artifact,Gate classification summary.,created,TASK-4133
+data/artifacts/task_4133_l1_development_plan/validator_report.json,data_artifact,Machine-readable validator output.,created,TASK-4133

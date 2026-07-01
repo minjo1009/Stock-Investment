@@ -1,0 +1,26 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4144 task definition and closeout state,modified,TASK-4144
+ops/doc_registry.yaml,registry,TASK-4144 document registry entries,modified,TASK-4144
+docs/active/ACTIVE_SSOT_INDEX.md,active_doc,TASK-4144 active report pointer,modified,TASK-4144
+docs/active/CURRENT_TASKS.md,active_doc,TASK-4144 completion pointer,modified,TASK-4144
+docs/active/PROJECT_STATUS.md,active_doc,TASK-4144 status note,modified,TASK-4144
+scripts/run_l1_l2_compatibility_4144.py,script,Build L1/L2 compatibility bridge,created,TASK-4144
+scripts/validate_l1_l2_compatibility_4144.py,validator,Validate L1/L2 compatibility bridge,created,TASK-4144
+docs/reports/task_4144_l1_l2_compatibility_bridge/report.md,task_report,TASK-4144 report,created,TASK-4144
+docs/reports/task_4144_l1_l2_compatibility_bridge/artifact_manifest.csv,artifact_manifest,TASK-4144 artifact manifest,created,TASK-4144
+docs/reports/task_4144_l1_l2_compatibility_bridge/validation_results.md,validation_report,TASK-4144 validation results,created,TASK-4144
+docs/reports/task_4144_l1_l2_compatibility_bridge/gpt_prompt.md,gpt_evidence,GPT Pro prompt summary,created,TASK-4144
+docs/reports/task_4144_l1_l2_compatibility_bridge/gpt_response.md,gpt_evidence,GPT Pro response capture,created,TASK-4144
+docs/reports/task_4144_l1_l2_compatibility_bridge/l1_l2_compatibility_summary.json,summary,Machine-readable TASK-4144 summary,created,TASK-4144
+data/artifacts/task_4144_l1_l2_compatibility_bridge/l1_l2_compatibility_handoff.csv,artifact,Compatibility handoff rows,created,TASK-4144
+data/artifacts/task_4144_l1_l2_compatibility_bridge/l1_l2_compatibility_matrix.csv,artifact,Compatibility matrix summary,created,TASK-4144
+data/artifacts/task_4144_l1_l2_compatibility_bridge/l1_l2_scope_gap_report.csv,artifact,Scope gap report,created,TASK-4144
+data/artifacts/task_4144_l1_l2_compatibility_bridge/l1_l2_timestamp_basis_audit.csv,artifact,Timestamp basis audit,created,TASK-4144
+data/artifacts/task_4144_l1_l2_compatibility_bridge/l2_from_compatibility_handoff.csv,artifact,L2 rows allowed from handoff,created,TASK-4144
+data/artifacts/task_4144_l1_l2_compatibility_bridge/l1_l2_block_reason_summary.csv,artifact,Block reason summary,created,TASK-4144
+data/artifacts/task_4144_l1_l2_compatibility_bridge/l1_l2_review_reason_summary.csv,artifact,Review reason summary,created,TASK-4144
+data/artifacts/task_4144_l1_l2_compatibility_bridge/l1_l2_mapping_status_summary.csv,artifact,Mapping status summary,created,TASK-4144
+data/artifacts/task_4144_l1_l2_compatibility_bridge/l1_l2_timestamp_basis_summary.csv,artifact,Timestamp basis summary,created,TASK-4144
+data/artifacts/task_4144_l1_l2_compatibility_bridge/l1_l2_compatibility_validation_report.json,artifact,Validation report JSON,created,TASK-4144
+data/artifacts/task_4144_l1_l2_compatibility_bridge/l1_l2_compatibility_validation_report.md,artifact,Validation report Markdown,created,TASK-4144
+data/artifacts/task_4144_l1_l2_compatibility_bridge/validator_report.json,artifact,Machine-readable validator report,created,TASK-4144

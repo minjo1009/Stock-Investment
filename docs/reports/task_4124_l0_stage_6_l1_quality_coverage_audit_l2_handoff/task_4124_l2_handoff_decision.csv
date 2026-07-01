@@ -1,0 +1,2 @@
+task_id,l2_handoff_decision,blockers,strict_gate_rows,proxy_feature_rows_allowed,missing_source_is_negative,assignment_uses_future_outcome,outcome_used_for_assignment,decision_note
+TASK-4124,BLOCKED,coverage_blocker,0,0,0,0,0,"Stage 5 bounded proof has raw evidence, but full 2016-to-present coverage and L2 admission gates are not satisfied."

@@ -1,0 +1,96 @@
+task_id: "TASK-4198"
+task_type: "REVIEW_ONLY"
+domain: "OPS_GOVERNANCE"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "docs/reports/task_4198_chrome_gpt_control_recovery_and_folder_tree_review_retry/**"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "docs/reports/task_4198_chrome_gpt_control_recovery_and_folder_tree_review_retry/task_result_contract.yaml"
+    - "docs/reports/task_4198_chrome_gpt_control_recovery_and_folder_tree_review_retry/report.md"
+    - "docs/reports/task_4198_chrome_gpt_control_recovery_and_folder_tree_review_retry/artifact_manifest.csv"
+    - "docs/reports/task_4198_chrome_gpt_control_recovery_and_folder_tree_review_retry/validation_results.md"
+    - "docs/reports/task_4198_chrome_gpt_control_recovery_and_folder_tree_review_retry/chrome_control_recovery_log.csv"
+    - "docs/reports/task_4198_chrome_gpt_control_recovery_and_folder_tree_review_retry/gpt_consult_retry_ledger.csv"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+outcome_unit:
+  name: "chrome_control_recovery_attempt"
+  type: "review_only_blocked"
+  direction: "increase"
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: false
+intended_change:
+  description: "Attempt Chrome control recovery and GPT Pro review retry; record the control blocker truthfully."
+  target:
+    value: 1
+measurement_method:
+  commands:
+    - "python scripts/ops/validate_prime_task_contracts.py --task TASK-4198"
+    - "python scripts/ops/validate_required_artifacts.py --task TASK-4198"
+    - "python scripts/ops/validate_task_scope.py --task TASK-4198"
+    - "python scripts/ops/validate_codex_closeout.py --task TASK-4198"
+  comparison_rule: "recovery evidence artifacts exist; no GPT review claim without captured response"
+  same_method_before_after_required: false
+allowed_actions:
+  - "edit task-scoped artifacts"
+  - "inspect Chrome/plugin state"
+  - "open a Chrome window for control recovery"
+  - "update task and doc registries"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "docs/reports/task_4198_chrome_gpt_control_recovery_and_folder_tree_review_retry/task_result_contract.yaml"
+    - "docs/reports/task_4198_chrome_gpt_control_recovery_and_folder_tree_review_retry/chrome_control_recovery_log.csv"
+    - "docs/reports/task_4198_chrome_gpt_control_recovery_and_folder_tree_review_retry/gpt_consult_retry_ledger.csv"
+validators:
+  required:
+    - "prime_task_contract_validator"
+    - "required_artifacts_validator"
+    - "task_scope_validator"
+    - "codex_closeout_validator"
+progress_claim_policy:
+  progress_class: "DIAGNOSTIC_ONLY"
+  actual_underlying_progress: false
+  allowed_claims:
+    - "Chrome/plugin health checks were run."
+    - "Chrome control remains blocked by node_repl kernel asset write failure."
+  forbidden_claims:
+    - "GPT Pro completed the review."
+    - "Chrome control was recovered."
+closeout_verdict:
+  selected: "BLOCKED_BY_UPSTREAM"
+report:
+  actual_underlying_progress: false
+  progress_class: "REVIEW_ONLY_BLOCKED"
+  summary: "Chrome and extension are healthy, but official Chrome control is blocked because node_repl JS execution fails while writing kernel assets."
+  claims:
+    - "Chrome control recovery was attempted."
+    - "GPT Pro review response was not captured."
+next_target:
+  required: true
+  task_type: "CONTROL_RECOVERY"
+  outcome_unit: "working_chrome_control_or_captured_manual_response"
+  required_baseline: "node_repl JS execution fails with kernel asset path error"
+  required_validator: "successful browser.documentation call or captured GPT response"

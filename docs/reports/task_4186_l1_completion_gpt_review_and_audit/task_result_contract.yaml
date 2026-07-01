@@ -1,0 +1,78 @@
+task_id: TASK-4186
+task_type: REVIEW_ONLY
+domain: L1_NEWSWIRE_MAPPING
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN
+  missing_stale_incomplete_data_semantics: UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE
+scope:
+  changed_paths:
+  - scripts/run_task4186_l1_completion_gpt_review_and_audit.py
+  - scripts/validate_task4186_l1_completion_gpt_review_and_audit.py
+  - data/artifacts/task_4186_l1_completion_gpt_review_and_audit/**
+  - docs/reports/task_4186_l1_completion_gpt_review_and_audit/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  allowed_paths:
+  - scripts/run_task4186_l1_completion_gpt_review_and_audit.py
+  - scripts/validate_task4186_l1_completion_gpt_review_and_audit.py
+  - data/artifacts/task_4186_l1_completion_gpt_review_and_audit/**
+  - docs/reports/task_4186_l1_completion_gpt_review_and_audit/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  forbidden_paths:
+  - broker/**
+  - live_trading/**
+  - production_orders/**
+  - secrets/**
+  - configs/broker/**
+layer_outcome_validation:
+  layer: L1
+outcome_unit:
+  name: l1_blocked_packet_count
+  direction: change
+  problem_progress_claim_allowed: false
+intended_change:
+  summary: Review and audit the L1 completion evidence without claiming new underlying progress.
+measurement_method:
+  commands:
+  - python scripts/run_task4186_l1_completion_gpt_review_and_audit.py
+  - python scripts/validate_task4186_l1_completion_gpt_review_and_audit.py
+allowed_actions:
+  - capture GPT Pro review verdict
+  - audit prior L1 task summaries and validators
+  - preserve upstream L0 warning wording
+forbidden_actions:
+  - broker mutation
+  - capital-bearing execution
+  - forced ticker mapping
+  - LLM entity inference for row mapping
+  - negative evidence conversion
+evidence_artifacts:
+  required:
+  - data/artifacts/task_4186_l1_completion_gpt_review_and_audit/task_4186_l1_completion_audit_summary.json
+  - docs/reports/task_4186_l1_completion_gpt_review_and_audit/gpt_response.md
+  - docs/reports/task_4186_l1_completion_gpt_review_and_audit/report.md
+validators:
+  required:
+  - python scripts/validate_task4186_l1_completion_gpt_review_and_audit.py
+progress_claim_policy:
+  actual_underlying_progress: false
+  missing_data_used_as_negative_evidence: false
+closeout_verdict:
+  selected: VALID_REVIEW_ONLY
+report:
+  summary: GPT Pro and local validators support L1-scope completion with the L0 public_newswire worker warning kept upstream.
+  actual_underlying_progress: false
+  claims:
+  - Review-only completion audit captured GPT Pro PASS verdict.
+next_target:
+  required: true
+  task_type: OUTCOME_CHANGE
+  outcome_unit: stale_realtime_collector_count
+  required_baseline: L0 public_newswire backfill worker blocker state
+  required_validator: L0 worker liveness and progress validator

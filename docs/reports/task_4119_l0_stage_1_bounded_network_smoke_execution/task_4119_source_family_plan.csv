@@ -1,0 +1,5 @@
+task_id,source_family,network_smoke_bound,status_authority
+TASK-4119,official_public_releases,one enabled official RSS/source,diagnostic_only
+TASK-4119,gdelt_news_events,one AAPL request maxrecords=1,discovery_only
+TASK-4119,marketaux_news_free,one AAPL request limit=1 when token present,metadata_discovery_only
+TASK-4119,microstructure_quotes_trades,one AAPL one-minute quotes/trades window,raw_microstructure_diagnostic_only

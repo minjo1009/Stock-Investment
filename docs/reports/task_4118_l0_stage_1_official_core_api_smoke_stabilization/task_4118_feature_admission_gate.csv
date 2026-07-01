@@ -1,0 +1,2 @@
+task_id,gate,status,reason
+TASK-4118,stage1_to_stage2,BLOCKED_UNTIL_NETWORK_SMOKE_EVIDENCE,Provider smoke commands must run with explicit operator network permission before cadence optimization

@@ -1,0 +1,20 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4154 task registration and closeout,modified,TASK-4154
+ops/doc_registry.yaml,registry,TASK-4154 document registration,modified,TASK-4154
+configs/l3_relation_graph_quality_guard_4154.json,config,L3 relation graph quality guard config,created,TASK-4154
+src/brain/l3_relation_graph_quality_guard_4154/__init__.py,package,L3 relation graph quality guard package marker,created,TASK-4154
+src/brain/l3_relation_graph_quality_guard_4154/builder.py,code,L3 relation graph quality guard builder,created,TASK-4154
+src/brain/l3_relation_graph_quality_guard_4154/validator.py,code,L3 relation graph quality guard validator,created,TASK-4154
+scripts/build_l3_relation_graph_quality_guard_4154.py,script,Build L3 relation graph quality guard artifacts,created,TASK-4154
+scripts/validate_l3_relation_graph_quality_guard_4154.py,validator,Validate L3 relation graph quality guard artifacts,created,TASK-4154
+tests/test_l3_relation_graph_quality_guard_4154.py,test,Unit tests for L3 relation graph quality guard behavior,created,TASK-4154
+data/artifacts/task_4154_l3_relation_graph_v2_quality_guard/l3_graph_quality_summary.csv,artifact,Graph quality summary by family,created,TASK-4154
+data/artifacts/task_4154_l3_relation_graph_v2_quality_guard/l3_graph_quality_summary.json,artifact,Graph quality summary JSON,created,TASK-4154
+data/artifacts/task_4154_l3_relation_graph_v2_quality_guard/l3_event_clusters_with_limitations.csv,artifact,Event clusters with proto identity limitations,created,TASK-4154
+data/artifacts/task_4154_l3_relation_graph_v2_quality_guard/l3_unsupported_relation_families.csv,artifact,Unsupported relation family declarations,created,TASK-4154
+data/artifacts/task_4154_l3_relation_graph_v2_quality_guard/l3_coverage_gap_summary_by_reason_source_date.csv,artifact,Coverage gap summary by reason source and date bucket,created,TASK-4154
+data/artifacts/task_4154_l3_relation_graph_v2_quality_guard/l3_l4_diagnostic_handoff_manifest.json,artifact,L3 to L4 diagnostic handoff manifest,created,TASK-4154
+data/artifacts/task_4154_l3_relation_graph_v2_quality_guard/l3_quality_guard_validation.json,artifact,L3 quality guard validation report,created,TASK-4154
+docs/reports/task_4154_l3_relation_graph_v2_quality_guard/report.md,report,TASK-4154 report,created,TASK-4154
+docs/reports/task_4154_l3_relation_graph_v2_quality_guard/artifact_manifest.csv,manifest,TASK-4154 artifact manifest,created,TASK-4154
+docs/reports/task_4154_l3_relation_graph_v2_quality_guard/validation_results.md,validation,TASK-4154 validation results,created,TASK-4154

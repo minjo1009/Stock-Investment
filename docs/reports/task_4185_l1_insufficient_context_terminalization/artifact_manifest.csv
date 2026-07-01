@@ -1,0 +1,13 @@
+path,type,purpose,created_or_modified,task_id
+scripts/run_task4185_l1_insufficient_context_terminalization.py,SCRIPT,TASK-4185 evidence generator,created,TASK-4185
+scripts/validate_task4185_l1_insufficient_context_terminalization.py,SCRIPT,TASK-4185 validator,created,TASK-4185
+data/artifacts/task_4185_l1_insufficient_context_terminalization/task_4185_l1_insufficient_context_summary.json,SUMMARY,Insufficient-context terminalization summary,created,TASK-4185
+data/artifacts/task_4185_l1_insufficient_context_terminalization/task_4185_l1_insufficient_context_terminal_ledger.csv,LEDGER,Row-level terminal blocker ledger,created,TASK-4185
+docs/reports/task_4185_l1_insufficient_context_terminalization/task_result_contract.yaml,CONTRACT,Prime task outcome contract,created,TASK-4185
+docs/reports/task_4185_l1_insufficient_context_terminalization/gpt_prompt.md,GPT_PROMPT,GPT prompt status artifact,created,TASK-4185
+docs/reports/task_4185_l1_insufficient_context_terminalization/gpt_response.md,GPT_RESPONSE,GPT review status artifact,created,TASK-4185
+docs/reports/task_4185_l1_insufficient_context_terminalization/report.md,TASK_REPORT,TASK-4185 report,created,TASK-4185
+docs/reports/task_4185_l1_insufficient_context_terminalization/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4185 artifact manifest,created,TASK-4185
+docs/reports/task_4185_l1_insufficient_context_terminalization/validation_results.md,VALIDATION_REPORT,TASK-4185 validation results,created,TASK-4185
+ops/task_registry.yaml,REGISTRY,Task registry update,created,TASK-4185
+ops/doc_registry.yaml,REGISTRY,Document registry update,created,TASK-4185

@@ -1,5 +1,0 @@
-path,category,recommendation,exists_before,action,result,items_or_bytes,workspace_path_verified,reason
-.pytest_cache,generated_cache,DELETE_SAFE,TRUE,REMOVE_RECURSIVE,DELETED,7,TRUE,Pytest cache can be regenerated
-__pycache__,generated_cache,DELETE_SAFE,TRUE,REMOVE_RECURSIVE,DELETED,1,TRUE,Python bytecode cache can be regenerated
-graphify-out/needs_update,generated_marker,DELETE_SAFE,TRUE,REMOVE_FILE,DELETED,1,TRUE,Stale Graphify marker can be regenerated
-__pycache__,post_validation_generated_cache,DELETE_SAFE,TRUE,REMOVE_RECURSIVE,DELETED_RECREATED_CACHE,1,TRUE,Validation command recreated root bytecode cache and it was removed again

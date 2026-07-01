@@ -1,0 +1,10 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,Task registry update,modified,TASK-4162
+ops/doc_registry.yaml,REGISTRY,Document registry update,modified,TASK-4162
+docs/reports/task_4162_dirty_worktree_commit_grouping/report.md,TASK_REPORT,Dirty worktree commit grouping report,created,TASK-4162
+docs/reports/task_4162_dirty_worktree_commit_grouping/artifact_manifest.csv,ARTIFACT_MANIFEST,Task artifact manifest,created,TASK-4162
+docs/reports/task_4162_dirty_worktree_commit_grouping/validation_results.md,VALIDATION_REPORT,Validation results,created,TASK-4162
+data/artifacts/task_4162_dirty_worktree_commit_grouping/stage_candidate_matrix.csv,ARTIFACT,Stage candidate matrix,created,TASK-4162
+data/artifacts/task_4162_dirty_worktree_commit_grouping/stage_candidate_paths.txt,ARTIFACT,Stage candidate path list,created,TASK-4162
+data/artifacts/task_4162_dirty_worktree_commit_grouping/deletion_review_matrix.csv,ARTIFACT,Deletion review matrix,created,TASK-4162
+docs/reports/task_4162_dirty_worktree_commit_grouping/staged_scope_summary.json,ARTIFACT,Staged scope summary after explicit git add,created,TASK-4162

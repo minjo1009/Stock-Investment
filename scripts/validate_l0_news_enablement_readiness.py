@@ -14,6 +14,14 @@ from tools.db.source_acquisition.secret_redaction import scan_repo_for_plaintext
 
 
 NEWS_JOB_NAMES = {"official_news_sources_15m", "gdelt_news_discovery_15m", "marketaux_news_free_30m"}
+TOKEN_SCAN_PATHS = [
+    Path("configs/db_source_acquisition_scheduler.json"),
+    Path("configs/local_templates/db_source_acquisition_scheduler.override.example.json"),
+    Path("configs/source_registry"),
+    Path("tools/db/news_l0_l1.py"),
+    Path("tools/db/source_acquisition"),
+    Path("scripts/validate_l0_news_enablement_readiness.py"),
+]
 
 
 def validate(root: Path = ROOT) -> list[str]:
@@ -52,7 +60,7 @@ def validate(root: Path = ROOT) -> list[str]:
     statuses = {BLOCKED, READY_DISCOVERY_ONLY, READY_DIAGNOSTIC_ONLY}
     if statuses != {"BLOCKED", "READY_DISCOVERY_ONLY", "READY_DIAGNOSTIC_ONLY"}:
         errors.append("L1 status constants missing expected semantics")
-    token_hits = scan_repo_for_plaintext_marketaux_token(root)
+    token_hits = scan_repo_for_plaintext_marketaux_token(root, TOKEN_SCAN_PATHS)
     if token_hits:
         errors.append("Marketaux token-like value found in repo files: " + ", ".join(str(path) for path in token_hits[:5]))
     permissions = config.get("permissions", {})

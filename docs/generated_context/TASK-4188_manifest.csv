@@ -1,0 +1,9 @@
+path,bytes,tokens,reason
+AGENTS.md,1380,345,must_include
+docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/report.md,84,21,optional_include
+ops/context_bundles.yaml,5418,1354,must_include
+ops/operating_state.yaml,604,151,must_include
+ops/project_hygiene_policy.yaml,4773,1193,must_include
+ops/task_profiles.yaml,4379,1094,must_include
+scripts/ops/validate_codex_closeout.py,2638,659,must_include
+scripts/ops/validate_project_hygiene.py,6048,1512,must_include

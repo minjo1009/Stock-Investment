@@ -1,0 +1,26 @@
+path,type,purpose,created_or_modified,task_id
+configs/l1_source_family_contracts.yaml,config,Adds the data-present daily raw CSV path to the L1 source family contract.,modified,TASK-4134
+tools/db/source_acquisition/l1_bootstrap.py,code,Samples existing daily raw CSV data and removes the false daily-bars gap.,modified,TASK-4134
+scripts/ingest_l0_news_to_l2.py,script,Fail-closed guard for legacy direct L0-to-L2 news ingest.,modified,TASK-4134
+scripts/validate_l1_source_packet_bootstrap.py,validator,Recognizes daily-bars data-present sampling as a pass.,modified,TASK-4134
+scripts/run_l1_data_present_hardening.py,script,Writes TASK-4134 data-present risk burn-down artifacts.,created,TASK-4134
+scripts/validate_l1_data_present_hardening.py,validator,Validates TASK-4134 data-present L1 hardening.,created,TASK-4134
+ops/task_registry.yaml,registry,Registers TASK-4134.,modified,TASK-4134
+ops/doc_registry.yaml,registry,Registers TASK-4134 docs.,modified,TASK-4134
+docs/active/ACTIVE_SSOT_INDEX.md,docs,Adds TASK-4134 to the active L0/L1 SSOT index.,modified,TASK-4134
+docs/active/CURRENT_TASKS.md,docs,Adds TASK-4134 to completed tasks.,modified,TASK-4134
+docs/active/PROJECT_STATUS.md,docs,Records TASK-4134 status and non-change boundaries.,modified,TASK-4134
+docs/architecture/l0_source_acquisition_project_management_plan.md,docs,Adds TASK-4134 L1 hardening note.,modified,TASK-4134
+docs/reports/task_4134_l1_data_present_risk_burn_down/report.md,task_report,TASK-4134 closeout report.,created,TASK-4134
+docs/reports/task_4134_l1_data_present_risk_burn_down/artifact_manifest.csv,artifact_manifest,TASK-4134 changed/output file manifest.,created,TASK-4134
+docs/reports/task_4134_l1_data_present_risk_burn_down/validation_results.md,validation_report,TASK-4134 validator results.,created,TASK-4134
+docs/reports/task_4134_l1_data_present_risk_burn_down/l1_data_present_risk_burn_down_summary.json,reference,Machine-readable TASK-4134 summary.,created,TASK-4134
+data/artifacts/task_4134_l1_data_present_risk_burn_down/l1_data_present_inventory.csv,data_artifact,Data-present source family inventory.,created,TASK-4134
+data/artifacts/task_4134_l1_data_present_risk_burn_down/l1_data_present_risk_burn_down.csv,data_artifact,Resolved and remaining data-present L1 risks.,created,TASK-4134
+data/artifacts/task_4134_l1_data_present_risk_burn_down/legacy_l2_bypass_guard.csv,data_artifact,Legacy direct L0-to-L2 guard evidence.,created,TASK-4134
+data/artifacts/task_4133_l1_development_plan/l1_normalized_source_packets_sample.csv,data_artifact,Refreshed canonical L1 bootstrap packet sample with daily bars.,modified,TASK-4134
+data/artifacts/task_4133_l1_development_plan/l1_source_gap_ledger.csv,data_artifact,Refreshed source gap ledger with false daily gap removed.,modified,TASK-4134
+data/artifacts/task_4133_l1_development_plan/l1_gate_summary.csv,data_artifact,Refreshed gate summary including daily bars.,modified,TASK-4134
+docs/reports/task_4133_l1_development_plan/report.md,task_report,Refreshed TASK-4133 report summary after daily raw path correction.,modified,TASK-4134
+docs/reports/task_4133_l1_development_plan/l1_bootstrap_summary.json,reference,Refreshed TASK-4133 machine summary after daily raw path correction.,modified,TASK-4134
+docs/reports/task_4133_l1_development_plan/validation_results.md,validation_report,Refreshed TASK-4133 validator result.,modified,TASK-4134

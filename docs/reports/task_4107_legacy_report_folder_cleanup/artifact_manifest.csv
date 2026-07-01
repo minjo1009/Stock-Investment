@@ -1,0 +1,16 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,register TASK-4107 cleanup task,modified,TASK-4107
+ops/doc_registry.yaml,REGISTRY,register TASK-4107 report docs,modified,TASK-4107
+scripts/ops/scan_legacy_report_folders.py,SCRIPT,inventory and delete legacy non-task report folders,created,TASK-4107
+docs/reports/task_4107_legacy_report_folder_cleanup/report.md,TASK_REPORT,TASK-4107 report,created,TASK-4107
+docs/reports/task_4107_legacy_report_folder_cleanup/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4107 artifact manifest,created,TASK-4107
+docs/reports/task_4107_legacy_report_folder_cleanup/validation_results.md,VALIDATION_REPORT,TASK-4107 validation results,created,TASK-4107
+docs/reports/task_4107_legacy_report_folder_cleanup/legacy_report_folder_inventory.csv,AUDIT,legacy report folder inventory,created,TASK-4107
+docs/reports/task_4107_legacy_report_folder_cleanup/deleted_legacy_report_folders.csv,AUDIT,deleted legacy report folder manifest,created,TASK-4107
+docs/reports/architecture_normalization_report.md,DELETED_OBSOLETE,deleted top-level legacy report markdown,deleted,TASK-4107
+docs/reports/backtest_strategy_status_2026-05-02.md,DELETED_OBSOLETE,deleted top-level legacy report markdown,deleted,TASK-4107
+docs/reports/pilot_kpi_gate.md,DELETED_OBSOLETE,deleted top-level legacy report markdown,deleted,TASK-4107
+docs/reports/task_089_op_validation.md,DELETED_OBSOLETE,deleted top-level legacy report markdown,deleted,TASK-4107
+docs/reports/task_result_reporting_framework.md,DELETED_OBSOLETE,deleted top-level legacy report markdown,deleted,TASK-4107
+docs/reports/ui_ux_pro_max_absorption_artifact_manifest.csv,DELETED_OBSOLETE,deleted top-level legacy report artifact manifest,deleted,TASK-4107
+docs/reports/ui_ux_pro_max_absorption_report.md,DELETED_OBSOLETE,deleted top-level legacy report markdown,deleted,TASK-4107

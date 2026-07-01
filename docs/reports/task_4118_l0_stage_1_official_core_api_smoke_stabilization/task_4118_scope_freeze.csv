@@ -1,0 +1,2 @@
+task_id,stage,scope,symbols,network_calls_made,db_mutation_made,broker_mutation_made
+TASK-4118,1,official_core_api_smoke_stabilization,"AAPL,MSFT,NVDA,AMD,QQQ for scheduler smoke scope; AAPL-only where provider bound requires",0,0,0

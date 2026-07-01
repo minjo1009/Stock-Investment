@@ -1,0 +1,16 @@
+path,type,purpose,created_or_modified,task_id
+docs/reports/task_4164_l0_runtime_consistency_recall_propagation/report.md,TASK_REPORT,L0 runtime consistency and recall propagation report,created,TASK-4164
+docs/reports/task_4164_l0_runtime_consistency_recall_propagation/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4164 artifact manifest,created,TASK-4164
+docs/reports/task_4164_l0_runtime_consistency_recall_propagation/validation_results.md,VALIDATION_REPORT,Validation commands and results,created,TASK-4164
+scripts/run_l0_public_newswire_sharded_backfill.py,SCRIPT,Recognize completed state despite non-zero exit and capture worker logs,modified,TASK-4164
+scripts/aggregate_l0_public_newswire_shards.py,SCRIPT,Apply effective completed status in aggregate failed counts,modified,TASK-4164
+scripts/run_l0_backfill_worker_recovery_4148.py,SCRIPT,Disable legacy monolithic public newswire restart,modified,TASK-4164
+scripts/reclassify_l0_public_newswire_recall_4163.py,SCRIPT,Allow task id and event-ledger raw path reclassification,modified,TASK-4164
+scripts/validate_l0_public_newswire_recall_4163.py,SCRIPT,Allow validating alternate recall overlay artifact dirs,modified,TASK-4164
+data/artifacts/task_4164_l0_runtime_consistency_recall_propagation/businesswire/l0_public_newswire_recall_overlay.csv,REFERENCE,BusinessWire event-ledger recall overlay,created,TASK-4164
+data/artifacts/task_4164_l0_runtime_consistency_recall_propagation/businesswire/recall_reclassification_summary.json,REFERENCE,BusinessWire recall reclassification summary,created,TASK-4164
+data/artifacts/task_4164_l0_runtime_consistency_recall_propagation/businesswire/validator_report.json,VALIDATION_REPORT,BusinessWire recall overlay validator report,created,TASK-4164
+data/artifacts/task_4164_l0_runtime_consistency_recall_propagation/prnewswire/l0_public_newswire_recall_overlay.csv,REFERENCE,PRNewswire event-ledger recall overlay,created,TASK-4164
+data/artifacts/task_4164_l0_runtime_consistency_recall_propagation/prnewswire/recall_reclassification_summary.json,REFERENCE,PRNewswire recall reclassification summary,created,TASK-4164
+data/artifacts/task_4164_l0_runtime_consistency_recall_propagation/prnewswire/validator_report.json,VALIDATION_REPORT,PRNewswire recall overlay validator report,created,TASK-4164
+data/artifacts/l0_public_newswire_backfill_shards/aggregate_progress.json,RUNTIME_EVIDENCE,Refreshed sharded newswire aggregate progress,modified,TASK-4164

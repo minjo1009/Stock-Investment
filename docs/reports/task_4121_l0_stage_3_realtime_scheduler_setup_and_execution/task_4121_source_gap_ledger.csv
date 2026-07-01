@@ -1,0 +1,2 @@
+task_id,gap,status,missing_source_is_negative
+TASK-4121,provider_collection_not_executed,INTENTIONAL_STAGE3_SCHEDULER_PROOF_ONLY,0

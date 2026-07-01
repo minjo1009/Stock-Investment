@@ -1,0 +1,138 @@
+task_id: "TASK-4196"
+task_type: "TERMINALIZE"
+domain: "OPS_GOVERNANCE"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/**"
+    - ".gitignore"
+    - "scripts/ops/validate_internal_cleanliness.py"
+    - "ops/project_structure_policy.yaml"
+    - "ops/project_knowledge_surfaces.yaml"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+    - "apps/ios-trader-brain/node_modules/**"
+    - "apps/ios-trader-brain/dist/**"
+    - "apps/ios-trader-brain/.expo/**"
+    - "frontend/trader-terminal/node_modules/**"
+    - "frontend/trader-terminal/dist/**"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+    - "data/**"
+    - "db/**"
+  changed_paths:
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/task_result_contract.yaml"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/report.md"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/artifact_manifest.csv"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/validation_results.md"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/gpt_pro_folder_tree_architecture_prompt.md"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/gpt_pro_folder_tree_architecture_response.md"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/gpt_pro_folder_tree_architecture_response_ascii.md"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/gpt_consult_ledger.csv"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/gpt_consult_summary.md"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/folder_tree_local_inventory.csv"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/folder_tree_decision_matrix.csv"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/cleanup_execution_log.csv"
+    - ".gitignore"
+    - "scripts/ops/validate_internal_cleanliness.py"
+    - "ops/project_structure_policy.yaml"
+    - "ops/project_knowledge_surfaces.yaml"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+outcome_unit:
+  name: "generated_dependency_build_directories_removed"
+  type: "ops_cleanup"
+  direction: "increase"
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: true
+after:
+  terminalized_count: 5
+  generated_dependency_build_dirs_deleted: 5
+  deleted_bytes: 685590714
+  blocked_legacy_axes:
+    - "frontend/"
+    - "tasks/"
+    - "trading.db"
+    - "trading-DESKTOP-2R00TB4.db"
+intended_change:
+  description: "Use GPT Pro consultation evidence and local policy to execute safe generated dependency/build cleanup, then harden governance so the clutter does not return."
+  target:
+    value: 5
+measurement_method:
+  commands:
+    - "python scripts/ops/validate_internal_cleanliness.py"
+    - "python scripts/ops/validate_knowledge_surfaces.py"
+    - "python scripts/ops/validate_project_structure_policy.py"
+    - "python scripts/ops/validate_project_hygiene.py"
+    - "python scripts/ops/validate_prime_task_contracts.py --task TASK-4196"
+    - "python scripts/ops/validate_required_artifacts.py --task TASK-4196"
+    - "python scripts/ops/validate_task_scope.py --task TASK-4196"
+    - "python scripts/ops/validate_codex_closeout.py --task TASK-4196"
+  comparison_rule: "generated dependency/build directories must be absent and registered task artifacts must validate"
+  same_method_before_after_required: false
+allowed_actions:
+  - "delete untracked generated dependency/build folders"
+  - "edit governance validators and policies"
+  - "record GPT consult evidence and cleanup logs"
+  - "update task and doc registries"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/task_result_contract.yaml"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/cleanup_execution_log.csv"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/folder_tree_decision_matrix.csv"
+    - "docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/gpt_consult_summary.md"
+validators:
+  required:
+    - "internal_cleanliness_validator"
+    - "knowledge_surface_validator"
+    - "project_structure_policy_validator"
+    - "project_hygiene_validator"
+    - "prime_task_contract_validator"
+    - "required_artifacts_validator"
+    - "task_scope_validator"
+    - "codex_closeout_validator"
+progress_claim_policy:
+  progress_class: "GOVERNANCE_CLEANUP_TERMINALIZATION"
+  actual_underlying_progress: false
+  allowed_claims:
+    - "Untracked generated dependency/build directories were deleted."
+    - "Closeout now fails if those generated folders reappear."
+    - "frontend/ and tasks/ remain active legacy migration surfaces, not immediate delete targets."
+  forbidden_claims:
+    - "Strategy acceptance changed."
+    - "Deployment readiness changed."
+    - "Root DB files are safe to delete."
+closeout_verdict:
+  selected: "VALID_TERMINALIZATION"
+report:
+  actual_underlying_progress: false
+  progress_class: "GOVERNANCE_CLEANUP_TERMINALIZATION"
+  summary: "Deleted five untracked generated dependency/build folders, hardened internal cleanliness validation, and recorded folder-tree decisions for active legacy and blocked surfaces."
+  claims:
+    - "Generated dependency/build folders were removed from apps/ios-trader-brain and frontend/trader-terminal."
+    - "Internal cleanliness validation now prevents recurrence."
+    - "GPT Pro consult was attempted and partially captured; the stalled browser response is recorded truthfully."
+next_target:
+  required: true
+  task_type: "MIGRATION"
+  outcome_unit: "legacy_active_surfaces"
+  required_baseline: "frontend/ and tasks/ remain active legacy migration-required surfaces"
+  required_validator: "reference graph plus owner-reviewed migration validator"

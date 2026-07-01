@@ -1,5 +1,0 @@
-outs:
-- md5: 70367f4a3a98c0294818c7a72c0a1e78
-  size: 354964924
-  hash: md5
-  path: raw_native_decision_snapshot_log.csv

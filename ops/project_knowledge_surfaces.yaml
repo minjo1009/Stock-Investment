@@ -1,0 +1,152 @@
+version: 1
+updated_at: "2026-07-02"
+created_by_task: TASK-4192
+
+purpose:
+  - make skills, prompts, harnesses, tools, and docs discoverable by future sessions
+  - prevent duplicate skill or harness surfaces from growing in parallel
+  - keep runtime-sensitive import paths stable while providing a clearer governance map
+
+canonical_surfaces:
+  governance_prompts:
+    canonical_dir: ops/prompts
+    root_alias: prompts
+    root_alias_status: removed_legacy_alias
+    rule: "Do not create new root prompts/. Put operating prompts under ops/prompts and register them here."
+  codex_skills:
+    canonical_dir: .codex/skills
+    layout: flat_runtime_skill_dirs
+    rule: "Do not nest or rename skill directories unless all context bundles, doc registry rows, and Codex discovery references are migrated in the same task."
+  ops_harness:
+    canonical_dir: scripts/ops
+    rule: "Project governance validators and closeout harnesses live here."
+  layer_harness:
+    canonical_dir: scripts
+    rule: "Layer run/validate wrappers may live in scripts when they are named by layer, e.g. run_l0_* or validate_l4_*."
+  source_tools:
+    canonical_dir: tools/db
+    owner_profile: L0_L1_DATA_PIPELINE
+    rule: "Do not rename tools/db while tools.db imports are active. Treat it as an L0/L1 source acquisition package, not generic miscellaneous tools."
+  app_surfaces:
+    canonical_dir: apps
+    rule: "User-facing applications live under apps; legacy frontend remains separately classified until migrated. Generated dependencies, build output, and local app state such as node_modules, dist, and .expo are not source surfaces."
+  source_code:
+    canonical_dir: src
+    rule: "Reusable engine/library code lives under src, not scripts or tools."
+  contracts:
+    canonical_dir: schemas
+    rule: "Machine-readable contracts and schemas live under schemas."
+  documents:
+    canonical_dir: docs
+    rule: "Human-readable SSOT, architecture, ownership, reports, generated context, Obsidian, and LLM wiki live under docs."
+  artifacts:
+    canonical_dir: data
+    rule: "Source/runtime artifacts live under data and are not cleanup targets without owner review."
+
+skills:
+  - name: context-bundle-builder
+    path: .codex/skills/context-bundle-builder/SKILL.md
+    category: governance_harness
+    owner_profile: DOCS_GOVERNANCE
+    layer: GOV
+    primary_use: build bounded context bundles before large tasks
+  - name: docs-governance
+    path: .codex/skills/docs-governance/SKILL.md
+    category: governance_harness
+    owner_profile: DOCS_GOVERNANCE
+    layer: GOV
+    primary_use: create, update, archive, and validate project documents
+  - name: task-closeout
+    path: .codex/skills/task-closeout/SKILL.md
+    category: governance_harness
+    owner_profile: TASK_CLOSEOUT
+    layer: GOV
+    primary_use: close tasks only after registries, artifacts, validators, and reports are complete
+  - name: l0-l1-data-pipeline
+    path: .codex/skills/l0-l1-data-pipeline/SKILL.md
+    category: layer_skill
+    owner_profile: L0_L1_DATA_PIPELINE
+    layer: L0-L1
+    primary_use: raw source acquisition, normalization, provenance, freshness, and data contracts
+  - name: l2-interpretation
+    path: .codex/skills/l2-interpretation/SKILL.md
+    category: layer_skill
+    owner_profile: L2_INTERPRETATION
+    layer: L2
+    primary_use: convert source data into economic meaning without promotion, sizing, or execution
+  - name: l3-relationship
+    path: .codex/skills/l3-relationship/SKILL.md
+    category: layer_skill
+    owner_profile: L3_RELATIONSHIP
+    layer: L3
+    primary_use: validate economic relationships, chains, contradictions, and break conditions
+  - name: l4-thesis-bundle
+    path: .codex/skills/l4-thesis-bundle/SKILL.md
+    category: layer_skill
+    owner_profile: L4_THESIS_BUNDLE
+    layer: L4
+    primary_use: construct and validate institutional thesis bundles
+  - name: l5-policy-action
+    path: .codex/skills/l5-policy-action/SKILL.md
+    category: layer_skill
+    owner_profile: L5_POLICY_ACTION
+    layer: L5
+    primary_use: translate thesis state into review-only policy actions
+  - name: l6-execution-safety
+    path: .codex/skills/l6-execution-safety/SKILL.md
+    category: layer_skill
+    owner_profile: L6_EXECUTION_SAFETY
+    layer: L6
+    primary_use: execution safety, broker truth separation, order lifecycle visibility, and permission audits
+  - name: ui-storybook-vision
+    path: .codex/skills/ui-storybook-vision/SKILL.md
+    category: layer_skill
+    owner_profile: UI_STORYBOOK_VISION
+    layer: UI
+    primary_use: Expo/React Native UI implementation with Storybook and screenshot QA
+
+prompts:
+  - name: task-create
+    path: ops/prompts/task-create.md
+    owner_profile: DOCS_GOVERNANCE
+    layer: GOV
+    primary_use: task title, layer, work-type, and acceptance-criteria template
+  - name: phase-create
+    path: ops/prompts/phase-create.md
+    owner_profile: DOCS_GOVERNANCE
+    layer: GOV
+    primary_use: phase planning, task inventory, and exit-state template
+
+harness_groups:
+  - name: governance_closeout
+    path_globs:
+      - scripts/ops/validate_*.py
+      - scripts/ops/build_context_bundle.py
+    owner_profile: DOCS_GOVERNANCE
+    authority: closeout_gate
+  - name: l0_l1_source_acquisition
+    path_globs:
+      - scripts/run_l0_*.py
+      - scripts/run_l1_*.py
+      - scripts/validate_l0_*.py
+      - scripts/validate_l1_*.py
+      - tools/db/source_acquisition/**
+      - tools/db/run_source_acquisition_once.py
+      - tools/db/news_l0_l1.py
+    owner_profile: L0_L1_DATA_PIPELINE
+    authority: diagnostic_source_pipeline
+  - name: ui_storybook_vision
+    path_globs:
+      - apps/ios-trader-brain/**
+      - docs/frontend_app_ssot/**
+    owner_profile: UI_STORYBOOK_VISION
+    authority: read_only_frontend_qa
+
+anti_duplication_rules:
+  - "Do not create root skills/; use .codex/skills for runnable project skills."
+  - "Do not create root prompts/; use ops/prompts for governance prompts."
+  - "Do not create a second generic tools folder; classify new tools by owner profile before adding them."
+  - "Do not put reusable library code in scripts; scripts are orchestration and validation entry points."
+  - "Do not put task reports outside docs/reports/task_<id>_<slug>/."
+  - "Do not treat docs/obsidian or docs/llm_wiki as source truth; they are navigation layers."
+  - "Do not keep node_modules, dist, .expo, or equivalent generated dependency/build folders as managed source; recreate them from lockfiles or app tooling."

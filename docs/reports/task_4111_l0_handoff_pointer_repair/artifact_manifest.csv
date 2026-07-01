@@ -1,0 +1,10 @@
+path,type,purpose,created_or_modified,task_id
+L0_DESKTOP_CODEX_HANDOFF.md,GOVERNANCE_POINTER,replace missing handoff target with supersession pointer,modified,TASK-4111
+ops/task_registry.yaml,REGISTRY,register TASK-4111 scope and closeout,modified,TASK-4111
+ops/doc_registry.yaml,REGISTRY,register TASK-4111 docs,modified,TASK-4111
+ops/dashboard/index.html,DASHBOARD,refresh dashboard with TASK-4111 status,modified,TASK-4111
+ops/dashboard/dashboard_summary.json,DASHBOARD,refresh dashboard summary with TASK-4111 status,modified,TASK-4111
+docs/reports/task_4111_l0_handoff_pointer_repair/report.md,TASK_ARTIFACT,task report,created,TASK-4111
+docs/reports/task_4111_l0_handoff_pointer_repair/artifact_manifest.csv,TASK_ARTIFACT,artifact manifest,created,TASK-4111
+docs/reports/task_4111_l0_handoff_pointer_repair/validation_results.md,TASK_ARTIFACT,validation report,created,TASK-4111
+docs/reports/task_4111_l0_handoff_pointer_repair/l0_collection_host_migration_handoff_supersession.md,TASK_ARTIFACT,current supersession for missing L0 handoff target,created,TASK-4111

@@ -1,0 +1,12 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4149 task registration and closeout,modified,TASK-4149
+ops/doc_registry.yaml,registry,TASK-4149 document registration,modified,TASK-4149
+scripts/validate_task_4149_l3_gpt_design_review.py,validator,validate GPT Pro L3 design review capture,created,TASK-4149
+docs/reports/task_4149_l3_diagnostic_strategy_view_bootstrap/report.md,report,TASK-4149 closeout report,created,TASK-4149
+docs/reports/task_4149_l3_diagnostic_strategy_view_bootstrap/gpt_prompt.md,prompt,GPT Pro consult prompt,created,TASK-4149
+docs/reports/task_4149_l3_diagnostic_strategy_view_bootstrap/l3_gpt_local_context_packet.md,context,GPT local context packet,created,TASK-4149
+docs/reports/task_4149_l3_diagnostic_strategy_view_bootstrap/gpt_response.md,response,Captured GPT Pro response,created,TASK-4149
+docs/reports/task_4149_l3_diagnostic_strategy_view_bootstrap/gpt_review_digest_ko.md,digest,Korean GPT review digest,created,TASK-4149
+docs/reports/task_4149_l3_diagnostic_strategy_view_bootstrap/gpt_capture_meta.json,metadata,GPT capture metadata,created,TASK-4149
+docs/reports/task_4149_l3_diagnostic_strategy_view_bootstrap/artifact_manifest.csv,manifest,Task artifact manifest,created,TASK-4149
+docs/reports/task_4149_l3_diagnostic_strategy_view_bootstrap/validation_results.md,validation,Validator output,created,TASK-4149

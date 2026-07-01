@@ -1,0 +1,14 @@
+path,type,purpose,created_or_modified,task_id
+scripts/run_task4184_l1_source_recall_parser_burn_down.py,SCRIPT,TASK-4184 evidence generator,created,TASK-4184
+scripts/validate_task4184_l1_source_recall_parser_burn_down.py,SCRIPT,TASK-4184 validator,created,TASK-4184
+data/artifacts/task_4184_l1_source_recall_parser_burn_down/task_4184_l1_source_recall_summary.json,SUMMARY,Source recall burn-down summary,created,TASK-4184
+data/artifacts/task_4184_l1_source_recall_parser_burn_down/task_4184_l1_source_recall_decision_ledger.csv,LEDGER,Row-level source recall terminal decisions,created,TASK-4184
+data/artifacts/task_4184_l1_source_recall_parser_burn_down/task_4184_l1_source_recall_entity_rollup.csv,ROLLUP,Entity/source recall status rollup,created,TASK-4184
+docs/reports/task_4184_l1_source_recall_parser_burn_down/task_result_contract.yaml,CONTRACT,Prime task outcome contract,created,TASK-4184
+docs/reports/task_4184_l1_source_recall_parser_burn_down/gpt_prompt.md,GPT_PROMPT,GPT prompt status artifact,created,TASK-4184
+docs/reports/task_4184_l1_source_recall_parser_burn_down/gpt_response.md,GPT_RESPONSE,GPT review status artifact,created,TASK-4184
+docs/reports/task_4184_l1_source_recall_parser_burn_down/report.md,TASK_REPORT,TASK-4184 report,created,TASK-4184
+docs/reports/task_4184_l1_source_recall_parser_burn_down/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4184 artifact manifest,created,TASK-4184
+docs/reports/task_4184_l1_source_recall_parser_burn_down/validation_results.md,VALIDATION_REPORT,TASK-4184 validation results,created,TASK-4184
+ops/task_registry.yaml,REGISTRY,Task registry update,created,TASK-4184
+ops/doc_registry.yaml,REGISTRY,Document registry update,created,TASK-4184

@@ -1,0 +1,6 @@
+task_id,mapping_check,plain_language_rule,task_4126_mapping_blocker_rows,current_status,current_pass_for_l2_context,current_pass_for_trading_feature
+TASK-4129,macro_context_bypass,ticker mapping may be skipped only for explicit macro/context rows,0,POLICY_DEFINED_AUDIT_READY,1,0
+TASK-4129,ticker_specific_required,ticker-specific news must carry explicit symbol/entity evidence,0,POLICY_DEFINED_AUDIT_READY,1,0
+TASK-4129,ambiguous_alias_block,ambiguous aliases and ticker/name collisions stay blocked,0,POLICY_DEFINED_AUDIT_READY,1,0
+TASK-4129,source_link_support,source URL/headline/body evidence must support the mapped topic/entity,0,POLICY_DEFINED_AUDIT_READY,1,0
+TASK-4129,trading_precision_audit,"precision, false-positive, and collision audit is required before trading features",0,POLICY_DEFINED_AUDIT_READY,1,0

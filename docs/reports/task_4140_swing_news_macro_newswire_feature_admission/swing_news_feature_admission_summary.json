@@ -1,0 +1,13 @@
+{
+  "task_id": "TASK-4140",
+  "generated_at": "2026-06-30T00:38:41Z",
+  "strategy_timeframe": "swing_daily",
+  "average_holding_period": "about_1_month",
+  "swing_feature_candidate_rows": 3,
+  "candidate_rows_with_intraday_timestamp_block": 0,
+  "candidate_rows_requiring_minute_second_timestamp": 0,
+  "feature_materialization_allowed_now_rows": 0,
+  "primary_effect_window": "20D",
+  "paper_live_broker_order_opened": false,
+  "trading_authority_opened": false
+}

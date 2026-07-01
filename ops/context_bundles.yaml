@@ -1,0 +1,249 @@
+version: 1
+updated_at: "2026-06-29"
+
+defaults:
+  max_tokens: 20000
+  tokenizer: tiktoken
+  encoding: cl100k_base
+  include_file_headers: true
+  fail_on_token_budget_exceeded: true
+  reject_codex_read_never: true
+  reject_superseded_by_default: true
+
+bundles:
+  TASK_4100:
+    task_id: TASK-4100
+    profile: DOCS_GOVERNANCE
+    max_tokens: 22000
+    must_include:
+      - AGENTS.md
+      - ops/operating_state.yaml
+      - ops/task_registry.yaml
+      - ops/doc_registry.yaml
+      - ops/task_profiles.yaml
+      - ops/context_bundles.yaml
+    optional_include:
+      - docs/reports/task_4100_codex_governance_bootstrap/report.md
+    exclude:
+      - node_modules/**
+      - .git/**
+      - data/**
+      - db/**
+      - secrets/**
+      - screenshots/**
+      - docs/archive/**
+
+  UI_STORYBOOK_VISION:
+    profile: UI_STORYBOOK_VISION
+    max_tokens: 24000
+    must_include:
+      - AGENTS.md
+      - ops/task_profiles.yaml
+      - ops/profile_validation_rules.yaml
+      - docs/frontend_app_ssot/00_PROJECT_SSOT.md
+      - docs/frontend_app_ssot/01_ACTIVE_FRONTEND_TARGET_AND_STACK_DECISION.md
+      - docs/frontend_app_ssot/02_INFORMATION_ARCHITECTURE.md
+      - docs/frontend_app_ssot/05_ROUTE_MAP_AND_SCREEN_REGISTRY.md
+      - docs/frontend_app_ssot/06_DESIGN_SYSTEM.md
+      - docs/frontend_app_ssot/07_COMPONENT_CATALOG.md
+      - docs/frontend_app_ssot/08_FRONTEND_READ_MODEL_CONTRACT.md
+      - docs/frontend_app_ssot/11_STORYBOOK_AND_QA_PLAN.md
+      - docs/frontend_app_ssot/12_SCREENSHOT_QA_PREFLIGHT_PLAN.md
+      - docs/frontend_app_ssot/21_SCAFFOLD_ONLY_SCREEN_ASSEMBLY_BOUNDARY.md
+    exclude:
+      - docs/archive/**
+      - docs/reports/**
+      - node_modules/**
+      - data/**
+      - db/**
+
+  TASK_4101:
+    task_id: TASK-4101
+    profile: UI_STORYBOOK_VISION
+    max_tokens: 24000
+    must_include:
+      - AGENTS.md
+      - ops/task_profiles.yaml
+      - ops/context_bundles.yaml
+      - ops/profile_validation_rules.yaml
+      - docs/frontend_app_ssot/00_PROJECT_SSOT.md
+      - docs/frontend_app_ssot/07_COMPONENT_CATALOG.md
+      - docs/frontend_app_ssot/11_STORYBOOK_AND_QA_PLAN.md
+      - docs/frontend_app_ssot/12_SCREENSHOT_QA_PREFLIGHT_PLAN.md
+    optional_include:
+      - docs/reports/task_4101_context_bundle_hardening/report.md
+    exclude:
+      - docs/archive/**
+      - docs/reports/**
+      - node_modules/**
+      - data/**
+      - db/**
+
+  TASK_4102:
+    task_id: TASK-4102
+    profile: L4_THESIS_BUNDLE
+    max_tokens: 22000
+    must_include:
+      - AGENTS.md
+      - ops/task_profiles.yaml
+      - ops/profile_validation_rules.yaml
+      - .codex/skills/l4-thesis-bundle/SKILL.md
+    optional_include:
+      - docs/reports/task_4102_l4_profile_validator_hardening/report.md
+    exclude:
+      - docs/archive/**
+      - node_modules/**
+      - data/**
+      - db/**
+
+  TASK_4103:
+    task_id: TASK-4103
+    profile: L5_POLICY_ACTION
+    max_tokens: 22000
+    must_include:
+      - AGENTS.md
+      - ops/task_profiles.yaml
+      - ops/profile_validation_rules.yaml
+      - .codex/skills/l5-policy-action/SKILL.md
+    optional_include:
+      - docs/reports/task_4103_l5_policy_action_validator_hardening/report.md
+    exclude:
+      - docs/archive/**
+      - node_modules/**
+      - data/**
+      - db/**
+
+  TASK_4104:
+    task_id: TASK-4104
+    profile: DOCS_GOVERNANCE
+    max_tokens: 22000
+    must_include:
+      - AGENTS.md
+      - ops/task_registry.yaml
+      - ops/doc_registry.yaml
+      - ops/operating_state.yaml
+      - scripts/ops/render_ops_dashboard.py
+      - scripts/ops/validate_dashboard.py
+    optional_include:
+      - docs/reports/task_4104_mission_control_dashboard_v1/report.md
+    exclude:
+      - docs/archive/**
+      - node_modules/**
+      - data/**
+      - db/**
+
+  TASK_4105:
+    task_id: TASK-4105
+    profile: DOCS_GOVERNANCE
+    max_tokens: 22000
+    must_include:
+      - AGENTS.md
+      - ops/prompt_regression_cases.yaml
+      - scripts/ops/validate_prompt_regression.py
+      - .codex/skills/task-closeout/SKILL.md
+      - .codex/skills/ui-storybook-vision/SKILL.md
+      - .codex/skills/l5-policy-action/SKILL.md
+    optional_include:
+      - docs/reports/task_4105_prompt_regression_eval/report.md
+    exclude:
+      - docs/archive/**
+      - node_modules/**
+      - data/**
+      - db/**
+
+  TASK_4188:
+    task_id: TASK-4188
+    profile: DOCS_GOVERNANCE
+    max_tokens: 22000
+    must_include:
+      - AGENTS.md
+      - ops/operating_state.yaml
+      - ops/task_profiles.yaml
+      - ops/context_bundles.yaml
+      - ops/project_hygiene_policy.yaml
+      - scripts/ops/validate_project_hygiene.py
+      - scripts/ops/validate_codex_closeout.py
+    optional_include:
+      - docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/report.md
+    exclude:
+      - docs/archive/**
+      - node_modules/**
+      - data/**
+      - db/**
+
+  TASK_4190:
+    task_id: TASK-4190
+    profile: L0_L1_DATA_PIPELINE
+    max_tokens: 24000
+    must_include:
+      - AGENTS.md
+      - ops/task_profiles.yaml
+      - ops/context_bundles.yaml
+      - ops/l0_operating_contract.yaml
+      - data/artifacts/l0_operating_status/current_l0_status.json
+      - data/artifacts/l0_operating_status/current_l0_context.md
+      - data/artifacts/l0_operating_status/l0_operating_manifest.json
+      - configs/l0_realtime_operational_safe_config_4147.json
+      - docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/report.md
+    optional_include:
+      - docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/gpt_response.md
+    exclude:
+      - docs/archive/**
+      - node_modules/**
+      - db/**
+      - secrets/**
+
+  TASK_4189:
+    task_id: TASK-4189
+    profile: DOCS_GOVERNANCE
+    max_tokens: 24000
+    must_include:
+      - AGENTS.md
+      - ops/operating_state.yaml
+      - ops/task_profiles.yaml
+      - ops/context_bundles.yaml
+      - ops/project_hygiene_policy.yaml
+      - ops/project_structure_policy.yaml
+      - scripts/ops/validate_project_hygiene.py
+      - scripts/ops/validate_project_structure_policy.py
+      - scripts/ops/validate_codex_closeout.py
+      - docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/report.md
+    optional_include:
+      - docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/cleanup_summary.json
+      - docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/duplicate_axis_review.csv
+      - docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/docs_surface_inventory.csv
+    exclude:
+      - docs/archive/**
+      - node_modules/**
+      - data/**
+      - db/**
+
+  L4_THESIS_BUNDLE:
+    profile: L4_THESIS_BUNDLE
+    max_tokens: 24000
+    must_include:
+      - AGENTS.md
+      - ops/task_profiles.yaml
+      - docs/**/l4*
+      - src/**/l4*
+      - scripts/**/l4*
+    exclude:
+      - docs/archive/**
+      - node_modules/**
+      - data/**
+      - db/**
+
+  L5_POLICY_ACTION:
+    profile: L5_POLICY_ACTION
+    max_tokens: 24000
+    must_include:
+      - AGENTS.md
+      - ops/task_profiles.yaml
+      - docs/**/l5*
+      - src/**/l5*
+      - scripts/**/l5*
+    exclude:
+      - docs/archive/**
+      - node_modules/**
+      - data/**
+      - db/**

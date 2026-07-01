@@ -1,0 +1,14 @@
+{
+  "article_count": 0,
+  "byte_count": 35,
+  "captured_at": "2026-06-29T07:15:51.161846Z",
+  "content_type": "text/html; charset=utf-8",
+  "json_parse_status": "EMPTY_OR_NON_JSON",
+  "provider": "gdelt_news_events",
+  "response_sha256": "08262311679bcb5d191f1374698909041dc4a026daea856e50f63c3ace0814b8",
+  "secret_value_logged_flag": 0,
+  "source_id": "AAPL",
+  "status_code": 200,
+  "text_preview": "The specified phrase is too short.\n",
+  "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22AAPL%22&mode=ArtList&format=json&maxrecords=1&timespan=15m&sort=DateDesc"
+}

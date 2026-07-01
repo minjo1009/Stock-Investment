@@ -1,0 +1,19 @@
+{
+  "base_config_path": "configs\\db_source_acquisition_scheduler.json",
+  "families_enabled": [
+    "gdelt_news_events",
+    "marketaux_news_free",
+    "official_public_releases"
+  ],
+  "jobs_enabled": [
+    "official_news_sources_15m",
+    "gdelt_news_discovery_15m",
+    "marketaux_news_free_30m"
+  ],
+  "jobs_network_allowed": [],
+  "override_config_path": "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\docs\\reports\\task_4121_l0_stage_3_realtime_scheduler_setup_and_execution\\stage3_scheduler_proof_override.json",
+  "override_present": true,
+  "permissions_closed": true,
+  "secrets_detected_false": true,
+  "status_preserved": true
+}

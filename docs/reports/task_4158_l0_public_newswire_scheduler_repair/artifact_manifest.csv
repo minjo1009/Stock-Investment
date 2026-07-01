@@ -1,0 +1,14 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,Task registry update,modified,TASK-4158
+ops/doc_registry.yaml,REGISTRY,Document registry update,modified,TASK-4158
+docs/reports/task_4158_l0_public_newswire_scheduler_repair/report.md,TASK_REPORT,Closeout report for source lane scheduler repair,created,TASK-4158
+docs/reports/task_4158_l0_public_newswire_scheduler_repair/artifact_manifest.csv,ARTIFACT_MANIFEST,Task artifact manifest,created,TASK-4158
+docs/reports/task_4158_l0_public_newswire_scheduler_repair/validation_results.md,VALIDATION_REPORT,Validator and runtime evidence,created,TASK-4158
+tools/db/source_acquisition/public_newswire_shards.py,CODE,Inventory now preserves local shard completion state,modified,TASK-4158
+scripts/run_l0_public_newswire_sharded_backfill.py,CODE,Round-robin source scheduling lanes and stale worker recycle,modified,TASK-4158
+scripts/run_l0_public_newswire_sharded_progress_monitor.ps1,CODE,TaskId parameter for monitor attribution,modified,TASK-4158
+tests/test_l0_public_newswire_sharded_backfill.py,TEST,Round-robin scheduling regression test,modified,TASK-4158
+data/artifacts/l0_public_newswire_backfill_shards/background_process.json,RUNTIME_ARTIFACT,New laned background collector process metadata,modified,TASK-4158
+data/artifacts/l0_public_newswire_backfill_shards/aggregate_progress.json,RUNTIME_ARTIFACT,Aggregated progress after scheduler repair,modified,TASK-4158
+data/artifacts/task_4158_l0_public_newswire_scheduler_repair/progress_monitor_process.json,RUNTIME_ARTIFACT,TASK-4158 progress monitor process metadata,created,TASK-4158
+data/artifacts/task_4158_l0_public_newswire_scheduler_repair/progress_monitor_status.json,RUNTIME_ARTIFACT,TASK-4158 latest progress monitor status,created,TASK-4158

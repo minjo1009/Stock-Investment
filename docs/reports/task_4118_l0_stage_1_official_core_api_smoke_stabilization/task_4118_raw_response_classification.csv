@@ -1,0 +1,6 @@
+task_id,source_family,raw_response_status,blocker_status,reason
+TASK-4118,scheduler,NOT_REQUESTED_PREFLIGHT,,base scheduler remains disabled and diagnostic-only
+TASK-4118,official_public_releases,NOT_REQUESTED_PREFLIGHT,,enabled official sources=7; synthetic L1 contract rows ready
+TASK-4118,gdelt_news_events,NOT_REQUESTED_PREFLIGHT,,bounded registry and discovery-only L1 contract pass
+TASK-4118,marketaux_news_free,NOT_REQUESTED_PREFLIGHT,,"quota registry, token audit, and discovery-only L1 contract pass"
+TASK-4118,microstructure_quotes_trades,NOT_REQUESTED_PREFLIGHT,,Alpaca credential presence detected without logging secret values

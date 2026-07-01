@@ -1,8 +1,0 @@
-official_primary:
-  half_life_minutes: 1440
-
-news_discovery_proxy:
-  half_life_minutes: 240
-
-market_microstructure:
-  half_life_minutes: 30

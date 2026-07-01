@@ -1,0 +1,18 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,TASK-4122 task scope validators and closeout tracking,modified,TASK-4122
+ops/doc_registry.yaml,REGISTRY,TASK-4122 docs and artifacts registered,modified,TASK-4122
+configs/db_source_acquisition_scheduler.json,CONFIG,Stage 4 backfill metadata and Stage 5 next recorded,modified,TASK-4122
+docs/active/ACTIVE_SSOT_INDEX.md,SSOT,Stage 4 report registered as active evidence,modified,TASK-4122
+docs/active/CURRENT_TASKS.md,SSOT,TASK-4122 completed and TASK-4123 next recorded,modified,TASK-4122
+docs/active/PROJECT_STATUS.md,SSOT,Stage 4 completed and Stage 5 next recorded,modified,TASK-4122
+docs/architecture/l0_source_acquisition_project_management_plan.md,GOVERNANCE,Stage 4 current state and next Stage 5 updated,modified,TASK-4122
+scripts/run_task646_full_microstructure_backfill.py,SCRIPT,Microstructure chunk_minutes now controls chunk window size,modified,TASK-4122
+scripts/optimize_l0_stage4_historical_backfill.py,SCRIPT,Stage 4 backfill optimization materializer,created,TASK-4122
+scripts/validate_l0_stage4_historical_backfill.py,VALIDATOR,Stage 4 backfill optimization validator,created,TASK-4122
+docs/reports/task_4122_l0_stage_4_historical_backfill_optimization/report.md,TASK_REPORT,TASK-4122 closeout report,created,TASK-4122
+docs/reports/task_4122_l0_stage_4_historical_backfill_optimization/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4122 artifact manifest,created,TASK-4122
+docs/reports/task_4122_l0_stage_4_historical_backfill_optimization/validation_results.md,VALIDATION_REPORT,TASK-4122 validation report,created,TASK-4122
+docs/reports/task_4122_l0_stage_4_historical_backfill_optimization/stage4_backfill_optimization_summary.json,REFERENCE,Stage 4 optimization summary,created,TASK-4122
+docs/reports/task_4122_l0_stage_4_historical_backfill_optimization/task_4122_backfill_optimization_plan.csv,REFERENCE,Stage 4 optimized backfill plan,created,TASK-4122
+docs/reports/task_4122_l0_stage_4_historical_backfill_optimization/task_4122_backfill_blocker_ledger.csv,REFERENCE,Stage 4 backfill blocker ledger,created,TASK-4122
+docs/reports/task_4122_l0_stage_4_historical_backfill_optimization/task_4122_backfill_coverage_audit_plan.csv,REFERENCE,Stage 4 coverage audit plan,created,TASK-4122

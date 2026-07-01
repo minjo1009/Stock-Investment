@@ -1,0 +1,4 @@
+task_id,job_name,coverage_artifact_policy,raw_ledger_required,checkpoint_required,source_time_required,feature_admission_allowed,l2_handoff_allowed
+TASK-4122,public_context_news_backfill,progress_path plus raw/cache ledger before Stage 5 closeout,1,1,1,0,0
+TASK-4122,public_market_macro_news_backfill,progress_path plus raw/cache ledger before Stage 5 closeout,1,1,1,0,0
+TASK-4122,microstructure_backfill_batch,microstructure coverage by symbol/date plus raw hash integrity,1,1,1,0,0

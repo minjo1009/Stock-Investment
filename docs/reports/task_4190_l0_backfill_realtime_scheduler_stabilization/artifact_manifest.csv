@@ -1,0 +1,21 @@
+path,type,purpose,created_or_modified,task_id
+ops/l0_operating_contract.yaml,CONTRACT,Current Layer 0 operating SSOT,created,TASK-4190
+scripts/build_l0_operating_status_4190.py,SCRIPT,Build current L0 status/context/manifest,created,TASK-4190
+scripts/validate_l0_operating_contract_4190.py,VALIDATOR,Validate L0 operating contract health and harness blocker detection,created,TASK-4190
+data/artifacts/l0_operating_status/current_l0_status.json,STATUS,Machine-readable current L0 operating status,created,TASK-4190
+data/artifacts/l0_operating_status/current_l0_context.md,GENERATED_CONTEXT,Read-first current L0 operating context,created,TASK-4190
+data/artifacts/l0_operating_status/l0_operating_manifest.json,MANIFEST,L0 operating status input/output manifest,created,TASK-4190
+docs/generated_context/TASK-4190_context.md,GENERATED_CONTEXT,Codex generated context bundle for TASK-4190,created,TASK-4190
+docs/generated_context/TASK-4190_manifest.csv,GENERATED_CONTEXT_MANIFEST,Codex context bundle manifest,created,TASK-4190
+docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/task_result_contract.yaml,CONTRACT,Prime task outcome contract,created,TASK-4190
+docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/gpt_prompt.md,GPT_PROMPT,GPT Pro review prompt,created,TASK-4190
+docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/gpt_response.md,GPT_RESPONSE,Captured GPT Pro review,created,TASK-4190
+docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/report.md,TASK_REPORT,Human-readable task report,created,TASK-4190
+docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4190 artifact manifest,created,TASK-4190
+docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/validation_results.md,VALIDATION_REPORT,TASK-4190 validation results,created,TASK-4190
+ops/task_profiles.yaml,REGISTRY,L0/L1 profile check update,modified,TASK-4190
+ops/context_bundles.yaml,REGISTRY,TASK-4190 context bundle config,modified,TASK-4190
+ops/project_structure_policy.yaml,GOVERNANCE,Classify kis_paper.env as sensitive local-only so global structure closeout remains explicit,modified,TASK-4190
+ops/project_hygiene_policy.yaml,GOVERNANCE,Classify kis_paper.env as sensitive local-only so global hygiene closeout remains explicit,modified,TASK-4190
+ops/task_registry.yaml,REGISTRY,Task registry update,modified,TASK-4190
+ops/doc_registry.yaml,REGISTRY,Document registry update,modified,TASK-4190

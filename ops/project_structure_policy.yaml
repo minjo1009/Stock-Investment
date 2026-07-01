@@ -1,0 +1,176 @@
+version: 1
+updated_at: "2026-07-01"
+created_by_task: TASK-4189
+
+purpose:
+  - define durable repository structure
+  - keep root axes non-overlapping
+  - classify docs surfaces by authority and lifecycle
+  - define delete/archive/local-trash rules before physical cleanup
+
+target_root:
+  keep:
+    - AGENTS.md
+    - README.md
+    - apps
+    - configs
+    - data
+    - docs
+    - ops
+    - schemas
+    - scripts
+    - src
+    - tests
+    - tools
+  local_only:
+    - .codex
+    - .dvc
+    - .obsidian
+    - logs
+  sensitive_local_only:
+    - .env
+    - .kis_token_cache.json
+    - kis_paper.env
+  legacy_active_migration_required:
+    - frontend
+    - tasks
+  review_before_move_or_delete:
+    - trading.db
+    - trading-DESKTOP-2R00TB4.db
+
+layer_tree:
+  L0_L1_DATA_PIPELINE:
+    code:
+      - src/data
+      - tools/db/source_acquisition
+    automation:
+      - scripts/run_l0_*
+      - scripts/validate_l0_*
+      - scripts/run_l1_*
+      - scripts/validate_l1_*
+    artifacts:
+      - data/artifacts/task_*
+    reports:
+      - docs/reports/task_*
+  L2_INTERPRETATION:
+    code:
+      - src/l2
+    automation:
+      - scripts/run_l2_*
+      - scripts/validate_l2_*
+  L3_L4_BRAIN:
+    code:
+      - src/brain
+    automation:
+      - scripts/build_l3_*
+      - scripts/validate_l3_*
+      - scripts/build_l4_*
+      - scripts/validate_l4_*
+  UI:
+    code:
+      - apps/ios-trader-brain
+    ssot:
+      - docs/frontend_app_ssot
+  OPS_GOVERNANCE:
+    code:
+      - scripts/ops
+    policy:
+      - ops
+    context:
+      - docs/generated_context
+    reports:
+      - docs/reports/task_*
+
+duplicate_axis_decisions:
+  - axis: config_vs_configs
+    canonical: configs
+    noncanonical: config
+    current_action: CONFIG_ROOT_ABSENT_KEEP_ABSENT
+    target_action: do_not_recreate_config_root_use_configs_for_nonsecret_config_and_gitignored_local_env_for_secrets
+  - axis: apps_vs_frontend
+    canonical: apps
+    noncanonical: frontend
+    current_action: KEEP_LEGACY_ACTIVE_WEB_FRONTEND
+    target_action: migrate_catalog_consumers_or_archive_web_frontend_after_owner_review
+  - axis: obsidian_local_vs_repo
+    canonical: docs/obsidian
+    local_state: .obsidian
+    current_action: KEEP_SPLIT
+    target_action: keep_.obsidian_local_and_docs_obsidian_repo_cockpit
+  - axis: tasks_vs_registry
+    canonical: ops/task_registry.yaml
+    noncanonical: tasks
+    current_action: KEEP_LEGACY_ACTIVE_REFERENCED_BY_CODE_AND_DOCS
+    target_action: migrate_index_then_archive_or_delete_legacy_tasks
+  - axis: root_prompts_vs_ops_prompts
+    canonical: ops/prompts
+    noncanonical: prompts
+    current_action: ROOT_PROMPTS_REMOVED_USE_OPS_PROMPTS
+    target_action: keep_root_prompts_absent_and_register_all_operating_prompts
+
+docs_surface_policy:
+  keep_canonical:
+    - docs/architecture
+    - docs/frontend_app_ssot
+    - docs/generated_context
+    - docs/llm_wiki
+    - docs/obsidian
+    - docs/operating_system
+    - docs/ownership
+    - docs/reports
+  review_surfaces:
+    - docs/acceptance
+    - docs/active
+    - docs/audits
+    - docs/candidate_funnel
+    - docs/context
+    - docs/contracts
+    - docs/db
+    - docs/execution
+    - docs/frontend_ios
+    - docs/frontend_web
+    - docs/graphify
+    - docs/harness
+    - docs/logs
+    - docs/specs
+  archive_rule:
+    docs_only_archive_root: docs/archive
+    archive_requires:
+      - task_id
+      - artifact_manifest_row
+      - doc_registry_update
+      - source_path
+      - reason
+  delete_rule:
+    allowed_without_owner_review:
+      - transient caches
+      - generated build caches
+      - generated dependency folders
+      - Expo local state folders
+      - empty temp folders
+    owner_review_required:
+      - task reports
+      - docs surfaces
+      - DB files
+      - source data
+      - source code
+      - scripts referenced by registry
+    always_blocked:
+      - secrets
+      - token caches unless user explicitly asks and path is verified
+      - raw/source data without source-acquisition owner review
+      - broker/order/live/paper artifacts
+
+closeout_requirements:
+  validators:
+    - python scripts/ops/validate_project_hygiene.py
+    - python scripts/ops/validate_project_structure_policy.py
+    - python scripts/ops/validate_knowledge_surfaces.py
+    - python scripts/ops/validate_internal_cleanliness.py
+  future_task_rule:
+    - every new root entry must be classified
+    - every new docs surface must be classified or live under an approved docs surface
+    - every physical cleanup must write a cleanup_execution_log.csv
+    - every new prompt, skill, harness group, or generic tool surface must update ops/project_knowledge_surfaces.yaml
+    - transient caches, generated dependency/build folders, and active machine-conflict documents must be removed or archived before closeout
+    - DB, source data, secrets, broker, live, paper, and strategy logic cleanup must be blocked unless task profile explicitly allows it

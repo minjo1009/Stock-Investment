@@ -1,0 +1,16 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,register TASK-4114 scope and closeout,modified,TASK-4114
+ops/doc_registry.yaml,REGISTRY,register TASK-4114 docs,modified,TASK-4114
+ops/dashboard/index.html,DASHBOARD,refresh dashboard with TASK-4114 status,modified,TASK-4114
+ops/dashboard/dashboard_summary.json,DASHBOARD,refresh dashboard summary with TASK-4114 status,modified,TASK-4114
+docs/reports/task_4114_l0_efficiency_completion_audit/report.md,TASK_ARTIFACT,completion audit report,created,TASK-4114
+docs/reports/task_4114_l0_efficiency_completion_audit/artifact_manifest.csv,TASK_ARTIFACT,artifact manifest,created,TASK-4114
+docs/reports/task_4114_l0_efficiency_completion_audit/validation_results.md,TASK_ARTIFACT,validation report,created,TASK-4114
+docs/reports/task_4114_l0_efficiency_completion_audit/final_unregistered_docs_inventory.csv,AUDIT_ARTIFACT,final unregistered docs scan,created,TASK-4114
+docs/reports/task_4114_l0_efficiency_completion_audit/final_l0_artifact_retention_inventory.csv,AUDIT_ARTIFACT,final L0 artifact retention scan,created,TASK-4114
+docs/reports/task_4114_l0_efficiency_completion_audit/final_historical_task_report_inventory.csv,AUDIT_ARTIFACT,final historical task report scan,created,TASK-4114
+docs/reports/task_4114_l0_efficiency_completion_audit/final_historical_data_artifact_inventory.csv,AUDIT_ARTIFACT,final historical data artifact scan,created,TASK-4114
+docs/reports/task_4106_l0_efficiency_obsolete_material_cleanup/obsolete_material_inventory.csv,AUDIT_ARTIFACT,final obsolete material scanner output,modified,TASK-4114
+docs/reports/task_4107_legacy_report_folder_cleanup/legacy_report_folder_inventory.csv,AUDIT_ARTIFACT,final legacy report scanner output,modified,TASK-4114
+docs/reports/task_4108_historical_task_report_cleanup/post_4113_historical_task_report_inventory.csv,AUDIT_ARTIFACT,post TASK-4113 historical task report scanner output,created,TASK-4114
+docs/reports/task_4110_l0_artifact_retention_cleanup/post_4112_l0_artifact_retention_inventory.csv,AUDIT_ARTIFACT,post TASK-4112 L0 artifact scanner output,created,TASK-4114

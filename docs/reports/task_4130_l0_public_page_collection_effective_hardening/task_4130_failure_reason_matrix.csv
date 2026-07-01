@@ -1,0 +1,8 @@
+task_id,case_id,expected_failure_reason,actual_failure_reason,pass
+TASK-4130,ok_with_rows,OK,OK,1
+TASK-4130,ok_follow_only,FOLLOW_ONLY_NO_ROWS,FOLLOW_ONLY_NO_ROWS,1
+TASK-4130,ok_zero_rows,PARSE_ZERO_ROWS,PARSE_ZERO_ROWS,1
+TASK-4130,forbidden,HTTP_ACCESS_BLOCKED,HTTP_ACCESS_BLOCKED,1
+TASK-4130,not_found,HTTP_4XX,HTTP_4XX,1
+TASK-4130,server_error,HTTP_5XX,HTTP_5XX,1
+TASK-4130,timeout,FETCH_TIMEOUT,FETCH_TIMEOUT,1

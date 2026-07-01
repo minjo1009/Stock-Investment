@@ -1,0 +1,8 @@
+path,bytes,tokens,reason
+AGENTS.md,1380,345,must_include
+docs/reports/task_4100_codex_governance_bootstrap/report.md,3243,810,optional_include
+ops/context_bundles.yaml,1695,423,must_include
+ops/doc_registry.yaml,6474,1618,must_include
+ops/operating_state.yaml,604,151,must_include
+ops/task_profiles.yaml,4379,1094,must_include
+ops/task_registry.yaml,1870,467,must_include

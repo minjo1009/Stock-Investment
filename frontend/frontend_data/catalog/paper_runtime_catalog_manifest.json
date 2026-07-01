@@ -1,0 +1,94 @@
+{
+  "manifest": [
+    {
+      "file_name": "paper_ops_runtime_catalog.json",
+      "artifact_class": "runtime_catalog",
+      "schema_version": "paper-ops-runtime-v1",
+      "path": "frontend_data/catalog/paper_ops_runtime_catalog.json",
+      "exists": 1,
+      "size_bytes": 4471561,
+      "sha256": "f1e6f77edb895aa29caf2a605e6681cccc1c1c097c260110ebe0a9451a5cc11f",
+      "published_utc": "2026-06-26T15:04:46.695881+00:00"
+    },
+    {
+      "file_name": "paper_trade_detail_view.json",
+      "artifact_class": "trade_detail_view",
+      "schema_version": "paper_trade_detail_view_v1",
+      "path": "frontend_data/catalog/paper_trade_detail_view.json",
+      "exists": 1,
+      "size_bytes": 1168003,
+      "sha256": "b78cc35681307958562c66fc962dc037a5ee7629c048ccfa1fcd3966f59d3428",
+      "published_utc": "2026-06-26T15:04:46.702868+00:00"
+    },
+    {
+      "file_name": "paper_runtime_data_quality.json",
+      "artifact_class": "data_quality",
+      "schema_version": "paper_runtime_quality_v1",
+      "path": "frontend_data/catalog/paper_runtime_data_quality.json",
+      "exists": 1,
+      "size_bytes": 7913,
+      "sha256": "58362a32493cbdf508206030009cdf136a51cceb50d784182a1cca76a3929741",
+      "published_utc": "2026-06-26T15:04:46.708596+00:00"
+    },
+    {
+      "file_name": "paper_runtime_data_quality.csv",
+      "artifact_class": "data_quality_rows",
+      "schema_version": "paper_runtime_quality_v1",
+      "path": "frontend_data/catalog/paper_runtime_data_quality.csv",
+      "exists": 1,
+      "size_bytes": 2007,
+      "sha256": "eb61870ff84f0994d0737c741e82b2c57d832435ceb0a35ef56262dc94e60a98",
+      "published_utc": "2026-06-26T15:04:46.709752+00:00"
+    },
+    {
+      "file_name": "policy_compare_audit.json",
+      "artifact_class": "policy_compare_audit",
+      "schema_version": "policy_compare_audit_v1",
+      "path": "frontend_data/catalog/policy_compare_audit.json",
+      "exists": 1,
+      "size_bytes": 18869,
+      "sha256": "a75bcbf7c2e49aa78048c6695c08e7d7960f381cb214ad0f1eecd3b5e8bc2c4b",
+      "published_utc": "2026-06-26T15:04:46.715872+00:00"
+    },
+    {
+      "file_name": "policy_compare_same_experiment_gate.csv",
+      "artifact_class": "policy_compare_same_experiment_gate",
+      "schema_version": "policy_compare_audit_v1",
+      "path": "frontend_data/catalog/policy_compare_same_experiment_gate.csv",
+      "exists": 1,
+      "size_bytes": 1831,
+      "sha256": "fb2c5cf54ad53770cc94421ed0d3dc287a53dbce26bb495d3bfee52395c4eb9a",
+      "published_utc": "2026-06-26T15:04:46.717099+00:00"
+    },
+    {
+      "file_name": "shadow_decision_journal.json",
+      "artifact_class": "shadow_decision_journal",
+      "schema_version": "shadow_decision_journal_v1",
+      "path": "frontend_data/catalog/shadow_decision_journal.json",
+      "exists": 1,
+      "size_bytes": 57643,
+      "sha256": "912cd10e491670159241f7b761cc8adbec8a5440beac84c04e7e84652a14bfcb",
+      "published_utc": "2026-06-26T15:04:46.723598+00:00"
+    },
+    {
+      "file_name": "shadow_decision_journal.csv",
+      "artifact_class": "shadow_decision_journal_rows",
+      "schema_version": "shadow_decision_journal_v1",
+      "path": "frontend_data/catalog/shadow_decision_journal.csv",
+      "exists": 1,
+      "size_bytes": 17603,
+      "sha256": "8002a16e05a4312c8fce1670f5a1b96bf89dd1b2473010c62c8a735c8f8104bf",
+      "published_utc": "2026-06-26T15:04:46.733435+00:00"
+    },
+    {
+      "file_name": "readiness_registry.json",
+      "artifact_class": "readiness_registry",
+      "schema_version": "readiness_registry_v1",
+      "path": "frontend_data/catalog/readiness_registry.json",
+      "exists": 1,
+      "size_bytes": 9111,
+      "sha256": "315d193b75e3ce733885e71ae458d3dde729022687c2dd345c91545f0cf38aca",
+      "published_utc": "2026-06-26T15:04:46.739250+00:00"
+    }
+  ]
+}

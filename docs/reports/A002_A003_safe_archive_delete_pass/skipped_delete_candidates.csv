@@ -1,9 +1,0 @@
-path,category,recommendation,action,result,reason,next_action
-docs/tmp/tmp_pre_068c_validation.json,stale_intermediate_validation,NEEDS_REVIEW,SKIP_DELETE,SKIPPED_NEEDS_REVIEW,Temporary validation checkpoint may be historical evidence,Owner review required
-docs/tmp/tmp_post_068c_validation.json,stale_intermediate_validation,NEEDS_REVIEW,SKIP_DELETE,SKIPPED_NEEDS_REVIEW,Temporary validation checkpoint may be historical evidence,Owner review required
-docs/tmp/task_068B_risk_grid.checkpoint.json,stale_intermediate_checkpoint,NEEDS_REVIEW,SKIP_DELETE,SKIPPED_NEEDS_REVIEW,Checkpoint may be reproducibility evidence,Owner review required
-downloads/tailscale-setup-1.98.2-amd64.msi,downloaded_installer,NEEDS_REVIEW,SKIP_DELETE,SKIPPED_NEEDS_REVIEW,Installer may support workstation setup,Owner review required
-logs/task374_full_rerun_status.txt,stale_run_log,NEEDS_REVIEW,SKIP_DELETE,SKIPPED_NEEDS_REVIEW,Old run log may be summarized elsewhere,Owner review required
-frontend_data/catalog/readiness_registry.json,possible_duplicate_generated_catalog,NEEDS_REVIEW,SKIP_DELETE,SKIPPED_NEEDS_REVIEW,Frontend catalog consumers need review,Owner review required
-frontend_data/catalog/acceptance_status_catalog.json,possible_duplicate_generated_catalog,NEEDS_REVIEW,SKIP_DELETE,SKIPPED_NEEDS_REVIEW,Frontend catalog consumers need review,Owner review required
-

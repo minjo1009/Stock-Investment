@@ -1,0 +1,2 @@
+task_id,stage5_task_id,l2_handoff_decision,blockers,strict_gate_rows,proxy_feature_rows_allowed,missing_source_is_negative,assignment_uses_future_outcome,outcome_used_for_assignment,decision_note
+TASK-4126,TASK-4125,BLOCKED,source_time_blocker|feature_admission_gate_closed,0,0,0,0,0,"Full 2016-to-present raw coverage is complete, but L2 handoff remains blocked until uncertified source-time rows and feature admission gates are explicitly resolved."

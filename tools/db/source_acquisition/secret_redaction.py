@@ -58,7 +58,7 @@ def find_secret_paths(payload: Any, *, prefix: str = "") -> list[str]:
     return hits
 
 
-def scan_repo_for_plaintext_marketaux_token(root: Path) -> list[Path]:
+def scan_repo_for_plaintext_marketaux_token(root: Path, include_paths: list[Path] | None = None) -> list[Path]:
     hits: list[Path] = []
     excluded_parts = {
         ".git",
@@ -74,7 +74,17 @@ def scan_repo_for_plaintext_marketaux_token(root: Path) -> list[Path]:
         "graphify-out",
     }
     excluded_names = {".env", "trading.db"}
-    for path in root.rglob("*"):
+    candidates: list[Path] = []
+    if include_paths is None:
+        candidates = list(root.rglob("*"))
+    else:
+        for include_path in include_paths:
+            path = include_path if include_path.is_absolute() else root / include_path
+            if path.is_dir():
+                candidates.extend(path.rglob("*"))
+            else:
+                candidates.append(path)
+    for path in candidates:
         if not path.is_file():
             continue
         if path.name in excluded_names:

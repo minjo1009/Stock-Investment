@@ -1,0 +1,59 @@
+{
+  "jobs": [
+    {
+      "allow_network": false,
+      "diagnostic_only": true,
+      "enabled": true,
+      "interval_minutes": 15,
+      "macro_series": [],
+      "mode": "stage3_scheduler_proof",
+      "name": "gdelt_news_discovery_15m",
+      "symbols": [
+        "AAPL"
+      ]
+    },
+    {
+      "allow_network": false,
+      "articles_per_request": 3,
+      "daily_request_cap": 95,
+      "diagnostic_only": true,
+      "enabled": true,
+      "interval_minutes": 16,
+      "macro_series": [],
+      "mode": "stage3_scheduler_proof",
+      "name": "marketaux_news_free_30m",
+      "symbols": [
+        "AAPL",
+        "MSFT",
+        "NVDA",
+        "AMD",
+        "QQQ"
+      ]
+    },
+    {
+      "allow_network": false,
+      "diagnostic_only": true,
+      "enabled": true,
+      "interval_minutes": 15,
+      "macro_series": [
+        "FED_PRESS",
+        "BEA_RELEASES",
+        "BLS_LATEST",
+        "TREASURY_FISCALDATA"
+      ],
+      "mode": "stage3_scheduler_proof",
+      "name": "official_news_sources_15m",
+      "symbols": [
+        "AAPL",
+        "MSFT",
+        "NVDA",
+        "AMD",
+        "QQQ"
+      ]
+    }
+  ],
+  "permissions": {
+    "diagnostic_only": true
+  },
+  "posture": "task_4121_stage3_scheduler_proof"
+}

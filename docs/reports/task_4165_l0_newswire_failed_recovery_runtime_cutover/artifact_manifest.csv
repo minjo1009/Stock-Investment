@@ -1,0 +1,23 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4165 task definition and closeout state,modified,TASK-4165
+ops/doc_registry.yaml,registry,TASK-4165 document registry entries,modified,TASK-4165
+tools/db/source_acquisition/public_newswire_collector.py,collector,Retryable truncated gzip sitemap handling and explicit parse failure status,modified,TASK-4165
+tests/test_l0_public_newswire_collector.py,test,Regression coverage for truncated gzip sitemap parse failure,modified,TASK-4165
+scripts/run_l0_public_newswire_sharded_backfill.py,script,Source-specific max-bytes and retryable status propagation for sharded launcher,modified,TASK-4165
+scripts/aggregate_l0_public_newswire_shards.py,script,Failed status accounting and completed-with-nonzero reconciliation,modified,TASK-4165
+scripts/recover_l0_public_newswire_failed_shards_4165.py,script,Targeted failed shard recovery runner,created,TASK-4165
+scripts/run_l0_backfill_worker_recovery_4148.py,script,Legacy public newswire recovery restart removed from recovery lanes,modified,TASK-4165
+scripts/run_l0_l2_wide_handoff_4146.py,script,Sharded newswire event and runtime handoff to L1/L2,modified,TASK-4165
+scripts/validate_l0_l2_wide_handoff_4146.py,validator,TASK-4146 validator confirmed after sharded handoff runtime cutover,modified,TASK-4165
+data/artifacts/task_4165_l0_newswire_failed_recovery_runtime_cutover/failed_shard_recovery_ledger.csv,artifact,Per-shard failed recovery ledger,created,TASK-4165
+data/artifacts/task_4165_l0_newswire_failed_recovery_runtime_cutover/failed_shard_recovery_summary.json,artifact,Failed recovery summary and safety proof,created,TASK-4165
+data/artifacts/l0_public_newswire_backfill_shards/background_process.json,runtime_evidence,Canonical sharded public newswire launcher process proof,modified,TASK-4165
+data/artifacts/l0_public_newswire_backfill_shards/aggregate_progress.json,runtime_evidence,Current sharded public newswire aggregate progress,modified,TASK-4165
+data/artifacts/task_4146_l0_l2_wide_packetization_handoff/l0_wide_source_ledger.csv,artifact,L0 wide handoff regenerated with sharded newswire path,modified,TASK-4165
+data/artifacts/task_4146_l0_l2_wide_packetization_handoff/l1_wide_normalized_source_packets.csv,artifact,L1 packet handoff regenerated with sharded newswire path,modified,TASK-4165
+data/artifacts/task_4146_l0_l2_wide_packetization_handoff/l2_wide_admission_view.csv,artifact,L2 admission handoff regenerated with sharded newswire path,modified,TASK-4165
+data/artifacts/task_4146_l0_l2_wide_packetization_handoff/source_family_rollup.csv,artifact,Source family rollup after sharded newswire path update,modified,TASK-4165
+data/artifacts/task_4146_l0_l2_wide_packetization_handoff/validator_report.json,validation_report,TASK-4146 validator report after cutover,modified,TASK-4165
+docs/reports/task_4165_l0_newswire_failed_recovery_runtime_cutover/report.md,task_report,TASK-4165 closeout report,created,TASK-4165
+docs/reports/task_4165_l0_newswire_failed_recovery_runtime_cutover/artifact_manifest.csv,artifact_manifest,TASK-4165 artifact manifest,created,TASK-4165
+docs/reports/task_4165_l0_newswire_failed_recovery_runtime_cutover/validation_results.md,validation_report,TASK-4165 validation results,created,TASK-4165

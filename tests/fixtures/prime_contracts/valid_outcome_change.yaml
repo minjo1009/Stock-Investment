@@ -1,0 +1,87 @@
+task_id: "TASK-9001"
+task_type: "OUTCOME_CHANGE"
+domain: "code_bug_fix"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "src/example/**"
+    - "tests/example/**"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "src/example/fix.py"
+    - "tests/example/test_fix.py"
+outcome_unit:
+  name: "failing_test_count"
+  type: "count"
+  direction: "decrease"
+  problem_progress_claim_allowed: true
+  harness_progress_claim_allowed: false
+baseline:
+  measured_at: "2026-07-01T00:00:00Z"
+  value: 3
+  source_artifacts:
+    - "artifacts/before_test.log"
+  freshness_required: true
+after:
+  measured_at: "2026-07-01T01:00:00Z"
+  value: 0
+  source_artifacts:
+    - "artifacts/after_test.log"
+intended_change:
+  description: "Fix three failing regression tests."
+  target:
+    value: 0
+measurement_method:
+  commands:
+    - "python -m pytest tests/example/test_fix.py -q"
+  comparison_rule: "same_method_before_after"
+  same_method_before_after_required: true
+allowed_actions:
+  - "edit bounded source and tests"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "artifacts/before_test.log"
+    - "artifacts/after_test.log"
+validators:
+  required:
+    - "outcome_contract_validator"
+    - "pytest"
+progress_claim_policy:
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  actual_underlying_progress: true
+  allowed_claims:
+    - "failing_test_count decreased from 3 to 0"
+  forbidden_claims: []
+closeout_verdict:
+  selected: "ACTUAL_PROGRESS"
+report:
+  actual_underlying_progress: true
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  summary: "The measured failing test count decreased from 3 to 0."
+  claims:
+    - "failing_test_count decreased from 3 to 0 using the same pytest command."
+next_target:
+  required: true
+  task_type: "REVIEW_ONLY"
+  outcome_unit: "residual risk list"
+  required_baseline: "current validator output"
+  required_validator: "outcome_contract_validator"

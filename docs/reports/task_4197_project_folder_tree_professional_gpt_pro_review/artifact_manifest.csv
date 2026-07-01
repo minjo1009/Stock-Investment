@@ -1,0 +1,7 @@
+path,type,purpose,created_or_modified,task_id
+docs/reports/task_4197_project_folder_tree_professional_gpt_pro_review/task_result_contract.yaml,CONTRACT,prime task contract,modified,TASK-4197
+docs/reports/task_4197_project_folder_tree_professional_gpt_pro_review/report.md,TASK_REPORT,closeout report,modified,TASK-4197
+docs/reports/task_4197_project_folder_tree_professional_gpt_pro_review/artifact_manifest.csv,ARTIFACT_MANIFEST,task artifact inventory,modified,TASK-4197
+docs/reports/task_4197_project_folder_tree_professional_gpt_pro_review/validation_results.md,VALIDATION_REPORT,validator results,modified,TASK-4197
+docs/reports/task_4197_project_folder_tree_professional_gpt_pro_review/gpt_pro_professional_review_prompt.md,GPT_PROMPT,GPT Pro professional review prompt,created,TASK-4197
+docs/reports/task_4197_project_folder_tree_professional_gpt_pro_review/gpt_consult_ledger.csv,REFERENCE,GPT consult status ledger,created,TASK-4197

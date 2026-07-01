@@ -1,0 +1,34 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,TASK-4123 task scope validators and closeout tracking,modified,TASK-4123
+ops/doc_registry.yaml,REGISTRY,TASK-4123 docs and artifacts registered,modified,TASK-4123
+configs/db_source_acquisition_scheduler.json,CONFIG,Stage 5 completed and Stage 6 next recorded,modified,TASK-4123
+configs/source_registry/l0_public_news_capability_sources.json,CONFIG,Readable active public news capability registry restored,modified,TASK-4123
+configs/source_registry/l0_public_news_capability_sources-DESKTOP-2R00TB4.json,CONFIG,Desktop conflict registry copy removed after restoration,deleted,TASK-4123
+docs/active/ACTIVE_SSOT_INDEX.md,SSOT,Stage 5 report registered as active evidence,modified,TASK-4123
+docs/active/CURRENT_TASKS.md,SSOT,TASK-4123 completed and TASK-4124 next recorded,modified,TASK-4123
+docs/active/PROJECT_STATUS.md,SSOT,Stage 5 completed and Stage 6 next recorded,modified,TASK-4123
+docs/architecture/l0_source_acquisition_project_management_plan.md,GOVERNANCE,Stage 5 current state and next Stage 6 updated,modified,TASK-4123
+tools/db/source_acquisition/public_market_macro_news_collector.py,SCRIPT,Readable active public market/macro collector restored,modified,TASK-4123
+tools/db/source_acquisition/public_market_macro_news_collector-DESKTOP-2R00TB4.py,SCRIPT,Desktop conflict collector copy removed after restoration,deleted,TASK-4123
+tools/db/source_acquisition/public_newswire_collector.py,SCRIPT,Readable active newswire collector restored,modified,TASK-4123
+tools/db/source_acquisition/public_newswire_collector-DESKTOP-2R00TB4.py,SCRIPT,Desktop conflict newswire copy removed after restoration,deleted,TASK-4123
+scripts/run_task646_full_microstructure_backfill.py,SCRIPT,Microstructure dry-run coverage output directory support added,modified,TASK-4123
+scripts/run_l0_stage5_background_backfill.py,SCRIPT,Stage 5 bounded background backfill runner,created,TASK-4123
+scripts/validate_l0_stage5_background_backfill.py,VALIDATOR,Stage 5 bounded backfill validator,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/report.md,TASK_REPORT,TASK-4123 closeout report,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4123 artifact manifest,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/validation_results.md,VALIDATION_REPORT,TASK-4123 validation report,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/stage5_background_backfill_summary.json,REFERENCE,Stage 5 bounded backfill summary,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/task_4123_scope_freeze.csv,REFERENCE,Stage 5 scope freeze,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/task_4123_source_family_plan.csv,REFERENCE,Stage 5 source family plan,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/task_4123_api_or_raw_call_ledger.csv,REFERENCE,Stage 5 API/raw call ledger,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/task_4123_raw_response_classification.csv,REFERENCE,Stage 5 raw response classification,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/task_4123_normalized_source_packets.csv,REFERENCE,Stage 5 normalized source packets,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/task_4123_decision_asof_coverage.csv,REFERENCE,Stage 5 decision-asof coverage gate,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/task_4123_feature_admission_gate.csv,REFERENCE,Stage 5 feature admission gate closed,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/task_4123_source_gap_ledger.csv,REFERENCE,Stage 5 source gap ledger,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/task_4123_progress_ledger.csv,REFERENCE,Stage 5 progress ledger,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/task_4123_command_ledger.csv,REFERENCE,Stage 5 command ledger,created,TASK-4123
+docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/command_results/**,REFERENCE,Stage 5 command result JSON directory,created,TASK-4123
+data/raw/task_4123_l0_stage_5_background_historical_backfill_from_2016/**,RAW_DATA,Stage 5 bounded raw backfill payloads,created,TASK-4123
+data/artifacts/task_4123_l0_stage_5_background_historical_backfill_from_2016/**,REFERENCE,Stage 5 bounded backfill state/progress/coverage artifacts,created,TASK-4123

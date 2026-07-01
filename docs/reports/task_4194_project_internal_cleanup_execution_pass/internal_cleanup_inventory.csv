@@ -1,0 +1,7 @@
+path,classification,decision,reason,task_id
+__pycache__ managed roots,transient_cache,deleted,Python bytecode cache is reproducible and not a project artifact,TASK-4194
+docs/*DESKTOP-2R00TB4.md,machine_conflict_doc,archived,Conflict docs differed from canonical files and should not remain active,TASK-4194
+trading-DESKTOP-2R00TB4.db,machine_conflict_db,blocked_owner_review_required,DB files require runtime-owner review before move/delete,TASK-4194
+trading.db,local_runtime_db_known_debt,blocked_owner_review_required,DB files require runtime-owner review before move/delete,TASK-4194
+frontend,legacy_active_frontend_web_surface,blocked_migration_required,Still referenced by frontend catalog/doc surfaces from TASK-4191,TASK-4194
+tasks,legacy_active_task_registry_surface,blocked_migration_required,Still referenced by code/docs task registry readers from TASK-4191,TASK-4194

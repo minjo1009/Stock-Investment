@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "updated_at": "2026-06-30",
+  "task_id": "TASK-4138",
+  "diagnostic_only": true,
+  "no_trading_authority": true,
+  "default_missing_source_is_negative": false,
+  "source_family_policy": [
+    {
+      "source_family": "market_bars_5m",
+      "source_time_kind": "ACTUAL_MARKET_OBSERVATION",
+      "source_time_precision_allowed": "minute",
+      "usable_after_policy": "Use only after the bar is closed and vendor/raw availability is recorded.",
+      "authority_status": "STRICT_SOURCE_TIME_CANDIDATE",
+      "strict_source_time_allowed": true,
+      "feature_allowed_now": false,
+      "is_imputed_time_possible": false,
+      "l1_block_reason": "L1 can certify closed-bar timing, but L2 still must validate primitive schema, gaps, stale policy, and materialization contract.",
+      "l2_next_gate": "L2_PRIMITIVE_VALIDATION"
+    },
+    {
+      "source_family": "daily_bars",
+      "source_time_kind": "ACTUAL_MARKET_OBSERVATION",
+      "source_time_precision_allowed": "day",
+      "usable_after_policy": "Use only after daily bar close and vendor/raw file availability are recorded.",
+      "authority_status": "STRICT_SOURCE_TIME_CANDIDATE",
+      "strict_source_time_allowed": true,
+      "feature_allowed_now": false,
+      "is_imputed_time_possible": false,
+      "l1_block_reason": "L1 can certify daily bar timing, but L2 still must validate primitive schema, gaps, stale policy, and materialization contract.",
+      "l2_next_gate": "L2_PRIMITIVE_VALIDATION"
+    },
+    {
+      "source_family": "public_context_news_feeds",
+      "source_time_kind": "PUBLISHED_OR_EVENT_TIME",
+      "source_time_precision_allowed": "second,minute,hour,day_if_source_explicit",
+      "usable_after_policy": "Use only after raw URL/file hash, fetched_at, and published_at/event_time are preserved.",
+      "authority_status": "CONTEXT_OR_FEATURE_CANDIDATE_ONLY",
+      "strict_source_time_allowed": false,
+      "feature_allowed_now": false,
+      "is_imputed_time_possible": true,
+      "l1_block_reason": "News/context rows need source-time, mapping, dedup, stale policy, and effect-window validation before trading-feature admission.",
+      "l2_next_gate": "L2_MAPPING_DEDUP_STALE_EFFECT_WINDOW_VALIDATION"
+    },
+    {
+      "source_family": "public_market_macro_news_feeds",
+      "source_time_kind": "PUBLISHED_OR_EVENT_TIME_OR_IMPUTED_DATE",
+      "source_time_precision_allowed": "second,minute,hour,day_if_source_explicit,wikimedia_day_as_noon_imputed_only",
+      "usable_after_policy": "Use exact publish time when available. Wikimedia day-only rows may use noon UTC only as an imputed nominal time.",
+      "authority_status": "MACRO_CONTEXT_OR_FEATURE_CANDIDATE_ONLY",
+      "strict_source_time_allowed": false,
+      "feature_allowed_now": false,
+      "is_imputed_time_possible": true,
+      "l1_block_reason": "Macro/news rows may become feature candidates later, but imputed or context-only time is not strict market source time.",
+      "l2_next_gate": "L2_MACRO_SCOPE_STALE_EFFECT_WINDOW_VALIDATION"
+    },
+    {
+      "source_family": "public_newswire_feeds",
+      "source_time_kind": "PUBLISHED_TIME_REQUIRED",
+      "source_time_precision_allowed": "second,minute,hour",
+      "usable_after_policy": "Use only after official/newswire published_at, raw URL/file hash, fetched_at, and source identity are preserved.",
+      "authority_status": "DISCOVERY_OR_FEATURE_CANDIDATE_ONLY",
+      "strict_source_time_allowed": true,
+      "feature_allowed_now": false,
+      "is_imputed_time_possible": false,
+      "l1_block_reason": "Newswire rows still need high-confidence ticker/entity mapping, dedup, stale policy, and effect-window validation before feature admission.",
+      "l2_next_gate": "L2_HIGH_CONFIDENCE_NEWS_MAPPING_EFFECT_VALIDATION"
+    }
+  ],
+  "wikimedia_precision_policy": [
+    {
+      "precision": "second_or_minute_or_hour",
+      "normalized_time_policy": "Use only if the source explicitly provides an actual timestamp.",
+      "is_imputed_time": false,
+      "strict_source_time_allowed": false,
+      "feature_allowed_now": false,
+      "status": "WIKIMEDIA_SOURCE_TIME_NOT_MARKET_USABLE",
+      "block_reason": "Wikimedia is not a primary market-learned timestamp source. Use original source time instead."
+    },
+    {
+      "precision": "day",
+      "normalized_time_policy": "Represent YYYY-MM-DD as YYYY-MM-DDT12:00:00Z only as imputed nominal time.",
+      "is_imputed_time": true,
+      "strict_source_time_allowed": false,
+      "feature_allowed_now": false,
+      "status": "WIKIMEDIA_DATE_IMPUTED_DAY_ONLY",
+      "block_reason": "Noon is a conservative ordering anchor, not the actual public release time."
+    },
+    {
+      "precision": "month",
+      "normalized_time_policy": "Keep as month-level context. Do not convert to a specific trading timestamp.",
+      "is_imputed_time": true,
+      "strict_source_time_allowed": false,
+      "feature_allowed_now": false,
+      "status": "WIKIMEDIA_DATE_PRECISION_INSUFFICIENT",
+      "block_reason": "Month precision is too broad for feature timing or event activation."
+    },
+    {
+      "precision": "year",
+      "normalized_time_policy": "Keep as year-level context. Do not convert to a specific trading timestamp.",
+      "is_imputed_time": true,
+      "strict_source_time_allowed": false,
+      "feature_allowed_now": false,
+      "status": "WIKIMEDIA_DATE_PRECISION_INSUFFICIENT",
+      "block_reason": "Year precision is too broad for feature timing or event activation."
+    },
+    {
+      "precision": "unknown_or_circa",
+      "normalized_time_policy": "Keep as context only or block.",
+      "is_imputed_time": true,
+      "strict_source_time_allowed": false,
+      "feature_allowed_now": false,
+      "status": "WIKIMEDIA_DATE_CONTEXT_CERTIFIED",
+      "block_reason": "Approximate dates can help context, but cannot open trading-feature timing."
+    }
+  ]
+}

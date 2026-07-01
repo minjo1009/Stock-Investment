@@ -1,0 +1,2 @@
+task_id,coverage_scope,rows_with_certified_source_time,full_2016_to_present_run_completed,coverage_status
+TASK-4125,full_2016_to_present_backfill_continuation,0,1,COMPLETE

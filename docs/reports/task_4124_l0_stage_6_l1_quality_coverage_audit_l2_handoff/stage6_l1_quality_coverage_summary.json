@@ -1,0 +1,15 @@
+{
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "headline_audit_rows": 3,
+  "l2_handoff_decision": "BLOCKED",
+  "mapping_blocker_count": 0,
+  "proxy_feature_rows_allowed": 0,
+  "raw_hash_rows": 6,
+  "raw_integrity_failure_count": 0,
+  "real_capital": "FORBIDDEN",
+  "source_time_blocker_count": 0,
+  "stage6_status": "L1_QUALITY_COVERAGE_AUDIT_COMPLETE_L2_HANDOFF_BLOCKED",
+  "strategy": "NOT_ACCEPTED",
+  "strict_gate_rows": 0,
+  "task_id": "TASK-4124"
+}

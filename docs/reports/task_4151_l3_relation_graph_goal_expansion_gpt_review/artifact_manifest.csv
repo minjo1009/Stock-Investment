@@ -1,0 +1,12 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4151 task registration and closeout,modified,TASK-4151
+ops/doc_registry.yaml,registry,TASK-4151 document registration,modified,TASK-4151
+scripts/validate_task_4151_l3_relation_graph_gpt_review.py,validator,Validate GPT Pro review artifacts,created,TASK-4151
+docs/reports/task_4151_l3_relation_graph_goal_expansion_gpt_review/l3_relation_graph_gpt_context_packet.md,reference,GPT Pro context packet with current L0-L3 state,created,TASK-4151
+docs/reports/task_4151_l3_relation_graph_goal_expansion_gpt_review/gpt_prompt.md,reference,GPT Pro prompt for L3 relation graph expansion review,created,TASK-4151
+docs/reports/task_4151_l3_relation_graph_goal_expansion_gpt_review/gpt_response.md,reference,Captured GPT Pro review response,created,TASK-4151
+docs/reports/task_4151_l3_relation_graph_goal_expansion_gpt_review/gpt_capture_meta.json,reference,GPT response capture metadata,created,TASK-4151
+docs/reports/task_4151_l3_relation_graph_goal_expansion_gpt_review/gpt_review_digest_ko.md,reference,Korean digest of GPT Pro review,created,TASK-4151
+docs/reports/task_4151_l3_relation_graph_goal_expansion_gpt_review/report.md,report,TASK-4151 report,created,TASK-4151
+docs/reports/task_4151_l3_relation_graph_goal_expansion_gpt_review/artifact_manifest.csv,manifest,TASK-4151 artifact manifest,created,TASK-4151
+docs/reports/task_4151_l3_relation_graph_goal_expansion_gpt_review/validation_results.md,validation,TASK-4151 validation results,created,TASK-4151

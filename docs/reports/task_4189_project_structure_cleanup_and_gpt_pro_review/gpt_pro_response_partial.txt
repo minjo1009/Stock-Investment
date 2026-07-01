@@ -1,0 +1,898 @@
+콘텐츠로 건너뛰기
+정민
+채팅 기록
+ChatGPT Pro
+새 채팅
+채팅 검색
+라이브러리
+일정
+앱
+더 보기
+고정됨
+4. 관리
+2. 운동
+1. 코딩/투자
+프로젝트
+여행
+7. 업무
+6. 영어
+5. 노래
+3. 경제/시사
+더 보기
+채팅
+L1 작업 완료 여부
+L1 Review Completion Request
+TASK-4182 L1 문제 해결
+L1 Blockers and Improvements
+Backend Task Review
+L0 Backfill Improvement Plan
+유통기한 경과 우유 섭취 여부
+Prime Harness Review Strategy
+Blocker Burn-down Review
+L0-L4 문제 해결 방향
+Task 4167 L0-L4 Prioritization
+Quant Research Shortlist
+Monday Battery & EV Brief
+Newswire Recall Loss Review
+GlobeNewswire L0-L2 Review
+Structure Cleanup Review
+Task-4158 Optimization Plan
+Backend newswire backfill review
+L0 백필 성능 개선
+Market regime update: US-Iran deal sparks Risk-On rally
+식물 햇빛 요구사항
+Patch Review TASK-4156
+L4 Thesis Bundle Review
+L4 Development Plan Review
+L3 Relation Graph Review
+L3 relation graph 분석
+L3 Diagnostic Strategy Plan
+L0 Backfill Recovery Review
+정민
+정우 민
+Pro
+공유하기
+# GPT Pro Prompt: TASK-4160 L0-L4 Structure Cleanup Review
+
+You are reviewing a local working copy that is not fully reflected in GitHub.
+
+Do not rely on GitHub as the latest source of truth. Use the local context packet below as the latest state. You may use GitHub only for broad project context if available, but do not override the local packet with stale GitHub state.
+
+Act as:
+
+1. Professional Backend Engineer
+2. Data Platform Architect
+3. Quant Data Infrastructure Reviewer
+4. Systematic PM / Trading Research Reviewer
+
+Project hard state:
+
+- Strategy: NOT_ACCEPTED
+- Deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+- Real Capital: FORBIDDEN
+- No broker mutation
+- No live order
+- No paper promotion
+- Missing/stale/incomplete data is UNKNOWN/BLOCKER, never negative evidence
+- No BUY/SELL/ranking/sizing/order/paper/live/deployment recommendation.
+
+User goal:
+
+The user wants Codex to do structure cleanup for Layer 0 through Layer 4 while L0 public newswire backfill continues. The cleanup should reduce project confusion and make it clear which layer owns which artifacts, validators, handoff files, and status reports.
+
+Important: Avoid over-engineering. Do not recommend code for code's sake, guardrails for guardrails' sake, or large framework migrations. Recommend only changes with direct practical value.
+
+## Current Local State
+
+### L0 public newswire backfill
+
+- TASK-4159 implemented controlled acceleration.
+- Current aggregate status: RUNNING.
+- Current progress: about 47.6%.
+- Completed units: 1,953 / 4,101.
+- Pending units: 2,148.
+- Current workers: BusinessWire 2, GlobeNewswire 1, PRNewswire 1.
+- Safety flags are all closed: broker/order/live/paper/real-capital/trade-authority all 0.
+- BusinessWire remains the long-tail bottleneck.
+- GlobeNewswire is not a one-month/two-hour bottleneck. Typical GN monthly shard takes about 1.5 minutes, but the whole remaining GN set still takes time because many monthly shards remain.
+- PRNewswire unit completion is slow, but row/offset progress is observed. PRNewswire offset/range split remains prohibited for now.
+
+### TASK-4159 implemented
+
+Files:
+
+- scripts/run_l0_public_newswire_sharded_backfill.py
+- scripts/aggregate_l0_public_newswire_shards.py
+- scripts/validate_l0_public_newswire_sharded_backfill.py
+- scripts/control_l0_public_newswire_acceleration.ps1
+- scripts/run_l0_public_newswire_sharded_progress_monitor.ps1
+- tests/test_l0_public_newswire_sharded_backfill.py
+- docs/reports/task_4159_l0_public_newswire_controlled_acceleration/*
+
+Capabilities:
+
+- source base lanes and caps.
+- dynamic lane rebalance.
+- source-specific budgets/runtime.
+- progress-aware stale detection using completed unit, active offset, row count, raw bytes, last successful fetch.
+- dead RUNNING lock recovery.
+- live lock skip defense.
+- source-level ETA and active/partial/stale worker aggregate fields.
+- validator for dead PID, active offset completed misclassification, aggregate fields, safety flags.
+- hourly monitor writes controlled_acceleration_decision.json.
+
+Current controller decision:
+
+
+text
+decision: BW4_BLOCKED
+reason: globenewswire_not_complete,stable_minutes_below_threshold
+validator_passed: true
+safety_closed: true
+
+
+### L1
+
+Known L1 direction from recent tasks:
+
+- L1 should be row/article-level packetization, not only batch-level.
+- News, macro, public newswire must remain swing/daily trading feature candidates, not "not feature forever".
+- L1 must preserve source lineage, raw path/hash, source time, available-to-brain time, mapping status, blocker status.
+- Data missing because L0 is still backfilling is UNKNOWN/BLOCKER, not negative evidence.
+- L1 validation should keep running and should not block just because L0 coverage is incomplete.
+
+Important local summary:
+
+
+json
+{
+  "task_id": "TASK-4138",
+  "source_family_policy_rows": 5,
+  "validation_runs": 3,
+  "validation_failures": [],
+  "trading_authority_opened": false,
+  "paper_live_broker_order_opened": false,
+  "feature_allowed_now_rows": []
+}
+
+
+### L2
+
+Known L2 direction:
+
+- L2 is not final signal/scoring/order logic.
+- L2 should convert L1 packets into safe swing event primitive/admission/read views.
+- News, macro, public newswire are feature candidates, but materialization remains diagnostic and gated.
+- L2 must separate existing legacy news code from the new L2 event/primitive pipeline.
+- L2 must dedup repeated source events, map entity/ticker/source family, keep stale/effect-window metadata, and pass to L3.
+
+Important local TASK-4147 summary:
+
+
+json
+{
+  "task_id": "TASK-4147",
+  "l1_article_packets": 1093,
+  "l1_article_ready_packets": 1093,
+  "raw_article_packet_blockers": 0,
+  "newswire_mapping_queue_rows": 407,
+  "newswire_l0_mapped_rows": 8253,
+  "l2_diagnostic_feature_rows": 1842,
+  "critical_incomplete_dead_backfill_lanes": [],
+  "separated_realtime_config": "configs/l0_realtime_operational_safe_config_4147.json",
+  "scheduler_task_name": "TraderBrainL0L2Hardening4147",
+  "trading_eligible_rows": 0,
+  "signal_order_export_allowed_rows": 0,
+  "broker_mutation_permitted_rows": 0
+}
+
+
+### L3
+
+Known L3 direction:
+
+- L3 should build relation graphs, event clusters, coverage gaps, relation quality, and diagnostic strategy view.
+- L3 must not treat graph count as evidence quality.
+- L3 must not convert diagnostic relations into trading signals.
+- L3 v2 increased relation graph coverage materially, but still has quality/coverage caveats.
+
+Known artifacts/scripts:
+
+- scripts/build_l3_diagnostic_strategy_view_4150.py
+- scripts/build_l3_relation_graph_v2_4152.py
+- scripts/build_l3_relation_graph_quality_guard_4154.py
+- corresponding validators.
+
+### L4
+
+Known L4 direction:
+
+- L4 is diagnostic thesis bundle assembly, not final institutional thesis acceptance.
+- L4 should connect L0-L3 evidence, lineage, relation graph, coverage gap, contradiction status, and blocker status into reviewable thesis bundles.
+- L4 must not produce buy/sell/hold/ranking/sizing/order/paper/live/deployment readiness.
+
+Known scripts:
+
+- scripts/build_l4_thesis_bundles.py
+- scripts/validate_l4_thesis_bundle_package.py
+
+### Current problem to solve
+
+The project now has many task-specific scripts and reports:
+
+- L0 task scripts and validators.
+- L1 packet scripts and validators.
+- L2 admission/materialization scripts and validators.
+- L3 relation graph scripts and validators.
+- L4 thesis bundle scripts and validators.
+- Many old/dirty files in the worktree.
+
+This makes it easy for future Codex runs to read the wrong file, treat superseded reports as active, or confuse legacy L2/news code with current L2 event primitive/admission pipeline.
+
+## What Codex wants from GPT
+
+Please review and propose a concrete, low-overhead structure cleanup plan.
+
+Focus on:
+
+1. Which small set of current L0-L4 files should be treated as active entrypoints.
+2. Which files should be indexed in a single handoff manifest or README so future Codex reads the right files first.
+3. Whether we need a layer ownership matrix such as:
+   - L0: collectors/backfill/scheduler/raw integrity
+   - L1: source packets/lineage/mapping/blockers
+   - L2: event primitive/admission/materialization candidates
+   - L3: relation graph/event clusters/quality/coverage gaps
+   - L4: thesis bundle/review blockers
+4. Whether to create one docs/reports/task_4160_l0_l4_structure_cleanup/active_layer_handoff.md and one machine-readable active_layer_manifest.json.
+5. How to avoid touching huge amounts of dirty/unrelated files.
+6. What validators should be run after the cleanup.
+7. What should explicitly NOT be done now.
+
+Expected output:
+
+1. Verdict: PASS / CONDITIONAL PASS / FAIL.
+2. Prioritized structure cleanup plan.
+3. Exact files Codex should create or edit.
+4. Exact files Codex should avoid.
+5. Validator checklist.
+6. Korean plain-language summary suitable for the user.
+더 보기
+
+구조 정리는 파일 이동이 아니라 활성 진입점·계층 소유권·읽기 순서를 최소 문서와 manifest로 고정하는 방향입니다. 실행 중인 L0 백필과 dirty/legacy 파일은 건드리지 않는 전제로 보겠습니다.
+
+5m 9s 동안 생각함
+핵심 3줄 요약
+
+Verdict: CONDITIONAL PASS. 지금 필요한 것은 파일 이동/삭제가 아니라, “현재 정본 파일 목록”을 고정하는 얇은 인덱스 작업입니다.
+
+Codex는 코드 리팩터링 없이 active_layer_handoff.md와 active_layer_manifest.json만 만들고, L0 백필/컨트롤러/기존 validator는 건드리지 않는 것이 맞습니다.
+
+L1/L2의 정확한 활성 스크립트명은 제공 패킷에 없으므로, Codex가 로컬 파일명만 확인해 manifest에 채우되, 의미상 ownership은 명확히 고정해야 합니다.
+
+1. Verdict
+항목	판정
+구조 정리 필요성	PASS
+대규모 정리/파일 이동 필요성	FAIL
+권장 방식	CONDITIONAL PASS
+조건	새 정본 인덱스 2개 생성, 기존 코드 수정/이동/삭제 금지, validator만 실행
+
+결론:
+TASK-4160은 “구조 리팩터링”이 아니라 “활성 정본 인덱스 생성” 작업으로 해야 합니다.
+현재 L0 public newswire backfill이 RUNNING이고, TASK-4159 controller/monitor가 정상 동작 중이므로, 파일 이동·삭제·대량 rename은 리스크 대비 효용이 낮습니다.
+
+2. 우선순위 구조 정리 계획
+우선순위	작업	목적	복잡도	리스크	판정
+P0	docs/reports/task_4160_l0_l4_structure_cleanup/active_layer_handoff.md 생성	사람이 먼저 읽을 정본 문서	낮음	낮음	필수
+P0	docs/reports/task_4160_l0_l4_structure_cleanup/active_layer_manifest.json 생성	Codex/스크립트가 읽을 machine-readable 정본	낮음	낮음	필수
+P0	L0~L4 ownership matrix 고정	“어느 레이어가 무엇을 소유하는지” 명확화	낮음	낮음	필수
+P1	active entrypoint / validator / output / report를 레이어별로 명시	future Codex가 잘못된 파일을 먼저 읽는 문제 방지	낮음	낮음	필수
+P1	superseded / legacy / read-only / do-not-edit 상태 태그 추가	오래된 task report와 legacy L2/news code 혼동 방지	낮음	낮음	필수
+P2	root README 또는 기존 docs index 수정	프로젝트 전체 진입점 개선	낮음	중간	지금은 보류
+P2	파일 이동, 폴더 재배치, rename	물리 구조 정리	중간~높음	높음	금지
+P2	legacy L2/news 코드 정리	장기적으로 필요 가능	중간~높음	높음	지금은 금지
+3. Active Layer Ownership Matrix
+
+Codex가 가장 먼저 고정해야 하는 구조는 아래입니다.
+
+Layer	소유 범위	입력	산출물	금지 사항
+L0	collector, backfill, scheduler, raw integrity, shard state, source-specific progress	외부 원천 데이터, archive, API/RSS/web source	raw rows, shard state, aggregate status, L0 validation report	signal, scoring, ranking, trading decision
+L1	row/article-level packetization, lineage, raw hash/path, source time, available-to-brain time, mapping/blocker status	L0 raw data	source packet, article packet, mapping queue, blocker status	L0 incomplete을 negative evidence로 해석
+L2	safe swing event primitive, admission/read views, diagnostic materialization candidates	L1 packets	event primitive, admission view, stale/effect-window metadata, entity/ticker mapping	final signal, score, order intent, ranking, trading eligibility
+L3	relation graph, event clusters, relation quality, coverage gaps, diagnostic strategy view	L2 primitives/views	graph, cluster, relation quality, coverage gap report	graph count를 evidence quality로 오해, trading signal 생성
+L4	diagnostic thesis bundle assembly, evidence stitching, contradiction/blocker status	L0~L3 evidence and lineage	reviewable thesis bundle, blocker/coverage/contradiction status	buy/sell/hold, sizing, ranking, paper/live/deployment readiness
+4. Active Entrypoints — 현재 정본으로 취급할 파일
+4.1 L0 — exact active files
+역할	Active file
+Backfill runner	scripts/run_l0_public_newswire_sharded_backfill.py
+Shard aggregator	scripts/aggregate_l0_public_newswire_shards.py
+Backfill validator	scripts/validate_l0_public_newswire_sharded_backfill.py
+Acceleration controller	scripts/control_l0_public_newswire_acceleration.ps1
+Progress monitor	scripts/run_l0_public_newswire_sharded_progress_monitor.ps1
+Test	tests/test_l0_public_newswire_sharded_backfill.py
+Report directory	docs/reports/task_4159_l0_public_newswire_controlled_acceleration/*
+Current decision file	controlled_acceleration_decision.json under TASK-4159 report path
+
+주의:
+L0 active files는 수정 대상이 아니라 읽기/검증 대상입니다. TASK-4160에서 L0 코드를 바꾸면 안 됩니다.
+
+4.2 L1 — ownership은 확정, exact script는 Codex가 로컬에서 채워야 함
+
+제공된 패킷에서 L1의 정확한 script filename은 주어지지 않았습니다. 따라서 GPT가 임의 파일명을 만들면 안 됩니다.
+
+항목	TASK-4160에서 해야 할 일
+L1 role	row/article-level packetization, lineage, mapping, blocker status
+Known task	TASK-4138
+Known status	validation_failures: [], trading_authority_opened: false
+Manifest 처리	active_entrypoints에 Codex가 로컬에서 확인한 실제 L1 script/validator 경로만 기입
+금지	L0 coverage incomplete을 L1 validation failure로 처리하지 말 것
+
+Manifest에는 임시로 아래처럼 넣는 것이 안전합니다.
+
+JSON
+{
+  "layer": "L1",
+  "status": "active_direction_confirmed_exact_files_require_local_resolution",
+  "known_task": "TASK-4138",
+  "owner_scope": [
+    "row_article_packetization",
+    "source_lineage",
+    "raw_path_hash",
+    "source_time",
+    "available_to_brain_time",
+    "mapping_status",
+    "blocker_status"
+  ],
+  "active_entrypoints": [],
+  "active_validators": [],
+  "codex_action": "Fill exact local L1 script and validator paths after local file inspection. Do not invent filenames."
+}
+4.3 L2 — legacy/news code와 current event primitive pipeline 분리
+
+제공된 패킷상 L2의 정확한 active script filename도 주어지지 않았습니다. 다만 TASK-4147의 상태와 역할은 명확합니다.
+
+항목	내용
+Known task	TASK-4147
+Current role	L1 packet → safe swing event primitive/admission/read view
+Known output facts	l2_diagnostic_feature_rows: 1842, trading_eligible_rows: 0, signal_order_export_allowed_rows: 0
+Known config	configs/l0_realtime_operational_safe_config_4147.json
+Scheduler	TraderBrainL0L2Hardening4147
+금지	legacy news code를 current L2 event primitive pipeline으로 오인하지 말 것
+
+Manifest 처리:
+
+JSON
+{
+  "layer": "L2",
+  "status": "active_direction_confirmed_exact_files_require_local_resolution",
+  "known_task": "TASK-4147",
+  "owner_scope": [
+    "event_primitive",
+    "admission_view",
+    "diagnostic_materialization_candidate",
+    "entity_ticker_mapping",
+    "dedup",
+    "stale_metadata",
+    "effect_window_metadata"
+  ],
+  "known_configs": [
+    "configs/l0_realtime_operational_safe_config_4147.json"
+  ],
+  "active_entrypoints": [],
+  "active_validators": [],
+  "legacy_warning": "Do not treat legacy news code as current L2 primitive/admission pipeline unless explicitly marked active."
+}
+4.4 L3 — exact active files
+역할	Active file
+Diagnostic strategy view	scripts/build_l3_diagnostic_strategy_view_4150.py
+Relation graph v2	scripts/build_l3_relation_graph_v2_4152.py
+Relation graph quality guard	scripts/build_l3_relation_graph_quality_guard_4154.py
+Validators	Corresponding L3 validators in local tree
+
+L3 manifest에는 반드시 아래 caveat를 넣어야 합니다.
+
+Relation count is not evidence quality.
+L3 output is diagnostic relation infrastructure only.
+No trading signal, ranking, sizing, order intent, or eligibility may be derived from L3.
+4.5 L4 — exact active files
+역할	Active file
+Thesis bundle builder	scripts/build_l4_thesis_bundles.py
+Thesis bundle validator	scripts/validate_l4_thesis_bundle_package.py
+
+L4 manifest에는 반드시 아래 caveat를 넣어야 합니다.
+
+L4 is diagnostic thesis bundle assembly only.
+L4 does not produce institutional thesis acceptance.
+L4 must not emit buy/sell/hold, final_score, recommendation, policy_action, target_weight, position_size, order intent, paper/live eligibility, or deployment readiness.
+5. Codex가 생성/수정해야 할 정확한 파일
+5.1 Create
+파일	목적
+docs/reports/task_4160_l0_l4_structure_cleanup/active_layer_handoff.md	사람이 읽는 현재 L0~L4 정본 handoff
+docs/reports/task_4160_l0_l4_structure_cleanup/active_layer_manifest.json	Codex/자동화가 읽는 machine-readable active file index
+5.2 Optional create
+파일	판정	이유
+docs/reports/task_4160_l0_l4_structure_cleanup/validation_log.md	선택	validator 실행 결과를 남기고 싶을 때만 생성
+root README.md 수정	보류	dirty/unrelated 파일 충돌 가능성 있음
+기존 docs index 수정	보류	지금은 새 task folder만으로 충분
+
+권장:
+이번 TASK-4160에서는 정확히 2개 파일만 생성하는 것이 가장 안전합니다.
+검증 로그가 꼭 필요하면 validation_log.md까지 3개로 제한합니다.
+
+6. active_layer_handoff.md에 들어가야 할 내용
+
+권장 목차:
+
+Markdown
+# TASK-4160 Active L0-L4 Layer Handoff
+
+## 1. Hard State
+- Strategy: NOT_ACCEPTED
+- Deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+- Real Capital: FORBIDDEN
+- No broker mutation
+- No live order
+- No paper promotion
+- Missing/stale/incomplete data: UNKNOWN/BLOCKER, never negative evidence
+- No BUY/SELL/ranking/sizing/order/paper/live/deployment recommendation
+
+## 2. Current Running State
+- L0 public newswire backfill: RUNNING
+- Progress: 1,953 / 4,101, about 47.6%
+- Workers: BW 2, GN 1, PR 1
+- Current controller decision: BW4_BLOCKED
+- Safety flags: all closed
+
+## 3. Layer Ownership Matrix
+
+## 4. Active Entrypoints by Layer
+
+## 5. Active Validators by Layer
+
+## 6. Active Reports / Handoff Outputs
+
+## 7. Legacy / Superseded / Read-only Rules
+
+## 8. Explicit Do-Not-Do List
+
+## 9. Open Local Resolution Items
+- Exact L1 active scripts/validators need local path confirmation.
+- Exact L2 active scripts/validators need local path confirmation.
+7. active_layer_manifest.json 권장 스키마
+
+복잡한 schema validator는 지금 만들 필요 없습니다.
+python -m json.tool로 JSON 문법만 확인하면 충분합니다.
+
+JSON
+{
+  "task_id": "TASK-4160",
+  "purpose": "Active L0-L4 layer handoff index for future Codex runs",
+  "hard_state": {
+    "strategy": "NOT_ACCEPTED",
+    "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "real_capital": "FORBIDDEN",
+    "broker_mutation": false,
+    "live_order": false,
+    "paper_promotion": false,
+    "missing_stale_incomplete_data_policy": "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE",
+    "forbidden_outputs": [
+      "BUY",
+      "SELL",
+      "ranking",
+      "sizing",
+      "order_intent",
+      "paper_eligibility",
+      "live_eligibility",
+      "deployment_readiness"
+    ]
+  },
+  "layers": {
+    "L0": {
+      "owner_scope": [
+        "collectors",
+        "backfill",
+        "scheduler",
+        "raw_integrity",
+        "shard_state",
+        "source_progress"
+      ],
+      "active_entrypoints": [
+        "scripts/run_l0_public_newswire_sharded_backfill.py",
+        "scripts/aggregate_l0_public_newswire_shards.py",
+        "scripts/control_l0_public_newswire_acceleration.ps1",
+        "scripts/run_l0_public_newswire_sharded_progress_monitor.ps1"
+      ],
+      "active_validators": [
+        "scripts/validate_l0_public_newswire_sharded_backfill.py",
+        "tests/test_l0_public_newswire_sharded_backfill.py"
+      ],
+      "active_reports": [
+        "docs/reports/task_4159_l0_public_newswire_controlled_acceleration/"
+      ],
+      "current_status": {
+        "public_newswire_backfill": "RUNNING",
+        "completed_units": 1953,
+        "total_units": 4101,
+        "pending_units": 2148,
+        "progress_pct_approx": 47.6,
+        "workers": {
+          "BusinessWire": 2,
+          "GlobeNewswire": 1,
+          "PRNewswire": 1
+        },
+        "controller_decision": "BW4_BLOCKED"
+      }
+    },
+    "L1": {
+      "owner_scope": [
+        "row_article_packetization",
+        "source_lineage",
+        "raw_path_hash",
+        "source_time",
+        "available_to_brain_time",
+        "mapping_status",
+        "blocker_status"
+      ],
+      "known_task": "TASK-4138",
+      "active_entrypoints": [],
+      "active_validators": [],
+      "local_resolution_required": true,
+      "notes": [
+        "Exact L1 script and validator filenames were not provided in the TASK-4160 packet.",
+        "Codex must fill exact local paths after local inspection.",
+        "Do not treat incomplete L0 backfill coverage as negative evidence."
+      ]
+    },
+    "L2": {
+      "owner_scope": [
+        "event_primitive",
+        "admission_view",
+        "diagnostic_materialization_candidate",
+        "dedup",
+        "entity_ticker_mapping",
+        "stale_metadata",
+        "effect_window_metadata"
+      ],
+      "known_task": "TASK-4147",
+      "known_configs": [
+        "configs/l0_realtime_operational_safe_config_4147.json"
+      ],
+      "active_entrypoints": [],
+      "active_validators": [],
+      "local_resolution_required": true,
+      "notes": [
+        "Exact L2 script and validator filenames were not provided in the TASK-4160 packet.",
+        "Codex must separate legacy news code from current L2 event primitive/admission pipeline.",
+        "L2 must not emit final signal, score, ranking, order intent, or trading eligibility."
+      ]
+    },
+    "L3": {
+      "owner_scope": [
+        "relation_graph",
+        "event_clusters",
+        "relation_quality",
+        "coverage_gaps",
+        "diagnostic_strategy_view"
+      ],
+      "active_entrypoints": [
+        "scripts/build_l3_diagnostic_strategy_view_4150.py",
+        "scripts/build_l3_relation_graph_v2_4152.py",
+        "scripts/build_l3_relation_graph_quality_guard_4154.py"
+      ],
+      "active_validators": [
+        "LOCAL_CORRESPONDING_L3_VALIDATORS_TO_BE_CONFIRMED"
+      ],
+      "notes": [
+        "Graph count is not evidence quality.",
+        "L3 output is diagnostic only.",
+        "No trading signal, ranking, sizing, order intent, or eligibility."
+      ]
+    },
+    "L4": {
+      "owner_scope": [
+        "diagnostic_thesis_bundle",
+        "evidence_stitching",
+        "lineage_review",
+        "coverage_gap_review",
+        "contradiction_status",
+        "blocker_status"
+      ],
+      "active_entrypoints": [
+        "scripts/build_l4_thesis_bundles.py"
+      ],
+      "active_validators": [
+        "scripts/validate_l4_thesis_bundle_package.py"
+      ],
+      "notes": [
+        "L4 is diagnostic thesis bundle assembly only.",
+        "No buy/sell/hold, ranking, sizing, order intent, paper/live eligibility, or deployment readiness."
+      ]
+    }
+  },
+  "do_not_edit_now": [
+    "running L0 backfill scripts",
+    "TASK-4159 controller and monitor scripts",
+    "L0 shard state, lock, pid, or progress files",
+    "legacy L2/news code",
+    "old task reports except to read them",
+    "large dirty or unrelated files",
+    "database migrations",
+    "scheduler framework",
+    "broker, order, paper, live, or deployment code"
+  ]
+}
+8. Codex가 피해야 할 파일/영역
+8.1 읽기는 가능하지만 수정 금지
+파일/영역	이유
+scripts/run_l0_public_newswire_sharded_backfill.py	L0 backfill RUNNING 상태에서 수정 리스크 큼
+scripts/aggregate_l0_public_newswire_shards.py	TASK-4159 산출 안정화 영역
+scripts/validate_l0_public_newswire_sharded_backfill.py	현재 validator passed 상태 유지 필요
+scripts/control_l0_public_newswire_acceleration.ps1	controller decision 생성 중
+scripts/run_l0_public_newswire_sharded_progress_monitor.ps1	monitor가 ongoing status 작성 중
+tests/test_l0_public_newswire_sharded_backfill.py	TASK-4160 목적은 테스트 변경이 아님
+docs/reports/task_4159_l0_public_newswire_controlled_acceleration/*	실행 중인 L0 상태/결정 기록. 수정 금지, 읽기만
+configs/l0_realtime_operational_safe_config_4147.json	L0/L2 operational safe config. 구조 정리에서 건드릴 이유 없음
+scripts/build_l3_diagnostic_strategy_view_4150.py	active L3 entrypoint
+scripts/build_l3_relation_graph_v2_4152.py	active L3 entrypoint
+scripts/build_l3_relation_graph_quality_guard_4154.py	active L3 quality guard
+scripts/build_l4_thesis_bundles.py	active L4 builder
+scripts/validate_l4_thesis_bundle_package.py	active L4 validator
+8.2 이번 작업에서 명시적으로 금지
+금지 작업	이유
+old reports 삭제	어떤 report가 아직 audit trail인지 확실하지 않음
+task-specific scripts rename	future reference와 validator가 깨질 수 있음
+L0 shard/lock/progress 파일 편집	RUNNING backfill 방해 가능
+PRNewswire offset/range split	현재 명시적으로 prohibited
+BW concurrency 추가 변경	TASK-4160은 구조 정리 작업이지 가속 작업이 아님
+legacy L2/news code 정리	범위 초과. 잘못 건드리면 L2 current pipeline과 혼동 심화
+Airflow/Celery/K8s/DB migration	과도한 구조 변경
+신규 validator framework	지금은 manifest 문법 확인 + 기존 validator 실행이면 충분
+BUY/SELL/ranking/sizing/order 관련 필드 추가	hard state 위반 가능성
+9. Validator Checklist
+9.1 Manifest 자체 검증
+체크	명령/방법	기대 결과
+JSON syntax	python -m json.tool docs/reports/task_4160_l0_l4_structure_cleanup/active_layer_manifest.json	parse success
+hard state 포함 여부	manifest 수동 확인	NOT_ACCEPTED / FORBIDDEN / diagnostic-only 포함
+forbidden outputs 포함 여부	manifest 수동 확인	BUY/SELL/ranking/sizing/order/paper/live/deployment 금지 명시
+L1/L2 unknown 파일명 처리	manifest 수동 확인	없는 파일명을 임의로 만들지 않았는지 확인
+9.2 L0 검증
+Validator	기대 결과
+python scripts/validate_l0_public_newswire_sharded_backfill.py	pass
+python -m pytest tests/test_l0_public_newswire_sharded_backfill.py	pass
+TASK-4159 controlled_acceleration_decision.json 확인	validator_passed: true, safety_closed: true 유지
+PID/dead lock check	dead RUNNING lock 없음
+active offset misclassification check	active offset을 completed로 잘못 분류하지 않음
+9.3 L1 검증
+
+제공 패킷상 exact validator path는 없습니다. Codex는 로컬에서 기존 TASK-4138 검증 스크립트를 확인해 실행해야 합니다.
+
+체크	기대 결과
+TASK-4138 L1 validation 재실행	validation_failures: []
+source family policy rows	source_family_policy_rows: 5 유지
+trading authority	trading_authority_opened: false
+feature allowed now	feature_allowed_now_rows: []
+L0 incomplete 처리	UNKNOWN/BLOCKER, negative evidence 아님
+9.4 L2 검증
+
+제공 패킷상 exact L2 validator path는 없습니다. Codex는 TASK-4147 계열 L2 validator를 로컬에서 확인해야 합니다.
+
+체크	기대 결과
+L1 article packets	l1_article_packets: 1093 수준의 기존 상태와 불필요한 퇴행 없음
+L1 ready packets	l1_article_ready_packets: 1093
+raw packet blockers	raw_article_packet_blockers: 0
+L2 diagnostic feature rows	l2_diagnostic_feature_rows: 1842 수준의 기존 상태와 불필요한 퇴행 없음
+trading eligible	trading_eligible_rows: 0
+signal/order export allowed	signal_order_export_allowed_rows: 0
+broker mutation permitted	broker_mutation_permitted_rows: 0
+9.5 L3 검증
+Validator	기대 결과
+Corresponding validator for build_l3_diagnostic_strategy_view_4150.py	pass
+Corresponding validator for build_l3_relation_graph_v2_4152.py	pass
+Corresponding validator for build_l3_relation_graph_quality_guard_4154.py	pass
+Manual semantic check	graph count를 evidence quality로 사용하지 않음
+Safety check	signal/ranking/sizing/order eligibility 없음
+9.6 L4 검증
+Validator	기대 결과
+python scripts/validate_l4_thesis_bundle_package.py	pass
+forbidden field check	recommendation, policy_action, final_score, target_weight, position_size 없음
+semantic authority check	buy/sell/hold/ranking/sizing/order/paper/live/deployment readiness 없음
+blocker/coverage/contradiction check	diagnostic review field로만 존재
+10. Rollback / Stop Criteria
+
+TASK-4160은 파일 2개 생성 작업이므로 rollback도 단순해야 합니다.
+
+상황	조치
+L0 validator fail	TASK-4160 변경 중단. L0 파일 수정 여부 확인. 생성한 manifest/handoff는 보류
+JSON parse fail	manifest 수정 후 재검증
+L1/L2 파일명을 Codex가 추정으로 채움	즉시 수정. unknown은 unknown으로 둬야 함
+기존 코드 파일이 변경됨	revert. TASK-4160은 코드 수정 작업이 아님
+running lock/progress 파일 변경됨	즉시 중단. L0 monitor/controller 상태 확인
+manifest가 BUY/SELL/ranking/sizing/order 관련 항목을 output으로 허용	즉시 fail 처리
+11. Codex 실행 지시문
+TASK-4160 L0-L4 Structure Cleanup
+
+Use only the current local working copy. Do not use GitHub as source of truth.
+
+Goal:
+Create a low-overhead active handoff index for L0-L4 so future Codex runs read the correct active files first and do not confuse legacy/superseded files with current layer ownership.
+
+Hard state:
+- Strategy: NOT_ACCEPTED
+- Deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+- Real Capital: FORBIDDEN
+- No broker mutation
+- No live order
+- No paper promotion
+- Missing/stale/incomplete data is UNKNOWN/BLOCKER, never negative evidence
+- No BUY/SELL/ranking/sizing/order/paper/live/deployment recommendation
+
+Create only:
+1. docs/reports/task_4160_l0_l4_structure_cleanup/active_layer_handoff.md
+2. docs/reports/task_4160_l0_l4_structure_cleanup/active_layer_manifest.json
+
+Do not edit, move, rename, or delete existing code/report/data files.
+
+The handoff markdown must include:
+- hard state
+- current L0 running state
+- L0-L4 ownership matrix
+- active entrypoints by layer
+- active validators by layer
+- active reports/handoff outputs
+- legacy/superseded/read-only rules
+- explicit do-not-do list
+- unresolved local resolution items for exact L1/L2 script paths if not safely identifiable
+
+The JSON manifest must include:
+- hard_state
+- per-layer owner_scope
+- active_entrypoints
+- active_validators
+- active_reports/configs where known
+- forbidden outputs
+- local_resolution_required for L1/L2 if exact script names are not confirmed
+- do_not_edit_now list
+
+Known exact active files:
+L0:
+- scripts/run_l0_public_newswire_sharded_backfill.py
+- scripts/aggregate_l0_public_newswire_shards.py
+- scripts/validate_l0_public_newswire_sharded_backfill.py
+- scripts/control_l0_public_newswire_acceleration.ps1
+- scripts/run_l0_public_newswire_sharded_progress_monitor.ps1
+- tests/test_l0_public_newswire_sharded_backfill.py
+- docs/reports/task_4159_l0_public_newswire_controlled_acceleration/
+
+L3:
+- scripts/build_l3_diagnostic_strategy_view_4150.py
+- scripts/build_l3_relation_graph_v2_4152.py
+- scripts/build_l3_relation_graph_quality_guard_4154.py
+- corresponding local L3 validators
+
+L4:
+- scripts/build_l4_thesis_bundles.py
+- scripts/validate_l4_thesis_bundle_package.py
+
+Known L2 config:
+- configs/l0_realtime_operational_safe_config_4147.json
+
+Important:
+Do not invent exact L1/L2 script names. If exact files are not safely identifiable, mark local_resolution_required=true and explain that future Codex must fill exact local paths after local inspection.
+
+Validation:
+- python -m json.tool docs/reports/task_4160_l0_l4_structure_cleanup/active_layer_manifest.json
+- python scripts/validate_l0_public_newswire_sharded_backfill.py
+- python -m pytest tests/test_l0_public_newswire_sharded_backfill.py
+- run existing local L1 TASK-4138 validator if identifiable
+- run existing local L2 TASK-4147 validator if identifiable
+- run corresponding local L3 validators if identifiable
+- python scripts/validate_l4_thesis_bundle_package.py
+
+Success criteria:
+- Only the two TASK-4160 files are created/edited.
+- JSON manifest parses.
+- No running L0 backfill/controller/monitor code or state is modified.
+- No trading authority is opened.
+- Future Codex can identify active L0-L4 entrypoints, validators, reports, and forbidden legacy areas from the handoff files.
+12. 사용자용 쉬운 요약
+질문	답
+지금 구조 정리가 필요한가?	필요함. 파일이 많아져서 Codex가 잘못된 파일을 읽을 위험이 있음
+어떻게 정리해야 하나?	파일을 옮기지 말고, 현재 정본 파일 목록을 문서와 JSON으로 고정
+몇 개 파일을 만들면 되나?	우선 2개: active_layer_handoff.md, active_layer_manifest.json
+코드도 고쳐야 하나?	아니오. 이번 작업은 코드 수정이 아니라 active index 생성
+L0 백필에는 영향 있나?	없어야 함. L0 runner/controller/monitor/state 파일은 수정 금지
+L1/L2 파일명은 어떻게 하나?	GPT가 임의로 만들면 안 됨. Codex가 로컬에서 실제 파일명만 확인해서 채워야 함
+지금 하지 말아야 할 것	파일 이동, 삭제, rename, legacy L2 정리, PR split, BW 추가 가속, 신규 framework 도입
+최종 판정	CONDITIONAL PASS — 얇은 handoff/manifest 방식으로 하면 안전하고 실용적임
+# GPT Pro Consult Prompt - TASK-4189 Project Structure Cleanup
+
+You are an expert panel for the minjo1009/Stock-Investment project.
+
+Required expert roles:
+- Principal Project Architect
+- Technical Program Manager for complex research systems
+- Repository Governance Engineer
+- Data/ML Platform Architect
+- Trading-system Safety Reviewer
+
+Required GPT mode:
+- Agent Mode with GitHub enabled for minjo1009/Stock-Investment
+- Inspect the repository before answering.
+- Do not use Deep Research unless you need current external best practices; this is primarily repo-architecture work.
+
+User goal:
+The user says the project root and repository structure are disorganized. They want a durable system for file/folder management so Codex does not keep creating scattered scripts, skills, harnesses, reports, wiki notes, Graphify outputs, Obsidian notes, task logs, and duplicate root folders. They want safe deletion or trash/archive movement where appropriate, no duplicate root axes, clear layer/function separation, and persistent governance so this stays clean without repeated manual intervention.
+
+Current local evidence from Codex TASK-4188/TASK-4189:
+- ops/project_hygiene_policy.yaml classifies root entries and makes new unclassified root clutter fail validation.
+- scripts/ops/validate_project_hygiene.py is wired into scripts/ops/validate_codex_closeout.py.
+- TASK-4189 deleted only .pytest_cache as safe transient cache.
+- Current duplicate axes needing expert review:
+  - config vs configs: keep configs canonical until imports prove otherwise.
+  - apps vs frontend: likely keep apps canonical for app surfaces; review frontend.
+  - .obsidian vs docs/obsidian: .obsidian is local app state; docs/obsidian is repo cockpit.
+  - tasks vs ops/task_registry.yaml: registry is canonical; legacy tasks needs archive or migration.
+- Current docs surfaces marked REVIEW:
+  - docs/acceptance
+  - docs/active
+  - docs/audits
+  - docs/candidate_funnel
+  - docs/context
+  - docs/contracts
+  - docs/db
+  - docs/execution
+  - docs/frontend_ios
+  - docs/frontend_web
+  - docs/graphify
+  - docs/harness
+  - docs/logs
+  - docs/specs
+- Canonical or keep surfaces:
+  - AGENTS.md
+  - ops/**
+  - docs/operating_system/**
+  - docs/architecture/**
+  - docs/ownership/**
+  - docs/generated_context/**
+  - docs/reports/task_*/**
+  - docs/llm_wiki/** as routing memory only
+  - docs/obsidian/** as human cockpit only
+  - docs/frontend_app_ssot/** for frontend SSOT
+
+Hard project state:
+- Strategy: NOT_ACCEPTED
+- Deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+- Real Capital: FORBIDDEN
+- No broker mutation
+- No live order
+- No paper promotion
+- Missing/stale data is UNKNOWN/BLOCKER, never negative evidence
+- GPT is advisory only; repo SSOT and validators remain source of truth.
+
+What I need from you:
+1. Propose a durable target repository tree for this project, grouped by layer and function.
+2. Decide which root-level axes should be canonical and which should become archived, local-only, or deleted.
+3. Give a concrete cleanup decision matrix for the duplicate axes and REVIEW docs surfaces above.
+4. Define a safe trash/archive policy. Include when to delete, when to move to docs/archive, when to move to a local ignored folder, and when to block.
+5. Define closeout validators or registry checks Codex should add so future tasks cannot recreate clutter.
+6. Identify P0/P1 risks in deleting or moving the listed surfaces.
+7. Give Codex a small next patch plan that is safe to implement now without touching broker, live trading, strategy logic, raw data, DB schema, or secrets.
+
+Output format:
+1. Architecture Diagnosis
+2. Target Repository Tree
+3. Canonical vs Archive/Delete Decisions
+4. Cleanup Decision Matrix
+5. Persistent Governance / Validators
+6. P0/P1 Risks
+7. Codex Patch Plan
+8. Validation Checklist
+더 보기
+
+먼저 GitHub의 실제 루트·문서·ops 구조와 hygiene/closeout 파일을 확인한 뒤, 로컬 TASK-4188/4189 증거를 우선해 안전한 정리안을 제시하겠습니다. 삭제·이동보다 canonical axis, archive 정책, clutter 차단 validator, 즉시 가능한 작은 패치 범위를 분리하겠습니다.
+
+GitHub main에는 기존 거버넌스 문서가 있으나 새 hygiene policy는 아직 없으므로, 로컬 최신 증거와 stale GitHub 상태를 분리해 판단하겠습니다. 과거 task registry 축과 새 ops registry 축의 공존은 별도 위험으로 보겠습니다.
+
+Pro 생각 중
+
+Pro 확장
+ChatGPT는 실수를 할 수 있습니다. 중요한 정보는 재차 확인하세요.

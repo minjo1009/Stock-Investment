@@ -1,0 +1,14 @@
+{
+  "blocked_count": 0,
+  "captured_raw_summaries": 5,
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "exported_or_empty_count": 5,
+  "failed_retryable_count": 0,
+  "network_calls_made": 5,
+  "normalized_packet_count": 4,
+  "real_capital": "FORBIDDEN",
+  "stage1_status": "NETWORK_SMOKE_EXECUTED_OWNER_REVIEW_PENDING",
+  "strategy": "NOT_ACCEPTED",
+  "task_id": "TASK-4119",
+  "updated_at": "2026-06-29T07:16:42.648644Z"
+}

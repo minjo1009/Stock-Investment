@@ -1,0 +1,86 @@
+task_id: TASK-4182
+task_type: OUTCOME_CHANGE
+domain: L1_NEWSWIRE_MAPPING
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN
+  missing_stale_incomplete_data_semantics: UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE
+scope:
+  changed_paths:
+  - scripts/run_l0_l2_hardening_4147.py
+  - scripts/run_task4182_l1_article_entity_feature_hardening.py
+  - scripts/validate_task4182_l1_article_entity_feature_hardening.py
+  - data/artifacts/task_4182_l1_article_entity_feature_hardening/**
+  - docs/reports/task_4182_l1_article_entity_feature_hardening/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  allowed_paths:
+  - scripts/run_l0_l2_hardening_4147.py
+  - scripts/run_task4182_l1_article_entity_feature_hardening.py
+  - scripts/validate_task4182_l1_article_entity_feature_hardening.py
+  - data/artifacts/task_4182_l1_article_entity_feature_hardening/**
+  - docs/reports/task_4182_l1_article_entity_feature_hardening/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  forbidden_paths:
+  - broker/**
+  - live_trading/**
+  - production_orders/**
+  - secrets/**
+  - configs/broker/**
+layer_outcome_validation:
+  layer: L1
+outcome_unit:
+  name: missing_l1_materialization_count
+  direction: decrease
+  problem_progress_claim_allowed: true
+intended_change:
+  summary: Reduce represented L1 materialization gaps and broaden article packet coverage without forced mapping.
+measurement_method:
+  commands:
+  - python scripts/run_task4182_l1_article_entity_feature_hardening.py
+  - python scripts/validate_task4182_l1_article_entity_feature_hardening.py
+baseline:
+  value: 181
+after:
+  value: 0
+allowed_actions:
+  - create diagnostic L1 article/entity/feature evidence
+  - create explicit source recall review queues
+  - update task and document registries
+forbidden_actions:
+  - broker mutation
+  - capital-bearing execution
+  - forced ticker mapping
+  - LLM entity inference
+  - ranking or sizing output
+evidence_artifacts:
+  required:
+  - data/artifacts/task_4182_l1_article_entity_feature_hardening/task_4182_l1_hardening_summary.json
+  - data/artifacts/task_4182_l1_article_entity_feature_hardening/task_4182_feature_backfill_resolution.csv
+  - data/artifacts/task_4182_l1_article_entity_feature_hardening/task_4182_source_recall_review_queue.csv
+  - docs/reports/task_4182_l1_article_entity_feature_hardening/report.md
+validators:
+  required:
+  - python scripts/validate_task4182_l1_article_entity_feature_hardening.py
+progress_claim_policy:
+  actual_underlying_progress: true
+  missing_data_used_as_negative_evidence: false
+closeout_verdict:
+  selected: ACTUAL_PROGRESS_WITH_RESIDUAL_BLOCKERS
+report:
+  summary: L1 materialization gap count moved from 181 to 0 while upstream L0 worker blockers remain explicit.
+  actual_underlying_progress: true
+  claims:
+  - L1 article packet coverage was broadened across source families.
+  - Ambiguous source recall rows remain explicit review work.
+next_target:
+  required: true
+  task_type: OUTCOME_CHANGE
+  outcome_unit: l1_blocked_packet_count
+  required_baseline: current L1 blocked packet and recall-review queue counts
+  required_validator: task-specific L1 blocker burn-down validator

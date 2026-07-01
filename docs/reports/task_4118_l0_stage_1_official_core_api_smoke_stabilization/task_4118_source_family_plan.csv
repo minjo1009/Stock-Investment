@@ -1,0 +1,5 @@
+task_id,source_family,stage,mode,network_default,authority
+TASK-4118,official_public_releases,1,python_http_rss_api_smoke,disabled,official_primary_diagnostic_only
+TASK-4118,gdelt_news_events,1,python_api_smoke,disabled,discovery_only
+TASK-4118,marketaux_news_free,1,python_api_smoke,disabled,metadata_discovery_only
+TASK-4118,microstructure_quotes_trades,1,python_alpaca_historical_smoke,disabled,raw_microstructure_diagnostic_only

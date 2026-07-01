@@ -1,0 +1,40 @@
+version: 1
+updated_at: "2026-06-29"
+
+cases:
+  - id: agents_trading_safety
+    path: AGENTS.md
+    must_contain:
+      - No real capital.
+      - No live order.
+      - No broker mutation.
+      - Missing or stale data is UNKNOWN/BLOCKER
+    must_not_match:
+      - Candidate\s*[-=]?>\s*Buy
+
+  - id: task_closeout_done_gate
+    path: .codex/skills/task-closeout/SKILL.md
+    must_contain:
+      - Do not mark DONE unless validators pass.
+      - Keep forbidden paths clean.
+    must_not_match:
+      - mark DONE without
+
+  - id: ui_storybook_purity
+    path: .codex/skills/ui-storybook-vision/SKILL.md
+    must_contain:
+      - Storybook before P0 screens
+      - UI is pure rendering
+      - no business logic in UI
+      - no IA redesign without approval
+    must_not_match:
+      - promotion calculation in UI is allowed
+
+  - id: l5_policy_no_execution
+    path: .codex/skills/l5-policy-action/SKILL.md
+    must_contain:
+      - no broker mutation
+      - no live order
+      - Candidate must not convert directly to Buy
+    must_not_match:
+      - Candidate\s*[-=]?>\s*Buy

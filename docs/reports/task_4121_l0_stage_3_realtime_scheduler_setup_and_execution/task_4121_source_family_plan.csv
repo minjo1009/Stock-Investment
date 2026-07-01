@@ -1,0 +1,4 @@
+task_id,job_name,source_families,enabled_in_task_proof,allow_network,interval_minutes,scheduled_requests_per_day,mode,diagnostic_only,execution_permitted,broker_mutation_permitted,real_capital_permitted,proof_note
+TASK-4121,official_news_sources_15m,official_public_releases,1,0,15,96,stage3_scheduler_proof,1,0,0,0,task-local forced-due recurrence proof; provider network disabled
+TASK-4121,gdelt_news_discovery_15m,gdelt_news_events,1,0,15,96,stage3_scheduler_proof,1,0,0,0,task-local forced-due recurrence proof; provider network disabled
+TASK-4121,marketaux_news_free_30m,marketaux_news_free,1,0,16,90,stage3_scheduler_proof,1,0,0,0,task-local forced-due recurrence proof; provider network disabled

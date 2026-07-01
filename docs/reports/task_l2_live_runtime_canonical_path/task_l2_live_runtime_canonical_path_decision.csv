@@ -1,2 +1,0 @@
-task_id,decision_status,live_market_indicator_l2_path,strategy_acceptance,deployment_readiness,real_capital,diagnostic_only_flag,trade_output_flag,score_output_flag,order_intent_flag,next_gate
-TaskL2LiveRuntimeCanonicalPath,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,COMPLETE_FOR_MARKET_BARS_AND_INDICATORS,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,1,0,0,0,Add source-backed L2 writers for news SEC macro and microstructure after L1 receipt tables exist

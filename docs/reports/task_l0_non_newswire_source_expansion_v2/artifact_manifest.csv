@@ -1,8 +1,0 @@
-artifact,kind,row_count,notes
-docs/reports/task_l0_non_newswire_source_expansion_v2/task_l0_non_newswire_source_expansion_v2_report.md,report,1,Decision report for non-newswire source expansion v2.
-docs/reports/task_l0_non_newswire_source_expansion_v2/task_l0_non_newswire_source_expansion_v2_decision.csv,decision,14,Decision metrics and readiness status.
-docs/reports/task_l0_non_newswire_source_expansion_v2/candidate_probe_summary.csv,audit_table,26,Source probe summary from live lightweight HTTP checks.
-data/artifacts/l0_pm_non_newswire_v2_rss_smoke_v2/collector_events.jsonl,smoke_events,15,Promoted RSS live smoke events.
-data/artifacts/l0_pm_non_newswire_v2_backfill_smoke_v2/collector_events.jsonl,smoke_events,4,Promoted AP and WordPress historical backfill smoke events.
-data/artifacts/l0_pm_non_newswire_v2_l2_smoke/news_l2_smoke.db,l2_smoke_db,92,Combined promoted RSS and backfill smoke ingested as L2 news facts.
-tasks/task_registry.csv,registry,1,New task row TaskL0NonNewswireSourceExpansionV2.

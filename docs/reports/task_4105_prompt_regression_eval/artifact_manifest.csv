@@ -1,0 +1,11 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,register TASK-4105,modified,TASK-4105
+ops/doc_registry.yaml,REGISTRY,register TASK-4105 documents,modified,TASK-4105
+ops/context_bundles.yaml,GOVERNANCE,add TASK-4105 context bundle,modified,TASK-4105
+ops/prompt_regression_cases.yaml,GOVERNANCE,prompt regression case config,created,TASK-4105
+scripts/ops/validate_prompt_regression.py,SCRIPT,run prompt regression phrase and pattern checks,created,TASK-4105
+docs/generated_context/TASK-4105_context.md,GENERATED_CONTEXT,TASK-4105 context bundle,created,TASK-4105
+docs/generated_context/TASK-4105_manifest.csv,GENERATED_CONTEXT,TASK-4105 context manifest,created,TASK-4105
+docs/reports/task_4105_prompt_regression_eval/report.md,TASK_REPORT,TASK-4105 report,created,TASK-4105
+docs/reports/task_4105_prompt_regression_eval/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4105 artifact manifest,created,TASK-4105
+docs/reports/task_4105_prompt_regression_eval/validation_results.md,VALIDATION_REPORT,TASK-4105 validation results,created,TASK-4105

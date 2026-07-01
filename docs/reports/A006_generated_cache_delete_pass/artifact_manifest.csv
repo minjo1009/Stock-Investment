@@ -1,8 +1,0 @@
-artifact_path,artifact_type,role,status,row_count,validation,notes
-docs/reports/A006_generated_cache_delete_pass/deletion_log.csv,output,deletion_log,created,853,validation_passed,A005 DELETE_SAFE generated-cache file deletion log.
-docs/reports/A006_generated_cache_delete_pass/directory_cleanup_log.csv,output,directory_cleanup_log,created,34,validation_passed,Empty generated-cache directory cleanup log.
-docs/reports/A006_generated_cache_delete_pass/post_validation_cache_cleanup_log.csv,output,post_validation_cleanup_log,created,7,validation_passed,Generated-cache cleanup after validators recreated pycache files.
-docs/reports/A006_generated_cache_delete_pass/generated_cache_delete_report.md,output,task_report,created,not_applicable,validation_passed,A006 report following docs/report_standard.md.
-tasks/active_task_registry.csv,output,active_registry_update,updated,6,validation_passed,A006 row added.
-docs/active/CURRENT_TASKS.md,output,current_tasks_update,updated,not_applicable,validation_passed,A006 recorded and next loops updated.
-docs/active/PROJECT_STATUS.md,output,project_status_update,updated,not_applicable,validation_passed,A006 cache cleanup status added.

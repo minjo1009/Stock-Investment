@@ -1,0 +1,3 @@
+layer_name,allowed_operation,allowed_output,forbidden_operation,source_path,label_used_flag,strategy_assignment_used_flag
+raw_catalog_query_layer,list partitions by provider/feed/type/symbol/date,paths and row metadata,compute continuation or fragile-breakout features,data\raw\microstructure_full,0,0
+raw_partition_reader,load exact symbol/date quote or trade parquet rows,raw normalized quote/trade rows,entry/sizing decision,data\raw\microstructure_full,0,0

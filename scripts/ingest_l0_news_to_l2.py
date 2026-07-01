@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import sqlite3
 import sys
 from datetime import UTC, datetime
@@ -10,12 +11,20 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.l2.news_runtime import DEFAULT_NEWS_EVENT_PATHS, load_news_collector_events, write_news_l2_primitives
-from src.l2.runtime_context import LIVE_INTRADAY_DIAGNOSTIC
-
 
 def utc_now() -> str:
     return datetime.now(UTC).isoformat().replace("+00:00", "Z")
+
+
+def l1_handoff_ready(path: Path) -> bool:
+    if not path.exists():
+        return False
+    with path.open("r", encoding="utf-8", newline="") as fh:
+        rows = list(csv.DictReader(fh))
+    return bool(rows) and all(
+        row.get("trading_authority") == "0" and row.get("write_l2_materialization") == "0"
+        for row in rows
+    )
 
 
 def main() -> int:
@@ -24,8 +33,26 @@ def main() -> int:
     parser.add_argument("--event-path", action="append", type=Path, default=[])
     parser.add_argument("--limit-per-path", type=int, default=500)
     parser.add_argument("--capture-ts", type=str, default="")
-    parser.add_argument("--runtime-context", type=str, default=LIVE_INTRADAY_DIAGNOSTIC)
+    parser.add_argument("--runtime-context", type=str, default="LIVE_INTRADAY_DIAGNOSTIC")
+    parser.add_argument("--l1-handoff-candidates", type=Path, default=Path("data/artifacts/task_4133_l1_development_plan/l1_l2_handoff_candidates_sample.csv"))
+    parser.add_argument("--allow-legacy-direct-l2", action="store_true")
     args = parser.parse_args()
+    if not args.allow_legacy_direct_l2:
+        print(
+            "[L2_NEWS_INGEST_BLOCKED] legacy direct L0-to-L2 ingest is disabled by default. "
+            "Run normalized L1 gates first and pass --allow-legacy-direct-l2 only for explicit diagnostic repair.",
+            file=sys.stderr,
+        )
+        return 2
+    if not l1_handoff_ready(args.l1_handoff_candidates):
+        print(
+            f"[L2_NEWS_INGEST_BLOCKED] L1 handoff candidate file is missing or unsafe: {args.l1_handoff_candidates}",
+            file=sys.stderr,
+        )
+        return 2
+
+    from src.l2.news_runtime import DEFAULT_NEWS_EVENT_PATHS, load_news_collector_events, write_news_l2_primitives
+
     event_paths = args.event_path or DEFAULT_NEWS_EVENT_PATHS
     events = load_news_collector_events(event_paths, limit_per_path=args.limit_per_path)
     conn = sqlite3.connect(args.db_path)

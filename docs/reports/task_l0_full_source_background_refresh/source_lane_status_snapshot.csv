@@ -1,6 +1,0 @@
-source_lane,provider,role,status_at_snapshot,evidence_path,blocker_or_note
-news,official_public_releases,official_primary,PARTIAL_RUNNING,data/artifacts/l0_news_background_queue/collector_events.jsonl,Five raw captures exported; BLS RSS returned HTTP 403 retryable.
-news,gdelt_news_events,news_discovery_proxy,RUNNING_COOLDOWN,data/artifacts/l0_news_background_queue/collector_events.jsonl,Discovery-only lane active; first broad symbol query recorded retryable failure and cooldown is respected.
-news,marketaux_news_free,licensed_news_metadata_proxy,RUNNING_CAPPED,data/artifacts/l0_news_full_backfill/collector_progress.json,Token present; no secret printed; local daily cap is 95.
-microstructure,alpaca_iex_quotes,true_quote_microstructure,RUNNING_15M,data/artifacts/microstructure_backfill_queue_15m/collector_progress.json,Full-period full-universe accelerated 15-minute background collector active.
-microstructure,alpaca_iex_trades,true_trade_print_microstructure,RUNNING_15M,data/artifacts/microstructure_backfill_queue_15m/collector_progress.json,Full-period full-universe accelerated 15-minute background collector active.

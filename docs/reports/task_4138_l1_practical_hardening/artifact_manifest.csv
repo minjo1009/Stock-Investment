@@ -1,0 +1,19 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4138 task definition and closeout state,modified,TASK-4138
+ops/doc_registry.yaml,registry,TASK-4138 document registry entries,modified,TASK-4138
+configs/l1_source_time_precision_policy.yaml,config,L1 source-time precision and Wikimedia policy,created,TASK-4138
+docs/active/ACTIVE_SSOT_INDEX.md,active_doc,Active SSOT pointer for TASK-4138,modified,TASK-4138
+docs/active/CURRENT_TASKS.md,active_doc,Current task completion pointer for TASK-4138,modified,TASK-4138
+docs/active/PROJECT_STATUS.md,active_doc,Current status summary for TASK-4138,modified,TASK-4138
+docs/architecture/l0_source_acquisition_project_management_plan.md,architecture_doc,L1 hardening status update,modified,TASK-4138
+docs/reports/task_4138_l1_practical_hardening/report.md,task_report,Human-readable TASK-4138 report,created,TASK-4138
+docs/reports/task_4138_l1_practical_hardening/artifact_manifest.csv,artifact_manifest,TASK-4138 artifact manifest,created,TASK-4138
+docs/reports/task_4138_l1_practical_hardening/validation_results.md,validation_report,TASK-4138 validation results,created,TASK-4138
+docs/reports/task_4138_l1_practical_hardening/l1_practical_hardening_summary.json,summary,Machine-readable TASK-4138 summary,created,TASK-4138
+scripts/run_l1_practical_hardening_4138.py,script,Build TASK-4138 L1 hardening artifacts,created,TASK-4138
+scripts/validate_l1_practical_hardening_4138.py,validator,Validate TASK-4138 L1 hardening artifacts,created,TASK-4138
+data/artifacts/task_4138_l1_practical_hardening/l1_source_time_precision_policy.csv,artifact,Source-family time precision policy rows,created,TASK-4138
+data/artifacts/task_4138_l1_practical_hardening/l1_wikimedia_noon_policy.csv,artifact,Wikimedia precision/noon policy rows,created,TASK-4138
+data/artifacts/task_4138_l1_practical_hardening/l1_feature_block_reason_matrix.csv,artifact,Plain block reasons by source family,created,TASK-4138
+data/artifacts/task_4138_l1_practical_hardening/l1_repeated_validation_run_state.csv,artifact,Repeated L1/L2 boundary validation run ledger,created,TASK-4138
+data/artifacts/task_4138_l1_practical_hardening/validator_report.json,artifact,Machine-readable validator report,created,TASK-4138

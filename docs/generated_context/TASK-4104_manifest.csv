@@ -1,0 +1,8 @@
+path,bytes,tokens,reason
+AGENTS.md,1380,345,must_include
+docs/reports/task_4104_mission_control_dashboard_v1/report.md,1037,259,optional_include
+ops/doc_registry.yaml,14694,3673,must_include
+ops/operating_state.yaml,604,151,must_include
+ops/task_registry.yaml,10820,2705,must_include
+scripts/ops/render_ops_dashboard.py,7426,1856,must_include
+scripts/ops/validate_dashboard.py,1560,390,must_include

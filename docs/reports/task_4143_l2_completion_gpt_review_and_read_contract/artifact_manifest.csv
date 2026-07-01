@@ -1,0 +1,26 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4143 task definition and closeout state,modified,TASK-4143
+ops/doc_registry.yaml,registry,TASK-4143 document registry entries,modified,TASK-4143
+docs/active/ACTIVE_SSOT_INDEX.md,active_doc,TASK-4143 active report pointer,modified,TASK-4143
+docs/active/CURRENT_TASKS.md,active_doc,TASK-4143 completion pointer,modified,TASK-4143
+docs/active/PROJECT_STATUS.md,active_doc,TASK-4143 status note,modified,TASK-4143
+scripts/run_l2_completion_4143.py,script,Build L2 completion package,created,TASK-4143
+scripts/validate_l2_completion_4143.py,validator,Validate L2 completion package,created,TASK-4143
+docs/reports/task_4143_l2_completion_gpt_review_and_read_contract/report.md,task_report,TASK-4143 report,created,TASK-4143
+docs/reports/task_4143_l2_completion_gpt_review_and_read_contract/artifact_manifest.csv,artifact_manifest,TASK-4143 artifact manifest,created,TASK-4143
+docs/reports/task_4143_l2_completion_gpt_review_and_read_contract/validation_results.md,validation_report,TASK-4143 validation results,created,TASK-4143
+docs/reports/task_4143_l2_completion_gpt_review_and_read_contract/gpt_prompt.md,gpt_evidence,Prompt sent to GPT Pro,created,TASK-4143
+docs/reports/task_4143_l2_completion_gpt_review_and_read_contract/gpt_response.md,gpt_evidence,GPT Pro response captured from Chrome,created,TASK-4143
+docs/reports/task_4143_l2_completion_gpt_review_and_read_contract/l2_completion_summary.json,summary,Machine-readable TASK-4143 summary,created,TASK-4143
+data/artifacts/task_4143_l2_completion_gpt_review_and_read_contract/l2_to_l3_swing_event_read_contract.yaml,artifact,L3 read contract,created,TASK-4143
+data/artifacts/task_4143_l2_completion_gpt_review_and_read_contract/l2_to_l3_swing_event_read_view.csv,artifact,L3 read whitelist view,created,TASK-4143
+data/artifacts/task_4143_l2_completion_gpt_review_and_read_contract/l2_to_l3_swing_event_read_view.jsonl,artifact,L3 read whitelist view JSONL,created,TASK-4143
+data/artifacts/task_4143_l2_completion_gpt_review_and_read_contract/l2_mapping_review_queue.csv,artifact,Mapping review queue,created,TASK-4143
+data/artifacts/task_4143_l2_completion_gpt_review_and_read_contract/l2_input_scope_audit.csv,artifact,L0/L1 input scope audit,created,TASK-4143
+data/artifacts/task_4143_l2_completion_gpt_review_and_read_contract/l2_mapping_scope_summary.csv,artifact,Mapping scope summary,created,TASK-4143
+data/artifacts/task_4143_l2_completion_gpt_review_and_read_contract/l2_dedup_summary.csv,artifact,Dedup summary,created,TASK-4143
+data/artifacts/task_4143_l2_completion_gpt_review_and_read_contract/l2_stale_status_summary.csv,artifact,Stale status summary,created,TASK-4143
+data/artifacts/task_4143_l2_completion_gpt_review_and_read_contract/l2_completion_cut_list.csv,artifact,Overengineering cut list,created,TASK-4143
+data/artifacts/task_4143_l2_completion_gpt_review_and_read_contract/l2_completion_validation_report.json,artifact,Validator JSON report,created,TASK-4143
+data/artifacts/task_4143_l2_completion_gpt_review_and_read_contract/l2_completion_validation_report.md,artifact,Validator Markdown report,created,TASK-4143
+data/artifacts/task_4143_l2_completion_gpt_review_and_read_contract/validator_report.json,artifact,Machine-readable validator report,created,TASK-4143

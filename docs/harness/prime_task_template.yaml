@@ -1,0 +1,97 @@
+task_id: "TASK-XXXX"
+task_type: "OUTCOME_CHANGE"
+domain: "backend_data_pipeline"
+
+layer_outcome_validation:
+  layer: null
+  notes: "Use L0, L1, L2, L3, or L4 only when this task claims layer progress."
+
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+
+scope:
+  allowed_paths: []
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths: []
+  non_goals: []
+
+outcome_unit:
+  name: "example_outcome_unit"
+  type: "count"
+  direction: "decrease"
+  problem_progress_claim_allowed: true
+  harness_progress_claim_allowed: false
+
+baseline:
+  measured_at: "YYYY-MM-DDTHH:MM:SSZ"
+  value: 0
+  source_artifacts: []
+  freshness_required: true
+
+after:
+  measured_at: "YYYY-MM-DDTHH:MM:SSZ"
+  value: 0
+  source_artifacts: []
+
+intended_change:
+  description: "Describe the bounded change."
+  target:
+    value: 0
+
+measurement_method:
+  commands: []
+  comparison_rule: "same_method_before_after"
+  same_method_before_after_required: true
+
+allowed_actions: []
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+
+evidence_artifacts:
+  required: []
+
+validators:
+  required:
+    - "prime_task_contract_validator"
+    - "outcome_contract_validator"
+    - "prime_layer_outcome_unit_validator"
+    - "evidence_delta_validator"
+    - "report_progress_guard"
+    - "safety_authority_guard"
+    - "scope_guard"
+
+progress_claim_policy:
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  actual_underlying_progress: true
+  allowed_claims: []
+  forbidden_claims: []
+
+closeout_verdict:
+  selected: "ACTUAL_PROGRESS"
+
+report:
+  summary: ""
+  claims: []
+
+next_target:
+  required: true
+  task_type: ""
+  outcome_unit: ""
+  required_baseline: ""
+  required_validator: ""

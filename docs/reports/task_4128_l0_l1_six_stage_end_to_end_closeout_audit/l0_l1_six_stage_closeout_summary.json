@@ -1,0 +1,20 @@
+{
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "real_capital": "FORBIDDEN",
+  "safety_boundary_count": 12,
+  "safety_boundary_pass_count": 12,
+  "six_stage_closeout_status": "COMPLETE_PARTIAL_L2_CONTEXT_HANDOFF_READY",
+  "stage5_coverage_complete_count": 5,
+  "stage5_coverage_source_count": 5,
+  "stage5_full_coverage_complete": 1,
+  "stage5_total_event_rows": 498382,
+  "stage6_blocked_rows": 19492,
+  "stage6_l2_context_admitted_rows": 478890,
+  "stage6_l2_handoff_decision": "PARTIAL_CONTEXT_ONLY_HANDOFF_READY",
+  "stage6_strict_gate_pass_rows": 0,
+  "stage6_trade_feature_allowed_rows": 0,
+  "stage_count": 6,
+  "stage_status_pass_count": 6,
+  "strategy": "NOT_ACCEPTED",
+  "task_id": "TASK-4128"
+}

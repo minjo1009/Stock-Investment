@@ -1,0 +1,20 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,TASK-4124 task scope validators and closeout tracking,modified,TASK-4124
+ops/doc_registry.yaml,REGISTRY,TASK-4124 docs and artifacts registered,modified,TASK-4124
+configs/db_source_acquisition_scheduler.json,CONFIG,Stage 6 completed and L2 handoff blocked recorded,modified,TASK-4124
+docs/active/ACTIVE_SSOT_INDEX.md,SSOT,Stage 6 report registered as active evidence,modified,TASK-4124
+docs/active/CURRENT_TASKS.md,SSOT,TASK-4124 completed and TASK-4125 optional continuation recorded,modified,TASK-4124
+docs/active/PROJECT_STATUS.md,SSOT,Stage 6 completed and L2 handoff blocked recorded,modified,TASK-4124
+docs/architecture/l0_source_acquisition_project_management_plan.md,GOVERNANCE,Stage 6 audit result added,modified,TASK-4124
+scripts/validate_l0_source_acquisition_project_management.py,VALIDATOR,Project-management validator accepts Stage 6 no-next closeout,modified,TASK-4124
+scripts/audit_l0_stage6_l1_quality_coverage.py,SCRIPT,Stage 6 L1 quality/coverage audit runner,created,TASK-4124
+scripts/validate_l0_stage6_l1_quality_coverage.py,VALIDATOR,Stage 6 audit validator,created,TASK-4124
+docs/reports/task_4124_l0_stage_6_l1_quality_coverage_audit_l2_handoff/report.md,TASK_REPORT,TASK-4124 closeout report,created,TASK-4124
+docs/reports/task_4124_l0_stage_6_l1_quality_coverage_audit_l2_handoff/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4124 artifact manifest,created,TASK-4124
+docs/reports/task_4124_l0_stage_6_l1_quality_coverage_audit_l2_handoff/validation_results.md,VALIDATION_REPORT,TASK-4124 validation report,created,TASK-4124
+docs/reports/task_4124_l0_stage_6_l1_quality_coverage_audit_l2_handoff/stage6_l1_quality_coverage_summary.json,REFERENCE,Stage 6 audit summary,created,TASK-4124
+docs/reports/task_4124_l0_stage_6_l1_quality_coverage_audit_l2_handoff/task_4124_raw_hash_audit.csv,REFERENCE,Stage 6 raw hash audit,created,TASK-4124
+docs/reports/task_4124_l0_stage_6_l1_quality_coverage_audit_l2_handoff/task_4124_mapping_audit.csv,REFERENCE,Stage 6 ticker/news mapping audit,created,TASK-4124
+docs/reports/task_4124_l0_stage_6_l1_quality_coverage_audit_l2_handoff/task_4124_source_time_audit.csv,REFERENCE,Stage 6 source-time audit,created,TASK-4124
+docs/reports/task_4124_l0_stage_6_l1_quality_coverage_audit_l2_handoff/task_4124_coverage_audit.csv,REFERENCE,Stage 6 coverage audit,created,TASK-4124
+docs/reports/task_4124_l0_stage_6_l1_quality_coverage_audit_l2_handoff/task_4124_l2_handoff_decision.csv,REFERENCE,Stage 6 L2 handoff decision,created,TASK-4124

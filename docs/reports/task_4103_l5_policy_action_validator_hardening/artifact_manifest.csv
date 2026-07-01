@@ -1,0 +1,12 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,register TASK-4103,modified,TASK-4103
+ops/doc_registry.yaml,REGISTRY,register TASK-4103 documents,modified,TASK-4103
+ops/context_bundles.yaml,GOVERNANCE,add TASK-4103 context bundle,modified,TASK-4103
+ops/profile_validation_rules.yaml,GOVERNANCE,L5 profile validation rules,created,TASK-4103
+scripts/ops/validate_task_profile_rules.py,SCRIPT,config-driven profile validator,created,TASK-4103
+scripts/ops/validate_codex_closeout.py,SCRIPT,run task-specific validators during closeout,modified,TASK-4103
+docs/generated_context/TASK-4103_context.md,GENERATED_CONTEXT,TASK-4103 context bundle,created,TASK-4103
+docs/generated_context/TASK-4103_manifest.csv,GENERATED_CONTEXT,TASK-4103 context manifest,created,TASK-4103
+docs/reports/task_4103_l5_policy_action_validator_hardening/report.md,TASK_REPORT,TASK-4103 report,created,TASK-4103
+docs/reports/task_4103_l5_policy_action_validator_hardening/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4103 artifact manifest,created,TASK-4103
+docs/reports/task_4103_l5_policy_action_validator_hardening/validation_results.md,VALIDATION_REPORT,TASK-4103 validation results,created,TASK-4103

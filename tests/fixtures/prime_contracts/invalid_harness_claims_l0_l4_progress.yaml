@@ -1,0 +1,76 @@
+task_id: "TASK-9104"
+task_type: "HARNESS_BOOTSTRAP"
+domain: "bad_closeout"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "docs/harness/**"
+    - "src/validation/**"
+    - "tests/fixtures/prime_contracts/**"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "docs/harness/prime_outcome_harness.md"
+outcome_unit:
+  name: "invalid_closeout_cases_blocked"
+  type: "harness_enforcement_count"
+  direction: "increase"
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: true
+baseline:
+  measured_at: "2026-07-01T00:00:00Z"
+  value: 0
+after:
+  measured_at: "2026-07-01T01:00:00Z"
+  value: 2
+intended_change:
+  description: "Add harness."
+  target:
+    value: 2
+measurement_method:
+  commands:
+    - "python -m pytest tests/test_prime_outcome_contract_validator.py -q"
+  comparison_rule: "fixture_cases"
+  same_method_before_after_required: false
+allowed_actions: []
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "src/validation/prime_outcome_contract_validator.py"
+validators:
+  required:
+    - "outcome_contract_validator"
+progress_claim_policy:
+  progress_class: "HARNESS_PROGRESS_ONLY"
+  actual_underlying_progress: false
+closeout_verdict:
+  selected: "VALID_HARNESS_BOOTSTRAP"
+report:
+  actual_underlying_progress: false
+  progress_class: "HARNESS_PROGRESS_ONLY"
+  summary: "Harness added and L0-L4 blockers improved."
+  claims:
+    - "L0 failed blocker fixed"
+next_target:
+  required: true
+  task_type: "OUTCOME_CHANGE"
+  outcome_unit: "blocker count"
+  required_baseline: "before count"
+  required_validator: "evidence_delta_validator"

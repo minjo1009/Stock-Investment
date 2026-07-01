@@ -1,0 +1,5 @@
+path,type,purpose,created_or_modified,task_id
+docs/reports/task_4201_github_current_project_state_publication/task_result_contract.yaml,CONTRACT,Prime task contract for GitHub publication governance,created,TASK-4201
+docs/reports/task_4201_github_current_project_state_publication/report.md,TASK_REPORT,Closeout report for GitHub current-state publication,created,TASK-4201
+docs/reports/task_4201_github_current_project_state_publication/artifact_manifest.csv,ARTIFACT_MANIFEST,Manifest of TASK-4201 governance artifacts,created,TASK-4201
+docs/reports/task_4201_github_current_project_state_publication/validation_results.md,VALIDATION_REPORT,Validator and git publication results,created,TASK-4201

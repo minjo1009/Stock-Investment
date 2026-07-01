@@ -1,0 +1,2 @@
+task_id,decision_status,strategy_acceptance_status,deployment_readiness_status,real_capital_status,broker_truth_sell_fills,snapshot_coverage,position_match_rate,top3_share,blocker_count
+T603-6,FAIL,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,0,MISSING,0.958333,0.75,3

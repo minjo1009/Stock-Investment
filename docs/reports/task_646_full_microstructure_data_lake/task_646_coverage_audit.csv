@@ -1,0 +1,3 @@
+provider,feed,source_type,expected_symbol_date_count,covered_symbol_date_count,coverage_rate,missing_symbol_date_count,missing_treated_as_negative_flag
+alpaca,sip,quotes,42490,2,4.706989879971758e-05,42488,0
+alpaca,sip,trades,42490,1,2.353494939985879e-05,42489,0

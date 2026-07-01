@@ -1,0 +1,92 @@
+path,type,purpose,created_or_modified,task_id
+configs/db_source_acquisition_scheduler.json,CONFIG,recovered diagnostic source acquisition scheduler/source registry config,created,TASK-4116
+configs/local_templates/db_source_acquisition_scheduler.override.example.json,CONFIG,recovered diagnostic source acquisition scheduler/source registry config,created,TASK-4116
+configs/runtime_diagnostic_scheduler.json,CONFIG,recovered diagnostic source acquisition scheduler/source registry config,created,TASK-4116
+configs/source_registry/l0_gdelt_queries.json,CONFIG,recovered diagnostic source acquisition scheduler/source registry config,created,TASK-4116
+configs/source_registry/l0_marketaux_queries.json,CONFIG,recovered diagnostic source acquisition scheduler/source registry config,created,TASK-4116
+configs/source_registry/l0_official_public_releases.json,CONFIG,recovered diagnostic source acquisition scheduler/source registry config,created,TASK-4116
+configs/source_registry/l0_public_context_news_sources.json,CONFIG,recovered diagnostic source acquisition scheduler/source registry config,created,TASK-4116
+configs/source_registry/l0_public_news_capability_sources.json,CONFIG,recovered diagnostic source acquisition scheduler/source registry config,created,TASK-4116
+docs/reports/task_4116_l0_l1_source_acquisition_stash_recovery/artifact_manifest.csv,TASK_ARTIFACT,"TASK-4116 recovery report, manifest, validation, or audit artifact",created,TASK-4116
+docs/reports/task_4116_l0_l1_source_acquisition_stash_recovery/effective_scheduler_config_audit.json,TASK_ARTIFACT,"TASK-4116 recovery report, manifest, validation, or audit artifact",created,TASK-4116
+docs/reports/task_4116_l0_l1_source_acquisition_stash_recovery/report.md,TASK_ARTIFACT,"TASK-4116 recovery report, manifest, validation, or audit artifact",created,TASK-4116
+docs/reports/task_4116_l0_l1_source_acquisition_stash_recovery/validation_results.md,TASK_ARTIFACT,"TASK-4116 recovery report, manifest, validation, or audit artifact",created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/artifact_manifest.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/backfill_dry_run_smoke.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/backfill_probe_amd_20240102_quotes_10min.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/backfill_probe_amd_20240102_trades_chunked.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/backfill_quotes_10min_dry_run.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/backfill_safe_dry_run.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/backfill_safe_dry_run_chunked.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/backfill_trades_001_AFRM.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/task_646_backfill_command_plan.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/task_646_catalog_query_contract.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/task_646_coverage_audit.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/task_646_decision.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/task_646_integrity_audit.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/task_646_pass_fail_matrix.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/task_646_raw_data_catalog.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+docs/reports/task_646_full_microstructure_data_lake/task_646_universe_scope.csv,RECOVERED_HOWTO_EVIDENCE,recovered microstructure backfill command plan and audit evidence from stash,created,TASK-4116
+ops/doc_registry.yaml,REGISTRY,TASK-4116 task/doc registry update,modified,TASK-4116
+ops/task_registry.yaml,REGISTRY,TASK-4116 task/doc registry update,modified,TASK-4116
+scripts/diagnose_l0_microstructure_collection_state.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/ingest_l0_news_to_l2.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/install_db_source_acquisition_scheduler_task.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/install_runtime_diagnostic_scheduler_task.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/report_l0_collection_status.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/run_db_source_acquisition_scheduler.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/run_l0_bar_full_backfill.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/run_l0_microstructure_background_collector.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/run_l0_news_background_collector.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/run_l0_news_full_backfill.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/run_l0_public_context_news_collector.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/run_l0_public_headline_browser_smoke.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/run_l0_public_market_macro_news_collector.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/run_l0_public_newswire_collector.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/run_l0_reference_snapshot.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/run_l0_source_capability_probe.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/run_runtime_diagnostic_scheduler.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/run_task646_full_microstructure_backfill.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/start_l0_bar_full_backfill.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/start_l0_microstructure_background_collector.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/start_l0_news_background_collector.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/start_l0_news_full_backfill.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/start_l0_public_context_news_backfill.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/start_l0_public_context_news_collector.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/start_l0_public_industry_dive_news_backfill.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/start_l0_public_market_macro_news_backfill.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/start_l0_public_market_macro_news_collector.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/start_l0_public_newswire_backfill.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/start_l0_public_newswire_collector.ps1,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/validate_l0_l1_storage.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/validate_l0_microstructure_collection_readiness.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/validate_l0_news_enablement_readiness.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/validate_l0_source_acquisition_hardening.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/validate_news_ops_scope_a_b.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/validate_news_ops_to_backtest_goal.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+scripts/validate_sec_scheduler_containment.py,AUTOMATION_OR_VALIDATOR,recovered or repaired L0 runner/start/validation automation,created,TASK-4116
+src/data/alpaca_full_microstructure_backfill.py,PIPELINE_CODE,recovered source export or L1/L2 primitive support code,created,TASK-4116
+src/data/alpaca_historical_microstructure_export.py,PIPELINE_CODE,recovered source export or L1/L2 primitive support code,created,TASK-4116
+src/data/env_loader.py,PIPELINE_CODE,recovered source export or L1/L2 primitive support code,created,TASK-4116
+src/data/intraday_backfill.py,PIPELINE_CODE,recovered source export or L1/L2 primitive support code,created,TASK-4116
+src/l2/builders/microstructure_primitives.py,PIPELINE_CODE,recovered source export or L1/L2 primitive support code,created,TASK-4116
+src/l2/builders/news_event_primitives.py,PIPELINE_CODE,recovered source export or L1/L2 primitive support code,created,TASK-4116
+tools/db/news_l0_l1.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/run_source_acquisition_once.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/__init__.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/bar_full_backfill.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/l0_collection_status.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/microstructure_background_collector.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/microstructure_checkpoint.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/microstructure_coverage.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/news_background_collector.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/news_full_backfill.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/news_registry_loader.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/public_context_news_collector.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/public_headline_browser_crawler.js,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/public_market_macro_news_collector.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/public_newswire_collector.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/reference_snapshot.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/scheduler_override.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/secret_redaction.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116
+tools/db/source_acquisition/source_capability_probe.py,SOURCE_ACQUISITION_CODE,recovered L0/L1 source acquisition and DB loading logic,created,TASK-4116

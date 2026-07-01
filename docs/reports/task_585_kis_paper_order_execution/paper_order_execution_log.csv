@@ -1,0 +1,2 @@
+﻿event_id,created_at,decision_id,client_order_id,order_id,lifecycle_id,symbol,side,quantity,limit_price,order_status,reason_code,raw_response,broker_truth_fill_flag,filled_qty,filled_avg_price
+paper-exec-2026-06-03T16:12:37.702577Z-NO_PAPER_ORDER_CANDIDATE,2026-06-03T16:12:37.702577Z,decision-230e2ceb3bb24200,decision-230e2ceb3bb24200,,,AMD,NONE,0,534.18,SKIPPED,NO_PAPER_ORDER_CANDIDATE,{},0,0.0,

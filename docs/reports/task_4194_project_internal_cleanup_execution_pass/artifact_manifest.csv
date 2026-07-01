@@ -1,0 +1,30 @@
+path,type,purpose,created_or_modified,task_id
+scripts/ops/validate_internal_cleanliness.py,VALIDATOR,enforces no active pycache or DESKTOP conflict docs in managed roots,created,TASK-4194
+scripts/ops/ops_common.py,VALIDATOR_SUPPORT,sets PYTHONDONTWRITEBYTECODE for Python child validators,modified,TASK-4194
+scripts/ops/validate_codex_closeout.py,VALIDATOR,runs internal cleanliness validation during closeout,modified,TASK-4194
+scripts/ops/validate_project_structure_policy.py,VALIDATOR,requires internal cleanliness validator wiring,modified,TASK-4194
+ops/project_structure_policy.yaml,GOVERNANCE_POLICY,declares internal cleanliness closeout rule,modified,TASK-4194
+ops/task_registry.yaml,REGISTRY,TASK-4194 closeout metadata,modified,TASK-4194
+ops/doc_registry.yaml,REGISTRY,TASK-4194 document registrations,modified,TASK-4194
+docs/archive/task_4194_desktop_conflict_docs/project_efficiency_audit-DESKTOP-2R00TB4.md,ARCHIVE,archived machine-conflict doc,created,TASK-4194
+docs/archive/task_4194_desktop_conflict_docs/sublead_onboarding-DESKTOP-2R00TB4.md,ARCHIVE,archived machine-conflict doc,created,TASK-4194
+docs/archive/task_4194_desktop_conflict_docs/module_ownership_map-DESKTOP-2R00TB4.md,ARCHIVE,archived machine-conflict doc,created,TASK-4194
+docs/archive/task_4194_desktop_conflict_docs/current_operating_model-DESKTOP-2R00TB4.md,ARCHIVE,archived machine-conflict doc,created,TASK-4194
+docs/archive/task_4194_desktop_conflict_docs/work_closeout_protocol-DESKTOP-2R00TB4.md,ARCHIVE,archived machine-conflict doc,created,TASK-4194
+docs/archive/task_4194_desktop_conflict_docs/Vault Home-DESKTOP-2R00TB4.md,ARCHIVE,archived machine-conflict doc,created,TASK-4194
+docs/archive/task_4194_desktop_conflict_docs/Operating System Map-DESKTOP-2R00TB4.md,ARCHIVE,archived machine-conflict doc,created,TASK-4194
+docs/archive/task_4194_desktop_conflict_docs/Quant Research Map-DESKTOP-2R00TB4.md,ARCHIVE,archived machine-conflict doc,created,TASK-4194
+docs/project_efficiency_audit-DESKTOP-2R00TB4.md,LEGACY_CONFLICT_DOC,moved out of active docs,deleted,TASK-4194
+docs/ownership/sublead_onboarding-DESKTOP-2R00TB4.md,LEGACY_CONFLICT_DOC,moved out of active docs,deleted,TASK-4194
+docs/ownership/module_ownership_map-DESKTOP-2R00TB4.md,LEGACY_CONFLICT_DOC,moved out of active docs,deleted,TASK-4194
+docs/ownership/current_operating_model-DESKTOP-2R00TB4.md,LEGACY_CONFLICT_DOC,moved out of active docs,deleted,TASK-4194
+docs/operating_system/work_closeout_protocol-DESKTOP-2R00TB4.md,LEGACY_CONFLICT_DOC,moved out of active docs,deleted,TASK-4194
+docs/obsidian/Vault Home-DESKTOP-2R00TB4.md,LEGACY_CONFLICT_DOC,moved out of active docs,deleted,TASK-4194
+docs/obsidian/mocs/Operating System Map-DESKTOP-2R00TB4.md,LEGACY_CONFLICT_DOC,moved out of active docs,deleted,TASK-4194
+docs/obsidian/mocs/Quant Research Map-DESKTOP-2R00TB4.md,LEGACY_CONFLICT_DOC,moved out of active docs,deleted,TASK-4194
+docs/reports/task_4194_project_internal_cleanup_execution_pass/task_result_contract.yaml,CONTRACT,prime task result contract,modified,TASK-4194
+docs/reports/task_4194_project_internal_cleanup_execution_pass/report.md,TASK_REPORT,closeout report,modified,TASK-4194
+docs/reports/task_4194_project_internal_cleanup_execution_pass/artifact_manifest.csv,ARTIFACT_MANIFEST,task artifact manifest,modified,TASK-4194
+docs/reports/task_4194_project_internal_cleanup_execution_pass/validation_results.md,VALIDATION_REPORT,validator results,modified,TASK-4194
+docs/reports/task_4194_project_internal_cleanup_execution_pass/cleanup_execution_log.csv,REFERENCE,physical cleanup log,created,TASK-4194
+docs/reports/task_4194_project_internal_cleanup_execution_pass/internal_cleanup_inventory.csv,REFERENCE,cleanup inventory and blocked items,created,TASK-4194

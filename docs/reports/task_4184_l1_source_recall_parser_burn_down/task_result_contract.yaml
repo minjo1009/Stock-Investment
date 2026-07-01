@@ -1,0 +1,82 @@
+task_id: TASK-4184
+task_type: OUTCOME_CHANGE
+domain: L1_NEWSWIRE_MAPPING
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN
+  missing_stale_incomplete_data_semantics: UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE
+scope:
+  changed_paths:
+  - scripts/run_task4184_l1_source_recall_parser_burn_down.py
+  - scripts/validate_task4184_l1_source_recall_parser_burn_down.py
+  - data/artifacts/task_4184_l1_source_recall_parser_burn_down/**
+  - docs/reports/task_4184_l1_source_recall_parser_burn_down/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  allowed_paths:
+  - scripts/run_task4184_l1_source_recall_parser_burn_down.py
+  - scripts/validate_task4184_l1_source_recall_parser_burn_down.py
+  - data/artifacts/task_4184_l1_source_recall_parser_burn_down/**
+  - docs/reports/task_4184_l1_source_recall_parser_burn_down/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  forbidden_paths:
+  - broker/**
+  - live_trading/**
+  - production_orders/**
+  - secrets/**
+  - configs/broker/**
+layer_outcome_validation:
+  layer: L1
+outcome_unit:
+  name: l1_blocked_packet_count
+  direction: decrease
+  problem_progress_claim_allowed: true
+intended_change:
+  summary: Burn down source recall review rows by direct deterministic raw parser verification.
+measurement_method:
+  commands:
+  - python scripts/run_task4184_l1_source_recall_parser_burn_down.py
+  - python scripts/validate_task4184_l1_source_recall_parser_burn_down.py
+baseline:
+  value: 447
+after:
+  value: 0
+allowed_actions:
+  - verify raw path, sha256, article rows, source time, locator, and mapped article evidence
+  - create diagnostic source recall terminal ledgers
+  - update task and document registries
+forbidden_actions:
+  - broker mutation
+  - capital-bearing execution
+  - forced ticker mapping
+  - LLM entity inference
+  - ranking or sizing output
+evidence_artifacts:
+  required:
+  - data/artifacts/task_4184_l1_source_recall_parser_burn_down/task_4184_l1_source_recall_summary.json
+  - data/artifacts/task_4184_l1_source_recall_parser_burn_down/task_4184_l1_source_recall_decision_ledger.csv
+  - docs/reports/task_4184_l1_source_recall_parser_burn_down/report.md
+validators:
+  required:
+  - python scripts/validate_task4184_l1_source_recall_parser_burn_down.py
+progress_claim_policy:
+  actual_underlying_progress: true
+  missing_data_used_as_negative_evidence: false
+closeout_verdict:
+  selected: ACTUAL_PROGRESS
+report:
+  summary: Source recall review unresolved count moved from 447 to 0 through deterministic raw parser verification.
+  actual_underlying_progress: true
+  claims:
+  - L1 source recall review rows were terminalized with raw and article parser evidence.
+next_target:
+  required: true
+  task_type: OUTCOME_CHANGE
+  outcome_unit: unmapped_entity_count
+  required_baseline: current unmapped entity and alias-review counts
+  required_validator: deterministic alias/parser recovery validator

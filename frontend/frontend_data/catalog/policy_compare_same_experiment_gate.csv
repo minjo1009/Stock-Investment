@@ -1,0 +1,9 @@
+﻿task_id,same_experiment_gate_id,gate_name,gate_status,detail,performance_compare_allowed_now,classified_as_same_experiment,outcome_used_for_audit_only,assignment_uses_future_outcome,outcome_used_for_assignment,missing_source_is_negative,authority
+Task2964,SAMEEXP2964-0001,same_universe,CONDITIONAL_PASS,"Both sides reference the same 3,100 L4 assignment universe, but baseline selected trades are a subset.",0,,0,0,0,0,DIAGNOSTIC_POLICY_FREEZE_COMPARE_PLAN_ONLY
+Task2964,SAMEEXP2964-0002,same_decision_dates,PASS,Decision dates must be inherited from baseline replay and dry adapter inputs.,0,,0,0,0,0,DIAGNOSTIC_POLICY_FREEZE_COMPARE_PLAN_ONLY
+Task2964,SAMEEXP2964-0003,same_entry_rules,PASS,No entry rule change is allowed before replay plan approval.,0,,0,0,0,0,DIAGNOSTIC_POLICY_FREEZE_COMPARE_PLAN_ONLY
+Task2964,SAMEEXP2964-0004,same_exit_chain,PASS,Task2381 repaired exit chain remains frozen.,0,,0,0,0,0,DIAGNOSTIC_POLICY_FREEZE_COMPARE_PLAN_ONLY
+Task2964,SAMEEXP2964-0005,same_capital_path,PASS,Initial capital and capital path must remain baseline unless replay config changes are preregistered.,0,,0,0,0,0,DIAGNOSTIC_POLICY_FREEZE_COMPARE_PLAN_ONLY
+Task2964,SAMEEXP2964-0006,same_cost_slippage,PASS,KIS cost/slippage model must be declared unchanged before performance compare.,0,,0,0,0,0,DIAGNOSTIC_POLICY_FREEZE_COMPARE_PLAN_ONLY
+Task2964,SAMEEXP2964-0007,same_source_gates,NOT_SAME_EXPERIMENT,"L4 challenger adds an invalidation overlay; performance comparison must be labeled challenger experiment, not same experiment.",0,0.0,0,0,0,0,DIAGNOSTIC_POLICY_FREEZE_COMPARE_PLAN_ONLY
+Task2964,SAMEEXP2964-0008,performance_discussion_allowed,BLOCKED,No performance discussion until replay artifact exists and same/different experiment class is declared.,0,0.0,0,0,0,0,DIAGNOSTIC_POLICY_FREEZE_COMPARE_PLAN_ONLY

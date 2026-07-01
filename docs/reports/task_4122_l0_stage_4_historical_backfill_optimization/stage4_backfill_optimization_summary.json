@@ -1,0 +1,15 @@
+{
+  "backfill_job_count": 3,
+  "background_collection_started": 0,
+  "blocker_count": 1,
+  "db_mutation_made": 0,
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "network_calls_made": 0,
+  "next_stage": "background_historical_backfill_from_2016",
+  "real_capital": "FORBIDDEN",
+  "scheduler_activation_permitted": 0,
+  "stage4_status": "HISTORICAL_BACKFILL_OPTIMIZED_NOT_ACTIVATED",
+  "strategy": "NOT_ACCEPTED",
+  "task_id": "TASK-4122",
+  "updated_at": "2026-06-29T07:51:18.551114Z"
+}

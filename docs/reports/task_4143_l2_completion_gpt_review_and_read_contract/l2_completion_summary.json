@@ -1,0 +1,13 @@
+{
+  "task_id": "TASK-4143",
+  "generated_at": "2026-06-30T01:49:03Z",
+  "gpt_capture_status": "captured",
+  "source_admission_rows": 3,
+  "l3_read_rows": 2,
+  "mapping_review_rows": 1,
+  "input_scope_blocked_families": 3,
+  "feature_materialization_allowed_rows": 0,
+  "trading_authority_opened_rows": 0,
+  "paper_live_broker_order_opened_rows": 0,
+  "overengineering_cut_items": 5
+}

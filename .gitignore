@@ -16,6 +16,7 @@ htmlcov/
 # IDE / OS files
 .vscode/
 .idea/
+.codex/
 .DS_Store
 Thumbs.db
 .obsidian/workspace*.json
@@ -30,6 +31,7 @@ logs/
 # Frontend dependencies / build output
 node_modules/
 dist/
+.expo/
 frontend_data/catalog/
 
 # Local installers / temporary working files
@@ -41,6 +43,21 @@ docs/tmp/
 
 # Local runtime DB
 trading.db
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated data and runtime evidence
+data/artifacts/
+data/raw/
+data/snapshots/
+data/readonly_mcp/
+data/frontend_snapshots/
+data/diagnostics/
+data/*.db
+data/*.jsonl
+data/*.jsonl.dvc
 
 # Local operator overrides and secrets
 configs/local/
+config/*.env

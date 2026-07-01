@@ -1,0 +1,2 @@
+task_id,stage,scope,symbols,network_permission_basis,max_official_sources,max_gdelt_requests,max_marketaux_requests,max_alpaca_quote_windows,max_alpaca_trade_windows,db_mutation_made,broker_mutation_made
+TASK-4119,1,bounded_network_smoke_execution,AAPL,user_goal_continue_plan_layer_01_to_6,1,1,1,1,1,0,0

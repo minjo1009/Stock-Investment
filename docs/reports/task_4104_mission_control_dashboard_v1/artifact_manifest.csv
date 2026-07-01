@@ -1,0 +1,13 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,register TASK-4104,modified,TASK-4104
+ops/doc_registry.yaml,REGISTRY,register TASK-4104 documents,modified,TASK-4104
+ops/context_bundles.yaml,GOVERNANCE,add TASK-4104 context bundle,modified,TASK-4104
+ops/dashboard/index.html,DASHBOARD,read-only dashboard v1,modified,TASK-4104
+ops/dashboard/dashboard_summary.json,DASHBOARD_DATA,machine-readable dashboard summary,created,TASK-4104
+scripts/ops/render_ops_dashboard.py,SCRIPT,emit dashboard v1 HTML and JSON summary,modified,TASK-4104
+scripts/ops/validate_dashboard.py,SCRIPT,validate dashboard sections and static read-only constraints,created,TASK-4104
+docs/generated_context/TASK-4104_context.md,GENERATED_CONTEXT,TASK-4104 context bundle,created,TASK-4104
+docs/generated_context/TASK-4104_manifest.csv,GENERATED_CONTEXT,TASK-4104 context manifest,created,TASK-4104
+docs/reports/task_4104_mission_control_dashboard_v1/report.md,TASK_REPORT,TASK-4104 report,created,TASK-4104
+docs/reports/task_4104_mission_control_dashboard_v1/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4104 artifact manifest,created,TASK-4104
+docs/reports/task_4104_mission_control_dashboard_v1/validation_results.md,VALIDATION_REPORT,TASK-4104 validation results,created,TASK-4104

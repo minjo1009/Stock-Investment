@@ -1,0 +1,8 @@
+path,action,status,safety_check,task_id
+prompts/task-create.md,move_rewrite_to_ops_prompts,COMPLETED,source was root legacy prompt and replacement exists at ops/prompts/task-create.md,TASK-4192
+prompts/phase-create.md,move_rewrite_to_ops_prompts,COMPLETED,source was root legacy prompt and replacement exists at ops/prompts/phase-create.md,TASK-4192
+prompts,delete_empty_directory,COMPLETED,resolved absolute path stayed inside workspace and directory was empty,TASK-4192
+tools/db/__pycache__,delete_transient_cache,COMPLETED,resolved absolute path stayed inside workspace,TASK-4192
+tools/db/source_acquisition/__pycache__,delete_transient_cache,COMPLETED,resolved absolute path stayed inside workspace,TASK-4192
+tools/db/__pycache__,delete_transient_cache_regenerated_during_validation,COMPLETED,resolved absolute path stayed inside workspace and final state absent,TASK-4192
+tools/db/source_acquisition/__pycache__,delete_transient_cache_regenerated_during_validation,COMPLETED,resolved absolute path stayed inside workspace and final state absent,TASK-4192

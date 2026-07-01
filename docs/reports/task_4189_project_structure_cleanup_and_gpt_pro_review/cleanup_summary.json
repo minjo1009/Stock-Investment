@@ -1,0 +1,18 @@
+{
+  "task_id": "TASK-4189",
+  "generated_at": "2026-07-01T14:54:48+00:00",
+  "root_entries": 28,
+  "docs_surfaces": 23,
+  "stale_report_candidates_limited": 0,
+  "duplicate_axes": 4,
+  "automated_deletions": 1,
+  "deletion_status": "DELETED",
+  "hard_boundaries": {
+    "strategy": "NOT_ACCEPTED",
+    "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "real_capital": "FORBIDDEN",
+    "broker_mutation": "FORBIDDEN",
+    "live_order": "FORBIDDEN",
+    "paper_promotion": "FORBIDDEN"
+  }
+}

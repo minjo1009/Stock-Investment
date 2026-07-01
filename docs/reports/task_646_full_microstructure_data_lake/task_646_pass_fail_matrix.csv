@@ -1,0 +1,6 @@
+gate,pass_flag,observed_value,required_value
+universe_scope_defined,1,symbols=70,Task646 must define the exact universe and date span before download
+raw_partition_integrity_smoke,1,integrity_pass=1,catalog exists and existing partitions read cleanly
+coverage_sufficient_for_feature_builder,0,quote_coverage=0.0000; trade_coverage=0.0000,Task646D feature builder requires at least 80% quote and 80% trade symbol-date coverage
+no_feature_builder_in_task646c,1,catalog/query contract only,Task646C cannot create continuation or fragile-breakout features
+trading_promotion,0,data lake build only,strategy promotion requires later feature validation and live readiness

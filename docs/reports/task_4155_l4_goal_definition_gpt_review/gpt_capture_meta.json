@@ -1,0 +1,10 @@
+{
+  "task_id": "TASK-4155",
+  "capture_status": "CAPTURED",
+  "captured_at_local": "2026-06-30T12:45:05.831Z",
+  "browser_title": "L4 Development Plan Review",
+  "browser_url": "https://chatgpt.com/c/6a43b8dd-4aa0-83e8-bde8-ae8ce73d18c0",
+  "response_chars": 25218,
+  "verdict_detected": "CONDITIONAL PASS",
+  "tab_cleanup_status": "closed_agent_created_tab"
+}

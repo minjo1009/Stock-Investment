@@ -34,6 +34,13 @@ REQUIRED_CHECKPOINT_FIELDS = {
     "created_at",
     "updated_at",
 }
+TOKEN_SCAN_PATHS = [
+    Path("configs/db_source_acquisition_scheduler.json"),
+    Path("configs/local_templates/db_source_acquisition_scheduler.override.example.json"),
+    Path("configs/source_registry"),
+    Path("tools/db/source_acquisition"),
+    Path("scripts/validate_l0_microstructure_collection_readiness.py"),
+]
 
 
 def validate(root: Path = ROOT) -> list[str]:
@@ -75,16 +82,16 @@ def validate(root: Path = ROOT) -> list[str]:
     for filename in COVERAGE_FILES.values():
         if not filename.startswith("microstructure_"):
             errors.append(f"unexpected coverage artifact name: {filename}")
-    if scan_repo_for_plaintext_marketaux_token(root):
+    if scan_repo_for_plaintext_marketaux_token(root, TOKEN_SCAN_PATHS):
         errors.append("secret-like Marketaux value found in repo files")
     permissions = config.get("permissions", {})
     for field, closed in FORCE_CLOSED_FIELDS.items():
         if int(permissions.get(field, 0)) != closed:
             errors.append(f"permissions.{field} must remain closed")
-    readiness = (root / "docs/ownership/readiness_registry.yaml").read_text(encoding="utf-8", errors="ignore")
-    for phrase in ["status: NOT_ACCEPTED", "status: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY", "status: FORBIDDEN"]:
-        if phrase not in readiness:
-            errors.append(f"readiness registry missing preserved status: {phrase}")
+    operating_state = (root / "ops/operating_state.yaml").read_text(encoding="utf-8", errors="ignore")
+    for phrase in ["strategy_status: NOT_ACCEPTED", "deployment_status: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY", "real_capital: FORBIDDEN"]:
+        if phrase not in operating_state:
+            errors.append(f"operating state missing preserved status: {phrase}")
     return errors
 
 

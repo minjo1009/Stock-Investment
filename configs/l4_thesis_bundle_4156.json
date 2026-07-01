@@ -1,0 +1,31 @@
+{
+  "task_id": "TASK-4156",
+  "mode": "DIAGNOSTIC_ONLY_THESIS_BUNDLE_BOOTSTRAP",
+  "inputs": {
+    "l1_article_packets": "data/artifacts/task_4147_l0_l2_hardening_gpt_review_and_implementation/l1_article_packets.csv",
+    "l2_article_features": "data/artifacts/task_4147_l0_l2_hardening_gpt_review_and_implementation/l2_diagnostic_feature_rows.csv",
+    "l1_wide_packets": "data/artifacts/task_4146_l0_l2_wide_packetization_handoff/l1_wide_normalized_source_packets.csv",
+    "l2_wide_candidates": "data/artifacts/task_4146_l0_l2_wide_packetization_handoff/l2_feature_materialization_candidates.csv",
+    "l3_relation_graphs": "data/artifacts/task_4152_l3_relation_graph_v2/l3_relation_graphs.csv",
+    "l3_relation_edges": "data/artifacts/task_4152_l3_relation_graph_v2/l3_relation_edges.csv",
+    "l3_event_clusters": "data/artifacts/task_4152_l3_relation_graph_v2/l3_event_clusters.csv",
+    "l3_coverage_gaps": "data/artifacts/task_4152_l3_relation_graph_v2/l3_coverage_gaps.csv",
+    "l3_event_clusters_with_limitations": "data/artifacts/task_4154_l3_relation_graph_v2_quality_guard/l3_event_clusters_with_limitations.csv",
+    "l3_unsupported_relation_families": "data/artifacts/task_4154_l3_relation_graph_v2_quality_guard/l3_unsupported_relation_families.csv",
+    "l3_l4_handoff_manifest": "data/artifacts/task_4154_l3_relation_graph_v2_quality_guard/l3_l4_diagnostic_handoff_manifest.json",
+    "l0_collection_status": "data/artifacts/l0_collection_status/current_status.json"
+  },
+  "outputs": {
+    "artifact_dir": "data/diagnostics/l4"
+  },
+  "authority": {
+    "strategy": "NOT_ACCEPTED",
+    "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "real_capital": "FORBIDDEN",
+    "broker_mutation_allowed": false,
+    "live_order_allowed": false,
+    "paper_promotion_allowed": false,
+    "signal_export_allowed": false,
+    "trading_eligible": false
+  }
+}

@@ -1,0 +1,66 @@
+task_id: "TASK-9101"
+task_type: "OUTCOME_CHANGE"
+domain: "bad_closeout"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "docs/reports/task_9101/**"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "docs/reports/task_9101/report.md"
+outcome_unit:
+  name: "failed_shard_count"
+  type: "count"
+  direction: "decrease"
+  problem_progress_claim_allowed: true
+  harness_progress_claim_allowed: false
+intended_change:
+  description: "Claims progress with a report only."
+  target:
+    value: 0
+measurement_method:
+  commands: []
+  comparison_rule: "same_method_before_after"
+  same_method_before_after_required: true
+allowed_actions: []
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required: []
+validators:
+  required:
+    - "outcome_contract_validator"
+progress_claim_policy:
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  actual_underlying_progress: true
+closeout_verdict:
+  selected: "ACTUAL_PROGRESS"
+report:
+  actual_underlying_progress: true
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  summary: "Report says the issue is fixed."
+  claims:
+    - "failed shard blocker fixed"
+next_target:
+  required: true
+  task_type: "OUTCOME_CHANGE"
+  outcome_unit: "failed_shard_count"
+  required_baseline: "before count"
+  required_validator: "evidence_delta_validator"

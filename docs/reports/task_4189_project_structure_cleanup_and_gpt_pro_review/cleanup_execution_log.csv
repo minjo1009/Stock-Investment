@@ -1,0 +1,2 @@
+path,action,status,notes
+.pytest_cache,delete_transient_cache,DELETED,Deleted regenerated pytest cache directory only.

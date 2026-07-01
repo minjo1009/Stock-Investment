@@ -1,4 +1,0 @@
-artifact_path,artifact_type,role,status,row_count,validation,notes
-docs/reports/A008_path_by_path_owner_review/path_by_path_owner_review_report.md,output,task_report,created,not_applicable,validation_passed,A008 path-by-path owner review report.
-docs/reports/A008_path_by_path_owner_review/owner_review_decision_matrix.csv,output,decision_matrix,created,1262,validation_passed,Every A005 NEEDS_REVIEW row has a decision/result.
-docs/reports/A008_path_by_path_owner_review/cleanup_execution_log.csv,output,execution_log,created,1262,validation_passed,Move/delete/keep/missing-source execution log.

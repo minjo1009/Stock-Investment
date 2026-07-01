@@ -1,5 +1,0 @@
-artifact_path,artifact_type,role,status,row_count,validation,notes
-docs/reports/A010_artifact_guardrails/artifact_guardrails_report.md,output,task_report,created,not_applicable,validation_passed,A010 artifact guardrails report.
-scripts/project_artifact_guard_validate.py,output,validator,created,not_applicable,validation_passed,Prevents unmanaged large project payloads.
-scripts/governance_completion_audit.py,output,validator_update,updated,not_applicable,validation_passed,Governance audit now calls artifact guard.
-.gitignore,output,ignore_policy_update,updated,not_applicable,validation_passed,Generated/runtime/staging paths ignored.

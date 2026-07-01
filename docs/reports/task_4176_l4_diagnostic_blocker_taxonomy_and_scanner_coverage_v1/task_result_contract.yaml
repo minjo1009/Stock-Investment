@@ -1,0 +1,110 @@
+task_id: "TASK-4176"
+task_type: "OUTCOME_CHANGE"
+domain: "layer_4_diagnostic_thesis_bundle"
+layer_outcome_validation:
+  layer: "L4"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "scripts/run_task4176_l4_diagnostic_blocker_taxonomy_scanner_v1.py"
+    - "scripts/validate_task4176_l4_diagnostic_blocker_taxonomy_scanner_v1.py"
+    - "data/artifacts/task_4176_l4_diagnostic_blocker_taxonomy_scanner_v1/**"
+    - "docs/reports/task_4176_l4_diagnostic_blocker_taxonomy_and_scanner_coverage_v1/**"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "scripts/run_task4176_l4_diagnostic_blocker_taxonomy_scanner_v1.py"
+    - "scripts/validate_task4176_l4_diagnostic_blocker_taxonomy_scanner_v1.py"
+    - "data/artifacts/task_4176_l4_diagnostic_blocker_taxonomy_scanner_v1/task_4176_l4_relation_taxonomy_v1.csv"
+    - "data/artifacts/task_4176_l4_diagnostic_blocker_taxonomy_scanner_v1/task_4176_l4_contradiction_scanner_v1.csv"
+    - "data/artifacts/task_4176_l4_diagnostic_blocker_taxonomy_scanner_v1/task_4176_l4_scanner_summary.json"
+    - "docs/reports/task_4176_l4_diagnostic_blocker_taxonomy_and_scanner_coverage_v1/task_result_contract.yaml"
+    - "docs/reports/task_4176_l4_diagnostic_blocker_taxonomy_and_scanner_coverage_v1/report.md"
+    - "docs/reports/task_4176_l4_diagnostic_blocker_taxonomy_and_scanner_coverage_v1/artifact_manifest.csv"
+    - "docs/reports/task_4176_l4_diagnostic_blocker_taxonomy_and_scanner_coverage_v1/validation_results.md"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+outcome_unit:
+  name: "diagnostic_draft_blocker_count"
+  type: "count"
+  direction: "decrease"
+  problem_progress_claim_allowed: true
+  harness_progress_claim_allowed: false
+baseline:
+  measured_at: "2026-07-01T12:19:00Z"
+  value: 11079
+  source_artifacts:
+    - "data/artifacts/task_4168_l3_gap_reason_narrowing_recall_traceability/task_4168_l4_blocker_taxonomy.csv"
+  freshness_required: true
+after:
+  measured_at: "2026-07-01T12:20:05Z"
+  value: 6916
+  source_artifacts:
+    - "data/artifacts/task_4176_l4_diagnostic_blocker_taxonomy_scanner_v1/task_4176_l4_scanner_summary.json"
+intended_change:
+  description: "Add diagnostic taxonomy and deterministic contradiction scanner coverage for supported relation families."
+  target:
+    value: 6916
+measurement_method:
+  commands:
+    - "python scripts/run_task4176_l4_diagnostic_blocker_taxonomy_scanner_v1.py"
+    - "python scripts/validate_task4176_l4_diagnostic_blocker_taxonomy_scanner_v1.py"
+  comparison_rule: "supported graph families move from not-scanned blocker to scanned diagnostic state without claiming no contradiction"
+  same_method_before_after_required: false
+allowed_actions:
+  - "create L4 diagnostic taxonomy"
+  - "scan supported relation families deterministically"
+forbidden_actions:
+  - "No L4 thesis generation"
+  - "No catch-all unsupported relation pass"
+  - "No no-contradiction claim"
+  - "No trading signal/ranking/sizing/order"
+  - "No broker mutation"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "data/artifacts/task_4176_l4_diagnostic_blocker_taxonomy_scanner_v1/task_4176_l4_relation_taxonomy_v1.csv"
+    - "data/artifacts/task_4176_l4_diagnostic_blocker_taxonomy_scanner_v1/task_4176_l4_contradiction_scanner_v1.csv"
+    - "data/artifacts/task_4176_l4_diagnostic_blocker_taxonomy_scanner_v1/task_4176_l4_scanner_summary.json"
+validators:
+  required:
+    - "prime_task_contract_validator"
+    - "outcome_contract_validator"
+    - "prime_layer_outcome_unit_validator"
+    - "task4176_l4_scanner_validator"
+progress_claim_policy:
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  actual_underlying_progress: true
+  allowed_claims:
+    - "4163 supported-family graph rows were scanned diagnostically."
+  forbidden_claims:
+    - "Contradiction is cleared."
+    - "Unsupported relation families are accepted."
+    - "L4 thesis is complete."
+closeout_verdict:
+  selected: "ACTUAL_PROGRESS_WITH_RESIDUAL_BLOCKERS"
+report:
+  actual_underlying_progress: true
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  summary: "L4 diagnostic scanner coverage was added for supported families; 6916 rows remain not scanned because unsupported/proto families are still blockers."
+  claims:
+    - "No scanner row claims no contradiction."
+next_target:
+  required: true
+  task_type: "OUTCOME_CHANGE"
+  outcome_unit: "missing_thesis_evidence_count"
+  required_baseline: "remaining not_scanned_rows and unsupported taxonomy counts"
+  required_validator: "task4176_l4_scanner_validator"

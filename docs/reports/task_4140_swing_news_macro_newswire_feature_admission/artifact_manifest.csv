@@ -1,0 +1,18 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4140 task definition and closeout state,modified,TASK-4140
+ops/doc_registry.yaml,registry,TASK-4140 document registry entries,modified,TASK-4140
+configs/l2_swing_news_feature_admission_contract.yaml,config,Swing/daily news macro newswire feature admission contract,created,TASK-4140
+docs/active/ACTIVE_SSOT_INDEX.md,active_doc,TASK-4140 active report pointer,modified,TASK-4140
+docs/active/CURRENT_TASKS.md,active_doc,TASK-4140 completion pointer,modified,TASK-4140
+docs/active/PROJECT_STATUS.md,active_doc,TASK-4140 project status note,modified,TASK-4140
+scripts/run_l2_swing_news_feature_admission_4140.py,script,Build TASK-4140 swing feature admission artifacts,created,TASK-4140
+scripts/validate_l2_swing_news_feature_admission_4140.py,validator,Validate TASK-4140 swing feature admission artifacts,created,TASK-4140
+docs/reports/task_4140_swing_news_macro_newswire_feature_admission/report.md,task_report,TASK-4140 report,created,TASK-4140
+docs/reports/task_4140_swing_news_macro_newswire_feature_admission/artifact_manifest.csv,artifact_manifest,TASK-4140 artifact manifest,created,TASK-4140
+docs/reports/task_4140_swing_news_macro_newswire_feature_admission/validation_results.md,validation_report,TASK-4140 validation results,created,TASK-4140
+docs/reports/task_4140_swing_news_macro_newswire_feature_admission/swing_news_feature_admission_summary.json,summary,Machine-readable TASK-4140 summary,created,TASK-4140
+data/artifacts/task_4140_swing_news_macro_newswire_feature_admission/swing_feature_admission_policy.csv,artifact,Source-family swing feature admission policy,created,TASK-4140
+data/artifacts/task_4140_swing_news_macro_newswire_feature_admission/swing_time_activation_policy.csv,artifact,Swing time activation policy,created,TASK-4140
+data/artifacts/task_4140_swing_news_macro_newswire_feature_admission/swing_effect_window_policy.csv,artifact,Effect window policy,created,TASK-4140
+data/artifacts/task_4140_swing_news_macro_newswire_feature_admission/swing_mapping_scope_policy.csv,artifact,Mapping scope policy,created,TASK-4140
+data/artifacts/task_4140_swing_news_macro_newswire_feature_admission/validator_report.json,artifact,Machine-readable validator report,created,TASK-4140

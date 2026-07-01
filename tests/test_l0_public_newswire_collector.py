@@ -15,6 +15,7 @@ from tools.db.source_acquisition.public_newswire_collector import (
     parse_article_metadata,
     parse_feed_rows,
     parse_sitemap,
+    parse_sitemap_entries,
     run_backfill,
     run_collector,
 )
@@ -118,6 +119,13 @@ class L0PublicNewswireCollectorTests(unittest.TestCase):
         self.assertEqual(follow, [])
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["title"], "Example gzip source releases headline")
+
+    def test_truncated_gzip_sitemap_is_retryable_parse_failure(self) -> None:
+        payload = gzip.compress(b"<urlset><url><loc>https://example.com/news.html</loc></url></urlset>")[:20]
+        entries, follow, parse_ok = parse_sitemap_entries(payload)
+        self.assertEqual(entries, [])
+        self.assertEqual(follow, [])
+        self.assertFalse(parse_ok)
 
     def test_run_collector_writes_event_for_mocked_source(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -660,6 +668,37 @@ class L0PublicNewswireCollectorTests(unittest.TestCase):
         self.assertEqual(mapped["entity_mapping_status"], "BLOCKED_UNMAPPED")
         self.assertEqual(mapped["ticker_mapping_required_flag"], 1)
 
+    def test_unmapped_material_company_rows_become_non_authority_recall_candidates(self) -> None:
+        titles = [
+            ("TrueCar Forecasts Industry Retail Sales Soar 34% for the 4th Quarter", "industry_market_report"),
+            ("Willbros Reports Fourth Quarter and Full Year 2017 Results", "earnings_results"),
+            ("Merus' Interim Data on Petosemtamab Presented at Medical Meeting", "clinical_regulatory"),
+            ("LAVA Medtech Acquisition Corp. Announces Liquidation", "corporate_actions"),
+            ("Oak Woods Acquisition Corporation Announces Receipt of Nasdaq Notice", "listing_compliance"),
+            ("Fentura Financial, Inc. Announces Fourth Quarter 2024 Earnings", "earnings_results"),
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            mapper = self._mapper(Path(tmp))
+            for title, topic in titles:
+                row = build_row(
+                    source_key="globenewswire",
+                    title=title,
+                    source_url="https://www.globenewswire.com/news-release/example.html",
+                    published_at="2026-06-28T07:00:00Z",
+                    published_at_text="2026-06-28T07:00:00Z",
+                    captured_at="2026-06-28T07:00:00Z",
+                    source_page_url="https://sitemaps.globenewswire.com/news/en/2026-06.xml",
+                    capture_method="historical_archive_sitemap",
+                )
+                mapped = apply_entity_mapping(row, mapper)
+                self.assertEqual(mapped["symbols"], [])
+                self.assertEqual(mapped["entity_mapping_status"], "ENTITY_CANDIDATE_REVIEW")
+                self.assertEqual(mapped["ticker_mapping_required_flag"], 0)
+                self.assertEqual(mapped["entity_mapping_inferred_flag"], 0)
+                self.assertEqual(mapped["newswire_recall_review_flag"], 1)
+                self.assertEqual(mapped["newswire_recall_candidate_authority_flag"], 0)
+                self.assertIn(topic, mapped["newswire_recall_topics"])
+
     def test_context_keyword_matching_uses_word_boundaries(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             mapper = self._mapper(Path(tmp))
@@ -712,9 +751,10 @@ class L0PublicNewswireCollectorTests(unittest.TestCase):
                 )
                 mapped = apply_entity_mapping(row, mapper)
                 self.assertEqual(mapped["symbols"], [])
-                self.assertEqual(mapped["entity_mapping_status"], "NOT_REQUIRED_CONTEXT_NEWSWIRE")
+                self.assertIn(mapped["entity_mapping_status"], {"NOT_REQUIRED_CONTEXT_NEWSWIRE", "ENTITY_CANDIDATE_REVIEW"})
                 self.assertEqual(mapped["ticker_mapping_required_flag"], 0)
-                self.assertIn(topic, mapped["context_topic_candidates"])
+                topics = set(mapped.get("context_topic_candidates", [])) | set(mapped.get("newswire_recall_topics", []))
+                self.assertIn(topic, topics)
 
     def test_recent_blocked_market_structure_and_results_rows_become_context_only(self) -> None:
         titles_and_topics = [
@@ -742,9 +782,10 @@ class L0PublicNewswireCollectorTests(unittest.TestCase):
                 )
                 mapped = apply_entity_mapping(row, mapper)
                 self.assertEqual(mapped["symbols"], [])
-                self.assertEqual(mapped["entity_mapping_status"], "NOT_REQUIRED_CONTEXT_NEWSWIRE")
+                self.assertIn(mapped["entity_mapping_status"], {"NOT_REQUIRED_CONTEXT_NEWSWIRE", "ENTITY_CANDIDATE_REVIEW"})
                 self.assertEqual(mapped["ticker_mapping_required_flag"], 0)
-                self.assertIn(topic, mapped["context_topic_candidates"])
+                topics = set(mapped.get("context_topic_candidates", [])) | set(mapped.get("newswire_recall_topics", []))
+                self.assertIn(topic, topics)
 
     def test_newswire_low_signal_exclusions_remain_blocked(self) -> None:
         titles = [

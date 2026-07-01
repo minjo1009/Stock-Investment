@@ -1,0 +1,21 @@
+path,type,purpose,created_or_modified,task_id
+scripts/run_l1_final_hardening_l2_consult_prep.py,script,Builds TASK-4135 L1 final hardening and GPT context artifacts.,created,TASK-4135
+scripts/validate_l1_final_hardening_l2_consult_prep.py,validator,Validates TASK-4135 L1 handoff and GPT context artifacts.,created,TASK-4135
+ops/task_registry.yaml,registry,Registers TASK-4135.,modified,TASK-4135
+ops/doc_registry.yaml,registry,Registers TASK-4135 documents.,modified,TASK-4135
+docs/active/ACTIVE_SSOT_INDEX.md,docs,Adds TASK-4135 to active L0/L1 SSOT index.,modified,TASK-4135
+docs/active/CURRENT_TASKS.md,docs,Adds TASK-4135 to completed task ledger.,modified,TASK-4135
+docs/active/PROJECT_STATUS.md,docs,Records TASK-4135 L1/L2 consult state.,modified,TASK-4135
+docs/architecture/l0_source_acquisition_project_management_plan.md,docs,Adds TASK-4135 handoff/consult note.,modified,TASK-4135
+docs/reports/task_4135_l1_final_hardening_l2_gpt_consult/report.md,task_report,TASK-4135 closeout report.,created,TASK-4135
+docs/reports/task_4135_l1_final_hardening_l2_gpt_consult/artifact_manifest.csv,artifact_manifest,TASK-4135 changed/output file manifest.,created,TASK-4135
+docs/reports/task_4135_l1_final_hardening_l2_gpt_consult/validation_results.md,validation_report,TASK-4135 validation results.,created,TASK-4135
+docs/reports/task_4135_l1_final_hardening_l2_gpt_consult/l2_gpt_local_context_packet.md,reference,Local L0/L1 context packet for GPT; GitHub explicitly forbidden.,created,TASK-4135
+docs/reports/task_4135_l1_final_hardening_l2_gpt_consult/l2_gpt_prompt.md,reference,Prompt sent or prepared for GPT consult.,created,TASK-4135
+docs/reports/task_4135_l1_final_hardening_l2_gpt_consult/l2_gpt_response.md,reference,Captured GPT response or automation blocker note.,created,TASK-4135
+docs/reports/task_4135_l1_final_hardening_l2_gpt_consult/l1_final_hardening_l2_consult_summary.json,reference,Machine-readable TASK-4135 summary.,created,TASK-4135
+data/artifacts/task_4135_l1_final_hardening_l2_gpt_consult/l1_l2_handoff_contract.csv,data_artifact,Frozen L1-to-L2 handoff contract rows.,created,TASK-4135
+data/artifacts/task_4135_l1_final_hardening_l2_gpt_consult/l1_coverage_audit.csv,data_artifact,Data-present L1 coverage audit.,created,TASK-4135
+data/artifacts/task_4135_l1_final_hardening_l2_gpt_consult/l1_remaining_risk_register.csv,data_artifact,Remaining L1 risks after practical hardening.,created,TASK-4135
+data/artifacts/task_4135_l1_final_hardening_l2_gpt_consult/gpt_consult_ledger.csv,data_artifact,GPT consult mode/capture ledger.,created,TASK-4135
+data/artifacts/task_4135_l1_final_hardening_l2_gpt_consult/validator_report.json,data_artifact,Machine-readable TASK-4135 validator report.,created,TASK-4135

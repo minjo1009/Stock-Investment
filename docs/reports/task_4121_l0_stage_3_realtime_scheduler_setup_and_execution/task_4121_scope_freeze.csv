@@ -1,0 +1,2 @@
+task_id,scope_type,universe,decision_dates,network_calls_allowed,persistent_os_task_installed,status
+TASK-4121,stage3_realtime_scheduler_proof,AAPL|MSFT|NVDA|AMD|QQQ plus macro release feeds from scheduler config,not_applicable_scheduler_recurrence_proof,0,0,FROZEN

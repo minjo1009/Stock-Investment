@@ -1,0 +1,23 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,TASK-4132 registered and closed out,modified,TASK-4132
+ops/doc_registry.yaml,REGISTRY,TASK-4132 artifacts registered,modified,TASK-4132
+docs/active/CURRENT_TASKS.md,SSOT,TASK-4132 closeout recorded,modified,TASK-4132
+docs/active/PROJECT_STATUS.md,SSOT,L0 reliability posture recorded,modified,TASK-4132
+docs/active/ACTIVE_SSOT_INDEX.md,SSOT,TASK-4132 report indexed,modified,TASK-4132
+docs/architecture/l0_source_acquisition_project_management_plan.md,CANONICAL_DOC,L0 reliability hardening posture recorded,modified,TASK-4132
+scripts/report_l0_backfill_hourly_status.ps1,SCRIPT,Hourly reporter now emits TASK-4132 reliability evidence,modified,TASK-4132
+scripts/run_l0_backfill_reliability_audit.py,SCRIPT,"Stall, alert, source failure, raw audit, and 5m checkpoint builder",created,TASK-4132
+scripts/run_l0_backfill_supervisor.ps1,SCRIPT,Restart stopped incomplete lanes only,created,TASK-4132
+scripts/validate_l0_backfill_reliability_hardening.py,VALIDATOR,TASK-4132 validator,created,TASK-4132
+data/artifacts/l0_backfill_orchestration/enhanced_latest_summary.json,REFERENCE,Latest reliability summary,created,TASK-4132
+data/artifacts/l0_backfill_orchestration/current_alerts.json,REFERENCE,Machine-readable current alerts,created,TASK-4132
+data/artifacts/l0_backfill_orchestration/current_alerts.md,REFERENCE,Human-readable current alerts,created,TASK-4132
+data/artifacts/l0_backfill_orchestration/lane_reliability.csv,REFERENCE,"Lane-level running, delta, event freshness, and stall status",created,TASK-4132
+data/artifacts/l0_backfill_orchestration/source_failure_summary.csv,REFERENCE,Source-level failure and pending-unit summary,created,TASK-4132
+data/artifacts/l0_backfill_orchestration/raw_cache_source_time_audit.csv,REFERENCE,Bounded raw/cache/source-time audit sample,created,TASK-4132
+data/artifacts/l0_backfill_orchestration/five_min_checkpoint_summary.json,REFERENCE,5m checkpoint visibility,created,TASK-4132
+data/artifacts/l0_backfill_orchestration/supervisor_recommendations.json,REFERENCE,Stopped-lane restart recommendations,created,TASK-4132
+docs/reports/task_4132_l0_backfill_stall_detection_supervisor_hardening/report.md,TASK_REPORT,TASK-4132 report,created,TASK-4132
+docs/reports/task_4132_l0_backfill_stall_detection_supervisor_hardening/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4132 artifact manifest,created,TASK-4132
+docs/reports/task_4132_l0_backfill_stall_detection_supervisor_hardening/validation_results.md,VALIDATION_REPORT,TASK-4132 validation results,created,TASK-4132
+docs/reports/task_4132_l0_backfill_stall_detection_supervisor_hardening/l0_backfill_reliability_summary.json,REFERENCE,TASK-4132 closeout summary,created,TASK-4132

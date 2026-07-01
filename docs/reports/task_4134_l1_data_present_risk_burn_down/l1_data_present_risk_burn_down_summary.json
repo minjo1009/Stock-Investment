@@ -1,0 +1,10 @@
+{
+  "data_present_families_handled": 5,
+  "gap_count": 0,
+  "l2_materialization_written": false,
+  "legacy_l2_bypass_blocked_by_default": true,
+  "source_packet_count": 5,
+  "strict_gate_pass_count": 2,
+  "task_id": "TASK-4134",
+  "trading_authority_opened": false
+}

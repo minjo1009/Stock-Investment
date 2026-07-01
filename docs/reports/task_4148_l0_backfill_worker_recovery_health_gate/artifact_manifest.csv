@@ -1,0 +1,35 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4148 task registration and closeout,modified,TASK-4148
+ops/doc_registry.yaml,registry,TASK-4148 report registration,modified,TASK-4148
+scripts/run_l0_backfill_worker_recovery_4148.py,script,restart dead critical L0 workers and write pid-alive proof,created,TASK-4148
+scripts/validate_l0_backfill_worker_recovery_4148.py,validator,validate TASK-4148 recovery proof,created,TASK-4148
+scripts/install_l0_backfill_worker_recovery_scheduler_4148.ps1,script,install 15-minute L0 backfill worker recovery guard,created,TASK-4148
+scripts/run_l0_backfill_worker_recovery_once_4148.ps1,script,Task Scheduler wrapper for one recovery guard run,created,TASK-4148
+scripts/start_l0_public_newswire_backfill.ps1,script,capture per-run stdout/stderr and unique recovery log paths,modified,TASK-4148
+scripts/start_l0_public_market_macro_news_backfill.ps1,script,capture per-run stdout/stderr and unique recovery log paths,modified,TASK-4148
+tools/db/source_acquisition/l0_collection_status.py,script,write pid_alive and pid owner proof in current L0 status,modified,TASK-4148
+scripts/run_l0_backfill_reliability_audit.py,script,use direct background_process pid-alive proof in lane reliability status,modified,TASK-4148
+scripts/run_l0_backfill_supervisor.ps1,script,write restart alive/dead confirmation ledger rows,modified,TASK-4148
+scripts/run_l0_l2_wide_handoff_4146.py,script,include pid_alive in stopped lane proof,modified,TASK-4148
+scripts/validate_l0_l2_wide_handoff_4146.py,validator,fail on critical incomplete L0 worker dead,modified,TASK-4148
+scripts/run_l0_l2_hardening_4147.py,script,include pid_alive in backfill proof,modified,TASK-4148
+scripts/validate_l0_l2_hardening_4147.py,validator,fail on critical incomplete L0 worker dead,modified,TASK-4148
+docs/active/ACTIVE_SSOT_INDEX.md,active_doc,TASK-4148 active report pointer,modified,TASK-4148
+docs/active/CURRENT_TASKS.md,active_doc,TASK-4148 active task pointer,modified,TASK-4148
+docs/active/PROJECT_STATUS.md,active_doc,TASK-4148 current status note,modified,TASK-4148
+docs/reports/task_4148_l0_backfill_worker_recovery_health_gate/gpt_prompt.md,gpt_evidence,GPT Pro review prompt,created,TASK-4148
+docs/reports/task_4148_l0_backfill_worker_recovery_health_gate/gpt_post_implementation_review_prompt.md,gpt_evidence,GPT Pro post-implementation review prompt,created,TASK-4148
+docs/reports/task_4148_l0_backfill_worker_recovery_health_gate/gpt_response.md,gpt_evidence,GPT Pro response capture status,created,TASK-4148
+docs/reports/task_4148_l0_backfill_worker_recovery_health_gate/gpt_review_digest_ko.md,gpt_evidence,Korean digest of GPT capture status and Codex self-review,created,TASK-4148
+docs/reports/task_4148_l0_backfill_worker_recovery_health_gate/gpt_attempt_log.md,gpt_evidence,Chrome/GPT attempt evidence,created,TASK-4148
+docs/reports/task_4148_l0_backfill_worker_recovery_health_gate/report.md,task_report,TASK-4148 report,created,TASK-4148
+docs/reports/task_4148_l0_backfill_worker_recovery_health_gate/artifact_manifest.csv,artifact_manifest,TASK-4148 artifact manifest,created,TASK-4148
+docs/reports/task_4148_l0_backfill_worker_recovery_health_gate/validation_results.md,validation_report,TASK-4148 validation results,created,TASK-4148
+docs/reports/task_4148_l0_backfill_worker_recovery_health_gate/summary.json,summary,machine-readable TASK-4148 summary,created,TASK-4148
+data/artifacts/task_4148_l0_backfill_worker_recovery_health_gate/l0_worker_recovery_ledger.csv,artifact,before/after restart ledger,created,TASK-4148
+data/artifacts/task_4148_l0_backfill_worker_recovery_health_gate/l0_worker_health_gate.csv,artifact,current pid-alive health gate,created,TASK-4148
+data/artifacts/task_4148_l0_backfill_worker_recovery_health_gate/summary.json,artifact,machine-readable summary,created,TASK-4148
+data/artifacts/task_4148_l0_backfill_worker_recovery_health_gate/windows_task_scheduler_registration.json,artifact,Windows Task Scheduler guard registration proof,created,TASK-4148
+data/artifacts/task_4148_l0_backfill_worker_recovery_health_gate/runtime_logs/**,artifact,per-run stdout/stderr capture for restarted workers,created,TASK-4148
+data/artifacts/task_4148_l0_backfill_worker_recovery_health_gate/fixtures/stale_pid_case/background_process.json,fixture,synthetic dead-pid fixture for regression validation,created,TASK-4148
+data/artifacts/task_4148_l0_backfill_worker_recovery_health_gate/fixtures/stale_pid_case/expected_result.json,fixture,expected BLOCKED_WORKER_NOT_ALIVE gate result,created,TASK-4148

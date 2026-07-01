@@ -1,0 +1,137 @@
+task_id: TASK-4200
+task_type: OUTCOME_CHANGE
+domain: L0_SOURCE_ACQUISITION
+title: L0 Public Newswire Backfill Progress Hardening
+status: DONE
+profile: L0_L1_DATA_PIPELINE
+created_at: "2026-07-02"
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN
+  missing_stale_incomplete_data_semantics: UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE
+scope:
+  allowed_paths:
+    - ops/l0_operating_contract.yaml
+    - tools/db/source_acquisition/public_newswire_shards.py
+    - scripts/run_l0_public_newswire_sharded_backfill.py
+    - scripts/run_task4193_l0_overnight_backfill_supervisor.py
+    - scripts/aggregate_l0_public_newswire_shards.py
+    - scripts/validate_l0_public_newswire_sharded_backfill.py
+    - tests/test_l0_public_newswire_sharded_backfill.py
+    - data/artifacts/l0_public_newswire_backfill_shards/**
+    - data/artifacts/l0_operating_status/**
+    - data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/**
+    - data/artifacts/task_4200_l0_public_newswire_progress_hardening/**
+    - data/raw/task_4200_l0_public_newswire_progress_hardening/**
+    - docs/reports/task_4200_l0_public_newswire_progress_hardening/**
+    - ops/task_registry.yaml
+    - ops/doc_registry.yaml
+  forbidden_paths:
+    - broker/**
+    - live_trading/**
+    - production_orders/**
+    - secrets/**
+    - configs/broker/**
+  changed_paths:
+    - ops/l0_operating_contract.yaml
+    - tools/db/source_acquisition/public_newswire_shards.py
+    - scripts/run_l0_public_newswire_sharded_backfill.py
+    - scripts/run_task4193_l0_overnight_backfill_supervisor.py
+    - tests/test_l0_public_newswire_sharded_backfill.py
+    - data/artifacts/l0_public_newswire_backfill_shards/**
+    - data/artifacts/l0_operating_status/**
+    - data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/**
+    - data/artifacts/task_4200_l0_public_newswire_progress_hardening/**
+    - docs/reports/task_4200_l0_public_newswire_progress_hardening/**
+    - ops/task_registry.yaml
+    - ops/doc_registry.yaml
+outcome_unit:
+  name: l0_public_newswire_progress_hardening_gap_count
+  type: count
+  direction: decrease
+  problem_progress_claim_allowed: true
+  harness_progress_claim_allowed: false
+baseline:
+  value: 4
+  gaps:
+    - BusinessWire monthly shard was too large for measurable completed-unit progress.
+    - 30-minute worker runtime recycled active BusinessWire work before shard completion.
+    - Max-runtime recycle did not distinguish active progress from true stale progress.
+    - Supervisor heartbeat flagged process liveness but not completed-unit stall health.
+after:
+  value: 0
+  closed_gaps:
+    - BusinessWire day shard mode is implemented and active in the current launcher config.
+    - BusinessWire and PRNewswire source runtime budgets are extended in the current guard.
+    - Max runtime is extended when worker progress is active; stale recycle remains available.
+    - Supervisor status now records completed-unit delta and a 30-minute stall threshold.
+intended_change:
+  summary: Harden existing L0 public newswire backfill runtime so active workers produce measurable completed-unit progress instead of repeatedly recycling large monthly shards.
+measurement_method:
+  commands:
+    - python -m py_compile tools/db/source_acquisition/public_newswire_shards.py scripts/run_l0_public_newswire_sharded_backfill.py scripts/run_task4193_l0_overnight_backfill_supervisor.py scripts/aggregate_l0_public_newswire_shards.py tests/test_l0_public_newswire_sharded_backfill.py
+    - python -m unittest tests.test_l0_public_newswire_sharded_backfill
+    - python scripts/run_l0_public_newswire_sharded_backfill.py --start-month 2020-02 --end-month 2020-02 --sources businesswire --businesswire-shard-granularity day --shard-artifact-root data/artifacts/task_4200_l0_public_newswire_progress_hardening/dry_run_artifacts --shard-raw-root data/raw/task_4200_l0_public_newswire_progress_hardening/dry_run_raw --dry-run
+    - powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run_task4195_l0_continuous_backfill_guard_once.ps1
+    - python scripts/aggregate_l0_public_newswire_shards.py --skip-raw-dedupe
+    - python scripts/validate_l0_public_newswire_sharded_backfill.py
+    - python scripts/build_l0_operating_status_4190.py
+  comparison_rule: the active launcher must use day granularity and longer source runtime budgets, while validator and safety gates remain closed
+allowed_actions:
+  - edit existing L0 newswire shard builder
+  - edit existing newswire launcher
+  - edit existing continuous backfill supervisor
+  - restart the current diagnostic-only newswire launcher through the existing guard path
+  - write diagnostic-only progress and validation artifacts
+forbidden_actions:
+  - broker mutation
+  - live order
+  - paper promotion
+  - real-capital enablement
+  - strategy acceptance
+  - deployment readiness claim
+  - buy/sell/ranking/sizing/order output
+  - treating missing/stale/incomplete data as negative evidence
+evidence_artifacts:
+  required:
+    - data/artifacts/l0_public_newswire_backfill_shards/background_process.json
+    - data/artifacts/l0_public_newswire_backfill_shards/aggregate_progress.json
+    - data/artifacts/l0_public_newswire_backfill_shards/shard_inventory.json
+    - data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/supervisor_status.json
+    - data/artifacts/task_4200_l0_public_newswire_progress_hardening/dry_run_artifacts/shard_inventory.json
+validators:
+  required:
+    - python -m unittest tests.test_l0_public_newswire_sharded_backfill
+    - python scripts/validate_l0_public_newswire_sharded_backfill.py
+progress_claim_policy:
+  progress_class: UNDERLYING_PROBLEM_PROGRESS
+  actual_underlying_progress: true
+  allowed_claims:
+    - BusinessWire day shard mode is implemented.
+    - The current launcher was restarted with day granularity and longer runtime budgets.
+    - Newswire validator passes with safety flags closed.
+    - L0 newswire backfill remains incomplete and must remain a blocker.
+  forbidden_claims:
+    - L0 public newswire backfill is complete.
+    - L1-L5 completeness is open.
+    - Strategy/deployment/real-capital status changed.
+closeout_verdict:
+  selected: ACTUAL_PROGRESS_WITH_RESIDUAL_BLOCKERS
+report:
+  actual_underlying_progress: true
+  progress_class: UNDERLYING_PROBLEM_PROGRESS
+  summary: Existing L0 public newswire runtime was hardened and restarted with BusinessWire day shards, longer source budgets, active-progress runtime extension, and completed-unit stall telemetry.
+  claims:
+    - Current launcher config uses businesswire_shard_granularity=day.
+    - Active launcher PID was restarted through the existing TASK-4195 guard.
+    - Validation passes; remaining blocker is L0_PUBLIC_NEWSWIRE_INCOMPLETE.
+next_target:
+  required: true
+  task_type: OUTCOME_CHANGE
+  outcome_unit: l0_public_newswire_pending_units
+  required_baseline: data/artifacts/l0_public_newswire_backfill_shards/aggregate_progress.json
+  required_validator: python scripts/validate_l0_public_newswire_sharded_backfill.py

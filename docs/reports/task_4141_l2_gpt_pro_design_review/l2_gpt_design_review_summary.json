@@ -1,0 +1,19 @@
+{
+  "task_id": "TASK-4141",
+  "relay_mode": "single_gpt_consult",
+  "gpt_capture_status": "CAPTURED",
+  "tab_cleanup_status": "skipped_preexisting_user_tab",
+  "gpt_recommended_next_task": "TASK-4142 L2 Swing Event Admission View",
+  "l2_go": true,
+  "first_l2_view": "L2 Swing Event Admission View",
+  "feature_materialization_allowed_now": false,
+  "trading_authority_opened": false,
+  "paper_live_broker_order_opened": false,
+  "core_recommendations": [
+    "L2 should be a safe primitive/admission/read view layer, not a signal layer.",
+    "News, macro, and newswire are active swing feature candidates after TASK-4140.",
+    "Minute/second timestamps are not the bottleneck for a one-month swing strategy.",
+    "Build mapping, dedup, stale, effect-window, and leakage guards first.",
+    "Do not build sentiment score, alpha score, ranking, realized return, sizing, or order intent in L2."
+  ]
+}

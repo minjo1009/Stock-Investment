@@ -1,0 +1,4 @@
+blocker_rank,blocker
+1,broker_truth_sell_fills <= 0
+2,snapshot_coverage <= 95%
+3,position_match_rate <= 99%

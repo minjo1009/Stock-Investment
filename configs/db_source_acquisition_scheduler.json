@@ -3,6 +3,7 @@
   "strategy": "NOT_ACCEPTED",
   "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
   "real_capital": "FORBIDDEN",
+  "registered_loop_enabled": false,
   "permissions": {
     "diagnostic_only": true,
     "execution_permitted": 0,
@@ -12,6 +13,86 @@
     "live_order_enabled": 0,
     "replay_permission_granted": 0,
     "buy_sell_signal_generation_permitted": 0
+  },
+  "management_plan": {
+    "active_task": "TASK-4117",
+    "roadmap_doc": "docs/architecture/l0_source_acquisition_project_management_plan.md",
+    "status_report_command": "python scripts/report_l0_collection_status.py",
+    "validator_command": "python scripts/validate_l0_source_acquisition_project_management.py",
+    "stages": [
+      {
+        "stage": 1,
+        "name": "official_core_api_smoke_stabilization",
+        "status": "COMPLETE_NETWORK_SMOKE_PASS",
+        "preflight_status": "PREFLIGHT_PASS_NETWORK_SMOKE_PENDING",
+        "preflight_task": "TASK-4118",
+        "preflight_artifact": "docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/stage1_smoke_summary.json",
+        "network_smoke_status": "NETWORK_SMOKE_EXECUTED_PASS",
+        "network_smoke_task": "TASK-4119",
+        "network_smoke_artifact": "docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/stage1_network_smoke_summary.json",
+        "scope": ["official_public_releases", "gdelt_news_events", "marketaux_news_free", "microstructure_quotes", "microstructure_trades"]
+      },
+      {
+        "stage": 2,
+        "name": "realtime_source_budget_optimization",
+        "status": "COMPLETE_REALTIME_BUDGET_OPTIMIZED",
+        "budget_task": "TASK-4120",
+        "budget_artifact": "docs/reports/task_4120_l0_stage_2_realtime_source_budget_optimization/stage2_realtime_budget_summary.json",
+        "scope": ["provider_rate_budget", "cooldown", "request_ledger", "secret_redaction"]
+      },
+      {
+        "stage": 3,
+        "name": "realtime_scheduler_setup_and_execution",
+        "status": "COMPLETE_REALTIME_SCHEDULER_PROOF_EXECUTED",
+        "scheduler_task": "TASK-4121",
+        "scheduler_artifact": "docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/stage3_scheduler_summary.json",
+        "proof_mode": "task_local_forced_due_audit_only_no_provider_execution",
+        "scope": ["db_source_acquisition_scheduler", "runtime_diagnostic_scheduler", "operator_override"]
+      },
+      {
+        "stage": 4,
+        "name": "historical_backfill_optimization",
+        "status": "COMPLETE_HISTORICAL_BACKFILL_OPTIMIZED_NOT_ACTIVATED",
+        "backfill_task": "TASK-4122",
+        "backfill_artifact": "docs/reports/task_4122_l0_stage_4_historical_backfill_optimization/stage4_backfill_optimization_summary.json",
+        "activation_permitted": 0,
+        "scope": ["chunking", "checkpointing", "resume", "coverage_audit"]
+      },
+      {
+        "stage": 5,
+        "name": "background_historical_backfill_from_2016",
+        "status": "COMPLETE_FULL_2016_TO_PRESENT_BACKFILL",
+        "backfill_task": "TASK-4123",
+        "backfill_artifact": "docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/stage5_background_backfill_summary.json",
+        "continuation_task": "TASK-4125",
+        "continuation_artifact": "docs/reports/task_4125_l0_stage_5_full_2016_to_present_backfill_continuation/stage5_full_backfill_continuation_summary.json",
+        "continuation_status": "FULL_2016_TO_PRESENT_BACKFILL_COMPLETE",
+        "full_2016_to_present_run_completed": 1,
+        "scope": ["public_context_news_backfill", "public_market_macro_news_backfill", "microstructure_backfill_batch"]
+      },
+      {
+        "stage": 6,
+        "name": "l1_quality_coverage_audit_and_l2_handoff",
+        "status": "COMPLETE_PARTIAL_L2_CONTEXT_HANDOFF_READY",
+        "audit_task": "TASK-4127",
+        "previous_feature_reaudit_task": "TASK-4126",
+        "previous_audit_task": "TASK-4124",
+        "audit_artifact": "docs/reports/task_4127_l0_stage_6_source_time_feature_admission_l2_context_handoff/stage6_source_time_feature_admission_l2_handoff_summary.json",
+        "previous_feature_reaudit_artifact": "docs/reports/task_4126_l0_stage_6_full_backfill_l1_quality_coverage_reaudit/stage6_full_backfill_l1_quality_coverage_summary.json",
+        "previous_audit_artifact": "docs/reports/task_4124_l0_stage_6_l1_quality_coverage_audit_l2_handoff/stage6_l1_quality_coverage_summary.json",
+        "l2_handoff_decision": "PARTIAL_CONTEXT_ONLY_HANDOFF_READY",
+        "l2_context_handoff_allowed": 1,
+        "l2_trading_handoff_allowed": 0,
+        "strict_gate_pass_rows": 0,
+        "trade_feature_allowed_rows": 0,
+        "scope": ["ticker_mapping", "news_mapping", "source_time_gate", "l2_handoff"]
+      }
+    ],
+    "implementation_modes": {
+      "python_collectors": ["official_public_releases", "gdelt_news_events", "marketaux_news_free", "public_newswire_feeds", "public_context_news_feeds", "public_market_macro_news_feeds", "microstructure_quotes", "microstructure_trades"],
+      "chrome_smoke_only": ["public_headline_browser_watch", "chrome_public_page_snapshot_smoke"],
+      "codex_gpt_role": "planning_review_recovery_only_not_runtime_collection"
+    }
   },
   "source_families": {
     "official_public_releases": {
@@ -32,6 +113,11 @@
     "public_headline_browser_watch": {
       "provider_role": "public_headline_browser_watch",
       "authority_class": "headline_discovery_only",
+      "diagnostic_only": true
+    },
+    "chrome_public_page_snapshot_smoke": {
+      "provider_role": "chrome_public_page_snapshot_smoke",
+      "authority_class": "browser_smoke_diagnostic_only",
       "diagnostic_only": true
     },
     "public_news_source_capability_probe": {
@@ -127,7 +213,6 @@
     {
       "name": "marketaux_news_free_30m",
       "enabled": false,
-      "interval_minutes": 30,
       "allow_network": false,
       "families": ["marketaux_news_free"],
       "provider": "marketaux",
@@ -136,7 +221,16 @@
       "diagnostic_only": true,
       "daily_request_cap": 95,
       "articles_per_request": 3,
-      "preferred_operator_interval_minutes": 15,
+      "interval_minutes": 16,
+      "preferred_operator_interval_minutes": 16,
+      "stage2_realtime_budget": {
+        "requests_per_day_budget": 90,
+        "provider_daily_cap": 95,
+        "target_utilization_min": 0.9,
+        "target_utilization_max": 0.95,
+        "actual_utilization": 0.9474,
+        "scheduler_activation_permitted": 0
+      },
       "execution_permitted": 0,
       "broker_mutation_permitted": 0,
       "paper_promotion_permitted": 0,
@@ -151,6 +245,23 @@
       "provider": "public_headline_browser_watch",
       "sources": ["prnewswire", "globenewswire"],
       "mode": "smoke",
+      "diagnostic_only": true,
+      "execution_permitted": 0,
+      "broker_mutation_permitted": 0,
+      "paper_promotion_permitted": 0,
+      "real_capital_permitted": 0
+    },
+    {
+      "name": "chrome_public_page_snapshot_smoke",
+      "enabled": false,
+      "interval_minutes": 1440,
+      "allow_network": false,
+      "families": ["chrome_public_page_snapshot_smoke"],
+      "provider": "chrome_public_page_snapshot_smoke",
+      "sources": ["prnewswire", "globenewswire", "businesswire", "wikimedia_current_events"],
+      "mode": "smoke",
+      "purpose": "selector_drift_and_public_page_availability_diagnostics_only",
+      "runtime_collection_authority": 0,
       "diagnostic_only": true,
       "execution_permitted": 0,
       "broker_mutation_permitted": 0,
@@ -222,6 +333,21 @@
       "sources": ["federal_register_documents", "federal_reserve_press_all", "cftc_press_releases"],
       "mode": "historical_backfill",
       "backfill_start_date": "2016-01-01",
+      "stage4_backfill_optimization": {
+        "task": "TASK-4122",
+        "optimization_status": "OPTIMIZED_NOT_ACTIVATED",
+        "backfill_start_date": "2016-01-01",
+        "chunk_unit": "source_cursor_or_date_window",
+        "chunk_size": "max_fetches_per_source=4; federal_register_per_page=1000",
+        "max_work_per_cycle": "max_items_per_source=1000",
+        "checkpoint_mode": "state_path+event_path+progress_path+plan_path+STOP",
+        "resume_mode": "collector_state_cursor_resume",
+        "retry_policy": "retryable_http_or_parse_errors_remain_blockers_until_next_cycle",
+        "coverage_audit_required": true,
+        "coverage_artifact_policy": "progress_path plus raw/cache ledger before Stage 5 closeout",
+        "materialization_status": "READY_FOR_OPERATOR_MATERIALIZATION_CHECK",
+        "scheduler_activation_permitted": 0
+      },
       "diagnostic_only": true,
       "execution_permitted": 0,
       "broker_mutation_permitted": 0,
@@ -260,6 +386,21 @@
       "sources": ["guardian_open_platform"],
       "mode": "historical_backfill",
       "backfill_start_date": "2016-01-01",
+      "stage4_backfill_optimization": {
+        "task": "TASK-4122",
+        "optimization_status": "OPTIMIZED_NOT_ACTIVATED",
+        "backfill_start_date": "2016-01-01",
+        "chunk_unit": "source_cursor_or_date_window",
+        "chunk_size": "operator_materialized_collector_required_before_execution",
+        "max_work_per_cycle": "bounded_by_collector_materialization_review",
+        "checkpoint_mode": "state_path+event_path+progress_path+plan_path+STOP",
+        "resume_mode": "collector_state_cursor_resume_after_materialization",
+        "retry_policy": "materialization_blocker_before_retry_classification",
+        "coverage_audit_required": true,
+        "coverage_artifact_policy": "progress_path plus raw/cache ledger before Stage 5 closeout",
+        "materialization_status": "BLOCKED_ONEDRIVE_FILE_NOT_MATERIALIZED",
+        "scheduler_activation_permitted": 0
+      },
       "diagnostic_only": true,
       "execution_permitted": 0,
       "broker_mutation_permitted": 0,
@@ -284,6 +425,21 @@
       "chunk_minutes": 15,
       "max_chunks": 2,
       "max_requests_per_minute": 60,
+      "stage4_backfill_optimization": {
+        "task": "TASK-4122",
+        "optimization_status": "OPTIMIZED_NOT_ACTIVATED",
+        "backfill_start_date": "2016-01-01",
+        "chunk_unit": "symbol_session_date_quote_trade_time_window",
+        "chunk_size": "chunk_minutes=15; max_chunks=2; max_symbols=1; max_dates=1",
+        "max_work_per_cycle": "1 symbol x 1 date x 2 chunks x quotes/trades",
+        "checkpoint_mode": "microstructure_backfill_checkpoint_jsonl",
+        "resume_mode": "chunk_id_skip_when_exported_unless_force",
+        "retry_policy": "FAILED_RETRYABLE/RATE_LIMITED/CREDENTIAL_BLOCKED remain blockers, not negatives",
+        "coverage_audit_required": true,
+        "coverage_artifact_policy": "microstructure coverage by symbol/date plus raw hash integrity",
+        "materialization_status": "READY_FOR_OPERATOR_CREDENTIAL_CHECK",
+        "scheduler_activation_permitted": 0
+      },
       "execution_permitted": 0,
       "broker_mutation_permitted": 0,
       "paper_promotion_permitted": 0,

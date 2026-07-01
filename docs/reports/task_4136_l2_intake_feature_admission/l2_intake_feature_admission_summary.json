@@ -1,0 +1,14 @@
+{
+  "feature_admitted_now": 0,
+  "feature_candidate_rows": 5,
+  "generated_at": "2026-06-29T23:42:58Z",
+  "l1_coverage_rows": 5,
+  "l1_validation_hooks": 3,
+  "l1_validation_pass_count": 3,
+  "l2_intake_rows": 5,
+  "l2_materialization_written": false,
+  "legacy_l2_news_quarantined": true,
+  "news_macro_feature_path_rows": 3,
+  "task_id": "TASK-4136",
+  "trading_authority_opened": false
+}

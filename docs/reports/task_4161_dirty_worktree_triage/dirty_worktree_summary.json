@@ -1,0 +1,31 @@
+{
+  "task_id": "TASK-4161",
+  "generated_at": "2026-07-01T02:49:03Z",
+  "total_dirty_rows": 1051,
+  "by_status": {
+    "M ": 19,
+    "A ": 584,
+    " M": 29,
+    " D": 298,
+    "AM": 3,
+    "??": 118
+  },
+  "by_priority": {
+    "P0": 622,
+    "P1": 309,
+    "P2": 120
+  },
+  "by_action": {
+    "KEEP_REGISTER": 434,
+    "KEEP_OR_REVIEW": 29,
+    "OWNER_REVIEW_RESTORE_OR_CONFIRM_DELETE": 166,
+    "KEEP_PAIR_WITH_TASK": 63,
+    "OWNER_REVIEW": 119,
+    "OWNER_REVIEW_RESTORE_OR_RETIRE": 39,
+    "OWNER_REVIEW_ARCHIVE_OR_CONFIRM_DELETE": 92,
+    "OWNER_REVIEW_IGNORE_OR_REGISTER": 1,
+    "REGISTER_OR_ARCHIVE": 108
+  },
+  "automatic_cleanup_performed": false,
+  "files_deleted_or_restored_by_this_task": 0
+}

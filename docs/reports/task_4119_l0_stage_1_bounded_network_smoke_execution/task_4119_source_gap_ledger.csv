@@ -1,0 +1,1 @@
+task_id,source_family,source_id,status,error_category,message,raw_path,raw_sha256,network_call_made,diagnostic_only_flag,trade_authority_flag,broker_mutation_permitted_flag,real_capital_permitted_flag

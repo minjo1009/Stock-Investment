@@ -1,0 +1,17 @@
+path,type,purpose,created_or_modified,task_id
+scripts/run_l0_l2_hardening_4147.py,SCRIPT,L1 article packet source broadening patch,created,TASK-4182
+scripts/run_task4182_l1_article_entity_feature_hardening.py,SCRIPT,TASK-4182 evidence generator,created,TASK-4182
+scripts/validate_task4182_l1_article_entity_feature_hardening.py,SCRIPT,TASK-4182 validator,created,TASK-4182
+data/artifacts/task_4182_l1_article_entity_feature_hardening/task_4182_l1_hardening_summary.json,SUMMARY,L1 hardening metrics,created,TASK-4182
+data/artifacts/task_4182_l1_article_entity_feature_hardening/task_4182_feature_backfill_resolution.csv,LEDGER,Feature materialization gap resolution ledger,created,TASK-4182
+data/artifacts/task_4182_l1_article_entity_feature_hardening/task_4182_source_recall_review_queue.csv,QUEUE,Explicit source recall review queue,created,TASK-4182
+data/artifacts/task_4182_l1_article_entity_feature_hardening/task_4182_l1_article_source_family_rollup.csv,ROLLUP,Article packet source-family coverage,created,TASK-4182
+data/artifacts/task_4182_l1_article_entity_feature_hardening/task_4182_l1_article_source_key_rollup.csv,ROLLUP,Article packet source-key coverage,created,TASK-4182
+docs/reports/task_4182_l1_article_entity_feature_hardening/task_result_contract.yaml,CONTRACT,Prime task outcome contract,created,TASK-4182
+docs/reports/task_4182_l1_article_entity_feature_hardening/gpt_prompt.md,GPT_PROMPT,GPT Pro prompt,created,TASK-4182
+docs/reports/task_4182_l1_article_entity_feature_hardening/gpt_response.md,GPT_RESPONSE,Captured GPT Pro partial response,created,TASK-4182
+docs/reports/task_4182_l1_article_entity_feature_hardening/report.md,TASK_REPORT,TASK-4182 closeout report,created,TASK-4182
+docs/reports/task_4182_l1_article_entity_feature_hardening/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4182 artifact manifest,created,TASK-4182
+docs/reports/task_4182_l1_article_entity_feature_hardening/validation_results.md,VALIDATION_REPORT,TASK-4182 validation results,created,TASK-4182
+ops/task_registry.yaml,REGISTRY,Task registry update,created,TASK-4182
+ops/doc_registry.yaml,REGISTRY,Document registry update,created,TASK-4182

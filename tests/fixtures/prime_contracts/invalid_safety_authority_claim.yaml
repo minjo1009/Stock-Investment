@@ -1,0 +1,68 @@
+task_id: "TASK-9105"
+task_type: "DIAGNOSTIC_ONLY"
+domain: "bad_closeout"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "docs/reports/task_9105/**"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "docs/reports/task_9105/report.md"
+outcome_unit:
+  name: "diagnostic_notes"
+  type: "count"
+  direction: "increase"
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: false
+intended_change:
+  description: "Bad authority claim."
+  target:
+    value: 1
+measurement_method:
+  commands:
+    - "python scripts/ops/validate_required_artifacts.py --task TASK-9105"
+  comparison_rule: "diagnostic_evidence_only"
+  same_method_before_after_required: false
+allowed_actions: []
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "docs/reports/task_9105/report.md"
+validators:
+  required:
+    - "outcome_contract_validator"
+progress_claim_policy:
+  progress_class: "DIAGNOSTIC_ONLY"
+  actual_underlying_progress: false
+closeout_verdict:
+  selected: "VALID_DIAGNOSTIC_ONLY"
+report:
+  actual_underlying_progress: false
+  progress_class: "DIAGNOSTIC_ONLY"
+  summary: "Diagnostic grants deployment ready status."
+  claimed_capabilities:
+    - "DEPLOYMENT_READY"
+next_target:
+  required: true
+  task_type: "REVIEW_ONLY"
+  outcome_unit: "authority risk"
+  required_baseline: "current hard state"
+  required_validator: "safety_authority_guard"

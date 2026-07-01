@@ -1,0 +1,189 @@
+version: 1
+updated_at: "2026-07-01"
+created_by_task: TASK-4188
+
+purpose:
+  - keep the project root readable
+  - prevent new unclassified root clutter
+  - separate active source-of-truth files from navigation and historical material
+  - make cleanup a validator-backed closeout gate instead of an occasional manual sweep
+
+validation:
+  root_scan_depth: 1
+  fail_on_unclassified_root_entry: true
+  warn_on_known_debt: true
+  warn_on_sensitive_root_file: true
+
+canonical_surfaces:
+  project_entry:
+    - AGENTS.md
+    - README.md
+  governance:
+    - ops/operating_state.yaml
+    - ops/task_registry.yaml
+    - ops/doc_registry.yaml
+    - ops/task_profiles.yaml
+    - ops/context_bundles.yaml
+    - ops/project_hygiene_policy.yaml
+    - ops/project_knowledge_surfaces.yaml
+  active_operating_docs:
+    - docs/operating_system/project_operating_state.md
+    - docs/architecture/skill_md_subagent_canonicalization_map.md
+  generated_context:
+    - docs/generated_context
+  task_reports:
+    - docs/reports/task_*
+
+root_entries:
+  - name: .codex
+    kind: directory
+    classification: local_codex_state
+    action: keep_local_only
+  - name: .dvc
+    kind: directory
+    classification: data_versioning_metadata
+    action: keep
+  - name: .git
+    kind: directory
+    classification: vcs_metadata
+    action: keep
+  - name: .obsidian
+    kind: directory
+    classification: local_obsidian_state
+    action: keep_local_only
+  - name: .pytest_cache
+    kind: directory
+    classification: transient_cache_known_debt
+    action: cleanup_candidate
+    presence: optional
+  - name: apps
+    kind: directory
+    classification: application_surfaces
+    action: keep
+  - name: config
+    kind: directory
+    classification: config_alias_known_debt_absent_optional
+    action: do_not_recreate_review_if_present
+    presence: optional
+  - name: configs
+    kind: directory
+    classification: canonical_config
+    action: keep
+  - name: data
+    kind: directory
+    classification: data_artifacts_protected
+    action: keep_protected
+  - name: docs
+    kind: directory
+    classification: documentation
+    action: keep
+  - name: frontend
+    kind: directory
+    classification: legacy_active_frontend_web_surface
+    action: keep_until_frontend_catalog_migration
+  - name: logs
+    kind: directory
+    classification: runtime_logs
+    action: keep_local_or_rotate
+  - name: ops
+    kind: directory
+    classification: governance
+    action: keep
+  - name: prompts
+    kind: directory
+    classification: root_prompt_alias_known_debt_absent_optional
+    action: do_not_recreate_use_ops_prompts
+    presence: optional
+  - name: schemas
+    kind: directory
+    classification: contracts
+    action: keep
+  - name: scripts
+    kind: directory
+    classification: automation_and_validators
+    action: keep
+  - name: src
+    kind: directory
+    classification: source_code
+    action: keep
+  - name: tasks
+    kind: directory
+    classification: legacy_active_task_registry_surface
+    action: keep_until_registry_migration
+  - name: tests
+    kind: directory
+    classification: tests
+    action: keep
+  - name: tools
+    kind: directory
+    classification: tools
+    action: keep
+  - name: .dvcignore
+    kind: file
+    classification: data_versioning_config
+    action: keep
+  - name: .env
+    kind: file
+    classification: local_secret
+    action: keep_local_only_do_not_read
+  - name: .gitignore
+    kind: file
+    classification: vcs_config
+    action: keep
+  - name: .kis_token_cache.json
+    kind: file
+    classification: local_secret_token_cache
+    action: keep_local_only_do_not_read
+  - name: kis_paper.env
+    kind: file
+    classification: local_secret_env
+    action: keep_local_only_do_not_read
+  - name: AGENTS.md
+    kind: file
+    classification: root_agent_rules
+    action: keep
+  - name: README.md
+    kind: file
+    classification: project_entry_doc
+    action: keep
+  - name: trading.db
+    kind: file
+    classification: local_runtime_db_known_debt
+    action: review_before_move_or_delete
+  - name: trading-DESKTOP-2R00TB4.db
+    kind: file
+    classification: machine_conflict_db_known_debt
+    action: review_before_move_or_delete
+
+layer_rules:
+  L0_L1_DATA_PIPELINE:
+    canonical_dirs:
+      - src/data
+      - tools/db/source_acquisition
+      - data/artifacts
+      - docs/reports/task_*
+    forbidden_cleanup_actions:
+      - infer_missing_source_truth
+      - delete_raw_data_without_task_artifact
+      - move_db_or_source_artifacts_without_owner_review
+  L2_L4_ANALYSIS:
+    canonical_dirs:
+      - src/l2
+      - src/brain
+      - docs/reports/task_*
+    forbidden_cleanup_actions:
+      - convert_unknown_to_negative_evidence
+      - treat_historical_reports_as_active_ssot
+  OPS_GOVERNANCE:
+    canonical_dirs:
+      - ops
+      - scripts/ops
+      - docs/generated_context
+      - docs/reports/task_*
+    required_closeout_gate:
+      - python scripts/ops/validate_project_hygiene.py
+
+known_debt_policy:
+  meaning: Known debt is allowed to exist only because it is explicitly classified here.
+  closeout_behavior: warn
+  cleanup_rule: move_or_delete_only_with_task_scope_artifact_and_owner_review

@@ -32,7 +32,7 @@
       "name": "marketaux_news_free_30m",
       "enabled": true,
       "allow_network": true,
-      "interval_minutes": 15,
+      "interval_minutes": 16,
       "symbols": ["AAPL", "MSFT", "NVDA", "AMD", "QQQ"],
       "articles_per_request": 3,
       "daily_request_cap": 95,

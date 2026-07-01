@@ -1,0 +1,84 @@
+task_id: "TASK-9201"
+task_type: "OUTCOME_CHANGE"
+domain: "layer_0_source_acquisition"
+layer_outcome_validation:
+  layer: "L0"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "src/l0/**"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "src/l0/collector.py"
+outcome_unit:
+  name: "failed_shard_count"
+  type: "count"
+  direction: "decrease"
+  problem_progress_claim_allowed: true
+  harness_progress_claim_allowed: false
+baseline:
+  measured_at: "2026-07-01T00:00:00Z"
+  value: 5
+  source_artifacts:
+    - "artifacts/l0_before.json"
+  freshness_required: true
+after:
+  measured_at: "2026-07-01T01:00:00Z"
+  value: 1
+  source_artifacts:
+    - "artifacts/l0_after.json"
+intended_change:
+  description: "Reduce failed L0 shards."
+  target:
+    value: 1
+measurement_method:
+  commands:
+    - "python scripts/l0/count_failed_shards.py"
+  comparison_rule: "same_method_before_after"
+  same_method_before_after_required: true
+allowed_actions:
+  - "edit L0 collector"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "artifacts/l0_before.json"
+    - "artifacts/l0_after.json"
+validators:
+  required:
+    - "prime_layer_outcome_unit_validator"
+    - "outcome_contract_validator"
+progress_claim_policy:
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  actual_underlying_progress: true
+closeout_verdict:
+  selected: "ACTUAL_PROGRESS"
+report:
+  actual_underlying_progress: true
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  summary: "failed_shard_count decreased from 5 to 1."
+  claims:
+    - "failed_shard_count decreased from 5 to 1."
+next_target:
+  required: true
+  task_type: "OUTCOME_CHANGE"
+  outcome_unit: "incomplete_backfill_units"
+  required_baseline: "current count"
+  required_validator: "prime_layer_outcome_unit_validator"

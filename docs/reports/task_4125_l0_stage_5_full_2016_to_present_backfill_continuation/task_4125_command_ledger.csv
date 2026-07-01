@@ -1,0 +1,2 @@
+task_id,job_name,returncode,started_at,finished_at,command_result_path,bounded_continuation_cycle,full_cycle_requested
+TASK-4125,public_market_macro_news_backfill,0,2026-06-29T09:59:05.712463Z,2026-06-29T09:59:17.062114Z,docs/reports/task_4125_l0_stage_5_full_2016_to_present_backfill_continuation/command_results/public_market_macro_news_backfill.json,1,0

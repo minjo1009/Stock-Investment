@@ -1,0 +1,14 @@
+path,bytes,tokens,reason
+AGENTS.md,1380,345,must_include
+docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/cleanup_summary.json,515,124,optional_include
+docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/docs_surface_inventory.csv,1562,384,optional_include
+docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/duplicate_axis_review.csv,660,163,optional_include
+docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/report.md,78,19,must_include
+ops/context_bundles.yaml,6374,1593,must_include
+ops/operating_state.yaml,604,151,must_include
+ops/project_hygiene_policy.yaml,4796,1199,must_include
+ops/project_structure_policy.yaml,4088,1022,must_include
+ops/task_profiles.yaml,4379,1094,must_include
+scripts/ops/validate_codex_closeout.py,2705,676,must_include
+scripts/ops/validate_project_hygiene.py,6218,1554,must_include
+scripts/ops/validate_project_structure_policy.py,3773,943,must_include

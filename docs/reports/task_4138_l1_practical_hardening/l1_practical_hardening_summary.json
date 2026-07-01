@@ -1,0 +1,12 @@
+{
+  "task_id": "TASK-4138",
+  "generated_at": "2026-06-29T23:42:58Z",
+  "source_family_policy_rows": 5,
+  "wikimedia_policy_rows": 5,
+  "block_reason_rows": 5,
+  "validation_runs": 3,
+  "validation_failures": [],
+  "trading_authority_opened": false,
+  "paper_live_broker_order_opened": false,
+  "feature_allowed_now_rows": []
+}

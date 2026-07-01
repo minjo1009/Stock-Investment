@@ -1,0 +1,8 @@
+{
+  "command": "C:\\Users\\minjo\\AppData\\Local\\Programs\\Python\\Python313\\python.exe scripts/run_task646_full_microstructure_backfill.py --mode smoke --symbols AAPL --session-dates 2016-01-04 --feed iex --max-chunks 1 --chunk-minutes 15 --out-dir C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\raw\\task_4123_l0_stage_5_background_historical_backfill_from_2016\\microstructure_backfill_batch --checkpoint-path C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_4123_l0_stage_5_background_historical_backfill_from_2016\\microstructure_backfill_batch\\microstructure_backfill_checkpoint.jsonl --coverage-output-dir C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\data\\artifacts\\task_4123_l0_stage_5_background_historical_backfill_from_2016\\microstructure_backfill_batch\\coverage",
+  "finished_at": "2026-06-29T08:05:47.664494Z",
+  "name": "microstructure_backfill_batch",
+  "returncode": 0,
+  "started_at": "2026-06-29T08:05:47.015062Z",
+  "stdout_tail": "[TASK646_MICROSTRUCTURE_BACKFILL] mode=smoke dry_run=True chunk_minutes=15 planned_chunks=2 exported=0 failed=0 skipped=0 feature_builder_enabled=0 broker_mutation_permitted=0\n"
+}

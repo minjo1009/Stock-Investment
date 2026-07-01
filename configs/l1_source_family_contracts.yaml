@@ -1,0 +1,94 @@
+{
+  "schema_version": "2026-06-29.task-4133",
+  "task_id": "TASK-4133",
+  "diagnostic_only": true,
+  "no_trading_authority": true,
+  "default_missing_source_is_negative": false,
+  "packet_required_columns": [
+    "task_id",
+    "source_packet_id",
+    "candidate_id",
+    "trade_spec_id",
+    "symbol",
+    "decision_asof_ts",
+    "provider",
+    "endpoint_or_source_family",
+    "source_ts",
+    "available_to_brain_ts",
+    "source_time_basis",
+    "source_time_certified",
+    "raw_path",
+    "raw_sha256",
+    "strict_gate_pass",
+    "proxy_feature_allowed",
+    "missing_source_is_negative",
+    "assignment_uses_future_outcome",
+    "outcome_used_for_assignment",
+    "authority"
+  ],
+  "classifications": [
+    "STRICT_SOURCE_TIME_CERTIFIED",
+    "CONTEXT_ONLY_CERTIFIED",
+    "PROXY_ONLY",
+    "DISCOVERY_ONLY",
+    "BLOCKED_SOURCE_TIME",
+    "BLOCKED_RAW_INTEGRITY",
+    "BLOCKED_MAPPING",
+    "BLOCKED_AUTHORITY",
+    "BLOCKED_POLICY"
+  ],
+  "source_families": {
+    "market_bars_5m": {
+      "source_time_basis": "bar_end_ts",
+      "raw_locator_type": "sqlite_partition_hash",
+      "strict_candidate": true,
+      "mapping_required": true,
+      "authority": "VENDOR_MARKET_DATA",
+      "l2_allowed_scope": "STRICT_MARKET_OBSERVATION_ONLY"
+    },
+    "daily_bars": {
+      "source_time_basis": "daily_bar_date",
+      "raw_locator_type": "file_sha256",
+      "raw_path_patterns": [
+        "data/raw/us_daily_alpaca_full_universe/<SYMBOL>.csv",
+        "data/raw/l0_bar_daily_full_backfill/<SYMBOL>.csv"
+      ],
+      "strict_candidate": true,
+      "mapping_required": true,
+      "authority": "VENDOR_MARKET_DATA",
+      "l2_allowed_scope": "STRICT_MARKET_OBSERVATION_ONLY"
+    },
+    "public_context_news_feeds": {
+      "source_time_basis": "published_at_or_event_time",
+      "raw_locator_type": "file_sha256",
+      "strict_candidate": false,
+      "mapping_required": false,
+      "macro_context_allowed": true,
+      "authority": "PUBLIC_CONTEXT_PRIMARY",
+      "l2_allowed_scope": "MACRO_CONTEXT_ONLY"
+    },
+    "public_market_macro_news_feeds": {
+      "source_time_basis": "published_at_or_event_time",
+      "raw_locator_type": "file_sha256",
+      "strict_candidate": false,
+      "mapping_required": false,
+      "macro_context_allowed": true,
+      "date_only_noon_utc_sources": ["wikimedia_current_events"],
+      "authority": "PUBLIC_CONTEXT_PRIMARY",
+      "l2_allowed_scope": "MACRO_CONTEXT_ONLY"
+    },
+    "public_newswire_feeds": {
+      "source_time_basis": "published_at_or_event_time",
+      "raw_locator_type": "file_sha256",
+      "strict_candidate": false,
+      "mapping_required": false,
+      "candidate_hint_only": true,
+      "authority": "DISCOVERY_HINT",
+      "l2_allowed_scope": "DISCOVERY_REVIEW_QUEUE_ONLY"
+    }
+  },
+  "legacy_surfaces": {
+    "tools/db/news_l0_l1.py": "Existing provider-level L1 evaluator remains diagnostic/discovery-only.",
+    "scripts/ingest_l0_news_to_l2.py": "Legacy direct L0-to-L2 ingest is not TASK-4133 authoritative until rows pass the normalized L1 gate."
+  }
+}

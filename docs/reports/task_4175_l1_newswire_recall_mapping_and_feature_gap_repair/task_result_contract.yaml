@@ -1,0 +1,110 @@
+task_id: "TASK-4175"
+task_type: "RECLASSIFY"
+domain: "layer_1_newswire_mapping"
+layer_outcome_validation:
+  layer: "L1"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "scripts/run_task4175_l1_newswire_recall_mapping_feature_gap_repair.py"
+    - "scripts/validate_task4175_l1_newswire_recall_mapping_feature_gap_repair.py"
+    - "data/artifacts/task_4175_l1_newswire_recall_mapping_feature_gap_repair/**"
+    - "docs/reports/task_4175_l1_newswire_recall_mapping_and_feature_gap_repair/**"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "scripts/run_task4175_l1_newswire_recall_mapping_feature_gap_repair.py"
+    - "scripts/validate_task4175_l1_newswire_recall_mapping_feature_gap_repair.py"
+    - "data/artifacts/task_4175_l1_newswire_recall_mapping_feature_gap_repair/task_4175_l1_mapping_decision_ledger.csv"
+    - "data/artifacts/task_4175_l1_newswire_recall_mapping_feature_gap_repair/task_4175_l1_candidate_frequency.csv"
+    - "data/artifacts/task_4175_l1_newswire_recall_mapping_feature_gap_repair/task_4175_l1_mapping_summary.json"
+    - "docs/reports/task_4175_l1_newswire_recall_mapping_and_feature_gap_repair/task_result_contract.yaml"
+    - "docs/reports/task_4175_l1_newswire_recall_mapping_and_feature_gap_repair/report.md"
+    - "docs/reports/task_4175_l1_newswire_recall_mapping_and_feature_gap_repair/artifact_manifest.csv"
+    - "docs/reports/task_4175_l1_newswire_recall_mapping_and_feature_gap_repair/validation_results.md"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+outcome_unit:
+  name: "unmapped_entity_count"
+  type: "count"
+  direction: "decrease"
+  problem_progress_claim_allowed: true
+  harness_progress_claim_allowed: false
+baseline:
+  measured_at: "2026-07-01T12:19:00Z"
+  value: 4627
+  source_artifacts:
+    - "data/artifacts/task_4168_l3_gap_reason_narrowing_recall_traceability/task_4168_l3_gap_triage.csv"
+  freshness_required: true
+after:
+  measured_at: "2026-07-01T12:20:05Z"
+  value: 0
+  reclassified_count: 4627
+  source_artifacts:
+    - "data/artifacts/task_4175_l1_newswire_recall_mapping_feature_gap_repair/task_4175_l1_mapping_summary.json"
+intended_change:
+  description: "Convert L1 unmapped/recall/feature-gap rows into explicit deterministic decision states."
+  target:
+    value: 0
+measurement_method:
+  commands:
+    - "python scripts/run_task4175_l1_newswire_recall_mapping_feature_gap_repair.py"
+    - "python scripts/validate_task4175_l1_newswire_recall_mapping_feature_gap_repair.py"
+  comparison_rule: "pending decision states must be zero"
+  same_method_before_after_required: false
+allowed_actions:
+  - "create deterministic review frequency table"
+  - "classify rows into explicit non-pending states"
+forbidden_actions:
+  - "No LLM entity inference"
+  - "No forced ticker mapping"
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "data/artifacts/task_4175_l1_newswire_recall_mapping_feature_gap_repair/task_4175_l1_mapping_decision_ledger.csv"
+    - "data/artifacts/task_4175_l1_newswire_recall_mapping_feature_gap_repair/task_4175_l1_candidate_frequency.csv"
+    - "data/artifacts/task_4175_l1_newswire_recall_mapping_feature_gap_repair/task_4175_l1_mapping_summary.json"
+validators:
+  required:
+    - "prime_task_contract_validator"
+    - "outcome_contract_validator"
+    - "prime_layer_outcome_unit_validator"
+    - "task4175_l1_mapping_validator"
+progress_claim_policy:
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  actual_underlying_progress: true
+  allowed_claims:
+    - "4627 L1 rows were reclassified into explicit deterministic decision states."
+  forbidden_claims:
+    - "All rows became ticker features."
+    - "Ambiguous rows are resolved as tickers."
+closeout_verdict:
+  selected: "VALID_RECLASSIFICATION"
+report:
+  actual_underlying_progress: true
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  summary: "L1 unmapped/recall/feature-gap rows now have explicit decision states; no LLM or forced ticker mapping was used."
+  claims:
+    - "pending_after is zero in the L1 decision ledger."
+next_target:
+  required: true
+  task_type: "OUTCOME_CHANGE"
+  outcome_unit: "missing_l1_materialization_count"
+  required_baseline: "FEATURE_BACKFILL_REQUIRED count"
+  required_validator: "task4175_l1_mapping_validator"

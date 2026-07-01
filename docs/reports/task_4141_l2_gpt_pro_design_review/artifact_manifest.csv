@@ -1,0 +1,14 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4141 task definition and closeout state,modified,TASK-4141
+ops/doc_registry.yaml,registry,TASK-4141 document registry entries,modified,TASK-4141
+docs/active/ACTIVE_SSOT_INDEX.md,active_doc,TASK-4141 active report pointer,modified,TASK-4141
+docs/active/CURRENT_TASKS.md,active_doc,TASK-4141 completion pointer,modified,TASK-4141
+docs/active/PROJECT_STATUS.md,active_doc,TASK-4141 project status note,modified,TASK-4141
+docs/reports/task_4141_l2_gpt_pro_design_review/gpt_prompt.md,gpt_prompt,Prompt sent to GPT Pro,created,TASK-4141
+docs/reports/task_4141_l2_gpt_pro_design_review/gpt_response.md,gpt_response,Captured GPT Pro response,created,TASK-4141
+docs/reports/task_4141_l2_gpt_pro_design_review/report.md,task_report,TASK-4141 human-readable report,created,TASK-4141
+docs/reports/task_4141_l2_gpt_pro_design_review/artifact_manifest.csv,artifact_manifest,TASK-4141 artifact manifest,created,TASK-4141
+docs/reports/task_4141_l2_gpt_pro_design_review/validation_results.md,validation_report,TASK-4141 validation results,created,TASK-4141
+docs/reports/task_4141_l2_gpt_pro_design_review/l2_gpt_design_review_summary.json,summary,TASK-4141 machine-readable summary,created,TASK-4141
+scripts/validate_task_4141_l2_gpt_design_review.py,validator,Validates TASK-4141 GPT design review artifacts,created,TASK-4141
+data/artifacts/task_4141_l2_gpt_pro_design_review/validator_report.json,artifact,Machine-readable validator report,created,TASK-4141

@@ -1,0 +1,156 @@
+version: 1
+task_id: TASK-4200
+title: L0 Continuous Backfill and Realtime Scheduler Contract
+status: ACTIVE
+profile: L0_L1_DATA_PIPELINE
+updated_at: "2026-07-02"
+purpose:
+  - Define the current Layer 0 operating truth for new Codex sessions.
+  - Separate current runtime health from historical progress artifacts.
+  - Prevent legacy collectors, stale PID files, or failed schedulers from being treated as healthy.
+  - Keep historical backfills running until completion and realtime refresh running continuously.
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation_permitted: 0
+  live_order_permitted: 0
+  paper_promotion_permitted: 0
+  missing_or_stale_data_semantics: UNKNOWN_OR_BLOCKER_NOT_NEGATIVE
+read_first_order:
+  - ops/l0_operating_contract.yaml
+  - data/artifacts/l0_operating_status/current_l0_status.json
+  - data/artifacts/l0_operating_status/current_l0_context.md
+  - data/artifacts/l0_operating_status/l0_operating_manifest.json
+current_outputs:
+  status_json: data/artifacts/l0_operating_status/current_l0_status.json
+  context_markdown: data/artifacts/l0_operating_status/current_l0_context.md
+  manifest_json: data/artifacts/l0_operating_status/l0_operating_manifest.json
+active_lanes:
+  public_newswire_backfill:
+    role: historical_backfill
+    provider: public_newswire_feeds
+    runner: scripts/run_l0_public_newswire_sharded_backfill.py
+    aggregate_progress: data/artifacts/l0_public_newswire_backfill_shards/aggregate_progress.json
+    background_process: data/artifacts/l0_public_newswire_backfill_shards/background_process.json
+    inventory: data/artifacts/l0_public_newswire_backfill_shards/shard_inventory.json
+    validator: scripts/validate_l0_public_newswire_sharded_backfill.py
+    health_rule: aggregate_progress_is_progress_only_runtime_health_requires_pid_and_worker_reality
+    current_operating_mode:
+      updated_by_task: TASK-4200
+      businesswire_shard_granularity: day
+      concurrency: 5
+      source_base_lanes: businesswire=4,prnewswire=1
+      source_lane_caps: businesswire=4,prnewswire=1
+      source_max_fetches: businesswire=200,prnewswire=220
+      source_max_items: businesswire=250,prnewswire=250
+      source_max_worker_seconds: businesswire=14400,prnewswire=21600
+      source_stale_progress_seconds: businesswire=1200,prnewswire=1800
+      completed_unit_stall_warning_threshold_seconds: 1800
+      note: BusinessWire daily shards are current; old monthly shard progress is inherited through completed URL and offset state.
+  public_market_macro_news_backfill:
+    role: historical_backfill
+    provider: public_market_macro_news_feeds
+    background_process: data/artifacts/l0_public_market_macro_news_backfill/background_process.json
+  daily_bars_backfill:
+    role: historical_backfill_and_realtime_continuity
+    provider: market_bar_daily_proxy
+    background_process: data/artifacts/l0_bar_daily_full_backfill/background_process.json
+  five_min_bars_backfill:
+    role: historical_backfill_and_realtime_continuity
+    provider: market_bar_5m_proxy
+    background_process: data/artifacts/l0_bar_full_backfill/background_process_5m.json
+  realtime_hardening_loop:
+    role: realtime_incremental_collection_and_l1_l2_refresh
+    config: configs/l0_realtime_operational_safe_config_4147.json
+    scheduler_task: TraderBrainL0L2Hardening4147
+    scheduler_script: scripts/run_l0_l2_hardening_once_4147.ps1
+    runner: scripts/run_l0_l2_hardening_4147.py
+    validator: scripts/validate_l0_l2_hardening_4147.py
+    expected_interval_minutes: 15
+  backfill_recovery_loop:
+    role: continuous_backfill_runtime_guard
+    scheduler_task: TraderBrainL0ContinuousBackfillGuard4195
+    scheduler_script: scripts/run_task4195_l0_continuous_backfill_guard_once.ps1
+    installer: scripts/install_task4195_l0_continuous_backfill_guard_scheduler.ps1
+    runner: scripts/run_task4193_l0_overnight_backfill_supervisor.py
+    validator: scripts/validate_task4195_l0_continuous_backfill_guard.py
+    expected_interval_minutes: 5
+    status_json: data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/supervisor_status.json
+    registration_proof: data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/windows_task_scheduler_registration.json
+deleted_legacy_schedulers:
+  - task_name: TraderBrainL0BackfillWorkerRecovery4148
+    reason: superseded by TASK-4195 continuous backfill guard; keeping both enabled creates overlapping recovery decisions
+    deleted_by_task: TASK-4199
+    deletion_proof: data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/deleted_scheduler_proof.json
+  - task_name: Task3893OfficialBackfillAutoLoop
+    reason: historical pre-L0-contract official backfill loop; not current L0 runtime truth
+    deleted_by_task: TASK-4199
+    deletion_proof: data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/deleted_scheduler_proof.json
+  - task_name: Task3899FullOfficialBackfillWorker
+    reason: historical official-source backfill worker; not current L0 runtime truth
+    deleted_by_task: TASK-4199
+    deletion_proof: data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/deleted_scheduler_proof.json
+  - task_name: Task3899FullOfficialBackfillProgressReport
+    reason: historical official-source report loop; not current L0 runtime truth
+    deleted_by_task: TASK-4199
+    deletion_proof: data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/deleted_scheduler_proof.json
+reference_configs:
+  - path: configs/db_source_acquisition_scheduler.json
+    reason: historical base configuration still referenced by configs/l0_realtime_operational_safe_config_4147.json; not a current scheduler or runtime entrypoint
+deleted_legacy_entrypoints:
+  - path: scripts/start_l0_public_newswire_backfill.ps1
+    reason: legacy single newswire backfill launcher; superseded by sharded runner and continuous guard
+    deleted_by_task: TASK-4199
+  - path: scripts/start_l0_public_newswire_collector.ps1
+    reason: legacy newswire collector launcher; not current runtime truth
+    deleted_by_task: TASK-4199
+  - path: scripts/start_l0_prioritized_backfills.ps1
+    reason: legacy mixed launcher; not current runtime truth
+    deleted_by_task: TASK-4199
+  - path: scripts/run_l0_backfill_worker_recovery_4148.py
+    reason: superseded by TASK-4195 continuous backfill runtime guard
+    deleted_by_task: TASK-4199
+  - path: scripts/run_l0_backfill_supervisor.ps1
+    reason: pre-contract supervisor that could restart legacy public newswire launcher
+    deleted_by_task: TASK-4199
+  - path: data/artifacts/l0_public_newswire_backfill/background_process.json
+    reason: legacy single-run PID artifact; sharded background_process is current
+    deleted_by_task: TASK-4199
+hard_fail_rules:
+  - code: L0_CONTRACT_MISSING
+    condition: ops/l0_operating_contract.yaml missing or invalid
+  - code: L0_STATUS_BUILD_FAILED
+    condition: current L0 status cannot be generated
+  - code: L0_CONTEXT_STALE
+    condition: generated L0 context is missing or stale
+  - code: L0_AGGREGATE_RUNNING_BUT_LAUNCHER_DEAD
+    condition: public newswire aggregate status is RUNNING but launcher PID is dead
+  - code: L0_PUBLIC_NEWSWIRE_INCOMPLETE
+    condition: public newswire pending or partial units remain
+  - code: L0_REALTIME_SCHEDULER_MISSING
+    condition: current realtime scheduler task is missing
+  - code: L0_REALTIME_SCHEDULER_LAST_RESULT_FAILED
+    condition: current realtime scheduler last result is a failure result
+  - code: L0_REALTIME_CONFIG_SCHEDULER_MISMATCH
+    condition: realtime config runtime boundary scheduler task differs from contract
+  - code: L0_BACKFILL_GUARD_SCHEDULER_MISSING
+    condition: current continuous backfill guard scheduler task is missing
+  - code: L0_BACKFILL_GUARD_SCHEDULER_LAST_RESULT_FAILED
+    condition: current continuous backfill guard scheduler last result is a failure result
+  - code: L0_LEGACY_PATH_TREATED_AS_CURRENT
+    condition: a legacy runtime entrypoint is used as an active lane
+warning_rules:
+  - code: L0_LEGACY_PATH_PRESENT
+    condition: legacy file exists but is not treated as current
+  - code: L0_RECOVERY_TASK_RUNNING_WITH_PREVIOUS_NON_SUCCESS_RESULT
+    condition: recovery task is running but last result is non-success
+  - code: L0_BACKGROUND_PID_DEAD
+    condition: non-critical lane background PID is dead
+  - code: L0_STALE_WORKERS_PRESENT
+    condition: aggregate records stale workers
+validation:
+  builder: scripts/build_l0_operating_status_4190.py
+  validator: scripts/validate_l0_operating_contract_4190.py
+  harness_command: python scripts/validate_l0_operating_contract_4190.py --mode harness --expect-blocked
+  health_command: python scripts/validate_l0_operating_contract_4190.py --mode health

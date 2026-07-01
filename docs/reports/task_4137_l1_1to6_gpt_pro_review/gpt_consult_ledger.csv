@@ -1,0 +1,2 @@
+task_id,relay_mode,gpt_mode,prompt_artifact,response_artifact,capture_status,tab_cleanup_status
+TASK-4137,single_gpt_consult,"Pro reasoning, local context only, GitHub forbidden",docs/reports/task_4137_l1_1to6_gpt_pro_review/gpt_prompt.md,docs/reports/task_4137_l1_1to6_gpt_pro_review/gpt_response.md,CAPTURED,closed

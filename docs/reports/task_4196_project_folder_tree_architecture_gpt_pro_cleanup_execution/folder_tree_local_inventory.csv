@@ -1,0 +1,17 @@
+path,files,dirs,current_status,notes
+.codex,10,11,local_codex_state,contains 10 project SKILL.md files under .codex/skills
+apps,35116,6129,canonical_app_surface_large,inspect for dependency/build artifacts and app duplication
+configs,21,3,canonical_config,non-secret config surface
+docs,913,232,canonical_docs_surface,reports dominate docs; archive and lifecycle policy required
+frontend,8785,492,legacy_active_migration_required,referenced legacy frontend/catalog surface
+ops,14,1,canonical_governance,registries policies prompts and closeout governance
+schemas,1,0,canonical_contracts,machine-readable schemas
+scripts,196,2,automation_and_validators,many layer wrappers and task-specific scripts
+src,70,32,canonical_source_code,reusable library/engine code
+tasks,46,0,legacy_active_migration_required,legacy task registry surface still referenced by code/docs
+tests,28,5,canonical_tests,package and validation tests
+tools,21,2,l0_l1_source_tools,tools/db active import path
+data,unknown,unknown,protected_artifacts,not scanned deeply for cleanup; owner review required
+logs,unknown,unknown,local_logs,local runtime logs
+trading.db,1,0,blocked_root_db,21.6GB root DB known debt; owner review required
+trading-DESKTOP-2R00TB4.db,1,0,blocked_machine_conflict_db,788MB root DB known debt; owner review required

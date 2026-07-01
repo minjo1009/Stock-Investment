@@ -1,0 +1,15 @@
+path,type,purpose,created_or_modified,task_id
+scripts/run_task4183_l0_l4_realtime_backfill_recovery_audit.py,RUNNER,Generate the read-only recovery audit snapshot.,created_or_modified,TASK-4183
+scripts/validate_task4183_l0_l4_realtime_backfill_recovery_audit.py,VALIDATOR,Validate task-scoped audit artifacts and safety flags.,created_or_modified,TASK-4183
+data/artifacts/task_4183_l0_l4_realtime_backfill_recovery_audit/task_4183_recovery_audit_summary.json,SUMMARY,Machine-readable audit conclusion.,created_or_modified,TASK-4183
+data/artifacts/task_4183_l0_l4_realtime_backfill_recovery_audit/task_4183_level_verdicts.csv,LEVEL_VERDICTS,L0-L4 per-level status table.,created_or_modified,TASK-4183
+data/artifacts/task_4183_l0_l4_realtime_backfill_recovery_audit/task_4183_scheduled_tasks.json,SCHEDULED_TASKS,Windows scheduled task state snapshot.,created_or_modified,TASK-4183
+data/artifacts/task_4183_l0_l4_realtime_backfill_recovery_audit/task_4183_process_snapshot.json,PROCESS_SNAPSHOT,Runtime process snapshot.,created_or_modified,TASK-4183
+data/artifacts/task_4183_l0_l4_realtime_backfill_recovery_audit/task_4183_db_latest_rows.json,DB_LATEST_ROWS,Read-only latest-row DB evidence.,created_or_modified,TASK-4183
+data/artifacts/task_4183_l0_l4_realtime_backfill_recovery_audit/task_4183_artifact_snapshot.json,ARTIFACT_SNAPSHOT,Latest relevant artifact evidence.,created_or_modified,TASK-4183
+docs/reports/task_4183_l0_l4_realtime_backfill_recovery_audit/task_result_contract.yaml,CONTRACT,Prime task result contract.,created_or_modified,TASK-4183
+docs/reports/task_4183_l0_l4_realtime_backfill_recovery_audit/report.md,TASK_REPORT,Human-readable closeout report.,created_or_modified,TASK-4183
+docs/reports/task_4183_l0_l4_realtime_backfill_recovery_audit/artifact_manifest.csv,ARTIFACT_MANIFEST,Artifact inventory.,created_or_modified,TASK-4183
+docs/reports/task_4183_l0_l4_realtime_backfill_recovery_audit/validation_results.md,VALIDATION_REPORT,Validator run log.,created_or_modified,TASK-4183
+ops/task_registry.yaml,REGISTRY,Task registry update.,created_or_modified,TASK-4183
+ops/doc_registry.yaml,REGISTRY,Document registry update.,created_or_modified,TASK-4183

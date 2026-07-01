@@ -1,5 +1,0 @@
-outs:
-- md5: 9df9e9a7d9f7aa40955c4c4f860ae35a
-  size: 13505494
-  hash: md5
-  path: intraday_canonical_lifecycle_summary.csv

@@ -1,0 +1,9 @@
+task_id,criterion,plain_language_rule,current_status,validator_required,current_pass_for_trading_feature,strict_gate_pass_rows,trade_feature_allowed_rows
+TASK-4129,row_level_source_timestamp,"source or receipt timestamp must be row-level, not capture-only",DEFINED_NOT_OPENED,1,0,0,0
+TASK-4129,available_to_brain_asof,available_to_brain_ts must be no later than the decision timestamp,DEFINED_NOT_OPENED,1,0,0,0
+TASK-4129,raw_hash_integrity,raw_path must exist and raw_sha256 must match,DEFINED_NOT_OPENED,1,0,0,0
+TASK-4129,entity_ticker_mapping_precision,ticker/entity mapping must pass ambiguity and collision checks,DEFINED_NOT_OPENED,1,0,0,0
+TASK-4129,news_mapping_precision,source links and headlines must support the mapped entity or macro bucket,DEFINED_NOT_OPENED,1,0,0,0
+TASK-4129,market_data_asof_gate,market data used for replay must be independently as-of certified,DEFINED_NOT_OPENED,1,0,0,0
+TASK-4129,leakage_guard,"no future outcome, future price, or future source row may be used for assignment",DEFINED_NOT_OPENED,1,0,0,0
+TASK-4129,owner_approval,owner must approve a separate trading-feature admission task,DEFINED_NOT_OPENED,1,0,0,0

@@ -1,0 +1,24 @@
+{
+  "task_id": "TASK-4148",
+  "generated_at": "2026-07-01T15:28:28Z",
+  "lanes_checked": 1,
+  "restart_attempted_lanes": 0,
+  "restart_reasons": {},
+  "after_pid_alive_lanes": 1,
+  "stale_progress_lanes": [],
+  "incomplete_dead_lanes": [],
+  "authority_flags_opened": 0,
+  "current_status_update": {
+    "updated": 1,
+    "path": "data/artifacts/l0_collection_status/current_status.json",
+    "lanes": [
+      "public_market_macro_news_backfill"
+    ]
+  },
+  "audit_result": {
+    "audit_ran": 1,
+    "returncode": 0,
+    "stdout_tail": "[L0_BACKFILL_RELIABILITY] lanes=5 alerts=1 recommendations=1 diagnostic_only=1 trade_authority_flag=0 broker_mutation_permitted_flag=0 real_capital_permitted_flag=0\n",
+    "stderr_tail": ""
+  }
+}

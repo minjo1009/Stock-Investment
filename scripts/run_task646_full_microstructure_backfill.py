@@ -19,12 +19,12 @@ from tools.db.source_acquisition.scheduler_override import DEFAULT_OVERRIDE_PATH
 RAW_DIR = Path("data/raw/alpaca_historical_microstructure")
 
 
-def _chunks_for_date(session_date: str, *, max_chunks: int) -> list[tuple[str, str]]:
+def _chunks_for_date(session_date: str, *, max_chunks: int, chunk_minutes: int) -> list[tuple[str, str]]:
     start = datetime.fromisoformat(f"{session_date}T14:30:00+00:00")
     chunks = []
     for idx in range(max(int(max_chunks), 1)):
-        chunk_start = start + timedelta(minutes=idx)
-        chunk_end = chunk_start + timedelta(minutes=1)
+        chunk_start = start + timedelta(minutes=idx * max(int(chunk_minutes), 1))
+        chunk_end = chunk_start + timedelta(minutes=max(int(chunk_minutes), 1))
         chunks.append((chunk_start.isoformat().replace("+00:00", "Z"), chunk_end.isoformat().replace("+00:00", "Z")))
     return chunks
 
@@ -43,8 +43,10 @@ def run_backfill(
     session_dates: list[str],
     feed: str,
     max_chunks: int,
+    chunk_minutes: int,
     out_dir: Path = RAW_DIR,
     checkpoint_path: Path = MicrostructureCheckpointStore().path,
+    coverage_output_dir: Path | None = None,
     dry_run: bool = True,
     force: bool = False,
 ) -> dict[str, int]:
@@ -59,7 +61,7 @@ def run_backfill(
     exported = failed = skipped = 0
     for symbol in selected_symbols:
         for session_date in selected_dates:
-            for chunk_start, chunk_end in _chunks_for_date(session_date, max_chunks=max_chunks):
+            for chunk_start, chunk_end in _chunks_for_date(session_date, max_chunks=max_chunks, chunk_minutes=chunk_minutes):
                 for source_type in ["quotes", "trades"]:
                     if dry_run:
                         continue
@@ -138,7 +140,7 @@ def run_backfill(
                         )
                         failed += 1
     coverage_raw_dir = out_dir if not dry_run else Path("data/artifacts/microstructure/dry_run_raw_placeholder")
-    build_microstructure_coverage(raw_dir=coverage_raw_dir, symbols=selected_symbols, session_dates=selected_dates)
+    build_microstructure_coverage(raw_dir=coverage_raw_dir, output_dir=coverage_output_dir, symbols=selected_symbols, session_dates=selected_dates)
     return {"exported": exported, "failed": failed, "skipped": skipped, "planned_chunks": len(selected_symbols) * len(selected_dates) * max_chunks * 2}
 
 
@@ -153,8 +155,10 @@ def main() -> int:
     parser.add_argument("--session-dates", nargs="+")
     parser.add_argument("--feed", choices=["iex", "sip"])
     parser.add_argument("--max-chunks", type=int)
+    parser.add_argument("--chunk-minutes", type=int)
     parser.add_argument("--out-dir", type=Path, default=RAW_DIR)
     parser.add_argument("--checkpoint-path", type=Path, default=MicrostructureCheckpointStore().path)
+    parser.add_argument("--coverage-output-dir", type=Path, default=None)
     parser.add_argument("--execute", action="store_true")
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
@@ -164,20 +168,23 @@ def main() -> int:
     dates = args.session_dates or [_default_date()]
     feed = args.feed or str(job.get("feed", "iex"))
     max_chunks = args.max_chunks or int(job.get("max_chunks", 1))
+    chunk_minutes = args.chunk_minutes or int(job.get("chunk_minutes", 1))
     result = run_backfill(
         mode=args.mode,
         symbols=symbols,
         session_dates=dates,
         feed=feed,
         max_chunks=max_chunks,
+        chunk_minutes=chunk_minutes,
         out_dir=args.out_dir,
         checkpoint_path=args.checkpoint_path,
+        coverage_output_dir=args.coverage_output_dir,
         dry_run=not args.execute,
         force=args.force,
     )
     print(
         "[TASK646_MICROSTRUCTURE_BACKFILL] "
-        f"mode={args.mode} dry_run={not args.execute} planned_chunks={result['planned_chunks']} "
+        f"mode={args.mode} dry_run={not args.execute} chunk_minutes={chunk_minutes} planned_chunks={result['planned_chunks']} "
         f"exported={result['exported']} failed={result['failed']} skipped={result['skipped']} "
         "feature_builder_enabled=0 broker_mutation_permitted=0"
     )

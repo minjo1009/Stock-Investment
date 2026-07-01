@@ -1,0 +1,6 @@
+task_id,job_name,source_key,gap,status,pending_units,missing_source_is_negative
+TASK-4125,public_context_news_backfill,cftc_press_releases,pending_backfill_units,COMPLETE,0,0
+TASK-4125,public_context_news_backfill,federal_register_documents,pending_backfill_units,COMPLETE,0,0
+TASK-4125,public_context_news_backfill,federal_reserve_press_all,pending_backfill_units,COMPLETE,0,0
+TASK-4125,public_market_macro_news_backfill,guardian_open_platform,pending_backfill_units,COMPLETE,0,0
+TASK-4125,public_market_macro_news_backfill,wikimedia_current_events,pending_backfill_units,COMPLETE,0,0

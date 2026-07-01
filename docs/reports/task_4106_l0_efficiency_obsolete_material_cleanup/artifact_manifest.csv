@@ -1,0 +1,18 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,register TASK-4106 cleanup task,modified,TASK-4106
+ops/doc_registry.yaml,REGISTRY,register TASK-4106 docs,modified,TASK-4106
+scripts/ops/scan_obsolete_materials.py,SCRIPT,inventory and delete safe obsolete material candidates,created,TASK-4106
+docs/reports/task_4106_l0_efficiency_obsolete_material_cleanup/report.md,TASK_REPORT,TASK-4106 report,created,TASK-4106
+docs/reports/task_4106_l0_efficiency_obsolete_material_cleanup/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4106 artifact manifest,created,TASK-4106
+docs/reports/task_4106_l0_efficiency_obsolete_material_cleanup/validation_results.md,VALIDATION_REPORT,TASK-4106 validation results,created,TASK-4106
+docs/reports/task_4106_l0_efficiency_obsolete_material_cleanup/obsolete_material_inventory.csv,AUDIT,obsolete material inventory,created,TASK-4106
+docs/reports/task_4106_l0_efficiency_obsolete_material_cleanup/deleted_materials.csv,AUDIT,deleted safe material manifest,created,TASK-4106
+docs/reports/task_4106_l0_efficiency_obsolete_material_cleanup/deleted_review_needed_materials.csv,AUDIT,deleted conflict DB/env/token material manifest,created,TASK-4106
+-DESKTOP-2R00TB4.env,DELETED_OBSOLETE,deleted OneDrive conflict env copy,deleted,TASK-4106
+.kis_token_cache-DESKTOP-2R00TB4.json,DELETED_OBSOLETE,deleted OneDrive conflict token cache copy,deleted,TASK-4106
+trading-DESKTOP-2R00TB4-2.db,DELETED_OBSOLETE,deleted OneDrive conflict DB copy,deleted,TASK-4106
+trading-DESKTOP-2R00TB4-3.db,DELETED_OBSOLETE,deleted OneDrive conflict DB copy,deleted,TASK-4106
+trading-DESKTOP-2R00TB4-4.db,DELETED_OBSOLETE,deleted OneDrive conflict DB copy,deleted,TASK-4106
+trading-DESKTOP-2R00TB4.db,DELETED_OBSOLETE,deleted OneDrive conflict DB copy,deleted,TASK-4106
+trading-DESKTOP-TFM86SG-2.db,DELETED_OBSOLETE,deleted OneDrive conflict DB copy,deleted,TASK-4106
+trading-DESKTOP-TFM86SG.db,DELETED_OBSOLETE,deleted OneDrive conflict DB copy,deleted,TASK-4106

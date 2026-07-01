@@ -1,0 +1,12 @@
+path,type,purpose,created_or_modified,task_id
+scripts/run_task4176_l4_diagnostic_blocker_taxonomy_scanner_v1.py,SCRIPT,Build L4 blocker taxonomy and deterministic scanner artifacts,created,TASK-4176
+scripts/validate_task4176_l4_diagnostic_blocker_taxonomy_scanner_v1.py,VALIDATOR,Validate L4 scanner coverage and blocker semantics,created,TASK-4176
+data/artifacts/task_4176_l4_diagnostic_blocker_taxonomy_scanner_v1/task_4176_l4_relation_taxonomy_v1.csv,DATA_ARTIFACT,L4 diagnostic relation taxonomy,created,TASK-4176
+data/artifacts/task_4176_l4_diagnostic_blocker_taxonomy_scanner_v1/task_4176_l4_contradiction_scanner_v1.csv,DATA_ARTIFACT,L4 deterministic scanner output,created,TASK-4176
+data/artifacts/task_4176_l4_diagnostic_blocker_taxonomy_scanner_v1/task_4176_l4_scanner_summary.json,DATA_ARTIFACT,L4 scanner summary and safety counters,created,TASK-4176
+docs/reports/task_4176_l4_diagnostic_blocker_taxonomy_and_scanner_coverage_v1/task_result_contract.yaml,CONTRACT,Prime outcome contract,created,TASK-4176
+docs/reports/task_4176_l4_diagnostic_blocker_taxonomy_and_scanner_coverage_v1/report.md,TASK_REPORT,Closeout report,modified,TASK-4176
+docs/reports/task_4176_l4_diagnostic_blocker_taxonomy_and_scanner_coverage_v1/artifact_manifest.csv,ARTIFACT_MANIFEST,Artifact manifest,modified,TASK-4176
+docs/reports/task_4176_l4_diagnostic_blocker_taxonomy_and_scanner_coverage_v1/validation_results.md,VALIDATION_REPORT,Validation command results,modified,TASK-4176
+ops/task_registry.yaml,REGISTRY,Task registry entry and closeout,modified,TASK-4176
+ops/doc_registry.yaml,REGISTRY,Doc registry entries,modified,TASK-4176

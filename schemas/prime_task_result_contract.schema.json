@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Prime Task Result Contract",
+  "type": "object",
+  "required": [
+    "task_id",
+    "task_type",
+    "domain",
+    "hard_state",
+    "scope",
+    "outcome_unit",
+    "intended_change",
+    "measurement_method",
+    "allowed_actions",
+    "forbidden_actions",
+    "evidence_artifacts",
+    "validators",
+    "progress_claim_policy",
+    "closeout_verdict",
+    "report",
+    "next_target"
+  ],
+  "properties": {
+    "task_id": {"type": "string"},
+    "task_type": {
+      "type": "string",
+      "enum": [
+        "OUTCOME_CHANGE",
+        "TERMINALIZE",
+        "RECLASSIFY",
+        "DIAGNOSTIC_ONLY",
+        "HARNESS_BOOTSTRAP",
+        "EXPLORATORY_RESEARCH",
+        "DESIGN_ONLY",
+        "REVIEW_ONLY"
+      ]
+    },
+    "domain": {"type": "string"},
+    "layer_outcome_validation": {
+      "type": "object",
+      "properties": {
+        "layer": {
+          "type": ["string", "null"],
+          "enum": ["L0", "L1", "L2", "L3", "L4", null]
+        },
+        "notes": {"type": "string"}
+      }
+    },
+    "hard_state": {"type": "object"},
+    "scope": {"type": "object"},
+    "outcome_unit": {"type": "object"},
+    "baseline": {"type": "object"},
+    "after": {"type": "object"},
+    "intended_change": {"type": "object"},
+    "measurement_method": {"type": "object"},
+    "allowed_actions": {"type": "array"},
+    "forbidden_actions": {"type": "array"},
+    "evidence_artifacts": {"type": "object"},
+    "validators": {"type": "object"},
+    "progress_claim_policy": {"type": "object"},
+    "closeout_verdict": {"type": "object"},
+    "report": {"type": "object"},
+    "next_target": {"type": "object"}
+  }
+}

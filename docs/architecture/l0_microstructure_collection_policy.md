@@ -24,6 +24,11 @@ The default scheduler includes `microstructure_backfill_batch`, disabled with `a
 
 Operator override may enable diagnostic collection in smoke or bounded batch mode. Historical full backfill is long-running and requires chunk-level checkpointing.
 
+The active staged roadmap is `docs/architecture/l0_source_acquisition_project_management_plan.md`.
+Microstructure work enters through Stage 1 smoke, Stage 2 provider budget
+tuning, Stage 4 chunk/checkpoint optimization, Stage 5 background backfill, and
+Stage 6 coverage audit. It must not skip directly from smoke to feature use.
+
 ## Backfill Modes
 
 - `smoke`: one symbol, one date, one quote chunk, one trade chunk.
@@ -31,6 +36,10 @@ Operator override may enable diagnostic collection in smoke or bounded batch mod
 - `historical_backfill`: long-running operator mode, disabled by default.
 - `incremental_catchup`: future phase.
 - `near_real_time_stream`: out of scope for this task.
+
+Historical collection may use a 2016 start date only after Stage 4 proves
+chunking, resume, retry, quarantine, raw-hash, and coverage behavior. A backfill
+run is code-based Python collection, not Codex/GPT runtime collection.
 
 ## Checkpoint And Coverage
 
@@ -48,3 +57,7 @@ Coverage artifacts are written under `data/artifacts/microstructure/`:
 - `microstructure_collection_failure_ledger.csv`
 
 Feature builder remains blocked until a separate accepted gate explicitly approves it.
+
+Coverage PASS does not imply strategy acceptance, replay permission, paper
+trading readiness, live trading readiness, broker mutation permission, or
+real-capital permission.

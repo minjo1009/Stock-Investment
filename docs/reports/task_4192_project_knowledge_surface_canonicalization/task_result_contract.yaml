@@ -1,0 +1,133 @@
+task_id: "TASK-4192"
+task_type: "HARNESS_BOOTSTRAP"
+domain: "OPS_GOVERNANCE"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "docs/reports/task_4192_project_knowledge_surface_canonicalization/**"
+    - "docs/architecture/project_knowledge_surface_map.md"
+    - "docs/architecture/skill_md_subagent_canonicalization_map.md"
+    - "ops/project_knowledge_surfaces.yaml"
+    - "ops/project_hygiene_policy.yaml"
+    - "ops/project_structure_policy.yaml"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+    - "ops/prompts/**"
+    - "prompts/**"
+    - "scripts/ops/validate_knowledge_surfaces.py"
+    - "scripts/ops/validate_project_structure_policy.py"
+    - "scripts/ops/validate_codex_closeout.py"
+    - "tools/db/**"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "ops/project_knowledge_surfaces.yaml"
+    - "ops/prompts/task-create.md"
+    - "ops/prompts/phase-create.md"
+    - "scripts/ops/validate_knowledge_surfaces.py"
+    - "scripts/ops/validate_project_structure_policy.py"
+    - "scripts/ops/validate_codex_closeout.py"
+    - "docs/architecture/project_knowledge_surface_map.md"
+    - "docs/architecture/skill_md_subagent_canonicalization_map.md"
+    - "ops/project_hygiene_policy.yaml"
+    - "ops/project_structure_policy.yaml"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+    - "prompts/task-create.md"
+    - "prompts/phase-create.md"
+    - "docs/reports/task_4192_project_knowledge_surface_canonicalization/task_result_contract.yaml"
+    - "docs/reports/task_4192_project_knowledge_surface_canonicalization/report.md"
+    - "docs/reports/task_4192_project_knowledge_surface_canonicalization/artifact_manifest.csv"
+    - "docs/reports/task_4192_project_knowledge_surface_canonicalization/validation_results.md"
+    - "docs/reports/task_4192_project_knowledge_surface_canonicalization/knowledge_surface_inventory.csv"
+    - "docs/reports/task_4192_project_knowledge_surface_canonicalization/cleanup_execution_log.csv"
+outcome_unit:
+  name: "knowledge_surface_validator"
+  type: "governance_harness"
+  direction: "increase"
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: true
+baseline:
+  value: 0
+  description: "No dedicated validator enforced prompts, skills, harness groups, and tool surfaces."
+after:
+  value: 1
+  description: "validate_knowledge_surfaces.py enforces the project knowledge-surface registry."
+intended_change:
+  description: "Install a canonical registry and validator for skills, prompts, harnesses, tools, and their layer/profile ownership."
+  target:
+    value: 1
+measurement_method:
+  commands:
+    - "python scripts/ops/validate_knowledge_surfaces.py"
+    - "python scripts/ops/validate_project_structure_policy.py"
+    - "python scripts/ops/validate_project_hygiene.py"
+  comparison_rule: "knowledge surface validator exists, passes, and is wired into closeout"
+  same_method_before_after_required: false
+allowed_actions:
+  - "edit OPS governance policy"
+  - "move governance prompts into ops/prompts"
+  - "delete empty root prompt alias"
+  - "delete Python cache directories after workspace path verification"
+  - "write task-scoped audit artifacts"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "ops/project_knowledge_surfaces.yaml"
+    - "scripts/ops/validate_knowledge_surfaces.py"
+    - "ops/prompts/task-create.md"
+    - "ops/prompts/phase-create.md"
+    - "docs/architecture/project_knowledge_surface_map.md"
+    - "docs/reports/task_4192_project_knowledge_surface_canonicalization/knowledge_surface_inventory.csv"
+    - "docs/reports/task_4192_project_knowledge_surface_canonicalization/cleanup_execution_log.csv"
+validators:
+  required:
+    - "knowledge_surface_validator"
+    - "project_structure_policy_validator"
+    - "project_hygiene_validator"
+    - "prime_task_contract_validator"
+    - "required_artifacts_validator"
+progress_claim_policy:
+  progress_class: "HARNESS_PROGRESS_ONLY"
+  actual_underlying_progress: false
+  allowed_claims:
+    - "A governance validator now enforces registered knowledge surfaces."
+    - "Root prompts are removed and canonical prompts live under ops/prompts."
+    - "Skill folders remain flat but are classified by layer/profile in the registry."
+  forbidden_claims:
+    - "Trading logic improved."
+    - "Source data quality improved."
+    - "Strategy is accepted."
+    - "Execution readiness changed."
+closeout_verdict:
+  selected: "VALID_HARNESS_BOOTSTRAP"
+report:
+  actual_underlying_progress: false
+  progress_class: "HARNESS_PROGRESS_ONLY"
+  summary: "Installed the project knowledge-surface registry and validator, moved governance prompts under ops/prompts, and removed legacy prompt/cache clutter without moving active skill or source-tool import paths."
+  claims:
+    - "Future sessions have a validator-backed map for prompts, skills, harnesses, tools, docs, apps, schemas, src, and data."
+    - "Physical movement was limited to governance prompts and cache cleanup; active Codex skill and tools.db paths were kept stable."
+next_target:
+  required: true
+  task_type: "RECLASSIFY"
+  outcome_unit: "legacy_active_surface_migration_decisions"
+  required_baseline: "frontend and tasks remain legacy-active migration-required surfaces"
+  required_validator: "python scripts/ops/validate_project_hygiene.py --strict-known-debt"

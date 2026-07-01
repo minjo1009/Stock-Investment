@@ -1,0 +1,301 @@
+{
+  "schema_version": "paper_runtime_quality_v1",
+  "generated_utc": "2026-06-26T15:04:46.550840+00:00",
+  "runtime_catalog_status": "PASS",
+  "trade_detail_status": "PASS",
+  "data_quality_status": "PARTIAL",
+  "data_quality_flags": [
+    "PARTIAL_RUNTIME_EVIDENCE"
+  ],
+  "trade_detail_row_count": 24,
+  "missing_chart_count": 0,
+  "missing_marker_count": 0,
+  "missing_vwap_count": 0,
+  "partial_evidence_count": 22,
+  "quality_rows": [
+    {
+      "row_id": "TRADEDETAILQUALITY-00001",
+      "trade_id": "41006",
+      "symbol": "AMD",
+      "bar_count": 155,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [],
+      "data_quality_status": "PASS"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00002",
+      "trade_id": "40987",
+      "symbol": "AMD",
+      "bar_count": 155,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [],
+      "data_quality_status": "PASS"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00003",
+      "trade_id": "37482",
+      "symbol": "MSFT",
+      "bar_count": 168,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00004",
+      "trade_id": "37419",
+      "symbol": "MSFT",
+      "bar_count": 168,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00005",
+      "trade_id": "36992",
+      "symbol": "MSFT",
+      "bar_count": 167,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00006",
+      "trade_id": "35543",
+      "symbol": "MSFT",
+      "bar_count": 168,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00007",
+      "trade_id": "38238",
+      "symbol": "MSFT",
+      "bar_count": 181,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00008",
+      "trade_id": "37867",
+      "symbol": "AMD",
+      "bar_count": 171,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00009",
+      "trade_id": "37813",
+      "symbol": "AMD",
+      "bar_count": 171,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00010",
+      "trade_id": "38718",
+      "symbol": "AMZN",
+      "bar_count": 154,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00011",
+      "trade_id": "38693",
+      "symbol": "AMZN",
+      "bar_count": 154,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00012",
+      "trade_id": "38518",
+      "symbol": "AMZN",
+      "bar_count": 154,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00013",
+      "trade_id": "35196",
+      "symbol": "AMD",
+      "bar_count": 177,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00014",
+      "trade_id": "35451",
+      "symbol": "AMZN",
+      "bar_count": 165,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00015",
+      "trade_id": "35396",
+      "symbol": "AMD",
+      "bar_count": 178,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00016",
+      "trade_id": "36643",
+      "symbol": "AMZN",
+      "bar_count": 98,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00017",
+      "trade_id": "36625",
+      "symbol": "AMZN",
+      "bar_count": 98,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00018",
+      "trade_id": "36548",
+      "symbol": "AMZN",
+      "bar_count": 98,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00019",
+      "trade_id": "36698",
+      "symbol": "AMD",
+      "bar_count": 149,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00020",
+      "trade_id": "36025",
+      "symbol": "AMZN",
+      "bar_count": 104,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00021",
+      "trade_id": "35811",
+      "symbol": "AMZN",
+      "bar_count": 103,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00022",
+      "trade_id": "36857",
+      "symbol": "AMD",
+      "bar_count": 155,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00023",
+      "trade_id": "36477",
+      "symbol": "AMD",
+      "bar_count": 155,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    },
+    {
+      "row_id": "TRADEDETAILQUALITY-00024",
+      "trade_id": "36731",
+      "symbol": "AMD",
+      "bar_count": 155,
+      "marker_count": 0,
+      "overlay_marker_count": 1,
+      "data_quality_flags": [
+        "PARTIAL_RUNTIME_EVIDENCE"
+      ],
+      "data_quality_status": "PARTIAL"
+    }
+  ]
+}

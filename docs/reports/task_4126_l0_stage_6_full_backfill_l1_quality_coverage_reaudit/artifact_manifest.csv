@@ -1,0 +1,17 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,TASK-4126 scope and closeout tracking,modified,TASK-4126
+ops/doc_registry.yaml,REGISTRY,TASK-4126 docs and artifacts registered,modified,TASK-4126
+configs/db_source_acquisition_scheduler.json,CONFIG,Stage 6 full-backfill reaudit task recorded,modified,TASK-4126
+docs/active/PROJECT_STATUS.md,SSOT,Stage 5 complete and Stage 6 reaudit status recorded,modified,TASK-4126
+docs/architecture/l0_source_acquisition_project_management_plan.md,GOVERNANCE,Full-backfill completion and L2 handoff blocker recorded,modified,TASK-4126
+scripts/audit_l0_stage6_full_backfill_l1_quality_coverage.py,SCRIPT,Stage 6 full-backfill L1 quality/coverage reaudit runner,created,TASK-4126
+scripts/validate_l0_stage6_full_backfill_l1_quality_coverage.py,VALIDATOR,Stage 6 full-backfill reaudit validator,created,TASK-4126
+docs/reports/task_4126_l0_stage_6_full_backfill_l1_quality_coverage_reaudit/report.md,TASK_REPORT,TASK-4126 report,created,TASK-4126
+docs/reports/task_4126_l0_stage_6_full_backfill_l1_quality_coverage_reaudit/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4126 artifact manifest,created,TASK-4126
+docs/reports/task_4126_l0_stage_6_full_backfill_l1_quality_coverage_reaudit/validation_results.md,VALIDATION_REPORT,TASK-4126 validation report,created,TASK-4126
+docs/reports/task_4126_l0_stage_6_full_backfill_l1_quality_coverage_reaudit/stage6_full_backfill_l1_quality_coverage_summary.json,REFERENCE,Stage 6 full-backfill reaudit summary,created,TASK-4126
+docs/reports/task_4126_l0_stage_6_full_backfill_l1_quality_coverage_reaudit/task_4126_raw_hash_audit.csv,REFERENCE,Full-backfill raw hash audit,created,TASK-4126
+docs/reports/task_4126_l0_stage_6_full_backfill_l1_quality_coverage_reaudit/task_4126_mapping_audit.csv,REFERENCE,Full-backfill mapping audit,created,TASK-4126
+docs/reports/task_4126_l0_stage_6_full_backfill_l1_quality_coverage_reaudit/task_4126_source_time_audit.csv,REFERENCE,Full-backfill source-time audit,created,TASK-4126
+docs/reports/task_4126_l0_stage_6_full_backfill_l1_quality_coverage_reaudit/task_4126_coverage_audit.csv,REFERENCE,Full-backfill coverage audit,created,TASK-4126
+docs/reports/task_4126_l0_stage_6_full_backfill_l1_quality_coverage_reaudit/task_4126_l2_handoff_decision.csv,REFERENCE,Full-backfill L2 handoff decision,created,TASK-4126

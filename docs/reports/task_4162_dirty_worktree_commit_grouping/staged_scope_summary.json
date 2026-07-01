@@ -1,0 +1,8 @@
+﻿{
+    "task_id":  "TASK-4162",
+    "staged_name_status_rows":  606,
+    "staged_deleted_rows":  0,
+    "staged_paper_or_broker_adjacent_rows":  0,
+    "commit_executed":  false,
+    "commit_blocker":  "git diff --cached --check failed on whitespace/new-blank-line issues in staged generated/docs files"
+}

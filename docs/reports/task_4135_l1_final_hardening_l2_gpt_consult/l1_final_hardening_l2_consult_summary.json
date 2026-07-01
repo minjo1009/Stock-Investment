@@ -1,0 +1,12 @@
+{
+  "coverage_rows": 5,
+  "gap_count": 0,
+  "generated_at": "2026-06-29T23:42:57Z",
+  "gpt_github_forbidden": true,
+  "handoff_contract_rows": 5,
+  "l1_packet_count": 5,
+  "l2_materialization_written": false,
+  "strict_gate_pass_count": 2,
+  "task_id": "TASK-4135",
+  "trading_authority_opened": false
+}

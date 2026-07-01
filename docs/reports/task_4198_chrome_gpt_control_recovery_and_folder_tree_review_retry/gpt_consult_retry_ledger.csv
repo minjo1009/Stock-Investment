@@ -1,0 +1,2 @@
+consult_id,mode,expert_role,prompt_source,response_artifact,status,tab_cleanup_status,notes
+TASK-4198-CONSULT-RETRY-1,single_gpt_consult,repository_architecture_professional_review,docs/reports/task_4197_project_folder_tree_professional_gpt_pro_review/gpt_pro_professional_review_prompt.md,docs/reports/task_4198_chrome_gpt_control_recovery_and_folder_tree_review_retry/gpt_pro_professional_review_response.md,BLOCKED_AUTOMATION_NO_GPT_CAPTURE,not_applicable,"Chrome and extension are healthy, but Codex node_repl JS execution fails before browser control can start"

@@ -1,0 +1,506 @@
+{
+  "artifact_dir": "docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/scheduler_runtime_artifacts",
+  "default_allow_network": false,
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "jobs": [
+    {
+      "allow_network": false,
+      "broker_mutation_permitted": 0,
+      "buy_sell_signal_generation_permitted": 0,
+      "diagnostic_only": true,
+      "enabled": true,
+      "execution_permitted": 0,
+      "families": [
+        "official_public_releases"
+      ],
+      "interval_minutes": 15,
+      "live_order_enabled": 0,
+      "macro_series": [
+        "FED_PRESS",
+        "BEA_RELEASES",
+        "BLS_LATEST",
+        "TREASURY_FISCALDATA"
+      ],
+      "mode": "stage3_scheduler_proof",
+      "name": "official_news_sources_15m",
+      "paper_promotion_permitted": 0,
+      "provider": "official_public_releases",
+      "real_capital_permitted": 0,
+      "replay_permission_granted": 0,
+      "symbols": [
+        "AAPL",
+        "MSFT",
+        "NVDA",
+        "AMD",
+        "QQQ"
+      ]
+    },
+    {
+      "allow_network": false,
+      "broker_mutation_permitted": 0,
+      "buy_sell_signal_generation_permitted": 0,
+      "cooldown_minutes": 15,
+      "diagnostic_only": true,
+      "enabled": true,
+      "execution_permitted": 0,
+      "families": [
+        "gdelt_news_events"
+      ],
+      "interval_minutes": 15,
+      "live_order_enabled": 0,
+      "macro_series": [],
+      "max_records": 25,
+      "mode": "stage3_scheduler_proof",
+      "name": "gdelt_news_discovery_15m",
+      "paper_promotion_permitted": 0,
+      "provider": "gdelt",
+      "real_capital_permitted": 0,
+      "replay_permission_granted": 0,
+      "symbols": [
+        "AAPL"
+      ],
+      "timespan_minutes": 15
+    },
+    {
+      "allow_network": false,
+      "articles_per_request": 3,
+      "broker_mutation_permitted": 0,
+      "buy_sell_signal_generation_permitted": 0,
+      "daily_request_cap": 95,
+      "diagnostic_only": true,
+      "enabled": true,
+      "execution_permitted": 0,
+      "families": [
+        "marketaux_news_free"
+      ],
+      "interval_minutes": 16,
+      "live_order_enabled": 0,
+      "macro_series": [],
+      "mode": "stage3_scheduler_proof",
+      "name": "marketaux_news_free_30m",
+      "paper_promotion_permitted": 0,
+      "preferred_operator_interval_minutes": 16,
+      "provider": "marketaux",
+      "real_capital_permitted": 0,
+      "replay_permission_granted": 0,
+      "stage2_realtime_budget": {
+        "actual_utilization": 0.9474,
+        "provider_daily_cap": 95,
+        "requests_per_day_budget": 90,
+        "scheduler_activation_permitted": 0,
+        "target_utilization_max": 0.95,
+        "target_utilization_min": 0.9
+      },
+      "symbols": [
+        "AAPL",
+        "MSFT",
+        "NVDA",
+        "AMD",
+        "QQQ"
+      ]
+    },
+    {
+      "allow_network": false,
+      "broker_mutation_permitted": 0,
+      "buy_sell_signal_generation_permitted": 0,
+      "diagnostic_only": true,
+      "enabled": false,
+      "execution_permitted": 0,
+      "families": [
+        "public_headline_browser_watch"
+      ],
+      "interval_minutes": 60,
+      "live_order_enabled": 0,
+      "mode": "smoke",
+      "name": "public_headline_browser_watch_smoke",
+      "paper_promotion_permitted": 0,
+      "provider": "public_headline_browser_watch",
+      "real_capital_permitted": 0,
+      "replay_permission_granted": 0,
+      "sources": [
+        "prnewswire",
+        "globenewswire"
+      ]
+    },
+    {
+      "allow_network": false,
+      "broker_mutation_permitted": 0,
+      "buy_sell_signal_generation_permitted": 0,
+      "diagnostic_only": true,
+      "enabled": false,
+      "execution_permitted": 0,
+      "families": [
+        "public_news_source_capability_probe"
+      ],
+      "interval_minutes": 1440,
+      "live_order_enabled": 0,
+      "mode": "smoke",
+      "name": "public_news_source_capability_probe",
+      "paper_promotion_permitted": 0,
+      "provider": "public_news_source_capability_probe",
+      "real_capital_permitted": 0,
+      "replay_permission_granted": 0,
+      "sources": [
+        "sec_edgar",
+        "prnewswire",
+        "globenewswire",
+        "businesswire"
+      ]
+    },
+    {
+      "allow_network": false,
+      "broker_mutation_permitted": 0,
+      "buy_sell_signal_generation_permitted": 0,
+      "diagnostic_only": true,
+      "enabled": false,
+      "execution_permitted": 0,
+      "families": [
+        "public_newswire_feeds"
+      ],
+      "interval_minutes": 30,
+      "live_order_enabled": 0,
+      "mode": "background",
+      "name": "public_newswire_feeds_30m",
+      "paper_promotion_permitted": 0,
+      "provider": "public_newswire_feeds",
+      "real_capital_permitted": 0,
+      "replay_permission_granted": 0,
+      "sources": [
+        "prnewswire",
+        "globenewswire",
+        "businesswire"
+      ]
+    },
+    {
+      "allow_network": false,
+      "broker_mutation_permitted": 0,
+      "buy_sell_signal_generation_permitted": 0,
+      "diagnostic_only": true,
+      "enabled": false,
+      "execution_permitted": 0,
+      "families": [
+        "public_context_news_feeds"
+      ],
+      "interval_minutes": 30,
+      "live_order_enabled": 0,
+      "mode": "background",
+      "name": "public_context_news_feeds_30m",
+      "paper_promotion_permitted": 0,
+      "provider": "public_context_news_feeds",
+      "real_capital_permitted": 0,
+      "replay_permission_granted": 0,
+      "sources": [
+        "federal_reserve_press_all",
+        "bls_cpi_latest_numbers",
+        "bls_principal_federal_economic_indicators",
+        "bea_news_release_feed",
+        "cftc_press_releases",
+        "federal_register_documents",
+        "white_house_briefing_room",
+        "nasdaq_trader_news",
+        "coindesk_rss"
+      ]
+    },
+    {
+      "allow_network": false,
+      "backfill_start_date": "2016-01-01",
+      "broker_mutation_permitted": 0,
+      "buy_sell_signal_generation_permitted": 0,
+      "diagnostic_only": true,
+      "enabled": false,
+      "execution_permitted": 0,
+      "families": [
+        "public_context_news_backfill"
+      ],
+      "interval_minutes": 5,
+      "live_order_enabled": 0,
+      "mode": "historical_backfill",
+      "name": "public_context_news_backfill",
+      "paper_promotion_permitted": 0,
+      "provider": "public_context_news_feeds",
+      "real_capital_permitted": 0,
+      "replay_permission_granted": 0,
+      "sources": [
+        "federal_register_documents",
+        "federal_reserve_press_all",
+        "cftc_press_releases"
+      ]
+    },
+    {
+      "allow_network": false,
+      "broker_mutation_permitted": 0,
+      "buy_sell_signal_generation_permitted": 0,
+      "diagnostic_only": true,
+      "enabled": false,
+      "execution_permitted": 0,
+      "families": [
+        "public_market_macro_news_feeds"
+      ],
+      "interval_minutes": 30,
+      "live_order_enabled": 0,
+      "mode": "background",
+      "name": "public_market_macro_news_feeds_30m",
+      "paper_promotion_permitted": 0,
+      "provider": "public_market_macro_news_feeds",
+      "real_capital_permitted": 0,
+      "replay_permission_granted": 0,
+      "sources": [
+        "cnbc_public_rss",
+        "investing_public_rss",
+        "nasdaq_trader_notices",
+        "bbc_public_rss",
+        "ft_public_rss",
+        "marketwatch_public_rss"
+      ]
+    },
+    {
+      "allow_network": false,
+      "backfill_start_date": "2016-01-01",
+      "broker_mutation_permitted": 0,
+      "buy_sell_signal_generation_permitted": 0,
+      "diagnostic_only": true,
+      "enabled": false,
+      "execution_permitted": 0,
+      "families": [
+        "public_market_macro_news_backfill"
+      ],
+      "interval_minutes": 5,
+      "live_order_enabled": 0,
+      "mode": "historical_backfill",
+      "name": "public_market_macro_news_backfill",
+      "paper_promotion_permitted": 0,
+      "provider": "public_market_macro_news_feeds",
+      "real_capital_permitted": 0,
+      "replay_permission_granted": 0,
+      "sources": [
+        "guardian_open_platform"
+      ]
+    },
+    {
+      "allow_network": false,
+      "broker_mutation_permitted": 0,
+      "buy_sell_signal_generation_permitted": 0,
+      "chunk_minutes": 15,
+      "diagnostic_only": true,
+      "enabled": false,
+      "execution_permitted": 0,
+      "families": [
+        "microstructure_quotes",
+        "microstructure_trades"
+      ],
+      "feature_builder_enabled": false,
+      "feed": "sip",
+      "interval_minutes": 60,
+      "live_order_enabled": 0,
+      "macro_series": [],
+      "max_chunks": 2,
+      "max_dates": 1,
+      "max_requests_per_minute": 60,
+      "max_symbols": 1,
+      "mode": "historical_backfill",
+      "name": "microstructure_backfill_batch",
+      "paper_promotion_permitted": 0,
+      "provider": "alpaca",
+      "real_capital_permitted": 0,
+      "replay_permission_granted": 0,
+      "symbols": [
+        "AAPL",
+        "MSFT",
+        "NVDA",
+        "AMD",
+        "QQQ"
+      ]
+    }
+  ],
+  "management_plan": {
+    "active_task": "TASK-4117",
+    "implementation_modes": {
+      "chrome_smoke_only": [
+        "public_headline_browser_watch"
+      ],
+      "codex_gpt_role": "planning_review_recovery_only_not_runtime_collection",
+      "python_collectors": [
+        "official_public_releases",
+        "gdelt_news_events",
+        "marketaux_news_free",
+        "public_newswire_feeds",
+        "public_context_news_feeds",
+        "public_market_macro_news_feeds",
+        "microstructure_quotes",
+        "microstructure_trades"
+      ]
+    },
+    "roadmap_doc": "docs/architecture/l0_source_acquisition_project_management_plan.md",
+    "stages": [
+      {
+        "name": "official_core_api_smoke_stabilization",
+        "network_smoke_artifact": "docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/stage1_network_smoke_summary.json",
+        "network_smoke_status": "NETWORK_SMOKE_EXECUTED_PASS",
+        "network_smoke_task": "TASK-4119",
+        "preflight_artifact": "docs/reports/task_4118_l0_stage_1_official_core_api_smoke_stabilization/stage1_smoke_summary.json",
+        "preflight_status": "PREFLIGHT_PASS_NETWORK_SMOKE_PENDING",
+        "preflight_task": "TASK-4118",
+        "scope": [
+          "official_public_releases",
+          "gdelt_news_events",
+          "marketaux_news_free",
+          "microstructure_quotes",
+          "microstructure_trades"
+        ],
+        "stage": 1,
+        "status": "COMPLETE_NETWORK_SMOKE_PASS"
+      },
+      {
+        "budget_artifact": "docs/reports/task_4120_l0_stage_2_realtime_source_budget_optimization/stage2_realtime_budget_summary.json",
+        "budget_task": "TASK-4120",
+        "name": "realtime_source_budget_optimization",
+        "scope": [
+          "provider_rate_budget",
+          "cooldown",
+          "request_ledger",
+          "secret_redaction"
+        ],
+        "stage": 2,
+        "status": "COMPLETE_REALTIME_BUDGET_OPTIMIZED"
+      },
+      {
+        "name": "realtime_scheduler_setup_and_execution",
+        "proof_mode": "task_local_forced_due_audit_only_no_provider_execution",
+        "scheduler_artifact": "docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/stage3_scheduler_summary.json",
+        "scheduler_task": "TASK-4121",
+        "scope": [
+          "db_source_acquisition_scheduler",
+          "runtime_diagnostic_scheduler",
+          "operator_override"
+        ],
+        "stage": 3,
+        "status": "COMPLETE_REALTIME_SCHEDULER_PROOF_EXECUTED"
+      },
+      {
+        "name": "historical_backfill_optimization",
+        "scope": [
+          "chunking",
+          "checkpointing",
+          "resume",
+          "coverage_audit"
+        ],
+        "stage": 4,
+        "status": "NEXT"
+      },
+      {
+        "name": "background_historical_backfill_from_2016",
+        "scope": [
+          "public_context_news_backfill",
+          "public_market_macro_news_backfill",
+          "microstructure_backfill_batch"
+        ],
+        "stage": 5,
+        "status": "BLOCKED_UNTIL_STAGE_4_VALIDATED"
+      },
+      {
+        "name": "l1_quality_coverage_audit_and_l2_handoff",
+        "scope": [
+          "ticker_mapping",
+          "news_mapping",
+          "source_time_gate",
+          "l2_handoff"
+        ],
+        "stage": 6,
+        "status": "BLOCKED_UNTIL_STAGE_5_VALIDATED"
+      }
+    ],
+    "status_report_command": "python scripts/report_l0_collection_status.py",
+    "validator_command": "python scripts/validate_l0_source_acquisition_project_management.py"
+  },
+  "permissions": {
+    "broker_mutation_permitted": 0,
+    "buy_sell_signal_generation_permitted": 0,
+    "diagnostic_only": true,
+    "execution_permitted": 0,
+    "live_order_enabled": 0,
+    "paper_promotion_permitted": 0,
+    "real_capital_permitted": 0,
+    "replay_permission_granted": 0
+  },
+  "posture": "task_4121_stage3_scheduler_proof",
+  "real_capital": "FORBIDDEN",
+  "registered_loop_enabled": false,
+  "source_families": {
+    "gdelt_news_events": {
+      "authority_class": "discovery_only",
+      "diagnostic_only": true,
+      "provider_role": "news_discovery_proxy"
+    },
+    "market_bar_proxy_intraday": {
+      "authority_class": "bar_proxy_not_exchange_tick_truth",
+      "diagnostic_only": true,
+      "provider_role": "yfinance_5m_bar_proxy"
+    },
+    "marketaux_news_free": {
+      "authority_class": "metadata_discovery_only",
+      "diagnostic_only": true,
+      "provider_role": "licensed_news_metadata_proxy"
+    },
+    "microstructure_catalog": {
+      "authority_class": "audit_metadata",
+      "diagnostic_only": true,
+      "provider_role": "raw_file_catalog"
+    },
+    "microstructure_coverage_audit": {
+      "authority_class": "audit_metadata",
+      "diagnostic_only": true,
+      "provider_role": "coverage_audit"
+    },
+    "microstructure_quotes": {
+      "authority_class": "true_quote_microstructure",
+      "diagnostic_only": true,
+      "provider_role": "alpaca_historical_quotes"
+    },
+    "microstructure_trades": {
+      "authority_class": "true_trade_print_microstructure",
+      "diagnostic_only": true,
+      "provider_role": "alpaca_historical_trades"
+    },
+    "official_public_releases": {
+      "authority_class": "official_primary",
+      "diagnostic_only": true,
+      "provider_role": "official_primary"
+    },
+    "public_context_news_backfill": {
+      "authority_class": "macro_context_historical_discovery_only",
+      "diagnostic_only": true,
+      "provider_role": "public_context_news_feeds"
+    },
+    "public_context_news_feeds": {
+      "authority_class": "macro_context_discovery_only",
+      "diagnostic_only": true,
+      "provider_role": "public_context_news_feeds"
+    },
+    "public_headline_browser_watch": {
+      "authority_class": "headline_discovery_only",
+      "diagnostic_only": true,
+      "provider_role": "public_headline_browser_watch"
+    },
+    "public_market_macro_news_backfill": {
+      "authority_class": "macro_context_historical_discovery_only",
+      "diagnostic_only": true,
+      "provider_role": "public_market_macro_news_feeds"
+    },
+    "public_market_macro_news_feeds": {
+      "authority_class": "macro_context_discovery_only",
+      "diagnostic_only": true,
+      "provider_role": "public_market_macro_news_feeds"
+    },
+    "public_news_source_capability_probe": {
+      "authority_class": "source_capability_audit",
+      "diagnostic_only": true,
+      "provider_role": "public_news_source_capability_probe"
+    },
+    "public_newswire_feeds": {
+      "authority_class": "headline_discovery_only",
+      "diagnostic_only": true,
+      "provider_role": "public_newswire_feeds"
+    }
+  },
+  "strategy": "NOT_ACCEPTED"
+}

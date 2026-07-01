@@ -1,0 +1,24 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4166 task definition and closeout state,modified,TASK-4166
+ops/doc_registry.yaml,registry,TASK-4166 document registry entries,modified,TASK-4166
+tools/db/source_acquisition/l0_collection_status.py,script,Use sharded newswire runtime and preserve daily request completion separately from raw CSV coverage,modified,TASK-4166
+scripts/run_l0_backfill_reliability_audit.py,script,Use sharded newswire runtime and aggregate progress for operational alerting,modified,TASK-4166
+src/brain/l3_relation_graph_v2_4152/builder.py,script,Add wide L2 candidate proto relation and coverage gap expansion,modified,TASK-4166
+data/artifacts/l0_collection_status/current_status.json,runtime_evidence,L0 consolidated status after status path repair,modified,TASK-4166
+data/artifacts/l0_backfill_orchestration/lane_reliability.csv,runtime_evidence,L0 reliability audit after sharded newswire and daily completion repair,modified,TASK-4166
+data/artifacts/l0_backfill_orchestration/current_alerts.md,runtime_evidence,L0 current alerts after repair,modified,TASK-4166
+data/artifacts/task_4152_l3_relation_graph_v2/l3_relation_edges.csv,artifact,L3 relation edges rebuilt from current L1/L2 wide artifacts,modified,TASK-4166
+data/artifacts/task_4152_l3_relation_graph_v2/l3_event_clusters.csv,artifact,L3 event clusters rebuilt from current L1/L2 wide artifacts,modified,TASK-4166
+data/artifacts/task_4152_l3_relation_graph_v2/l3_relation_graphs.csv,artifact,L3 relation graph rebuilt from current L1/L2 wide artifacts,modified,TASK-4166
+data/artifacts/task_4152_l3_relation_graph_v2/l3_coverage_gaps.csv,artifact,L3 coverage gaps expanded for wide L2 candidates,modified,TASK-4166
+data/artifacts/task_4152_l3_relation_graph_v2/l3_relation_graph_v2_manifest.json,artifact,L3 manifest with current L1/L2 fingerprints,modified,TASK-4166
+data/artifacts/task_4154_l3_relation_graph_v2_quality_guard/l3_l4_diagnostic_handoff_manifest.json,artifact,L3 quality handoff rebuilt from expanded graph,modified,TASK-4166
+data/diagnostics/l4/l4_thesis_bundles.jsonl,artifact,L4 diagnostic bundles rebuilt from expanded L3,modified,TASK-4166
+data/diagnostics/l4/l4_thesis_evidence_links.csv,artifact,L4 evidence links rebuilt from expanded L3,modified,TASK-4166
+data/diagnostics/l4/l4_thesis_blockers.csv,artifact,L4 blockers rebuilt from expanded L3,modified,TASK-4166
+data/diagnostics/l4/l4_run_manifest.json,artifact,L4 manifest with current L1/L2/L3 fingerprints,modified,TASK-4166
+data/diagnostics/l4/l4_validation_report.json,validation_report,L4 package validator result after rebuild,modified,TASK-4166
+data/artifacts/task_4166_l0_l4_operational_linkage_hardening/operational_linkage_summary.json,summary,TASK-4166 operational linkage summary,created,TASK-4166
+docs/reports/task_4166_l0_l4_operational_linkage_hardening/report.md,task_report,TASK-4166 closeout report,created,TASK-4166
+docs/reports/task_4166_l0_l4_operational_linkage_hardening/artifact_manifest.csv,artifact_manifest,TASK-4166 artifact manifest,created,TASK-4166
+docs/reports/task_4166_l0_l4_operational_linkage_hardening/validation_results.md,validation_report,TASK-4166 validation results,created,TASK-4166

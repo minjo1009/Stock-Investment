@@ -1,0 +1,6 @@
+path,bytes,tokens,reason
+.codex/skills/l5-policy-action/SKILL.md,644,161,must_include
+AGENTS.md,1380,345,must_include
+docs/reports/task_4103_l5_policy_action_validator_hardening/report.md,1096,274,optional_include
+ops/profile_validation_rules.yaml,2054,513,must_include
+ops/task_profiles.yaml,4379,1094,must_include

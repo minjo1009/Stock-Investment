@@ -1,0 +1,50 @@
+version: 1
+task_id: TASK-4136
+contract_name: l2_intake_feature_admission_contract
+trading_authority_opened: false
+broker_mutation_allowed: false
+paper_promotion_allowed: false
+missing_source_is_negative_allowed: false
+future_outcome_assignment_allowed: false
+legacy_l2_news_builder_allowed: false
+families:
+  public_context_news_feeds:
+    required_l1_classification: CONTEXT_ONLY_CERTIFIED
+    required_l2_allowed_action: L2_CONTEXT_INPUT_ALLOWED_NOT_TRADING_FEATURE
+    primitive_envelope_type: PUBLIC_CONTEXT_EVENT
+    feature_admission_state: FEATURE_ADMISSION_PENDING_MAPPING_VALIDATION
+    trading_feature_path: CAN_BECOME_TRADING_FEATURE_AFTER_ENTITY_MAPPING_AND_ASOF_VALIDATION
+    mapping_gate: ENTITY_OR_SYMBOL_MAPPING_REQUIRED
+    feature_materialization_allowed_now: false
+  public_newswire_feeds:
+    required_l1_classification: DISCOVERY_ONLY
+    required_l2_allowed_action: L2_REVIEW_QUEUE_ONLY_NOT_FEATURE
+    primitive_envelope_type: NEWSWIRE_DISCOVERY_EVENT
+    feature_admission_state: FEATURE_ADMISSION_PENDING_NEWS_EFFECT_VALIDATION
+    trading_feature_path: CAN_BECOME_TRADING_FEATURE_AFTER_TICKER_MAPPING_DEDUP_AND_EFFECT_WINDOW_VALIDATION
+    mapping_gate: HIGH_CONFIDENCE_TICKER_NEWS_MAPPING_REQUIRED
+    feature_materialization_allowed_now: false
+  public_market_macro_news_feeds:
+    required_l1_classification: CONTEXT_ONLY_CERTIFIED
+    required_l2_allowed_action: L2_CONTEXT_INPUT_ALLOWED_NOT_TRADING_FEATURE
+    primitive_envelope_type: MACRO_CONTEXT_EVENT
+    feature_admission_state: FEATURE_ADMISSION_PENDING_MAPPING_VALIDATION
+    trading_feature_path: CAN_BECOME_TRADING_FEATURE_AFTER_MACRO_SCOPE_AND_ASOF_VALIDATION
+    mapping_gate: MACRO_SCOPE_OR_SYMBOL_MAPPING_REQUIRED
+    feature_materialization_allowed_now: false
+  market_bars_5m:
+    required_l1_classification: STRICT_SOURCE_TIME_CERTIFIED
+    required_l2_allowed_action: L2_PRIMITIVE_INPUT_ALLOWED_MARKET_OBSERVATION_ONLY
+    primitive_envelope_type: INTRADAY_5M_MARKET_OBSERVATION
+    feature_admission_state: FEATURE_ADMISSION_PENDING_PRIMITIVE_VALIDATION
+    trading_feature_path: CAN_BECOME_MARKET_FEATURE_AFTER_L2_PRIMITIVE_VALIDATION
+    mapping_gate: SYMBOL_MAPPING_REQUIRED
+    feature_materialization_allowed_now: false
+  daily_bars:
+    required_l1_classification: STRICT_SOURCE_TIME_CERTIFIED
+    required_l2_allowed_action: L2_PRIMITIVE_INPUT_ALLOWED_MARKET_OBSERVATION_ONLY
+    primitive_envelope_type: DAILY_MARKET_OBSERVATION
+    feature_admission_state: FEATURE_ADMISSION_PENDING_PRIMITIVE_VALIDATION
+    trading_feature_path: CAN_BECOME_MARKET_FEATURE_AFTER_L2_PRIMITIVE_VALIDATION
+    mapping_gate: SYMBOL_MAPPING_REQUIRED
+    feature_materialization_allowed_now: false

@@ -1,0 +1,21 @@
+path,type,purpose,created_or_modified,task_id
+ops/project_knowledge_surfaces.yaml,GOVERNANCE_REGISTRY,canonical knowledge-surface registry,created,TASK-4192
+scripts/ops/validate_knowledge_surfaces.py,VALIDATOR,enforces registered skills prompts harnesses and tool surfaces,created,TASK-4192
+ops/prompts/task-create.md,PROMPT,canonical task creation prompt,moved_rewritten,TASK-4192
+ops/prompts/phase-create.md,PROMPT,canonical phase creation prompt,moved_rewritten,TASK-4192
+docs/architecture/project_knowledge_surface_map.md,ARCHITECTURE_DOC,human-readable knowledge surface map,created,TASK-4192
+docs/architecture/skill_md_subagent_canonicalization_map.md,ARCHITECTURE_DOC,points canonical skill map to knowledge-surface registry,modified,TASK-4192
+ops/project_hygiene_policy.yaml,GOVERNANCE_POLICY,marks root prompts as absent optional alias,modified,TASK-4192
+ops/project_structure_policy.yaml,GOVERNANCE_POLICY,adds prompt axis and knowledge-surface closeout rule,modified,TASK-4192
+scripts/ops/validate_project_structure_policy.py,VALIDATOR,requires knowledge-surface validator in closeout policy,modified,TASK-4192
+scripts/ops/validate_codex_closeout.py,VALIDATOR,runs knowledge-surface validator in standard closeout,modified,TASK-4192
+prompts/task-create.md,LEGACY_PROMPT,removed root prompt alias after canonical rewrite,deleted,TASK-4192
+prompts/phase-create.md,LEGACY_PROMPT,removed root prompt alias after canonical rewrite,deleted,TASK-4192
+docs/reports/task_4192_project_knowledge_surface_canonicalization/task_result_contract.yaml,CONTRACT,prime task result contract,modified,TASK-4192
+docs/reports/task_4192_project_knowledge_surface_canonicalization/report.md,TASK_REPORT,closeout report,modified,TASK-4192
+docs/reports/task_4192_project_knowledge_surface_canonicalization/artifact_manifest.csv,ARTIFACT_MANIFEST,task artifact manifest,modified,TASK-4192
+docs/reports/task_4192_project_knowledge_surface_canonicalization/validation_results.md,VALIDATION_REPORT,validator results,modified,TASK-4192
+docs/reports/task_4192_project_knowledge_surface_canonicalization/knowledge_surface_inventory.csv,REFERENCE,registered knowledge surface inventory,created,TASK-4192
+docs/reports/task_4192_project_knowledge_surface_canonicalization/cleanup_execution_log.csv,REFERENCE,physical cleanup log,created,TASK-4192
+ops/task_registry.yaml,REGISTRY,TASK-4192 task closeout metadata,modified,TASK-4192
+ops/doc_registry.yaml,REGISTRY,TASK-4192 document registration,modified,TASK-4192

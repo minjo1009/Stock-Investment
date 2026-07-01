@@ -1,0 +1,10 @@
+path,type,purpose,created_or_modified,task_id
+docs/reports/task_4200_l0_public_newswire_progress_hardening/task_result_contract.yaml,CONTRACT,Prime outcome contract for L0 public newswire progress hardening,created,TASK-4200
+docs/reports/task_4200_l0_public_newswire_progress_hardening/report.md,TASK_REPORT,Human-readable closeout report,created,TASK-4200
+docs/reports/task_4200_l0_public_newswire_progress_hardening/artifact_manifest.csv,ARTIFACT_MANIFEST,Task artifact inventory,created,TASK-4200
+docs/reports/task_4200_l0_public_newswire_progress_hardening/validation_results.md,VALIDATION_REPORT,Validator command results,created,TASK-4200
+data/artifacts/l0_public_newswire_backfill_shards/background_process.json,RUNTIME_STATE,Current active public newswire launcher config,modified,TASK-4200
+data/artifacts/l0_public_newswire_backfill_shards/aggregate_progress.json,PROGRESS_SNAPSHOT,Current public newswire aggregate progress,modified,TASK-4200
+data/artifacts/l0_public_newswire_backfill_shards/shard_inventory.json,INVENTORY,Current public newswire shard inventory,modified,TASK-4200
+data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/supervisor_status.json,RUNTIME_STATUS,Continuous guard status after current-config restart,modified,TASK-4200
+data/artifacts/task_4200_l0_public_newswire_progress_hardening/dry_run_artifacts/shard_inventory.json,VALIDATION_EVIDENCE,BusinessWire day-shard dry-run inventory,created,TASK-4200

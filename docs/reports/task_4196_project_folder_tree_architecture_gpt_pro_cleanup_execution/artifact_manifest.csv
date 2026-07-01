@@ -1,0 +1,24 @@
+path,type,purpose,created_or_modified,task_id
+docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/task_result_contract.yaml,CONTRACT,prime outcome contract,modified,TASK-4196
+docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/report.md,TASK_REPORT,closeout report,modified,TASK-4196
+docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/artifact_manifest.csv,ARTIFACT_MANIFEST,task artifact inventory,modified,TASK-4196
+docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/validation_results.md,VALIDATION_REPORT,validator results,modified,TASK-4196
+docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/gpt_pro_folder_tree_architecture_prompt.md,GPT_PROMPT,GPT Pro architecture review prompt,created,TASK-4196
+docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/gpt_pro_folder_tree_architecture_response.md,GPT_RESPONSE,partial GPT Pro response capture,created,TASK-4196
+docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/gpt_pro_folder_tree_architecture_response_ascii.md,GPT_RESPONSE,partial ASCII follow-up response capture,created,TASK-4196
+docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/gpt_consult_ledger.csv,REFERENCE,GPT consult status ledger,modified,TASK-4196
+docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/gpt_consult_summary.md,REFERENCE,GPT consult interpretation and caveat,created,TASK-4196
+docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/folder_tree_local_inventory.csv,REFERENCE,local root inventory sent to GPT,created,TASK-4196
+docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/folder_tree_decision_matrix.csv,REFERENCE,root decision table,created,TASK-4196
+docs/reports/task_4196_project_folder_tree_architecture_gpt_pro_cleanup_execution/cleanup_execution_log.csv,CLEANUP_LOG,physical deletion log,created,TASK-4196
+.gitignore,GOVERNANCE,ignore generated Expo local state,modified,TASK-4196
+scripts/ops/validate_internal_cleanliness.py,GOVERNANCE,prevent generated dependency/build clutter recurrence,modified,TASK-4196
+ops/project_structure_policy.yaml,GOVERNANCE,structure policy generated artifact rule,modified,TASK-4196
+ops/project_knowledge_surfaces.yaml,GOVERNANCE,knowledge surface generated artifact rule,modified,TASK-4196
+ops/task_registry.yaml,REGISTRY,task closeout status and scope,modified,TASK-4196
+ops/doc_registry.yaml,REGISTRY,document registry rows,modified,TASK-4196
+apps/ios-trader-brain/node_modules,CLEANUP_TARGET,untracked generated dependency folder,deleted,TASK-4196
+apps/ios-trader-brain/dist,CLEANUP_TARGET,untracked generated build output,deleted,TASK-4196
+apps/ios-trader-brain/.expo,CLEANUP_TARGET,untracked local Expo state,deleted,TASK-4196
+frontend/trader-terminal/node_modules,CLEANUP_TARGET,untracked generated dependency folder,deleted,TASK-4196
+frontend/trader-terminal/dist,CLEANUP_TARGET,untracked generated build output,deleted,TASK-4196

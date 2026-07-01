@@ -1,0 +1,33 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,TASK-4121 task scope validators and closeout tracking,modified,TASK-4121
+ops/doc_registry.yaml,REGISTRY,TASK-4121 docs and artifacts registered,modified,TASK-4121
+configs/db_source_acquisition_scheduler.json,CONFIG,Stage 3 completed and Stage 4 next recorded in management plan,modified,TASK-4121
+docs/active/ACTIVE_SSOT_INDEX.md,SSOT,Stage 3 report registered as active evidence,modified,TASK-4121
+docs/active/CURRENT_TASKS.md,SSOT,TASK-4121 completed and TASK-4122 next recorded,modified,TASK-4121
+docs/active/PROJECT_STATUS.md,SSOT,Stage 3 completed and Stage 4 next recorded,modified,TASK-4121
+docs/architecture/l0_source_acquisition_project_management_plan.md,GOVERNANCE,Stage 3 current state and next Stage 4 updated,modified,TASK-4121
+scripts/run_db_source_acquisition_scheduler.ps1,SCRIPT,PowerShell scheduler writes distinct run artifacts and gates registered loop call,modified,TASK-4121
+tools/db/run_source_acquisition_once.py,SCRIPT,Scheduler CLI compatibility and guarded audit JSON output,modified,TASK-4121
+scripts/run_l0_stage3_realtime_scheduler_proof.py,SCRIPT,Stage 3 scheduler proof runner,created,TASK-4121
+scripts/validate_l0_stage3_realtime_scheduler_proof.py,VALIDATOR,Stage 3 scheduler proof validator,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/report.md,TASK_REPORT,TASK-4121 closeout report,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4121 artifact manifest,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/validation_results.md,VALIDATION_REPORT,TASK-4121 validation report,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/stage3_scheduler_summary.json,REFERENCE,Stage 3 scheduler proof summary,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/stage3_scheduler_command_result.json,REFERENCE,PowerShell scheduler command result,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/stage3_scheduler_proof_config.json,REFERENCE,Task-local scheduler proof config,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/stage3_scheduler_proof_override.json,REFERENCE,Task-local operator override proof payload,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/effective_scheduler_config_audit.json,REFERENCE,Effective scheduler config audit for task-local override,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/task_4121_scope_freeze.csv,REFERENCE,Stage 3 source-acquisition scope freeze,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/task_4121_source_family_plan.csv,REFERENCE,Stage 3 source family plan,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/task_4121_scheduler_setup_plan.csv,REFERENCE,Stage 3 scheduler setup plan,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/task_4121_scheduler_due_cycle_ledger.csv,REFERENCE,Stage 3 due-cycle ledger,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/task_4121_scheduler_execution_ledger.csv,REFERENCE,Stage 3 scheduler execution ledger,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/task_4121_api_or_raw_call_ledger.csv,REFERENCE,Stage 3 API/raw call ledger showing no provider calls,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/task_4121_raw_response_classification.csv,REFERENCE,Stage 3 raw response classification,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/task_4121_normalized_source_packets.csv,REFERENCE,Stage 3 normalized packet header with no admitted source rows,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/task_4121_decision_asof_coverage.csv,REFERENCE,Stage 3 decision-asof coverage note,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/task_4121_feature_admission_gate.csv,REFERENCE,Stage 3 feature admission gate closed,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/task_4121_source_gap_ledger.csv,REFERENCE,Stage 3 intentional provider-collection gap ledger,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/scheduler_runtime_artifacts/**,REFERENCE,Stage 3 runtime audit artifact directory,created,TASK-4121
+docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/scheduler_logs/**,REFERENCE,Stage 3 scheduler log directory,created,TASK-4121

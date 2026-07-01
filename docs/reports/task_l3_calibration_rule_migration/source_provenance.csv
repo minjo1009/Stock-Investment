@@ -1,3 +1,0 @@
-source_name,source_url,local_recovery_path,sha256,usage
-pragmatic_economic_meaning_layer.py,https://raw.githubusercontent.com/minjo1009/Stock-Investment/main/src/backtest/pragmatic_economic_meaning_layer.py,transient_download_not_retained,2DE8D10573AE2486E82E339247624CB812796650BFDEA77CE61FD62358EC2741,Recovered Task742 event-family interpretation rules migrated into src/brain/l3/task742_rules.py
-build_task742_pragmatic_economic_meaning_layer.py,https://raw.githubusercontent.com/minjo1009/Stock-Investment/main/src/backtest/build_task742_pragmatic_economic_meaning_layer.py,transient_download_not_retained,F4C72CA3958862100F88708DD835C35B9A536631DA949EBDF1F16F78C3D9230F,Build-runner provenance inspected but not copied into runtime L3

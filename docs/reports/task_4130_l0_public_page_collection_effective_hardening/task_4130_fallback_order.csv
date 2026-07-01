@@ -1,0 +1,6 @@
+task_id,position,url,fallback_stage,purpose
+TASK-4130,1,https://example.com/rss.xml,rss_or_feed,preferred structured headline source
+TASK-4130,2,https://example.com/sitemap-news.xml,sitemap,public archive/index source
+TASK-4130,3,https://example.com/robots-sitemap.xml,robots_sitemap,publisher-advertised sitemap source
+TASK-4130,4,https://example.com/news-releases/,static_html_probe,RSS/API missing coverage fallback
+TASK-4130,5,https://example.com,static_html_base,last static public page fallback

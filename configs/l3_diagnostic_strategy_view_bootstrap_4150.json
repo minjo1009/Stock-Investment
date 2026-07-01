@@ -1,0 +1,24 @@
+{
+  "task_id": "TASK-4150",
+  "mode": "DIAGNOSTIC_ONLY",
+  "inputs": {
+    "l2_article_features": "data/artifacts/task_4147_l0_l2_hardening_gpt_review_and_implementation/l2_diagnostic_feature_rows.csv",
+    "l1_article_packets": "data/artifacts/task_4147_l0_l2_hardening_gpt_review_and_implementation/l1_article_packets.csv",
+    "l2_wide_candidates": "data/artifacts/task_4146_l0_l2_wide_packetization_handoff/l2_feature_materialization_candidates.csv",
+    "l1_wide_packets": "data/artifacts/task_4146_l0_l2_wide_packetization_handoff/l1_wide_normalized_source_packets.csv",
+    "l0_status": "data/artifacts/l0_collection_status/current_status.json"
+  },
+  "outputs": {
+    "artifact_dir": "data/artifacts/task_4150_l3_diagnostic_strategy_view_bootstrap"
+  },
+  "authority": {
+    "strategy": "NOT_ACCEPTED",
+    "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "real_capital": "FORBIDDEN",
+    "broker_mutation_allowed": false,
+    "live_order_allowed": false,
+    "paper_promotion_allowed": false,
+    "signal_export_allowed": false,
+    "trading_eligible": false
+  }
+}

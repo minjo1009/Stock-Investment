@@ -1,0 +1,9 @@
+path,type,purpose,created_or_modified,task_id
+.gitignore,GITIGNORE,ignore generated data outputs and local runtime files,modified,TASK-4115
+ops/task_registry.yaml,REGISTRY,register TASK-4115 scope and closeout,modified,TASK-4115
+ops/doc_registry.yaml,REGISTRY,register TASK-4115 docs,modified,TASK-4115
+ops/dashboard/index.html,DASHBOARD,refresh dashboard with TASK-4115 status,modified,TASK-4115
+ops/dashboard/dashboard_summary.json,DASHBOARD,refresh dashboard summary with TASK-4115 status,modified,TASK-4115
+docs/reports/task_4115_dirty_worktree_generated_data_ignore_cleanup/report.md,TASK_ARTIFACT,task report,created,TASK-4115
+docs/reports/task_4115_dirty_worktree_generated_data_ignore_cleanup/artifact_manifest.csv,TASK_ARTIFACT,artifact manifest,created,TASK-4115
+docs/reports/task_4115_dirty_worktree_generated_data_ignore_cleanup/validation_results.md,TASK_ARTIFACT,validation report,created,TASK-4115

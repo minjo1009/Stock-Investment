@@ -1,0 +1,142 @@
+task_id: "TASK-4173"
+task_type: "OUTCOME_CHANGE"
+domain: "task_governance"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+    - "scripts/ops/create_task.py"
+    - "scripts/ops/validate_codex_closeout.py"
+    - "scripts/ops/validate_prime_task_contracts.py"
+    - "scripts/ops/validate_task_registry.py"
+    - "src/validation/prime_outcome_contract_validator.py"
+    - "src/validation/prime_layer_outcome_unit_validator.py"
+    - "tests/test_prime_outcome_contract_validator.py"
+    - "tests/fixtures/prime_contracts/**"
+    - "docs/harness/**"
+    - "schemas/prime_task_result_contract.schema.json"
+    - "docs/reports/task_4173_prime_harness_enforcement/**"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "scripts/ops/create_task.py"
+    - "scripts/ops/validate_codex_closeout.py"
+    - "scripts/ops/validate_prime_task_contracts.py"
+    - "scripts/ops/validate_task_registry.py"
+    - "src/validation/prime_outcome_contract_validator.py"
+    - "src/validation/prime_layer_outcome_unit_validator.py"
+    - "tests/test_prime_outcome_contract_validator.py"
+    - "tests/fixtures/prime_contracts/valid_l0_layer_outcome.yaml"
+    - "tests/fixtures/prime_contracts/invalid_l3_layer_outcome.yaml"
+    - "docs/harness/prime_outcome_harness.md"
+    - "docs/harness/prime_task_template.yaml"
+    - "docs/harness/prime_closeout_report_format.md"
+    - "schemas/prime_task_result_contract.schema.json"
+    - "docs/reports/task_4173_prime_harness_enforcement/task_result_contract.yaml"
+    - "docs/reports/task_4173_prime_harness_enforcement/report.md"
+    - "docs/reports/task_4173_prime_harness_enforcement/artifact_manifest.csv"
+    - "docs/reports/task_4173_prime_harness_enforcement/validation_results.md"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+outcome_unit:
+  name: "prime_harness_enforcement_gap_count"
+  type: "count"
+  direction: "decrease"
+  problem_progress_claim_allowed: true
+  harness_progress_claim_allowed: false
+baseline:
+  measured_at: "2026-07-01T00:00:00Z"
+  value: 5
+  source_artifacts:
+    - "docs/reports/task_4172_prime_outcome_harness_bootstrap/report.md"
+  freshness_required: true
+after:
+  measured_at: "2026-07-01T01:00:00Z"
+  value: 0
+  source_artifacts:
+    - "scripts/ops/create_task.py"
+    - "scripts/ops/validate_codex_closeout.py"
+    - "scripts/ops/validate_prime_task_contracts.py"
+    - "src/validation/prime_layer_outcome_unit_validator.py"
+    - "tests/test_prime_outcome_contract_validator.py"
+intended_change:
+  description: "Enforce Prime contracts for new task creation, closeout, and L0-L4 outcome units."
+  target:
+    value: 0
+measurement_method:
+  commands:
+    - "python -m py_compile src/validation/prime_outcome_contract_validator.py src/validation/prime_layer_outcome_unit_validator.py scripts/ops/validate_prime_task_contracts.py scripts/ops/create_task.py scripts/ops/validate_codex_closeout.py scripts/ops/validate_task_registry.py"
+    - "python -m pytest tests/test_prime_outcome_contract_validator.py -q"
+    - "python scripts/ops/validate_prime_task_contracts.py --task TASK-4173"
+    - "python scripts/ops/validate_task_registry.py"
+    - "python scripts/ops/validate_codex_closeout.py --task TASK-4173"
+  comparison_rule: "five_named_enforcement_gaps_closed_by_code_and_validators"
+  same_method_before_after_required: false
+allowed_actions:
+  - "edit ops scripts"
+  - "edit Prime validators"
+  - "edit Prime docs and schema"
+  - "add tests and fixtures"
+  - "update registries and report artifacts"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "scripts/ops/create_task.py"
+    - "scripts/ops/validate_codex_closeout.py"
+    - "scripts/ops/validate_prime_task_contracts.py"
+    - "scripts/ops/validate_task_registry.py"
+    - "src/validation/prime_layer_outcome_unit_validator.py"
+    - "tests/test_prime_outcome_contract_validator.py"
+    - "tests/fixtures/prime_contracts/valid_l0_layer_outcome.yaml"
+    - "tests/fixtures/prime_contracts/invalid_l3_layer_outcome.yaml"
+validators:
+  required:
+    - "prime_task_contract_validator"
+    - "outcome_contract_validator"
+    - "prime_layer_outcome_unit_validator"
+    - "pytest"
+    - "task_registry_validator"
+    - "codex_closeout_validator"
+progress_claim_policy:
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  actual_underlying_progress: true
+  allowed_claims:
+    - "Prime enforcement gap count decreased from 5 to 0."
+  forbidden_claims:
+    - "L0-L4 data blockers were reduced."
+    - "Any trading strategy or deployment status changed."
+closeout_verdict:
+  selected: "ACTUAL_PROGRESS"
+report:
+  actual_underlying_progress: true
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  summary: "Prime enforcement gap count decreased from 5 to 0 by wiring contract creation, registry checks, closeout checks, missing-contract failure, and L0-L4 outcome unit validation."
+  claims:
+    - "New create_task scaffolds task_result_contract.yaml."
+    - "Closeout validator now runs validate_prime_task_contracts.py."
+    - "Task registry validator requires Prime contract artifacts and validators for enforced tasks."
+    - "L0-L4 layer outcome_unit validator is integrated into the Prime contract validator."
+next_target:
+  required: true
+  task_type: "OUTCOME_CHANGE"
+  outcome_unit: "domain-specific blocker count"
+  required_baseline: "before count from a domain validator"
+  required_validator: "Prime contract plus domain outcome validator"

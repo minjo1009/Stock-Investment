@@ -1,0 +1,13 @@
+{
+  "blocked_count": 0,
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "fail_count": 0,
+  "materialization_blocked_count": 0,
+  "network_calls_made": 0,
+  "pass_count": 5,
+  "real_capital": "FORBIDDEN",
+  "stage1_status": "PREFLIGHT_PASS_NETWORK_SMOKE_PENDING",
+  "strategy": "NOT_ACCEPTED",
+  "task_id": "TASK-4118",
+  "updated_at": "2026-06-29T06:54:31.995776Z"
+}

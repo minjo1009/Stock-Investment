@@ -1,0 +1,19 @@
+path,status,action_now,action_later,risk_if_moved_or_deleted,task_id
+.codex,local_runtime_keep,keep_flat_and_registered,rename_only_with_all_skill_references_migrated,Codex skill discovery can break,TASK-4196
+.dvc,local_data_versioning_keep,keep,review_with_data_owner_before_changes,DVC metadata and artifact tracking can break,TASK-4196
+.obsidian,local_state_keep,keep,keep_split_from_docs_obsidian,User Obsidian workspace state can break,TASK-4196
+apps,canonical_app_surface,keep_and_remove_generated_folders,migrate any remaining active UI from frontend into apps,App runtime/source can break if source moved without shims,TASK-4196
+configs,canonical_nonsecret_config,keep,continue rejecting config root alias,Config import paths can break,TASK-4196
+data,protected_artifacts_blocked,do_not_move_or_delete,owner-reviewed retention/DVC plan only,Source/runtime evidence loss,TASK-4196
+docs,canonical_documents,keep_classified_surfaces,archive only through docs/archive with registry rows,SSOT and task evidence loss,TASK-4196
+frontend,legacy_active_migration_required,preserve_source_delete_generated_outputs,migrate or archive after references and catalog consumers are resolved,Active UI/catalog references can break,TASK-4196
+logs,local_runtime_keep,keep,rotate or local-clean only with task scope,Runtime diagnosis may be lost,TASK-4196
+ops,canonical_governance,keep_and_update_policies,continue as registry/policy home,Closeout and governance can break,TASK-4196
+schemas,canonical_contracts,keep,expand only for machine-readable contracts,Validation contracts can break,TASK-4196
+scripts,canonical_automation,keep_and_validate_names,split reusable logic into src only when imports are migrated,Task harnesses can break,TASK-4196
+src,canonical_library_code,keep,move reusable code here from scripts only with tests/import shims,Runtime imports can break,TASK-4196
+tasks,legacy_active_migration_required,keep_until references are migrated,archive/delete only after ops/task_registry.yaml authority is complete,Historical registry readers can break,TASK-4196
+tests,canonical_tests,keep,organize by layer when touching relevant tests,Validation coverage can be lost,TASK-4196
+tools,canonical_l0_l1_source_tools,keep tools/db stable,rename only with import migration,Active tools.db imports can break,TASK-4196
+trading.db,owner_review_blocked,do_not_move_or_delete,owner-reviewed DB relocation/retention task,Large local DB loss or runtime break,TASK-4196
+trading-DESKTOP-2R00TB4.db,owner_review_blocked,do_not_move_or_delete,owner-reviewed conflict DB decision,Potential evidence loss,TASK-4196

@@ -9,6 +9,8 @@ Operator enablement is local-only:
 - Base config: `configs/db_source_acquisition_scheduler.json`
 - Local override path: `configs/local/db_source_acquisition_scheduler.override.json`
 - Example template: `configs/local_templates/db_source_acquisition_scheduler.override.example.json`
+- Active staged plan: `docs/architecture/l0_source_acquisition_project_management_plan.md`
+- Consolidated status command: `python scripts/report_l0_collection_status.py`
 
 `configs/local/` is gitignored and must not contain committed secrets or operator runtime state.
 
@@ -26,6 +28,12 @@ An operator override may change only collection posture fields:
 - bounded batch limits such as `max_symbols`, `max_dates`, `max_chunks`, and `max_requests_per_minute`
 
 The override loader writes `data/artifacts/l0_source_acquisition/effective_scheduler_config_audit.json` with enabled jobs, network jobs, enabled families, closed-permission status, preserved readiness status, and secret-detection status.
+
+Operator overrides are staged. Stage 1 may enable bounded smoke only. Stage 2
+may tune provider budgets after smoke evidence exists. Stage 3 may enable local
+scheduler recurrence after provider budgets and request ledgers are validated.
+Historical backfill and L2 handoff are separate stages and must not be implied
+by a local override.
 
 ## Rejected Override Scope
 

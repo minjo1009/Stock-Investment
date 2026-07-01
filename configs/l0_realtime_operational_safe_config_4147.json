@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "task_id": "TASK-4147",
+  "purpose": "safe separated L0 realtime collector config; diagnostic-only; no broker/order/signal authority",
+  "based_on": "configs/db_source_acquisition_scheduler.json",
+  "activation_posture": "operator_safe_realtime_ready",
+  "permissions": {
+    "diagnostic_only": true,
+    "execution_permitted": 0,
+    "broker_mutation_permitted": 0,
+    "paper_promotion_permitted": 0,
+    "real_capital_permitted": 0,
+    "live_order_enabled": 0,
+    "buy_sell_signal_generation_permitted": 0
+  },
+  "jobs": [
+    {
+      "name": "public_newswire_feeds_realtime_safe",
+      "enabled": true,
+      "interval_minutes": 30,
+      "allow_network": true,
+      "provider": "public_newswire_feeds",
+      "mode": "realtime_incremental",
+      "sources": [
+        "prnewswire",
+        "globenewswire",
+        "businesswire"
+      ],
+      "max_items_per_source": 50,
+      "request_sleep_seconds": 1,
+      "diagnostic_only": true
+    },
+    {
+      "name": "public_context_news_feeds_realtime_safe",
+      "enabled": true,
+      "interval_minutes": 30,
+      "allow_network": true,
+      "provider": "public_context_news_feeds",
+      "mode": "realtime_incremental",
+      "sources": [
+        "federal_reserve_press_all",
+        "cftc_press_releases",
+        "federal_register_documents"
+      ],
+      "max_items_per_source": 50,
+      "request_sleep_seconds": 1,
+      "diagnostic_only": true
+    },
+    {
+      "name": "public_market_macro_news_feeds_realtime_safe",
+      "enabled": true,
+      "interval_minutes": 30,
+      "allow_network": true,
+      "provider": "public_market_macro_news_feeds",
+      "mode": "realtime_incremental",
+      "sources": [
+        "cnbc_public_rss",
+        "wikimedia_current_events",
+        "nasdaq_trader_notices"
+      ],
+      "max_items_per_source": 50,
+      "request_sleep_seconds": 1,
+      "diagnostic_only": true
+    }
+  ],
+  "runtime_boundary": {
+    "chrome_crawling": "smoke_only_not_runtime_collection",
+    "codex_gpt": "planning_review_recovery_only_not_runtime_collection",
+    "l1_l2_loop_minutes": 15,
+    "scheduler_task_name": "TraderBrainL0L2Hardening4147"
+  }
+}

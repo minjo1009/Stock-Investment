@@ -882,9 +882,34 @@ def append_event(path: Path, event: dict[str, Any]) -> None:
 
 
 def log_line(path: Path, message: str) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("a", encoding="utf-8") as handle:
-        handle.write(f"{now_z()} {message}\n")
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("a", encoding="utf-8") as handle:
+            handle.write(f"{now_z()} {message}\n")
+    except OSError as exc:
+        fallback = Path("data/artifacts/l0_backfill_orchestration/log_write_failures.jsonl")
+        try:
+            fallback.parent.mkdir(parents=True, exist_ok=True)
+            with fallback.open("a", encoding="utf-8") as handle:
+                handle.write(
+                    json.dumps(
+                        {
+                            "ts": now_z(),
+                            "collector": "public_context_news_collector",
+                            "log_path": str(path),
+                            "message": message,
+                            "error": str(exc),
+                            "diagnostic_only_flag": 1,
+                            "trade_authority_flag": 0,
+                            "broker_mutation_permitted_flag": 0,
+                            "real_capital_permitted_flag": 0,
+                        },
+                        sort_keys=True,
+                    )
+                    + "\n"
+                )
+        except OSError:
+            pass
 
 
 def write_payload(

@@ -1,0 +1,11 @@
+path,bytes,tokens,reason
+AGENTS.md,1380,345,must_include
+configs/l0_realtime_operational_safe_config_4147.json,2163,540,must_include
+data/artifacts/l0_operating_status/current_l0_context.md,2213,553,must_include
+data/artifacts/l0_operating_status/current_l0_status.json,7825,1872,must_include
+data/artifacts/l0_operating_status/l0_operating_manifest.json,1513,369,must_include
+docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/gpt_response.md,31796,6864,optional_include
+docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/report.md,2654,663,must_include
+ops/context_bundles.yaml,7162,1790,must_include
+ops/l0_operating_contract.yaml,5578,1394,must_include
+ops/task_profiles.yaml,4417,1104,must_include

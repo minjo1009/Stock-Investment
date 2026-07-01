@@ -1,0 +1,2 @@
+task_id,stage5_task_id,stage6_reaudit_task_id,l2_handoff_decision,l2_context_admitted_rows,l2_blocked_rows,blockers,strict_gate_pass_rows,trade_feature_allowed_rows,missing_source_is_negative,assignment_uses_future_outcome,outcome_used_for_assignment,decision_note
+TASK-4127,TASK-4125,TASK-4126,PARTIAL_CONTEXT_ONLY_HANDOFF_READY,478890,19492,wikimedia_current_events_source_time_uncertified,0,0,0,0,0,Partial L2 context-only handoff is ready for certified macro/context rows; blocked rows remain neutral blockers.

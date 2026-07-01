@@ -1,0 +1,3 @@
+task_id,title,source_url,symbols,entity_mapping_status,candidate_hint_count,candidate_hints_are_authority,trade_authority_flag
+TASK-4130,Acme Cloud Platform launches new AI data center service,https://example.com/news-releases/acme-cloud-platform-launches-2026.html,ACME,MAPPED_EXACT_ALIAS,2,0,0
+TASK-4130,Zenith Semiconductor announces supply agreement,https://example.com/press-release/zenith-semiconductor-announces-supply-agreement.html,ZENT,MAPPED_EXACT_ALIAS,1,0,0

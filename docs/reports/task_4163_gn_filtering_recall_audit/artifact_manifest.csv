@@ -1,0 +1,18 @@
+path,type,purpose,created_or_modified,task_id
+tools/db/source_acquisition/public_newswire_collector.py,source,L0 public newswire recall overlay and source-declared exchange-tag historical mapping,modified,TASK-4163
+tools/db/source_acquisition/news_background_collector.py,source,Expose newswire recall/entity review counts in source events,modified,TASK-4163
+scripts/run_l0_l2_wide_handoff_4146.py,source,Pass recall review counts through L1/L2 wide handoff,modified,TASK-4163
+scripts/reclassify_l0_public_newswire_recall_4163.py,script,Reclassify existing L0 public newswire raw into non-authority recall overlay,created,TASK-4163
+scripts/validate_l0_public_newswire_recall_4163.py,validator,Validate recall overlay safety and coverage,created,TASK-4163
+tests/test_l0_public_newswire_collector.py,test,Regression tests for recall candidates and exchange-tag mapping,modified,TASK-4163
+docs/reports/task_4163_gn_filtering_recall_audit/problem_definition.md,task_report,Problem definition and evidence packet,created,TASK-4163
+docs/reports/task_4163_gn_filtering_recall_audit/gpt_prompt.md,reference,GPT Pro review prompt,created,TASK-4163
+docs/reports/task_4163_gn_filtering_recall_audit/gpt_response.md,reference,GPT Pro partial response capture,created,TASK-4163
+docs/reports/task_4163_gn_filtering_recall_audit/report.md,task_report,TASK-4163 closeout report,created,TASK-4163
+docs/reports/task_4163_gn_filtering_recall_audit/validation_results.md,validation_report,TASK-4163 validation results,created,TASK-4163
+docs/reports/task_4163_gn_filtering_recall_audit/artifact_manifest.csv,artifact_manifest,TASK-4163 artifact manifest,created,TASK-4163
+data/artifacts/task_4163_gn_filtering_recall_audit/gn_recall_audit_summary.json,artifact,Initial GN recall loss sample summary,created,TASK-4163
+data/artifacts/task_4163_gn_filtering_recall_audit/gn_important_unmapped_samples.csv,artifact,Initial important unmapped headline samples,created,TASK-4163
+data/artifacts/task_4163_gn_filtering_recall_audit/l0_public_newswire_recall_overlay.csv,artifact,Derived non-authority recall overlay for latest GN raw shards,created,TASK-4163
+data/artifacts/task_4163_gn_filtering_recall_audit/recall_reclassification_summary.json,artifact,Recall reclassification summary,created,TASK-4163
+data/artifacts/task_4163_gn_filtering_recall_audit/validator_report.json,validation_artifact,Machine-readable validator report,created,TASK-4163

@@ -1,0 +1,16 @@
+{
+  "task_id": "TASK-4144",
+  "generated_at": "2026-06-30T03:13:29Z",
+  "gpt_capture_status": "captured_via_visible_dom_summary",
+  "l1_target_packet_rows": 3,
+  "l0_audit_target_rows": 30,
+  "compatibility_matrix_rows": 33,
+  "l1_handoff_rows": 3,
+  "l2_handoff_allowed_rows": 2,
+  "l2_review_allowed_rows": 1,
+  "blocked_l0_audit_candidate_rows": 30,
+  "capture_only_publication_promotions": 0,
+  "feature_materialization_allowed_rows": 0,
+  "trading_authority_opened_rows": 0,
+  "paper_live_broker_order_opened_rows": 0
+}

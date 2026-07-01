@@ -1,0 +1,2 @@
+task_id,stage5_task_id,strict_gate_pass_rows,proxy_feature_allowed_rows,trade_feature_allowed_rows,feature_builder_enabled,l2_context_handoff_allowed,l2_trading_handoff_allowed,reason
+TASK-4127,TASK-4125,0,478890,0,0,1,0,Only source-time-certified macro/context rows are allowed for L2 context primitives; strict/trading gates remain closed.

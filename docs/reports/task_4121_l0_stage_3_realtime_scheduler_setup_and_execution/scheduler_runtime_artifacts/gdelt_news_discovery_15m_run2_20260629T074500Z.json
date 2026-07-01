@@ -1,0 +1,31 @@
+{
+  "allow_network_requested": false,
+  "broker_mutation_permitted": 0,
+  "bucket": "2026-06-29T07:45:00Z",
+  "capture_ts": "2026-06-29T07:45:02.947213Z",
+  "collection_apply_mode": "AUDIT_ONLY_NO_PROVIDER_EXECUTION",
+  "config_path": "C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\docs\\reports\\task_4121_l0_stage_3_realtime_scheduler_setup_and_execution\\stage3_scheduler_proof_config.json",
+  "db_mutation_made": 0,
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "diagnostic_only": true,
+  "dry_run": false,
+  "enabled_job_count": 3,
+  "enabled_jobs": [
+    "official_news_sources_15m",
+    "gdelt_news_discovery_15m",
+    "marketaux_news_free_30m"
+  ],
+  "execution_permitted": 0,
+  "live_order_enabled": 0,
+  "network_calls_made": 0,
+  "official_source_count": 7,
+  "override_path": "docs\\reports\\task_4121_l0_stage_3_realtime_scheduler_setup_and_execution\\scheduler_runtime_artifacts\\__no_scheduler_override__.json",
+  "paper_promotion_permitted": 0,
+  "real_capital": "FORBIDDEN",
+  "real_capital_permitted": 0,
+  "requested_apply": true,
+  "requested_families": [],
+  "requested_macro_series": [],
+  "requested_symbols": [],
+  "strategy": "NOT_ACCEPTED"
+}

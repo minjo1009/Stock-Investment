@@ -5,7 +5,7 @@
   "metadata_discovery_only": true,
   "daily_request_cap": 95,
   "articles_per_request": 3,
-  "preferred_operator_interval_minutes": 15,
+  "preferred_operator_interval_minutes": 16,
   "token_sources": ["environment:MARKETAUX_API_KEY", "configs/local/marketaux.env"],
   "queries": [
     {

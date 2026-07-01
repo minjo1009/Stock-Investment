@@ -1,0 +1,2 @@
+task_id,scope_type,backfill_start_date,backfill_end_date,jobs,full_2016_to_present_run_completed,persistent_process_left_running,status
+TASK-4125,full_2016_to_present_backfill_continuation,2016-01-01,2026-06-29,public_context_news_backfill|public_market_macro_news_backfill|microstructure_backfill_batch,1,0,FROZEN_CONTINUATION

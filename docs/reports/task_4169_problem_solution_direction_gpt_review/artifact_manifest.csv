@@ -1,0 +1,8 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4169 task definition and closeout state,modified,TASK-4169
+ops/doc_registry.yaml,registry,TASK-4169 document registry entries,modified,TASK-4169
+docs/reports/task_4169_problem_solution_direction_gpt_review/gpt_prompt.md,prompt,GPT review prompt with local TASK-4168 state,created,TASK-4169
+docs/reports/task_4169_problem_solution_direction_gpt_review/gpt_response.md,reference,Captured GPT response summary,created,TASK-4169
+docs/reports/task_4169_problem_solution_direction_gpt_review/report.md,task_report,TASK-4169 solution direction report,created,TASK-4169
+docs/reports/task_4169_problem_solution_direction_gpt_review/artifact_manifest.csv,artifact_manifest,TASK-4169 artifact manifest,created,TASK-4169
+docs/reports/task_4169_problem_solution_direction_gpt_review/validation_results.md,validation_report,TASK-4169 validation results,created,TASK-4169

@@ -1,0 +1,10 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,Task registry update,modified,TASK-4160
+ops/doc_registry.yaml,REGISTRY,Document registry update,modified,TASK-4160
+docs/reports/task_4160_l0_l4_structure_cleanup_gpt_review/gpt_prompt.md,GPT_PROMPT,GPT Pro review prompt,created,TASK-4160
+docs/reports/task_4160_l0_l4_structure_cleanup_gpt_review/gpt_response.md,GPT_RESPONSE,GPT Pro review response,created,TASK-4160
+docs/reports/task_4160_l0_l4_structure_cleanup_gpt_review/active_layer_handoff.md,HANDOFF,Human-readable active L0-L4 layer handoff,created,TASK-4160
+docs/reports/task_4160_l0_l4_structure_cleanup_gpt_review/active_layer_manifest.json,MANIFEST,Machine-readable active L0-L4 layer manifest,created,TASK-4160
+docs/reports/task_4160_l0_l4_structure_cleanup_gpt_review/report.md,TASK_REPORT,Closeout report for L0-L4 structure cleanup,created,TASK-4160
+docs/reports/task_4160_l0_l4_structure_cleanup_gpt_review/artifact_manifest.csv,ARTIFACT_MANIFEST,Task artifact manifest,created,TASK-4160
+docs/reports/task_4160_l0_l4_structure_cleanup_gpt_review/validation_results.md,VALIDATION_REPORT,Validation results for TASK-4160,created,TASK-4160

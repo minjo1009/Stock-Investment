@@ -1,0 +1,24 @@
+path,type,purpose,created_or_modified,task_id
+docs/reports/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/task_result_contract.yaml,CONTRACT,TASK-4199 closeout contract,created,TASK-4199
+docs/reports/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/report.md,TASK_REPORT,TASK-4199 summary report,created,TASK-4199
+docs/reports/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4199 artifact manifest,created,TASK-4199
+docs/reports/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/validation_results.md,VALIDATION_REPORT,TASK-4199 validation results,created,TASK-4199
+ops/l0_operating_contract.yaml,CONTRACT,current L0 runtime contract,modified,TASK-4199
+scripts/build_l0_operating_status_4190.py,SCRIPT,current L0 context builder,modified,TASK-4199
+scripts/build_task4199_l0_l5_integration_audit.py,SCRIPT,L0-L5 audit builder,created,TASK-4199
+scripts/build_task4199_layer_refresh_chain.py,SCRIPT,layer watermark chain builder,created,TASK-4199
+scripts/run_task4199_l3_l4_refresh_after_l0_l2.py,SCRIPT,idempotent L3/L4 post-4147 refresh runner,created,TASK-4199
+scripts/validate_task4199_l0_runtime_and_layer_chain.py,VALIDATOR,TASK-4199 runtime and layer validator,created,TASK-4199
+scripts/run_l0_l2_hardening_once_4147.ps1,SCRIPT,4147 scheduler wrapper with TASK-4199 post-refresh hook,modified,TASK-4199
+data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/deleted_scheduler_proof.json,EVIDENCE,deleted legacy scheduler proof,created,TASK-4199
+data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/deleted_legacy_entrypoints_proof.json,EVIDENCE,deleted legacy entrypoint proof,created,TASK-4199
+data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/gpt_pro_prompt.md,GPT_PROMPT,GPT Pro review prompt,created,TASK-4199
+data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/gpt_pro_response.md,GPT_RESPONSE,captured GPT Pro review response,created,TASK-4199
+data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/l0_l5_integration_audit.json,EVIDENCE,L0-L5 integration audit JSON,created,TASK-4199
+data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/layer_linkage_matrix.csv,EVIDENCE,layer linkage matrix,created,TASK-4199
+data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/risk_priority.csv,EVIDENCE,risk priority table,created,TASK-4199
+data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/layer_watermarks/layer_refresh_chain.json,EVIDENCE,layer refresh chain JSON,created,TASK-4199
+data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/layer_watermarks/layer_refresh_chain.md,EVIDENCE,layer refresh chain markdown,created,TASK-4199
+data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/runtime_and_layer_chain_validation.json,VALIDATION_REPORT,runtime and layer validation JSON,created,TASK-4199
+data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/runtime_and_layer_chain_validation.md,VALIDATION_REPORT,runtime and layer validation markdown,created,TASK-4199
+data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/l3_l4_refresh_last_run.json,EVIDENCE,L3/L4 post-refresh run result,created,TASK-4199

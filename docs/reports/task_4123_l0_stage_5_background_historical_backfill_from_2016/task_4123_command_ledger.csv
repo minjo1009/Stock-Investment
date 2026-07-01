@@ -1,0 +1,4 @@
+task_id,job_name,returncode,started_at,finished_at,command_result_path,bounded_background_cycle
+TASK-4123,public_context_news_backfill,0,2026-06-29T08:05:45.090155Z,2026-06-29T08:05:45.827104Z,docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/command_results/public_context_news_backfill.json,1
+TASK-4123,public_market_macro_news_backfill,0,2026-06-29T08:05:45.828230Z,2026-06-29T08:05:47.013995Z,docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/command_results/public_market_macro_news_backfill.json,1
+TASK-4123,microstructure_backfill_batch,0,2026-06-29T08:05:47.015062Z,2026-06-29T08:05:47.664494Z,docs/reports/task_4123_l0_stage_5_background_historical_backfill_from_2016/command_results/microstructure_backfill_batch.json,1

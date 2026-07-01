@@ -1,0 +1,177 @@
+task_id: TASK-4199
+task_type: OUTCOME_CHANGE
+domain: L0_SOURCE_ACQUISITION
+title: L0 Scheduler Deletion and L0-L5 Integration Audit
+status: DONE
+profile: L0_L1_DATA_PIPELINE
+created_at: "2026-07-02"
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN
+  missing_stale_incomplete_data_semantics: UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE
+scope:
+  allowed_paths:
+    - ops/l0_operating_contract.yaml
+    - scripts/build_l0_operating_status_4190.py
+    - scripts/build_task4199_l0_l5_integration_audit.py
+    - scripts/build_task4199_layer_refresh_chain.py
+    - scripts/run_task4199_l3_l4_refresh_after_l0_l2.py
+    - scripts/validate_task4199_l0_runtime_and_layer_chain.py
+    - scripts/run_l0_l2_hardening_once_4147.ps1
+    - scripts/start_l0_public_newswire_backfill.ps1
+    - scripts/start_l0_public_newswire_collector.ps1
+    - scripts/start_l0_prioritized_backfills.ps1
+    - scripts/run_l0_backfill_worker_recovery_4148.py
+    - scripts/run_l0_backfill_supervisor.ps1
+    - data/artifacts/l0_public_newswire_backfill/background_process.json
+    - data/artifacts/l0_operating_status/**
+    - data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/**
+    - docs/reports/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/**
+    - data/diagnostics/l4/**
+    - data/artifacts/task_4150_l3_diagnostic_strategy_view_bootstrap/**
+    - data/artifacts/task_4152_l3_relation_graph_v2/**
+    - data/artifacts/task_4154_l3_relation_graph_v2_quality_guard/**
+    - ops/task_registry.yaml
+    - ops/doc_registry.yaml
+  forbidden_paths:
+    - broker/**
+    - live_trading/**
+    - production_orders/**
+    - secrets/**
+    - configs/broker/**
+  changed_paths:
+    - ops/l0_operating_contract.yaml
+    - scripts/build_l0_operating_status_4190.py
+    - scripts/build_task4199_l0_l5_integration_audit.py
+    - scripts/build_task4199_layer_refresh_chain.py
+    - scripts/run_task4199_l3_l4_refresh_after_l0_l2.py
+    - scripts/validate_task4199_l0_runtime_and_layer_chain.py
+    - scripts/run_l0_l2_hardening_once_4147.ps1
+    - docs/reports/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/**
+    - data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/**
+    - ops/task_registry.yaml
+    - ops/doc_registry.yaml
+outcome_unit:
+  name: l0_runtime_ambiguity_and_layer_refresh_gap
+  type: l0_runtime_and_layer_linkage
+  direction: decrease
+  problem_progress_claim_allowed: true
+  harness_progress_claim_allowed: true
+baseline:
+  value: 6
+  gaps:
+    - four superseded Windows scheduler tasks still existed as possible legacy L0 runtime surfaces
+    - legacy L0 entrypoint scripts still existed as callable local surfaces
+    - stale PID/background process artifact still existed as a misleading L0 runtime surface
+    - L0 operating contract still carried old runtime ambiguity
+    - L1-L4 refresh completeness did not have a machine-readable L0 partial blocker chain
+    - L3/L4 refresh was not attached after the current 4147 L0/L1/L2 wrapper
+after:
+  value: 1
+  residual_gap:
+    - L0 public newswire backfill is still partial, so L0-L5 end-to-end completeness remains blocked
+  closed_gaps:
+    - superseded Windows scheduler tasks deleted
+    - legacy L0 entrypoint scripts deleted
+    - stale PID/background process artifact deleted
+    - current L0 operating contract points at 4195 backfill guard and 4147 realtime/L1/L2 wrapper
+    - L0-L4 refresh chain emits explicit L0 partial blocker watermarks
+    - L3/L4 refresh is attached after successful 4147 L0/L1/L2 wrapper execution
+intended_change:
+  summary: Delete legacy L0 schedulers and entrypoints, then make current L0 runtime and L0-L4 diagnostic refresh chain machine-checkable.
+  target:
+    runtime_status: L0_RUNTIME_CLEAN_WITH_PARTIAL_COLLECTION
+    layer_refresh_status: REFRESH_CHAIN_EXISTS_WITH_L0_PARTIAL_BLOCKER
+measurement_method:
+  commands:
+    - python scripts/build_l0_operating_status_4190.py
+    - python scripts/build_task4199_layer_refresh_chain.py
+    - python scripts/validate_task4199_l0_runtime_and_layer_chain.py
+    - python scripts/build_task4199_l0_l5_integration_audit.py
+  comparison_rule: legacy scheduler/entrypoint ambiguity must be removed and layer chain must block completeness while L0 remains partial
+allowed_actions:
+  - delete superseded local Windows scheduled tasks
+  - delete legacy L0 entrypoint scripts and stale PID artifact
+  - update L0 operating contract
+  - add diagnostic-only layer watermark and validator scripts
+  - attach L3/L4 diagnostic refresh after the existing 4147 L1/L2 scheduler wrapper
+  - write GPT Pro prompt and response evidence
+forbidden_actions:
+  - broker mutation
+  - live order
+  - paper promotion
+  - real-capital enablement
+  - strategy acceptance
+  - deployment readiness claim
+  - buy/sell/ranking/sizing/order output
+  - treating missing/stale/incomplete data as negative evidence
+evidence_artifacts:
+  required:
+    - data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/deleted_scheduler_proof.json
+    - data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/deleted_legacy_entrypoints_proof.json
+    - data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/gpt_pro_response.md
+    - data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/layer_watermarks/layer_refresh_chain.json
+    - data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/runtime_and_layer_chain_validation.json
+validators:
+  required:
+    - python scripts/validate_task4199_l0_runtime_and_layer_chain.py
+progress_claim_policy:
+  progress_class: L0_RUNTIME_AND_LAYER_LINKAGE_HARDENING
+  actual_underlying_progress: true
+  allowed_claims:
+    - legacy scheduler tasks are deleted
+    - legacy entrypoint files are deleted
+    - current L0 runtime cleanup validates with partial collection blocker
+    - L0-L4 diagnostic refresh chain exists and blocks completeness while L0 is partial
+  forbidden_claims:
+    - L0 backfill is complete
+    - L4 is final thesis judgment
+    - L5 is trading ready
+    - strategy acceptance changed
+    - deployment readiness changed
+closeout_verdict:
+  selected: ACTUAL_PROGRESS_WITH_RESIDUAL_BLOCKERS
+report:
+  actual_underlying_progress: true
+  summary: L0 runtime ambiguity was removed and the layer chain now makes incomplete L0 a machine-readable blocker for L1-L4 completeness claims.
+  claims:
+    - Old scheduler tasks were deleted.
+    - Old L0 entrypoint scripts were deleted.
+    - Current L0 runtime validates as clean with partial collection still blocked.
+    - L3/L4 diagnostic refresh runs after the existing 4147 wrapper when L1/L2 succeeds.
+next_target:
+  required: true
+  task_type: OUTCOME_CHANGE
+  outcome_unit: l0_public_newswire_pending_and_l4_l5_blocker_burndown
+  required_baseline: data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/l0_l5_integration_audit.json
+  required_validator: python scripts/validate_task4199_l0_runtime_and_layer_chain.py
+outcome:
+  l0_runtime_cleanup: L0_RUNTIME_CLEAN_WITH_PARTIAL_COLLECTION
+  l0_l4_refresh_chain: REFRESH_CHAIN_EXISTS_WITH_L0_PARTIAL_BLOCKER
+  l0_l5_end_to_end: NOT_COMPLETE_L5_NOT_CURRENTLY_MATERIALIZED
+  trading_authority_opened: 0
+required_current_schedulers:
+  - TraderBrainL0ContinuousBackfillGuard4195
+  - TraderBrainL0L2Hardening4147
+deleted_legacy_schedulers:
+  - TraderBrainL0BackfillWorkerRecovery4148
+  - Task3893OfficialBackfillAutoLoop
+  - Task3899FullOfficialBackfillWorker
+  - Task3899FullOfficialBackfillProgressReport
+deleted_legacy_entrypoints:
+  - scripts/start_l0_public_newswire_backfill.ps1
+  - scripts/start_l0_public_newswire_collector.ps1
+  - scripts/start_l0_prioritized_backfills.ps1
+  - scripts/run_l0_backfill_worker_recovery_4148.py
+  - scripts/run_l0_backfill_supervisor.ps1
+  - data/artifacts/l0_public_newswire_backfill/background_process.json
+primary_artifacts:
+  - data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/deleted_scheduler_proof.json
+  - data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/deleted_legacy_entrypoints_proof.json
+  - data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/l0_l5_integration_audit.json
+  - data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/layer_watermarks/layer_refresh_chain.json
+  - data/artifacts/task_4199_l0_scheduler_deletion_and_l0_l5_integration_audit/runtime_and_layer_chain_validation.json

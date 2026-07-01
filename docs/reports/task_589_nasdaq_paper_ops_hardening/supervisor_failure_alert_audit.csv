@@ -1,0 +1,2 @@
+﻿created_at_utc,component,status,detail,slack_send_status,webhook_present_flag,secret_in_message_flag,error
+2026-05-20T16:07:38.447127Z,TASK588,FAILED,exit_code=1,SLACK_BLOCKED_MISSING_WEBHOOK,0,0,

@@ -1,0 +1,104 @@
+task_id: "TASK-4188"
+task_type: "HARNESS_BOOTSTRAP"
+domain: "OPS_GOVERNANCE"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/**"
+    - "docs/generated_context/TASK-4188_context.md"
+    - "docs/generated_context/TASK-4188_manifest.csv"
+    - "ops/project_hygiene_policy.yaml"
+    - "ops/context_bundles.yaml"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+    - "scripts/ops/validate_project_hygiene.py"
+    - "scripts/ops/validate_codex_closeout.py"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/task_result_contract.yaml"
+    - "docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/report.md"
+    - "docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/artifact_manifest.csv"
+    - "docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/validation_results.md"
+outcome_unit:
+  name: "root_hygiene_closeout_gate"
+  type: "governance_harness"
+  direction: "increase"
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: true
+intended_change:
+  description: "Add a project hygiene policy and closeout validator gate that classifies root entries and blocks new unclassified root clutter."
+  target:
+    value: 1
+baseline:
+  value: 0
+  description: "Standard Codex closeout did not include project hygiene validation."
+after:
+  value: 1
+  description: "Standard Codex closeout includes project hygiene validation and all current root entries are classified."
+measurement_method:
+  commands:
+    - "python scripts/ops/validate_project_hygiene.py"
+    - "python scripts/ops/validate_prime_task_contracts.py --task TASK-4188"
+  comparison_rule: "validator must classify all current root entries and closeout must include the project hygiene gate"
+  same_method_before_after_required: false
+allowed_actions:
+  - "edit OPS governance policy"
+  - "edit OPS validators"
+  - "edit task-scoped artifacts"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/task_result_contract.yaml"
+    - "ops/project_hygiene_policy.yaml"
+    - "scripts/ops/validate_project_hygiene.py"
+    - "docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/root_hygiene_inventory.csv"
+validators:
+  required:
+    - "project_hygiene_validator"
+    - "prime_task_contract_validator"
+    - "outcome_contract_validator"
+progress_claim_policy:
+  progress_class: "OPS_GOVERNANCE_HARNESS"
+  actual_underlying_progress: false
+  allowed_claims:
+    - "Root entries are classified by policy."
+    - "New unclassified root entries fail the project hygiene validator."
+    - "Codex closeout runs the project hygiene validator."
+  forbidden_claims:
+    - "No root debt remains"
+    - "Runtime DB files are safe to move or delete"
+    - "Strategy, deployment, paper, live, or broker readiness improved"
+closeout_verdict:
+  selected: "VALID_HARNESS_BOOTSTRAP"
+report:
+  actual_underlying_progress: false
+  progress_class: "HARNESS_PROGRESS_ONLY"
+  summary: "TASK-4188 adds project hygiene policy, root inventory evidence, and a closeout validator gate. Existing root debt is classified but not moved or deleted."
+  claims:
+    - "Project hygiene validator exists."
+    - "All current root entries are classified."
+    - "Known root debt is warning-backed rather than silently ignored."
+next_target:
+  required: true
+  task_type: "ROOT_DEBT_BURN_DOWN"
+  outcome_unit: "known_debt_root_entries"
+  required_baseline: "6 known debt root entries from TASK-4188 root_hygiene_inventory.csv"
+  required_validator: "python scripts/ops/validate_project_hygiene.py --strict-known-debt"

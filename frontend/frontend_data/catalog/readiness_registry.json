@@ -1,0 +1,200 @@
+{
+  "generated_utc": "2026-06-26T15:04:42.494328+00:00",
+  "contract_version": "readiness-registry-v1",
+  "canonical_source": "docs/ownership/readiness_registry.yaml",
+  "load_status": "READINESS_REGISTRY_LOADED",
+  "registry": {
+    "paper_operation_status": "READY_FOR_CONTROLLED_PAPER_RUN",
+    "strategy_acceptance_status": "NOT_ACCEPTED",
+    "strategy_acceptance_target_status": "ACCEPTANCE_REVIEW",
+    "deployment_readiness_status": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "real_capital_status": "FORBIDDEN"
+  },
+  "paper_operation": {
+    "status": "READY_FOR_CONTROLLED_PAPER_RUN",
+    "ready_for_controlled_paper_run_flag": 1
+  },
+  "strategy_acceptance": {
+    "status": "NOT_ACCEPTED",
+    "target_status": "ACCEPTANCE_REVIEW",
+    "accepted_flag": 0
+  },
+  "deployment_readiness": {
+    "status": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "deployment_ready_flag": 0
+  },
+  "real_capital": {
+    "status": "FORBIDDEN",
+    "forbidden_flag": 1
+  },
+  "blockers": [
+    {
+      "blocker_id": "P0_EXIT_LIFECYCLE",
+      "priority": "P0",
+      "owner": "주은",
+      "team": "Execution & Risk",
+      "artifact": "docs/reports/task_600_4_broker_truth_exit_lifecycle/broker_truth_exit_report.md",
+      "validation": "python -m unittest tests.test_task600_4_broker_truth_exit_lifecycle",
+      "next_gate": "Ingest or create actual paper broker/order-status SELL fills, then rerun T600-4 reconciliation; current broker_truth_sell_fills is 0 and runtime synthetic SELL is not promoted to broker truth.",
+      "status": "BROKER_TRUTH_SELL_ZERO_ACCEPTANCE_BLOCKED"
+    },
+    {
+      "blocker_id": "P0_CANDIDATE_FUNNEL",
+      "priority": "P0",
+      "owner": "성원",
+      "team": "Candidate Funnel Research",
+      "artifact": "docs/reports/task_601_4_concentration_stability/concentration_stability_report.md",
+      "validation": "python -m unittest tests.test_task601_4_concentration_stability",
+      "next_gate": "Acceptance review may inspect recent multi-session concentration stability with top3_share 0.75, entropy 1.386294, and symbol_count 4; sector cap remains source-blocked until a real sector source is supplied.",
+      "status": "CONCENTRATION_STABILITY_PASS_TOP3_0_75"
+    },
+    {
+      "blocker_id": "P0_EXACT_REPLAY",
+      "priority": "P0",
+      "owner": "동승",
+      "team": "Replay & Simulation",
+      "artifact": "docs/reports/task_602_4_order_replay_recovery/order_replay_acceptance_report.md",
+      "validation": "python -m unittest tests.test_task602_4_order_replay_recovery",
+      "next_gate": "Acceptance review may inspect Order Match 1.0 and Position Match 95.8333 percent; full 99 percent replay gate still depends on broker-truth exit lineage and the remaining open position row.",
+      "status": "ORDER_REPLAY_STRETCH_1_0_POSITION_95_8333"
+    },
+    {
+      "blocker_id": "P1_SOURCE_HEALTH_LEDGER",
+      "priority": "P1",
+      "owner": "윤헌",
+      "team": "Data & Market Microstructure",
+      "artifact": "docs/reports/task_599_strategy_acceptance_program/source_health_weekly.md",
+      "validation": "python validate_readiness_registry.py",
+      "next_gate": "Build a 20-session source-health ledger with provider errors, quote age, exchange fallback, freshness, and ATR-at-entry coverage; current runtime snapshots/ticks cover 13 UTC sessions and schema fields remain incomplete.",
+      "status": "BLOCKED_20_SESSION_LEDGER_INCOMPLETE"
+    },
+    {
+      "blocker_id": "P1_READINESS_DASHBOARD",
+      "priority": "P1",
+      "owner": "규승",
+      "team": "Frontend",
+      "artifact": "docs/reports/task_599_strategy_acceptance_program/readiness_dashboard_review.md",
+      "validation": "python -m unittest tests.test_trader_terminal_catalog tests.test_task586_frontend_paper_ops_integration",
+      "next_gate": "Frontend/catalog tests pass; perform human five-second review that paper, strategy, deployment, first blocker, next owner, realized PnL, and proxy PnL are visible before positive metrics.",
+      "status": "TESTS_PASS_REVIEW_REQUIRED"
+    },
+    {
+      "blocker_id": "P2_GOVERNANCE_ENFORCEMENT",
+      "priority": "P2",
+      "owner": "중훈",
+      "team": "Governance",
+      "artifact": "docs/reports/task_603_1_registry_backed_readiness_consumption/task_603_1_registry_backed_readiness_consumption.md",
+      "validation": "python -m unittest tests.test_trader_terminal_catalog tests.test_task600_603_acceptance_program_implementation",
+      "next_gate": "Keep generated catalog and frontend data reading readiness_registry.json; later UI copy changes must not re-derive acceptance state.",
+      "status": "REGISTRY_PAYLOAD_IMPLEMENTED"
+    },
+    {
+      "blocker_id": "P2_EXACT_ID_REVIEW_PACKET",
+      "priority": "P2",
+      "owner": "종찬",
+      "team": "Chart Evidence",
+      "artifact": "docs/reports/task_599_strategy_acceptance_program/review_packet/",
+      "validation": "python validate_readiness_registry.py",
+      "next_gate": "100 percent of fills and top skipped candidates have exact-id review packets.",
+      "status": "BLOCKED"
+    },
+    {
+      "blocker_id": "P2_SLACK_POLICY_LOCK",
+      "priority": "P2",
+      "owner": "서연",
+      "team": "Slack / EOD",
+      "artifact": "docs/reports/task_599_strategy_acceptance_program/slack_policy_lock.md",
+      "validation": "python -m unittest tests.test_slack_client_safety tests.test_task589_nasdaq_paper_ops_hardening",
+      "next_gate": "Slack safety and EOD tests pass; keep all outgoing daily/EOD messages blocker-first and non-promotional until acceptance state changes.",
+      "status": "POLICY_LOCK_TESTS_PASS"
+    },
+    {
+      "blocker_id": "P2_DEPLOYMENT_GATE_SEPARATION",
+      "priority": "P2",
+      "owner": "필수",
+      "team": "General Coordination / CIO Office",
+      "artifact": "docs/acceptance/deployment_acceptance_contract.md",
+      "validation": "python validate_readiness_registry.py",
+      "next_gate": "deployment contract blocks production-ready claims until live-source, risk, replay, and lifecycle gates pass.",
+      "status": "ACTIVE"
+    }
+  ],
+  "blocker_status_counts": {
+    "ACTIVE": 1,
+    "BLOCKED": 1,
+    "BLOCKED_20_SESSION_LEDGER_INCOMPLETE": 1,
+    "BROKER_TRUTH_SELL_ZERO_ACCEPTANCE_BLOCKED": 1,
+    "CONCENTRATION_STABILITY_PASS_TOP3_0_75": 1,
+    "ORDER_REPLAY_STRETCH_1_0_POSITION_95_8333": 1,
+    "POLICY_LOCK_TESTS_PASS": 1,
+    "REGISTRY_PAYLOAD_IMPLEMENTED": 1,
+    "TESTS_PASS_REVIEW_REQUIRED": 1
+  },
+  "acceptance_gates": [
+    {
+      "gate_id": "SELL_FILLS_EXIST",
+      "required": "true",
+      "current_status": "FAIL_BROKER_TRUTH_SELL_ZERO",
+      "evidence": "T600-4 confirms 23 runtime paper SELL fills and 23 CLOSED lifecycle rows but broker_truth_sell_fills remains 0; runtime synthetic SELL was not counted as broker truth."
+    },
+    {
+      "gate_id": "REALIZED_TRADES_100_PLUS",
+      "required": "true",
+      "current_status": "FAIL",
+      "evidence": "T600-3 populated realized_pnl for 23 controlled paper runtime closed positions; the 100 plus realized-trade acceptance target is not complete."
+    },
+    {
+      "gate_id": "REPLAY_MATCH_99_PLUS",
+      "required": "true",
+      "current_status": "REVIEW_ORDER_STRETCH_POSITION_BELOW_99",
+      "evidence": "T602-4 Order Match is 1.0 and Position Match is 95.8333 percent; this clears order replay recovery but remains below the 99 percent full acceptance target."
+    },
+    {
+      "gate_id": "SOURCE_HEALTH_20_SESSIONS",
+      "required": "true",
+      "current_status": "FAIL",
+      "evidence": "20-session source-health ledger is not complete."
+    },
+    {
+      "gate_id": "CANDIDATE_FUNNEL_AUDITED",
+      "required": "true",
+      "current_status": "PASS_MULTI_SESSION_STABILITY_REVIEW",
+      "evidence": "T601-4 validates recent multi-session selected concentration with top3_share 0.75, entropy 1.386294, gini 0.0, and symbol_count 4; sector cap remains source-blocked until sector evidence exists."
+    },
+    {
+      "gate_id": "KILL_SWITCH_TESTED",
+      "required": "true",
+      "current_status": "FAIL",
+      "evidence": "kill-switch test evidence is not complete."
+    },
+    {
+      "gate_id": "REVIEW_PACKET_100_PERCENT",
+      "required": "true",
+      "current_status": "FAIL",
+      "evidence": "exact-id review packet coverage is not complete."
+    }
+  ],
+  "acceptance_gate_status_counts": {
+    "FAIL": 4,
+    "FAIL_BROKER_TRUTH_SELL_ZERO": 1,
+    "PASS_MULTI_SESSION_STABILITY_REVIEW": 1,
+    "REVIEW_ORDER_STRETCH_POSITION_BELOW_99": 1
+  },
+  "forbidden_claims": [
+    "strategy validated",
+    "profitable strategy",
+    "deployment ready",
+    "production ready"
+  ],
+  "active_blocker_ids": [
+    "P0_EXIT_LIFECYCLE",
+    "P0_CANDIDATE_FUNNEL",
+    "P0_EXACT_REPLAY",
+    "P1_SOURCE_HEALTH_LEDGER",
+    "P1_READINESS_DASHBOARD",
+    "P2_GOVERNANCE_ENFORCEMENT",
+    "P2_EXACT_ID_REVIEW_PACKET",
+    "P2_SLACK_POLICY_LOCK",
+    "P2_DEPLOYMENT_GATE_SEPARATION"
+  ]
+}

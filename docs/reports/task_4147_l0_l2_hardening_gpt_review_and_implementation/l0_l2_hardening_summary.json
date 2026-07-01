@@ -1,0 +1,18 @@
+{
+  "task_id": "TASK-4147",
+  "generated_at": "2026-07-01T23:22:23Z",
+  "gpt_review_status": "captured_and_digested",
+  "l1_article_packets": 6036,
+  "l1_article_ready_packets": 6036,
+  "raw_article_packet_blockers": 0,
+  "newswire_mapping_queue_rows": 6447,
+  "newswire_l0_mapped_rows": 126540,
+  "l2_diagnostic_feature_rows": 4959,
+  "backfill_proof_rows": 5,
+  "critical_incomplete_dead_backfill_lanes": [],
+  "separated_realtime_config": "configs/l0_realtime_operational_safe_config_4147.json",
+  "scheduler_task_name": "TraderBrainL0L2Hardening4147",
+  "trading_eligible_rows": 0,
+  "signal_order_export_allowed_rows": 0,
+  "broker_mutation_permitted_rows": 0
+}

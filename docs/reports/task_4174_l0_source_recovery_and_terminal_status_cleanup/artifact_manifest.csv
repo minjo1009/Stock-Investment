@@ -1,0 +1,14 @@
+path,type,purpose,created_or_modified,task_id
+scripts/run_task4174_l0_source_recovery_terminal_cleanup.py,SCRIPT,Build L0 terminal status ledger and Federal Register proof,created,TASK-4174
+scripts/validate_task4174_l0_source_recovery_terminal_cleanup.py,VALIDATOR,Validate L0 recovery ledger and proof,created,TASK-4174
+src/validation/prime_layer_outcome_unit_validator.py,VALIDATOR,Allow L0 terminal cleanup outcome unit in Prime layer validator,modified,TASK-4174
+data/artifacts/task_4174_l0_source_recovery_terminal_cleanup/task_4174_l0_terminal_status_ledger.csv,DATA_ARTIFACT,L0 source terminal status ledger,created,TASK-4174
+data/artifacts/task_4174_l0_source_recovery_terminal_cleanup/task_4174_l0_recovery_summary.json,DATA_ARTIFACT,L0 recovery summary and safety counters,created,TASK-4174
+data/raw/task_4174_l0_source_recovery_terminal_cleanup/federal_register_2020_10_page_32.json,RAW_PROOF,Federal Register bounded retry raw response,created,TASK-4174
+data/raw/task_4174_l0_source_recovery_terminal_cleanup/federal_register_2020_10_page_32_metadata.json,RAW_PROOF_METADATA,Federal Register bounded retry metadata and checksum,created,TASK-4174
+docs/reports/task_4174_l0_source_recovery_and_terminal_status_cleanup/task_result_contract.yaml,CONTRACT,Prime outcome contract,created,TASK-4174
+docs/reports/task_4174_l0_source_recovery_and_terminal_status_cleanup/report.md,TASK_REPORT,Closeout report,modified,TASK-4174
+docs/reports/task_4174_l0_source_recovery_and_terminal_status_cleanup/artifact_manifest.csv,ARTIFACT_MANIFEST,Artifact manifest,modified,TASK-4174
+docs/reports/task_4174_l0_source_recovery_and_terminal_status_cleanup/validation_results.md,VALIDATION_REPORT,Validation command results,modified,TASK-4174
+ops/task_registry.yaml,REGISTRY,Task registry entry and closeout,modified,TASK-4174
+ops/doc_registry.yaml,REGISTRY,Doc registry entries,modified,TASK-4174

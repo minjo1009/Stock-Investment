@@ -1,0 +1,26 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4156 task registration and closeout,modified,TASK-4156
+ops/doc_registry.yaml,registry,TASK-4156 document registration,modified,TASK-4156
+configs/l4_thesis_bundle_4156.json,config,L4 diagnostic thesis bundle config,created,TASK-4156
+src/brain/l4_thesis_bundle/__init__.py,package,L4 thesis bundle package marker,created,TASK-4156
+src/brain/l4_thesis_bundle/schema.py,code,L4 thesis bundle schema constants,created,TASK-4156
+src/brain/l4_thesis_bundle/builder.py,code,L4 deterministic thesis bundle builder,created,TASK-4156
+src/validation/l4_thesis_bundle_validator.py,validator,L4 semantic thesis bundle validator,created,TASK-4156
+scripts/build_l4_thesis_bundles.py,script,Build L4 thesis bundle artifacts,created,TASK-4156
+scripts/validate_l4_thesis_bundle_package.py,script,Validate L4 thesis bundle artifacts,created,TASK-4156
+tests/test_l4_thesis_bundle_package.py,test,L4 thesis bundle package unit tests,created,TASK-4156
+data/diagnostics/l4/l4_thesis_bundles.jsonl,artifact,L4 diagnostic thesis bundle rows,created,TASK-4156
+data/diagnostics/l4/l4_thesis_evidence_links.csv,artifact,L4 evidence link table,created,TASK-4156
+data/diagnostics/l4/l4_thesis_blockers.csv,artifact,L4 blocker table,created,TASK-4156
+data/diagnostics/l4/l4_run_manifest.json,artifact,L4 run manifest,created,TASK-4156
+data/diagnostics/l4/l4_validation_report.json,validation_report,L4 semantic validation report,created,TASK-4156
+docs/reports/task_4156_l4_thesis_bundle_bootstrap/report.md,task_report,TASK-4156 closeout report,created,TASK-4156
+docs/reports/task_4156_l4_thesis_bundle_bootstrap/artifact_manifest.csv,artifact_manifest,TASK-4156 artifact manifest,created,TASK-4156
+docs/reports/task_4156_l4_thesis_bundle_bootstrap/validation_results.md,validation_report,TASK-4156 validation results,created,TASK-4156
+docs/reports/task_4156_l4_thesis_bundle_bootstrap/gpt_review_prompt.md,gpt_prompt,TASK-4156 implementation review prompt,created,TASK-4156
+docs/reports/task_4156_l4_thesis_bundle_bootstrap/gpt_review_response.md,gpt_response,TASK-4156 implementation review response,created,TASK-4156
+docs/reports/task_4156_l4_thesis_bundle_bootstrap/gpt_review_capture_meta.json,capture_meta,TASK-4156 implementation review capture metadata,created,TASK-4156
+docs/reports/task_4156_l4_thesis_bundle_bootstrap/gpt_patch_review_prompt.md,gpt_prompt,TASK-4156 P1 patch review prompt,created,TASK-4156
+docs/reports/task_4156_l4_thesis_bundle_bootstrap/gpt_patch_review_response.md,gpt_response,TASK-4156 P1 patch review response,created,TASK-4156
+docs/reports/task_4156_l4_thesis_bundle_bootstrap/gpt_patch_review_capture_meta.json,capture_meta,TASK-4156 P1 patch review capture metadata,created,TASK-4156
+docs/reports/task_4156_l4_thesis_bundle_bootstrap/loop_ledger.csv,loop_ledger,TASK-4156 GPT relay loop ledger,created,TASK-4156

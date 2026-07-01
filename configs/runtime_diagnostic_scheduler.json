@@ -1,0 +1,31 @@
+{
+  "owner_id": "operator-runtime-diagnostic-scheduler",
+  "db_path": "trading.db",
+  "kis_environment": "paper",
+  "lease_ttl_seconds": 300,
+  "cadences": [
+    {
+      "cadence": "5_min_safety",
+      "interval_minutes": 5,
+      "enabled": true,
+      "runtime_decision_ids": ["runtime-review-state"],
+      "validation_refs": ["python scripts/task_registry_validate.py"]
+    },
+    {
+      "cadence": "10_min_brain",
+      "interval_minutes": 10,
+      "enabled": true,
+      "runtime_decision_ids": ["runtime-review-state"],
+      "changed_candidate_ids": [],
+      "validation_refs": ["python scripts/task_registry_validate.py"]
+    },
+    {
+      "cadence": "30_min_heavy_source",
+      "interval_minutes": 30,
+      "enabled": false,
+      "source_receipt_ids": [],
+      "runtime_decision_ids": ["runtime-review-state"],
+      "validation_refs": ["python scripts/task_registry_validate.py"]
+    }
+  ]
+}

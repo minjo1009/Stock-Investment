@@ -1,0 +1,153 @@
+version: 1
+updated_at: "2026-06-29"
+
+profiles:
+  DOCS_GOVERNANCE:
+    purpose: Maintain task/document registry, context bundles, governance tooling.
+    allowed_intents:
+      - create_or_update_registries
+      - create_validators
+      - render_read_only_dashboard
+      - create_context_bundles
+    forbidden_intents:
+      - trading_logic_change
+      - broker_mutation
+      - live_order
+      - db_schema_change
+      - scheduler_registration_change
+      - strategy_acceptance_change
+    required_outputs:
+      - task_registry_update
+      - doc_registry_update
+      - report
+      - artifact_manifest
+      - validation_results
+
+  L0_L1_DATA_PIPELINE:
+    purpose: Raw source acquisition, storage, normalization, source-time integrity.
+    required_principles:
+      - source_time_must_be_preserved
+      - raw_data_integrity_first
+      - no_strategy_logic
+      - missing_or_stale_data_is_unknown_or_blocker
+    forbidden_intents:
+      - candidate_promotion
+      - policy_action
+      - order_intent
+      - broker_mutation
+      - live_order
+    required_checks:
+      - storage_contract
+      - source_time_audit
+      - freshness_status
+      - artifact_manifest
+      - l0_operating_contract_harness
+
+  L2_INTERPRETATION:
+    purpose: Convert raw/source data into economic meaning without promotion or execution.
+    required_principles:
+      - actual_vs_inference_separation
+      - missing_data_explicit
+      - no_unverified_source_claims
+    forbidden_intents:
+      - portfolio_sizing
+      - order_intent
+      - broker_mutation
+      - live_order
+
+  L3_RELATIONSHIP:
+    purpose: Validate economic relationships and chains.
+    required_principles:
+      - relationship_evidence_required
+      - chain_break_conditions_required
+      - contradictory_evidence_must_be_visible
+    forbidden_intents:
+      - order_intent
+      - broker_mutation
+      - live_order
+
+  L4_THESIS_BUNDLE:
+    purpose: Construct and validate thesis bundles at institutional quality.
+    required_principles:
+      - thesis_specificity
+      - evidence_linkage
+      - source_traceability
+      - contradiction_handling
+      - blocked_context_mixed_rate_visibility
+    forbidden_intents:
+      - final_policy_action
+      - broker_mutation
+      - live_order
+      - paper_promotion
+    required_checks:
+      - thesis_quality_review
+      - evidence_coverage
+      - source_access
+      - institutional_quality_score
+
+  L5_POLICY_ACTION:
+    purpose: Translate thesis state into review-only policy actions.
+    required_principles:
+      - review_only_boundary
+      - sizing_intent_separation
+      - order_intent_separation
+      - hold_reduce_exit_rerisk_support
+    forbidden_intents:
+      - broker_mutation
+      - live_order
+      - auto_approval
+      - real_capital
+    required_checks:
+      - policy_action_schema
+      - no_broker_mutation
+      - no_live_order
+
+  L6_EXECUTION_SAFETY:
+    purpose: Execution safety, order lifecycle visibility, broker truth checks.
+    required_principles:
+      - user_control_required
+      - no_real_capital
+      - no_live_order_without_explicit_acceptance
+      - broker_truth_separation
+      - kill_switch_visibility
+    forbidden_intents:
+      - hidden_order_mutation
+      - bypass_approval
+      - live_order_enablement
+      - real_capital_enablement
+    required_checks:
+      - broker_mutation_absent
+      - order_control_audit
+      - kill_switch_audit
+      - execution_permission_audit
+
+  UI_STORYBOOK_VISION:
+    purpose: Expo/React Native UI implementation using component-first, Storybook, screenshot QA.
+    required_principles:
+      - component_first
+      - storybook_before_p0_screens
+      - screenshot_qa_required
+      - ui_is_pure_rendering
+      - no_business_logic_in_ui
+      - no_chart_first_screens
+    forbidden_intents:
+      - ia_redesign_without_approval
+      - one_off_component
+      - promotion_calculation_in_ui
+      - risk_calculation_in_ui
+      - order_mutation
+    required_checks:
+      - typecheck
+      - lint
+      - storybook_story_exists
+      - screenshot_exists
+      - vision_review_report
+
+  TASK_CLOSEOUT:
+    purpose: Close tasks only after registries, artifacts, validators, and reports are complete.
+    required_principles:
+      - no_done_without_validator_pass
+      - artifact_manifest_required
+      - doc_registry_update_required
+      - task_registry_update_required
+      - forbidden_paths_clean

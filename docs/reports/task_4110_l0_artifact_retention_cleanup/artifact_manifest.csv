@@ -1,0 +1,139 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,register TASK-4110 scope and closeout,modified,TASK-4110
+ops/doc_registry.yaml,REGISTRY,register TASK-4110 docs,modified,TASK-4110
+ops/dashboard/index.html,DASHBOARD,refresh dashboard with TASK-4110 status,modified,TASK-4110
+ops/dashboard/dashboard_summary.json,DASHBOARD,refresh dashboard summary with TASK-4110 status,modified,TASK-4110
+scripts/ops/scan_l0_artifact_retention.py,VALIDATOR,scan and delete obsolete L0 smoke/probe artifacts,created,TASK-4110
+docs/reports/task_4110_l0_artifact_retention_cleanup/report.md,TASK_ARTIFACT,task report,created,TASK-4110
+docs/reports/task_4110_l0_artifact_retention_cleanup/artifact_manifest.csv,TASK_ARTIFACT,artifact manifest,created,TASK-4110
+docs/reports/task_4110_l0_artifact_retention_cleanup/validation_results.md,TASK_ARTIFACT,validation report,created,TASK-4110
+docs/reports/task_4110_l0_artifact_retention_cleanup/l0_artifact_retention_inventory.csv,AUDIT_ARTIFACT,pre-delete L0 artifact classification inventory,created,TASK-4110
+docs/reports/task_4110_l0_artifact_retention_cleanup/deleted_l0_artifacts.csv,AUDIT_ARTIFACT,deleted L0 artifact manifest,created,TASK-4110
+docs/reports/task_4110_l0_artifact_retention_cleanup/post_delete_l0_artifact_retention_inventory.csv,AUDIT_ARTIFACT,post-delete retention inventory,created,TASK-4110
+data/artifacts/ind_dive_exp_v019_bf_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/ind_dive_smoke_v6,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_bar_full_backfill_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_industry_dive_expansion_v019_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_industry_dive_expansion_v019_smoke_live,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_news_full_backfill_marketaux_token_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_news_full_backfill_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_bf_l2_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_bf_l2_smoke_v3,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_bf_l2_smoke_v8,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_bf_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_bf_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_bf_smoke_v3,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_bf_smoke_v4,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_bf_smoke_v5,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_bf_smoke_v6,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_bf_smoke_v7,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_bf_smoke_v8,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_candidate_probe,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_probe_abc_business,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_probe_bbc_business,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_probe_cnn_money_2016_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_probe_fortune_2016_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_probe_npr_business,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_probe_npr_economy,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_common_crawl_probe_techcrunch_2016_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_ev_wp_bf_l2_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_ev_wp_bf_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_external_rss_l2_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_external_rss_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_external_wp_bf_l2_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_external_wp_bf_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_non_newswire_v2_backfill_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_non_newswire_v2_backfill_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_non_newswire_v2_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_non_newswire_v2_rss_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_non_newswire_v2_rss_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_wiki_bf_l2_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_wiki_bf_l2_smoke_v3,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_wiki_bf_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_wiki_bf_smoke_v3,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_wordpress_bf_l2_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_wordpress_bf_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_pm_wordpress_bf_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_backfill_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_backfill_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_capability_probe,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_capability_probe_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_cftc_backfill_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_cftc_backfill_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_cftc_backfill_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_l2_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_l2_smoke_v3,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_official_expansion_l2_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_official_expansion_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_official_expansion_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_smoke_v3,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_context_news_worldbank_backfill_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_headline_browser_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_industry_dive_news_backfill_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_industry_dive_news_backfill_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_industry_dive_news_backfill_smoke_v3,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_industry_dive_news_backfill_smoke_v4,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_industry_dive_news_backfill_smoke_v5,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_industry_dive_news_backfill_smoke_v6_all,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_backfill_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_cnbc_backfill_l2_smoke_v3,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_cnbc_backfill_l2_smoke_v4,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_cnbc_backfill_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_cnbc_backfill_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_cnbc_backfill_smoke_v3,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_cnbc_backfill_smoke_v4,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_expansion_l2_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_expansion_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_v0111_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_v0111_smoke_live,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_v0111_wp_bf_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_v0111_wp_bf_smoke2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_v3_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_v3_l2_smoke_all,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_v3_smoke_live,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_market_macro_news_wikimedia_backfill_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_backfill_context_refine_l2_smoke_v3,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_backfill_context_refine_smoke_v3,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_backfill_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_backfill_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_backfill_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_l2_smoke_v4,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_l2_smoke_v5,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_refine_l2_smoke_v6,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_refine_l2_smoke_v7,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_refine_l2_smoke_v8,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_refine_l2_smoke_v9,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_refine_smoke_v6,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_refine_smoke_v7,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_refine_smoke_v8,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_refine_smoke_v9,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_smoke_v4,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_smoke_v5,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_v015_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_context_v015_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_mapping_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_mapping_l2_smoke_v3,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_mapping_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_mapping_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_mapping_smoke_v3,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_mapping_v014_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_mapping_v014_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_mapping_v014_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_prn_paginated_l2_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_prn_paginated_smoke_v1,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_prn_paginated_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_smoke_v2,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_v016_prn_bf_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_v016_prn_bf_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_v017_gnw_bf_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_public_newswire_v017_gnw_bf_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_source_capability_probe,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_stocktitan_public_rss_v0110_l2_smoke,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/l0_stocktitan_public_rss_v0110_smoke_live,OBSOLETE_L0_ARTIFACT,smoke/probe/L2 smoke artifact superseded by canonical L0 outputs,deleted,TASK-4110
+data/artifacts/sec_live_retry_manual,OBSOLETE_L0_ARTIFACT,manual SEC retry scratch artifact,deleted,TASK-4110

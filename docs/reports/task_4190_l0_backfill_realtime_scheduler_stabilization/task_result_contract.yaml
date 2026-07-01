@@ -1,0 +1,114 @@
+task_id: TASK-4190
+task_type: HARNESS_BOOTSTRAP
+domain: L0_SOURCE_ACQUISITION
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN
+  missing_stale_incomplete_data_semantics: UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE
+scope:
+  changed_paths:
+  - ops/l0_operating_contract.yaml
+  - ops/task_profiles.yaml
+  - ops/context_bundles.yaml
+  - scripts/build_l0_operating_status_4190.py
+  - scripts/validate_l0_operating_contract_4190.py
+  - scripts/start_l0_public_newswire_backfill.ps1
+  - scripts/start_l0_public_newswire_collector.ps1
+  - scripts/start_l0_prioritized_backfills.ps1
+  - data/artifacts/l0_operating_status/**
+  - data/artifacts/task_4190_l0_backfill_realtime_scheduler_stabilization/**
+  - docs/generated_context/TASK-4190_context.md
+  - docs/generated_context/TASK-4190_manifest.csv
+  - docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  allowed_paths:
+  - ops/l0_operating_contract.yaml
+  - ops/task_profiles.yaml
+  - ops/context_bundles.yaml
+  - scripts/build_l0_operating_status_4190.py
+  - scripts/validate_l0_operating_contract_4190.py
+  - scripts/start_l0_public_newswire_backfill.ps1
+  - scripts/start_l0_public_newswire_collector.ps1
+  - scripts/start_l0_prioritized_backfills.ps1
+  - data/artifacts/l0_operating_status/**
+  - data/artifacts/task_4190_l0_backfill_realtime_scheduler_stabilization/**
+  - docs/generated_context/TASK-4190_context.md
+  - docs/generated_context/TASK-4190_manifest.csv
+  - docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  forbidden_paths:
+  - broker/**
+  - live_trading/**
+  - production_orders/**
+  - secrets/**
+  - configs/broker/**
+layer_outcome_validation:
+  layer: L0
+outcome_unit:
+  name: collector_config_gap_count
+  direction: change
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: true
+baseline:
+  value: 0
+  label: no durable L0 operating contract/status builder/context bundle/validator harness
+after:
+  value: 1
+  label: durable L0 operating contract/status builder/context bundle/validator harness installed
+intended_change:
+  summary: Install a durable L0 operating contract, status builder, context bundle, and validator so dead PID/stale scheduler/current-vs-legacy confusion cannot be treated as healthy.
+measurement_method:
+  commands:
+  - python scripts/build_l0_operating_status_4190.py --contract ops/l0_operating_contract.yaml
+  - python scripts/validate_l0_operating_contract_4190.py --mode harness --expect-blocked
+  - python scripts/validate_l0_operating_contract_4190.py --mode health
+allowed_actions:
+  - capture GPT Pro review
+  - define L0 operating SSOT
+  - generate current L0 status and context
+  - validate known L0 blockers explicitly
+  - mark legacy runtime entrypoints as non-current without deleting data
+forbidden_actions:
+  - broker mutation
+  - live order
+  - paper promotion
+  - real capital permission
+  - trading signal, ranking, sizing, or order logic
+  - missing data to negative evidence conversion
+  - deleting raw backfill data
+evidence_artifacts:
+  required:
+  - ops/l0_operating_contract.yaml
+  - data/artifacts/l0_operating_status/current_l0_status.json
+  - data/artifacts/l0_operating_status/current_l0_context.md
+  - data/artifacts/l0_operating_status/l0_operating_manifest.json
+  - docs/generated_context/TASK-4190_context.md
+  - docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/gpt_response.md
+  - docs/reports/task_4190_l0_backfill_realtime_scheduler_stabilization/report.md
+validators:
+  required:
+  - python scripts/validate_l0_operating_contract_4190.py --mode harness --expect-blocked
+progress_claim_policy:
+  actual_underlying_progress: false
+  missing_data_used_as_negative_evidence: false
+closeout_verdict:
+  selected: VALID_HARNESS_BOOTSTRAP
+report:
+  summary: TASK-4190 installs the L0 operating harness and records current L0 as BLOCKED rather than healthy.
+  actual_underlying_progress: false
+  progress_class: HARNESS_PROGRESS_ONLY
+  claims:
+  - L0 current status/context/manifest are generated from the operating contract.
+  - Known L0 blockers are detected by the harness validator.
+next_target:
+  required: true
+  task_type: L0_RUNTIME_REPAIR
+  outcome_unit: l0_public_newswire_backfill_and_realtime_scheduler_health
+  required_baseline: data/artifacts/l0_operating_status/current_l0_status.json
+  required_validator: python scripts/validate_l0_operating_contract_4190.py --mode health

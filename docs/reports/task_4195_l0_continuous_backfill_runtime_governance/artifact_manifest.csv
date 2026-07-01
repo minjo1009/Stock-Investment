@@ -1,0 +1,16 @@
+path,type,purpose,created_or_modified,task_id
+ops/l0_operating_contract.yaml,GOVERNANCE,current L0 runtime contract points at continuous 4195 guard,modified,TASK-4195
+scripts/run_task4193_l0_overnight_backfill_supervisor.py,SCRIPT,parameterized guard engine for TASK-4195 artifact paths,modified,TASK-4195
+scripts/run_task4195_l0_continuous_backfill_guard_once.ps1,SCRIPT,one-shot scheduled guard wrapper,created,TASK-4195
+scripts/install_task4195_l0_continuous_backfill_guard_scheduler.ps1,SCRIPT,install continuous backfill scheduler and disable superseded 4148,created,TASK-4195
+scripts/validate_task4195_l0_continuous_backfill_guard.py,VALIDATOR,validate continuous guard scheduler/runtime/superseded task state,created,TASK-4195
+scripts/build_l0_operating_status_4190.py,SCRIPT,read current backfill guard from contract,modified,TASK-4195
+data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/supervisor_status.json,RUNTIME_STATUS,current continuous guard status,created,TASK-4195
+data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/windows_task_scheduler_registration.json,RUNTIME_PROOF,continuous guard scheduler registration proof,created,TASK-4195
+data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/superseded_scheduler_disable_proof.json,RUNTIME_PROOF,superseded scheduler disable proof,created,TASK-4195
+docs/reports/task_4195_l0_continuous_backfill_runtime_governance/task_result_contract.yaml,CONTRACT,Prime outcome contract,created,TASK-4195
+docs/reports/task_4195_l0_continuous_backfill_runtime_governance/report.md,TASK_REPORT,Korean report,created,TASK-4195
+docs/reports/task_4195_l0_continuous_backfill_runtime_governance/artifact_manifest.csv,ARTIFACT_MANIFEST,Task artifact manifest,created,TASK-4195
+docs/reports/task_4195_l0_continuous_backfill_runtime_governance/validation_results.md,VALIDATION_REPORT,Validation results,created,TASK-4195
+ops/task_registry.yaml,REGISTRY,TASK-4195 task registration,modified,TASK-4195
+ops/doc_registry.yaml,REGISTRY,TASK-4195 document registration,modified,TASK-4195

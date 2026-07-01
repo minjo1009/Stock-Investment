@@ -28,10 +28,13 @@ def main() -> int:
     daily = status["daily_bars"]
     five = status["five_min_bars"]
     news = status["news"]
+    plan = status.get("management_plan", {})
+    next_stage = plan.get("next_stage", {}) if isinstance(plan, dict) else {}
     print(
         "[L0_COLLECTION_STATUS] "
         f"daily={daily.get('progress_pct')}% five_min={five.get('progress_pct')}% "
         f"news_processed={news.get('processed_events')} status_json={args.status_json} "
+        f"management_active_task={plan.get('active_task')} next_stage={next_stage.get('stage')} "
         "diagnostic_only=1 trade_authority_flag=0 broker_mutation_permitted_flag=0 real_capital_permitted_flag=0"
     )
     return 0

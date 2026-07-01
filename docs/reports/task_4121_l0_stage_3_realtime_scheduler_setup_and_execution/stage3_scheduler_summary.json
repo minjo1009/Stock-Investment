@@ -1,0 +1,21 @@
+{
+  "broker_mutation_permitted": 0,
+  "collection_apply_mode": "AUDIT_ONLY_NO_PROVIDER_EXECUTION",
+  "db_mutation_made": 0,
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "enabled_realtime_job_count": 3,
+  "execution_artifact_count": 6,
+  "expected_execution_artifact_count": 6,
+  "live_order_enabled": 0,
+  "network_calls_made": 0,
+  "next_stage": "historical_backfill_optimization",
+  "paper_promotion_permitted": 0,
+  "persistent_os_task_installed": 0,
+  "real_capital": "FORBIDDEN",
+  "registered_loop_enabled": 0,
+  "scheduler_returncode": 0,
+  "stage3_status": "REALTIME_SCHEDULER_PROOF_EXECUTED",
+  "strategy": "NOT_ACCEPTED",
+  "task_id": "TASK-4121",
+  "updated_at": "2026-06-29T07:45:04.116788Z"
+}

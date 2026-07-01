@@ -1,0 +1,2 @@
+task_id,gate,status,reason,strict_gate_opened,replay_permission_granted
+TASK-4119,stage1_to_stage2,BLOCKED_UNTIL_OPERATOR_ACCEPTS_SMOKE_RESULTS,"Network smoke evidence exists, but Stage 2 cadence optimization requires owner review of provider blockers and quota posture.",0,0

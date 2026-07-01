@@ -1,0 +1,6 @@
+task_id,priority_item,plain_language_effect,implemented,opened_trading_gate
+TASK-4130,public_page_fallback,RSS/API missing public page coverage is covered by static HTML probe/base fallback,1,0
+TASK-4130,failure_reason_recording,fetch and parse failures are classified into human-readable reasons,1,0
+TASK-4130,source_fallback_order,"source order is RSS/feed, sitemap, robots sitemap, static probe, static base, discovered follow",1,0
+TASK-4130,ticker_entity_candidate_hints,candidate hints exist but are not mapping authority,1,0
+TASK-4130,chrome_selector_drift_smoke,Chrome remains smoke-only for selector drift and public page diagnostics,1,0

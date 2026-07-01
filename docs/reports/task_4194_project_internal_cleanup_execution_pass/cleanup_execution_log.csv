@@ -1,0 +1,45 @@
+path,action,status,safety_check,task_id
+scripts/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+scripts/operational_recovery/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+scripts/ops/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/analytics/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/app/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/backtest/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/brain/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/brain/institutional_hardening/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/brain/l3/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/brain/l3/adapters/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/brain/l3_diagnostic_strategy_view_bootstrap/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/brain/l3_relation_graph_quality_guard_4154/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/brain/l3_relation_graph_v2_4152/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/brain/l4_thesis_bundle/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/data/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/execution/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/infra/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/integration/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/l2/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/l2/builders/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/l2/intake/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/l2/stores/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/l2/validators/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/portfolio/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/reporting/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/risk/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/sector/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/state/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/strategy/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/universe/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+src/validation/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+tests/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+tools/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+tools/db/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+tools/db/source_acquisition/__pycache__,delete_transient_cache,COMPLETED,resolved workspace path verified,TASK-4194
+docs/project_efficiency_audit-DESKTOP-2R00TB4.md,archive_conflict_doc,COMPLETED,canonical counterpart exists but hash differs so archived not deleted,TASK-4194
+docs/ownership/sublead_onboarding-DESKTOP-2R00TB4.md,archive_conflict_doc,COMPLETED,canonical counterpart exists but hash differs so archived not deleted,TASK-4194
+docs/ownership/module_ownership_map-DESKTOP-2R00TB4.md,archive_conflict_doc,COMPLETED,canonical counterpart exists but hash differs so archived not deleted,TASK-4194
+docs/ownership/current_operating_model-DESKTOP-2R00TB4.md,archive_conflict_doc,COMPLETED,canonical counterpart exists but hash differs so archived not deleted,TASK-4194
+docs/operating_system/work_closeout_protocol-DESKTOP-2R00TB4.md,archive_conflict_doc,COMPLETED,canonical counterpart exists but hash differs so archived not deleted,TASK-4194
+docs/obsidian/Vault Home-DESKTOP-2R00TB4.md,archive_conflict_doc,COMPLETED,canonical counterpart exists but hash differs so archived not deleted,TASK-4194
+docs/obsidian/mocs/Operating System Map-DESKTOP-2R00TB4.md,archive_conflict_doc,COMPLETED,canonical counterpart exists but hash differs so archived not deleted,TASK-4194
+docs/obsidian/mocs/Quant Research Map-DESKTOP-2R00TB4.md,archive_conflict_doc,COMPLETED,canonical counterpart exists but hash differs so archived not deleted,TASK-4194

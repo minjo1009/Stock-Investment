@@ -1,0 +1,2 @@
+task_id,gate,strict_gate_pass,proxy_feature_allowed,feature_builder_enabled,l2_handoff_allowed
+TASK-4121,stage3_scheduler_proof,0,0,0,0

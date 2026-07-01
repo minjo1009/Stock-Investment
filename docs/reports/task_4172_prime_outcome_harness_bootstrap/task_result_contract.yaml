@@ -1,0 +1,137 @@
+task_id: "TASK-4172"
+task_type: "HARNESS_BOOTSTRAP"
+domain: "prime_task_governance"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "docs/harness/**"
+    - "schemas/prime_task_result_contract.schema.json"
+    - "src/validation/prime_outcome_contract_validator.py"
+    - "tests/test_prime_outcome_contract_validator.py"
+    - "tests/fixtures/prime_contracts/**"
+    - "docs/reports/task_4172_prime_outcome_harness_bootstrap/**"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "docs/harness/prime_outcome_harness.md"
+    - "docs/harness/prime_task_template.yaml"
+    - "docs/harness/prime_closeout_report_format.md"
+    - "schemas/prime_task_result_contract.schema.json"
+    - "src/validation/prime_outcome_contract_validator.py"
+    - "tests/test_prime_outcome_contract_validator.py"
+    - "tests/fixtures/prime_contracts/valid_outcome_change.yaml"
+    - "tests/fixtures/prime_contracts/valid_diagnostic_only.yaml"
+    - "tests/fixtures/prime_contracts/valid_harness_bootstrap.yaml"
+    - "tests/fixtures/prime_contracts/invalid_report_only_closeout.yaml"
+    - "tests/fixtures/prime_contracts/invalid_missing_baseline_outcome_change.yaml"
+    - "tests/fixtures/prime_contracts/invalid_diagnostic_claims_progress.yaml"
+    - "tests/fixtures/prime_contracts/invalid_harness_claims_l0_l4_progress.yaml"
+    - "tests/fixtures/prime_contracts/invalid_safety_authority_claim.yaml"
+    - "tests/fixtures/prime_contracts/invalid_scope_violation.yaml"
+    - "tests/fixtures/prime_contracts/invalid_missing_data_as_negative_evidence.yaml"
+    - "docs/reports/task_4172_prime_outcome_harness_bootstrap/task_result_contract.yaml"
+    - "docs/reports/task_4172_prime_outcome_harness_bootstrap/report.md"
+    - "docs/reports/task_4172_prime_outcome_harness_bootstrap/artifact_manifest.csv"
+    - "docs/reports/task_4172_prime_outcome_harness_bootstrap/validation_results.md"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+outcome_unit:
+  name: "invalid_closeout_cases_blocked"
+  type: "harness_enforcement_count"
+  direction: "increase"
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: true
+baseline:
+  measured_at: "2026-07-01T00:00:00Z"
+  value: 0
+  source_artifacts:
+    - "docs/reports/task_4171_prime_outcome_harness_gpt_review/gpt_response.md"
+  freshness_required: true
+after:
+  measured_at: "2026-07-01T01:00:00Z"
+  value: 7
+  source_artifacts:
+    - "tests/test_prime_outcome_contract_validator.py"
+    - "tests/fixtures/prime_contracts"
+intended_change:
+  description: "Bootstrap Prime task_result_contract docs, schema, validator, and prevention fixtures."
+  target:
+    value: 7
+measurement_method:
+  commands:
+    - "python -m py_compile src/validation/prime_outcome_contract_validator.py"
+    - "python -m pytest tests/test_prime_outcome_contract_validator.py -q"
+    - "python -m src.validation.prime_outcome_contract_validator docs/reports/task_4172_prime_outcome_harness_bootstrap/task_result_contract.yaml"
+  comparison_rule: "harness_fixture_cases_pass_or_fail_as_expected"
+  same_method_before_after_required: false
+allowed_actions:
+  - "add Prime harness documentation"
+  - "add task result contract schema"
+  - "add validator and CLI"
+  - "add pass/fail fixtures and tests"
+  - "update task and doc registries"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "docs/harness/prime_outcome_harness.md"
+    - "schemas/prime_task_result_contract.schema.json"
+    - "src/validation/prime_outcome_contract_validator.py"
+    - "tests/test_prime_outcome_contract_validator.py"
+    - "tests/fixtures/prime_contracts/invalid_report_only_closeout.yaml"
+    - "tests/fixtures/prime_contracts/invalid_missing_baseline_outcome_change.yaml"
+    - "tests/fixtures/prime_contracts/invalid_diagnostic_claims_progress.yaml"
+    - "tests/fixtures/prime_contracts/invalid_harness_claims_l0_l4_progress.yaml"
+    - "tests/fixtures/prime_contracts/invalid_safety_authority_claim.yaml"
+    - "tests/fixtures/prime_contracts/invalid_scope_violation.yaml"
+    - "tests/fixtures/prime_contracts/invalid_missing_data_as_negative_evidence.yaml"
+validators:
+  required:
+    - "outcome_contract_validator"
+    - "pytest"
+    - "task_registry_validator"
+    - "doc_registry_validator"
+    - "required_artifacts_validator"
+    - "task_scope_validator"
+    - "codex_closeout_validator"
+progress_claim_policy:
+  progress_class: "HARNESS_PROGRESS_ONLY"
+  actual_underlying_progress: false
+  allowed_claims:
+    - "Prime harness validator blocks invalid closeout patterns in fixtures."
+  forbidden_claims:
+    - "L0-L4 underlying blockers were reduced."
+    - "Any trading strategy or deployment status changed."
+closeout_verdict:
+  selected: "VALID_HARNESS_BOOTSTRAP"
+report:
+  actual_underlying_progress: false
+  progress_class: "HARNESS_PROGRESS_ONLY"
+  summary: "Prime task_result_contract harness was bootstrapped; no L0-L4 underlying progress is claimed."
+  claims:
+    - "Seven invalid closeout fixture patterns are rejected by tests."
+    - "Three valid fixture patterns are accepted by tests."
+next_target:
+  required: true
+  task_type: "OUTCOME_CHANGE"
+  outcome_unit: "one repeated blocker family count"
+  required_baseline: "before count from its domain validator"
+  required_validator: "domain-specific evidence_delta_validator"

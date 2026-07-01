@@ -1,0 +1,8 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4171 task definition and closeout state,modified,TASK-4171
+ops/doc_registry.yaml,registry,TASK-4171 document registry entries,modified,TASK-4171
+docs/reports/task_4171_prime_outcome_harness_gpt_review/gpt_prompt.md,prompt,GPT review prompt for global prime outcome harness,created,TASK-4171
+docs/reports/task_4171_prime_outcome_harness_gpt_review/gpt_response.md,reference,Captured GPT response summary,created,TASK-4171
+docs/reports/task_4171_prime_outcome_harness_gpt_review/report.md,task_report,TASK-4171 prime harness review report,created,TASK-4171
+docs/reports/task_4171_prime_outcome_harness_gpt_review/artifact_manifest.csv,artifact_manifest,TASK-4171 artifact manifest,created,TASK-4171
+docs/reports/task_4171_prime_outcome_harness_gpt_review/validation_results.md,validation_report,TASK-4171 validation results,created,TASK-4171

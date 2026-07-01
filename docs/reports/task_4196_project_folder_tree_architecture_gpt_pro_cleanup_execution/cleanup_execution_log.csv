@@ -1,0 +1,7 @@
+path,action,files,dirs,bytes,git_tracked,reason,status,task_id
+apps/ios-trader-brain/node_modules,delete,35088,6106,447226837,no,generated dependency folder; reinstall from package metadata,deleted,TASK-4196
+apps/ios-trader-brain/dist,delete,26,10,1499466,no,generated build output,deleted,TASK-4196
+apps/ios-trader-brain/.expo,delete,2,9,370125,no,local Expo state cache,deleted,TASK-4196
+frontend/trader-terminal/node_modules,delete,8755,483,114867899,no,generated dependency folder; reinstall from package metadata,deleted,TASK-4196
+frontend/trader-terminal/dist,delete,11,2,121626387,no,generated build output,deleted,TASK-4196
+frontend/trader-terminal/public,preserve,6,1,121146959,partial_untracked_review_needed,public catalog surface retained pending frontend migration,preserved,TASK-4196

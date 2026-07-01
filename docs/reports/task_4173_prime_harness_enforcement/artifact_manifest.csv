@@ -1,0 +1,20 @@
+path,type,purpose,created_or_modified,task_id
+scripts/ops/create_task.py,SCRIPT,Auto-scaffold Prime task contract for new tasks,modified,TASK-4173
+scripts/ops/validate_codex_closeout.py,VALIDATOR,Require Prime task contract validation during closeout,modified,TASK-4173
+scripts/ops/validate_prime_task_contracts.py,VALIDATOR,Validate required Prime task contracts for enforced tasks,created,TASK-4173
+scripts/ops/validate_task_registry.py,VALIDATOR,Require Prime contract artifact and validator for enforced tasks,modified,TASK-4173
+src/validation/prime_outcome_contract_validator.py,VALIDATOR,Integrate layer outcome unit validation,modified,TASK-4173
+src/validation/prime_layer_outcome_unit_validator.py,VALIDATOR,Validate allowed L0-L4 outcome units,created,TASK-4173
+tests/test_prime_outcome_contract_validator.py,TEST,Prime contract and layer outcome tests,modified,TASK-4173
+tests/fixtures/prime_contracts/valid_l0_layer_outcome.yaml,FIXTURE,Valid L0 layer outcome fixture,created,TASK-4173
+tests/fixtures/prime_contracts/invalid_l3_layer_outcome.yaml,FIXTURE,Invalid L3 layer outcome fixture,created,TASK-4173
+docs/harness/prime_outcome_harness.md,DOC,Document mandatory enforcement and layer outcome units,modified,TASK-4173
+docs/harness/prime_task_template.yaml,TEMPLATE,Add Prime and layer validator fields,modified,TASK-4173
+docs/harness/prime_closeout_report_format.md,DOC,Repair and update closeout format,modified,TASK-4173
+schemas/prime_task_result_contract.schema.json,SCHEMA,Add optional layer outcome validation field,modified,TASK-4173
+docs/reports/task_4173_prime_harness_enforcement/task_result_contract.yaml,CONTRACT,TASK-4173 result contract,created,TASK-4173
+docs/reports/task_4173_prime_harness_enforcement/report.md,TASK_REPORT,TASK-4173 closeout report,created,TASK-4173
+docs/reports/task_4173_prime_harness_enforcement/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4173 artifact manifest,created,TASK-4173
+docs/reports/task_4173_prime_harness_enforcement/validation_results.md,VALIDATION_REPORT,TASK-4173 validation results,created,TASK-4173
+ops/task_registry.yaml,REGISTRY,Register TASK-4173 and Prime enforcement threshold,modified,TASK-4173
+ops/doc_registry.yaml,REGISTRY,Register TASK-4173 documents,modified,TASK-4173

@@ -1,0 +1,13 @@
+task_id,boundary,value,expected,pass
+TASK-4128,execution_permitted,0,0,1
+TASK-4128,broker_mutation_permitted,0,0,1
+TASK-4128,paper_promotion_permitted,0,0,1
+TASK-4128,real_capital_permitted,0,0,1
+TASK-4128,live_order_enabled,0,0,1
+TASK-4128,replay_permission_granted,0,0,1
+TASK-4128,buy_sell_signal_generation_permitted,0,0,1
+TASK-4128,strategy,NOT_ACCEPTED,NOT_ACCEPTED,1
+TASK-4128,deployment,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,1
+TASK-4128,real_capital,FORBIDDEN,FORBIDDEN,1
+TASK-4128,strict_gate_pass_rows,0,0,1
+TASK-4128,trade_feature_allowed_rows,0,0,1

@@ -1,0 +1,12 @@
+{
+  "budget_row_count": 3,
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "failure_count": 0,
+  "network_calls_made": 0,
+  "real_capital": "FORBIDDEN",
+  "scheduler_activation": 0,
+  "stage2_status": "REALTIME_BUDGET_OPTIMIZED",
+  "strategy": "NOT_ACCEPTED",
+  "task_id": "TASK-4120",
+  "updated_at": "2026-06-29T07:29:33.978638Z"
+}

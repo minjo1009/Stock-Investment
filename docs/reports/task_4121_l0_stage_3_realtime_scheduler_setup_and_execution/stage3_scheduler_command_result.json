@@ -1,0 +1,6 @@
+{
+  "command": "powershell -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\scripts\\run_db_source_acquisition_scheduler.ps1 -Config C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\docs\\reports\\task_4121_l0_stage_3_realtime_scheduler_setup_and_execution\\stage3_scheduler_proof_config.json -IntervalSeconds 1 -MaxRuns 2 -ForceDue -LogDir C:\\Users\\minjo\\OneDrive\\\ubc14\ud0d5 \ud654\uba74\\\uc678\uad6d\uc8fc\uc2dd \ud000\ud2b8\ud2b8\ub808\uc774\ub529\\docs\\reports\\task_4121_l0_stage_3_realtime_scheduler_setup_and_execution\\scheduler_logs",
+  "log_dir": "docs/reports/task_4121_l0_stage_3_realtime_scheduler_setup_and_execution/scheduler_logs",
+  "returncode": 0,
+  "stdout": ""
+}

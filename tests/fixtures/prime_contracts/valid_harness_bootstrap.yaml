@@ -1,0 +1,101 @@
+task_id: "TASK-4172"
+task_type: "HARNESS_BOOTSTRAP"
+domain: "prime_task_governance"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "docs/harness/**"
+    - "schemas/prime_task_result_contract.schema.json"
+    - "src/validation/prime_outcome_contract_validator.py"
+    - "tests/test_prime_outcome_contract_validator.py"
+    - "tests/fixtures/prime_contracts/**"
+    - "docs/reports/task_4172_prime_outcome_harness_bootstrap/**"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "docs/harness/prime_outcome_harness.md"
+    - "schemas/prime_task_result_contract.schema.json"
+    - "src/validation/prime_outcome_contract_validator.py"
+    - "tests/test_prime_outcome_contract_validator.py"
+    - "tests/fixtures/prime_contracts/valid_harness_bootstrap.yaml"
+outcome_unit:
+  name: "invalid_closeout_cases_blocked"
+  type: "harness_enforcement_count"
+  direction: "increase"
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: true
+baseline:
+  measured_at: "2026-07-01T00:00:00Z"
+  value: 0
+  source_artifacts:
+    - "docs/reports/task_4171_prime_outcome_harness_gpt_review/gpt_response.md"
+  freshness_required: true
+after:
+  measured_at: "2026-07-01T01:00:00Z"
+  value: 7
+  source_artifacts:
+    - "tests/test_prime_outcome_contract_validator.py"
+intended_change:
+  description: "Bootstrap a validator that blocks invalid task closeout patterns."
+  target:
+    value: 7
+measurement_method:
+  commands:
+    - "python -m pytest tests/test_prime_outcome_contract_validator.py -q"
+  comparison_rule: "harness_fixture_cases_pass_or_fail_as_expected"
+  same_method_before_after_required: false
+allowed_actions:
+  - "add harness docs"
+  - "add contract schema"
+  - "add validator"
+  - "add fixtures and tests"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "src/validation/prime_outcome_contract_validator.py"
+    - "tests/test_prime_outcome_contract_validator.py"
+    - "tests/fixtures/prime_contracts/invalid_report_only_closeout.yaml"
+validators:
+  required:
+    - "outcome_contract_validator"
+    - "pytest"
+progress_claim_policy:
+  progress_class: "HARNESS_PROGRESS_ONLY"
+  actual_underlying_progress: false
+  allowed_claims:
+    - "invalid closeout fixtures are blocked by the validator"
+  forbidden_claims:
+    - "L0-L4 blockers were reduced"
+closeout_verdict:
+  selected: "VALID_HARNESS_BOOTSTRAP"
+report:
+  actual_underlying_progress: false
+  progress_class: "HARNESS_PROGRESS_ONLY"
+  summary: "Harness enforcement was added; no L0-L4 underlying progress is claimed."
+  claims:
+    - "Invalid closeout fixtures are rejected."
+next_target:
+  required: true
+  task_type: "OUTCOME_CHANGE"
+  outcome_unit: "specific blocker family count"
+  required_baseline: "before count from a domain validator"
+  required_validator: "domain-specific evidence_delta_validator"

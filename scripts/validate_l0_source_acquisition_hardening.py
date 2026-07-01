@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import sys
 from pathlib import Path
 
@@ -26,13 +27,29 @@ def validate(root: Path = ROOT) -> list[str]:
 
 
 def main() -> int:
-    errors = validate()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--audit-path", type=Path, default=DEFAULT_AUDIT_PATH)
+    args = parser.parse_args()
+    errors = validate_with_audit_path(args.audit_path)
     if errors:
         for error in errors:
             print(f"[L0_SOURCE_ACQUISITION_HARDENING_ERROR] {error}")
         return 1
     print("[L0_SOURCE_ACQUISITION_HARDENING_OK]")
     return 0
+
+
+def validate_with_audit_path(audit_path: Path) -> list[str]:
+    errors: list[str] = []
+    errors.extend(validate_news(ROOT))
+    errors.extend(validate_microstructure(ROOT))
+    errors.extend(validate_news_ops("conservative"))
+    errors.extend(validate_news_ops("news_enabled_diagnostic"))
+    load_effective_scheduler_config(audit_path=ROOT / audit_path if not audit_path.is_absolute() else audit_path)
+    resolved_audit_path = ROOT / audit_path if not audit_path.is_absolute() else audit_path
+    if not resolved_audit_path.exists():
+        errors.append("effective scheduler config audit was not written")
+    return errors
 
 
 if __name__ == "__main__":

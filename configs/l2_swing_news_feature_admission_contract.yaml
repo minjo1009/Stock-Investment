@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "task_id": "TASK-4140",
+  "contract_name": "l2_swing_news_macro_newswire_feature_admission",
+  "strategy_timeframe": "swing_daily",
+  "average_holding_period": "about_1_month",
+  "diagnostic_only": true,
+  "trading_authority_opened": false,
+  "feature_materialization_allowed_now": false,
+  "paper_or_live_permission": false,
+  "core_policy": {
+    "minute_second_timestamp_required_for_swing": false,
+    "daily_publication_date_can_be_sufficient": true,
+    "missing_source_is_negative_allowed": false,
+    "future_outcome_assignment_allowed": false,
+    "default_activation_policy": "NEXT_TRADING_SESSION_OR_NEXT_DAILY_DECISION",
+    "primary_effect_window": "20D",
+    "secondary_effect_windows": ["1D", "5D", "60D"]
+  },
+  "families": {
+    "public_context_news_feeds": {
+      "swing_feature_candidate_now": true,
+      "blocked_by_intraday_timestamp": false,
+      "required_time_basis": "published_date_or_published_at_before_decision",
+      "mapping_scope_required": "ENTITY_OR_TICKER_OR_SECTOR",
+      "dedup_required": true,
+      "stale_policy_required": true,
+      "effect_window_required": true,
+      "plain_korean": "공식 문서/일반 뉴스는 스윙 feature 후보로 살린다. 분초보다 날짜, 매핑, 중복 제거, 효과기간이 중요하다."
+    },
+    "public_market_macro_news_feeds": {
+      "swing_feature_candidate_now": true,
+      "blocked_by_intraday_timestamp": false,
+      "required_time_basis": "macro_release_date_or_event_date_before_decision",
+      "mapping_scope_required": "MACRO_OR_SECTOR_OR_TICKER",
+      "dedup_required": true,
+      "stale_policy_required": true,
+      "effect_window_required": true,
+      "plain_korean": "매크로 뉴스는 스윙 feature 후보로 살린다. 종목이 없어도 macro scope와 효과기간이 있으면 후보가 된다."
+    },
+    "public_newswire_feeds": {
+      "swing_feature_candidate_now": true,
+      "blocked_by_intraday_timestamp": false,
+      "required_time_basis": "published_date_or_published_at_before_decision",
+      "mapping_scope_required": "HIGH_CONFIDENCE_TICKER_OR_ENTITY",
+      "dedup_required": true,
+      "stale_policy_required": true,
+      "effect_window_required": true,
+      "plain_korean": "뉴스와이어는 스윙 feature 후보로 살린다. 핵심은 티커/엔티티 매핑과 이벤트 중복 제거다."
+    }
+  },
+  "non_goals": [
+    "no_intraday_alpha_claim",
+    "no_feature_table_write_yet",
+    "no_order_signal",
+    "no_paper_or_live_permission",
+    "no_broker_mutation"
+  ]
+}

@@ -1,0 +1,75 @@
+version: 1
+updated_at: "2026-06-29"
+
+rules:
+  L4_THESIS_BUNDLE:
+    must_include:
+      required_principles:
+        - thesis_specificity
+        - evidence_linkage
+        - source_traceability
+        - contradiction_handling
+        - blocked_context_mixed_rate_visibility
+      forbidden_intents:
+        - final_policy_action
+        - broker_mutation
+        - live_order
+        - paper_promotion
+      required_checks:
+        - thesis_quality_review
+        - evidence_coverage
+        - source_access
+        - institutional_quality_score
+    hard_boundaries:
+      strategy_status: NOT_ACCEPTED
+      deployment_status: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+      real_capital: FORBIDDEN
+      live_order: FORBIDDEN
+
+  L5_POLICY_ACTION:
+    must_include:
+      required_principles:
+        - review_only_boundary
+        - sizing_intent_separation
+        - order_intent_separation
+        - hold_reduce_exit_rerisk_support
+      forbidden_intents:
+        - broker_mutation
+        - live_order
+        - auto_approval
+        - real_capital
+      required_checks:
+        - policy_action_schema
+        - no_broker_mutation
+        - no_live_order
+    hard_boundaries:
+      strategy_status: NOT_ACCEPTED
+      deployment_status: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+      real_capital: FORBIDDEN
+      broker_mutation: FORBIDDEN
+      live_order: FORBIDDEN
+
+  UI_STORYBOOK_VISION:
+    must_include:
+      required_principles:
+        - component_first
+        - storybook_before_p0_screens
+        - screenshot_qa_required
+        - ui_is_pure_rendering
+        - no_business_logic_in_ui
+        - no_chart_first_screens
+      forbidden_intents:
+        - ia_redesign_without_approval
+        - one_off_component
+        - promotion_calculation_in_ui
+        - risk_calculation_in_ui
+        - order_mutation
+      required_checks:
+        - typecheck
+        - lint
+        - storybook_story_exists
+        - screenshot_exists
+        - vision_review_report
+    hard_boundaries:
+      live_order: FORBIDDEN
+      broker_mutation: FORBIDDEN

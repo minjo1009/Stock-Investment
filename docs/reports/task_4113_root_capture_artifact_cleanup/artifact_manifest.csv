@@ -1,0 +1,30 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,register TASK-4113 scope and closeout,modified,TASK-4113
+ops/doc_registry.yaml,REGISTRY,register TASK-4113 docs,modified,TASK-4113
+ops/dashboard/index.html,DASHBOARD,refresh dashboard with TASK-4113 status,modified,TASK-4113
+ops/dashboard/dashboard_summary.json,DASHBOARD,refresh dashboard summary with TASK-4113 status,modified,TASK-4113
+docs/reports/task_4113_root_capture_artifact_cleanup/report.md,TASK_ARTIFACT,task report,created,TASK-4113
+docs/reports/task_4113_root_capture_artifact_cleanup/artifact_manifest.csv,TASK_ARTIFACT,artifact manifest,created,TASK-4113
+docs/reports/task_4113_root_capture_artifact_cleanup/validation_results.md,TASK_ARTIFACT,validation report,created,TASK-4113
+docs/reports/task_4113_root_capture_artifact_cleanup/deleted_root_capture_artifacts.csv,AUDIT_ARTIFACT,deleted root capture artifact manifest,created,TASK-4113
+data/artifacts/home_tab_capture_task3918_backtest_chart.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/home_tab_capture_task3918_backtest_chart_after.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/home_tab_capture_task3918_backtest_chart_after_fit.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3910.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3910_after.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3910_readable_rows.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3910_viewport.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3911_fitted_table.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3911_restored_table.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3912_chart_1d_latest.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3912_chart_3d_earlier.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3912_chart_5d_latest.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3912_chart_default.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3913_chart_3d_slider.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3913_chart_5d_guides.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3913_chart_point_select.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3913_chart_point_select_center.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3913_chart_selected_default.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3914_chart_after_3d.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3914_chart_after_fit.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113
+data/artifacts/portfolio_tab_capture_task3914_chart_before.png,OBSOLETE_CAPTURE_ARTIFACT,unreferenced root-level capture PNG outside task report folder,deleted,TASK-4113

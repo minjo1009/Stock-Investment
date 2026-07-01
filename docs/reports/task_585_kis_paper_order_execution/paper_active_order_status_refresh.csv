@@ -1,0 +1,2 @@
+﻿refresh_ts_utc,order_id,symbol,previous_status,refreshed_status,raw_status,filled_qty,filled_avg_price,broker_truth_fill_flag,post_order_position_qty,position_delta_qty,position_fill_inference_status,error,age_minutes,fill_confirmation_source,position_baseline_available_flag,position_fill_fallback_eligible_flag
+2026-06-03T16:12:37.707780Z,0000038425,MSFT,UNKNOWN,UNKNOWN,ORDER_NOT_FOUND,0.0,,0,,,POSITION_CHECK_SKIPPED_UNKNOWN_ORDER,,57532.7193869,,0,0

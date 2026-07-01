@@ -1,0 +1,19 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,TASK-4127 task scope and closeout tracking,modified,TASK-4127
+ops/doc_registry.yaml,REGISTRY,TASK-4127 docs and artifacts registered,modified,TASK-4127
+configs/db_source_acquisition_scheduler.json,CONFIG,Stage 6 L2 context handoff decision recorded,modified,TASK-4127
+docs/active/ACTIVE_SSOT_INDEX.md,SSOT,TASK-4127 report registered as active evidence,modified,TASK-4127
+docs/active/CURRENT_TASKS.md,SSOT,TASK-4127 closeout recorded,modified,TASK-4127
+docs/active/PROJECT_STATUS.md,SSOT,L2 context handoff status recorded,modified,TASK-4127
+docs/architecture/l0_source_acquisition_project_management_plan.md,GOVERNANCE,Stage 6 context-only handoff decision added,modified,TASK-4127
+scripts/audit_l0_stage6_source_time_feature_admission_l2_handoff.py,SCRIPT,Source-time feature admission and L2 context handoff runner,created,TASK-4127
+scripts/validate_l0_stage6_source_time_feature_admission_l2_handoff.py,VALIDATOR,TASK-4127 validator,created,TASK-4127
+docs/reports/task_4127_l0_stage_6_source_time_feature_admission_l2_context_handoff/report.md,TASK_REPORT,TASK-4127 report,created,TASK-4127
+docs/reports/task_4127_l0_stage_6_source_time_feature_admission_l2_context_handoff/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4127 artifact manifest,created,TASK-4127
+docs/reports/task_4127_l0_stage_6_source_time_feature_admission_l2_context_handoff/validation_results.md,VALIDATION_REPORT,TASK-4127 validation report,created,TASK-4127
+docs/reports/task_4127_l0_stage_6_source_time_feature_admission_l2_context_handoff/stage6_source_time_feature_admission_l2_handoff_summary.json,REFERENCE,TASK-4127 summary,created,TASK-4127
+docs/reports/task_4127_l0_stage_6_source_time_feature_admission_l2_context_handoff/task_4127_source_family_admission.csv,REFERENCE,Source-family admission aggregate,created,TASK-4127
+docs/reports/task_4127_l0_stage_6_source_time_feature_admission_l2_context_handoff/task_4127_blocked_source_rows.csv,REFERENCE,Blocked source row aggregate,created,TASK-4127
+docs/reports/task_4127_l0_stage_6_source_time_feature_admission_l2_context_handoff/task_4127_feature_admission_gate.csv,REFERENCE,Feature admission gate decision,created,TASK-4127
+docs/reports/task_4127_l0_stage_6_source_time_feature_admission_l2_context_handoff/task_4127_l2_context_handoff_manifest.csv,REFERENCE,L2 context-only handoff manifest,created,TASK-4127
+docs/reports/task_4127_l0_stage_6_source_time_feature_admission_l2_context_handoff/task_4127_l2_handoff_decision.csv,REFERENCE,L2 handoff decision,created,TASK-4127

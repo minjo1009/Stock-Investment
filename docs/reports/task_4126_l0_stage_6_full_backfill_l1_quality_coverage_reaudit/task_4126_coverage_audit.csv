@@ -1,0 +1,6 @@
+task_id,stage5_task_id,source_key,total_units,completed_units,pending_units,coverage_complete,coverage_status,full_2016_to_present_run_completed
+TASK-4126,TASK-4125,cftc_press_releases,11,11,0,1,PASS,1
+TASK-4126,TASK-4125,federal_register_documents,126,126,0,1,PASS,1
+TASK-4126,TASK-4125,federal_reserve_press_all,11,11,0,1,PASS,1
+TASK-4126,TASK-4125,guardian_open_platform,126,126,0,1,PASS,1
+TASK-4126,TASK-4125,wikimedia_current_events,126,126,0,1,PASS,1

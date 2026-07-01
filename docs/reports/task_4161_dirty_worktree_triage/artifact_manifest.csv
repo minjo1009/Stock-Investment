@@ -1,0 +1,16 @@
+path,type,purpose,created_or_modified,task_id
+.gitignore,CONFIG,Ignore local Codex state and runtime diagnostics,modified,TASK-4161
+ops/task_registry.yaml,REGISTRY,Task registry update,modified,TASK-4161
+ops/doc_registry.yaml,REGISTRY,Document registry update,modified,TASK-4161
+scripts/reconcile_dirty_worktree_4161.py,CODE,Dirty worktree triage inventory builder,created,TASK-4161
+scripts/validate_dirty_worktree_4161.py,VALIDATOR,Dirty worktree triage validator,created,TASK-4161
+data/artifacts/task_4161_dirty_worktree_triage/dirty_worktree_inventory.csv,ARTIFACT,Full dirty file inventory,created,TASK-4161
+data/artifacts/task_4161_dirty_worktree_triage/dirty_worktree_p0_queue.csv,ARTIFACT,P0 dirty file review queue,created,TASK-4161
+data/artifacts/task_4161_dirty_worktree_triage/dirty_worktree_review_required.csv,ARTIFACT,Owner review required dirty files,created,TASK-4161
+data/artifacts/task_4161_dirty_worktree_triage/dirty_worktree_keep_register.csv,ARTIFACT,Files to preserve and register or pair with tasks,created,TASK-4161
+data/artifacts/task_4161_dirty_worktree_triage/dirty_worktree_local_ignore_candidates.csv,ARTIFACT,Local ignore candidates,created,TASK-4161
+data/artifacts/task_4161_dirty_worktree_triage/dirty_worktree_summary.csv,ARTIFACT,Dirty worktree summary table,created,TASK-4161
+docs/reports/task_4161_dirty_worktree_triage/dirty_worktree_summary.json,ARTIFACT,Dirty worktree summary JSON,created,TASK-4161
+docs/reports/task_4161_dirty_worktree_triage/report.md,TASK_REPORT,Dirty worktree triage report,created,TASK-4161
+docs/reports/task_4161_dirty_worktree_triage/artifact_manifest.csv,ARTIFACT_MANIFEST,Task artifact manifest,created,TASK-4161
+docs/reports/task_4161_dirty_worktree_triage/validation_results.md,VALIDATION_REPORT,Validation results,created,TASK-4161

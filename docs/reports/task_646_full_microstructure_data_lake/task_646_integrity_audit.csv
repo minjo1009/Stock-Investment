@@ -1,0 +1,4 @@
+check_name,pass_flag,bad_rows,observed_value,required_value
+raw_partition_catalog_nonempty,1,0,18 partitions,"at least one partition for smoke, broad coverage for Task646D"
+catalog_read_errors_zero,1,0,errors=0,0 catalog read errors
+positive_row_partitions,1,0,empty_partitions=0,all existing partitions should contain rows unless explicitly marked empty in download audit

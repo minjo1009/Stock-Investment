@@ -1,0 +1,81 @@
+﻿task_id: TASK-4187
+task_type: DIAGNOSTIC_ONLY
+domain: GOV_PROMPT_MAINTENANCE
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN
+  missing_stale_incomplete_data_semantics: UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE
+scope:
+  changed_paths:
+    - prompts/task-create.md
+    - prompts/phase-create.md
+    - docs/reports/task_4187_gov_prompt_maintenance_task_phase_title_taxonomy/**
+    - ops/task_registry.yaml
+    - ops/doc_registry.yaml
+  allowed_paths:
+    - prompts/task-create.md
+    - prompts/phase-create.md
+    - docs/reports/task_4187_gov_prompt_maintenance_task_phase_title_taxonomy/**
+    - ops/task_registry.yaml
+    - ops/doc_registry.yaml
+  forbidden_paths:
+    - broker/**
+    - live_trading/**
+    - production_orders/**
+    - secrets/**
+    - configs/broker/**
+outcome_unit:
+  name: prompt_structure_contract
+  direction: change
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: false
+intended_change:
+  summary: Make task and phase creation prompts require layer-aware and work-type-aware titles.
+measurement_method:
+  commands:
+    - python scripts/ops/validate_prime_task_contracts.py --task TASK-4187
+    - python scripts/ops/validate_required_artifacts.py --task TASK-4187
+allowed_actions:
+  - update prompt documentation
+  - update task and document registries
+  - write task-scoped report and manifest
+forbidden_actions:
+  - broker mutation
+  - paper promotion
+  - live order
+  - strategy acceptance
+  - source data modification
+evidence_artifacts:
+  required:
+    - prompts/task-create.md
+    - prompts/phase-create.md
+    - docs/reports/task_4187_gov_prompt_maintenance_task_phase_title_taxonomy/report.md
+validators:
+  required:
+    - python scripts/ops/validate_prime_task_contracts.py --task TASK-4187
+    - python scripts/ops/validate_required_artifacts.py --task TASK-4187
+progress_claim_policy:
+  actual_underlying_progress: false
+  missing_data_used_as_negative_evidence: false
+  closeout_claims:
+    - Prompt maintenance only.
+closeout_verdict:
+  selected: VALID_DIAGNOSTIC_ONLY
+  reason: Prompt documentation was revised without changing trading behavior.
+report:
+  path: docs/reports/task_4187_gov_prompt_maintenance_task_phase_title_taxonomy/report.md
+  summary: Task and phase creation prompts now require layer, work type, and specific work metadata in titles and templates.
+  claims:
+    - Prompt format guidance changed for future task and phase creation.
+  actual_underlying_progress: false
+next_target:
+  required: true
+  task_type: DIAGNOSTIC_ONLY
+  outcome_unit: prompt_structure_contract
+  required_baseline: prompts/task-create.md
+  required_validator: validate_required_artifacts.py
+

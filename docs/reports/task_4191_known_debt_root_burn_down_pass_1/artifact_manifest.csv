@@ -1,0 +1,11 @@
+path,type,purpose,created_or_modified,task_id
+ops/project_hygiene_policy.yaml,GOVERNANCE_POLICY,reclassifies config/frontend/tasks out of known_debt,modified,TASK-4191
+ops/project_structure_policy.yaml,GOVERNANCE_POLICY,reclassifies config/frontend/tasks as sensitive or legacy-active migration surfaces,modified,TASK-4191
+scripts/ops/validate_project_structure_policy.py,VALIDATOR,counts legacy_active_migration_required as classified root surface,modified,TASK-4191
+ops/task_registry.yaml,REGISTRY,TASK-4191 task registration and closeout metadata,modified,TASK-4191
+ops/doc_registry.yaml,REGISTRY,TASK-4191 document registration,modified,TASK-4191
+docs/reports/task_4191_known_debt_root_burn_down_pass_1/task_result_contract.yaml,CONTRACT,prime task result contract,modified,TASK-4191
+docs/reports/task_4191_known_debt_root_burn_down_pass_1/report.md,TASK_REPORT,closeout report,modified,TASK-4191
+docs/reports/task_4191_known_debt_root_burn_down_pass_1/artifact_manifest.csv,ARTIFACT_MANIFEST,task artifact manifest,modified,TASK-4191
+docs/reports/task_4191_known_debt_root_burn_down_pass_1/validation_results.md,VALIDATION_REPORT,validator results,modified,TASK-4191
+docs/reports/task_4191_known_debt_root_burn_down_pass_1/root_debt_decision_matrix.csv,REFERENCE,root known-debt decision matrix,created,TASK-4191

@@ -1,0 +1,3 @@
+﻿iteration,started_at_utc,finished_at_utc,exception,task583_status,fresh_rows,paper_order_candidate_rows,task584_status,runtime_decision_id,symbol,reason_code,task585_status,order_status,orders_submitted,broker_truth_fill_count,active_broker_truth_fill_count,confirmed_broker_truth_fill_total,task587_status,catalog_returncode,catalog_stdout_tail,catalog_stderr_tail
+1,2026-06-03T16:11:24.721057Z,2026-06-03T16:12:38.543415Z,,LIVE_SIGNAL_REFRESH_REPAIRED,70,0,NO_TRADE,decision-230e2ceb3bb24200,AMD,STRATEGY_FILTER_NOT_MET,ORDER_SKIPPED,SKIPPED,0,0,0,3,SKIPPED_NO_FILLED_TRADE,0,"[PAPER_OPS_RUNTIME_CATALOG_OK]
+",

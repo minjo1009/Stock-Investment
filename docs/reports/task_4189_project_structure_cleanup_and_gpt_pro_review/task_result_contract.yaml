@@ -1,0 +1,111 @@
+task_id: "TASK-4189"
+task_type: "HARNESS_BOOTSTRAP"
+domain: "OPS_GOVERNANCE"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/**"
+    - "docs/generated_context/TASK-4189_context.md"
+    - "docs/generated_context/TASK-4189_manifest.csv"
+    - "ops/project_hygiene_policy.yaml"
+    - "ops/project_structure_policy.yaml"
+    - "ops/context_bundles.yaml"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+    - "scripts/ops/run_task4189_project_structure_cleanup.py"
+    - "scripts/ops/validate_task4189_project_structure_cleanup.py"
+    - "scripts/ops/validate_project_hygiene.py"
+    - "scripts/ops/validate_project_structure_policy.py"
+    - "scripts/ops/validate_codex_closeout.py"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/task_result_contract.yaml"
+    - "docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/report.md"
+    - "docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/artifact_manifest.csv"
+    - "docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/validation_results.md"
+outcome_unit:
+  name: "project_structure_cleanup_governance"
+  type: "governance_harness"
+  direction: "increase"
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: true
+intended_change:
+  description: "Install durable project structure policy, validate docs/root surface classification, execute safe transient cleanup, and request GPT Pro architecture review."
+  target:
+    value: 1
+baseline:
+  value: 0
+  description: "Project structure policy validator was not installed and .pytest_cache was still present as root known debt."
+after:
+  value: 1
+  description: "Project structure policy validator is installed and .pytest_cache transient cache was deleted."
+measurement_method:
+  commands:
+    - "python scripts/ops/validate_project_structure_policy.py"
+    - "python scripts/ops/validate_task4189_project_structure_cleanup.py"
+    - "python scripts/ops/validate_prime_task_contracts.py --task TASK-4189"
+  comparison_rule: "structure policy validator must pass and automated cleanup must be limited to .pytest_cache"
+  same_method_before_after_required: false
+allowed_actions:
+  - "edit ops governance policy"
+  - "edit ops validators"
+  - "delete transient pytest cache after resolved path safety check"
+  - "write task-scoped audit artifacts"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/task_result_contract.yaml"
+    - "ops/project_structure_policy.yaml"
+    - "scripts/ops/validate_project_structure_policy.py"
+    - "docs/reports/task_4189_project_structure_cleanup_and_gpt_pro_review/cleanup_execution_log.csv"
+validators:
+  required:
+    - "project_structure_policy_validator"
+    - "task4189_cleanup_validator"
+    - "prime_task_contract_validator"
+    - "outcome_contract_validator"
+progress_claim_policy:
+  progress_class: "HARNESS_PROGRESS_ONLY"
+  actual_underlying_progress: false
+  allowed_claims:
+    - "Project structure policy exists and validates."
+    - "One transient cache directory was deleted."
+    - "GPT Pro prompt was sent and partial response captured while response remained pending."
+  forbidden_claims:
+    - "All project clutter is removed."
+    - "DB files are safe to move."
+    - "Strategy, deployment, broker, paper, live, or real-capital status improved."
+closeout_verdict:
+  selected: "VALID_HARNESS_BOOTSTRAP"
+report:
+  actual_underlying_progress: false
+  progress_class: "HARNESS_PROGRESS_ONLY"
+  summary: "TASK-4189 adds durable structure policy, validators, cleanup inventories, and deletes only .pytest_cache. GPT Pro consult was sent but remained pending at closeout."
+  claims:
+    - "Project structure policy validator installed."
+    - "Docs surfaces classified."
+    - "Root known debt reduced by one transient cache."
+next_target:
+  required: true
+  task_type: "ROOT_DEBT_BURN_DOWN"
+  outcome_unit: "remaining_known_debt_root_entries"
+  required_baseline: "5 known debt root entries after TASK-4189"
+  required_validator: "python scripts/ops/validate_project_hygiene.py --strict-known-debt"

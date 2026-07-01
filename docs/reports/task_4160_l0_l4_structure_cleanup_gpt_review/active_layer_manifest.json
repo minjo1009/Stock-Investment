@@ -1,0 +1,158 @@
+{
+  "schema_version": "active_l0_l4_layer_manifest.v1",
+  "task_id": "TASK-4160",
+  "generated_at": "2026-07-01",
+  "hard_state": {
+    "strategy": "NOT_ACCEPTED",
+    "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "real_capital": "FORBIDDEN",
+    "broker_mutation": "FORBIDDEN",
+    "live_order": "FORBIDDEN",
+    "paper_promotion": "FORBIDDEN",
+    "missing_stale_incomplete_data": "UNKNOWN_BLOCKER_NEVER_NEGATIVE"
+  },
+  "read_order": [
+    "AGENTS.md",
+    "ops/task_registry.yaml",
+    "ops/doc_registry.yaml",
+    "docs/reports/task_4160_l0_l4_structure_cleanup_gpt_review/active_layer_handoff.md",
+    "docs/reports/task_4160_l0_l4_structure_cleanup_gpt_review/active_layer_manifest.json"
+  ],
+  "layers": {
+    "L0": {
+      "owner_scope": "collectors, backfill, scheduler proof, raw integrity, runtime status",
+      "must_not_own": ["feature_scoring", "thesis", "ranking", "order_intent"],
+      "active_entrypoints": [
+        "scripts/run_l0_public_newswire_sharded_backfill.py",
+        "scripts/aggregate_l0_public_newswire_shards.py",
+        "scripts/validate_l0_public_newswire_sharded_backfill.py",
+        "scripts/control_l0_public_newswire_acceleration.ps1",
+        "scripts/run_l0_public_newswire_sharded_progress_monitor.ps1",
+        "tools/db/source_acquisition/public_newswire_shards.py",
+        "tools/db/source_acquisition/public_newswire_collector.py"
+      ],
+      "active_validators": [
+        "scripts/validate_l0_public_newswire_sharded_backfill.py"
+      ],
+      "active_reports": [
+        "docs/reports/task_4157_l0_public_newswire_sharded_backfill/",
+        "docs/reports/task_4158_l0_public_newswire_scheduler_repair/",
+        "docs/reports/task_4159_l0_public_newswire_controlled_acceleration/"
+      ]
+    },
+    "L1": {
+      "owner_scope": "source packets, raw lineage, source time, available-to-brain time, ticker/entity mapping status, blocker status",
+      "must_not_own": ["event_scoring", "alpha", "ranking", "trading_signal"],
+      "active_entrypoints": [
+        "scripts/build_l1_source_packet_bootstrap.py",
+        "scripts/run_l1_data_present_hardening.py",
+        "scripts/run_l1_practical_hardening_4138.py",
+        "scripts/run_l1_l2_compatibility_4144.py",
+        "tools/db/source_acquisition/l1_bootstrap.py"
+      ],
+      "active_validators": [
+        "scripts/validate_l1_source_packet_bootstrap.py",
+        "scripts/validate_l1_data_present_hardening.py",
+        "scripts/validate_l1_practical_hardening_4138.py",
+        "scripts/validate_l1_l2_compatibility_4144.py"
+      ],
+      "active_reports": [
+        "docs/reports/task_4137_l1_1to6_gpt_pro_review/",
+        "docs/reports/task_4138_l1_practical_hardening/",
+        "docs/reports/task_4144_l1_l2_compatibility_bridge/"
+      ]
+    },
+    "L2": {
+      "owner_scope": "event primitive admission views, diagnostic feature candidates, dedup, stale and effect-window metadata, L3 readable handoff",
+      "must_not_own": ["final_signal", "order", "sizing", "paper_live_eligibility"],
+      "active_entrypoints": [
+        "scripts/run_l2_intake_feature_admission.py",
+        "scripts/run_l2_swing_news_feature_admission_4140.py",
+        "scripts/run_l2_swing_event_admission_4142.py",
+        "scripts/run_l2_completion_4143.py",
+        "scripts/run_l0_l2_wide_handoff_4146.py",
+        "scripts/run_l0_l2_hardening_4147.py",
+        "scripts/ingest_l0_news_to_l2.py"
+      ],
+      "active_validators": [
+        "scripts/validate_l2_intake_feature_admission.py",
+        "scripts/validate_l2_swing_news_feature_admission_4140.py",
+        "scripts/validate_l2_swing_event_admission_4142.py",
+        "scripts/validate_l2_completion_4143.py",
+        "scripts/validate_l0_l2_wide_handoff_4146.py",
+        "scripts/validate_l0_l2_hardening_4147.py"
+      ],
+      "active_reports": [
+        "docs/reports/task_4141_l2_gpt_pro_design_review/",
+        "docs/reports/task_4142_l2_swing_event_admission/",
+        "docs/reports/task_4143_l2_completion_gpt_review_and_read_contract/",
+        "docs/reports/task_4146_l0_l2_wide_packetization_handoff/",
+        "docs/reports/task_4147_l0_l2_hardening_gpt_review_and_implementation/"
+      ],
+      "active_configs": [
+        "configs/l0_realtime_operational_safe_config_4147.json"
+      ]
+    },
+    "L3": {
+      "owner_scope": "relation graphs, event clusters, relation quality, coverage gaps, diagnostic strategy view",
+      "must_not_own": ["final_thesis_acceptance", "graph_count_as_quality", "trading_decision"],
+      "active_entrypoints": [
+        "scripts/build_l3_diagnostic_strategy_view_4150.py",
+        "scripts/build_l3_relation_graph_v2_4152.py",
+        "scripts/build_l3_relation_graph_quality_guard_4154.py"
+      ],
+      "active_validators": [
+        "scripts/validate_l3_diagnostic_strategy_view_4150.py",
+        "scripts/validate_l3_relation_graph_v2_4152.py",
+        "scripts/validate_l3_relation_graph_quality_guard_4154.py"
+      ],
+      "active_reports": [
+        "docs/reports/task_4150_l3_diagnostic_strategy_view_bootstrap/",
+        "docs/reports/task_4153_l3_relation_graph_v2_gpt_review/",
+        "docs/reports/task_4154_l3_relation_graph_v2_quality_guard/"
+      ]
+    },
+    "L4": {
+      "owner_scope": "diagnostic thesis bundles, evidence links, lineage checks, blocker and contradiction visibility, review status",
+      "must_not_own": ["buy_sell_hold", "ranking", "sizing", "order", "broker", "paper_live", "deployment_readiness"],
+      "active_entrypoints": [
+        "scripts/build_l4_thesis_bundles.py"
+      ],
+      "active_validators": [
+        "scripts/validate_l4_thesis_bundle_package.py"
+      ],
+      "active_reports": [
+        "docs/reports/task_4155_l4_goal_definition_gpt_review/",
+        "docs/reports/task_4156_l4_thesis_bundle_bootstrap/"
+      ]
+    }
+  },
+  "forbidden_outputs": [
+    "buy_sell_hold",
+    "ranking",
+    "sizing",
+    "order_intent",
+    "broker_mutation",
+    "paper_promotion",
+    "live_order",
+    "deployment_readiness",
+    "strategy_acceptance"
+  ],
+  "do_not_edit_now": [
+    "running L0 backfill state files",
+    "running L0 launcher/controller/monitor process metadata except through TASK-4159 runtime controls",
+    "legacy deleted L2/L3 scripts",
+    "unrelated dirty worktree files",
+    "broker/**",
+    "live_trading/**",
+    "production_orders/**",
+    "secrets/**",
+    "configs/broker/**"
+  ],
+  "local_resolution_required": [],
+  "notes": [
+    "This manifest is an active index, not a code refactor.",
+    "Only existing local file paths verified during TASK-4160 are listed.",
+    "If a future task changes an active layer entrypoint, update this manifest and ops/doc_registry.yaml."
+  ]
+}

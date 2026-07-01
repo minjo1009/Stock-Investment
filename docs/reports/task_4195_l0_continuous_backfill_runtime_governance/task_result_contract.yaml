@@ -1,0 +1,105 @@
+task_id: TASK-4195
+task_type: OUTCOME_CHANGE
+domain: L0_SOURCE_ACQUISITION
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN
+  missing_stale_incomplete_data_semantics: UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE
+scope:
+  changed_paths:
+  - ops/l0_operating_contract.yaml
+  - scripts/run_task4193_l0_overnight_backfill_supervisor.py
+  - scripts/run_task4195_l0_continuous_backfill_guard_once.ps1
+  - scripts/install_task4195_l0_continuous_backfill_guard_scheduler.ps1
+  - scripts/validate_task4195_l0_continuous_backfill_guard.py
+  - scripts/build_l0_operating_status_4190.py
+  - data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/**
+  - docs/reports/task_4195_l0_continuous_backfill_runtime_governance/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  allowed_paths:
+  - ops/l0_operating_contract.yaml
+  - scripts/run_task4193_l0_overnight_backfill_supervisor.py
+  - scripts/run_task4195_l0_continuous_backfill_guard_once.ps1
+  - scripts/install_task4195_l0_continuous_backfill_guard_scheduler.ps1
+  - scripts/validate_task4195_l0_continuous_backfill_guard.py
+  - scripts/build_l0_operating_status_4190.py
+  - data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/**
+  - docs/reports/task_4195_l0_continuous_backfill_runtime_governance/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  forbidden_paths:
+  - broker/**
+  - live_trading/**
+  - production_orders/**
+  - secrets/**
+  - configs/broker/**
+layer_outcome_validation:
+  layer: L0
+outcome_unit:
+  name: collector_config_gap_count
+  direction: decrease
+  problem_progress_claim_allowed: true
+intended_change:
+  summary: Replace temporary and legacy backfill recovery loops with one continuous L0 backfill guard while preserving realtime refresh.
+measurement_method:
+  commands:
+  - powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install_task4195_l0_continuous_backfill_guard_scheduler.ps1 -Apply -StartNow -DisableSuperseded4148
+  - python scripts/validate_task4195_l0_continuous_backfill_guard.py
+  - python scripts/build_l0_operating_status_4190.py --contract ops/l0_operating_contract.yaml
+baseline:
+  value: 5
+  gaps:
+  - TASK-4193 temporary 12-hour loop was not durable
+  - ops/l0_operating_contract.yaml pointed at TASK-4148 recovery
+  - TraderBrainL0BackfillWorkerRecovery4148 overlapped with the new guard
+  - Task3893OfficialBackfillAutoLoop was still enabled but not current L0 truth
+  - Task3899 official backfill worker/report loops were still enabled but not current L0 truth
+after:
+  value: 0
+  continuous_guard_scheduler: TraderBrainL0ContinuousBackfillGuard4195
+  realtime_scheduler: TraderBrainL0L2Hardening4147
+  superseded_schedulers_disabled: 4
+allowed_actions:
+  - register diagnostic-only Windows Task Scheduler guard
+  - disable superseded scheduler tasks
+  - update L0 operating contract and status builder
+  - write runtime status, registration proof, and scheduler disable proof
+forbidden_actions:
+  - broker mutation
+  - live order
+  - paper promotion
+  - real-capital enablement
+  - deleting raw source data
+  - treating missing data as negative evidence
+evidence_artifacts:
+  required:
+  - data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/supervisor_status.json
+  - data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/windows_task_scheduler_registration.json
+  - data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/superseded_scheduler_disable_proof.json
+  - docs/reports/task_4195_l0_continuous_backfill_runtime_governance/report.md
+validators:
+  required:
+  - python scripts/validate_task4195_l0_continuous_backfill_guard.py
+progress_claim_policy:
+  actual_underlying_progress: true
+  missing_data_used_as_negative_evidence: false
+closeout_verdict:
+  selected: ACTUAL_PROGRESS_WITH_RESIDUAL_BLOCKERS
+report:
+  summary: L0 now has one continuous backfill guard plus one realtime refresh scheduler; old overlapping scheduler tasks are disabled.
+  actual_underlying_progress: true
+  claims:
+  - Continuous backfill guard is scheduled every 5 minutes.
+  - Realtime L0/L1/L2 refresh remains scheduled every 15 minutes.
+  - Superseded 4148 and historical 3893/3899 loops are disabled.
+next_target:
+  required: true
+  task_type: OUTCOME_CHANGE
+  outcome_unit: incomplete_backfill_units
+  required_baseline: current_l0_status.json after continuous guard runs
+  required_validator: python scripts/validate_task4195_l0_continuous_backfill_guard.py

@@ -1,0 +1,35 @@
+path,type,purpose,created_or_modified,task_id
+AGENTS.md,GOVERNANCE,repo-level Codex operating instructions,modified,TASK-4100
+ops/README.md,GOVERNANCE,ops governance directory overview,created,TASK-4100
+ops/operating_state.yaml,OPERATING_STATE,durable project safety and governance state,created,TASK-4100
+ops/task_registry.yaml,REGISTRY,central task lifecycle registry,created,TASK-4100
+ops/doc_registry.yaml,REGISTRY,central document lifecycle registry,created,TASK-4100
+ops/task_profiles.yaml,GOVERNANCE,task profile rules and forbidden intents,created,TASK-4100
+ops/context_bundles.yaml,GOVERNANCE,context bundle configuration,created,TASK-4100
+ops/dashboard/index.html,DASHBOARD,read-only static mission-control dashboard,created,TASK-4100
+.codex/skills/docs-governance/SKILL.md,CODEX_SKILL,document governance workflow,created,TASK-4100
+.codex/skills/context-bundle-builder/SKILL.md,CODEX_SKILL,context bundle workflow,created,TASK-4100
+.codex/skills/task-closeout/SKILL.md,CODEX_SKILL,task closeout workflow,created,TASK-4100
+.codex/skills/l0-l1-data-pipeline/SKILL.md,CODEX_SKILL,L0-L1 profile workflow,created,TASK-4100
+.codex/skills/l2-interpretation/SKILL.md,CODEX_SKILL,L2 profile workflow,created,TASK-4100
+.codex/skills/l3-relationship/SKILL.md,CODEX_SKILL,L3 profile workflow,created,TASK-4100
+.codex/skills/l4-thesis-bundle/SKILL.md,CODEX_SKILL,L4 profile workflow,created,TASK-4100
+.codex/skills/l5-policy-action/SKILL.md,CODEX_SKILL,L5 profile workflow,created,TASK-4100
+.codex/skills/l6-execution-safety/SKILL.md,CODEX_SKILL,L6 profile workflow,created,TASK-4100
+.codex/skills/ui-storybook-vision/SKILL.md,CODEX_SKILL,UI Storybook and vision QA workflow,created,TASK-4100
+scripts/ops/ops_common.py,SCRIPT,shared ops script helpers,created,TASK-4100
+scripts/ops/create_task.py,SCRIPT,create registry entry and starter task artifacts,created,TASK-4100
+scripts/ops/build_context_bundle.py,SCRIPT,build deterministic task context bundles,created,TASK-4100
+scripts/ops/validate_task_registry.py,SCRIPT,validate task registry schema and references,created,TASK-4100
+scripts/ops/validate_doc_registry.py,SCRIPT,validate document registry schema and lifecycle rules,created,TASK-4100
+scripts/ops/validate_context_bundle.py,SCRIPT,validate generated context bundle artifacts,created,TASK-4100
+scripts/ops/validate_task_scope.py,SCRIPT,validate task touched files against allowed and forbidden paths,created,TASK-4100
+scripts/ops/validate_required_artifacts.py,SCRIPT,validate required task artifacts and manifest,created,TASK-4100
+scripts/ops/validate_codex_closeout.py,SCRIPT,run closeout validation chain,created,TASK-4100
+scripts/ops/render_ops_dashboard.py,SCRIPT,render read-only static ops dashboard,created,TASK-4100
+docs/generated_context/README.md,GENERATED_CONTEXT,generated context directory instructions,created,TASK-4100
+docs/generated_context/TASK-4100_context.md,GENERATED_CONTEXT,generated TASK-4100 context bundle,created,TASK-4100
+docs/generated_context/TASK-4100_manifest.csv,GENERATED_CONTEXT,generated TASK-4100 context manifest,created,TASK-4100
+docs/reports/task_4100_codex_governance_bootstrap/report.md,TASK_REPORT,TASK-4100 implementation report,created,TASK-4100
+docs/reports/task_4100_codex_governance_bootstrap/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4100 artifact manifest,created,TASK-4100
+docs/reports/task_4100_codex_governance_bootstrap/validation_results.md,VALIDATION_REPORT,TASK-4100 validation command results,created,TASK-4100

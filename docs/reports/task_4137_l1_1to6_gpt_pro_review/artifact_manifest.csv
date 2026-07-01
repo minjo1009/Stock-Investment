@@ -1,0 +1,14 @@
+path,type,purpose,created_or_modified,task_id
+docs/reports/task_4137_l1_1to6_gpt_pro_review/report.md,TASK_REPORT,TASK-4137 report,created,TASK-4137
+docs/reports/task_4137_l1_1to6_gpt_pro_review/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4137 artifact manifest,created,TASK-4137
+docs/reports/task_4137_l1_1to6_gpt_pro_review/validation_results.md,VALIDATION_REPORT,TASK-4137 validation results,created,TASK-4137
+docs/reports/task_4137_l1_1to6_gpt_pro_review/gpt_prompt.md,REFERENCE,GPT Pro prompt,created,TASK-4137
+docs/reports/task_4137_l1_1to6_gpt_pro_review/gpt_response.md,REFERENCE,GPT Pro response capture,created,TASK-4137
+docs/reports/task_4137_l1_1to6_gpt_pro_review/gpt_consult_ledger.csv,REFERENCE,GPT consult ledger,created,TASK-4137
+docs/reports/task_4137_l1_1to6_gpt_pro_review/validator_report.json,VALIDATION_REPORT,TASK-4137 machine-readable validator result,created,TASK-4137
+scripts/validate_task_4137_l1_1to6_gpt_review.py,VALIDATOR,TASK-4137 validator,created,TASK-4137
+ops/task_registry.yaml,REGISTRY,Task registry update,modified,TASK-4137
+ops/doc_registry.yaml,REGISTRY,Doc registry update,modified,TASK-4137
+docs/active/ACTIVE_SSOT_INDEX.md,DOCS,Active SSOT index update,modified,TASK-4137
+docs/active/CURRENT_TASKS.md,DOCS,Current tasks update,modified,TASK-4137
+docs/active/PROJECT_STATUS.md,DOCS,Project status update,modified,TASK-4137

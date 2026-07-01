@@ -1,0 +1,9 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,register TASK-4108 cleanup task,modified,TASK-4108
+ops/doc_registry.yaml,REGISTRY,register TASK-4108 report docs,modified,TASK-4108
+scripts/ops/scan_historical_task_reports.py,SCRIPT,inventory and delete unreferenced old task report directories,created,TASK-4108
+docs/reports/task_4108_historical_task_report_cleanup/report.md,TASK_REPORT,TASK-4108 report,created,TASK-4108
+docs/reports/task_4108_historical_task_report_cleanup/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4108 artifact manifest,created,TASK-4108
+docs/reports/task_4108_historical_task_report_cleanup/validation_results.md,VALIDATION_REPORT,TASK-4108 validation results,created,TASK-4108
+docs/reports/task_4108_historical_task_report_cleanup/historical_task_report_inventory.csv,AUDIT,historical task report inventory,created,TASK-4108
+docs/reports/task_4108_historical_task_report_cleanup/deleted_historical_task_reports.csv,AUDIT,deleted historical task report manifest,created,TASK-4108

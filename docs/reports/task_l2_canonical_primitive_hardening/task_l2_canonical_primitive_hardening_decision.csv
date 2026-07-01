@@ -1,2 +1,0 @@
-task_id,decision_status,strategy_acceptance,deployment_readiness,real_capital,diagnostic_only_flag,trade_output_flag,score_output_flag,order_intent_flag,next_gate
-TaskL2CanonicalPrimitiveHardening,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,1,0,0,0,Wire L1 source receipt and freshness evidence into live diagnostic L2 batches

@@ -1,0 +1,22 @@
+{
+  "task_id": "TASK-4154",
+  "mode": "DIAGNOSTIC_ONLY_QUALITY_GUARD",
+  "inputs": {
+    "source_artifact_dir": "data/artifacts/task_4152_l3_relation_graph_v2",
+    "gpt_review_report": "docs/reports/task_4153_l3_relation_graph_v2_gpt_review/report.md"
+  },
+  "outputs": {
+    "artifact_dir": "data/artifacts/task_4154_l3_relation_graph_v2_quality_guard"
+  },
+  "authority": {
+    "strategy": "NOT_ACCEPTED",
+    "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+    "real_capital": "FORBIDDEN",
+    "broker_mutation_allowed": false,
+    "live_order_allowed": false,
+    "paper_promotion_allowed": false,
+    "signal_export_allowed": false,
+    "trading_eligible": false
+  }
+}
+

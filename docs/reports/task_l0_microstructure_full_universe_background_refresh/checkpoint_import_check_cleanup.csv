@@ -1,2 +1,0 @@
-cleanup_ts_utc,removed_rows,reason,checkpoint_path
-2026-06-27T16:59:42.380885Z,141,removed test-only import_check checkpoint rows whose raw files were deleted before final background restart,data\artifacts\microstructure\microstructure_backfill_checkpoint.jsonl

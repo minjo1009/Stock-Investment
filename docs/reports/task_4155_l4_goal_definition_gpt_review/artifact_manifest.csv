@@ -1,0 +1,12 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4155 task registration and closeout,modified,TASK-4155
+ops/doc_registry.yaml,registry,TASK-4155 document registration,modified,TASK-4155
+scripts/validate_task_4155_l4_goal_definition_gpt_review.py,validator,Validate TASK-4155 GPT capture and report artifacts,created,TASK-4155
+docs/reports/task_4155_l4_goal_definition_gpt_review/context_packet.md,context_packet,L0-L4 current local state packet sent to GPT,created,TASK-4155
+docs/reports/task_4155_l4_goal_definition_gpt_review/gpt_prompt.md,gpt_prompt,Prompt used for GPT Pro L4 goal and development review,created,TASK-4155
+docs/reports/task_4155_l4_goal_definition_gpt_review/gpt_response.md,gpt_response,Captured GPT Pro response,created,TASK-4155
+docs/reports/task_4155_l4_goal_definition_gpt_review/gpt_capture_meta.json,capture_meta,Chrome GPT capture metadata,created,TASK-4155
+docs/reports/task_4155_l4_goal_definition_gpt_review/gpt_review_digest_ko.md,review_digest,Korean digest of GPT Pro L4 review,created,TASK-4155
+docs/reports/task_4155_l4_goal_definition_gpt_review/report.md,task_report,TASK-4155 closeout report,created,TASK-4155
+docs/reports/task_4155_l4_goal_definition_gpt_review/artifact_manifest.csv,artifact_manifest,TASK-4155 artifact manifest,created,TASK-4155
+docs/reports/task_4155_l4_goal_definition_gpt_review/validation_results.md,validation_report,TASK-4155 validation results,created,TASK-4155

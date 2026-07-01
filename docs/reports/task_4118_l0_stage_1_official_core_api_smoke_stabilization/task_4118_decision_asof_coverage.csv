@@ -1,0 +1,2 @@
+task_id,coverage_name,decision,reason
+TASK-4118,stage1_preflight,NETWORK_SMOKE_PENDING,Preflight validates config and L1 contracts; no API calls made by default

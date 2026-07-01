@@ -1,0 +1,56 @@
+{
+  "alert_count": 0,
+  "broker_mutation_permitted_flag": 0,
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "diagnostic_only_flag": 1,
+  "five_min_checkpoint": {
+    "broker_mutation_permitted_flag": 0,
+    "completed_units": 22246,
+    "diagnostic_only_flag": 1,
+    "five_min_block_index": 26,
+    "five_min_blocks_per_symbol": 32,
+    "five_min_rows_written": 18855399,
+    "five_min_symbol_index": 695,
+    "lane": "five_min",
+    "market_bars_5m": {
+      "db_path": "trading.db",
+      "distinct_symbols": 756,
+      "exists": true,
+      "max_bar_end_ts": "2026-06-26T20:04:59Z",
+      "min_bar_start_ts": "2020-05-26T13:30:00Z",
+      "row_count": 18820160,
+      "table_exists": true
+    },
+    "progress_pct": 5.761,
+    "real_capital_permitted_flag": 0,
+    "remaining_request_units": 363084,
+    "task_id": "TASK-4132",
+    "total_units": 385280,
+    "trade_authority_flag": 0
+  },
+  "lane_count": 5,
+  "p0_alert_count": 0,
+  "raw_audit": {
+    "available_to_brain_ts_present_rows": 0,
+    "future_assignment_flag_rows": 0,
+    "raw_hash_present_rows": 30,
+    "raw_path_missing_rows": 0,
+    "sample_rows": 50,
+    "source_ts_present_rows": 0
+  },
+  "real_capital": "FORBIDDEN",
+  "real_capital_permitted_flag": 0,
+  "seven_steps": {
+    "actionable_alert_summary": "IMPLEMENTED",
+    "backfill_completion_and_stall_monitoring": "IMPLEMENTED",
+    "five_min_checkpoint_visibility": "IMPLEMENTED",
+    "long_run_stability_visibility": "IMPLEMENTED",
+    "raw_cache_source_time_audit": "IMPLEMENTED_BOUNDED_SAMPLE",
+    "restart_supervisor": "IMPLEMENTED_STOPPED_INCOMPLETE_ONLY",
+    "source_failure_summary": "IMPLEMENTED"
+  },
+  "strategy": "NOT_ACCEPTED",
+  "supervisor_recommendation_count": 0,
+  "task_id": "TASK-4132",
+  "trade_authority_flag": 0
+}

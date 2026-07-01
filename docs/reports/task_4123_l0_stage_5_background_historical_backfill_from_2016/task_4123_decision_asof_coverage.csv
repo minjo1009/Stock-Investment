@@ -1,0 +1,2 @@
+task_id,coverage_scope,rows_with_certified_source_time,coverage_status
+TASK-4123,stage5_bounded_backfill,0,PENDING_STAGE6_SOURCE_TIME_AND_MAPPING_AUDIT

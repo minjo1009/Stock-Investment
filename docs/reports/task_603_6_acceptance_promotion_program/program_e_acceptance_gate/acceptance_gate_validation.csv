@@ -1,0 +1,5 @@
+check_id,metric,value,threshold,status,blocker
+BROKER_TRUTH_SELL_FILLS,broker_truth_sell_fills,0,> 0,FAIL,broker_truth_sell_fills <= 0
+ENTRY_RISK_SNAPSHOT_COVERAGE,snapshot_coverage,MISSING,> 0.95,FAIL,snapshot_coverage <= 95%
+POSITION_REPLAY_MATCH_RATE,position_match_rate,0.958333,> 0.99,FAIL,position_match_rate <= 99%
+CONCENTRATION_TOP3_SHARE,top3_share,0.75,< 0.80,PASS,

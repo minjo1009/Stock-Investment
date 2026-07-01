@@ -1,0 +1,12 @@
+path,type,purpose,created_or_modified,task_id
+scripts/run_task4175_l1_newswire_recall_mapping_feature_gap_repair.py,SCRIPT,Build L1 mapping decision ledger and frequency table,created,TASK-4175
+scripts/validate_task4175_l1_newswire_recall_mapping_feature_gap_repair.py,VALIDATOR,Validate L1 mapping decision ledger,created,TASK-4175
+data/artifacts/task_4175_l1_newswire_recall_mapping_feature_gap_repair/task_4175_l1_mapping_decision_ledger.csv,DATA_ARTIFACT,L1 deterministic decision ledger,created,TASK-4175
+data/artifacts/task_4175_l1_newswire_recall_mapping_feature_gap_repair/task_4175_l1_candidate_frequency.csv,DATA_ARTIFACT,L1 candidate frequency table for alias/parser follow-up,created,TASK-4175
+data/artifacts/task_4175_l1_newswire_recall_mapping_feature_gap_repair/task_4175_l1_mapping_summary.json,DATA_ARTIFACT,L1 mapping summary and safety counters,created,TASK-4175
+docs/reports/task_4175_l1_newswire_recall_mapping_and_feature_gap_repair/task_result_contract.yaml,CONTRACT,Prime outcome contract,created,TASK-4175
+docs/reports/task_4175_l1_newswire_recall_mapping_and_feature_gap_repair/report.md,TASK_REPORT,Closeout report,modified,TASK-4175
+docs/reports/task_4175_l1_newswire_recall_mapping_and_feature_gap_repair/artifact_manifest.csv,ARTIFACT_MANIFEST,Artifact manifest,modified,TASK-4175
+docs/reports/task_4175_l1_newswire_recall_mapping_and_feature_gap_repair/validation_results.md,VALIDATION_REPORT,Validation command results,modified,TASK-4175
+ops/task_registry.yaml,REGISTRY,Task registry entry and closeout,modified,TASK-4175
+ops/doc_registry.yaml,REGISTRY,Doc registry entries,modified,TASK-4175

@@ -1,0 +1,43 @@
+{
+  "task_id": "TASK-4139",
+  "generated_at": "2026-06-30T00:34:48Z",
+  "total_dirty_rows": 645,
+  "p0_review_rows": 207,
+  "bucket_counts": {
+    "CURRENT_DOC_OR_TASK_REPORT": 74,
+    "DELETED_UNCLASSIFIED": 48,
+    "DVC_POINTER_DELETED": 39,
+    "FRONTEND_OR_CATALOG_CHANGED": 3,
+    "GOVERNANCE_OR_ACTIVE_DOC": 5,
+    "HISTORICAL_REPORT_DELETED": 108,
+    "L0_SOURCE_CODE_CHANGED": 65,
+    "L0_SOURCE_CONFIG_CHANGED": 7,
+    "L2_L3_CODE_OR_REPORT_DELETED": 76,
+    "MODIFIED_UNCLASSIFIED": 18,
+    "RECENT_L1_TASK_OUTPUT": 4,
+    "RUNTIME_OR_TRADING_ADJACENT_CHANGED": 10,
+    "TASK_4139_OUTPUT": 1,
+    "TEST_FILE_CHANGED": 29,
+    "UNTRACKED_FILE": 158
+  },
+  "action_counts": {
+    "CLASSIFY_REGISTER_OR_IGNORE": 158,
+    "CONFIRM_ARCHIVE_OR_RESTORE": 108,
+    "KEEP_AND_RECONCILE_REGISTRY": 79,
+    "KEEP_AND_RECONCILE_WITH_L0_REPORTS": 72,
+    "KEEP_AND_REGISTER": 1,
+    "KEEP_AND_REGISTER_OR_COMMIT_TOGETHER": 4,
+    "KEEP_OR_REGISTER_IF_ACTIVE": 3,
+    "OWNER_REVIEW_BEFORE_COMMIT": 28,
+    "OWNER_REVIEW_BEFORE_DELETE_OR_RESTORE": 124,
+    "PAIR_WITH_RELATED_CODE_OR_RESTORE": 29,
+    "RESTORE_OR_CONFIRM_DVC_RETIREMENT": 39
+  },
+  "priority_counts": {
+    "P0": 207,
+    "P1": 259,
+    "P2": 179
+  },
+  "files_deleted_or_restored_by_this_task": 0,
+  "automatic_cleanup_performed": false
+}

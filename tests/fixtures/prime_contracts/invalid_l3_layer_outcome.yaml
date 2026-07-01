@@ -1,0 +1,79 @@
+task_id: "TASK-9202"
+task_type: "OUTCOME_CHANGE"
+domain: "layer_3_relation_graph"
+layer_outcome_validation:
+  layer: "L3"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "src/l3/**"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "src/l3/relation_graph.py"
+outcome_unit:
+  name: "random_relation_metric"
+  type: "count"
+  direction: "decrease"
+  problem_progress_claim_allowed: true
+  harness_progress_claim_allowed: false
+baseline:
+  measured_at: "2026-07-01T00:00:00Z"
+  value: 5
+after:
+  measured_at: "2026-07-01T01:00:00Z"
+  value: 1
+intended_change:
+  description: "Use unsupported relation metric."
+  target:
+    value: 1
+measurement_method:
+  commands:
+    - "python scripts/l3/count_metric.py"
+  comparison_rule: "same_method_before_after"
+  same_method_before_after_required: true
+allowed_actions:
+  - "edit L3 graph"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "artifacts/l3_before.json"
+    - "artifacts/l3_after.json"
+validators:
+  required:
+    - "prime_layer_outcome_unit_validator"
+    - "outcome_contract_validator"
+progress_claim_policy:
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  actual_underlying_progress: true
+closeout_verdict:
+  selected: "ACTUAL_PROGRESS"
+report:
+  actual_underlying_progress: true
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  summary: "random_relation_metric decreased from 5 to 1."
+  claims:
+    - "random_relation_metric decreased from 5 to 1."
+next_target:
+  required: true
+  task_type: "OUTCOME_CHANGE"
+  outcome_unit: "unsupported_relation_count"
+  required_baseline: "current count"
+  required_validator: "prime_layer_outcome_unit_validator"

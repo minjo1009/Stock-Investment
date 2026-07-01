@@ -1,0 +1,7 @@
+task_id,source_family,year,raw_file_count,rows,known_day_rows,old_midnight_rows,derived_source_ts_policy,derived_source_time_certified_for_l2_context,strict_gate_pass_rows,trade_feature_allowed_rows,usable_for_historical_backtest_rows,policy_note
+TASK-4129,wikimedia_current_events,2016,62,4626,4626,4626,YYYY_MM_DD_DAY_HEADING_TO_12_00_00Z,4626,0,0,0,"date-only Wikimedia rows may be used as macro context at noon UTC, not as trading features"
+TASK-4129,wikimedia_current_events,2017,,3464,3464,3464,YYYY_MM_DD_DAY_HEADING_TO_12_00_00Z,3464,0,0,0,"date-only Wikimedia rows may be used as macro context at noon UTC, not as trading features"
+TASK-4129,wikimedia_current_events,2018,,4309,4309,4309,YYYY_MM_DD_DAY_HEADING_TO_12_00_00Z,4309,0,0,0,"date-only Wikimedia rows may be used as macro context at noon UTC, not as trading features"
+TASK-4129,wikimedia_current_events,2019,,3570,3570,3570,YYYY_MM_DD_DAY_HEADING_TO_12_00_00Z,3570,0,0,0,"date-only Wikimedia rows may be used as macro context at noon UTC, not as trading features"
+TASK-4129,wikimedia_current_events,2020,,3485,3485,3485,YYYY_MM_DD_DAY_HEADING_TO_12_00_00Z,3485,0,0,0,"date-only Wikimedia rows may be used as macro context at noon UTC, not as trading features"
+TASK-4129,wikimedia_current_events,2021,,38,38,38,YYYY_MM_DD_DAY_HEADING_TO_12_00_00Z,38,0,0,0,"date-only Wikimedia rows may be used as macro context at noon UTC, not as trading features"

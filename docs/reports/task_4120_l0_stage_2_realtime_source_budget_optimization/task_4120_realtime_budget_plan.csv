@@ -1,0 +1,4 @@
+task_id,source_family,job_name,interval_minutes,requests_per_day_budget,provider_daily_cap,target_utilization,budget_status,reason,actual_utilization
+TASK-4120,official_public_releases,official_news_sources_15m,15,96,,bounded_official_refresh,PASS,Official RSS/API endpoints have no project-specific daily cap; cadence remains bounded at 15m and disabled by default.,
+TASK-4120,gdelt_news_events,gdelt_news_discovery_15m,15,96,,one_symbol_15m_cooldown,PASS,GDELT remains one bounded symbol request per 15m with 15m cooldown.,
+TASK-4120,marketaux_news_free,marketaux_news_free_30m,16,90,95,0.90_to_0.95,PASS,"16m cadence yields 90 requests/day against a 95/day guard, near cap without crossing it.",0.9474

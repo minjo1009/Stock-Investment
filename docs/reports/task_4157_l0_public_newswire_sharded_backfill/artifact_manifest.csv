@@ -1,0 +1,20 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,Task registry update,modified,TASK-4157
+ops/doc_registry.yaml,REGISTRY,Document registry update,modified,TASK-4157
+docs/reports/task_4157_l0_public_newswire_sharded_backfill/report.md,TASK_REPORT,Closeout report for L0 public newswire sharded backfill,created,TASK-4157
+docs/reports/task_4157_l0_public_newswire_sharded_backfill/artifact_manifest.csv,ARTIFACT_MANIFEST,Task artifact manifest,created,TASK-4157
+docs/reports/task_4157_l0_public_newswire_sharded_backfill/validation_results.md,VALIDATION_REPORT,Validator and test results,created,TASK-4157
+docs/reports/task_4157_l0_public_newswire_sharded_backfill/gpt_review_digest_ko.md,REFERENCE,Korean GPT Pro review digest,created,TASK-4157
+tools/db/source_acquisition/public_newswire_collector.py,CODE,Collector CLI and PRNewswire archive scope support,modified,TASK-4157
+tools/db/source_acquisition/public_newswire_shards.py,CODE,Shard inventory and shard state builder,created,TASK-4157
+tools/db/source_acquisition/news_background_collector.py,CODE,Atomic progress write hardening,modified,TASK-4157
+scripts/run_l0_public_newswire_sharded_backfill.py,CODE,Parallel sharded backfill launcher,created,TASK-4157
+scripts/aggregate_l0_public_newswire_shards.py,CODE,Shard progress aggregator,created,TASK-4157
+scripts/validate_l0_public_newswire_sharded_backfill.py,CODE,Shard validator,created,TASK-4157
+scripts/run_l0_public_newswire_sharded_progress_monitor.ps1,CODE,Hourly progress and validation monitor,created,TASK-4157
+tests/test_l0_public_newswire_sharded_backfill.py,TEST,Unit tests for shard inventory and legacy state seeding,created,TASK-4157
+data/artifacts/l0_public_newswire_backfill_shards/background_process.json,RUNTIME_ARTIFACT,Background collector process metadata,created,TASK-4157
+data/artifacts/l0_public_newswire_backfill_shards/shard_inventory.json,RUNTIME_ARTIFACT,Shard inventory and legacy completion snapshot,created,TASK-4157
+data/artifacts/l0_public_newswire_backfill_shards/aggregate_progress.json,RUNTIME_ARTIFACT,Aggregated public newswire progress,created,TASK-4157
+data/artifacts/task_4157_l0_public_newswire_sharded_backfill/progress_monitor_process.json,RUNTIME_ARTIFACT,Progress monitor process metadata,created,TASK-4157
+data/artifacts/task_4157_l0_public_newswire_sharded_backfill/progress_monitor_status.json,RUNTIME_ARTIFACT,Latest progress monitor status,created,TASK-4157

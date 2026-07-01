@@ -1,0 +1,21 @@
+path,type,purpose,created_or_modified,task_id
+docs/harness/prime_outcome_harness.md,DOC,Prime outcome harness rules,modified,TASK-4172
+docs/harness/prime_task_template.yaml,TEMPLATE,Reusable task result contract template,modified,TASK-4172
+docs/harness/prime_closeout_report_format.md,DOC,Closeout report format guidance,modified,TASK-4172
+schemas/prime_task_result_contract.schema.json,SCHEMA,Prime task result contract schema,modified,TASK-4172
+src/validation/prime_outcome_contract_validator.py,VALIDATOR,Prime outcome contract validator and CLI,created,TASK-4172
+tests/test_prime_outcome_contract_validator.py,TEST,Validator prevention tests,created,TASK-4172
+tests/fixtures/prime_contracts/valid_outcome_change.yaml,FIXTURE,Valid outcome-change fixture,created,TASK-4172
+tests/fixtures/prime_contracts/valid_diagnostic_only.yaml,FIXTURE,Valid diagnostic-only fixture,created,TASK-4172
+tests/fixtures/prime_contracts/valid_harness_bootstrap.yaml,FIXTURE,Valid harness-bootstrap fixture,created,TASK-4172
+tests/fixtures/prime_contracts/invalid_report_only_closeout.yaml,FIXTURE,Invalid report-only closeout fixture,created,TASK-4172
+tests/fixtures/prime_contracts/invalid_missing_baseline_outcome_change.yaml,FIXTURE,Invalid missing-baseline fixture,created,TASK-4172
+tests/fixtures/prime_contracts/invalid_diagnostic_claims_progress.yaml,FIXTURE,Invalid diagnostic-progress claim fixture,created,TASK-4172
+tests/fixtures/prime_contracts/invalid_harness_claims_l0_l4_progress.yaml,FIXTURE,Invalid harness underlying-progress claim fixture,created,TASK-4172
+tests/fixtures/prime_contracts/invalid_safety_authority_claim.yaml,FIXTURE,Invalid authority claim fixture,created,TASK-4172
+tests/fixtures/prime_contracts/invalid_scope_violation.yaml,FIXTURE,Invalid scope violation fixture,created,TASK-4172
+tests/fixtures/prime_contracts/invalid_missing_data_as_negative_evidence.yaml,FIXTURE,Invalid missing-data semantics fixture,created,TASK-4172
+docs/reports/task_4172_prime_outcome_harness_bootstrap/task_result_contract.yaml,CONTRACT,TASK-4172 result contract,created,TASK-4172
+docs/reports/task_4172_prime_outcome_harness_bootstrap/report.md,TASK_REPORT,TASK-4172 closeout report,created,TASK-4172
+docs/reports/task_4172_prime_outcome_harness_bootstrap/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4172 artifact manifest,created,TASK-4172
+docs/reports/task_4172_prime_outcome_harness_bootstrap/validation_results.md,VALIDATION_REPORT,TASK-4172 validation results,created,TASK-4172

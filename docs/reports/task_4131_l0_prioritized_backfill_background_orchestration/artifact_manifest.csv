@@ -1,0 +1,22 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,TASK-4131 task scope and closeout tracking,modified,TASK-4131
+ops/doc_registry.yaml,REGISTRY,TASK-4131 docs and artifacts registered,modified,TASK-4131
+docs/active/CURRENT_TASKS.md,SSOT,TASK-4131 closeout recorded,modified,TASK-4131
+docs/active/PROJECT_STATUS.md,SSOT,Backfill orchestration state recorded,modified,TASK-4131
+docs/active/ACTIVE_SSOT_INDEX.md,SSOT,TASK-4131 report registered as active evidence,modified,TASK-4131
+docs/architecture/l0_source_acquisition_project_management_plan.md,CANONICAL_DOC,Background backfill posture recorded,modified,TASK-4131
+scripts/start_l0_prioritized_backfills.ps1,SCRIPT,Priority backfill background starter,created,TASK-4131
+scripts/report_l0_backfill_hourly_status.ps1,SCRIPT,Hourly status snapshot and alert writer,created,TASK-4131
+scripts/validate_l0_prioritized_backfill_orchestration.py,VALIDATOR,TASK-4131 validator,created,TASK-4131
+tools/db/source_acquisition/bar_full_backfill.py,COLLECTOR,Keep bar backfill alive when log append fails on local OneDrive paths,modified,TASK-4131
+tools/db/source_acquisition/public_context_news_collector.py,COLLECTOR,Keep context backfill alive when log append fails on local OneDrive paths,modified,TASK-4131
+data/artifacts/l0_backfill_orchestration/orchestration_summary.json,REFERENCE,Backfill start summary,created,TASK-4131
+data/artifacts/l0_backfill_orchestration/start_ledger.json,REFERENCE,Backfill start ledger,created,TASK-4131
+data/artifacts/l0_backfill_orchestration/hourly/latest_summary.json,REFERENCE,Latest hourly tracking summary,created,TASK-4131
+data/artifacts/l0_backfill_orchestration/log_write_failures.jsonl,REFERENCE,Fallback ledger for non-fatal log append failures,created,TASK-4131
+data/artifacts/l0_public_newswire_smoke_task_4131/collector_progress.json,REFERENCE,Real public newswire smoke progress,created,TASK-4131
+docs/reports/task_4131_l0_prioritized_backfill_background_orchestration/report.md,TASK_REPORT,TASK-4131 report,created,TASK-4131
+docs/reports/task_4131_l0_prioritized_backfill_background_orchestration/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4131 artifact manifest,created,TASK-4131
+docs/reports/task_4131_l0_prioritized_backfill_background_orchestration/validation_results.md,VALIDATION_REPORT,TASK-4131 validation report,created,TASK-4131
+docs/reports/task_4131_l0_prioritized_backfill_background_orchestration/l0_backfill_orchestration_summary.json,REFERENCE,TASK-4131 closeout summary,created,TASK-4131
+docs/reports/task_4131_l0_prioritized_backfill_background_orchestration/task_4131_backfill_start_ledger.csv,REFERENCE,Priority backfill start ledger,created,TASK-4131

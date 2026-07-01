@@ -1,0 +1,18 @@
+path,type,purpose,created_or_modified,task_id
+configs/l2_intake_feature_admission_contract.yaml,contract,L2 intake and feature-admission contract.,created,TASK-4136
+src/l2/builders/news_event_primitives.py,source,Quarantines legacy L2 news builder.,modified,TASK-4136
+src/l2/intake/__init__.py,source,New L2 intake package boundary.,created,TASK-4136
+src/l2/intake/contracts.py,source,L2 intake policy helpers.,created,TASK-4136
+scripts/run_l2_intake_feature_admission.py,script,Builds TASK-4136 L2 intake artifacts.,created,TASK-4136
+scripts/validate_l2_intake_feature_admission.py,validator,Validates TASK-4136 L2 intake artifacts.,created,TASK-4136
+docs/reports/task_4136_l2_intake_feature_admission/report.md,report,TASK-4136 Korean report.,created,TASK-4136
+docs/reports/task_4136_l2_intake_feature_admission/artifact_manifest.csv,manifest,TASK-4136 artifact manifest.,created,TASK-4136
+docs/reports/task_4136_l2_intake_feature_admission/validation_results.md,validation,TASK-4136 validation results.,created,TASK-4136
+docs/reports/task_4136_l2_intake_feature_admission/l2_intake_feature_admission_summary.json,summary,Machine-readable TASK-4136 summary.,created,TASK-4136
+data/artifacts/task_4136_l2_intake_feature_admission/l2_intake_manifest.csv,artifact,L2 intake manifest.,created,TASK-4136
+data/artifacts/task_4136_l2_intake_feature_admission/l2_feature_admission_gate.csv,artifact,Feature admission gate rows.,created,TASK-4136
+data/artifacts/task_4136_l2_intake_feature_admission/ticker_news_mapping_gate.csv,artifact,Ticker/news/macro mapping gate.,created,TASK-4136
+data/artifacts/task_4136_l2_intake_feature_admission/legacy_l2_news_quarantine.csv,artifact,Legacy L2 news quarantine evidence.,created,TASK-4136
+data/artifacts/task_4136_l2_intake_feature_admission/l1_continuous_validation_plan.csv,artifact,Continuous L1 validation hook plan.,created,TASK-4136
+data/artifacts/task_4136_l2_intake_feature_admission/l1_continuous_validation_ledger.csv,artifact,One-shot L1 validation evidence.,created,TASK-4136
+data/artifacts/task_4136_l2_intake_feature_admission/validator_report.json,artifact,Machine-readable validator result.,created,TASK-4136

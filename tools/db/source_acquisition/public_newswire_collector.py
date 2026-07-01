@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import re
+import sys
 import time
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
@@ -20,6 +21,10 @@ from urllib.error import HTTPError
 from urllib.parse import urljoin, urlparse
 from urllib.request import Request, urlopen
 
+ROOT = Path(__file__).resolve().parents[3]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 from tools.db.source_acquisition.news_background_collector import classify_news_error, source_event, write_progress
 from tools.db.source_acquisition.secret_redaction import redact_text
 from tools.db.source_acquisition.source_capability_probe import (
@@ -32,8 +37,10 @@ from tools.db.source_acquisition.source_capability_probe import (
 
 PROVIDER = "public_newswire_feeds"
 SCHEMA_VERSION = 1
-COLLECTOR_VERSION = "public_newswire_collector.v0.1.7"
-ENTITY_MAPPING_VERSION = "public_newswire_entity_mapper.v0.1.7"
+COLLECTOR_VERSION = "public_newswire_collector.v0.1.6"
+ENTITY_MAPPING_VERSION = "public_newswire_entity_mapper.v0.1.6"
+CANDIDATE_HINT_VERSION = "public_newswire_candidate_hints.v0.1.0"
+NEWSWIRE_RECALL_VERSION = "public_newswire_recall_overlay.v0.1.0"
 DEFAULT_REGISTRY_PATH = Path("configs/source_registry/l0_public_news_capability_sources.json")
 DEFAULT_UNIVERSE_PATH = Path("data/raw/alpaca_active_us_equity_universe.csv")
 DEFAULT_RAW_DIR = Path("data/raw/l0_public_newswire")
@@ -72,6 +79,7 @@ class PublicNewswireConfig:
     backfill_start_date: str = DEFAULT_BACKFILL_START_DATE
     backfill_end_date: str = ""
     fetch_missing_title_pages: bool = True
+    prnewswire_archive_scope: str = "all"
 
 
 class LinkParser(HTMLParser):
@@ -158,10 +166,6 @@ def user_agent() -> str:
 
 def normalize_text(value: str) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()
-
-
-def strip_html_text(value: str) -> str:
-    return normalize_text(re.sub(r"<[^>]+>", " ", unescape(str(value or ""))))
 
 
 def normalize_entity_text(value: str) -> str:
@@ -280,11 +284,7 @@ NEWSWIRE_CONTEXT_TOPIC_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
             "public company",
             "public companies",
             "series a",
-            "financing",
-            "funding",
             "funding round",
-            "strategic investor",
-            "strategic investors",
             "global 2000",
             "global insurers",
             "asset management",
@@ -342,9 +342,6 @@ NEWSWIRE_CONTEXT_TOPIC_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
             "digital engineering",
             "embodied ai",
             "generative ai",
-            "ai solutions",
-            "ai solution",
-            "complete ai",
             "gpu",
             "gpu network",
             "data center",
@@ -358,26 +355,7 @@ NEWSWIRE_CONTEXT_TOPIC_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
         ),
     ),
     ("cybersecurity", ("cybersecurity", "cyber security", "ransomware", "zero trust", "data security", "data breach", "voice security")),
-    (
-        "healthcare_innovation",
-        (
-            "fda",
-            "clinical trial",
-            "phase 2 trial",
-            "phase 3 trial",
-            "new england journal of medicine",
-            "nejm",
-            "medical device",
-            "surgical",
-            "health assessment",
-            "brain implant",
-            "mental health platform",
-            "medical insight",
-            "skilled nursing",
-            "cell block",
-            "cytopath",
-        ),
-    ),
+    ("healthcare_innovation", ("fda", "clinical trial", "medical device", "surgical", "health assessment", "brain implant", "mental health platform", "medical insight", "skilled nursing", "cell block", "cytopath")),
     (
         "energy_transition",
         (
@@ -403,7 +381,6 @@ NEWSWIRE_CONTEXT_TOPIC_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
         ),
     ),
     ("mobility_transport", ("urban mobility", "micromobility", "eurobike", "smart vehicle", "public transportation")),
-    ("telecom_infrastructure", ("mwc", "mobile world congress", "gsma", "5g", "telecom", "telecommunications", "direct-to-phone")),
     ("space_satellite", ("spacex ipo", "space economy", "starlink", "direct-to-phone", "satellite", "moon")),
     (
         "defense_drones",
@@ -432,15 +409,61 @@ NEWSWIRE_CONTEXT_TOPIC_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
     ),
     ("crypto_digital_assets", ("crypto", "bitcoin", "ethereum", "digital asset", "stablecoin", "blockchain", "blockchain technology", "defi", "dogecoin", "meme coin", "seamless crypto payments", "usdt", "bnb", "xrp", "binance listing")),
     ("consumer_trends", ("consumer behavior", "consumer spending", "social platforms", "social media", "reshapes commerce", "ai transforms commerce", "ai reshapes commerce", "western consumers", "social commerce")),
-    ("food_supply_chain", ("food industry", "foodtruth", "food safety", "food supply", "food traceability")),
-    ("economic_development", ("invest in the drc", "investment campaign", "greater bay area innovation", "global governance", "modernization")),
-    ("industry_market_report", ("market size", "market to reach", "market to hit", "market is projected", "market projected", "cagr", "forecast period", "sns insider", "rising demand", "expanding production")),
+    ("industry_market_report", ("market size", "market to reach", "market to hit", "market is projected", "market projected", "industry forecast", "industry retail sales", "retail sales", "sales forecast", "forecast period", "cagr", "sns insider", "rising demand", "expanding production")),
+    ("telecom_infrastructure", ("telecom", "telecommunications", "5g", "mwc shanghai", "gsma", "network infrastructure")),
+    ("food_supply_chain", ("food industry", "food supply", "foodtruth", "agriculture supply", "agri")),
+    ("economic_development", ("economic development", "foreign direct investment", "invest in", "landmark investment campaign")),
 )
 NEWSWIRE_CONTEXT_EXCLUSION_RE = re.compile(
     r"\b(class action|lawsuit|shareholder alert|investors have opportunity|lead plaintiff|securities fraud|investigation alert|"
     r"reminds investors|deadline alert|recover losses|law firm|personal injury attorney|bilingual legal services|hellonation|"
-    r"lawyers urge|prime day deal|lawn mower|realtors|testosterone booster|supplements|gummies for weight loss|pool style options|yard care|"
-    r"gold ira|scholarship program|fatal .* shooting|wellness supplement|portable cooling products|x games)\b",
+    r"lawyers urge|prime day deal|lawn mower|realtors|testosterone booster|supplements|gummies for weight loss|"
+    r"pool style options|yard care|gold ira|portable cooling products|x games)\b",
+    re.IGNORECASE,
+)
+
+NEWSWIRE_RECALL_TOPIC_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ("earnings_results", ("earnings", "financial results", "quarter results", "full year results", "annual results", "reports fourth quarter", "reports results", "revenue", "guidance")),
+    ("corporate_results", ("earnings report", "conference call details", "quarter results", "full year results", "financial results")),
+    ("corporate_actions", ("liquidation", "dividend", "spin-off", "spinoff", "reverse split", "stock split", "strategic review", "restructuring")),
+    ("capital_markets", ("private placement", "public offering", "registered direct", "at-the-market", "atm offering", "financing", "credit facility", "debt offering", "ipo")),
+    ("listing_compliance", ("nasdaq notice", "nyse notice", "delisting", "listing compliance", "continued listing", "minimum bid", "exchange notice")),
+    ("clinical_regulatory", ("clinical", "phase 1", "phase 2", "phase 3", "fda", "pdufa", "interim data", "trial data", "regulatory approval")),
+    ("healthcare_innovation", ("clinical", "phase 1", "phase 2", "phase 3", "fda", "medical device", "trial data")),
+    ("ma_partnerships_contracts", ("acquisition", "merger", "definitive agreement", "partnership", "contract", "contract award", "joint venture", "collaboration")),
+    ("industry_market_report", ("industry forecast", "industry retail sales", "retail sales", "market forecast", "market report", "market size", "cagr", "forecast")),
+    ("macro_policy_geopolitics", ("tariff", "sanction", "export control", "trade policy", "geopolitical", "election", "government", "federal reserve", "central bank")),
+    ("ai_semis_datacenter", ("ai", "artificial intelligence", "semiconductor", "semis", "gpu", "data center", "cloud infrastructure")),
+    ("energy_power_grid", ("power grid", "electric power", "solar", "battery", "renewable", "oil production", "natural gas", "lng")),
+    ("defense_geopolitics", ("defense", "defence", "missile", "drone", "aerospace", "military", "national security")),
+    ("crypto_digital_assets", ("crypto", "bitcoin", "ethereum", "digital asset", "stablecoin", "blockchain")),
+)
+NEWSWIRE_ENTITY_REVIEW_TOPICS = frozenset(
+    {
+        "earnings_results",
+        "corporate_results",
+        "corporate_actions",
+        "capital_markets",
+        "listing_compliance",
+        "clinical_regulatory",
+        "healthcare_innovation",
+        "ma_partnerships_contracts",
+        "industry_market_report",
+    }
+)
+
+NEWSWIRE_ENTITY_REVIEW_ACTION_RE = re.compile(
+    r"^[A-Z0-9][A-Za-z0-9&'.,:/() -]{1,120}?\b("
+    r"announces|reports|forecasts|prices|launches|receives|completes|files|appoints|"
+    r"acquires|merges|partners|secures|wins|provides|sets|declares|enters|plans|updates|"
+    r"publishes|presents|achieves|expands|closes|commences|terminates|releases"
+    r")\b",
+    re.IGNORECASE,
+)
+NEWSWIRE_COMPANY_MARKER_RE = re.compile(
+    r"\b(inc|inc\.|corp|corp\.|corporation|company|co\.|ltd|limited|plc|holdings|"
+    r"bancorp|financial|bank|therapeutics|biotech|pharma|energy|systems|technologies|"
+    r"acquisition corp|capital|resources|semiconductor|software|medtech)\b",
     re.IGNORECASE,
 )
 
@@ -517,7 +540,7 @@ def businesswire_datetime_from_url(url: str) -> str:
     return dt.isoformat().replace("+00:00", "Z")
 
 
-def newswire_backfill_archive_urls(source_key: str, start: date, end: date) -> list[str]:
+def newswire_backfill_archive_urls(source_key: str, start: date, end: date, *, prnewswire_archive_scope: str = "all") -> list[str]:
     if source_key == "businesswire":
         return [
             f"https://bw-prod-sitemap.s3.us-east-1.amazonaws.com/webdmz1.vaprod.businesswire.com/home/{day.isoformat()}.xml.gz"
@@ -528,6 +551,10 @@ def newswire_backfill_archive_urls(source_key: str, start: date, end: date) -> l
     if source_key == "prnewswire":
         recent_pages = [f"https://www.prnewswire.com/sitemap-news.xml?page={page}" for page in range(1, 16)]
         monthly = [f"https://www.prnewswire.com/Sitemap_Index_{MONTH_ABBR[month.month - 1]}_{month.year:04d}.xml.gz" for month in month_range(start, end)]
+        if prnewswire_archive_scope == "recent":
+            return recent_pages
+        if prnewswire_archive_scope == "monthly":
+            return monthly
         return [*recent_pages, *monthly]
     return []
 
@@ -686,6 +713,50 @@ def fetch_url(url: str, config: PublicNewswireConfig) -> dict[str, Any]:
         }
 
 
+def classify_fetch_failure(fetched: dict[str, Any], *, parsed_rows: int = 0, follow_urls: int = 0) -> str:
+    if not bool(fetched.get("ok")):
+        status_code = int(fetched.get("status_code") or 0)
+        error_category = str(fetched.get("error_category") or "")
+        if status_code in {401, 403}:
+            return "HTTP_ACCESS_BLOCKED"
+        if 400 <= status_code < 500:
+            return "HTTP_4XX"
+        if status_code >= 500:
+            return "HTTP_5XX"
+        if "timeout" in error_category.lower():
+            return "FETCH_TIMEOUT"
+        return "FETCH_EXCEPTION"
+    if parsed_rows == 0 and follow_urls == 0:
+        return "PARSE_ZERO_ROWS"
+    if parsed_rows == 0 and follow_urls > 0:
+        return "FOLLOW_ONLY_NO_ROWS"
+    return "OK"
+
+
+def add_candidate(candidates: list[str], candidate_modes: dict[str, str], url: str, mode: str) -> None:
+    text = str(url or "").strip()
+    if not text or text in candidate_modes:
+        return
+    candidates.append(text)
+    candidate_modes[text] = mode
+
+
+def build_collection_candidates(source: dict[str, Any], robots: dict[str, Any]) -> tuple[list[str], dict[str, str]]:
+    candidates: list[str] = []
+    candidate_modes: dict[str, str] = {}
+    for url in source.get("rss_or_feed_urls", []):
+        add_candidate(candidates, candidate_modes, str(url), "rss_or_feed")
+    for url in source.get("sitemap_urls", []):
+        add_candidate(candidates, candidate_modes, str(url), "sitemap")
+    for url in robots.get("sitemap_samples", []):
+        add_candidate(candidates, candidate_modes, str(url), "robots_sitemap")
+    if source.get("probe_url"):
+        add_candidate(candidates, candidate_modes, str(source.get("probe_url")), "static_html_probe")
+    if source.get("base_url"):
+        add_candidate(candidates, candidate_modes, str(source.get("base_url")), "static_html_base")
+    return candidates, candidate_modes
+
+
 def write_response(raw_dir: Path, *, source_key: str, capability: str, url: str, fetched: dict[str, Any]) -> dict[str, Any]:
     captured_at = now_z()
     stamp = captured_at.replace(":", "").replace("-", "").replace(".", "")
@@ -709,6 +780,7 @@ def write_response(raw_dir: Path, *, source_key: str, capability: str, url: str,
         "truncated": bool(fetched.get("truncated", False)),
         "ok": bool(fetched.get("ok", False)),
         "error_category": fetched.get("error_category", ""),
+        "failure_reason": fetched.get("failure_reason", "") or classify_fetch_failure(fetched),
         "error_message_redacted": fetched.get("error_message", ""),
         "body_path": str(body_path),
         "body_sha256": sha256_bytes(payload),
@@ -740,7 +812,7 @@ def decode_payload(payload: bytes) -> bytes:
         return payload
     try:
         return gzip.decompress(payload)
-    except OSError:
+    except (OSError, EOFError):
         return payload
 
 
@@ -864,17 +936,11 @@ def parse_article_metadata(payload: bytes, *, source_key: str) -> dict[str, str]
         or meta.get("publish-date")
         or meta.get("sailthru.date")
     )
-    description = (
-        meta.get("description")
-        or meta.get("og:description")
-        or meta.get("twitter:description")
-        or meta.get("itemprop:description")
-        or ""
-    )
+    description = meta.get("description") or meta.get("og:description") or meta.get("twitter:description") or ""
     return {
         "title": clean_article_title(title, source_key),
-        "published_at": parse_datetime_value(published),
         "description": normalize_text(description),
+        "published_at": parse_datetime_value(published),
         "title_source": "article_html_meta",
         "published_at_source": "article_html_meta" if published else "",
     }
@@ -938,6 +1004,14 @@ def build_row(
         "symbols": [],
         "entities": [],
         "entity_map": [],
+        "entity_candidate_hints": [],
+        "entity_candidate_hint_version": CANDIDATE_HINT_VERSION,
+        "entity_candidate_hints_are_authority": 0,
+        "newswire_recall_review_flag": 0,
+        "newswire_recall_topics": [],
+        "newswire_recall_reason": [],
+        "newswire_recall_version": NEWSWIRE_RECALL_VERSION,
+        "newswire_recall_candidate_authority_flag": 0,
         "entity_mapping_status": "BLOCKED_UNMAPPED",
         "entity_mapping_methods": [],
         "entity_mapping_version": ENTITY_MAPPING_VERSION,
@@ -966,12 +1040,97 @@ def newswire_context_token_matches(text: str, token: str) -> bool:
     return bool(re.search(pattern, text))
 
 
+def newswire_recall_topics(title: str, evidence_text: str = "") -> list[str]:
+    text = f" {normalize_text(unescape(str(title or ''))).lower()} {normalize_text(unescape(str(evidence_text or ''))).lower()} "
+    if not text.strip() or NEWSWIRE_CONTEXT_EXCLUSION_RE.search(text):
+        return []
+    topics = []
+    for topic, tokens in NEWSWIRE_RECALL_TOPIC_RULES:
+        if any(newswire_context_token_matches(text, token) for token in tokens):
+            topics.append(topic)
+    return sorted(set(topics))
+
+
+def newswire_entity_review_reasons(title: str, evidence_text: str = "") -> list[str]:
+    text = normalize_text(unescape(str(title or "")))
+    evidence = normalize_text(unescape(str(evidence_text or "")))
+    joined = f" {text} {evidence} "
+    if not joined.strip() or NEWSWIRE_CONTEXT_EXCLUSION_RE.search(joined):
+        return []
+    reasons: list[str] = []
+    topics = set(newswire_recall_topics(text, evidence))
+    has_company_marker = bool(NEWSWIRE_COMPANY_MARKER_RE.search(joined))
+    has_material_topic = bool(topics & NEWSWIRE_ENTITY_REVIEW_TOPICS)
+    if NEWSWIRE_ENTITY_REVIEW_ACTION_RE.search(text) and (has_company_marker or has_material_topic):
+        reasons.append("company_like_headline_action")
+    if has_company_marker:
+        reasons.append("company_marker")
+    return sorted(set(reasons))
+
+
+def apply_newswire_recall_overlay(row: dict[str, Any]) -> dict[str, Any]:
+    status = str(row.get("entity_mapping_status") or "")
+    title = str(row.get("title") or "")
+    evidence = str(row.get("evidence_text_span") or "")
+    topics = newswire_recall_topics(title, evidence)
+    entity_reasons = newswire_entity_review_reasons(title, evidence)
+    out = dict(row)
+    out.setdefault("newswire_recall_version", NEWSWIRE_RECALL_VERSION)
+    out.setdefault("newswire_recall_candidate_authority_flag", 0)
+    out.setdefault("newswire_recall_review_flag", 0)
+    out.setdefault("newswire_recall_topics", [])
+    out.setdefault("newswire_recall_reason", [])
+    if status == "NOT_REQUIRED_CONTEXT_NEWSWIRE":
+        context_topics = list(out.get("context_topic_candidates") or out.get("context_scope") or [])
+        out.update(
+            {
+                "newswire_recall_review_flag": 1,
+                "newswire_recall_topics": sorted(set(context_topics + topics)),
+                "newswire_recall_reason": ["context_topic_candidate"],
+                "newswire_recall_version": NEWSWIRE_RECALL_VERSION,
+                "newswire_recall_candidate_authority_flag": 0,
+            }
+        )
+        return out
+    if status == "BLOCKED_AMBIGUOUS_ENTITY" and (topics or entity_reasons):
+        out.update(
+            {
+                "newswire_recall_review_flag": 1,
+                "newswire_recall_topics": topics,
+                "newswire_recall_reason": sorted(set(["ambiguous_entity_review"] + entity_reasons)),
+                "newswire_recall_version": NEWSWIRE_RECALL_VERSION,
+                "newswire_recall_candidate_authority_flag": 0,
+            }
+        )
+        return out
+    if status != "BLOCKED_UNMAPPED":
+        return out
+    if not topics and not entity_reasons:
+        return out
+    out.update(
+        {
+            "entity_mapping_status": "ENTITY_CANDIDATE_REVIEW",
+            "ticker_mapping_required_flag": 0,
+            "macro_context_candidate_flag": 0,
+            "newswire_recall_review_flag": 1,
+            "newswire_recall_topics": topics,
+            "newswire_recall_reason": sorted(set(entity_reasons + (["recall_topic_candidate"] if topics else []))),
+            "newswire_recall_version": NEWSWIRE_RECALL_VERSION,
+            "newswire_recall_candidate_authority_flag": 0,
+            "entity_mapping_inferred_flag": 0,
+        }
+    )
+    return out
+
+
 def apply_newswire_context_classification(row: dict[str, Any]) -> dict[str, Any]:
     if row.get("entity_mapping_status") != "BLOCKED_UNMAPPED":
-        return row
+        return apply_newswire_recall_overlay(row)
     topics = newswire_context_topics(str(row.get("title") or ""))
     if not topics:
-        return row
+        return apply_newswire_recall_overlay(row)
+    if newswire_entity_review_reasons(str(row.get("title") or ""), str(row.get("evidence_text_span") or "")):
+        return apply_newswire_recall_overlay(row)
     out = dict(row)
     out.update(
         {
@@ -985,7 +1144,7 @@ def apply_newswire_context_classification(row: dict[str, Any]) -> dict[str, Any]
             "entity_mapping_inferred_flag": 0,
         }
     )
-    return out
+    return apply_newswire_recall_overlay(out)
 
 
 def parse_feed_rows(payload: bytes, *, source_key: str, source_page_url: str, captured_at: str) -> list[dict[str, Any]]:
@@ -1006,7 +1165,6 @@ def parse_feed_rows(payload: bytes, *, source_key: str, source_page_url: str, ca
         title = child_text(item, ("title",))
         link = child_text(item, ("link",)) or atom_link(item) or child_text(item, ("guid",))
         published = child_text(item, ("pubDate", "published", "updated", "date"))
-        description = strip_html_text(child_text(item, ("description", "summary", "encoded")))
         if not title or not link:
             continue
         rows.append(
@@ -1019,7 +1177,7 @@ def parse_feed_rows(payload: bytes, *, source_key: str, source_page_url: str, ca
                 captured_at=captured_at,
                 source_page_url=source_page_url,
                 capture_method="rss_or_atom",
-                evidence_text=normalize_text(f"{title} {description}"),
+                evidence_text=title,
             )
         )
     return rows
@@ -1149,7 +1307,7 @@ def build_row_from_archive_entry(
     published_at: str,
     source_time_certified_flag: int,
     published_at_source: str,
-    evidence_text: str = "",
+    evidence_text: str,
 ) -> dict[str, Any]:
     return build_row(
         source_key=source_key,
@@ -1208,14 +1366,14 @@ def _entity_record(entity: UniverseEntity, *, match_type: str, matched_text: str
     }
 
 
-def _source_declared_exchange_record(symbol: str, *, exchange_tag: str, matched_text: str) -> dict[str, Any]:
+def _source_declared_exchange_record(symbol: str, *, matched_text: str, source_field: str, exchange_tag: str) -> dict[str, Any]:
     return {
-        "symbol": symbol,
+        "symbol": symbol.upper(),
         "name": "",
         "exchange": exchange_tag,
         "match_type": "exchange_tag",
         "matched_text": matched_text,
-        "source_field": "title_or_evidence_text",
+        "source_field": source_field,
         "exchange_tag": exchange_tag,
         "confidence": 1.0,
         "entity_source": "public_newswire_source_declared_exchange_tag",
@@ -1242,7 +1400,12 @@ def _exchange_tag_matches(evidence: str, mapper: EntityMapper) -> dict[str, dict
         for symbol in re.findall(r"\b[A-Z][A-Z0-9.-]{0,11}\b", raw_symbols.upper()):
             entity = mapper.entities_by_symbol.get(symbol)
             if entity is None:
-                record = _source_declared_exchange_record(symbol, exchange_tag=exchange, matched_text=symbol)
+                record = _source_declared_exchange_record(
+                    symbol,
+                    matched_text=symbol,
+                    source_field="title_or_evidence_text",
+                    exchange_tag=exchange,
+                )
             else:
                 record = _entity_record(
                     entity,
@@ -1278,6 +1441,36 @@ def _alias_matches(evidence: str, mapper: EntityMapper) -> tuple[dict[str, dict[
     return matches, sorted(set(ambiguous_hits))
 
 
+def _candidate_hints(evidence: str, mapper: EntityMapper) -> list[dict[str, Any]]:
+    normalized = f" {normalize_entity_text(unescape(evidence))} "
+    hints: list[dict[str, Any]] = []
+    for alias, entity in mapper.alias_index.items():
+        if f" {alias} " in normalized:
+            hints.append(
+                {
+                    "symbol": entity.symbol,
+                    "name": entity.name,
+                    "matched_text": alias,
+                    "hint_type": "exact_universe_alias_candidate",
+                    "candidate_only_flag": 1,
+                    "mapping_authority_flag": 0,
+                }
+            )
+    for alias in mapper.ambiguous_aliases:
+        if f" {alias} " in normalized:
+            hints.append(
+                {
+                    "symbol": "",
+                    "name": "",
+                    "matched_text": alias,
+                    "hint_type": "ambiguous_alias_candidate",
+                    "candidate_only_flag": 1,
+                    "mapping_authority_flag": 0,
+                }
+            )
+    return sorted(hints, key=lambda item: (str(item.get("hint_type")), str(item.get("symbol")), str(item.get("matched_text"))))[:12]
+
+
 def apply_entity_mapping(row: dict[str, Any], mapper: EntityMapper) -> dict[str, Any]:
     out = dict(row)
     evidence = " ".join(
@@ -1311,6 +1504,9 @@ def apply_entity_mapping(row: dict[str, Any], mapper: EntityMapper) -> dict[str,
             "symbols": [record["symbol"] for record in entities],
             "entities": entities,
             "entity_map": entities,
+            "entity_candidate_hints": _candidate_hints(evidence, mapper),
+            "entity_candidate_hint_version": CANDIDATE_HINT_VERSION,
+            "entity_candidate_hints_are_authority": 0,
             "entity_mapping_status": status,
             "entity_mapping_methods": methods,
             "entity_mapping_ambiguous_aliases": ambiguous_hits,
@@ -1356,7 +1552,9 @@ def load_state(path: Path) -> dict[str, Any]:
 def save_state(path: Path, state: dict[str, Any]) -> None:
     state["updated_at"] = now_z()
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(state, indent=2, sort_keys=True), encoding="utf-8")
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+    tmp_path.write_text(json.dumps(state, indent=2, sort_keys=True), encoding="utf-8")
+    tmp_path.replace(path)
 
 
 def append_event(path: Path, event: dict[str, Any]) -> None:
@@ -1369,6 +1567,26 @@ def append_event(path: Path, event: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(event, sort_keys=True) + "\n")
+
+
+def fetch_failure_counts(fetches: list[dict[str, Any]]) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for item in fetches:
+        reason = str(item.get("failure_reason") or "")
+        if not reason:
+            continue
+        counts[reason] = counts.get(reason, 0) + 1
+    return counts
+
+
+def fetch_stage_counts(fetches: list[dict[str, Any]]) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for item in fetches:
+        stage = str(item.get("fallback_stage") or item.get("capability") or "")
+        if not stage:
+            continue
+        counts[stage] = counts.get(stage, 0) + 1
+    return counts
 
 
 def log_line(path: Path, message: str) -> None:
@@ -1398,6 +1616,10 @@ def write_payload(
         "collection_mode": collection_mode,
         "headlines": rows,
         "fetches": fetches,
+        "fetch_failure_counts": fetch_failure_counts(fetches),
+        "fetch_stage_counts": fetch_stage_counts(fetches),
+        "fallback_order": ["rss_or_feed", "sitemap", "robots_sitemap", "static_html_probe", "static_html_base", "discovered_follow_url"],
+        "chrome_smoke_role": "selector_drift_and_public_page_diagnostics_only_not_runtime_collection",
         "diagnostic_only_flag": 1,
         "trade_authority_flag": 0,
         "broker_mutation_permitted_flag": 0,
@@ -1417,31 +1639,35 @@ def collect_source(source: dict[str, Any], config: PublicNewswireConfig, mapper:
     robots_meta = write_response(config.raw_dir, source_key=source_key, capability="robots", url=robots_url, fetched=robots_fetch)
     robots = robots_posture(robots_fetch.get("bytes", b"")) if robots_fetch.get("ok") else {"robots_present": False, "sitemap_samples": []}
     robot_parser = build_robot_parser(origin, robots_fetch.get("bytes", b"")) if robots_fetch.get("ok") else build_robot_parser(origin, b"")
-    candidates = ordered_unique(
-        [
-            *[str(url) for url in source.get("rss_or_feed_urls", [])],
-            *[str(url) for url in source.get("sitemap_urls", [])],
-            *[str(url) for url in robots.get("sitemap_samples", [])],
-        ]
-    )
+    candidates, candidate_modes = build_collection_candidates(source, robots)
     rows: list[dict[str, Any]] = []
-    fetches: list[dict[str, Any]] = [{"url": robots_url, "capability": "robots", "raw_metadata_path": str(Path(robots_meta["body_path"]).with_name("metadata.json"))}]
+    fetches: list[dict[str, Any]] = [
+        {
+            "url": robots_url,
+            "capability": "robots",
+            "fallback_stage": "robots_preflight",
+            "failure_reason": classify_fetch_failure(robots_fetch),
+            "raw_metadata_path": str(Path(robots_meta["body_path"]).with_name("metadata.json")),
+        }
+    ]
     seen_rows = set()
     index = 0
     while index < len(candidates) and len(fetches) <= max(int(config.max_fetches_per_source), 1) and len(rows) < max(int(config.max_items_per_source), 1):
         url = candidates[index]
         index += 1
+        fallback_stage = candidate_modes.get(url, "follow_url")
         if not robots_url_allowed(url, base_origin=origin, robots_present=bool(robots.get("robots_present")), robot_parser=robot_parser):
-            fetches.append({"url": url, "status": "BLOCKED_ROBOTS", "skipped_by_robots": True})
+            fetches.append({"url": url, "status": "BLOCKED_ROBOTS", "skipped_by_robots": True, "fallback_stage": fallback_stage, "failure_reason": "ROBOTS_BLOCKED"})
             continue
         fetched = fetch_url(url, config)
-        raw_meta = write_response(config.raw_dir, source_key=source_key, capability="source_url", url=url, fetched=fetched)
+        raw_meta = write_response(config.raw_dir, source_key=source_key, capability=fallback_stage, url=url, fetched=fetched)
         fetch_record = {
             "url": url,
             "resolved_url": fetched.get("resolved_url", url),
             "ok": bool(fetched.get("ok")),
             "status_code": fetched.get("status_code", 0),
             "content_type": fetched.get("content_type", ""),
+            "fallback_stage": fallback_stage,
             "raw_metadata_path": str(Path(raw_meta["body_path"]).with_name("metadata.json")),
             "row_count": 0,
             "follow_url_count": 0,
@@ -1456,8 +1682,8 @@ def collect_source(source: dict[str, Any], config: PublicNewswireConfig, mapper:
                 follow_urls.extend(link["href"] for link in links["feed_links"])
                 parsed_rows.extend(html_article_rows(payload, source_key=source_key, source_page_url=url, captured_at=captured_at))
             for follow in ordered_unique(follow_urls):
-                if follow not in candidates:
-                    candidates.append(follow)
+                if follow not in candidate_modes:
+                    add_candidate(candidates, candidate_modes, follow, "discovered_follow_url")
             for row in parsed_rows:
                 key = row.get("headline_hash") or f"{row.get('title')}|{row.get('source_url')}"
                 if key in seen_rows:
@@ -1468,20 +1694,28 @@ def collect_source(source: dict[str, Any], config: PublicNewswireConfig, mapper:
                     break
             fetch_record["row_count"] = len(parsed_rows)
             fetch_record["follow_url_count"] = len(follow_urls)
+            fetch_record["failure_reason"] = classify_fetch_failure(fetched, parsed_rows=len(parsed_rows), follow_urls=len(follow_urls))
         else:
             fetch_record["error_category"] = fetched.get("error_category", "")
             fetch_record["error_message_redacted"] = fetched.get("error_message", "")
+            fetch_record["failure_reason"] = classify_fetch_failure(fetched)
         fetches.append(fetch_record)
         time.sleep(max(float(config.request_sleep_seconds), 0.0))
     rows = apply_entity_mapping_to_rows(rows, mapper)
     raw_path = write_payload(config, source_key=source_key, captured_at=captured_at, rows=rows, fetches=fetches)
     status = "EXPORTED" if rows else "EMPTY_PROVIDER_RESPONSE"
     blocked = sum(1 for item in fetches if item.get("status") == "BLOCKED_ROBOTS")
+    failure_reasons = sorted({str(item.get("failure_reason") or "") for item in fetches if str(item.get("failure_reason") or "") not in {"", "OK"}})
     if blocked and not rows:
         status = "BLOCKED_ROBOTS"
+    elif not rows and failure_reasons:
+        status = f"EMPTY_PROVIDER_RESPONSE_{failure_reasons[0]}"
     mapped = sum(1 for row in rows if row.get("symbols"))
+    hinted = sum(1 for row in rows if row.get("entity_candidate_hints"))
     ambiguous = sum(1 for row in rows if row.get("entity_mapping_status") == "BLOCKED_AMBIGUOUS_ENTITY")
     unmapped = sum(1 for row in rows if row.get("entity_mapping_status") == "BLOCKED_UNMAPPED")
+    recall = sum(1 for row in rows if row.get("newswire_recall_review_flag") in (1, "1", True))
+    entity_review = sum(1 for row in rows if row.get("entity_mapping_status") == "ENTITY_CANDIDATE_REVIEW")
     event = source_event(
         provider=PROVIDER,
         source_id=f"{source_key}::rss_sitemap",
@@ -1491,8 +1725,12 @@ def collect_source(source: dict[str, Any], config: PublicNewswireConfig, mapper:
         l1_rows=rows,
         notes=(
             f"source_key={source_key};fetches={len(fetches)};blocked_robots={blocked};"
+            f"fallback_order=rss_or_feed>sitemap>robots_sitemap>static_html_probe>static_html_base>discovered_follow_url;"
+            f"failure_reasons={','.join(failure_reasons) or 'none'};"
             f"collector_version={COLLECTOR_VERSION};entity_mapping_version={ENTITY_MAPPING_VERSION};"
-            f"mapped_rows={mapped};blocked_unmapped_rows={unmapped};blocked_ambiguous_rows={ambiguous}"
+            f"mapped_rows={mapped};candidate_hint_rows={hinted};blocked_unmapped_rows={unmapped};"
+            f"blocked_ambiguous_rows={ambiguous};newswire_recall_review_rows={recall};"
+            f"entity_candidate_review_rows={entity_review}"
         ),
     )
     return event
@@ -1501,7 +1739,7 @@ def collect_source(source: dict[str, Any], config: PublicNewswireConfig, mapper:
 def collect_source_backfill(source: dict[str, Any], config: PublicNewswireConfig, mapper: EntityMapper, state: dict[str, Any]) -> dict[str, Any]:
     source_key = str(source.get("source_key"))
     start_date, end_date = backfill_window(config)
-    archive_urls = newswire_backfill_archive_urls(source_key, start_date, end_date)
+    archive_urls = newswire_backfill_archive_urls(source_key, start_date, end_date, prnewswire_archive_scope=config.prnewswire_archive_scope)
     backfill_state = state.setdefault("backfill", {}).setdefault(source_key, {})
     completed_urls = set(backfill_state.setdefault("completed_archive_urls", []))
     unavailable_urls = set(backfill_state.setdefault("unavailable_archive_urls", []))
@@ -1521,8 +1759,6 @@ def collect_source_backfill(source: dict[str, Any], config: PublicNewswireConfig
     processed_archives: list[str] = []
     missing_archives = 0
     blocked = 0
-    metadata_enrichment_fetches = 0
-    fetch_article_metadata_for_mapping = bool(source.get("fetch_article_metadata_for_mapping", False))
     max_fetches = max(int(config.max_fetches_per_source), 1)
     max_rows = max(int(config.max_items_per_source), 1)
 
@@ -1560,6 +1796,12 @@ def collect_source_backfill(source: dict[str, Any], config: PublicNewswireConfig
         fetch_record["row_count"] = len(entries)
         fetch_record["follow_url_count"] = len(follow_urls)
         fetch_record["xml_parse_ok"] = parse_ok
+        if not parse_ok and not entries and not follow_urls:
+            fetch_record["status"] = "TRANSIENT_EMPTY_RESPONSE"
+            fetch_record["error_category"] = "SITEMAP_PARSE_FAILED"
+            fetch_record["error_message_redacted"] = "archive sitemap parse failed or compressed payload was incomplete"
+            fetches.append(fetch_record)
+            break
         fetches.append(fetch_record)
         processed_archives.append(archive_url)
         start_offset = int(entry_offsets.get(archive_url, 0) or 0)
@@ -1577,9 +1819,9 @@ def collect_source_backfill(source: dict[str, Any], config: PublicNewswireConfig
             published_at, certified, published_source = entry_datetime(entry)
             title = normalize_text(entry.get("title", ""))
             title_source = "news_sitemap" if title else ""
-            article_evidence_text = title
-            should_fetch_article_page = bool(config.fetch_missing_title_pages and (not title or fetch_article_metadata_for_mapping))
-            if should_fetch_article_page:
+            evidence_text = title
+            fetch_article_for_mapping = bool(source.get("fetch_article_metadata_for_mapping"))
+            if (not title and config.fetch_missing_title_pages) or fetch_article_for_mapping:
                 if len(fetches) >= max_fetches:
                     archive_complete = False
                     next_offset = index
@@ -1593,6 +1835,7 @@ def collect_source_backfill(source: dict[str, Any], config: PublicNewswireConfig
                 fetches.append(
                     {
                         "url": loc,
+                        "capability": "article_page",
                         "resolved_url": article_fetch.get("resolved_url", loc),
                         "ok": bool(article_fetch.get("ok")),
                         "status_code": article_fetch.get("status_code", 0),
@@ -1602,16 +1845,14 @@ def collect_source_backfill(source: dict[str, Any], config: PublicNewswireConfig
                 )
                 if article_fetch.get("ok"):
                     metadata = parse_article_metadata(article_fetch.get("bytes", b""), source_key=source_key)
-                    if not title:
+                    if metadata.get("title"):
                         title = metadata.get("title", "")
                         title_source = metadata.get("title_source", "")
-                    article_evidence_text = normalize_text(f"{title} {metadata.get('description', '')}")
+                    evidence_text = " ".join(value for value in (title, metadata.get("description", "")) if value)
                     if metadata.get("published_at"):
                         published_at = metadata["published_at"]
                         published_source = metadata.get("published_at_source", "article_html_meta")
                         certified = 1
-                    if metadata.get("description"):
-                        metadata_enrichment_fetches += 1
                 time.sleep(max(float(config.request_sleep_seconds), 0.0))
             if not title:
                 continue
@@ -1625,7 +1866,7 @@ def collect_source_backfill(source: dict[str, Any], config: PublicNewswireConfig
                 published_at=published_at,
                 source_time_certified_flag=certified,
                 published_at_source=published_source,
-                evidence_text=article_evidence_text,
+                evidence_text=evidence_text,
             )
             if not in_backfill_window(row, start_date, end_date):
                 continue
@@ -1652,10 +1893,18 @@ def collect_source_backfill(source: dict[str, Any], config: PublicNewswireConfig
     backfill_state["pending_archive_urls"] = max(len(archive_urls) - len(completed_urls), 0)
     rows = apply_entity_mapping_to_rows(rows, mapper)
     raw_path = write_payload(config, source_key=source_key, captured_at=captured_at, rows=rows, fetches=fetches, collection_mode="historical_backfill")
-    status = "EXPORTED" if rows else ("BACKFILL_COMPLETE" if len(completed_urls) >= len(archive_urls) else "EMPTY_PROVIDER_RESPONSE")
+    retryable_fetch_failure = any(str(item.get("status", "")) == "TRANSIENT_EMPTY_RESPONSE" or str(item.get("error_category", "")) for item in fetches)
+    status = (
+        "EXPORTED"
+        if rows
+        else ("BACKFILL_COMPLETE" if len(completed_urls) >= len(archive_urls) else "FAILED_RETRYABLE" if retryable_fetch_failure else "EMPTY_PROVIDER_RESPONSE")
+    )
     mapped = sum(1 for row in rows if row.get("symbols"))
     ambiguous = sum(1 for row in rows if row.get("entity_mapping_status") == "BLOCKED_AMBIGUOUS_ENTITY")
     unmapped = sum(1 for row in rows if row.get("entity_mapping_status") == "BLOCKED_UNMAPPED")
+    recall = sum(1 for row in rows if row.get("newswire_recall_review_flag") in (1, "1", True))
+    entity_review = sum(1 for row in rows if row.get("entity_mapping_status") == "ENTITY_CANDIDATE_REVIEW")
+    metadata_enrichment_fetches = sum(1 for item in fetches if item.get("capability") == "article_page")
     return source_event(
         provider=PROVIDER,
         source_id=f"{source_key}::historical_backfill",
@@ -1666,9 +1915,10 @@ def collect_source_backfill(source: dict[str, Any], config: PublicNewswireConfig
         notes=(
             f"source_key={source_key};mode=historical_backfill;archives_processed={len(processed_archives)};"
             f"completed_archives={len(completed_urls)}/{len(archive_urls)};unavailable_archives={missing_archives};"
-            f"fetches={len(fetches)};blocked_robots={blocked};metadata_enrichment_fetches={metadata_enrichment_fetches};"
+            f"fetches={len(fetches)};metadata_enrichment_fetches={metadata_enrichment_fetches};blocked_robots={blocked};"
             f"collector_version={COLLECTOR_VERSION};entity_mapping_version={ENTITY_MAPPING_VERSION};"
-            f"mapped_rows={mapped};blocked_unmapped_rows={unmapped};blocked_ambiguous_rows={ambiguous}"
+            f"mapped_rows={mapped};blocked_unmapped_rows={unmapped};blocked_ambiguous_rows={ambiguous};"
+            f"newswire_recall_review_rows={recall};entity_candidate_review_rows={entity_review}"
         ),
     )
 
@@ -1688,6 +1938,7 @@ def build_plan(config: PublicNewswireConfig) -> dict[str, Any]:
             "start_date": config.backfill_start_date,
             "end_date": config.backfill_end_date or datetime.now(UTC).date().isoformat(),
             "fetch_missing_title_pages": bool(config.fetch_missing_title_pages),
+            "prnewswire_archive_scope": config.prnewswire_archive_scope,
             "source_archive_modes": {
                 "prnewswire": "monthly_gzip_sitemap_index_then_article_meta_title",
                 "globenewswire": "monthly_news_sitemap_with_title",
@@ -1700,10 +1951,13 @@ def build_plan(config: PublicNewswireConfig) -> dict[str, Any]:
                 "base_url": source.get("base_url", ""),
                 "rss_or_feed_urls": source.get("rss_or_feed_urls", []),
                 "sitemap_urls": source.get("sitemap_urls", []),
-                "fetch_article_metadata_for_mapping": bool(source.get("fetch_article_metadata_for_mapping", False)),
+                "static_html_fallback_urls": [url for url in ordered_unique([str(source.get("probe_url", "")), str(source.get("base_url", ""))]) if url],
                 "terms_posture": source.get("terms_posture", ""),
-                "mode": "rss_sitemap_static_html_cascade",
+                "mode": "rss_sitemap_static_html_probe_cascade",
+                "fallback_order": ["rss_or_feed", "sitemap", "robots_sitemap", "static_html_probe", "static_html_base", "discovered_follow_url"],
                 "entity_mapping_policy": "exchange-tag or exact unique universe alias only; no symbol-token fallback",
+                "entity_candidate_hint_policy": "candidate hints are non-authority L2 review inputs and cannot open trading gates",
+                "chrome_smoke_role": "selector_drift_and_public_page_diagnostics_only_not_runtime_collection",
                 "diagnostic_only": True,
             }
             for source in sources
@@ -1885,6 +2139,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--backfill-start-date", default=DEFAULT_BACKFILL_START_DATE)
     parser.add_argument("--backfill-end-date", default="")
     parser.add_argument("--no-fetch-missing-title-pages", action="store_true")
+    parser.add_argument("--prnewswire-archive-scope", choices=["all", "monthly", "recent"], default="all")
+    parser.add_argument("--exit-when-complete", action="store_true", help="Accepted for sharded backfill compatibility; backfill mode already exits when complete.")
     return parser.parse_args()
 
 
@@ -1910,6 +2166,7 @@ def main() -> int:
         backfill_start_date=args.backfill_start_date,
         backfill_end_date=args.backfill_end_date,
         fetch_missing_title_pages=not args.no_fetch_missing_title_pages,
+        prnewswire_archive_scope=args.prnewswire_archive_scope,
     )
     result = run_backfill(config, smoke=args.mode == "smoke") if args.mode == "backfill" else run_collector(config, smoke=args.mode == "smoke")
     print(

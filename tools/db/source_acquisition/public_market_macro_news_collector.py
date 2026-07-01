@@ -36,8 +36,7 @@ from tools.db.source_acquisition.source_capability_probe import (
 
 PROVIDER = "public_market_macro_news_feeds"
 SCHEMA_VERSION = 1
-COLLECTOR_VERSION = "public_market_macro_news_collector.v0.1.11"
-STOCKTITAN_ENTITY_MAPPING_VERSION = "stocktitan_public_url_symbol_mapper.v0.1.0"
+COLLECTOR_VERSION = "public_market_macro_news_collector.v0.1.8"
 DEFAULT_REGISTRY_PATH = Path("configs/source_registry/l0_public_news_capability_sources.json")
 DEFAULT_RAW_DIR = Path("data/raw/l0_public_market_macro_news")
 DEFAULT_ARTIFACT_DIR = Path("data/artifacts/l0_public_market_macro_news")
@@ -80,16 +79,6 @@ DEFAULT_LIVE_SOURCES = (
     "utilitydive_public_rss",
     "supplychaindive_public_rss",
     "biopharmadive_public_rss",
-    "constructiondive_public_rss",
-    "cfodive_public_rss",
-    "restaurantdive_public_rss",
-    "grocerydive_public_rss",
-    "marketingdive_public_rss",
-    "hrdive_public_rss",
-    "medtechdive_public_rss",
-    "highereddive_public_rss",
-    "k12dive_public_rss",
-    "smartcitiesdive_public_rss",
     "fiercebiotech_public_rss",
     "stat_public_rss",
     "breakingdefense_public_rss",
@@ -98,17 +87,7 @@ DEFAULT_LIVE_SOURCES = (
     "freightwaves_public_rss",
     "loadstar_public_rss",
     "seekingalpha_market_currents_rss",
-    "stocktitan_public_rss",
     "finviz_public_news_html",
-    "investors_public_rss",
-    "investorplace_public_rss",
-    "fxstreet_public_rss",
-    "defenseone_public_rss",
-    "nareit_public_rss",
-    "etftrends_public_rss",
-    "housingwire_public_rss",
-    "americanbanker_public_rss",
-    "techmeme_public_rss",
     "bankingdive_public_rss",
     "retaildive_public_rss",
     "ciodive_public_rss",
@@ -134,16 +113,9 @@ DEFAULT_BACKFILL_SOURCES = (
     "nine_to_five_mac_public_wp",
     "nine_to_five_google_public_wp",
     "pv_magazine_usa_public_wp",
-    "investors_public_wp",
-    "investorplace_public_wp",
-    "etftrends_public_wp",
-    "housingwire_public_wp",
     "spacenews_public_wp",
     "carbonbrief_public_wp",
     "robotreport_public_wp",
-    "utilitydive_public_rss",
-    "supplychaindive_public_rss",
-    "biopharmadive_public_rss",
     "bankingdive_public_rss",
     "retaildive_public_rss",
     "ciodive_public_rss",
@@ -153,16 +125,6 @@ DEFAULT_BACKFILL_SOURCES = (
     "fooddive_public_rss",
     "healthcaredive_public_rss",
     "pharmavoice_public_rss",
-    "constructiondive_public_rss",
-    "cfodive_public_rss",
-    "restaurantdive_public_rss",
-    "grocerydive_public_rss",
-    "marketingdive_public_rss",
-    "hrdive_public_rss",
-    "medtechdive_public_rss",
-    "highereddive_public_rss",
-    "k12dive_public_rss",
-    "smartcitiesdive_public_rss",
 )
 DEFAULT_BACKFILL_START_DATE = "2016-01-01"
 DEFAULT_USER_AGENT = "Mozilla/5.0 (compatible; Codex-L0-PublicMarketMacroNews/1.0; contact=operator)"
@@ -519,44 +481,6 @@ def row_hash(row: dict[str, Any]) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
-def stocktitan_symbol_from_url(source_url: str) -> str:
-    parsed = urlparse(source_url)
-    match = re.search(r"/news/([A-Z0-9][A-Z0-9.-]{0,11})/[^/]+\.html?$", parsed.path, flags=re.IGNORECASE)
-    if not match:
-        return ""
-    symbol = match.group(1).upper().strip(".-")
-    return symbol if re.fullmatch(r"[A-Z0-9][A-Z0-9.-]{0,11}", symbol) else ""
-
-
-def apply_stocktitan_source_ticker(row: dict[str, Any]) -> dict[str, Any]:
-    symbol = stocktitan_symbol_from_url(str(row.get("source_url") or row.get("canonical_url") or ""))
-    if not symbol:
-        return row
-    row.update(
-        {
-            "ticker_mapping_required_flag": 1,
-            "symbols": [symbol],
-            "entities": [],
-            "entity_map": [
-                {
-                    "symbol": symbol,
-                    "match_type": "explicit_source_url_path",
-                    "matched_text": symbol,
-                    "source_field": "source_url",
-                    "entity_source": "stocktitan_public_url_path",
-                }
-            ],
-            "entity_mapping_status": "MAPPED_EXPLICIT_SOURCE_TICKER",
-            "entity_mapping_methods": ["stocktitan_url_path_symbol"],
-            "entity_mapping_version": STOCKTITAN_ENTITY_MAPPING_VERSION,
-            "entity_mapping_inferred_flag": 0,
-            "stocktitan_source_ticker_flag": 1,
-        }
-    )
-    row["headline_hash"] = row_hash(row)
-    return row
-
-
 def selected_sources(config: PublicMarketMacroNewsConfig) -> list[dict[str, Any]]:
     wanted = set(config.sources)
     return [
@@ -815,23 +739,20 @@ def parse_feed_rows(payload: bytes, *, source: dict[str, Any], source_page_url: 
         published = deep_text(item, ("pubDate", "published", "updated", "date"))
         if not title or not link:
             continue
-        row = build_row(
-            source=source,
-            title=title,
-            source_url=link,
-            published_at=published,
-            published_at_text=published,
-            captured_at=captured_at,
-            source_page_url=source_page_url,
-            capture_method="rss_or_atom",
-            title_source="rss_title",
-            published_at_source="rss_pubdate" if published else "",
+        rows.append(
+            build_row(
+                source=source,
+                title=title,
+                source_url=link,
+                published_at=published,
+                published_at_text=published,
+                captured_at=captured_at,
+                source_page_url=source_page_url,
+                capture_method="rss_or_atom",
+                title_source="rss_title",
+                published_at_source="rss_pubdate" if published else "",
+            )
         )
-        if bool(source.get("stocktitan_ticker_from_url")):
-            row = apply_stocktitan_source_ticker(row)
-            if bool(source.get("stocktitan_require_source_ticker", True)) and not row.get("symbols"):
-                continue
-        rows.append(row)
     return rows
 
 
@@ -1806,7 +1727,6 @@ def collect_source(source: dict[str, Any], config: PublicMarketMacroNewsConfig) 
     for row in rows:
         for topic in row.get("context_topic_candidates", []):
             topic_counts[str(topic)] = topic_counts.get(str(topic), 0) + 1
-    ticker_mapping_required = int(any(row.get("ticker_mapping_required_flag") in (1, "1", True) for row in rows))
     return source_event(
         provider=PROVIDER,
         source_id=f"{source_key}::market_macro_watch",
@@ -1816,7 +1736,7 @@ def collect_source(source: dict[str, Any], config: PublicMarketMacroNewsConfig) 
         l1_rows=rows,
         notes=(
             f"source_key={source_key};fetches={len(fetches)};blocked_robots={blocked};"
-            f"collector_version={COLLECTOR_VERSION};ticker_mapping_required={ticker_mapping_required};"
+            f"collector_version={COLLECTOR_VERSION};ticker_mapping_required=0;"
             f"context_topics={json.dumps(topic_counts, sort_keys=True)}"
         ),
     )

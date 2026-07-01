@@ -1,0 +1,14 @@
+path,type,purpose,created_or_modified,task_id
+ops/project_hygiene_policy.yaml,GOVERNANCE_POLICY,root hygiene classification policy,created,TASK-4188
+scripts/ops/validate_project_hygiene.py,VALIDATOR,root hygiene validator and inventory writer,created,TASK-4188
+scripts/ops/validate_codex_closeout.py,VALIDATOR,adds project hygiene to standard closeout gate,modified,TASK-4188
+ops/context_bundles.yaml,GOVERNANCE_CONFIG,adds TASK-4188 generated context bundle,modified,TASK-4188
+ops/task_registry.yaml,REGISTRY,TASK-4188 task registration and closeout metadata,modified,TASK-4188
+ops/doc_registry.yaml,REGISTRY,TASK-4188 document registration,modified,TASK-4188
+docs/generated_context/TASK-4188_context.md,GENERATED_CONTEXT,hygiene-focused context bundle,created,TASK-4188
+docs/generated_context/TASK-4188_manifest.csv,GENERATED_CONTEXT_MANIFEST,hygiene-focused context manifest,created,TASK-4188
+docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/task_result_contract.yaml,CONTRACT,prime task result contract,modified,TASK-4188
+docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/report.md,TASK_REPORT,closeout report,modified,TASK-4188
+docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/artifact_manifest.csv,ARTIFACT_MANIFEST,task artifact manifest,modified,TASK-4188
+docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/validation_results.md,VALIDATION_REPORT,validator results,modified,TASK-4188
+docs/reports/task_4188_project_hygiene_system_and_root_cleanup_governance/root_hygiene_inventory.csv,REFERENCE,current root hygiene inventory baseline,created,TASK-4188

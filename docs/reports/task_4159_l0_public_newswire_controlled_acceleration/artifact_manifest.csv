@@ -1,0 +1,18 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,Task registry update,modified,TASK-4159
+ops/doc_registry.yaml,REGISTRY,Document registry update,modified,TASK-4159
+scripts/run_l0_public_newswire_sharded_backfill.py,CODE,Dynamic lane rebalance per-source budgets progress-aware stale detection and dead lock recovery,modified,TASK-4159
+scripts/aggregate_l0_public_newswire_shards.py,CODE,Source ETA active worker partial shard and active offset aggregate fields,modified,TASK-4159
+scripts/validate_l0_public_newswire_sharded_backfill.py,CODE,Dead PID RUNNING lock and aggregate integrity validation,modified,TASK-4159
+scripts/control_l0_public_newswire_acceleration.ps1,CODE,Controlled BW4 promotion decision and guarded apply controller,created,TASK-4159
+scripts/run_l0_public_newswire_sharded_progress_monitor.ps1,CODE,Hourly monitor now records controlled acceleration decision path,modified,TASK-4159
+tests/test_l0_public_newswire_sharded_backfill.py,TEST,Dynamic lane rebalance regression test,modified,TASK-4159
+docs/reports/task_4159_l0_public_newswire_controlled_acceleration/report.md,TASK_REPORT,Closeout report for controlled public newswire acceleration,created,TASK-4159
+docs/reports/task_4159_l0_public_newswire_controlled_acceleration/artifact_manifest.csv,ARTIFACT_MANIFEST,Task artifact manifest,created,TASK-4159
+docs/reports/task_4159_l0_public_newswire_controlled_acceleration/validation_results.md,VALIDATION_REPORT,Validator and runtime evidence,created,TASK-4159
+docs/reports/task_4159_l0_public_newswire_controlled_acceleration/gpt_review_digest_ko.md,GPT_REVIEW_DIGEST,GPT Pro review summary,created,TASK-4159
+data/artifacts/l0_public_newswire_backfill_shards/background_process.json,RUNTIME_ARTIFACT,TASK-4159 launcher process metadata,modified,TASK-4159
+data/artifacts/l0_public_newswire_backfill_shards/aggregate_progress.json,RUNTIME_ARTIFACT,Current aggregate progress with source ETA and worker fields,modified,TASK-4159
+data/artifacts/task_4159_l0_public_newswire_controlled_acceleration/progress_monitor_process.json,RUNTIME_ARTIFACT,TASK-4159 hourly monitor process metadata,created,TASK-4159
+data/artifacts/task_4159_l0_public_newswire_controlled_acceleration/progress_monitor_status.json,RUNTIME_ARTIFACT,TASK-4159 latest progress monitor status,created,TASK-4159
+data/artifacts/task_4159_l0_public_newswire_controlled_acceleration/controlled_acceleration_decision.json,RUNTIME_ARTIFACT,TASK-4159 BW4 controlled promotion decision,created,TASK-4159

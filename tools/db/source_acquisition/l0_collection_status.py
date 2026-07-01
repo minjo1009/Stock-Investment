@@ -29,10 +29,10 @@ DEFAULT_PUBLIC_NEWSWIRE_PROGRESS = Path("data/artifacts/l0_public_newswire/colle
 DEFAULT_PUBLIC_NEWSWIRE_PLAN = Path("data/artifacts/l0_public_newswire/collection_plan.json")
 DEFAULT_PUBLIC_NEWSWIRE_EVENTS = Path("data/artifacts/l0_public_newswire/collector_events.jsonl")
 DEFAULT_PUBLIC_NEWSWIRE_BACKGROUND = Path("data/artifacts/l0_public_newswire/background_process.json")
-DEFAULT_PUBLIC_NEWSWIRE_BACKFILL_PROGRESS = Path("data/artifacts/l0_public_newswire_backfill/collector_progress.json")
-DEFAULT_PUBLIC_NEWSWIRE_BACKFILL_PLAN = Path("data/artifacts/l0_public_newswire_backfill/collection_plan.json")
-DEFAULT_PUBLIC_NEWSWIRE_BACKFILL_EVENTS = Path("data/artifacts/l0_public_newswire_backfill/collector_events.jsonl")
-DEFAULT_PUBLIC_NEWSWIRE_BACKFILL_BACKGROUND = Path("data/artifacts/l0_public_newswire_backfill/background_process.json")
+DEFAULT_PUBLIC_NEWSWIRE_BACKFILL_PROGRESS = Path("data/artifacts/l0_public_newswire_backfill_shards/aggregate_progress.json")
+DEFAULT_PUBLIC_NEWSWIRE_BACKFILL_PLAN = Path("data/artifacts/l0_public_newswire_backfill_shards/shard_inventory.json")
+DEFAULT_PUBLIC_NEWSWIRE_BACKFILL_EVENTS = Path("data/artifacts/l0_public_newswire_backfill_shards/aggregate_progress.json")
+DEFAULT_PUBLIC_NEWSWIRE_BACKFILL_BACKGROUND = Path("data/artifacts/l0_public_newswire_backfill_shards/background_process.json")
 DEFAULT_PUBLIC_CONTEXT_NEWS_PROGRESS = Path("data/artifacts/l0_public_context_news/collector_progress.json")
 DEFAULT_PUBLIC_CONTEXT_NEWS_PLAN = Path("data/artifacts/l0_public_context_news/collection_plan.json")
 DEFAULT_PUBLIC_CONTEXT_NEWS_EVENTS = Path("data/artifacts/l0_public_context_news/collector_events.jsonl")
@@ -57,6 +57,7 @@ DEFAULT_KEEP_AWAKE_STATUS = Path("data/artifacts/l0_source_acquisition/keep_lapt
 DEFAULT_DAILY_RAW_DIR = Path("data/raw/us_daily_alpaca_full_universe")
 DEFAULT_DB_PATH = Path("trading.db")
 DEFAULT_TICK_STOP = Path("data/artifacts/microstructure_backfill_queue_15m/STOP")
+DEFAULT_SCHEDULER_CONFIG = Path("configs/db_source_acquisition_scheduler.json")
 DEFAULT_UNIVERSE_COUNT = 12_040
 DEFAULT_DAILY_SHARD_PROGRESS_GLOB = "data/artifacts/l0_bar_daily_full_backfill_shard_*/collector_progress.json"
 DEFAULT_DAILY_SHARD_BACKGROUND_GLOB = "data/artifacts/l0_bar_daily_full_backfill_shard_*/background_process.json"
@@ -112,6 +113,7 @@ class L0CollectionStatusConfig:
     daily_raw_dir: Path = DEFAULT_DAILY_RAW_DIR
     db_path: Path = DEFAULT_DB_PATH
     tick_stop: Path = DEFAULT_TICK_STOP
+    scheduler_config: Path = DEFAULT_SCHEDULER_CONFIG
     universe_count: int = DEFAULT_UNIVERSE_COUNT
 
 
@@ -127,6 +129,28 @@ def load_json(path: Path) -> dict[str, Any]:
     except json.JSONDecodeError:
         return {"read_error": "JSONDecodeError", "path": str(path)}
     return payload if isinstance(payload, dict) else {"payload_type": type(payload).__name__, "path": str(path)}
+
+
+def scheduler_management_plan(path: Path) -> dict[str, Any]:
+    payload = load_json(path)
+    plan = payload.get("management_plan", {})
+    if not isinstance(plan, dict):
+        return {"status": "MISSING", "path": str(path), "stage_count": 0}
+    stages = [stage for stage in plan.get("stages", []) if isinstance(stage, dict)]
+    next_stages = [stage for stage in stages if str(stage.get("status", "")).upper() == "NEXT"]
+    blocked_stages = [stage for stage in stages if str(stage.get("status", "")).upper().startswith("BLOCKED")]
+    return {
+        "status": "PRESENT",
+        "path": str(path),
+        "active_task": plan.get("active_task", ""),
+        "roadmap_doc": plan.get("roadmap_doc", ""),
+        "status_report_command": plan.get("status_report_command", ""),
+        "validator_command": plan.get("validator_command", ""),
+        "stage_count": len(stages),
+        "next_stage": next_stages[0] if next_stages else {},
+        "blocked_stage_count": len(blocked_stages),
+        "implementation_modes": plan.get("implementation_modes", {}),
+    }
 
 
 def int_value(value: Any, default: int = 0) -> int:
@@ -442,6 +466,43 @@ def public_newswire_status(plan: dict[str, Any], progress: dict[str, Any], event
 
 
 def public_newswire_backfill_status(plan: dict[str, Any], progress: dict[str, Any], event_path: Path) -> dict[str, Any]:
+    if isinstance(progress.get("by_source"), dict):
+        by_source = progress.get("by_source", {})
+        source_states = {
+            source_key: {
+                "completed_archive_urls": int_value(payload.get("completed_units")),
+                "unavailable_archive_urls": int_value(payload.get("failed_units")),
+                "total_archive_urls": int_value(payload.get("total_units")),
+                "pending_archive_urls": int_value(payload.get("pending_units")),
+                "active_archive_offsets": int_value(payload.get("partial_units")),
+                "row_count": int_value(payload.get("row_count")),
+            }
+            for source_key, payload in sorted(by_source.items())
+            if isinstance(payload, dict)
+        }
+        return {
+            "status": progress.get("status", "RUNNING"),
+            "provider": "public_newswire_feeds",
+            "mode": "historical_backfill_sharded",
+            "completed_units": int_value(progress.get("completed_units")),
+            "total_units": int_value(progress.get("total_units")),
+            "progress_pct": progress.get("progress_pct"),
+            "pending_archive_urls": int_value(progress.get("pending_units")),
+            "active_archive_offsets": int_value(progress.get("partial_units")),
+            "unavailable_archive_urls": int_value(progress.get("failed_units")),
+            "row_count": int_value(progress.get("row_count")),
+            "l1_ready_discovery_only_count": int_value(progress.get("l1_ready_discovery_only_count")),
+            "l1_context_ready_count": int_value(progress.get("l1_context_ready_count")),
+            "l1_blocked_count": int_value(progress.get("l1_blocked_count")),
+            "event_status_counts": progress.get("status_counts", {}),
+            "source_states": source_states,
+            "plan_start_date": plan.get("start_date", ""),
+            "plan_end_date": plan.get("end_date", ""),
+            "failed_units": int_value(progress.get("failed_units")),
+            "partial_units": int_value(progress.get("partial_units")),
+            "long_tail_eta_hours": progress.get("long_tail_eta_hours"),
+            "generated_at": progress.get("generated_at", ""),
+        }
     stats = news_event_summary(event_path).get("providers", {}).get("public_newswire_feeds", {})
     backfill = progress.get("backfill", {}) if isinstance(progress.get("backfill"), dict) else {}
     source_states: dict[str, Any] = {}
@@ -698,6 +759,85 @@ def pid_running(pid: int | str | None) -> bool | None:
     return str(pid_int) in result.stdout
 
 
+def process_identity(pid: int | str | None, expected_fragment: str = "") -> dict[str, Any]:
+    if pid in (None, ""):
+        return {
+            "pid_recorded": pid,
+            "pid_alive": None,
+            "pid_checked_at": now_z(),
+            "pid_check_source": "os_process_check",
+            "pid_process_name": "",
+            "pid_owner_verified": None,
+            "pid_commandline_contains_expected_script": None,
+        }
+    try:
+        pid_int = int(pid)
+    except (TypeError, ValueError):
+        return {
+            "pid_recorded": pid,
+            "pid_alive": None,
+            "pid_checked_at": now_z(),
+            "pid_check_source": "os_process_check",
+            "pid_process_name": "",
+            "pid_owner_verified": None,
+            "pid_commandline_contains_expected_script": None,
+        }
+    try:
+        result = subprocess.run(  # noqa: S603
+            [
+                "powershell",
+                "-NoProfile",
+                "-Command",
+                (
+                    f"$p=Get-CimInstance Win32_Process -Filter \"ProcessId={pid_int}\";"
+                    "if ($p) { [pscustomobject]@{Name=$p.Name;CommandLine=$p.CommandLine;CreationDate=$p.CreationDate} | ConvertTo-Json -Compress }"
+                ),
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=10,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return {
+            "pid_recorded": pid_int,
+            "pid_alive": None,
+            "pid_checked_at": now_z(),
+            "pid_check_source": "os_process_check",
+            "pid_process_name": "",
+            "pid_owner_verified": None,
+            "pid_commandline_contains_expected_script": None,
+        }
+    if not result.stdout.strip():
+        return {
+            "pid_recorded": pid_int,
+            "pid_alive": False,
+            "pid_checked_at": now_z(),
+            "pid_check_source": "os_process_check",
+            "pid_process_name": "",
+            "pid_owner_verified": False if expected_fragment else None,
+            "pid_commandline_contains_expected_script": False if expected_fragment else None,
+        }
+    try:
+        payload = json.loads(result.stdout)
+    except json.JSONDecodeError:
+        payload = {}
+    command_line = str(payload.get("CommandLine") or "")
+    contains_expected = expected_fragment.lower() in command_line.lower() if expected_fragment else None
+    return {
+        "pid_recorded": pid_int,
+        "pid_alive": True,
+        "pid_checked_at": now_z(),
+        "pid_check_source": "os_process_check",
+        "pid_process_name": payload.get("Name", ""),
+        "pid_owner_verified": contains_expected if expected_fragment else None,
+        "pid_commandline_contains_expected_script": contains_expected,
+        "pid_creation_time": str(payload.get("CreationDate") or ""),
+    }
+
+
 def keep_awake_pids() -> list[int]:
     try:
         result = subprocess.run(  # noqa: S603
@@ -726,12 +866,36 @@ def keep_awake_pids() -> list[int]:
 def background_status(path: Path) -> dict[str, Any]:
     payload = load_json(path)
     pid = payload.get("pid")
+    expected_fragment = ""
+    path_text = str(path).replace("\\", "/")
+    if "l0_public_newswire_backfill_shards" in path_text:
+        expected_fragment = "run_l0_public_newswire_sharded_backfill.py"
+    elif "l0_public_newswire_backfill" in path_text:
+        expected_fragment = "run_l0_public_newswire_collector.py"
+    elif "l0_public_market_macro_news_backfill" in path_text:
+        expected_fragment = "run_l0_public_market_macro_news_collector.py"
+    identity = process_identity(pid, expected_fragment)
+    running = identity.get("pid_alive")
+    worker_gate_state = "UNKNOWN_PID_UNVERIFIED"
+    if running is True:
+        worker_gate_state = "RUNNING_ALIVE"
+    elif running is False:
+        worker_gate_state = "BLOCKED_WORKER_NOT_ALIVE"
     return {
         "path": str(path),
         "pid": pid,
-        "running": pid_running(pid),
+        "running": running,
         "started_at": payload.get("started_at", ""),
         "lanes": payload.get("lanes", payload.get("sources", "")),
+        "pid_recorded": identity.get("pid_recorded"),
+        "pid_alive": identity.get("pid_alive"),
+        "pid_checked_at": identity.get("pid_checked_at"),
+        "pid_check_source": identity.get("pid_check_source"),
+        "pid_process_name": identity.get("pid_process_name"),
+        "pid_owner_verified": identity.get("pid_owner_verified"),
+        "pid_commandline_contains_expected_script": identity.get("pid_commandline_contains_expected_script"),
+        "pid_creation_time": identity.get("pid_creation_time", ""),
+        "worker_gate_state": worker_gate_state,
     }
 
 
@@ -824,10 +988,13 @@ def build_status(config: L0CollectionStatusConfig = L0CollectionStatusConfig()) 
     keep_awake["detected_running"] = bool(detected_keep_awake_pids)
     actual_daily_files = daily_file_count(config.daily_raw_dir)
     daily_summary_input = dict(daily)
-    daily_summary_input["daily_symbol_index"] = actual_daily_files
+    request_completed = int_value(daily.get("daily_symbol_index"), actual_daily_files)
+    daily_summary_input["daily_symbol_index"] = request_completed
     daily_summary_input["universe_count"] = int(config.universe_count)
-    daily_summary_input["overall_progress_pct"] = round(actual_daily_files / max(int(config.universe_count), 1) * 100.0, 4)
-    daily_summary_input["remaining_request_units"] = max(int(config.universe_count) - actual_daily_files, 0)
+    daily_summary_input["overall_progress_pct"] = round(request_completed / max(int(config.universe_count), 1) * 100.0, 4)
+    daily_summary_input["remaining_request_units"] = max(int(config.universe_count) - request_completed, 0)
+    daily_summary_input["raw_csv_file_coverage_pct"] = round(actual_daily_files / max(int(config.universe_count), 1) * 100.0, 4)
+    daily_summary_input["empty_provider_response_units"] = int_value(daily.get("empty_events"))
     if daily_shard_progresses:
         latest_daily_updates = [
             str(progress.get("updated_at", ""))
@@ -853,6 +1020,7 @@ def build_status(config: L0CollectionStatusConfig = L0CollectionStatusConfig()) 
     status = {
         "updated_at": now_z(),
         "objective": "L0 full-universe collection status for daily/5m bars, universe/calendar/status, news/official sources, with quote/trade ticks postponed.",
+        "management_plan": scheduler_management_plan(config.scheduler_config),
         "permissions": {
             "diagnostic_only_flag": 1,
             "trade_authority_flag": 0,
@@ -948,8 +1116,27 @@ def write_markdown(path: Path, status: dict[str, Any]) -> None:
         f"- Updated at: {status['updated_at']}",
         "- Status: DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY",
         "",
-        "## Background",
+        "## Management Plan",
     ]
+    plan = status.get("management_plan", {})
+    next_stage = plan.get("next_stage", {}) if isinstance(plan, dict) else {}
+    modes = plan.get("implementation_modes", {}) if isinstance(plan, dict) else {}
+    lines.extend(
+        [
+            f"- Plan status: {plan.get('status')}",
+            f"- Active task: {plan.get('active_task')}",
+            f"- Roadmap: {plan.get('roadmap_doc')}",
+            f"- Stage count: {plan.get('stage_count')}, blocked stages: {plan.get('blocked_stage_count')}",
+            f"- Next stage: {next_stage.get('stage')} {next_stage.get('name')} status={next_stage.get('status')} preflight={next_stage.get('preflight_status', '')}",
+            f"- Runtime collection mode: python_collectors={len(modes.get('python_collectors', []))}, chrome_smoke_only={modes.get('chrome_smoke_only', [])}, codex_gpt_role={modes.get('codex_gpt_role')}",
+            "",
+        ]
+    )
+    lines.extend(
+        [
+        "## Background",
+        ]
+    )
     for name, payload in status["background_processes"].items():
         if name == "keep_awake" and isinstance(payload, dict):
             lines.append(

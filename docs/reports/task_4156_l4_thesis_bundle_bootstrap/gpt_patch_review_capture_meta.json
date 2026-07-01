@@ -1,0 +1,10 @@
+{
+  "task_id": "TASK-4156",
+  "capture_status": "CAPTURED",
+  "captured_at_local": "2026-06-30T13:19:17.477Z",
+  "browser_title": "Patch Review TASK-4156",
+  "browser_url": "https://chatgpt.com/c/6a43c1e5-c4a8-83ee-8d0b-ea9a2a30d17e",
+  "response_chars": 1759,
+  "verdict_detected": "PASS_OR_CONDITIONAL_PASS",
+  "tab_cleanup_status": "closed_agent_created_tab"
+}

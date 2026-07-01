@@ -1,0 +1,21 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4142 task definition and closeout state,modified,TASK-4142
+ops/doc_registry.yaml,registry,TASK-4142 document registry entries,modified,TASK-4142
+docs/active/ACTIVE_SSOT_INDEX.md,active_doc,TASK-4142 active report pointer,modified,TASK-4142
+docs/active/CURRENT_TASKS.md,active_doc,TASK-4142 completion pointer,modified,TASK-4142
+docs/active/PROJECT_STATUS.md,active_doc,TASK-4142 status note,modified,TASK-4142
+scripts/run_l2_swing_event_admission_4142.py,script,Build L2 swing event admission view,created,TASK-4142
+scripts/validate_l2_swing_event_admission_4142.py,validator,Validate L2 swing event admission view,created,TASK-4142
+docs/reports/task_4142_l2_swing_event_admission/report.md,task_report,TASK-4142 report,created,TASK-4142
+docs/reports/task_4142_l2_swing_event_admission/artifact_manifest.csv,artifact_manifest,TASK-4142 artifact manifest,created,TASK-4142
+docs/reports/task_4142_l2_swing_event_admission/validation_results.md,validation_report,TASK-4142 validation results,created,TASK-4142
+docs/reports/task_4142_l2_swing_event_admission/l2_swing_event_admission_summary.json,summary,Machine-readable TASK-4142 summary,created,TASK-4142
+data/artifacts/task_4142_l2_swing_event_admission/l2_swing_event_admission_view.csv,artifact,L2 swing event admission view CSV,created,TASK-4142
+data/artifacts/task_4142_l2_swing_event_admission/l2_swing_event_admission_view.jsonl,artifact,L2 swing event admission view JSONL,created,TASK-4142
+data/artifacts/task_4142_l2_swing_event_admission/l2_swing_event_admission_validation_report.json,artifact,Admission validation JSON report,created,TASK-4142
+data/artifacts/task_4142_l2_swing_event_admission/l2_swing_event_admission_validation_report.md,artifact,Admission validation Markdown report,created,TASK-4142
+data/artifacts/task_4142_l2_swing_event_admission/l2_mapping_issues.csv,artifact,Mapping issue rows,created,TASK-4142
+data/artifacts/task_4142_l2_swing_event_admission/l2_dedup_clusters.csv,artifact,Dedup cluster rows,created,TASK-4142
+data/artifacts/task_4142_l2_swing_event_admission/l2_block_reason_summary.csv,artifact,Block reason summary,created,TASK-4142
+data/artifacts/task_4142_l2_swing_event_admission/l2_family_count_summary.csv,artifact,Source family count summary,created,TASK-4142
+data/artifacts/task_4142_l2_swing_event_admission/validator_report.json,artifact,Machine-readable validator report,created,TASK-4142

@@ -1,0 +1,115 @@
+task_id: "TASK-4174"
+task_type: "TERMINALIZE"
+domain: "layer_0_source_acquisition"
+layer_outcome_validation:
+  layer: "L0"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "scripts/run_task4174_l0_source_recovery_terminal_cleanup.py"
+    - "scripts/validate_task4174_l0_source_recovery_terminal_cleanup.py"
+    - "data/artifacts/task_4174_l0_source_recovery_terminal_cleanup/**"
+    - "data/raw/task_4174_l0_source_recovery_terminal_cleanup/**"
+    - "docs/reports/task_4174_l0_source_recovery_and_terminal_status_cleanup/**"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+    - "src/validation/prime_layer_outcome_unit_validator.py"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "scripts/run_task4174_l0_source_recovery_terminal_cleanup.py"
+    - "scripts/validate_task4174_l0_source_recovery_terminal_cleanup.py"
+    - "data/artifacts/task_4174_l0_source_recovery_terminal_cleanup/task_4174_l0_terminal_status_ledger.csv"
+    - "data/artifacts/task_4174_l0_source_recovery_terminal_cleanup/task_4174_l0_recovery_summary.json"
+    - "data/raw/task_4174_l0_source_recovery_terminal_cleanup/federal_register_2020_10_page_32.json"
+    - "data/raw/task_4174_l0_source_recovery_terminal_cleanup/federal_register_2020_10_page_32_metadata.json"
+    - "docs/reports/task_4174_l0_source_recovery_and_terminal_status_cleanup/task_result_contract.yaml"
+    - "docs/reports/task_4174_l0_source_recovery_and_terminal_status_cleanup/report.md"
+    - "docs/reports/task_4174_l0_source_recovery_and_terminal_status_cleanup/artifact_manifest.csv"
+    - "docs/reports/task_4174_l0_source_recovery_and_terminal_status_cleanup/validation_results.md"
+    - "ops/task_registry.yaml"
+    - "ops/doc_registry.yaml"
+    - "src/validation/prime_layer_outcome_unit_validator.py"
+outcome_unit:
+  name: "unclassified_l0_terminal_status_count"
+  type: "count"
+  direction: "decrease"
+  problem_progress_claim_allowed: true
+  harness_progress_claim_allowed: false
+baseline:
+  measured_at: "2026-07-01T12:19:00Z"
+  value: 1
+  source_artifacts:
+    - "data/artifacts/task_4168_l3_gap_reason_narrowing_recall_traceability/task_4168_l0_status_snapshot.json"
+  freshness_required: true
+after:
+  measured_at: "2026-07-01T12:20:34Z"
+  value: 0
+  terminalized_count: 16
+  source_artifacts:
+    - "data/artifacts/task_4174_l0_source_recovery_terminal_cleanup/task_4174_l0_recovery_summary.json"
+intended_change:
+  description: "Turn L0 incomplete/retryable source states into explicit completed/running/blocker terminal statuses without claiming missing data as negative evidence."
+  target:
+    value: 0
+measurement_method:
+  commands:
+    - "python scripts/run_task4174_l0_source_recovery_terminal_cleanup.py"
+    - "python scripts/validate_task4174_l0_source_recovery_terminal_cleanup.py"
+  comparison_rule: "all L0 recovery rows must have explicit terminal_state"
+  same_method_before_after_required: false
+allowed_actions:
+  - "read current L0 progress artifacts"
+  - "perform bounded Federal Register pagination proof fetch"
+  - "write terminal status ledger and summary"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "data/artifacts/task_4174_l0_source_recovery_terminal_cleanup/task_4174_l0_terminal_status_ledger.csv"
+    - "data/artifacts/task_4174_l0_source_recovery_terminal_cleanup/task_4174_l0_recovery_summary.json"
+    - "data/raw/task_4174_l0_source_recovery_terminal_cleanup/federal_register_2020_10_page_32_metadata.json"
+validators:
+  required:
+    - "prime_task_contract_validator"
+    - "outcome_contract_validator"
+    - "prime_layer_outcome_unit_validator"
+    - "task4174_l0_terminal_cleanup_validator"
+progress_claim_policy:
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  actual_underlying_progress: true
+  allowed_claims:
+    - "L0 unclassified terminal status count decreased to zero for the bounded recovery ledger."
+  forbidden_claims:
+    - "BW/PRN backfill fully completed."
+    - "Missing source rows are negative evidence."
+closeout_verdict:
+  selected: "VALID_TERMINALIZATION"
+report:
+  actual_underlying_progress: true
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  summary: "L0 incomplete/retryable rows were terminalized into completed, running-retryable, or explicit blocker states; Federal Register 2020-10 page 32 proof shows valid empty page beyond total_pages=25."
+  claims:
+    - "16 non-completed L0 source states received explicit terminal or retryable status."
+next_target:
+  required: true
+  task_type: "OUTCOME_CHANGE"
+  outcome_unit: "incomplete_backfill_units"
+  required_baseline: "current BW/PRN pending unit count"
+  required_validator: "task4174_l0_terminal_cleanup_validator"

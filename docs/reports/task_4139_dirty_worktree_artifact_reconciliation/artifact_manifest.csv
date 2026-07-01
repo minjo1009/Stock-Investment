@@ -1,0 +1,16 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4139 registry entry,modified,TASK-4139
+ops/doc_registry.yaml,registry,TASK-4139 doc registry entries,modified,TASK-4139
+docs/active/CURRENT_TASKS.md,active_doc,TASK-4139 completion pointer,modified,TASK-4139
+docs/active/PROJECT_STATUS.md,active_doc,TASK-4139 project status note,modified,TASK-4139
+docs/active/ACTIVE_SSOT_INDEX.md,active_doc,TASK-4139 active report pointer,modified,TASK-4139
+scripts/reconcile_dirty_worktree_4139.py,script,Build dirty worktree reconciliation artifacts,created,TASK-4139
+scripts/validate_dirty_worktree_reconciliation_4139.py,validator,Validate dirty worktree reconciliation artifacts,created,TASK-4139
+docs/reports/task_4139_dirty_worktree_artifact_reconciliation/report.md,task_report,TASK-4139 report,created,TASK-4139
+docs/reports/task_4139_dirty_worktree_artifact_reconciliation/artifact_manifest.csv,artifact_manifest,TASK-4139 manifest,created,TASK-4139
+docs/reports/task_4139_dirty_worktree_artifact_reconciliation/validation_results.md,validation_report,TASK-4139 validation results,created,TASK-4139
+docs/reports/task_4139_dirty_worktree_artifact_reconciliation/dirty_reconciliation_summary.json,summary,Machine-readable dirty reconciliation summary,created,TASK-4139
+data/artifacts/task_4139_dirty_worktree_artifact_reconciliation/dirty_worktree_inventory.csv,artifact,Full dirty file classification inventory,created,TASK-4139
+data/artifacts/task_4139_dirty_worktree_artifact_reconciliation/dirty_worktree_summary.csv,artifact,Dirty file summary counts,created,TASK-4139
+data/artifacts/task_4139_dirty_worktree_artifact_reconciliation/dirty_worktree_p0_review_queue.csv,artifact,P0 dirty file review queue,created,TASK-4139
+data/artifacts/task_4139_dirty_worktree_artifact_reconciliation/validator_report.json,artifact,Machine-readable validator report,created,TASK-4139

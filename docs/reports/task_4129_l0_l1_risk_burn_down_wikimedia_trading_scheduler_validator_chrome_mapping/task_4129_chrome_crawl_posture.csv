@@ -1,0 +1,3 @@
+task_id,item,current_status,configured,job_enabled,allow_network,allowed_use,forbidden_use
+TASK-4129,chrome_public_page_snapshot_smoke_lane,SMOKE_ONLY_ADDED_NOT_RUNTIME_COLLECTION,1,0,0,"public page availability, selector drift, screenshot/snapshot diagnostics","login, paywall, captcha bypass, stealth/proxy evasion, production collection, trading signal"
+TASK-4129,codex_gpt_runtime_role,planning_review_recovery_only_not_runtime_collection,1,0,0,"planning, recovery, and review",runtime data collection engine or source of truth

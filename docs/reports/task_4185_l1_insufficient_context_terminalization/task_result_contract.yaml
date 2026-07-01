@@ -1,0 +1,82 @@
+task_id: TASK-4185
+task_type: TERMINALIZE
+domain: L1_NEWSWIRE_MAPPING
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN
+  missing_stale_incomplete_data_semantics: UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE
+scope:
+  changed_paths:
+  - scripts/run_task4185_l1_insufficient_context_terminalization.py
+  - scripts/validate_task4185_l1_insufficient_context_terminalization.py
+  - data/artifacts/task_4185_l1_insufficient_context_terminalization/**
+  - docs/reports/task_4185_l1_insufficient_context_terminalization/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  allowed_paths:
+  - scripts/run_task4185_l1_insufficient_context_terminalization.py
+  - scripts/validate_task4185_l1_insufficient_context_terminalization.py
+  - data/artifacts/task_4185_l1_insufficient_context_terminalization/**
+  - docs/reports/task_4185_l1_insufficient_context_terminalization/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  forbidden_paths:
+  - broker/**
+  - live_trading/**
+  - production_orders/**
+  - secrets/**
+  - configs/broker/**
+layer_outcome_validation:
+  layer: L1
+outcome_unit:
+  name: unclassified_article_count
+  direction: decrease
+  problem_progress_claim_allowed: true
+intended_change:
+  summary: Terminalize residual insufficient-context rows as explicit no-mapped-evidence blockers.
+measurement_method:
+  commands:
+  - python scripts/run_task4185_l1_insufficient_context_terminalization.py
+  - python scripts/validate_task4185_l1_insufficient_context_terminalization.py
+baseline:
+  value: 5
+after:
+  value: 0
+  terminalized_count: 5
+allowed_actions:
+  - verify raw path, sha256, articles, source time, locator, and absence of mapped article evidence
+  - write diagnostic terminal blocker ledger
+forbidden_actions:
+  - broker mutation
+  - capital-bearing execution
+  - forced ticker mapping
+  - LLM entity inference
+  - negative evidence conversion
+evidence_artifacts:
+  required:
+  - data/artifacts/task_4185_l1_insufficient_context_terminalization/task_4185_l1_insufficient_context_summary.json
+  - data/artifacts/task_4185_l1_insufficient_context_terminalization/task_4185_l1_insufficient_context_terminal_ledger.csv
+  - docs/reports/task_4185_l1_insufficient_context_terminalization/report.md
+validators:
+  required:
+  - python scripts/validate_task4185_l1_insufficient_context_terminalization.py
+progress_claim_policy:
+  actual_underlying_progress: false
+  missing_data_used_as_negative_evidence: false
+closeout_verdict:
+  selected: VALID_TERMINALIZATION
+report:
+  summary: Five residual insufficient-context rows were terminalized as explicit context or non-current-universe blockers.
+  actual_underlying_progress: false
+  claims:
+  - Residual insufficient-context rows are explicit terminal blockers, not silent unresolved rows.
+next_target:
+  required: true
+  task_type: OUTCOME_CHANGE
+  outcome_unit: unmapped_entity_count
+  required_baseline: refreshed L1 unmapped entity counts after L0 backfill progresses
+  required_validator: deterministic alias/parser recovery validator

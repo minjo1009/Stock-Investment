@@ -1,0 +1,9 @@
+path,type,purpose,created_or_modified,task_id
+prompts/task-create.md,PROMPT,Task creation prompt with layer/work type title view.,modified,TASK-4187
+prompts/phase-create.md,PROMPT,Phase creation prompt with layer-scope/phase-type title view.,modified,TASK-4187
+docs/reports/task_4187_gov_prompt_maintenance_task_phase_title_taxonomy/task_result_contract.yaml,CONTRACT,Prime task result contract.,created,TASK-4187
+docs/reports/task_4187_gov_prompt_maintenance_task_phase_title_taxonomy/report.md,TASK_REPORT,Human-readable closeout report.,created,TASK-4187
+docs/reports/task_4187_gov_prompt_maintenance_task_phase_title_taxonomy/artifact_manifest.csv,ARTIFACT_MANIFEST,Task artifact inventory.,created,TASK-4187
+docs/reports/task_4187_gov_prompt_maintenance_task_phase_title_taxonomy/validation_results.md,VALIDATION_REPORT,Validator run log.,created,TASK-4187
+ops/task_registry.yaml,REGISTRY,Task registry update.,modified,TASK-4187
+ops/doc_registry.yaml,REGISTRY,Document registry update.,modified,TASK-4187

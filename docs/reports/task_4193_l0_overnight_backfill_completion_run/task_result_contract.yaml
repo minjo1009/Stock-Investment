@@ -1,0 +1,95 @@
+task_id: TASK-4193
+task_type: OUTCOME_CHANGE
+domain: L0_SOURCE_ACQUISITION
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN
+  missing_stale_incomplete_data_semantics: UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE
+scope:
+  changed_paths:
+  - scripts/run_task4193_l0_overnight_backfill_supervisor.py
+  - scripts/validate_task4193_l0_overnight_backfill_supervisor.py
+  - data/artifacts/task_4193_l0_overnight_backfill_completion_run/**
+  - docs/reports/task_4193_l0_overnight_backfill_completion_run/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  allowed_paths:
+  - scripts/run_task4193_l0_overnight_backfill_supervisor.py
+  - scripts/validate_task4193_l0_overnight_backfill_supervisor.py
+  - data/artifacts/task_4193_l0_overnight_backfill_completion_run/**
+  - docs/reports/task_4193_l0_overnight_backfill_completion_run/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  forbidden_paths:
+  - broker/**
+  - live_trading/**
+  - production_orders/**
+  - secrets/**
+  - configs/broker/**
+layer_outcome_validation:
+  layer: L0
+outcome_unit:
+  name: stale_realtime_collector_count
+  direction: decrease
+  problem_progress_claim_allowed: true
+intended_change:
+  summary: Keep L0 public newswire, market/macro, and 5m bar backfills alive overnight with checkpoint recovery and proof.
+measurement_method:
+  commands:
+  - python scripts/run_task4193_l0_overnight_backfill_supervisor.py
+  - python scripts/run_task4193_l0_overnight_backfill_supervisor.py --install-background
+  - python scripts/validate_task4193_l0_overnight_backfill_supervisor.py
+baseline:
+  value: 2
+  public_newswire_launcher_alive: false
+  five_min_checkpoint_valid: false
+  five_min_pid_alive: false
+after:
+  value: 0
+  supervisor_pid_alive: true
+  public_newswire_launcher_alive: true
+  market_macro_collector_alive: true
+  five_min_checkpoint_valid: true
+  five_min_pid_alive: true
+allowed_actions:
+  - restart diagnostic-only L0 collectors
+  - recover corrupted 5m checkpoint from local event ledger
+  - write runtime status, event ledger, progress snapshots, and validation proof
+forbidden_actions:
+  - broker mutation
+  - live order
+  - paper promotion
+  - real-capital enablement
+  - deleting raw source data
+  - treating missing data as negative evidence
+evidence_artifacts:
+  required:
+  - data/artifacts/task_4193_l0_overnight_backfill_completion_run/supervisor_status.json
+  - data/artifacts/task_4193_l0_overnight_backfill_completion_run/background_process.json
+  - data/artifacts/task_4193_l0_overnight_backfill_completion_run/supervisor_events.jsonl
+  - docs/reports/task_4193_l0_overnight_backfill_completion_run/report.md
+validators:
+  required:
+  - python scripts/validate_task4193_l0_overnight_backfill_supervisor.py
+progress_claim_policy:
+  actual_underlying_progress: true
+  missing_data_used_as_negative_evidence: false
+closeout_verdict:
+  selected: ACTUAL_PROGRESS_WITH_RESIDUAL_BLOCKERS
+report:
+  summary: L0 overnight supervisor is running; newswire, market/macro, and 5m collectors are alive; daily bars are complete.
+  actual_underlying_progress: true
+  claims:
+  - Public newswire launcher was restarted under sharded BW/PRN lanes.
+  - 5m checkpoint corruption was backed up and recovered from the event ledger.
+  - L0/L2 hardening and backfill recovery scheduled tasks now report Last Result 0.
+next_target:
+  required: true
+  task_type: L0_BACKFILL_COMPLETION_AUDIT
+  outcome_unit: remaining_public_newswire_and_market_macro_pending_units
+  required_baseline: supervisor_status.json after the overnight run
+  required_validator: python scripts/validate_task4193_l0_overnight_backfill_supervisor.py

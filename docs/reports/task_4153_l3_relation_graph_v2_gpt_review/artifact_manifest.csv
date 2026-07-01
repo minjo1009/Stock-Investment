@@ -1,0 +1,12 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,registry,TASK-4153 task registration and closeout,modified,TASK-4153
+ops/doc_registry.yaml,registry,TASK-4153 document registration,modified,TASK-4153
+scripts/validate_task_4153_l3_relation_graph_v2_gpt_review.py,validator,Validate GPT Pro review artifacts,created,TASK-4153
+docs/reports/task_4153_l3_relation_graph_v2_gpt_review/context_packet.md,reference,GPT Pro context packet with current L3 v2 state,created,TASK-4153
+docs/reports/task_4153_l3_relation_graph_v2_gpt_review/gpt_prompt.md,reference,GPT Pro prompt for L3 relation graph v2 review,created,TASK-4153
+docs/reports/task_4153_l3_relation_graph_v2_gpt_review/gpt_response.md,reference,Captured GPT Pro review response,created,TASK-4153
+docs/reports/task_4153_l3_relation_graph_v2_gpt_review/gpt_capture_meta.json,reference,GPT response capture metadata,created,TASK-4153
+docs/reports/task_4153_l3_relation_graph_v2_gpt_review/gpt_review_digest_ko.md,reference,Korean digest of GPT Pro review,created,TASK-4153
+docs/reports/task_4153_l3_relation_graph_v2_gpt_review/report.md,report,TASK-4153 report,created,TASK-4153
+docs/reports/task_4153_l3_relation_graph_v2_gpt_review/artifact_manifest.csv,manifest,TASK-4153 artifact manifest,created,TASK-4153
+docs/reports/task_4153_l3_relation_graph_v2_gpt_review/validation_results.md,validation,TASK-4153 validation results,created,TASK-4153

@@ -1,4 +1,0 @@
-source_family,smoke_status,row_count,raw_path,raw_sha256,error_category,notes
-official_public_releases,EXPORTED,20,data/raw/l0_news_full_backfill_smoke/provider=official_public_releases/key=apple_newsroom_rss/collected_at=20260627T174133.555514Z.json,173e904484b6cd77efebaf180de5395d19a0cb51a616537fd689cf6da0d7d2ad,,Apple Newsroom RSS smoke succeeded.
-gdelt_news_events,EXPORTED,0,data/raw/l0_news_full_backfill_smoke/provider=gdelt_news_events/year=2016/month=01/20160101000000.export.CSV.zip,1de2947c2221d8b33099d85d2e8591ccbac40d37dab178fd54b16bedb69da872,,GDELT v2 archive 2016-01-01 00:00 smoke succeeded.
-marketaux_news_free,CREDENTIAL_BLOCKED,0,,,CREDENTIAL_BLOCKED,No local Marketaux token detected; collection not attempted without credentials.

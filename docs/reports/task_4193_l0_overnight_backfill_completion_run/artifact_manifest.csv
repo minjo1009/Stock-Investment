@@ -1,0 +1,14 @@
+path,type,purpose,created_or_modified,task_id
+scripts/run_task4193_l0_overnight_backfill_supervisor.py,SCRIPT,L0 overnight supervisor and restart/checkpoint recovery loop,created,TASK-4193
+scripts/validate_task4193_l0_overnight_backfill_supervisor.py,VALIDATOR,Validate supervisor and collector PID health,created,TASK-4193
+data/artifacts/task_4193_l0_overnight_backfill_completion_run/supervisor_status.json,RUNTIME_STATUS,Latest supervisor status snapshot,created,TASK-4193
+data/artifacts/task_4193_l0_overnight_backfill_completion_run/background_process.json,RUNTIME_STATUS,Background supervisor PID proof,created,TASK-4193
+data/artifacts/task_4193_l0_overnight_backfill_completion_run/supervisor_events.jsonl,RUNTIME_LEDGER,Supervisor action and recovery event ledger,created,TASK-4193
+data/artifacts/task_4193_l0_overnight_backfill_completion_run/progress_snapshots/**,RUNTIME_SNAPSHOTS,Periodic L0 progress snapshots,created,TASK-4193
+data/artifacts/task_4193_l0_overnight_backfill_completion_run/corrupt_checkpoint_backups/**,BACKUP,Backups of corrupted 5m checkpoint files,created,TASK-4193
+docs/reports/task_4193_l0_overnight_backfill_completion_run/task_result_contract.yaml,CONTRACT,Prime task result contract,created,TASK-4193
+docs/reports/task_4193_l0_overnight_backfill_completion_run/report.md,TASK_REPORT,Korean closeout report,created,TASK-4193
+docs/reports/task_4193_l0_overnight_backfill_completion_run/artifact_manifest.csv,ARTIFACT_MANIFEST,Task artifact manifest,created,TASK-4193
+docs/reports/task_4193_l0_overnight_backfill_completion_run/validation_results.md,VALIDATION_REPORT,Validator output,created,TASK-4193
+ops/task_registry.yaml,REGISTRY,TASK-4193 task registration,modified,TASK-4193
+ops/doc_registry.yaml,REGISTRY,TASK-4193 document registration,modified,TASK-4193

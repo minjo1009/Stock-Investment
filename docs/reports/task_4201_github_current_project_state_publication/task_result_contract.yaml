@@ -1,0 +1,106 @@
+task_id: TASK-4201
+task_type: REVIEW_ONLY
+domain: OPS_GOVERNANCE
+title: GitHub Current Project State Publication
+status: DONE
+profile: DOCS_GOVERNANCE
+created_at: "2026-07-02"
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN
+  missing_stale_incomplete_data_semantics: UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE
+scope:
+  allowed_paths:
+    - .gitignore
+    - docs/reports/task_4201_github_current_project_state_publication/**
+    - ops/task_registry.yaml
+    - ops/doc_registry.yaml
+  forbidden_paths:
+    - broker/**
+    - live_trading/**
+    - production_orders/**
+    - secrets/**
+    - configs/broker/**
+    - "*.env"
+    - "**/*.env"
+    - data/raw/**
+    - db/**
+  changed_paths:
+    - docs/reports/task_4201_github_current_project_state_publication/**
+    - ops/task_registry.yaml
+    - ops/doc_registry.yaml
+outcome_unit:
+  name: github_current_state_review_publication
+  type: governance_publication
+  direction: change
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: false
+intended_change:
+  summary: Publish the current local project state to GitHub for external project-context review without changing trading authority or runtime safety state.
+measurement_method:
+  commands:
+    - git diff --check
+    - python scripts/ops/validate_task_registry.py
+    - python scripts/ops/validate_doc_registry.py --soft
+    - python scripts/ops/validate_prime_task_contracts.py --task TASK-4201
+    - python scripts/ops/validate_required_artifacts.py --task TASK-4201
+    - python scripts/ops/validate_task_scope.py --task TASK-4201
+  comparison_rule: governance artifacts exist, registries include TASK-4201, and local secret files are excluded from staging
+allowed_actions:
+  - inspect git status
+  - create TASK-4201 governance closeout artifacts
+  - update task and document registries for TASK-4201
+  - stage non-secret project files explicitly
+  - commit and push the current branch
+forbidden_actions:
+  - broker mutation
+  - live order
+  - paper promotion
+  - real-capital enablement
+  - strategy acceptance
+  - deployment readiness claim
+  - staging local env or secret files
+  - treating missing/stale/incomplete data as negative evidence
+evidence_artifacts:
+  required:
+    - docs/reports/task_4201_github_current_project_state_publication/report.md
+    - docs/reports/task_4201_github_current_project_state_publication/artifact_manifest.csv
+    - docs/reports/task_4201_github_current_project_state_publication/validation_results.md
+validators:
+  required:
+    - git diff --check
+    - python scripts/ops/validate_task_registry.py
+    - python scripts/ops/validate_doc_registry.py --soft
+    - python scripts/ops/validate_prime_task_contracts.py --task TASK-4201
+    - python scripts/ops/validate_required_artifacts.py --task TASK-4201
+    - python scripts/ops/validate_task_scope.py --task TASK-4201
+progress_claim_policy:
+  progress_class: GOVERNANCE_PUBLICATION_ONLY
+  actual_underlying_progress: false
+  allowed_claims:
+    - Current local project state was prepared for GitHub publication.
+    - TASK-4201 governance artifacts were created.
+    - Trading hard state remains unchanged.
+  forbidden_claims:
+    - Strategy/deployment/real-capital status changed.
+    - Broker, live-order, or paper-promotion authority changed.
+    - L0-L5 domain blockers were resolved by this publication task.
+closeout_verdict:
+  selected: VALID_REVIEW_ONLY
+report:
+  actual_underlying_progress: false
+  progress_class: GOVERNANCE_PUBLICATION_ONLY
+  summary: TASK-4201 records the governance wrapper for publishing the current local project state to GitHub so GPT review can inspect the current repository baseline.
+  claims:
+    - This task only publishes repository state for review.
+    - It does not change trading authority, deployment readiness, broker access, order authority, simulation-stage approval, or funding status.
+next_target:
+  required: true
+  task_type: REVIEW_ONLY
+  outcome_unit: gpt_project_architecture_governance_review
+  required_baseline: GitHub branch after TASK-4201 push
+  required_validator: human review of GPT project-context response

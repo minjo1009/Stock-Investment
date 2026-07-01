@@ -1,0 +1,85 @@
+task_id: TASK-4183
+task_type: DIAGNOSTIC_ONLY
+domain: L0_L4_RECOVERY_AUDIT
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN
+  missing_stale_incomplete_data_semantics: UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE
+scope:
+  changed_paths:
+    - scripts/run_task4183_l0_l4_realtime_backfill_recovery_audit.py
+    - scripts/validate_task4183_l0_l4_realtime_backfill_recovery_audit.py
+    - data/artifacts/task_4183_l0_l4_realtime_backfill_recovery_audit/**
+    - docs/reports/task_4183_l0_l4_realtime_backfill_recovery_audit/**
+    - ops/task_registry.yaml
+    - ops/doc_registry.yaml
+  allowed_paths:
+    - scripts/run_task4183_l0_l4_realtime_backfill_recovery_audit.py
+    - scripts/validate_task4183_l0_l4_realtime_backfill_recovery_audit.py
+    - data/artifacts/task_4183_l0_l4_realtime_backfill_recovery_audit/**
+    - docs/reports/task_4183_l0_l4_realtime_backfill_recovery_audit/**
+    - ops/task_registry.yaml
+    - ops/doc_registry.yaml
+  forbidden_paths:
+    - broker/**
+    - live_trading/**
+    - production_orders/**
+    - secrets/**
+    - configs/broker/**
+outcome_unit:
+  name: stale_realtime_collector_count
+  direction: change
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: false
+intended_change:
+  summary: Record a read-only L0-L4 runtime and backfill health snapshot after workstation recovery.
+measurement_method:
+  commands:
+    - python scripts/run_task4183_l0_l4_realtime_backfill_recovery_audit.py
+    - python scripts/validate_task4183_l0_l4_realtime_backfill_recovery_audit.py
+allowed_actions:
+  - read process and scheduled task state
+  - read artifact and database freshness snapshots
+  - write task-scoped audit artifacts and report
+forbidden_actions:
+  - broker mutation
+  - paper promotion
+  - live order
+  - strategy acceptance
+  - missing data as negative evidence
+evidence_artifacts:
+  required:
+    - data/artifacts/task_4183_l0_l4_realtime_backfill_recovery_audit/task_4183_recovery_audit_summary.json
+    - data/artifacts/task_4183_l0_l4_realtime_backfill_recovery_audit/task_4183_level_verdicts.csv
+    - data/artifacts/task_4183_l0_l4_realtime_backfill_recovery_audit/task_4183_scheduled_tasks.json
+    - data/artifacts/task_4183_l0_l4_realtime_backfill_recovery_audit/task_4183_process_snapshot.json
+validators:
+  required:
+    - python scripts/validate_task4183_l0_l4_realtime_backfill_recovery_audit.py
+    - python scripts/ops/validate_prime_task_contracts.py --task TASK-4183
+progress_claim_policy:
+  actual_underlying_progress: false
+  missing_data_used_as_negative_evidence: false
+  closeout_claims:
+    - Read-only audit only.
+closeout_verdict:
+  selected: BLOCKED_BY_UPSTREAM
+  reason: BLOCKED_NOT_ALL_RUNNING
+report:
+  path: docs/reports/task_4183_l0_l4_realtime_backfill_recovery_audit/report.md
+  summary: Read-only audit recorded L0-L4 collection status and residual blockers.
+  claims:
+    - Not all audited lanes have current runtime evidence.
+  actual_underlying_progress: false
+next_target:
+  required: true
+  task_type: OUTCOME_CHANGE
+  outcome_unit: stale_realtime_collector_count
+  required_baseline: task_4183_recovery_audit_summary.json
+  required_validator: validate_task4183_l0_l4_realtime_backfill_recovery_audit.py
+layer_outcome_validation:
+  layer: L0

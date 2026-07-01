@@ -1,0 +1,2 @@
+task_id,coverage_name,network_calls_made,captured_raw_summaries,exported_or_empty_count,blocked_count,failed_retryable_count
+TASK-4119,stage1_bounded_network_smoke,5,5,5,0,0

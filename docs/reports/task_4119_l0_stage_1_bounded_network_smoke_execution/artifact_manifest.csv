@@ -1,0 +1,27 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,TASK-4119 task scope validators and closeout tracking,modified,TASK-4119
+ops/doc_registry.yaml,REGISTRY,TASK-4119 docs and artifacts registered,modified,TASK-4119
+configs/db_source_acquisition_scheduler.json,CONFIG,Stage 1 complete and Stage 2 next in management plan,modified,TASK-4119
+docs/active/ACTIVE_SSOT_INDEX.md,SSOT,TASK-4119 evidence added to active SSOT index,modified,TASK-4119
+docs/active/CURRENT_TASKS.md,SSOT,TASK-4119 complete and TASK-4120 next recorded,modified,TASK-4119
+docs/active/PROJECT_STATUS.md,SSOT,Stage 1 network smoke pass and Stage 2 next recorded,modified,TASK-4119
+docs/architecture/l0_source_acquisition_project_management_plan.md,GOVERNANCE,Stage 1 current state updated to complete network smoke pass,modified,TASK-4119
+scripts/run_l0_stage1_bounded_network_smoke.py,SCRIPT,Bounded Stage 1 network smoke runner,created,TASK-4119
+scripts/validate_l0_stage1_bounded_network_smoke.py,VALIDATOR,Validates Stage 1 network smoke artifacts and safety gates,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/report.md,TASK_REPORT,TASK-4119 closeout report,modified,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4119 artifact manifest,modified,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/validation_results.md,VALIDATION_REPORT,TASK-4119 validation report,modified,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/stage1_network_smoke_summary.json,REFERENCE,Stage 1 bounded network smoke summary,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/task_4119_scope_freeze.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 network smoke scope freeze,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/task_4119_source_family_plan.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 network smoke source family plan,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/task_4119_api_or_raw_call_ledger.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 network smoke API/raw call ledger,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/task_4119_raw_response_classification.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 network smoke raw response classification,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/task_4119_normalized_source_packets.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 network smoke normalized source packets,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/task_4119_decision_asof_coverage.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 network smoke coverage,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/task_4119_feature_admission_gate.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 to Stage 2 gate,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/task_4119_source_gap_ledger.csv,SOURCE_ACQUISITION_LEDGER,Stage 1 network smoke source gaps,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/raw_summaries/official_public_releases/apple_newsroom_rss.json,RAW_SUMMARY,Redacted official RSS response summary,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/raw_summaries/gdelt_news_events/AAPL.json,RAW_SUMMARY,Redacted GDELT response summary,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/raw_summaries/marketaux_news_free/AAPL.json,RAW_SUMMARY,Redacted Marketaux response summary,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/raw_summaries/microstructure/AAPL_quotes.csv,RAW_SUMMARY,Bounded Alpaca quote row sample,created,TASK-4119
+docs/reports/task_4119_l0_stage_1_bounded_network_smoke_execution/raw_summaries/microstructure/AAPL_trades.csv,RAW_SUMMARY,Bounded Alpaca trade row sample,created,TASK-4119

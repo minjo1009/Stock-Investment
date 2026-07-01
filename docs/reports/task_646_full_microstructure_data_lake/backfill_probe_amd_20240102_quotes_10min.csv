@@ -1,0 +1,2 @@
+﻿provider,feed,source_type,symbol,date,chunk_id,chunk_start,chunk_end,path,export_status,row_count,first_timestamp,last_timestamp,error,dry_run_flag,secret_value_logged_flag,historical_live_ready_flag
+alpaca,sip,quotes,AMD,2024-01-02,1430_1440,2024-01-02T14:30:00Z,2024-01-02T14:40:00Z,data\raw\microstructure_full\provider=alpaca\feed=sip\type=quotes\symbol=AMD\date=2024-01-02\chunk=1430_1440.parquet,EXPORTED,71421,2024-01-02T14:30:00.001278313Z,2024-01-02T14:39:59.946705237Z,,0,0,0

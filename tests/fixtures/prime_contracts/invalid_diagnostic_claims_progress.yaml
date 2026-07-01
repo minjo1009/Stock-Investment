@@ -1,0 +1,68 @@
+task_id: "TASK-9103"
+task_type: "DIAGNOSTIC_ONLY"
+domain: "bad_closeout"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "docs/reports/task_9103/**"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "docs/reports/task_9103/report.md"
+outcome_unit:
+  name: "diagnostic_notes"
+  type: "count"
+  direction: "increase"
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: false
+intended_change:
+  description: "Diagnostic report only."
+  target:
+    value: 1
+measurement_method:
+  commands:
+    - "python scripts/ops/validate_required_artifacts.py --task TASK-9103"
+  comparison_rule: "diagnostic_evidence_only"
+  same_method_before_after_required: false
+allowed_actions: []
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "docs/reports/task_9103/report.md"
+validators:
+  required:
+    - "outcome_contract_validator"
+progress_claim_policy:
+  progress_class: "DIAGNOSTIC_ONLY"
+  actual_underlying_progress: true
+closeout_verdict:
+  selected: "ACTUAL_PROGRESS"
+report:
+  actual_underlying_progress: true
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  summary: "The L0 blocker was fixed by this diagnostic."
+  claims:
+    - "L0 blocker fixed"
+next_target:
+  required: true
+  task_type: "OUTCOME_CHANGE"
+  outcome_unit: "blocker count"
+  required_baseline: "before count"
+  required_validator: "evidence_delta_validator"

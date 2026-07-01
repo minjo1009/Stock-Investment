@@ -1,0 +1,6 @@
+path,bytes,tokens,reason
+.codex/skills/l4-thesis-bundle/SKILL.md,654,163,must_include
+AGENTS.md,1380,345,must_include
+docs/reports/task_4102_l4_profile_validator_hardening/report.md,1154,288,optional_include
+ops/profile_validation_rules.yaml,2054,513,must_include
+ops/task_profiles.yaml,4379,1094,must_include

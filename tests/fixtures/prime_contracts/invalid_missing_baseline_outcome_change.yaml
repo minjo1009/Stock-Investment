@@ -1,0 +1,71 @@
+task_id: "TASK-9102"
+task_type: "OUTCOME_CHANGE"
+domain: "bad_closeout"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "src/example/**"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "src/example/fix.py"
+outcome_unit:
+  name: "failed_count"
+  type: "count"
+  direction: "decrease"
+  problem_progress_claim_allowed: true
+  harness_progress_claim_allowed: false
+after:
+  measured_at: "2026-07-01T01:00:00Z"
+  value: 0
+intended_change:
+  description: "Missing before measurement."
+  target:
+    value: 0
+measurement_method:
+  commands:
+    - "python -m pytest tests/example/test_fix.py -q"
+  comparison_rule: "same_method_before_after"
+  same_method_before_after_required: true
+allowed_actions: []
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "artifacts/after.log"
+validators:
+  required:
+    - "outcome_contract_validator"
+progress_claim_policy:
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  actual_underlying_progress: true
+closeout_verdict:
+  selected: "ACTUAL_PROGRESS"
+report:
+  actual_underlying_progress: true
+  progress_class: "UNDERLYING_PROBLEM_PROGRESS"
+  summary: "The count is now zero."
+  claims:
+    - "failed_count is zero"
+next_target:
+  required: true
+  task_type: "REVIEW_ONLY"
+  outcome_unit: "residual risk"
+  required_baseline: "current state"
+  required_validator: "outcome_contract_validator"

@@ -1,0 +1,9 @@
+﻿provider,feed,source_type,symbol,date,path,export_status,row_count,first_timestamp,last_timestamp,error,dry_run_flag,secret_value_logged_flag,historical_live_ready_flag
+alpaca,sip,quotes,AMD,2024-01-02,data\raw\microstructure_full\provider=alpaca\feed=sip\type=quotes\symbol=AMD\date=2024-01-02.parquet,DRY_RUN,0,2024-01-02T00:00:00Z,2024-01-02T23:59:59Z,,1,0,0
+alpaca,sip,trades,AMD,2024-01-02,data\raw\microstructure_full\provider=alpaca\feed=sip\type=trades\symbol=AMD\date=2024-01-02.parquet,DRY_RUN,0,2024-01-02T00:00:00Z,2024-01-02T23:59:59Z,,1,0,0
+alpaca,sip,quotes,AMD,2024-01-03,data\raw\microstructure_full\provider=alpaca\feed=sip\type=quotes\symbol=AMD\date=2024-01-03.parquet,DRY_RUN,0,2024-01-03T00:00:00Z,2024-01-03T23:59:59Z,,1,0,0
+alpaca,sip,trades,AMD,2024-01-03,data\raw\microstructure_full\provider=alpaca\feed=sip\type=trades\symbol=AMD\date=2024-01-03.parquet,DRY_RUN,0,2024-01-03T00:00:00Z,2024-01-03T23:59:59Z,,1,0,0
+alpaca,sip,quotes,NVDA,2024-01-02,data\raw\microstructure_full\provider=alpaca\feed=sip\type=quotes\symbol=NVDA\date=2024-01-02.parquet,DRY_RUN,0,2024-01-02T00:00:00Z,2024-01-02T23:59:59Z,,1,0,0
+alpaca,sip,trades,NVDA,2024-01-02,data\raw\microstructure_full\provider=alpaca\feed=sip\type=trades\symbol=NVDA\date=2024-01-02.parquet,DRY_RUN,0,2024-01-02T00:00:00Z,2024-01-02T23:59:59Z,,1,0,0
+alpaca,sip,quotes,NVDA,2024-01-03,data\raw\microstructure_full\provider=alpaca\feed=sip\type=quotes\symbol=NVDA\date=2024-01-03.parquet,DRY_RUN,0,2024-01-03T00:00:00Z,2024-01-03T23:59:59Z,,1,0,0
+alpaca,sip,trades,NVDA,2024-01-03,data\raw\microstructure_full\provider=alpaca\feed=sip\type=trades\symbol=NVDA\date=2024-01-03.parquet,DRY_RUN,0,2024-01-03T00:00:00Z,2024-01-03T23:59:59Z,,1,0,0

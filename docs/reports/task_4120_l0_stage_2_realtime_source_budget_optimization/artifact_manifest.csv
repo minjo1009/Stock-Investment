@@ -1,0 +1,16 @@
+path,type,purpose,created_or_modified,task_id
+ops/task_registry.yaml,REGISTRY,TASK-4120 task scope validators and closeout tracking,modified,TASK-4120
+ops/doc_registry.yaml,REGISTRY,TASK-4120 docs and artifacts registered,modified,TASK-4120
+configs/db_source_acquisition_scheduler.json,CONFIG,Stage 2 budget optimized and Stage 3 next in management plan,modified,TASK-4120
+configs/local_templates/db_source_acquisition_scheduler.override.example.json,CONFIG,Marketaux override example cadence set to 16m,modified,TASK-4120
+configs/source_registry/l0_marketaux_queries.json,CONFIG,Marketaux preferred operator interval set to 16m,modified,TASK-4120
+docs/active/CURRENT_TASKS.md,SSOT,TASK-4120 complete and TASK-4121 next recorded,modified,TASK-4120
+docs/active/PROJECT_STATUS.md,SSOT,Stage 2 complete and Stage 3 next recorded,modified,TASK-4120
+docs/architecture/l0_source_acquisition_project_management_plan.md,GOVERNANCE,Stage 2 current state updated,modified,TASK-4120
+scripts/optimize_l0_stage2_realtime_budgets.py,SCRIPT,Stage 2 real-time source budget optimizer,created,TASK-4120
+scripts/validate_l0_stage2_realtime_budgets.py,VALIDATOR,Stage 2 budget validator,created,TASK-4120
+docs/reports/task_4120_l0_stage_2_realtime_source_budget_optimization/report.md,TASK_REPORT,TASK-4120 closeout report,modified,TASK-4120
+docs/reports/task_4120_l0_stage_2_realtime_source_budget_optimization/artifact_manifest.csv,ARTIFACT_MANIFEST,TASK-4120 artifact manifest,modified,TASK-4120
+docs/reports/task_4120_l0_stage_2_realtime_source_budget_optimization/validation_results.md,VALIDATION_REPORT,TASK-4120 validation report,modified,TASK-4120
+docs/reports/task_4120_l0_stage_2_realtime_source_budget_optimization/stage2_realtime_budget_summary.json,REFERENCE,Stage 2 budget summary,created,TASK-4120
+docs/reports/task_4120_l0_stage_2_realtime_source_budget_optimization/task_4120_realtime_budget_plan.csv,REFERENCE,Stage 2 source budget plan,created,TASK-4120

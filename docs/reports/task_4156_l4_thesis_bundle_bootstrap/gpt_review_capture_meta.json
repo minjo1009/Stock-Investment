@@ -1,0 +1,10 @@
+{
+  "task_id": "TASK-4156",
+  "capture_status": "CAPTURED",
+  "captured_at_local": "2026-06-30T13:14:17.564Z",
+  "browser_title": "L4 Thesis Bundle Review",
+  "browser_url": "https://chatgpt.com/c/6a43c015-dcfc-83ee-8da5-aa2486a53e1f",
+  "response_chars": 12228,
+  "verdict_detected": "CONDITIONAL PASS",
+  "tab_cleanup_status": "closed_agent_created_tab"
+}

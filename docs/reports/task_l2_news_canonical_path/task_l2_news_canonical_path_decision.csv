@@ -1,2 +1,0 @@
-task_id,verdict,strategy_acceptance_status,deployment_readiness,real_capital,decision,reason,next_action
-TaskL2NewsCanonicalPath,DATA_INFRASTRUCTURE_ONLY_NOT_DEPLOYMENT_READY,NOT_ACCEPTED,DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY,FORBIDDEN,PRIMARY_PASS,Canonical L2 news_event writer and validators are implemented; missing delayed or blocked news remains diagnostic blocker evidence and not negative signal or trade output.,Schedule scripts/ingest_l0_news_to_l2.py after news collection if continuous DB materialization is desired.

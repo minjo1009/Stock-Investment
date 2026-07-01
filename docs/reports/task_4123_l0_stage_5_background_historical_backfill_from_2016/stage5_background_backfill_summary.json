@@ -1,0 +1,22 @@
+{
+  "bounded_background_collection_started": 1,
+  "broker_mutation_permitted": 0,
+  "command_count": 3,
+  "db_mutation_made": 0,
+  "deployment": "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY",
+  "event_count": 2,
+  "failed_command_count": 0,
+  "full_2016_to_present_run_completed": 0,
+  "live_order_enabled": 0,
+  "next_stage": "l1_quality_coverage_audit_and_l2_handoff",
+  "paper_promotion_permitted": 0,
+  "persistent_process_left_running": 0,
+  "raw_file_count": 6,
+  "real_capital": "FORBIDDEN",
+  "secret_failure_count": 0,
+  "stage5_status": "BACKGROUND_HISTORICAL_BACKFILL_BOUNDED_PROOF_EXECUTED",
+  "strategy": "NOT_ACCEPTED",
+  "task_id": "TASK-4123",
+  "total_event_rows": 2,
+  "updated_at": "2026-06-29T08:05:47.738305Z"
+}

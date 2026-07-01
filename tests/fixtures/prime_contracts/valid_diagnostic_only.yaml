@@ -1,0 +1,73 @@
+task_id: "TASK-9002"
+task_type: "DIAGNOSTIC_ONLY"
+domain: "pipeline_diagnosis"
+hard_state:
+  strategy: "NOT_ACCEPTED"
+  deployment: "DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY"
+  real_capital: "FORBIDDEN"
+  broker_mutation: "FORBIDDEN"
+  live_order: "FORBIDDEN"
+  paper_promotion: "FORBIDDEN"
+  missing_stale_incomplete_data_semantics: "UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE"
+scope:
+  allowed_paths:
+    - "docs/reports/task_9002/**"
+  forbidden_paths:
+    - "broker/**"
+    - "live_trading/**"
+    - "production_orders/**"
+    - "secrets/**"
+    - "configs/broker/**"
+  changed_paths:
+    - "docs/reports/task_9002/report.md"
+outcome_unit:
+  name: "root_cause_questions_answered"
+  type: "diagnostic_count"
+  direction: "increase"
+  problem_progress_claim_allowed: false
+  harness_progress_claim_allowed: false
+intended_change:
+  description: "Explain cause and next measurable target without claiming problem progress."
+  target:
+    value: 1
+measurement_method:
+  commands:
+    - "python scripts/ops/validate_required_artifacts.py --task TASK-9002"
+  comparison_rule: "diagnostic_evidence_only"
+  same_method_before_after_required: false
+allowed_actions:
+  - "write diagnostic report"
+forbidden_actions:
+  - "No broker mutation"
+  - "No live order"
+  - "No paper promotion"
+  - "No strategy acceptance"
+  - "No deployment readiness claim"
+  - "Do not treat missing/stale/incomplete data as negative evidence"
+evidence_artifacts:
+  required:
+    - "docs/reports/task_9002/report.md"
+validators:
+  required:
+    - "outcome_contract_validator"
+progress_claim_policy:
+  progress_class: "DIAGNOSTIC_ONLY"
+  actual_underlying_progress: false
+  allowed_claims:
+    - "diagnosis completed"
+  forbidden_claims:
+    - "underlying blocker resolved"
+closeout_verdict:
+  selected: "VALID_DIAGNOSTIC_ONLY"
+report:
+  actual_underlying_progress: false
+  progress_class: "DIAGNOSTIC_ONLY"
+  summary: "Cause and next target were identified; no underlying progress is claimed."
+  claims:
+    - "This is diagnosis only."
+next_target:
+  required: true
+  task_type: "OUTCOME_CHANGE"
+  outcome_unit: "measured blocker count"
+  required_baseline: "before count"
+  required_validator: "evidence_delta_validator"
