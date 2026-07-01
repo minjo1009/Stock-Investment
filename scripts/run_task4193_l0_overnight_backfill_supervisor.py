@@ -231,6 +231,32 @@ def restart_newswire_for_current_config() -> dict[str, Any]:
     return {"terminated": terminated, "launched": launched}
 
 
+def current_five_min_config_is_current() -> bool:
+    bg = read_json(FIVE_MIN_BACKGROUND_PATH, {})
+    progress = read_json(FIVE_MIN_PROGRESS_PATH, {})
+    if not isinstance(bg, dict):
+        return False
+    progress_pacing = progress.get("request_pacing_mode") if isinstance(progress, dict) else ""
+    return (
+        as_int(bg.get("requests_per_minute")) == 120
+        and bg.get("request_pacing_mode") == "request_start_interval_cap"
+        and progress_pacing in {"", None, "request_start_interval_cap"}
+    )
+
+
+def restart_five_min_for_current_config() -> dict[str, Any]:
+    bg = read_json(FIVE_MIN_BACKGROUND_PATH, {})
+    FIVE_MIN_STOP_PATH.parent.mkdir(parents=True, exist_ok=True)
+    FIVE_MIN_STOP_PATH.write_text("TASK-4201 current 5m pacing restart\n", encoding="utf-8")
+    terminated: list[dict[str, Any]] = []
+    if isinstance(bg, dict):
+        terminated.append(terminate_pid(as_int(bg.get("pid")), reason="TASK_4201_CURRENT_5M_PACING_RESTART"))
+    time.sleep(3)
+    remove_stop_file(FIVE_MIN_STOP_PATH)
+    launched = start_five_min()
+    return {"terminated": terminated, "launched": launched}
+
+
 def is_nul_corrupted(path: Path) -> bool:
     if not path.exists() or not path.is_file():
         return False
@@ -654,7 +680,10 @@ def one_cycle() -> dict[str, Any]:
         actions.append({"target": "public_market_macro_news", "action": "restart", "result": start_market_macro()})
 
     five_incomplete = before_bar["five_min_progress_pct"] < 100.0
-    if five_incomplete and (before_bar["five_min_pid_alive"] == 0 or before_bar["five_min_pid_owner_verified"] == 0):
+    five_min_config_stale = five_incomplete and before_bar["five_min_pid_alive"] == 1 and before_bar["five_min_pid_owner_verified"] == 1 and not current_five_min_config_is_current()
+    if five_min_config_stale:
+        actions.append({"target": "five_min_bars", "action": "restart_current_pacing_config", "result": restart_five_min_for_current_config()})
+    elif five_incomplete and (before_bar["five_min_pid_alive"] == 0 or before_bar["five_min_pid_owner_verified"] == 0):
         actions.append({"target": "five_min_bars", "action": "restart", "result": start_five_min()})
 
     time.sleep(5 if actions else 0)

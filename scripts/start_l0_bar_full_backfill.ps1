@@ -68,6 +68,7 @@ $status = @{
     end_date = $EndDate
     five_min_chunk_days = $FiveMinChunkDays
     requests_per_minute = $RequestsPerMinute
+    request_pacing_mode = "request_start_interval_cap"
     retry_limit = $RetryLimit
     max_requests = $MaxRequests
     max_runtime_minutes = $MaxRuntimeMinutes

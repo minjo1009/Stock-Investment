@@ -38,6 +38,7 @@ DEFAULT_FIVE_MIN_CHUNK_DAYS = 120
 DEFAULT_REQUESTS_PER_MINUTE = 120
 LANES = ("daily", "5m")
 FIVE_MIN_BARS_PER_FULL_SESSION = 78
+REQUEST_PACING_MODE = "request_start_interval_cap"
 
 
 class BarsProvider(Protocol):
@@ -539,6 +540,8 @@ def progress_payload(
             "overall_progress_pct": round((overall_done / overall_total * 100.0), 4) if overall_total else 100.0,
             "remaining_request_units": remaining,
             "observed_requests_per_minute_this_run": round(observed_rpm, 4),
+            "requests_per_minute_cap": max(int(config.requests_per_minute), 1),
+            "request_pacing_mode": REQUEST_PACING_MODE,
             "eta_hours_at_observed_rate": None if eta_hours_observed is None else round(eta_hours_observed, 2),
             "eta_hours_at_configured_rpm": round(eta_hours_configured, 2) if eta_hours_configured is not None else None,
             "plan_path": str(config.plan_path),
@@ -556,6 +559,14 @@ def progress_payload(
 def write_progress(config: BarFullBackfillConfig, payload: dict[str, Any]) -> None:
     config.progress_path.parent.mkdir(parents=True, exist_ok=True)
     config.progress_path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+
+
+def throttle_sleep_seconds(*, started_at: float, finished_at: float, requests_per_minute: int, rate_limited: bool) -> float:
+    interval = 60.0 / max(int(requests_per_minute), 1)
+    if rate_limited:
+        return max(interval, 60.0)
+    elapsed = max(float(finished_at) - float(started_at), 0.0)
+    return max(interval - elapsed, 0.0)
 
 
 def update_counters(state: dict[str, Any], event: dict[str, Any]) -> None:
@@ -604,7 +615,6 @@ def run_bar_full_backfill(
     started = time.monotonic()
     processed_this_run = 0
     last_status = "STARTED"
-    sleep_seconds = 60.0 / max(int(config.requests_per_minute), 1)
     log_line(config.log_path, f"[L0_BAR_FULL_BACKFILL_START] smoke={int(smoke)} lanes={','.join(config.lanes)}")
 
     while True:
@@ -621,6 +631,7 @@ def run_bar_full_backfill(
         if not lane:
             last_status = "EXHAUSTED"
             break
+        request_started_at = time.monotonic()
         if lane == "daily":
             symbol = symbols[int(state.get("daily_symbol_index", 0))]
             event = collect_daily_symbol(config, active_provider, symbol)
@@ -649,7 +660,14 @@ def run_bar_full_backfill(
         )
         if smoke:
             break
-        time.sleep(sleep_seconds if last_status != "RATE_LIMITED" else max(sleep_seconds, 60.0))
+        sleep_seconds = throttle_sleep_seconds(
+            started_at=request_started_at,
+            finished_at=time.monotonic(),
+            requests_per_minute=config.requests_per_minute,
+            rate_limited=last_status == "RATE_LIMITED",
+        )
+        if sleep_seconds > 0:
+            time.sleep(sleep_seconds)
 
     result = {
         "status": last_status,

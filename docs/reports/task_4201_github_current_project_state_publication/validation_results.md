@@ -9,6 +9,8 @@
 - `python scripts/ops/validate_required_artifacts.py --task TASK-4201`: PASS
 - `python scripts/ops/validate_task_scope.py --task TASK-4201`: PASS_WITH_WARNINGS
 - `python scripts/ops/validate_codex_closeout.py --task TASK-4201`: PASS_WITH_WARNINGS
+- `python -m unittest tests.test_l0_bar_full_backfill_rate_pacing`: PASS
+- `python -m py_compile tools/db/source_acquisition/bar_full_backfill.py scripts/run_task4193_l0_overnight_backfill_supervisor.py`: PASS
 
 ## Warnings
 
@@ -19,6 +21,8 @@
 ## Git Publication
 
 - Staged paths: 1474
+- Additional residual current-state paths staged after first commit: 4
 - Excluded from staging: `kis_paper.env`
-- Commit: pending
+- Commit: `527ec524158a5c7ddef6923b46fc06036aa7ba8f`
+- Follow-up commit for residual current-state L0 bar pacing files: pending
 - Push: pending
