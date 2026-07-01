@@ -26,5 +26,7 @@
 - Excluded from staging: `kis_paper.env`
 - Commit: `527ec524158a5c7ddef6923b46fc06036aa7ba8f`
 - Follow-up commit for residual current-state L0 bar pacing files: `7d806dca5643bea81b2520c728f5cf09db520013`
-- Follow-up commit for L0 operating contract current-state note: pending
+- Follow-up commit for L0 operating contract current-state note: `20f76e9e9f8217e4a06821398b4e35bf1f32238f`
+- Left untracked: `kis_paper.env`
+- Left untracked: `docs/reports/task_4202_l0_5m_bar_request_cap_pacing/` because it appeared after commit creation with internal `TASK-4201` references but no matching registry entry.
 - Push: pending
