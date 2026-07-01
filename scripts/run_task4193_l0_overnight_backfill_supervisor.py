@@ -247,10 +247,10 @@ def current_five_min_config_is_current() -> bool:
 def restart_five_min_for_current_config() -> dict[str, Any]:
     bg = read_json(FIVE_MIN_BACKGROUND_PATH, {})
     FIVE_MIN_STOP_PATH.parent.mkdir(parents=True, exist_ok=True)
-    FIVE_MIN_STOP_PATH.write_text("TASK-4201 current 5m pacing restart\n", encoding="utf-8")
+    FIVE_MIN_STOP_PATH.write_text("TASK-4202 current 5m pacing restart\n", encoding="utf-8")
     terminated: list[dict[str, Any]] = []
     if isinstance(bg, dict):
-        terminated.append(terminate_pid(as_int(bg.get("pid")), reason="TASK_4201_CURRENT_5M_PACING_RESTART"))
+        terminated.append(terminate_pid(as_int(bg.get("pid")), reason="TASK_4202_CURRENT_5M_PACING_RESTART"))
     time.sleep(3)
     remove_stop_file(FIVE_MIN_STOP_PATH)
     launched = start_five_min()

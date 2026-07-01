@@ -9580,6 +9580,46 @@ documents:
   created_by_task: TASK-4200
   supersedes: []
   superseded_by: null
+- path: docs/reports/task_4202_l0_5m_bar_request_cap_pacing/task_result_contract.yaml
+  type: CONTRACT
+  domain: L0_SOURCE_ACQUISITION
+  status: ACTIVE
+  priority: P0
+  codex_read: TASK_PROFILE_ONLY
+  owner: codex
+  created_by_task: TASK-4202
+  supersedes: []
+  superseded_by: null
+- path: docs/reports/task_4202_l0_5m_bar_request_cap_pacing/report.md
+  type: TASK_REPORT
+  domain: L0_SOURCE_ACQUISITION
+  status: ACTIVE
+  priority: P0
+  codex_read: TASK_PROFILE_ONLY
+  owner: codex
+  created_by_task: TASK-4202
+  supersedes: []
+  superseded_by: null
+- path: docs/reports/task_4202_l0_5m_bar_request_cap_pacing/artifact_manifest.csv
+  type: ARTIFACT_MANIFEST
+  domain: L0_SOURCE_ACQUISITION
+  status: ACTIVE
+  priority: P0
+  codex_read: TASK_PROFILE_ONLY
+  owner: codex
+  created_by_task: TASK-4202
+  supersedes: []
+  superseded_by: null
+- path: docs/reports/task_4202_l0_5m_bar_request_cap_pacing/validation_results.md
+  type: VALIDATION_REPORT
+  domain: L0_SOURCE_ACQUISITION
+  status: ACTIVE
+  priority: P0
+  codex_read: TASK_PROFILE_ONLY
+  owner: codex
+  created_by_task: TASK-4202
+  supersedes: []
+  superseded_by: null
 - path: docs/reports/task_4201_github_current_project_state_publication/task_result_contract.yaml
   type: CONTRACT
   domain: OPS_GOVERNANCE

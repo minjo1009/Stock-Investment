@@ -1,0 +1,13 @@
+path,type,purpose,created_or_modified,task_id
+docs/reports/task_4202_l0_5m_bar_request_cap_pacing/task_result_contract.yaml,CONTRACT,Prime outcome contract for 5m request pacing,created,TASK-4202
+docs/reports/task_4202_l0_5m_bar_request_cap_pacing/report.md,TASK_REPORT,Human-readable closeout report,created,TASK-4202
+docs/reports/task_4202_l0_5m_bar_request_cap_pacing/artifact_manifest.csv,ARTIFACT_MANIFEST,Task artifact inventory,created,TASK-4202
+docs/reports/task_4202_l0_5m_bar_request_cap_pacing/validation_results.md,VALIDATION_REPORT,Validator command results,created,TASK-4202
+tools/db/source_acquisition/bar_full_backfill.py,CODE,5m request-start interval pacing,modified,TASK-4202
+scripts/start_l0_bar_full_backfill.ps1,CODE,5m runtime metadata records pacing mode,modified,TASK-4202
+scripts/run_task4193_l0_overnight_backfill_supervisor.py,CODE,Guard restarts old 5m pacing config,modified,TASK-4202
+ops/l0_operating_contract.yaml,CONTRACT,Current 5m operating mode,modified,TASK-4202
+tests/test_l0_bar_full_backfill_rate_pacing.py,TEST,Throttle pacing unit tests,created,TASK-4202
+data/artifacts/l0_bar_full_backfill/background_process_5m.json,RUNTIME_STATE,Active 5m runtime PID and pacing mode,modified,TASK-4202
+data/artifacts/l0_bar_full_backfill/collector_progress.json,PROGRESS_SNAPSHOT,5m progress after pacing restart,modified,TASK-4202
+data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/supervisor_status.json,RUNTIME_STATUS,Guard restart evidence,modified,TASK-4202

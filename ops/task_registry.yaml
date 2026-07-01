@@ -6022,6 +6022,63 @@ tasks:
     artifact_manifest_exists: true
     forbidden_paths_clean: true
     status: CLOSED_RUNTIME_HARDENED_WITH_PARTIAL_COLLECTION
+- task_id: TASK-4202
+  title: L0 5m Bar Request Cap Pacing
+  status: DONE
+  priority: P0
+  task_type: OUTCOME_CHANGE
+  profile: L0_L1_DATA_PIPELINE
+  owner: codex
+  branch: null
+  created_at: '2026-07-02'
+  updated_at: '2026-07-02'
+  objective:
+  - Make the 5-minute bar collector use the configured 120 requests/minute cap more efficiently.
+  - Replace fixed post-request sleep with request-start interval pacing.
+  - Restart the active 5m collector through the existing guard so the new pacing logic is active.
+  allowed_paths:
+  - ops/l0_operating_contract.yaml
+  - tools/db/source_acquisition/bar_full_backfill.py
+  - scripts/run_l0_bar_full_backfill.py
+  - scripts/start_l0_bar_full_backfill.ps1
+  - scripts/run_task4193_l0_overnight_backfill_supervisor.py
+  - tests/test_l0_bar_full_backfill_rate_pacing.py
+  - data/artifacts/l0_bar_full_backfill/background_process_5m.json
+  - data/artifacts/l0_bar_full_backfill/collector_progress.json
+  - data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/**
+  - docs/reports/task_4202_l0_5m_bar_request_cap_pacing/**
+  - ops/task_registry.yaml
+  - ops/doc_registry.yaml
+  forbidden_paths:
+  - broker/**
+  - live_trading/**
+  - production_orders/**
+  - secrets/**
+  - configs/broker/**
+  required_artifacts:
+  - docs/reports/task_4202_l0_5m_bar_request_cap_pacing/task_result_contract.yaml
+  - docs/reports/task_4202_l0_5m_bar_request_cap_pacing/report.md
+  - docs/reports/task_4202_l0_5m_bar_request_cap_pacing/artifact_manifest.csv
+  - docs/reports/task_4202_l0_5m_bar_request_cap_pacing/validation_results.md
+  - data/artifacts/l0_bar_full_backfill/background_process_5m.json
+  - data/artifacts/l0_bar_full_backfill/collector_progress.json
+  - data/artifacts/task_4195_l0_continuous_backfill_runtime_governance/supervisor_status.json
+  required_validators:
+  - python -m py_compile tools/db/source_acquisition/bar_full_backfill.py scripts/run_l0_bar_full_backfill.py scripts/run_task4193_l0_overnight_backfill_supervisor.py tests/test_l0_bar_full_backfill_rate_pacing.py
+  - python -m unittest tests.test_l0_bar_full_backfill_rate_pacing
+  - python scripts/ops/validate_task_registry.py
+  - python scripts/ops/validate_doc_registry.py --soft
+  - python scripts/ops/validate_prime_task_contracts.py --task TASK-4202
+  - python scripts/ops/validate_required_artifacts.py --task TASK-4202
+  - python scripts/ops/validate_task_scope.py --task TASK-4202
+  - python scripts/ops/validate_codex_closeout.py --task TASK-4202
+  closeout:
+    registry_updated: true
+    doc_registry_updated: true
+    validators_passed: true
+    artifact_manifest_exists: true
+    forbidden_paths_clean: true
+    status: CLOSED_5M_PACING_HARDENED_WITH_PARTIAL_BACKFILL
 - task_id: TASK-4201
   title: GitHub Current Project State Publication
   status: DONE

@@ -61,7 +61,7 @@ active_lanes:
     provider: market_bar_5m_proxy
     background_process: data/artifacts/l0_bar_full_backfill/background_process_5m.json
     current_operating_mode:
-      updated_by_task: TASK-4201
+      updated_by_task: TASK-4202
       requests_per_minute_cap: 120
       request_pacing_mode: request_start_interval_cap
       restart_guard: TASK-4195 restarts old 5m processes that do not expose request_pacing_mode.

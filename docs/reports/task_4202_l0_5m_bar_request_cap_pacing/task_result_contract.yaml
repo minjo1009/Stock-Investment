@@ -1,0 +1,114 @@
+task_id: TASK-4202
+task_type: OUTCOME_CHANGE
+domain: L0_SOURCE_ACQUISITION
+title: L0 5m Bar Request Cap Pacing
+status: DONE
+profile: L0_L1_DATA_PIPELINE
+created_at: "2026-07-02"
+hard_state:
+  strategy: NOT_ACCEPTED
+  deployment: DIAGNOSTIC_ONLY_NOT_DEPLOYMENT_READY
+  real_capital: FORBIDDEN
+  broker_mutation: FORBIDDEN
+  live_order: FORBIDDEN
+  paper_promotion: FORBIDDEN
+  missing_stale_incomplete_data_semantics: UNKNOWN_OR_BLOCKER_NEVER_NEGATIVE_EVIDENCE
+scope:
+  allowed_paths:
+    - ops/l0_operating_contract.yaml
+    - tools/db/source_acquisition/bar_full_backfill.py
+    - scripts/start_l0_bar_full_backfill.ps1
+    - scripts/run_task4193_l0_overnight_backfill_supervisor.py
+    - tests/test_l0_bar_full_backfill_rate_pacing.py
+    - docs/reports/task_4202_l0_5m_bar_request_cap_pacing/**
+    - ops/task_registry.yaml
+    - ops/doc_registry.yaml
+  forbidden_paths:
+    - broker/**
+    - live_trading/**
+    - production_orders/**
+    - secrets/**
+    - configs/broker/**
+    - "*.env"
+    - "**/*.env"
+  changed_paths:
+    - ops/l0_operating_contract.yaml
+    - tools/db/source_acquisition/bar_full_backfill.py
+    - scripts/start_l0_bar_full_backfill.ps1
+    - scripts/run_task4193_l0_overnight_backfill_supervisor.py
+    - tests/test_l0_bar_full_backfill_rate_pacing.py
+    - docs/reports/task_4202_l0_5m_bar_request_cap_pacing/**
+    - ops/task_registry.yaml
+    - ops/doc_registry.yaml
+outcome_unit:
+  name: collector_config_gap_count
+  type: count
+  direction: decrease
+  problem_progress_claim_allowed: true
+  harness_progress_claim_allowed: false
+baseline:
+  value: 1
+  gaps:
+    - The 5-minute bar collector slept a fixed interval after each request, adding request and sqlite write time on top of the configured request cap interval.
+after:
+  value: 0
+  closed_gaps:
+    - The 5-minute bar collector now uses request-start interval pacing and records pacing metadata.
+intended_change:
+  summary: Make the existing 5-minute bar collector honor the configured request cap more efficiently by subtracting request and local write elapsed time from throttle sleep.
+measurement_method:
+  commands:
+    - python -m py_compile tools/db/source_acquisition/bar_full_backfill.py scripts/run_l0_bar_full_backfill.py scripts/run_task4193_l0_overnight_backfill_supervisor.py tests/test_l0_bar_full_backfill_rate_pacing.py
+    - python -m unittest tests.test_l0_bar_full_backfill_rate_pacing
+  comparison_rule: the collector exposes request_start_interval_cap pacing and unit tests verify sleep calculation
+allowed_actions:
+  - edit existing 5-minute bar collector pacing logic
+  - edit existing 5-minute bar launcher metadata
+  - edit existing supervisor restart guard for stale pacing mode
+  - update L0 operating contract notes
+  - write task report artifacts
+forbidden_actions:
+  - broker mutation
+  - live order
+  - paper promotion
+  - real-capital enablement
+  - strategy acceptance
+  - deployment readiness claim
+  - buy/sell/ranking/sizing/order output
+  - treating missing/stale/incomplete data as negative evidence
+evidence_artifacts:
+  required:
+    - docs/reports/task_4202_l0_5m_bar_request_cap_pacing/report.md
+    - docs/reports/task_4202_l0_5m_bar_request_cap_pacing/artifact_manifest.csv
+    - docs/reports/task_4202_l0_5m_bar_request_cap_pacing/validation_results.md
+validators:
+  required:
+    - python -m unittest tests.test_l0_bar_full_backfill_rate_pacing
+    - python scripts/ops/validate_prime_task_contracts.py --task TASK-4202
+progress_claim_policy:
+  progress_class: UNDERLYING_PROBLEM_PROGRESS
+  actual_underlying_progress: true
+  allowed_claims:
+    - The 5-minute bar collector request pacing gap was closed.
+    - The configured request cap remains a cap rather than a guaranteed throughput promise.
+    - The L0 backfill remains incomplete until the operating contract validator no longer reports incomplete collection blockers.
+  forbidden_claims:
+    - Strategy/deployment/funding authority changed.
+    - Broker, order, or simulation-stage approval authority changed.
+    - L0 collection is complete.
+closeout_verdict:
+  selected: ACTUAL_PROGRESS_WITH_RESIDUAL_BLOCKERS
+report:
+  actual_underlying_progress: true
+  progress_class: UNDERLYING_PROBLEM_PROGRESS
+  summary: Existing 5-minute bar collector pacing now subtracts request and sqlite elapsed time from throttle sleep and records request pacing metadata.
+  claims:
+    - Request-start interval pacing is implemented for the 5-minute collector.
+    - Unit tests cover normal, over-interval, and rate-limit sleep behavior.
+    - Remaining L0 collection incompleteness stays a blocker.
+next_target:
+  required: true
+  task_type: OUTCOME_CHANGE
+  outcome_unit: incomplete_backfill_units
+  required_baseline: data/artifacts/l0_bar_full_backfill/collector_progress.json
+  required_validator: python scripts/validate_l0_operating_contract_4190.py
